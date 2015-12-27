@@ -270,7 +270,6 @@ func %once infixOrOperator  -> @uint outMask { outMask = 1 << 11 }
 func %once infixXorOperator -> @uint outMask { outMask = 1 << 12 }
 func %once prefixNotOperator  -> @uint outMask { outMask = 1 << 13 }
 
-func %once infixConcatOperator             -> @uint outMask { outMask = 1 << 14 } # exp1 . exp2
 func %once plusEqualOperatorWithExpression  -> @uint outMask { outMask = 1 << 15 } # var += exp ;
 func %once minusEqualOperatorWithExpression -> @uint outMask { outMask = 1 << 16 } # var -= exp ;
 func %once isComparable                     -> @uint outMask { outMask = 1 << 17 } # Supports <, <=, >, >= operators

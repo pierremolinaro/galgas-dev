@@ -101,12 +101,6 @@ if (SUPPORTED_OPERATORS & prefixTildeOperator ()) != 0 then
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & infixConcatOperator ()) != 0 then
-  %//--------------------------------- . (concat) operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_concat (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
-       !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end
-
 if (SUPPORTED_OPERATORS & infixAddOperator ()) != 0 then
   %//--------------------------------- + operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%

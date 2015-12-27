@@ -984,10 +984,6 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand2,
                                                       const class GALGAS_stringlist & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_XCodeGroupList operator_concat (const GALGAS_XCodeGroupList & inOperand
-                                                                   COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_XCodeGroupList add_operation (const GALGAS_XCodeGroupList & inOperand,
                                                                  C_Compiler * inCompiler
@@ -1255,10 +1251,6 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
                                                       const class GALGAS_stringlist & inOperand9,
                                                       const class GALGAS_string & inOperand10
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_XCodeToolTargetList operator_concat (const GALGAS_XCodeToolTargetList & inOperand
-                                                                        COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_XCodeToolTargetList add_operation (const GALGAS_XCodeToolTargetList & inOperand,
                                                                       C_Compiler * inCompiler
@@ -1647,10 +1639,6 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand12,
                                                       const class GALGAS_stringlist & inOperand13
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_XCodeAppTargetList operator_concat (const GALGAS_XCodeAppTargetList & inOperand
-                                                                       COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_XCodeAppTargetList add_operation (const GALGAS_XCodeAppTargetList & inOperand,
                                                                      C_Compiler * inCompiler
@@ -2054,10 +2042,6 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand1,
                                                       const class GALGAS_string & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_BuildFileList operator_concat (const GALGAS_BuildFileList & inOperand
-                                                                  COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_BuildFileList add_operation (const GALGAS_BuildFileList & inOperand,
                                                                 C_Compiler * inCompiler

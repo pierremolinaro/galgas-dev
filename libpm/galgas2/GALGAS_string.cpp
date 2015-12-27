@@ -123,17 +123,6 @@ typeComparisonResult GALGAS_string::objectCompare (const GALGAS_string & inOpera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::operator_concat (const GALGAS_string & inOperand2
-                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid () && inOperand2.isValid ()) {
-    result = GALGAS_string (mString + inOperand2.mString) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
                                             C_Compiler * /* inCompiler */
                                             COMMA_UNUSED_LOCATION_ARGS) const {

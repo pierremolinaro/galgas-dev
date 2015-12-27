@@ -10,424 +10,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Class for element of '@mapStateTransitionSortedList' sorted list                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cSortedListElement_mapStateTransitionSortedList : public cSortedListElement {
-  public : GALGAS_mapStateTransitionSortedList_2D_element mObject ;
-
-//--- Constructor
-  public : cSortedListElement_mapStateTransitionSortedList (const GALGAS_uint & in_mActionIndex,
-                                                            const GALGAS_string & in_mActionName,
-                                                            const GALGAS_uint & in_mTargetStateIndex,
-                                                            const GALGAS_string & in_mTargetStateName,
-                                                            const GALGAS_mapAutomatonMessageKind & in_mTransitionMessageKind,
-                                                            const GALGAS_string & in_mTransitionMessage
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cSortedListElement * copy (void) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-
-//--- Virtual method that comparing element for sorting
-  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cSortedListElement_mapStateTransitionSortedList::cSortedListElement_mapStateTransitionSortedList (const GALGAS_uint & in_mActionIndex,
-                                                                                                  const GALGAS_string & in_mActionName,
-                                                                                                  const GALGAS_uint & in_mTargetStateIndex,
-                                                                                                  const GALGAS_string & in_mTargetStateName,
-                                                                                                  const GALGAS_mapAutomatonMessageKind & in_mTransitionMessageKind,
-                                                                                                  const GALGAS_string & in_mTransitionMessage
-                                                                                                  COMMA_LOCATION_ARGS) :
-cSortedListElement (THERE),
-mObject (in_mActionIndex, in_mActionName, in_mTargetStateIndex, in_mTargetStateName, in_mTransitionMessageKind, in_mTransitionMessage) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cSortedListElement_mapStateTransitionSortedList::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cSortedListElement * cSortedListElement_mapStateTransitionSortedList::copy (void) {
-  cSortedListElement * result = NULL ;
-  macroMyNew (result, cSortedListElement_mapStateTransitionSortedList (mObject.mAttribute_mActionIndex, mObject.mAttribute_mActionName, mObject.mAttribute_mTargetStateIndex, mObject.mAttribute_mTargetStateName, mObject.mAttribute_mTransitionMessageKind, mObject.mAttribute_mTransitionMessage COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cSortedListElement_mapStateTransitionSortedList::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mActionIndex" ":" ;
-  mObject.mAttribute_mActionIndex.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mActionName" ":" ;
-  mObject.mAttribute_mActionName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetStateIndex" ":" ;
-  mObject.mAttribute_mTargetStateIndex.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetStateName" ":" ;
-  mObject.mAttribute_mTargetStateName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTransitionMessageKind" ":" ;
-  mObject.mAttribute_mTransitionMessageKind.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTransitionMessage" ":" ;
-  mObject.mAttribute_mTransitionMessage.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cSortedListElement_mapStateTransitionSortedList::compare (const cCollectionElement * inOperand) const {
-  cSortedListElement_mapStateTransitionSortedList * operand = (cSortedListElement_mapStateTransitionSortedList *) inOperand ;
-  macroValidSharedObject (operand, cSortedListElement_mapStateTransitionSortedList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList::GALGAS_mapStateTransitionSortedList (void) :
-AC_GALGAS_sortedlist () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cSortedListElement_mapStateTransitionSortedList::compareForSorting (const cSortedListElement * inOperand) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cSortedListElement_mapStateTransitionSortedList * operand = (const cSortedListElement_mapStateTransitionSortedList *) inOperand ;
-  macroValidSharedObject (operand, cSortedListElement_mapStateTransitionSortedList) ;
-  if (result == kOperandEqual) {
-    result = mObject.mAttribute_mActionIndex.objectCompare (operand->mObject.mAttribute_mActionIndex) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList GALGAS_mapStateTransitionSortedList::constructor_emptySortedList (LOCATION_ARGS) {
-  GALGAS_mapStateTransitionSortedList result ;
-  result.createNewEmptySortedList (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList GALGAS_mapStateTransitionSortedList::constructor_sortedListWithValue (const GALGAS_uint & inOperand0,
-                                                                                                          const GALGAS_string & inOperand1,
-                                                                                                          const GALGAS_uint & inOperand2,
-                                                                                                          const GALGAS_string & inOperand3,
-                                                                                                          const GALGAS_mapAutomatonMessageKind & inOperand4,
-                                                                                                          const GALGAS_string & inOperand5
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_mapStateTransitionSortedList result = constructor_emptySortedList (THERE) ;
-  cSortedListElement * p = NULL ;
-  macroMyNew (p, cSortedListElement_mapStateTransitionSortedList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
-  capSortedListElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  result.addObject (attributes) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::addAssign_operation (const GALGAS_uint & inOperand0,
-                                                               const GALGAS_string & inOperand1,
-                                                               const GALGAS_uint & inOperand2,
-                                                               const GALGAS_string & inOperand3,
-                                                               const GALGAS_mapAutomatonMessageKind & inOperand4,
-                                                               const GALGAS_string & inOperand5
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cSortedListElement * p = NULL ;
-    macroMyNew (p, cSortedListElement_mapStateTransitionSortedList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5 COMMA_THERE)) ;
-    capSortedListElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::plusAssign_operation (const GALGAS_mapStateTransitionSortedList inOperand,
-                                                                C_Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    appendSortedList (inOperand) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList GALGAS_mapStateTransitionSortedList::operator_concat (const GALGAS_mapStateTransitionSortedList & inOperand
-                                                                                          COMMA_LOCATION_ARGS) const {
-  GALGAS_mapStateTransitionSortedList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = constructor_emptySortedList (THERE) ;
-    result = *this ;
-    result.appendSortedList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::modifier_popSmallest (GALGAS_uint & outOperand0,
-                                                                GALGAS_string & outOperand1,
-                                                                GALGAS_uint & outOperand2,
-                                                                GALGAS_string & outOperand3,
-                                                                GALGAS_mapAutomatonMessageKind & outOperand4,
-                                                                GALGAS_string & outOperand5,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_mapStateTransitionSortedList * p = (cSortedListElement_mapStateTransitionSortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-    outOperand0 = p->mObject.mAttribute_mActionIndex ;
-    outOperand1 = p->mObject.mAttribute_mActionName ;
-    outOperand2 = p->mObject.mAttribute_mTargetStateIndex ;
-    outOperand3 = p->mObject.mAttribute_mTargetStateName ;
-    outOperand4 = p->mObject.mAttribute_mTransitionMessageKind ;
-    outOperand5 = p->mObject.mAttribute_mTransitionMessage ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::modifier_popGreatest (GALGAS_uint & outOperand0,
-                                                                GALGAS_string & outOperand1,
-                                                                GALGAS_uint & outOperand2,
-                                                                GALGAS_string & outOperand3,
-                                                                GALGAS_mapAutomatonMessageKind & outOperand4,
-                                                                GALGAS_string & outOperand5,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_mapStateTransitionSortedList * p = (cSortedListElement_mapStateTransitionSortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-    outOperand0 = p->mObject.mAttribute_mActionIndex ;
-    outOperand1 = p->mObject.mAttribute_mActionName ;
-    outOperand2 = p->mObject.mAttribute_mTargetStateIndex ;
-    outOperand3 = p->mObject.mAttribute_mTargetStateName ;
-    outOperand4 = p->mObject.mAttribute_mTransitionMessageKind ;
-    outOperand5 = p->mObject.mAttribute_mTransitionMessage ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::method_smallest (GALGAS_uint & outOperand0,
-                                                           GALGAS_string & outOperand1,
-                                                           GALGAS_uint & outOperand2,
-                                                           GALGAS_string & outOperand3,
-                                                           GALGAS_mapAutomatonMessageKind & outOperand4,
-                                                           GALGAS_string & outOperand5,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_mapStateTransitionSortedList * p = (cSortedListElement_mapStateTransitionSortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-    outOperand0 = p->mObject.mAttribute_mActionIndex ;
-    outOperand1 = p->mObject.mAttribute_mActionName ;
-    outOperand2 = p->mObject.mAttribute_mTargetStateIndex ;
-    outOperand3 = p->mObject.mAttribute_mTargetStateName ;
-    outOperand4 = p->mObject.mAttribute_mTransitionMessageKind ;
-    outOperand5 = p->mObject.mAttribute_mTransitionMessage ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapStateTransitionSortedList::method_greatest (GALGAS_uint & outOperand0,
-                                                           GALGAS_string & outOperand1,
-                                                           GALGAS_uint & outOperand2,
-                                                           GALGAS_string & outOperand3,
-                                                           GALGAS_mapAutomatonMessageKind & outOperand4,
-                                                           GALGAS_string & outOperand5,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_mapStateTransitionSortedList * p = (cSortedListElement_mapStateTransitionSortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-    outOperand0 = p->mObject.mAttribute_mActionIndex ;
-    outOperand1 = p->mObject.mAttribute_mActionName ;
-    outOperand2 = p->mObject.mAttribute_mTargetStateIndex ;
-    outOperand3 = p->mObject.mAttribute_mTargetStateName ;
-    outOperand4 = p->mObject.mAttribute_mTransitionMessageKind ;
-    outOperand5 = p->mObject.mAttribute_mTransitionMessage ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_mapStateTransitionSortedList::cEnumerator_mapStateTransitionSortedList (const GALGAS_mapStateTransitionSortedList & inEnumeratedObject,
-                                                                                    const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList_2D_element cEnumerator_mapStateTransitionSortedList::current (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint cEnumerator_mapStateTransitionSortedList::current_mActionIndex (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mActionIndex ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_mapStateTransitionSortedList::current_mActionName (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mActionName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint cEnumerator_mapStateTransitionSortedList::current_mTargetStateIndex (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mTargetStateIndex ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_mapStateTransitionSortedList::current_mTargetStateName (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mTargetStateName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapAutomatonMessageKind cEnumerator_mapStateTransitionSortedList::current_mTransitionMessageKind (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mTransitionMessageKind ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_mapStateTransitionSortedList::current_mTransitionMessage (LOCATION_ARGS) const {
-  const cSortedListElement_mapStateTransitionSortedList * p = (const cSortedListElement_mapStateTransitionSortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_mapStateTransitionSortedList) ;
-  return p->mObject.mAttribute_mTransitionMessage ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @mapStateTransitionSortedList type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_mapStateTransitionSortedList ("mapStateTransitionSortedList",
-                                                     NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_mapStateTransitionSortedList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_mapStateTransitionSortedList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_mapStateTransitionSortedList::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_mapStateTransitionSortedList (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateTransitionSortedList GALGAS_mapStateTransitionSortedList::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_mapStateTransitionSortedList result ;
-  const GALGAS_mapStateTransitionSortedList * p = (const GALGAS_mapStateTransitionSortedList *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_mapStateTransitionSortedList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("mapStateTransitionSortedList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                               Class for element of '@mapStateSortedList' sorted list                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -588,19 +170,6 @@ void GALGAS_mapStateSortedList::plusAssign_operation (const GALGAS_mapStateSorte
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_mapStateSortedList GALGAS_mapStateSortedList::operator_concat (const GALGAS_mapStateSortedList & inOperand
-                                                                      COMMA_LOCATION_ARGS) const {
-  GALGAS_mapStateSortedList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = constructor_emptySortedList (THERE) ;
-    result = *this ;
-    result.appendSortedList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1576,19 +1145,6 @@ void GALGAS_branchBehaviourSortedListForMapOverride::plusAssign_operation (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_branchBehaviourSortedListForMapOverride GALGAS_branchBehaviourSortedListForMapOverride::operator_concat (const GALGAS_branchBehaviourSortedListForMapOverride & inOperand
-                                                                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_branchBehaviourSortedListForMapOverride result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = constructor_emptySortedList (THERE) ;
-    result = *this ;
-    result.appendSortedList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void GALGAS_branchBehaviourSortedListForMapOverride::modifier_popSmallest (GALGAS_uint & outOperand0,
                                                                            GALGAS_string & outOperand1,
                                                                            GALGAS_uint & outOperand2,
@@ -2140,18 +1696,6 @@ void GALGAS_mapOverrideList::method_last (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideList GALGAS_mapOverrideList::operator_concat (const GALGAS_mapOverrideList & inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_mapOverrideList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_mapOverrideList GALGAS_mapOverrideList::add_operation (const GALGAS_mapOverrideList & inOperand,
                                                               C_Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) const {
@@ -2589,18 +2133,6 @@ void GALGAS_sortedListSortDescriptorListAST::method_last (GALGAS_lstring & outOp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::operator_concat (const GALGAS_sortedListSortDescriptorListAST & inOperand
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_sortedListSortDescriptorListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::add_operation (const GALGAS_sortedListSortDescriptorListAST & inOperand,
                                                                                               C_Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
@@ -3007,18 +2539,6 @@ void GALGAS_sortDescriptorListForGeneration::method_last (GALGAS_unifiedTypeMap_
     outOperand1 = p->mObject.mAttribute_mAttributeName ;
     outOperand2 = p->mObject.mAttribute_mAscendingOrder ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::operator_concat (const GALGAS_sortDescriptorListForGeneration & inOperand
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_sortDescriptorListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3430,18 +2950,6 @@ void GALGAS_syntaxInstructionListForGrammarAnalysis::method_last (GALGAS_abstrac
     macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
     outOperand0 = p->mObject.mAttribute_mInstruction ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::operator_concat (const GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand
-                                                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_syntaxInstructionListForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3885,18 +3393,6 @@ void GALGAS_productionRuleListForGrammarAnalysis::method_last (GALGAS_lstring & 
     outOperand2 = p->mObject.mAttribute_mInstructionList ;
     outOperand3 = p->mObject.mAttribute_mProductionIndex ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_productionRuleListForGrammarAnalysis GALGAS_productionRuleListForGrammarAnalysis::operator_concat (const GALGAS_productionRuleListForGrammarAnalysis & inOperand
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_productionRuleListForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4493,19 +3989,6 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::plusAssign_operation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::operator_concat (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inOperand
-                                                                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = constructor_emptySortedList (THERE) ;
-    result = *this ;
-    result.appendSortedList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis::modifier_popSmallest (GALGAS_lstring & outOperand0,
                                                                                  GALGAS_uint & outOperand1,
                                                                                  GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & outOperand2,
@@ -4905,18 +4388,6 @@ void GALGAS_branchListForGrammarAnalysis::method_last (GALGAS_syntaxInstructionL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_branchListForGrammarAnalysis GALGAS_branchListForGrammarAnalysis::operator_concat (const GALGAS_branchListForGrammarAnalysis & inOperand
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_branchListForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_branchListForGrammarAnalysis GALGAS_branchListForGrammarAnalysis::add_operation (const GALGAS_branchListForGrammarAnalysis & inOperand,
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
@@ -5304,18 +4775,6 @@ void GALGAS_syntaxComponentListForGrammarAnalysis::method_last (GALGAS_productio
     outOperand0 = p->mObject.mAttribute_mProductionRulesList ;
     outOperand1 = p->mObject.mAttribute_mSyntaxComponentName ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxComponentListForGrammarAnalysis GALGAS_syntaxComponentListForGrammarAnalysis::operator_concat (const GALGAS_syntaxComponentListForGrammarAnalysis & inOperand
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_syntaxComponentListForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5962,18 +5421,6 @@ void GALGAS_programListForGeneration::method_last (GALGAS_semanticDeclarationFor
     macroValidSharedObject (p, cCollectionElement_programListForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mDeclaration ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programListForGeneration GALGAS_programListForGeneration::operator_concat (const GALGAS_programListForGeneration & inOperand
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_programListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15131,18 +14578,6 @@ void GALGAS_galgas_33_QualifiedFeatureList::method_last (GALGAS_lstring & outOpe
     outOperand0 = p->mObject.mAttribute_mFeatureName ;
     outOperand1 = p->mObject.mAttribute_mFeatureValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::operator_concat (const GALGAS_galgas_33_QualifiedFeatureList & inOperand
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_galgas_33_QualifiedFeatureList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

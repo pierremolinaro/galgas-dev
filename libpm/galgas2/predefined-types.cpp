@@ -1106,18 +1106,6 @@ void GALGAS_luintlist::method_last (GALGAS_luint & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luintlist GALGAS_luintlist::operator_concat (const GALGAS_luintlist & inOperand
-                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_luintlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_luintlist GALGAS_luintlist::add_operation (const GALGAS_luintlist & inOperand,
                                                   C_Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1493,18 +1481,6 @@ void GALGAS_uintlist::method_last (GALGAS_uint & outOperand0,
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
     outOperand0 = p->mObject.mAttribute_mValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uintlist GALGAS_uintlist::operator_concat (const GALGAS_uintlist & inOperand
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_uintlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1888,18 +1864,6 @@ void GALGAS_uint_36__34_list::method_last (GALGAS_uint_36__34_ & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::operator_concat (const GALGAS_uint_36__34_list & inOperand
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_list result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_uint_36__34_list GALGAS_uint_36__34_list::add_operation (const GALGAS_uint_36__34_list & inOperand,
                                                                 C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
@@ -2275,18 +2239,6 @@ void GALGAS_functionlist::method_last (GALGAS_function & outOperand0,
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
     outOperand0 = p->mObject.mAttribute_mValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionlist GALGAS_functionlist::operator_concat (const GALGAS_functionlist & inOperand
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_functionlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2670,18 +2622,6 @@ void GALGAS_stringlist::method_last (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_stringlist::operator_concat (const GALGAS_stringlist & inOperand
-                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_stringlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_stringlist GALGAS_stringlist::add_operation (const GALGAS_stringlist & inOperand,
                                                     C_Compiler * /* inCompiler */
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -3057,18 +2997,6 @@ void GALGAS_lstringlist::method_last (GALGAS_lstring & outOperand0,
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
     outOperand0 = p->mObject.mAttribute_mValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_lstringlist::operator_concat (const GALGAS_lstringlist & inOperand
-                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3452,18 +3380,6 @@ void GALGAS_typelist::method_last (GALGAS_type & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typelist GALGAS_typelist::operator_concat (const GALGAS_typelist & inOperand
-                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_typelist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_typelist GALGAS_typelist::add_operation (const GALGAS_typelist & inOperand,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
@@ -3839,18 +3755,6 @@ void GALGAS_objectlist::method_last (GALGAS_object & outOperand0,
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
     outOperand0 = p->mObject.mAttribute_mValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_objectlist GALGAS_objectlist::operator_concat (const GALGAS_objectlist & inOperand
-                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_objectlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4256,18 +4160,6 @@ void GALGAS__32_stringlist::method_last (GALGAS_string & outOperand0,
     outOperand0 = p->mObject.mAttribute_mValue_30_ ;
     outOperand1 = p->mObject.mAttribute_mValue_31_ ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS__32_stringlist GALGAS__32_stringlist::operator_concat (const GALGAS__32_stringlist & inOperand
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS__32_stringlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4710,18 +4602,6 @@ void GALGAS__32_lstringlist::method_last (GALGAS_lstring & outOperand0,
     outOperand0 = p->mObject.mAttribute_mValue_30_ ;
     outOperand1 = p->mObject.mAttribute_mValue_31_ ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS__32_lstringlist GALGAS__32_lstringlist::operator_concat (const GALGAS__32_lstringlist & inOperand
-                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS__32_lstringlist result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

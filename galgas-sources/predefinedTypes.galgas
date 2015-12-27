@@ -348,9 +348,6 @@ proc printFeaturesOfType
   if (inHandledOperatorFlags & infixXorOperator ()) != 0 then
     s += "    @" + inTypeName + " ^ @" + inTypeName + " -> @" + inTypeName + "\n"
   end
-  if (inHandledOperatorFlags & infixConcatOperator ()) != 0 then
-    s += "    @" + inTypeName + " . @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
   if (inHandledOperatorFlags & infixShiftOperator ()) != 0 then
     s += "    @" + inTypeName + " >> @uint -> @" + inTypeName + "\n"
     s += "    @" + inTypeName + " << @uint -> @" + inTypeName + "\n"

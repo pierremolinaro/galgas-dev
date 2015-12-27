@@ -136,10 +136,6 @@ class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_abstractCollectionValueElementForGeneration & inOperand0
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_collectionValueElementListForGeneration operator_concat (const GALGAS_collectionValueElementListForGeneration & inOperand
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_collectionValueElementListForGeneration add_operation (const GALGAS_collectionValueElementListForGeneration & inOperand,
                                                                                           C_Compiler * inCompiler
@@ -409,10 +405,6 @@ class GALGAS_localConstantList : public AC_GALGAS_list {
                                                       const class GALGAS_bool & inOperand2,
                                                       const class GALGAS_string & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_localConstantList operator_concat (const GALGAS_localConstantList & inOperand
-                                                                      COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_localConstantList add_operation (const GALGAS_localConstantList & inOperand,
                                                                     C_Compiler * inCompiler
@@ -656,10 +648,6 @@ class GALGAS_localInitializedVariableList : public AC_GALGAS_list {
                                                       const class GALGAS_lstring & inOperand1,
                                                       const class GALGAS_string & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_localInitializedVariableList operator_concat (const GALGAS_localInitializedVariableList & inOperand
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_localInitializedVariableList add_operation (const GALGAS_localInitializedVariableList & inOperand,
                                                                                C_Compiler * inCompiler
@@ -2067,10 +2055,6 @@ class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list {
                                                       const class GALGAS_location & inOperand3,
                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand4
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_ruleLabelImplementationList operator_concat (const GALGAS_ruleLabelImplementationList & inOperand
-                                                                                COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_ruleLabelImplementationList add_operation (const GALGAS_ruleLabelImplementationList & inOperand,
                                                                               C_Compiler * inCompiler
@@ -2330,10 +2314,6 @@ class GALGAS_ruleDeclarationList : public AC_GALGAS_list {
                                                       const class GALGAS_uint & inOperand1,
                                                       const class GALGAS_ruleLabelImplementationList & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_ruleDeclarationList operator_concat (const GALGAS_ruleDeclarationList & inOperand
-                                                                        COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_ruleDeclarationList add_operation (const GALGAS_ruleDeclarationList & inOperand,
                                                                       C_Compiler * inCompiler
@@ -2561,10 +2541,6 @@ class GALGAS_syntaxListForGeneration : public AC_GALGAS_list {
                                                       const class GALGAS_syntaxDeclarationForGeneration & inOperand1,
                                                       const class GALGAS_bool & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_syntaxListForGeneration operator_concat (const GALGAS_syntaxListForGeneration & inOperand
-                                                                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_syntaxListForGeneration add_operation (const GALGAS_syntaxListForGeneration & inOperand,
                                                                           C_Compiler * inCompiler
@@ -2900,10 +2876,6 @@ class GALGAS_keySortedList : public AC_GALGAS_sortedlist {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
                                                       const class GALGAS_uint & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_keySortedList operator_concat (const GALGAS_keySortedList & inOperand
-                                                                  COMMA_LOCATION_ARGS) const ;
-
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_popGreatest (class GALGAS_string & outArgument0,
@@ -3167,10 +3139,6 @@ class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
                                                       const class GALGAS_dynamicTypeComparisonKind & inOperand3,
                                                       const class GALGAS_location & inOperand4
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListAST operator_concat (const GALGAS_castInstructionBranchListAST & inOperand
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListAST add_operation (const GALGAS_castInstructionBranchListAST & inOperand,
                                                                                C_Compiler * inCompiler
@@ -3430,10 +3398,6 @@ class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand2,
                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListForGeneration operator_concat (const GALGAS_castInstructionBranchListForGeneration & inOperand
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListForGeneration add_operation (const GALGAS_castInstructionBranchListForGeneration & inOperand,
                                                                                          C_Compiler * inCompiler
@@ -3671,10 +3635,6 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_lis
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                       const class GALGAS_lstring & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectElementListAST operator_concat (const GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand
-                                                                                                 COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectElementListAST add_operation (const GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand,
                                                                                                C_Compiler * inCompiler
@@ -3875,10 +3835,6 @@ class GALGAS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_bool & inOperand0,
                                                       const class GALGAS_abstractEnumeratedCollectionAST & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectListAST operator_concat (const GALGAS_forInstructionEnumeratedObjectListAST & inOperand
-                                                                                          COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectListAST add_operation (const GALGAS_forInstructionEnumeratedObjectListAST & inOperand,
                                                                                         C_Compiler * inCompiler
@@ -4156,10 +4112,6 @@ class GALGAS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_
                                                       const class GALGAS_semanticExpressionForGeneration & inOperand1,
                                                       const class GALGAS_string & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectListForGeneration operator_concat (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inOperand
-                                                                                                    COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_forInstructionEnumeratedObjectListForGeneration add_operation (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inOperand,
                                                                                                   C_Compiler * inCompiler
@@ -4448,10 +4400,6 @@ class GALGAS_logListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                       const class GALGAS_semanticExpressionAST & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_logListAST operator_concat (const GALGAS_logListAST & inOperand
-                                                               COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_logListAST add_operation (const GALGAS_logListAST & inOperand,
                                                              C_Compiler * inCompiler
@@ -4660,10 +4608,6 @@ class GALGAS_matchEntryListAST : public AC_GALGAS_list {
                                                       const class GALGAS_lstring & inOperand1,
                                                       const class GALGAS_lstring & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_matchEntryListAST operator_concat (const GALGAS_matchEntryListAST & inOperand
-                                                                      COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_matchEntryListAST add_operation (const GALGAS_matchEntryListAST & inOperand,
                                                                     C_Compiler * inCompiler
@@ -4882,10 +4826,6 @@ class GALGAS_matchInstructionBranchListAST : public AC_GALGAS_list {
                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
                                                       const class GALGAS_location & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_matchInstructionBranchListAST operator_concat (const GALGAS_matchInstructionBranchListAST & inOperand
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_matchInstructionBranchListAST add_operation (const GALGAS_matchInstructionBranchListAST & inOperand,
                                                                                 C_Compiler * inCompiler
@@ -5113,10 +5053,6 @@ class GALGAS_matchListForGeneration : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand1,
                                                       const class GALGAS_string & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_matchListForGeneration operator_concat (const GALGAS_matchListForGeneration & inOperand
-                                                                           COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_matchListForGeneration add_operation (const GALGAS_matchListForGeneration & inOperand,
                                                                          C_Compiler * inCompiler
@@ -5341,10 +5277,6 @@ class GALGAS_matchInstructionBranchListForGeneration : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_matchListForGeneration & inOperand0,
                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_matchInstructionBranchListForGeneration operator_concat (const GALGAS_matchInstructionBranchListForGeneration & inOperand
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_matchInstructionBranchListForGeneration add_operation (const GALGAS_matchInstructionBranchListForGeneration & inOperand,
                                                                                           C_Compiler * inCompiler
@@ -5556,10 +5488,6 @@ class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
                                                       const class GALGAS_lstring & inOperand1,
                                                       const class GALGAS_bool & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_switchExtractedValuesListAST operator_concat (const GALGAS_switchExtractedValuesListAST & inOperand
-                                                                                 COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_switchExtractedValuesListAST add_operation (const GALGAS_switchExtractedValuesListAST & inOperand,
                                                                                C_Compiler * inCompiler
@@ -5790,10 +5718,6 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
                                                       const class GALGAS_location & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesAST operator_concat (const GALGAS_switchBranchesAST & inOperand
-                                                                      COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesAST add_operation (const GALGAS_switchBranchesAST & inOperand,
                                                                     C_Compiler * inCompiler
@@ -6037,10 +5961,6 @@ class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
                                                       const class GALGAS_string & inOperand1,
                                                       const class GALGAS_uint & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_extractedAssociatedValuesForGeneration operator_concat (const GALGAS_extractedAssociatedValuesForGeneration & inOperand
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_extractedAssociatedValuesForGeneration add_operation (const GALGAS_extractedAssociatedValuesForGeneration & inOperand,
                                                                                          C_Compiler * inCompiler
@@ -6271,10 +6191,6 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
                                                       const class GALGAS_uint & inOperand2,
                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesForGeneration operator_concat (const GALGAS_switchBranchesForGeneration & inOperand
-                                                                                COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesForGeneration add_operation (const GALGAS_switchBranchesForGeneration & inOperand,
                                                                               C_Compiler * inCompiler
@@ -6515,10 +6431,6 @@ class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
                                                       const class GALGAS_unifiedTypeMapProxyList & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_enumConstantListForGeneration operator_concat (const GALGAS_enumConstantListForGeneration & inOperand
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_enumConstantListForGeneration add_operation (const GALGAS_enumConstantListForGeneration & inOperand,
                                                                                 C_Compiler * inCompiler
@@ -6805,10 +6717,6 @@ class GALGAS_mapStateTransitionList : public AC_GALGAS_list {
                                                       const class GALGAS_mapAutomatonMessageKind & inOperand2,
                                                       const class GALGAS_lstring & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_mapStateTransitionList operator_concat (const GALGAS_mapStateTransitionList & inOperand
-                                                                           COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_mapStateTransitionList add_operation (const GALGAS_mapStateTransitionList & inOperand,
                                                                          C_Compiler * inCompiler
@@ -7036,10 +6944,6 @@ class GALGAS_mapStateList : public AC_GALGAS_list {
                                                       const class GALGAS_lstring & inOperand2,
                                                       const class GALGAS_mapStateTransitionList & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_mapStateList operator_concat (const GALGAS_mapStateList & inOperand
-                                                                 COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_mapStateList add_operation (const GALGAS_mapStateList & inOperand,
                                                                C_Compiler * inCompiler
@@ -7270,10 +7174,6 @@ class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list {
                                                       const class GALGAS_mapAutomatonMessageKind & inOperand3,
                                                       const class GALGAS_lstring & inOperand4
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_mapOverrideBlockDescriptorAST operator_concat (const GALGAS_mapOverrideBlockDescriptorAST & inOperand
-                                                                                  COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_mapOverrideBlockDescriptorAST add_operation (const GALGAS_mapOverrideBlockDescriptorAST & inOperand,
                                                                                 C_Compiler * inCompiler
@@ -7510,10 +7410,6 @@ class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list {
                                                       const class GALGAS_mapOverrideBlockDescriptorAST & inOperand1,
                                                       const class GALGAS_mapOverrideBlockDescriptorAST & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
-//--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_mapOverrideBlockListAST operator_concat (const GALGAS_mapOverrideBlockListAST & inOperand
-                                                                            COMMA_LOCATION_ARGS) const ;
-
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_mapOverrideBlockListAST add_operation (const GALGAS_mapOverrideBlockListAST & inOperand,
                                                                           C_Compiler * inCompiler
@@ -7680,5 +7576,212 @@ class GALGAS_mapOverrideBlockListAST_2D_element : public AC_GALGAS_root {
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockListAST_2D_element ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @mapStateTransitionSortedList sorted list                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_mapStateTransitionSortedList : public AC_GALGAS_sortedlist {
+//--------------------------------- Default constructor
+  public : GALGAS_mapStateTransitionSortedList (void) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_mapStateTransitionSortedList extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_mapStateTransitionSortedList constructor_emptySortedList (LOCATION_ARGS) ;
+
+  public : static GALGAS_mapStateTransitionSortedList constructor_sortedListWithValue (const class GALGAS_uint & inOperand0,
+                                                                                       const class GALGAS_string & inOperand1,
+                                                                                       const class GALGAS_uint & inOperand2,
+                                                                                       const class GALGAS_string & inOperand3,
+                                                                                       const class GALGAS_mapAutomatonMessageKind & inOperand4,
+                                                                                       const class GALGAS_string & inOperand5
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_mapStateTransitionSortedList inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_uint & inOperand0,
+                                                      const class GALGAS_string & inOperand1,
+                                                      const class GALGAS_uint & inOperand2,
+                                                      const class GALGAS_string & inOperand3,
+                                                      const class GALGAS_mapAutomatonMessageKind & inOperand4,
+                                                      const class GALGAS_string & inOperand5
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void modifier_popGreatest (class GALGAS_uint & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_uint & outArgument2,
+                                                       class GALGAS_string & outArgument3,
+                                                       class GALGAS_mapAutomatonMessageKind & outArgument4,
+                                                       class GALGAS_string & outArgument5,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void modifier_popSmallest (class GALGAS_uint & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_uint & outArgument2,
+                                                       class GALGAS_string & outArgument3,
+                                                       class GALGAS_mapAutomatonMessageKind & outArgument4,
+                                                       class GALGAS_string & outArgument5,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_greatest (class GALGAS_uint & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_uint & outArgument2,
+                                                  class GALGAS_string & outArgument3,
+                                                  class GALGAS_mapAutomatonMessageKind & outArgument4,
+                                                  class GALGAS_string & outArgument5,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_smallest (class GALGAS_uint & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_uint & outArgument2,
+                                                  class GALGAS_string & outArgument3,
+                                                  class GALGAS_mapAutomatonMessageKind & outArgument4,
+                                                  class GALGAS_string & outArgument5,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_mapStateTransitionSortedList ;
+ 
+} ; // End of GALGAS_mapStateTransitionSortedList class
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Enumerator declaration                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumerator_mapStateTransitionSortedList : public cGenericAbstractEnumerator {
+  public : cEnumerator_mapStateTransitionSortedList (const GALGAS_mapStateTransitionSortedList & inEnumeratedObject,
+                                                     const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_uint current_mActionIndex (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mActionName (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mTargetStateIndex (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mTargetStateName (LOCATION_ARGS) const ;
+  public : class GALGAS_mapAutomatonMessageKind current_mTransitionMessageKind (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mTransitionMessage (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_mapStateTransitionSortedList_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionSortedList ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   @mapStateTransitionSortedList_2D_element struct                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_mapStateTransitionSortedList_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_uint mAttribute_mActionIndex ;
+  public : GALGAS_string mAttribute_mActionName ;
+  public : GALGAS_uint mAttribute_mTargetStateIndex ;
+  public : GALGAS_string mAttribute_mTargetStateName ;
+  public : GALGAS_mapAutomatonMessageKind mAttribute_mTransitionMessageKind ;
+  public : GALGAS_string mAttribute_mTransitionMessage ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_mapStateTransitionSortedList_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapStateTransitionSortedList_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_mapStateTransitionSortedList_2D_element (const GALGAS_uint & in_mActionIndex,
+                                                           const GALGAS_string & in_mActionName,
+                                                           const GALGAS_uint & in_mTargetStateIndex,
+                                                           const GALGAS_string & in_mTargetStateName,
+                                                           const GALGAS_mapAutomatonMessageKind & in_mTransitionMessageKind,
+                                                           const GALGAS_string & in_mTransitionMessage) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_mapStateTransitionSortedList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_mapStateTransitionSortedList_2D_element constructor_new (const class GALGAS_uint & inOperand0,
+                                                                                  const class GALGAS_string & inOperand1,
+                                                                                  const class GALGAS_uint & inOperand2,
+                                                                                  const class GALGAS_string & inOperand3,
+                                                                                  const class GALGAS_mapAutomatonMessageKind & inOperand4,
+                                                                                  const class GALGAS_string & inOperand5
+                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_mapStateTransitionSortedList_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mActionIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mActionName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mTargetStateIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mTargetStateName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mTransitionMessage (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_mapAutomatonMessageKind getter_mTransitionMessageKind (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_mapStateTransitionSortedList_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionSortedList_2D_element ;
 
 #endif

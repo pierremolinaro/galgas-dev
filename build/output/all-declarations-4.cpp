@@ -262,18 +262,6 @@ void GALGAS_enumConstantList::method_last (GALGAS_lstring & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantList GALGAS_enumConstantList::operator_concat (const GALGAS_enumConstantList & inOperand
-                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_enumConstantList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_enumConstantList GALGAS_enumConstantList::add_operation (const GALGAS_enumConstantList & inOperand,
                                                                 C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
@@ -7134,18 +7122,6 @@ void GALGAS_semanticExpressionListForGeneration::method_last (GALGAS_semanticExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionListForGeneration GALGAS_semanticExpressionListForGeneration::operator_concat (const GALGAS_semanticExpressionListForGeneration & inOperand
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_semanticExpressionListForGeneration GALGAS_semanticExpressionListForGeneration::add_operation (const GALGAS_semanticExpressionListForGeneration & inOperand,
                                                                                                       C_Compiler * /* inCompiler */
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) const {
@@ -7611,18 +7587,6 @@ void GALGAS_formalParameterListForGeneration::method_last (GALGAS_lstring & outO
     outOperand3 = p->mObject.mAttribute_mFormalArgumentName ;
     outOperand4 = p->mObject.mAttribute_mFormalArgumentCppName ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::operator_concat (const GALGAS_formalParameterListForGeneration & inOperand
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalParameterListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8188,18 +8152,6 @@ void GALGAS_formalInputParameterListForGeneration::method_last (GALGAS_lstring &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::operator_concat (const GALGAS_formalInputParameterListForGeneration & inOperand
-                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalInputParameterListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::add_operation (const GALGAS_formalInputParameterListForGeneration & inOperand,
                                                                                                           C_Compiler * /* inCompiler */
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) const {
@@ -8657,18 +8609,6 @@ void GALGAS_actualParameterListForGeneration::method_last (GALGAS_actualParamete
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualParameterListForGeneration GALGAS_actualParameterListForGeneration::operator_concat (const GALGAS_actualParameterListForGeneration & inOperand
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_actualParameterListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_actualParameterListForGeneration GALGAS_actualParameterListForGeneration::add_operation (const GALGAS_actualParameterListForGeneration & inOperand,
                                                                                                 C_Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9030,18 +8970,6 @@ void GALGAS_semanticInstructionListForGeneration::method_last (GALGAS_semanticIn
     macroValidSharedObject (p, cCollectionElement_semanticInstructionListForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mInstruction ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::operator_concat (const GALGAS_semanticInstructionListForGeneration & inOperand
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9437,18 +9365,6 @@ void GALGAS_listOfSemanticInstructionListForGeneration::method_last (GALGAS_sema
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_listOfSemanticInstructionListForGeneration GALGAS_listOfSemanticInstructionListForGeneration::operator_concat (const GALGAS_listOfSemanticInstructionListForGeneration & inOperand
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_listOfSemanticInstructionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_listOfSemanticInstructionListForGeneration GALGAS_listOfSemanticInstructionListForGeneration::add_operation (const GALGAS_listOfSemanticInstructionListForGeneration & inOperand,
                                                                                                                     C_Compiler * /* inCompiler */
                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9755,19 +9671,6 @@ void GALGAS_semanticDeclarationSortedListForGeneration::plusAssign_operation (co
   if (isValid ()) {
     appendSortedList (inOperand) ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticDeclarationSortedListForGeneration GALGAS_semanticDeclarationSortedListForGeneration::operator_concat (const GALGAS_semanticDeclarationSortedListForGeneration & inOperand
-                                                                                                                      COMMA_LOCATION_ARGS) const {
-  GALGAS_semanticDeclarationSortedListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = constructor_emptySortedList (THERE) ;
-    result = *this ;
-    result.appendSortedList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10193,18 +10096,6 @@ void GALGAS_signatureForGrammarAnalysis::method_last (GALGAS_formalArgumentPassi
     outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
     outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_signatureForGrammarAnalysis GALGAS_signatureForGrammarAnalysis::operator_concat (const GALGAS_signatureForGrammarAnalysis & inOperand
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_signatureForGrammarAnalysis result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11190,18 +11081,6 @@ void GALGAS_nonTerminalToAddList::method_last (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::operator_concat (const GALGAS_nonTerminalToAddList & inOperand
-                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_nonTerminalToAddList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::add_operation (const GALGAS_nonTerminalToAddList & inOperand,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
@@ -11638,18 +11517,6 @@ void GALGAS_terminalCheckAssignementList::method_last (GALGAS_string & outOperan
     outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
     outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_terminalCheckAssignementList GALGAS_terminalCheckAssignementList::operator_concat (const GALGAS_terminalCheckAssignementList & inOperand
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_terminalCheckAssignementList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12113,18 +11980,6 @@ void GALGAS_abstractMethodDefinitionListForGeneration::method_last (GALGAS_bool 
     outOperand1 = p->mObject.mAttribute_mMethodName ;
     outOperand2 = p->mObject.mAttribute_mSignature ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractMethodDefinitionListForGeneration GALGAS_abstractMethodDefinitionListForGeneration::operator_concat (const GALGAS_abstractMethodDefinitionListForGeneration & inOperand
-                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_abstractMethodDefinitionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12618,18 +12473,6 @@ void GALGAS_methodDefinitionListForGeneration::method_last (GALGAS_bool & outOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodDefinitionListForGeneration GALGAS_methodDefinitionListForGeneration::operator_concat (const GALGAS_methodDefinitionListForGeneration & inOperand
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_methodDefinitionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_methodDefinitionListForGeneration GALGAS_methodDefinitionListForGeneration::add_operation (const GALGAS_methodDefinitionListForGeneration & inOperand,
                                                                                                   C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
@@ -13112,18 +12955,6 @@ void GALGAS_filewrapperTemplateListForGeneration::method_last (GALGAS_string & o
     outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
     outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_filewrapperTemplateListForGeneration GALGAS_filewrapperTemplateListForGeneration::operator_concat (const GALGAS_filewrapperTemplateListForGeneration & inOperand
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_filewrapperTemplateListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

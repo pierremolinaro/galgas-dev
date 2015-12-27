@@ -1868,18 +1868,6 @@ void GALGAS_XCodeGroupList::method_last (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList GALGAS_XCodeGroupList::operator_concat (const GALGAS_XCodeGroupList & inOperand
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_XCodeGroupList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::add_operation (const GALGAS_XCodeGroupList & inOperand,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
@@ -2570,18 +2558,6 @@ void GALGAS_XCodeToolTargetList::method_last (GALGAS_string & outOperand0,
     outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
     outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::operator_concat (const GALGAS_XCodeToolTargetList & inOperand
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_XCodeToolTargetList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3519,18 +3495,6 @@ void GALGAS_XCodeAppTargetList::method_last (GALGAS_string & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::operator_concat (const GALGAS_XCodeAppTargetList & inOperand
-                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_XCodeAppTargetList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::add_operation (const GALGAS_XCodeAppTargetList & inOperand,
                                                                     C_Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -4243,18 +4207,6 @@ void GALGAS_BuildFileList::method_last (GALGAS_string & outOperand0,
     outOperand1 = p->mObject.mAttribute_mFileName ;
     outOperand2 = p->mObject.mAttribute_mBuildReference ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_BuildFileList GALGAS_BuildFileList::operator_concat (const GALGAS_BuildFileList & inOperand
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_BuildFileList result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
