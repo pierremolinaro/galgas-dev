@@ -323,7 +323,6 @@ override method @enumTypeForGeneration appendDeclaration1
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
 
 override method @enumTypeForGeneration appendDeclaration2
-  ?let @bool unused inGenerateForGalgas3
   ?let @string unused inOutputDirectory
   ?!@stringset ioInclusionSet
   !@string outHeader {

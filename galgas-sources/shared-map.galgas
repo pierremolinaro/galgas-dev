@@ -1117,10 +1117,10 @@ override method @sharedMapTypeForGeneration appendDeclaration1
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
 
 override method @sharedMapTypeForGeneration appendDeclaration2
-  ?let @bool unused inGenerateForGalgas3
   ?let @string unused inOutputDirectory
   ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader2
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]

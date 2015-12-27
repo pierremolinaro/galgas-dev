@@ -1162,10 +1162,10 @@ method @semanticDeclarationForGeneration appendDeclaration1
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @semanticDeclarationForGeneration appendDeclaration2
-  ?let @bool unused inGenerateForGalgas3
   ?let @string unused inOutputDirectory
   ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   outHeader = ""
 }
 

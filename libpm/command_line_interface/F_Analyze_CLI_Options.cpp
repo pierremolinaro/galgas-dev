@@ -37,15 +37,15 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
-  #include <windows.h>
-  #include <direct.h>
+#ifndef COMPILE_FOR_WINDOWS
+  #error COMPILE_FOR_WINDOWS is undefined
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef MACHINE_IS_DEFINED
-  #error "Undefined machine"
+#if COMPILE_FOR_WINDOWS == 1
+  #include <windows.h>
+  #include <direct.h>
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -274,7 +274,7 @@ static void analyze_one_option (const char * inCommand,
   if (! found) {
     if (inCommand [0] != '-') {
       C_String fileName ;
-      #ifdef COMPILE_FOR_WIN32
+      #if COMPILE_FOR_WINDOWS == 1
         const int32_t fileLength = (int32_t) strlen (inCommand) ;
         int32_t firstChar = 0 ;
         if ((fileLength > 3)
@@ -329,7 +329,7 @@ void F_Analyze_CLI_Options (const int argv,
     print_option_list () ;
   }
 //--- No colored output ?
-  #ifndef COMPILE_FOR_WIN32
+  #if COMPILE_FOR_WINDOWS == 0
     if (gOption_generic_5F_cli_5F_options_no_5F_color.mValue) {
       C_ColoredConsole::setUseTextAttributes (false) ;
     }

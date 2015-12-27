@@ -38,23 +38,23 @@
 #include <unistd.h>
 #include <sys/types.h>
 
-#ifndef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 0
   #include <pwd.h>
 #endif
 
-#ifdef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 1
   #include <Shlobj.h>
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 0
   GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
     return GALGAS_string (getpwuid (getuid ())->pw_dir) ;
   }
 #endif
 
-#ifdef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 1
   GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
     char path [MAX_PATH] ;
     SHGetFolderPath (NULL, CSIDL_PROFILE, NULL, 0, path) ;
@@ -1627,13 +1627,13 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 
 // http://msdn.microsoft.com/en-us/library/ms682499%28VS.85%29.aspx
 
-#ifdef COMPILE_FOR_WIN32
-  #include <windows.h> 
+#if COMPILE_FOR_WINDOWS == 1
+  #include <windows.h>
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 1
   static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
                                   HANDLE g_hChildStd_IN_Rd,
                                   const char * /* inCommandLine */) {
@@ -1681,7 +1681,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 1
   GALGAS_string GALGAS_string::getter_popen (C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
     GALGAS_string result ;
@@ -1751,7 +1751,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 0
   GALGAS_string GALGAS_string::getter_popen (C_Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;

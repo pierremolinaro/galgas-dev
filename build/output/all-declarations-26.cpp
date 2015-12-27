@@ -1735,7 +1735,6 @@ C_PrologueEpilogue gMethod_enumTypeForGeneration_appendDeclaration_31_ (defineCa
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void categoryMethod_enumTypeForGeneration_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                        const GALGAS_bool /* constinArgument_inGenerateForGalgas_33_ */,
                                                                         const GALGAS_string /* constinArgument_inOutputDirectory */,
                                                                         GALGAS_stringset & ioArgument_ioInclusionSet,
                                                                         GALGAS_string & outArgument_outHeader,
@@ -1744,27 +1743,27 @@ static void categoryMethod_enumTypeForGeneration_appendDeclaration_32_ (const cP
   const cPtr_enumTypeForGeneration * object = (const cPtr_enumTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_enumTypeForGeneration) ;
   GALGAS_bool var_hasAssociatedValues = GALGAS_bool (false) ;
-  cEnumerator_enumConstantListForGeneration enumerator_13459 (object->mAttribute_mConstantList, kEnumeration_up) ;
-  bool bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 331)).isValidAndTrue () ;
-  if (enumerator_13459.hasCurrentObject () && bool_0) {
-    while (enumerator_13459.hasCurrentObject () && bool_0) {
-      var_hasAssociatedValues = GALGAS_bool (kIsStrictSup, enumerator_13459.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("enum.galgas", 332)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
-      enumerator_13459.gotoNextObject () ;
-      if (enumerator_13459.hasCurrentObject ()) {
-        bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 331)).isValidAndTrue () ;
+  cEnumerator_enumConstantListForGeneration enumerator_13418 (object->mAttribute_mConstantList, kEnumeration_up) ;
+  bool bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 330)).isValidAndTrue () ;
+  if (enumerator_13418.hasCurrentObject () && bool_0) {
+    while (enumerator_13418.hasCurrentObject () && bool_0) {
+      var_hasAssociatedValues = GALGAS_bool (kIsStrictSup, enumerator_13418.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("enum.galgas", 331)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+      enumerator_13418.gotoNextObject () ;
+      if (enumerator_13418.hasCurrentObject ()) {
+        bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 330)).isValidAndTrue () ;
       }
     }
   }
-  cEnumerator_enumConstantListForGeneration enumerator_13588 (object->mAttribute_mConstantList, kEnumeration_up) ;
-  while (enumerator_13588.hasCurrentObject ()) {
-    cEnumerator_unifiedTypeMapProxyList enumerator_13630 (enumerator_13588.current_mAssociatedValueTypeList (HERE), kEnumeration_up) ;
-    while (enumerator_13630.hasCurrentObject ()) {
-      categoryMethod_addHeaderFileName (enumerator_13630.current_mType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 336)) ;
-      enumerator_13630.gotoNextObject () ;
+  cEnumerator_enumConstantListForGeneration enumerator_13547 (object->mAttribute_mConstantList, kEnumeration_up) ;
+  while (enumerator_13547.hasCurrentObject ()) {
+    cEnumerator_unifiedTypeMapProxyList enumerator_13589 (enumerator_13547.current_mAssociatedValueTypeList (HERE), kEnumeration_up) ;
+    while (enumerator_13589.hasCurrentObject ()) {
+      categoryMethod_addHeaderFileName (enumerator_13589.current_mType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 335)) ;
+      enumerator_13589.gotoNextObject () ;
     }
-    enumerator_13588.gotoNextObject () ;
+    enumerator_13547.gotoNextObject () ;
   }
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 340)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 341)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 339))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 339)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 340)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 338))) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1792,19 +1791,19 @@ static void categoryMethod_enumTypeForGeneration_appendSpecificImplementation (c
   const cPtr_enumTypeForGeneration * object = (const cPtr_enumTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_enumTypeForGeneration) ;
   GALGAS_bool var_hasAssociatedValues = GALGAS_bool (false) ;
-  cEnumerator_enumConstantListForGeneration enumerator_14232 (object->mAttribute_mConstantList, kEnumeration_up) ;
-  bool bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 354)).isValidAndTrue () ;
-  if (enumerator_14232.hasCurrentObject () && bool_0) {
-    while (enumerator_14232.hasCurrentObject () && bool_0) {
-      var_hasAssociatedValues = GALGAS_bool (kIsStrictSup, enumerator_14232.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("enum.galgas", 355)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
-      enumerator_14232.gotoNextObject () ;
-      if (enumerator_14232.hasCurrentObject ()) {
-        bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 354)).isValidAndTrue () ;
+  cEnumerator_enumConstantListForGeneration enumerator_14191 (object->mAttribute_mConstantList, kEnumeration_up) ;
+  bool bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 353)).isValidAndTrue () ;
+  if (enumerator_14191.hasCurrentObject () && bool_0) {
+    while (enumerator_14191.hasCurrentObject () && bool_0) {
+      var_hasAssociatedValues = GALGAS_bool (kIsStrictSup, enumerator_14191.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("enum.galgas", 354)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+      enumerator_14191.gotoNextObject () ;
+      if (enumerator_14191.hasCurrentObject ()) {
+        bool_0 = var_hasAssociatedValues.operator_not (SOURCE_FILE ("enum.galgas", 353)).isValidAndTrue () ;
       }
     }
   }
-  categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 357)) ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 359)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 360)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 358))) ;
+  categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 356)) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 358)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 359)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 357))) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2699,7 +2698,6 @@ C_PrologueEpilogue gMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (def
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void categoryMethod_sharedMapTypeForGeneration_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                             const GALGAS_bool /* constinArgument_inGenerateForGalgas_33_ */,
                                                                              const GALGAS_string /* constinArgument_inOutputDirectory */,
                                                                              GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                              GALGAS_string & outArgument_outHeader,
@@ -2736,10 +2734,10 @@ static void categoryMethod_sharedMapTypeForGeneration_appendSpecificImplementati
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1137)) ;
   GALGAS_keySortedList var_keySortedList = GALGAS_keySortedList::constructor_emptySortedList (SOURCE_FILE ("shared-map.galgas", 1138)) ;
-  cEnumerator_mapAutomatonStateMap enumerator_43925 (object->mAttribute_mMapAutomatonStateMap, kEnumeration_up) ;
-  while (enumerator_43925.hasCurrentObject ()) {
-    var_keySortedList.addAssign_operation (enumerator_43925.current_lkey (HERE).mAttribute_string, enumerator_43925.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("shared-map.galgas", 1140)) ;
-    enumerator_43925.gotoNextObject () ;
+  cEnumerator_mapAutomatonStateMap enumerator_43884 (object->mAttribute_mMapAutomatonStateMap, kEnumeration_up) ;
+  while (enumerator_43884.hasCurrentObject ()) {
+    var_keySortedList.addAssign_operation (enumerator_43884.current_lkey (HERE).mAttribute_string, enumerator_43884.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("shared-map.galgas", 1140)) ;
+    enumerator_43884.gotoNextObject () ;
   }
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1143)), object->mAttribute_mTypedAttributeList, object->mAttribute_mInsertMethodList, object->mAttribute_mSearchMethodList, object->mAttribute_mMapAutomatonStateMap, object->mAttribute_mMapAutomatonActionMap, object->mAttribute_mMapStateSortedList, object->mAttribute_mMapOverrideList, var_keySortedList COMMA_SOURCE_FILE ("shared-map.galgas", 1142))) ;
 }

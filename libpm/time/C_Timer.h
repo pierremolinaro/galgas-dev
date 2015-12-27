@@ -35,11 +35,16 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
+#ifndef COMPILE_FOR_WINDOWS
+  #error COMPILE_FOR_WINDOWS is undefined
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#if COMPILE_FOR_WINDOWS == 1
   #include <time.h>
-#else // Unix
+#else
   #include <sys/time.h>
-  #define LIBPM_USES_TIMEVAL_STRUCT
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50,7 +55,7 @@ class C_String ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class C_Timer {
-  #ifdef LIBPM_USES_TIMEVAL_STRUCT
+  #if COMPILE_FOR_WINDOWS == 0
     private : timeval mStart ;
     private : timeval mEnd ;
   #else

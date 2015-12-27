@@ -5273,7 +5273,6 @@ void enterCategoryMethod_appendDeclaration_32_ (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
-                                               const GALGAS_bool constin_inGenerateForGalgas_33_,
                                                const GALGAS_string constin_inOutputDirectory,
                                                GALGAS_stringset & io_ioInclusionSet,
                                                GALGAS_string & out_outHeader,
@@ -5301,7 +5300,7 @@ void callCategoryMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationFor
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inGenerateForGalgas_33_, constin_inOutputDirectory, io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inOutputDirectory, io_ioInclusionSet, out_outHeader, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -5309,7 +5308,6 @@ void callCategoryMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationFor
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void categoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                   const GALGAS_bool /* constinArgument_inGenerateForGalgas_33_ */,
                                                                                    const GALGAS_string /* constinArgument_inOutputDirectory */,
                                                                                    GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                                    GALGAS_string & outArgument_outHeader,

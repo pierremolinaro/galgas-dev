@@ -47,7 +47,7 @@ gOption_generic_5F_cli_5F_options_display_5F_version ("generic_cli_options",
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WIN32
+#if COMPILE_FOR_WINDOWS == 0
   C_BoolCommandLineOption
   gOption_generic_5F_cli_5F_options_no_5F_color ("generic_cli_options",
                                                  "no_color",
