@@ -1325,84 +1325,84 @@ class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryAddOperator'                                             *
+//                                             Function 'infixAddOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryAddOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixAddOperator (class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binarySubOperator'                                             *
+//                                             Function 'infixSubOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binarySubOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixSubOperator (class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryMulOperator'                                             *
+//                                             Function 'infixMulOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryMulOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixMulOperator (class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryDivOperator'                                             *
+//                                             Function 'infixDivOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryDivOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixDivOperator (class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryModOperator'                                             *
+//                                             Function 'infixModOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryModOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixModOperator (class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           Function 'binaryShiftOperator'                                            *
+//                                            Function 'infixShiftOperator'                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryShiftOperator (class C_Compiler * inCompiler
+class GALGAS_uint function_infixShiftOperator (class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            Function 'prefixPlusOperator'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_prefixPlusOperator (class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           Function 'prefixMinusOperator'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_prefixMinusOperator (class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'unaryPlusOperator'                                             *
+//                                           Function 'prefixTildeOperator'                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_unaryPlusOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            Function 'unaryMinusOperator'                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_unaryMinusOperator (class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            Function 'unaryTildeOperator'                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_unaryTildeOperator (class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_prefixTildeOperator (class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1415,48 +1415,48 @@ class GALGAS_uint function_incDecOperator (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryAndOperator'                                             *
+//                                             Function 'infixAndOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryAndOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                             Function 'binaryOrOperator'                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_binaryOrOperator (class C_Compiler * inCompiler
+class GALGAS_uint function_infixAndOperator (class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'binaryXorOperator'                                             *
+//                                             Function 'infixOrOperator'                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryXorOperator (class C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixOrOperator (class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             Function 'unaryNotOperator'                                             *
+//                                             Function 'infixXorOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_unaryNotOperator (class C_Compiler * inCompiler
+class GALGAS_uint function_infixXorOperator (class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           Function 'binaryConcatOperator'                                           *
+//                                            Function 'prefixNotOperator'                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryConcatOperator (class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_prefixNotOperator (class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           Function 'infixConcatOperator'                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_infixConcatOperator (class C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1487,48 +1487,48 @@ class GALGAS_uint function_isComparable (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Function 'binaryAddOperatorNoOVF'                                          *
+//                                          Function 'infixAddOperatorNoOVF'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryAddOperatorNoOVF (class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixAddOperatorNoOVF (class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Function 'binarySubOperatorNoOVF'                                          *
+//                                          Function 'infixSubOperatorNoOVF'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binarySubOperatorNoOVF (class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixSubOperatorNoOVF (class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Function 'binaryMulOperatorNoOVF'                                          *
+//                                          Function 'infixMulOperatorNoOVF'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryMulOperatorNoOVF (class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixMulOperatorNoOVF (class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Function 'binaryDivOperatorNoOVF'                                          *
+//                                          Function 'infixDivOperatorNoOVF'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_binaryDivOperatorNoOVF (class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_infixDivOperatorNoOVF (class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Function 'unaryMinusOperatorNoOVF'                                          *
+//                                         Function 'prefixMinusOperatorNoOVF'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint function_unaryMinusOperatorNoOVF (class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+class GALGAS_uint function_prefixMinusOperatorNoOVF (class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

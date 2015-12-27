@@ -215,7 +215,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@classMethodMap. emptyMap
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
+    !infixConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
     !constructorAttributeTypeList
     !{}
     !{}

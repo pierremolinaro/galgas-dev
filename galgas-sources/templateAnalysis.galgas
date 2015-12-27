@@ -260,7 +260,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryAndOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixAndOperator ()) != 0
     !"&"
     !mOperatorLocation
     !?rightExpression
@@ -289,7 +289,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryOrOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixOrOperator ()) != 0
     !"|"
     !mOperatorLocation
     !?rightExpression
@@ -318,7 +318,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryXorOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixXorOperator ()) != 0
     !"^"
     !mOperatorLocation
     !?rightExpression
@@ -469,7 +469,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & unaryNotOperator ()) == 0 then
+  if ([type mHandledOperatorFlags] & prefixNotOperator ()) == 0 then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
     :outExpression
@@ -492,7 +492,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & unaryTildeOperator ()) == 0 then
+  if ([type mHandledOperatorFlags] & prefixTildeOperator ()) == 0 then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the '~' operator"
     :outExpression
@@ -674,7 +674,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryAddOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixAddOperator ()) != 0
     !"+"
     !mOperatorLocation
     !?rightExpression
@@ -705,7 +705,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binarySubOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixSubOperator ()) != 0
     !"-"
     !mOperatorLocation
     !?rightExpression
@@ -736,7 +736,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryMulOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixMulOperator ()) != 0
     !"*"
     !mOperatorLocation
     !?rightExpression
@@ -767,7 +767,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryDivOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixDivOperator ()) != 0
     !"/"
     !mOperatorLocation
     !?rightExpression
@@ -798,7 +798,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & binaryModOperator ()) != 0
+    !([leftType mHandledOperatorFlags] & infixModOperator ()) != 0
     !"mod"
     !mOperatorLocation
     !?rightExpression
@@ -823,9 +823,9 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & unaryMinusOperator ()) == 0 then
+  if ([type mHandledOperatorFlags] & prefixMinusOperator ()) == 0 then
     error mOperatorLocation
-    : "operand type is '@" + [type key] + "' and does not support the unary minus operator"
+    : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression
@@ -1067,7 +1067,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & binaryShiftOperator ()) == 0 then
+  if ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
@@ -1099,7 +1099,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & binaryShiftOperator ()) == 0 then
+  if ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression

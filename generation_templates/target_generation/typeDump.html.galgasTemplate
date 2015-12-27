@@ -92,44 +92,44 @@ end
 end%
 <tr class="result_line"><td>Operators</td>
   <td>
-    %if (type_mHandledOperatorFlags & binaryAddOperator ()) != 0 then
+    %if (type_mHandledOperatorFlags & infixAddOperator ()) != 0 then
       %addition: %!linkForType (!type_lkey.string)% + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binarySubOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixSubOperator ()) != 0 then
       %substraction: %!linkForType (!type_lkey.string)% - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryMulOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixMulOperator ()) != 0 then
       %multiplication: %!linkForType (!type_lkey.string)% * %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryDivOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixDivOperator ()) != 0 then
       %division: %!linkForType (!type_lkey.string)% / %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryModOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixModOperator ()) != 0 then
       %modulo: %!linkForType (!type_lkey.string)% <b>mod</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryShiftOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixShiftOperator ()) != 0 then
       %left shift: %!linkForType (!type_lkey.string)% &lt;&lt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
       %right shift: %!linkForType (!type_lkey.string)% &gt;&gt; %!linkForType (!"uint")% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & unaryPlusOperator ()) != 0 then
-      %unary +: + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
+    if (type_mHandledOperatorFlags & prefixPlusOperator ()) != 0 then
+      %prefix +: + %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & unaryMinusOperator ()) != 0 then
-      %unary -: - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
+    if (type_mHandledOperatorFlags & prefixMinusOperator ()) != 0 then
+      %prefix -: - %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & unaryTildeOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & prefixTildeOperator ()) != 0 then
       %bit wise negation: ~ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryAndOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixAndOperator ()) != 0 then
       %boolean and: %!linkForType (!type_lkey.string)% &amp; %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryOrOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixOrOperator ()) != 0 then
       %inclusive or: %!linkForType (!type_lkey.string)% | %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryXorOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & infixXorOperator ()) != 0 then
       %exclusive or: %!linkForType (!type_lkey.string)% ^ %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
-    if (type_mHandledOperatorFlags & unaryNotOperator ()) != 0 then
+    if (type_mHandledOperatorFlags & prefixNotOperator ()) != 0 then
       %boolean negation: <b>not</b> %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!type_lkey.string)%<br><br>%
     end
     %equality test: %!linkForType (!type_lkey.string)% == %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
@@ -141,7 +141,10 @@ end%
       %greater or equal test: %!linkForType (!type_lkey.string)% &gt;= %!linkForType (!type_lkey.string)% &rarr; %!linkForType (!"bool")%<br><br>%
     end
     if (type_mHandledOperatorFlags & plusEqualOperatorWithExpression ()) != 0 then
-      %appending instruction: %!linkForType (!type_lkey.string)% += %!linkForType (!type_lkey.string)%<br><br>%
+      %+= instruction: %!linkForType (!type_lkey.string)% += %!linkForType (!type_lkey.string)%<br><br>%
+    end
+    if (type_mHandledOperatorFlags & minusEqualOperatorWithExpression ()) != 0 then
+      %-= instruction: %!linkForType (!type_lkey.string)% -= %!linkForType (!type_lkey.string)%<br><br>%
     end
     if (type_mHandledOperatorFlags & incDecOperator ()) != 0 then
       %incrementation instruction: %!linkForType (!type_lkey.string)% ++<br><br>%

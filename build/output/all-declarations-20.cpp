@@ -3783,19 +3783,19 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 357)).isValid ()) {
-    uint32_t variant_19260 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 357)).uintValue () ;
-    bool loop_19260 = true ;
-    while (loop_19260) {
-      loop_19260 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 357)).isValid () ;
-      if (loop_19260) {
-        loop_19260 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 357)).boolValue () ;
+    uint32_t variant_19251 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 357)).uintValue () ;
+    bool loop_19251 = true ;
+    while (loop_19251) {
+      loop_19251 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 357)).isValid () ;
+      if (loop_19251) {
+        loop_19251 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 357)).boolValue () ;
       }
-      if (loop_19260 && (0 == variant_19260)) {
-        loop_19260 = false ;
+      if (loop_19251 && (0 == variant_19251)) {
+        loop_19251 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 357)) ;
       }
-      if (loop_19260) {
-        variant_19260 -- ;
+      if (loop_19251) {
+        variant_19251 -- ;
         result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 358)) ;
       }
     }
@@ -5386,10 +5386,10 @@ void categoryModifier_getReferenceKey (GALGAS_XcodeProjectDescriptor & ioObject,
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mProjectObjectReference.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     ioObject.mAttribute_mProjectObjectReference = ioObject.mAttribute_mSequenceNumber.getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 361)) ;
-    ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 362)) ;
+    ioObject.mAttribute_mSequenceNumber.plusAssign_operation (GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 362)) ;
   }
   outArgument_outRef = ioObject.mAttribute_mSequenceNumber.getter_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).getter_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)).getter_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 364)) ;
-  ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 365)) ;
+  ioObject.mAttribute_mSequenceNumber.plusAssign_operation (GALGAS_uint ((uint32_t) 1U), inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 365)) ;
 }
 
 
@@ -5416,8 +5416,8 @@ void categoryMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObject
   }
   const enumGalgasBool test_2 = test_1.boolEnum () ;
   if (kBoolTrue == test_2) {
-    GALGAS_bool joker_17665 ; // Joker input parameter
-    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_17665, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 453)) ;
+    GALGAS_bool joker_17669 ; // Joker input parameter
+    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_17669, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 453)) ;
     var_contents.method_makeDirectoryAndWriteToFile (var_projectCoreFile, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 454)) ;
   }
 }

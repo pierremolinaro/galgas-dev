@@ -270,7 +270,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@classMethodMap. emptyMap
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | binaryAddOperator ()
+    !infixConcatOperator () | doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | infixAddOperator ()
     !constructorAttributeTypeList
     !{}
     !{}

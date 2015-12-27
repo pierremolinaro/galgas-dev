@@ -566,10 +566,10 @@ void routine_templateInstructionListAnalysis (const GALGAS_templateAnalysisConte
                                               GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListAST enumerator_53694 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_53694.hasCurrentObject ()) {
-    callCategoryMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_53694.current_mInstruction (HERE).ptr (), constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1151)) ;
-    enumerator_53694.gotoNextObject () ;
+  cEnumerator_templateInstructionListAST enumerator_53688 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_53688.hasCurrentObject ()) {
+    callCategoryMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_53688.current_mInstruction (HERE).ptr (), constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1151)) ;
+    enumerator_53688.gotoNextObject () ;
   }
 }
 
@@ -4432,12 +4432,12 @@ C_galgas_function_descriptor functionDescriptor_generateFewHeaderFiles ("generat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryAddOperator'                                          *
+//                                          Once function 'infixAddOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryAddOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixAddOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U) ;
 //---
@@ -4450,64 +4450,64 @@ static GALGAS_uint onceFunction_binaryAddOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryAddOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryAddOperator ;
+static bool gOnceFunctionResultAvailable_infixAddOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixAddOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryAddOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixAddOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryAddOperator) {
-    gOnceFunctionResult_binaryAddOperator = onceFunction_binaryAddOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryAddOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixAddOperator) {
+    gOnceFunctionResult_infixAddOperator = onceFunction_infixAddOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixAddOperator = true ;
   }
-  return gOnceFunctionResult_binaryAddOperator ;
+  return gOnceFunctionResult_infixAddOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryAddOperator (void) {
-  gOnceFunctionResult_binaryAddOperator.drop () ;
+static void releaseOnceFunctionResult_infixAddOperator (void) {
+  gOnceFunctionResult_infixAddOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryAddOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryAddOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixAddOperator (NULL,
+                                                              releaseOnceFunctionResult_infixAddOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryAddOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixAddOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryAddOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryAddOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixAddOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixAddOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryAddOperator ("binaryAddOperator",
-                                                                   functionWithGenericHeader_binaryAddOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryAddOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixAddOperator ("infixAddOperator",
+                                                                  functionWithGenericHeader_infixAddOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixAddOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binarySubOperator'                                          *
+//                                          Once function 'infixSubOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binarySubOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixSubOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 1U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 258)) ;
 //---
@@ -4520,64 +4520,64 @@ static GALGAS_uint onceFunction_binarySubOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binarySubOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binarySubOperator ;
+static bool gOnceFunctionResultAvailable_infixSubOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixSubOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binarySubOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixSubOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binarySubOperator) {
-    gOnceFunctionResult_binarySubOperator = onceFunction_binarySubOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binarySubOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixSubOperator) {
+    gOnceFunctionResult_infixSubOperator = onceFunction_infixSubOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixSubOperator = true ;
   }
-  return gOnceFunctionResult_binarySubOperator ;
+  return gOnceFunctionResult_infixSubOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binarySubOperator (void) {
-  gOnceFunctionResult_binarySubOperator.drop () ;
+static void releaseOnceFunctionResult_infixSubOperator (void) {
+  gOnceFunctionResult_infixSubOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binarySubOperator (NULL,
-                                                               releaseOnceFunctionResult_binarySubOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixSubOperator (NULL,
+                                                              releaseOnceFunctionResult_infixSubOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binarySubOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixSubOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binarySubOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binarySubOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixSubOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixSubOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binarySubOperator ("binarySubOperator",
-                                                                   functionWithGenericHeader_binarySubOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binarySubOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixSubOperator ("infixSubOperator",
+                                                                  functionWithGenericHeader_infixSubOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixSubOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryMulOperator'                                          *
+//                                          Once function 'infixMulOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryMulOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixMulOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 2U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 259)) ;
 //---
@@ -4590,64 +4590,64 @@ static GALGAS_uint onceFunction_binaryMulOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryMulOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryMulOperator ;
+static bool gOnceFunctionResultAvailable_infixMulOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixMulOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryMulOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixMulOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryMulOperator) {
-    gOnceFunctionResult_binaryMulOperator = onceFunction_binaryMulOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryMulOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixMulOperator) {
+    gOnceFunctionResult_infixMulOperator = onceFunction_infixMulOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixMulOperator = true ;
   }
-  return gOnceFunctionResult_binaryMulOperator ;
+  return gOnceFunctionResult_infixMulOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryMulOperator (void) {
-  gOnceFunctionResult_binaryMulOperator.drop () ;
+static void releaseOnceFunctionResult_infixMulOperator (void) {
+  gOnceFunctionResult_infixMulOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryMulOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryMulOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixMulOperator (NULL,
+                                                              releaseOnceFunctionResult_infixMulOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryMulOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixMulOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryMulOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryMulOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixMulOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixMulOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryMulOperator ("binaryMulOperator",
-                                                                   functionWithGenericHeader_binaryMulOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryMulOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixMulOperator ("infixMulOperator",
+                                                                  functionWithGenericHeader_infixMulOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixMulOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryDivOperator'                                          *
+//                                          Once function 'infixDivOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryDivOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixDivOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 3U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 260)) ;
 //---
@@ -4660,64 +4660,64 @@ static GALGAS_uint onceFunction_binaryDivOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryDivOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryDivOperator ;
+static bool gOnceFunctionResultAvailable_infixDivOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixDivOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryDivOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixDivOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryDivOperator) {
-    gOnceFunctionResult_binaryDivOperator = onceFunction_binaryDivOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryDivOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixDivOperator) {
+    gOnceFunctionResult_infixDivOperator = onceFunction_infixDivOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixDivOperator = true ;
   }
-  return gOnceFunctionResult_binaryDivOperator ;
+  return gOnceFunctionResult_infixDivOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryDivOperator (void) {
-  gOnceFunctionResult_binaryDivOperator.drop () ;
+static void releaseOnceFunctionResult_infixDivOperator (void) {
+  gOnceFunctionResult_infixDivOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryDivOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryDivOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixDivOperator (NULL,
+                                                              releaseOnceFunctionResult_infixDivOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryDivOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixDivOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryDivOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryDivOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixDivOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixDivOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryDivOperator ("binaryDivOperator",
-                                                                   functionWithGenericHeader_binaryDivOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryDivOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixDivOperator ("infixDivOperator",
+                                                                  functionWithGenericHeader_infixDivOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixDivOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryModOperator'                                          *
+//                                          Once function 'infixModOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryModOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixModOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 261)) ;
 //---
@@ -4730,64 +4730,64 @@ static GALGAS_uint onceFunction_binaryModOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryModOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryModOperator ;
+static bool gOnceFunctionResultAvailable_infixModOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixModOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryModOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixModOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryModOperator) {
-    gOnceFunctionResult_binaryModOperator = onceFunction_binaryModOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryModOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixModOperator) {
+    gOnceFunctionResult_infixModOperator = onceFunction_infixModOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixModOperator = true ;
   }
-  return gOnceFunctionResult_binaryModOperator ;
+  return gOnceFunctionResult_infixModOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryModOperator (void) {
-  gOnceFunctionResult_binaryModOperator.drop () ;
+static void releaseOnceFunctionResult_infixModOperator (void) {
+  gOnceFunctionResult_infixModOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryModOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryModOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixModOperator (NULL,
+                                                              releaseOnceFunctionResult_infixModOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryModOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixModOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryModOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryModOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixModOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixModOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryModOperator ("binaryModOperator",
-                                                                   functionWithGenericHeader_binaryModOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryModOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixModOperator ("infixModOperator",
+                                                                  functionWithGenericHeader_infixModOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixModOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Once function 'binaryShiftOperator'                                         *
+//                                         Once function 'infixShiftOperator'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryShiftOperator (C_Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixShiftOperator (C_Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 5U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 262)) ;
 //---
@@ -4800,64 +4800,64 @@ static GALGAS_uint onceFunction_binaryShiftOperator (C_Compiler * /* inCompiler 
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryShiftOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryShiftOperator ;
+static bool gOnceFunctionResultAvailable_infixShiftOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixShiftOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryShiftOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixShiftOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryShiftOperator) {
-    gOnceFunctionResult_binaryShiftOperator = onceFunction_binaryShiftOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryShiftOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixShiftOperator) {
+    gOnceFunctionResult_infixShiftOperator = onceFunction_infixShiftOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixShiftOperator = true ;
   }
-  return gOnceFunctionResult_binaryShiftOperator ;
+  return gOnceFunctionResult_infixShiftOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryShiftOperator (void) {
-  gOnceFunctionResult_binaryShiftOperator.drop () ;
+static void releaseOnceFunctionResult_infixShiftOperator (void) {
+  gOnceFunctionResult_infixShiftOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryShiftOperator (NULL,
-                                                                 releaseOnceFunctionResult_binaryShiftOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixShiftOperator (NULL,
+                                                                releaseOnceFunctionResult_infixShiftOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryShiftOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixShiftOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryShiftOperator (C_Compiler * inCompiler,
-                                                                    const cObjectArray & /* inEffectiveParameterArray */,
-                                                                    const GALGAS_location & /* inErrorLocation */
-                                                                    COMMA_LOCATION_ARGS) {
-  return function_binaryShiftOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixShiftOperator (C_Compiler * inCompiler,
+                                                                   const cObjectArray & /* inEffectiveParameterArray */,
+                                                                   const GALGAS_location & /* inErrorLocation */
+                                                                   COMMA_LOCATION_ARGS) {
+  return function_infixShiftOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryShiftOperator ("binaryShiftOperator",
-                                                                     functionWithGenericHeader_binaryShiftOperator,
-                                                                     & kTypeDescriptor_GALGAS_uint,
-                                                                     0,
-                                                                     functionArgs_binaryShiftOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixShiftOperator ("infixShiftOperator",
+                                                                    functionWithGenericHeader_infixShiftOperator,
+                                                                    & kTypeDescriptor_GALGAS_uint,
+                                                                    0,
+                                                                    functionArgs_infixShiftOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'unaryPlusOperator'                                          *
+//                                         Once function 'prefixPlusOperator'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_unaryPlusOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_prefixPlusOperator (C_Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 6U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 263)) ;
 //---
@@ -4870,64 +4870,64 @@ static GALGAS_uint onceFunction_unaryPlusOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_unaryPlusOperator = false ;
-static GALGAS_uint gOnceFunctionResult_unaryPlusOperator ;
+static bool gOnceFunctionResultAvailable_prefixPlusOperator = false ;
+static GALGAS_uint gOnceFunctionResult_prefixPlusOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_unaryPlusOperator (class C_Compiler * inCompiler
+GALGAS_uint function_prefixPlusOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_unaryPlusOperator) {
-    gOnceFunctionResult_unaryPlusOperator = onceFunction_unaryPlusOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_unaryPlusOperator = true ;
+  if (! gOnceFunctionResultAvailable_prefixPlusOperator) {
+    gOnceFunctionResult_prefixPlusOperator = onceFunction_prefixPlusOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_prefixPlusOperator = true ;
   }
-  return gOnceFunctionResult_unaryPlusOperator ;
+  return gOnceFunctionResult_prefixPlusOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_unaryPlusOperator (void) {
-  gOnceFunctionResult_unaryPlusOperator.drop () ;
+static void releaseOnceFunctionResult_prefixPlusOperator (void) {
+  gOnceFunctionResult_prefixPlusOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_unaryPlusOperator (NULL,
-                                                               releaseOnceFunctionResult_unaryPlusOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_prefixPlusOperator (NULL,
+                                                                releaseOnceFunctionResult_prefixPlusOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_unaryPlusOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_prefixPlusOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_unaryPlusOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_unaryPlusOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_prefixPlusOperator (C_Compiler * inCompiler,
+                                                                   const cObjectArray & /* inEffectiveParameterArray */,
+                                                                   const GALGAS_location & /* inErrorLocation */
+                                                                   COMMA_LOCATION_ARGS) {
+  return function_prefixPlusOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_unaryPlusOperator ("unaryPlusOperator",
-                                                                   functionWithGenericHeader_unaryPlusOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_unaryPlusOperator) ;
+C_galgas_function_descriptor functionDescriptor_prefixPlusOperator ("prefixPlusOperator",
+                                                                    functionWithGenericHeader_prefixPlusOperator,
+                                                                    & kTypeDescriptor_GALGAS_uint,
+                                                                    0,
+                                                                    functionArgs_prefixPlusOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Once function 'unaryMinusOperator'                                          *
+//                                         Once function 'prefixMinusOperator'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_unaryMinusOperator (C_Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_prefixMinusOperator (C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 7U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 264)) ;
 //---
@@ -4940,64 +4940,64 @@ static GALGAS_uint onceFunction_unaryMinusOperator (C_Compiler * /* inCompiler *
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_unaryMinusOperator = false ;
-static GALGAS_uint gOnceFunctionResult_unaryMinusOperator ;
+static bool gOnceFunctionResultAvailable_prefixMinusOperator = false ;
+static GALGAS_uint gOnceFunctionResult_prefixMinusOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_unaryMinusOperator (class C_Compiler * inCompiler
+GALGAS_uint function_prefixMinusOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_unaryMinusOperator) {
-    gOnceFunctionResult_unaryMinusOperator = onceFunction_unaryMinusOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_unaryMinusOperator = true ;
+  if (! gOnceFunctionResultAvailable_prefixMinusOperator) {
+    gOnceFunctionResult_prefixMinusOperator = onceFunction_prefixMinusOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_prefixMinusOperator = true ;
   }
-  return gOnceFunctionResult_unaryMinusOperator ;
+  return gOnceFunctionResult_prefixMinusOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_unaryMinusOperator (void) {
-  gOnceFunctionResult_unaryMinusOperator.drop () ;
+static void releaseOnceFunctionResult_prefixMinusOperator (void) {
+  gOnceFunctionResult_prefixMinusOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_unaryMinusOperator (NULL,
-                                                                releaseOnceFunctionResult_unaryMinusOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_prefixMinusOperator (NULL,
+                                                                 releaseOnceFunctionResult_prefixMinusOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_unaryMinusOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_prefixMinusOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_unaryMinusOperator (C_Compiler * inCompiler,
-                                                                   const cObjectArray & /* inEffectiveParameterArray */,
-                                                                   const GALGAS_location & /* inErrorLocation */
-                                                                   COMMA_LOCATION_ARGS) {
-  return function_unaryMinusOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_prefixMinusOperator (C_Compiler * inCompiler,
+                                                                    const cObjectArray & /* inEffectiveParameterArray */,
+                                                                    const GALGAS_location & /* inErrorLocation */
+                                                                    COMMA_LOCATION_ARGS) {
+  return function_prefixMinusOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_unaryMinusOperator ("unaryMinusOperator",
-                                                                    functionWithGenericHeader_unaryMinusOperator,
-                                                                    & kTypeDescriptor_GALGAS_uint,
-                                                                    0,
-                                                                    functionArgs_unaryMinusOperator) ;
+C_galgas_function_descriptor functionDescriptor_prefixMinusOperator ("prefixMinusOperator",
+                                                                     functionWithGenericHeader_prefixMinusOperator,
+                                                                     & kTypeDescriptor_GALGAS_uint,
+                                                                     0,
+                                                                     functionArgs_prefixMinusOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Once function 'unaryTildeOperator'                                          *
+//                                         Once function 'prefixTildeOperator'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_unaryTildeOperator (C_Compiler * /* inCompiler */
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_prefixTildeOperator (C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 8U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 265)) ;
 //---
@@ -5010,55 +5010,55 @@ static GALGAS_uint onceFunction_unaryTildeOperator (C_Compiler * /* inCompiler *
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_unaryTildeOperator = false ;
-static GALGAS_uint gOnceFunctionResult_unaryTildeOperator ;
+static bool gOnceFunctionResultAvailable_prefixTildeOperator = false ;
+static GALGAS_uint gOnceFunctionResult_prefixTildeOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_unaryTildeOperator (class C_Compiler * inCompiler
+GALGAS_uint function_prefixTildeOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_unaryTildeOperator) {
-    gOnceFunctionResult_unaryTildeOperator = onceFunction_unaryTildeOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_unaryTildeOperator = true ;
+  if (! gOnceFunctionResultAvailable_prefixTildeOperator) {
+    gOnceFunctionResult_prefixTildeOperator = onceFunction_prefixTildeOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_prefixTildeOperator = true ;
   }
-  return gOnceFunctionResult_unaryTildeOperator ;
+  return gOnceFunctionResult_prefixTildeOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_unaryTildeOperator (void) {
-  gOnceFunctionResult_unaryTildeOperator.drop () ;
+static void releaseOnceFunctionResult_prefixTildeOperator (void) {
+  gOnceFunctionResult_prefixTildeOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_unaryTildeOperator (NULL,
-                                                                releaseOnceFunctionResult_unaryTildeOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_prefixTildeOperator (NULL,
+                                                                 releaseOnceFunctionResult_prefixTildeOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_unaryTildeOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_prefixTildeOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_unaryTildeOperator (C_Compiler * inCompiler,
-                                                                   const cObjectArray & /* inEffectiveParameterArray */,
-                                                                   const GALGAS_location & /* inErrorLocation */
-                                                                   COMMA_LOCATION_ARGS) {
-  return function_unaryTildeOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_prefixTildeOperator (C_Compiler * inCompiler,
+                                                                    const cObjectArray & /* inEffectiveParameterArray */,
+                                                                    const GALGAS_location & /* inErrorLocation */
+                                                                    COMMA_LOCATION_ARGS) {
+  return function_prefixTildeOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_unaryTildeOperator ("unaryTildeOperator",
-                                                                    functionWithGenericHeader_unaryTildeOperator,
-                                                                    & kTypeDescriptor_GALGAS_uint,
-                                                                    0,
-                                                                    functionArgs_unaryTildeOperator) ;
+C_galgas_function_descriptor functionDescriptor_prefixTildeOperator ("prefixTildeOperator",
+                                                                     functionWithGenericHeader_prefixTildeOperator,
+                                                                     & kTypeDescriptor_GALGAS_uint,
+                                                                     0,
+                                                                     functionArgs_prefixTildeOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5132,12 +5132,12 @@ C_galgas_function_descriptor functionDescriptor_incDecOperator ("incDecOperator"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryAndOperator'                                          *
+//                                          Once function 'infixAndOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryAndOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixAndOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 10U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 268)) ;
 //---
@@ -5150,64 +5150,64 @@ static GALGAS_uint onceFunction_binaryAndOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryAndOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryAndOperator ;
+static bool gOnceFunctionResultAvailable_infixAndOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixAndOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryAndOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixAndOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryAndOperator) {
-    gOnceFunctionResult_binaryAndOperator = onceFunction_binaryAndOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryAndOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixAndOperator) {
+    gOnceFunctionResult_infixAndOperator = onceFunction_infixAndOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixAndOperator = true ;
   }
-  return gOnceFunctionResult_binaryAndOperator ;
+  return gOnceFunctionResult_infixAndOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryAndOperator (void) {
-  gOnceFunctionResult_binaryAndOperator.drop () ;
+static void releaseOnceFunctionResult_infixAndOperator (void) {
+  gOnceFunctionResult_infixAndOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryAndOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryAndOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixAndOperator (NULL,
+                                                              releaseOnceFunctionResult_infixAndOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryAndOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixAndOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryAndOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryAndOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixAndOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixAndOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryAndOperator ("binaryAndOperator",
-                                                                   functionWithGenericHeader_binaryAndOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryAndOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixAndOperator ("infixAndOperator",
+                                                                  functionWithGenericHeader_infixAndOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixAndOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryOrOperator'                                           *
+//                                           Once function 'infixOrOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryOrOperator (C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixOrOperator (C_Compiler * /* inCompiler */
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 11U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 269)) ;
 //---
@@ -5220,64 +5220,64 @@ static GALGAS_uint onceFunction_binaryOrOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryOrOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryOrOperator ;
+static bool gOnceFunctionResultAvailable_infixOrOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixOrOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryOrOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixOrOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryOrOperator) {
-    gOnceFunctionResult_binaryOrOperator = onceFunction_binaryOrOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryOrOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixOrOperator) {
+    gOnceFunctionResult_infixOrOperator = onceFunction_infixOrOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixOrOperator = true ;
   }
-  return gOnceFunctionResult_binaryOrOperator ;
+  return gOnceFunctionResult_infixOrOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryOrOperator (void) {
-  gOnceFunctionResult_binaryOrOperator.drop () ;
+static void releaseOnceFunctionResult_infixOrOperator (void) {
+  gOnceFunctionResult_infixOrOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryOrOperator (NULL,
-                                                              releaseOnceFunctionResult_binaryOrOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixOrOperator (NULL,
+                                                             releaseOnceFunctionResult_infixOrOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryOrOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixOrOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryOrOperator (C_Compiler * inCompiler,
-                                                                 const cObjectArray & /* inEffectiveParameterArray */,
-                                                                 const GALGAS_location & /* inErrorLocation */
-                                                                 COMMA_LOCATION_ARGS) {
-  return function_binaryOrOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixOrOperator (C_Compiler * inCompiler,
+                                                                const cObjectArray & /* inEffectiveParameterArray */,
+                                                                const GALGAS_location & /* inErrorLocation */
+                                                                COMMA_LOCATION_ARGS) {
+  return function_infixOrOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryOrOperator ("binaryOrOperator",
-                                                                  functionWithGenericHeader_binaryOrOperator,
-                                                                  & kTypeDescriptor_GALGAS_uint,
-                                                                  0,
-                                                                  functionArgs_binaryOrOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixOrOperator ("infixOrOperator",
+                                                                 functionWithGenericHeader_infixOrOperator,
+                                                                 & kTypeDescriptor_GALGAS_uint,
+                                                                 0,
+                                                                 functionArgs_infixOrOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'binaryXorOperator'                                          *
+//                                          Once function 'infixXorOperator'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryXorOperator (C_Compiler * /* inCompiler */
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixXorOperator (C_Compiler * /* inCompiler */
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 12U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 270)) ;
 //---
@@ -5290,64 +5290,64 @@ static GALGAS_uint onceFunction_binaryXorOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryXorOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryXorOperator ;
+static bool gOnceFunctionResultAvailable_infixXorOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixXorOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryXorOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixXorOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryXorOperator) {
-    gOnceFunctionResult_binaryXorOperator = onceFunction_binaryXorOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryXorOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixXorOperator) {
+    gOnceFunctionResult_infixXorOperator = onceFunction_infixXorOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixXorOperator = true ;
   }
-  return gOnceFunctionResult_binaryXorOperator ;
+  return gOnceFunctionResult_infixXorOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryXorOperator (void) {
-  gOnceFunctionResult_binaryXorOperator.drop () ;
+static void releaseOnceFunctionResult_infixXorOperator (void) {
+  gOnceFunctionResult_infixXorOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryXorOperator (NULL,
-                                                               releaseOnceFunctionResult_binaryXorOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixXorOperator (NULL,
+                                                              releaseOnceFunctionResult_infixXorOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryXorOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixXorOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryXorOperator (C_Compiler * inCompiler,
-                                                                  const cObjectArray & /* inEffectiveParameterArray */,
-                                                                  const GALGAS_location & /* inErrorLocation */
-                                                                  COMMA_LOCATION_ARGS) {
-  return function_binaryXorOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixXorOperator (C_Compiler * inCompiler,
+                                                                 const cObjectArray & /* inEffectiveParameterArray */,
+                                                                 const GALGAS_location & /* inErrorLocation */
+                                                                 COMMA_LOCATION_ARGS) {
+  return function_infixXorOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryXorOperator ("binaryXorOperator",
-                                                                   functionWithGenericHeader_binaryXorOperator,
-                                                                   & kTypeDescriptor_GALGAS_uint,
-                                                                   0,
-                                                                   functionArgs_binaryXorOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixXorOperator ("infixXorOperator",
+                                                                  functionWithGenericHeader_infixXorOperator,
+                                                                  & kTypeDescriptor_GALGAS_uint,
+                                                                  0,
+                                                                  functionArgs_infixXorOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Once function 'unaryNotOperator'                                           *
+//                                          Once function 'prefixNotOperator'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_unaryNotOperator (C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_prefixNotOperator (C_Compiler * /* inCompiler */
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 13U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 271)) ;
 //---
@@ -5360,64 +5360,64 @@ static GALGAS_uint onceFunction_unaryNotOperator (C_Compiler * /* inCompiler */
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_unaryNotOperator = false ;
-static GALGAS_uint gOnceFunctionResult_unaryNotOperator ;
+static bool gOnceFunctionResultAvailable_prefixNotOperator = false ;
+static GALGAS_uint gOnceFunctionResult_prefixNotOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_unaryNotOperator (class C_Compiler * inCompiler
+GALGAS_uint function_prefixNotOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_unaryNotOperator) {
-    gOnceFunctionResult_unaryNotOperator = onceFunction_unaryNotOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_unaryNotOperator = true ;
+  if (! gOnceFunctionResultAvailable_prefixNotOperator) {
+    gOnceFunctionResult_prefixNotOperator = onceFunction_prefixNotOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_prefixNotOperator = true ;
   }
-  return gOnceFunctionResult_unaryNotOperator ;
+  return gOnceFunctionResult_prefixNotOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_unaryNotOperator (void) {
-  gOnceFunctionResult_unaryNotOperator.drop () ;
+static void releaseOnceFunctionResult_prefixNotOperator (void) {
+  gOnceFunctionResult_prefixNotOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_unaryNotOperator (NULL,
-                                                              releaseOnceFunctionResult_unaryNotOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_prefixNotOperator (NULL,
+                                                               releaseOnceFunctionResult_prefixNotOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_unaryNotOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_prefixNotOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_unaryNotOperator (C_Compiler * inCompiler,
-                                                                 const cObjectArray & /* inEffectiveParameterArray */,
-                                                                 const GALGAS_location & /* inErrorLocation */
-                                                                 COMMA_LOCATION_ARGS) {
-  return function_unaryNotOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_prefixNotOperator (C_Compiler * inCompiler,
+                                                                  const cObjectArray & /* inEffectiveParameterArray */,
+                                                                  const GALGAS_location & /* inErrorLocation */
+                                                                  COMMA_LOCATION_ARGS) {
+  return function_prefixNotOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_unaryNotOperator ("unaryNotOperator",
-                                                                  functionWithGenericHeader_unaryNotOperator,
-                                                                  & kTypeDescriptor_GALGAS_uint,
-                                                                  0,
-                                                                  functionArgs_unaryNotOperator) ;
+C_galgas_function_descriptor functionDescriptor_prefixNotOperator ("prefixNotOperator",
+                                                                   functionWithGenericHeader_prefixNotOperator,
+                                                                   & kTypeDescriptor_GALGAS_uint,
+                                                                   0,
+                                                                   functionArgs_prefixNotOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Once function 'binaryConcatOperator'                                         *
+//                                         Once function 'infixConcatOperator'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryConcatOperator (C_Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixConcatOperator (C_Compiler * /* inCompiler */
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 14U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 273)) ;
 //---
@@ -5430,55 +5430,55 @@ static GALGAS_uint onceFunction_binaryConcatOperator (C_Compiler * /* inCompiler
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryConcatOperator = false ;
-static GALGAS_uint gOnceFunctionResult_binaryConcatOperator ;
+static bool gOnceFunctionResultAvailable_infixConcatOperator = false ;
+static GALGAS_uint gOnceFunctionResult_infixConcatOperator ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryConcatOperator (class C_Compiler * inCompiler
+GALGAS_uint function_infixConcatOperator (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryConcatOperator) {
-    gOnceFunctionResult_binaryConcatOperator = onceFunction_binaryConcatOperator (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryConcatOperator = true ;
+  if (! gOnceFunctionResultAvailable_infixConcatOperator) {
+    gOnceFunctionResult_infixConcatOperator = onceFunction_infixConcatOperator (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixConcatOperator = true ;
   }
-  return gOnceFunctionResult_binaryConcatOperator ;
+  return gOnceFunctionResult_infixConcatOperator ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryConcatOperator (void) {
-  gOnceFunctionResult_binaryConcatOperator.drop () ;
+static void releaseOnceFunctionResult_infixConcatOperator (void) {
+  gOnceFunctionResult_infixConcatOperator.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryConcatOperator (NULL,
-                                                                  releaseOnceFunctionResult_binaryConcatOperator) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixConcatOperator (NULL,
+                                                                 releaseOnceFunctionResult_infixConcatOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryConcatOperator [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixConcatOperator [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryConcatOperator (C_Compiler * inCompiler,
-                                                                     const cObjectArray & /* inEffectiveParameterArray */,
-                                                                     const GALGAS_location & /* inErrorLocation */
-                                                                     COMMA_LOCATION_ARGS) {
-  return function_binaryConcatOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixConcatOperator (C_Compiler * inCompiler,
+                                                                    const cObjectArray & /* inEffectiveParameterArray */,
+                                                                    const GALGAS_location & /* inErrorLocation */
+                                                                    COMMA_LOCATION_ARGS) {
+  return function_infixConcatOperator (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryConcatOperator ("binaryConcatOperator",
-                                                                      functionWithGenericHeader_binaryConcatOperator,
-                                                                      & kTypeDescriptor_GALGAS_uint,
-                                                                      0,
-                                                                      functionArgs_binaryConcatOperator) ;
+C_galgas_function_descriptor functionDescriptor_infixConcatOperator ("infixConcatOperator",
+                                                                     functionWithGenericHeader_infixConcatOperator,
+                                                                     & kTypeDescriptor_GALGAS_uint,
+                                                                     0,
+                                                                     functionArgs_infixConcatOperator) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5692,12 +5692,12 @@ C_galgas_function_descriptor functionDescriptor_isComparable ("isComparable",
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Once function 'binaryAddOperatorNoOVF'                                        *
+//                                        Once function 'infixAddOperatorNoOVF'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryAddOperatorNoOVF (C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixAddOperatorNoOVF (C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 18U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 278)) ;
 //---
@@ -5710,64 +5710,64 @@ static GALGAS_uint onceFunction_binaryAddOperatorNoOVF (C_Compiler * /* inCompil
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryAddOperatorNoOVF = false ;
-static GALGAS_uint gOnceFunctionResult_binaryAddOperatorNoOVF ;
+static bool gOnceFunctionResultAvailable_infixAddOperatorNoOVF = false ;
+static GALGAS_uint gOnceFunctionResult_infixAddOperatorNoOVF ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryAddOperatorNoOVF (class C_Compiler * inCompiler
+GALGAS_uint function_infixAddOperatorNoOVF (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryAddOperatorNoOVF) {
-    gOnceFunctionResult_binaryAddOperatorNoOVF = onceFunction_binaryAddOperatorNoOVF (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryAddOperatorNoOVF = true ;
+  if (! gOnceFunctionResultAvailable_infixAddOperatorNoOVF) {
+    gOnceFunctionResult_infixAddOperatorNoOVF = onceFunction_infixAddOperatorNoOVF (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixAddOperatorNoOVF = true ;
   }
-  return gOnceFunctionResult_binaryAddOperatorNoOVF ;
+  return gOnceFunctionResult_infixAddOperatorNoOVF ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryAddOperatorNoOVF (void) {
-  gOnceFunctionResult_binaryAddOperatorNoOVF.drop () ;
+static void releaseOnceFunctionResult_infixAddOperatorNoOVF (void) {
+  gOnceFunctionResult_infixAddOperatorNoOVF.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryAddOperatorNoOVF (NULL,
-                                                                    releaseOnceFunctionResult_binaryAddOperatorNoOVF) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixAddOperatorNoOVF (NULL,
+                                                                   releaseOnceFunctionResult_infixAddOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryAddOperatorNoOVF [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixAddOperatorNoOVF [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryAddOperatorNoOVF (C_Compiler * inCompiler,
-                                                                       const cObjectArray & /* inEffectiveParameterArray */,
-                                                                       const GALGAS_location & /* inErrorLocation */
-                                                                       COMMA_LOCATION_ARGS) {
-  return function_binaryAddOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixAddOperatorNoOVF (C_Compiler * inCompiler,
+                                                                      const cObjectArray & /* inEffectiveParameterArray */,
+                                                                      const GALGAS_location & /* inErrorLocation */
+                                                                      COMMA_LOCATION_ARGS) {
+  return function_infixAddOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryAddOperatorNoOVF ("binaryAddOperatorNoOVF",
-                                                                        functionWithGenericHeader_binaryAddOperatorNoOVF,
-                                                                        & kTypeDescriptor_GALGAS_uint,
-                                                                        0,
-                                                                        functionArgs_binaryAddOperatorNoOVF) ;
+C_galgas_function_descriptor functionDescriptor_infixAddOperatorNoOVF ("infixAddOperatorNoOVF",
+                                                                       functionWithGenericHeader_infixAddOperatorNoOVF,
+                                                                       & kTypeDescriptor_GALGAS_uint,
+                                                                       0,
+                                                                       functionArgs_infixAddOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Once function 'binarySubOperatorNoOVF'                                        *
+//                                        Once function 'infixSubOperatorNoOVF'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binarySubOperatorNoOVF (C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixSubOperatorNoOVF (C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 19U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 279)) ;
 //---
@@ -5780,64 +5780,64 @@ static GALGAS_uint onceFunction_binarySubOperatorNoOVF (C_Compiler * /* inCompil
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binarySubOperatorNoOVF = false ;
-static GALGAS_uint gOnceFunctionResult_binarySubOperatorNoOVF ;
+static bool gOnceFunctionResultAvailable_infixSubOperatorNoOVF = false ;
+static GALGAS_uint gOnceFunctionResult_infixSubOperatorNoOVF ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binarySubOperatorNoOVF (class C_Compiler * inCompiler
+GALGAS_uint function_infixSubOperatorNoOVF (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binarySubOperatorNoOVF) {
-    gOnceFunctionResult_binarySubOperatorNoOVF = onceFunction_binarySubOperatorNoOVF (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binarySubOperatorNoOVF = true ;
+  if (! gOnceFunctionResultAvailable_infixSubOperatorNoOVF) {
+    gOnceFunctionResult_infixSubOperatorNoOVF = onceFunction_infixSubOperatorNoOVF (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixSubOperatorNoOVF = true ;
   }
-  return gOnceFunctionResult_binarySubOperatorNoOVF ;
+  return gOnceFunctionResult_infixSubOperatorNoOVF ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binarySubOperatorNoOVF (void) {
-  gOnceFunctionResult_binarySubOperatorNoOVF.drop () ;
+static void releaseOnceFunctionResult_infixSubOperatorNoOVF (void) {
+  gOnceFunctionResult_infixSubOperatorNoOVF.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binarySubOperatorNoOVF (NULL,
-                                                                    releaseOnceFunctionResult_binarySubOperatorNoOVF) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixSubOperatorNoOVF (NULL,
+                                                                   releaseOnceFunctionResult_infixSubOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binarySubOperatorNoOVF [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixSubOperatorNoOVF [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binarySubOperatorNoOVF (C_Compiler * inCompiler,
-                                                                       const cObjectArray & /* inEffectiveParameterArray */,
-                                                                       const GALGAS_location & /* inErrorLocation */
-                                                                       COMMA_LOCATION_ARGS) {
-  return function_binarySubOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixSubOperatorNoOVF (C_Compiler * inCompiler,
+                                                                      const cObjectArray & /* inEffectiveParameterArray */,
+                                                                      const GALGAS_location & /* inErrorLocation */
+                                                                      COMMA_LOCATION_ARGS) {
+  return function_infixSubOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binarySubOperatorNoOVF ("binarySubOperatorNoOVF",
-                                                                        functionWithGenericHeader_binarySubOperatorNoOVF,
-                                                                        & kTypeDescriptor_GALGAS_uint,
-                                                                        0,
-                                                                        functionArgs_binarySubOperatorNoOVF) ;
+C_galgas_function_descriptor functionDescriptor_infixSubOperatorNoOVF ("infixSubOperatorNoOVF",
+                                                                       functionWithGenericHeader_infixSubOperatorNoOVF,
+                                                                       & kTypeDescriptor_GALGAS_uint,
+                                                                       0,
+                                                                       functionArgs_infixSubOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Once function 'binaryMulOperatorNoOVF'                                        *
+//                                        Once function 'infixMulOperatorNoOVF'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryMulOperatorNoOVF (C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixMulOperatorNoOVF (C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 20U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 280)) ;
 //---
@@ -5850,64 +5850,64 @@ static GALGAS_uint onceFunction_binaryMulOperatorNoOVF (C_Compiler * /* inCompil
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryMulOperatorNoOVF = false ;
-static GALGAS_uint gOnceFunctionResult_binaryMulOperatorNoOVF ;
+static bool gOnceFunctionResultAvailable_infixMulOperatorNoOVF = false ;
+static GALGAS_uint gOnceFunctionResult_infixMulOperatorNoOVF ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryMulOperatorNoOVF (class C_Compiler * inCompiler
+GALGAS_uint function_infixMulOperatorNoOVF (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryMulOperatorNoOVF) {
-    gOnceFunctionResult_binaryMulOperatorNoOVF = onceFunction_binaryMulOperatorNoOVF (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryMulOperatorNoOVF = true ;
+  if (! gOnceFunctionResultAvailable_infixMulOperatorNoOVF) {
+    gOnceFunctionResult_infixMulOperatorNoOVF = onceFunction_infixMulOperatorNoOVF (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixMulOperatorNoOVF = true ;
   }
-  return gOnceFunctionResult_binaryMulOperatorNoOVF ;
+  return gOnceFunctionResult_infixMulOperatorNoOVF ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryMulOperatorNoOVF (void) {
-  gOnceFunctionResult_binaryMulOperatorNoOVF.drop () ;
+static void releaseOnceFunctionResult_infixMulOperatorNoOVF (void) {
+  gOnceFunctionResult_infixMulOperatorNoOVF.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryMulOperatorNoOVF (NULL,
-                                                                    releaseOnceFunctionResult_binaryMulOperatorNoOVF) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixMulOperatorNoOVF (NULL,
+                                                                   releaseOnceFunctionResult_infixMulOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryMulOperatorNoOVF [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixMulOperatorNoOVF [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryMulOperatorNoOVF (C_Compiler * inCompiler,
-                                                                       const cObjectArray & /* inEffectiveParameterArray */,
-                                                                       const GALGAS_location & /* inErrorLocation */
-                                                                       COMMA_LOCATION_ARGS) {
-  return function_binaryMulOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixMulOperatorNoOVF (C_Compiler * inCompiler,
+                                                                      const cObjectArray & /* inEffectiveParameterArray */,
+                                                                      const GALGAS_location & /* inErrorLocation */
+                                                                      COMMA_LOCATION_ARGS) {
+  return function_infixMulOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryMulOperatorNoOVF ("binaryMulOperatorNoOVF",
-                                                                        functionWithGenericHeader_binaryMulOperatorNoOVF,
-                                                                        & kTypeDescriptor_GALGAS_uint,
-                                                                        0,
-                                                                        functionArgs_binaryMulOperatorNoOVF) ;
+C_galgas_function_descriptor functionDescriptor_infixMulOperatorNoOVF ("infixMulOperatorNoOVF",
+                                                                       functionWithGenericHeader_infixMulOperatorNoOVF,
+                                                                       & kTypeDescriptor_GALGAS_uint,
+                                                                       0,
+                                                                       functionArgs_infixMulOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Once function 'binaryDivOperatorNoOVF'                                        *
+//                                        Once function 'infixDivOperatorNoOVF'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_binaryDivOperatorNoOVF (C_Compiler * /* inCompiler */
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_infixDivOperatorNoOVF (C_Compiler * /* inCompiler */
+                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 21U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 281)) ;
 //---
@@ -5920,64 +5920,64 @@ static GALGAS_uint onceFunction_binaryDivOperatorNoOVF (C_Compiler * /* inCompil
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_binaryDivOperatorNoOVF = false ;
-static GALGAS_uint gOnceFunctionResult_binaryDivOperatorNoOVF ;
+static bool gOnceFunctionResultAvailable_infixDivOperatorNoOVF = false ;
+static GALGAS_uint gOnceFunctionResult_infixDivOperatorNoOVF ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_binaryDivOperatorNoOVF (class C_Compiler * inCompiler
+GALGAS_uint function_infixDivOperatorNoOVF (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_binaryDivOperatorNoOVF) {
-    gOnceFunctionResult_binaryDivOperatorNoOVF = onceFunction_binaryDivOperatorNoOVF (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_binaryDivOperatorNoOVF = true ;
+  if (! gOnceFunctionResultAvailable_infixDivOperatorNoOVF) {
+    gOnceFunctionResult_infixDivOperatorNoOVF = onceFunction_infixDivOperatorNoOVF (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_infixDivOperatorNoOVF = true ;
   }
-  return gOnceFunctionResult_binaryDivOperatorNoOVF ;
+  return gOnceFunctionResult_infixDivOperatorNoOVF ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_binaryDivOperatorNoOVF (void) {
-  gOnceFunctionResult_binaryDivOperatorNoOVF.drop () ;
+static void releaseOnceFunctionResult_infixDivOperatorNoOVF (void) {
+  gOnceFunctionResult_infixDivOperatorNoOVF.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_binaryDivOperatorNoOVF (NULL,
-                                                                    releaseOnceFunctionResult_binaryDivOperatorNoOVF) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_infixDivOperatorNoOVF (NULL,
+                                                                   releaseOnceFunctionResult_infixDivOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_binaryDivOperatorNoOVF [1] = {
+static const C_galgas_type_descriptor * functionArgs_infixDivOperatorNoOVF [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_binaryDivOperatorNoOVF (C_Compiler * inCompiler,
-                                                                       const cObjectArray & /* inEffectiveParameterArray */,
-                                                                       const GALGAS_location & /* inErrorLocation */
-                                                                       COMMA_LOCATION_ARGS) {
-  return function_binaryDivOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_infixDivOperatorNoOVF (C_Compiler * inCompiler,
+                                                                      const cObjectArray & /* inEffectiveParameterArray */,
+                                                                      const GALGAS_location & /* inErrorLocation */
+                                                                      COMMA_LOCATION_ARGS) {
+  return function_infixDivOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_binaryDivOperatorNoOVF ("binaryDivOperatorNoOVF",
-                                                                        functionWithGenericHeader_binaryDivOperatorNoOVF,
-                                                                        & kTypeDescriptor_GALGAS_uint,
-                                                                        0,
-                                                                        functionArgs_binaryDivOperatorNoOVF) ;
+C_galgas_function_descriptor functionDescriptor_infixDivOperatorNoOVF ("infixDivOperatorNoOVF",
+                                                                       functionWithGenericHeader_infixDivOperatorNoOVF,
+                                                                       & kTypeDescriptor_GALGAS_uint,
+                                                                       0,
+                                                                       functionArgs_infixDivOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Once function 'unaryMinusOperatorNoOVF'                                       *
+//                                      Once function 'prefixMinusOperatorNoOVF'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint onceFunction_unaryMinusOperatorNoOVF (C_Compiler * /* inCompiler */
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static GALGAS_uint onceFunction_prefixMinusOperatorNoOVF (C_Compiler * /* inCompiler */
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
   result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 22U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 282)) ;
 //---
@@ -5990,55 +5990,55 @@ static GALGAS_uint onceFunction_unaryMinusOperatorNoOVF (C_Compiler * /* inCompi
 //  Function implementation                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static bool gOnceFunctionResultAvailable_unaryMinusOperatorNoOVF = false ;
-static GALGAS_uint gOnceFunctionResult_unaryMinusOperatorNoOVF ;
+static bool gOnceFunctionResultAvailable_prefixMinusOperatorNoOVF = false ;
+static GALGAS_uint gOnceFunctionResult_prefixMinusOperatorNoOVF ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint function_unaryMinusOperatorNoOVF (class C_Compiler * inCompiler
+GALGAS_uint function_prefixMinusOperatorNoOVF (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_unaryMinusOperatorNoOVF) {
-    gOnceFunctionResult_unaryMinusOperatorNoOVF = onceFunction_unaryMinusOperatorNoOVF (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_unaryMinusOperatorNoOVF = true ;
+  if (! gOnceFunctionResultAvailable_prefixMinusOperatorNoOVF) {
+    gOnceFunctionResult_prefixMinusOperatorNoOVF = onceFunction_prefixMinusOperatorNoOVF (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_prefixMinusOperatorNoOVF = true ;
   }
-  return gOnceFunctionResult_unaryMinusOperatorNoOVF ;
+  return gOnceFunctionResult_prefixMinusOperatorNoOVF ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void releaseOnceFunctionResult_unaryMinusOperatorNoOVF (void) {
-  gOnceFunctionResult_unaryMinusOperatorNoOVF.drop () ;
+static void releaseOnceFunctionResult_prefixMinusOperatorNoOVF (void) {
+  gOnceFunctionResult_prefixMinusOperatorNoOVF.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilogueForOnceFunction_unaryMinusOperatorNoOVF (NULL,
-                                                                     releaseOnceFunctionResult_unaryMinusOperatorNoOVF) ;
+C_PrologueEpilogue gEpilogueForOnceFunction_prefixMinusOperatorNoOVF (NULL,
+                                                                      releaseOnceFunctionResult_prefixMinusOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_galgas_type_descriptor * functionArgs_unaryMinusOperatorNoOVF [1] = {
+static const C_galgas_type_descriptor * functionArgs_prefixMinusOperatorNoOVF [1] = {
   NULL
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_object functionWithGenericHeader_unaryMinusOperatorNoOVF (C_Compiler * inCompiler,
-                                                                        const cObjectArray & /* inEffectiveParameterArray */,
-                                                                        const GALGAS_location & /* inErrorLocation */
-                                                                        COMMA_LOCATION_ARGS) {
-  return function_unaryMinusOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
+static GALGAS_object functionWithGenericHeader_prefixMinusOperatorNoOVF (C_Compiler * inCompiler,
+                                                                         const cObjectArray & /* inEffectiveParameterArray */,
+                                                                         const GALGAS_location & /* inErrorLocation */
+                                                                         COMMA_LOCATION_ARGS) {
+  return function_prefixMinusOperatorNoOVF (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_galgas_function_descriptor functionDescriptor_unaryMinusOperatorNoOVF ("unaryMinusOperatorNoOVF",
-                                                                         functionWithGenericHeader_unaryMinusOperatorNoOVF,
-                                                                         & kTypeDescriptor_GALGAS_uint,
-                                                                         0,
-                                                                         functionArgs_unaryMinusOperatorNoOVF) ;
+C_galgas_function_descriptor functionDescriptor_prefixMinusOperatorNoOVF ("prefixMinusOperatorNoOVF",
+                                                                          functionWithGenericHeader_prefixMinusOperatorNoOVF,
+                                                                          & kTypeDescriptor_GALGAS_uint,
+                                                                          0,
+                                                                          functionArgs_prefixMinusOperatorNoOVF) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

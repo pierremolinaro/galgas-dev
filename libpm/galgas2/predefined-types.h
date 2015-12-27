@@ -1697,6 +1697,9 @@ class GALGAS_double : public AC_GALGAS_root {
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const ;
 
+//--------------------------------- &/ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_double divide_operation_no_ovf (const GALGAS_double & inOperand) const ;
+
 //--------------------------------- mod operator
   public : VIRTUAL_IN_DEBUG GALGAS_double modulo_operation (const GALGAS_double & inOperand,
                                                             C_Compiler * inCompiler

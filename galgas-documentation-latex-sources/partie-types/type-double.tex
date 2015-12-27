@@ -137,39 +137,43 @@ Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned in
 
 
 
+\section{Arithmétique}
 
-\section{Arithmetic Operators}
+\subsection{Opérateurs infixés}
 
-The \ggs+@double+ type supports the five arithmetic diadic operators:\newline
+Le type \ggs+@double+ accepte les opérateurs arithmétiques infixés suivants :
+\begin{itemize}
+  \item \ggs!+!, addition ;
+  \item \ggs!-!, soustraction ;
+  \item \ggs!*!, multiplication ;
+  \item \ggs!/!, division, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!mod!, calcul du reste, une erreur d'exécution est déclenchée si le diviseur est nul ;
+  \item \ggs!&/!, division, qui retourne zéro si le diviseur est nul.
+\end{itemize}
 
-\begin{tabular}{|c|c|}
-\hline
-$+$ & Addition \\
-\hline
-$-$ & Substraction \\
-\hline
-$*$ & Multiplication \\
-\hline
-$/$ & Division \\
-\hline
-\ggs+mod+ & Modulo \\
-\hline
-\end{tabular}
+Ces opérateurs exigent que les deux opérandes soient des objets du même type \ggs+@double+. 
 
-Theses operators require both arguments to be \ggs+@double+ objects.\newline
+\subsection{Opérateurs préfixés}
+Le type \ggs+@double+ accepte les opérateurs arithmétiques préfixés suivants :
+\begin{itemize}
+  \item \ggs!+!, qui retourne simplement la valeur de l'opérande ;
+  \item \ggs!-!, négation arithmétique.
+\end{itemize}
 
-A run-time error is raised if the operation leads to an overflow.
+La valeur renvoyée est du même type  \ggs+@double+.
 
-The \ggs+@double+ type supports the following arithmetic unary operators:\newline
 
-\begin{tabular}{|c|c|}
-\hline
-$+$ & No operation \\
-$-$ & Negate \\
-\hline
-\end{tabular}
+\subsection{Instructions}
 
-This operator returns the receiver's value (an \ggs+@double+ object).
+Le type \ggs+@double+ accepte les instructions arithmétiques suivantes :
+\begin{itemize}
+  \item \ggs!+=!, addition ;
+  \item \ggs!-=!, soustraction.
+\end{itemize}
+
+\ggs!x+=y! est équivalent à \ggs!x=x+y! ; \ggs!x-=y! est équivalent à \ggs!x=x-y!.
+La variable cible \ggs!x!, comme l'expression source \ggs!y! doivent être du même type \ggs+@double+. 
+
 
 
 
