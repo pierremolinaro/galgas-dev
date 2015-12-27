@@ -109,7 +109,7 @@ override getter @objectPredefinedTypeAST getSupportedOperatorFlags -> @uint outF
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @stringPredefinedTypeAST getSupportedOperatorFlags -> @uint outFlags {
-  outFlags = infixConcatOperator () | plusEqualOperatorWithExpression () | infixAddOperator ()
+  outFlags = plusEqualOperatorWithExpression () | infixAddOperator ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
 }
 

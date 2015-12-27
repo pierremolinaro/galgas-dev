@@ -200,8 +200,7 @@ class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @concatExpressionForGeneration,
-      @orShortExpressionForGeneration,
+class @orShortExpressionForGeneration,
       @orExpressionForGeneration,
       @xorExpressionForGeneration,
       @openedSliceExpressionForGeneration,

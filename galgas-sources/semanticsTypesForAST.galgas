@@ -149,8 +149,7 @@ class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @concatExpressionAST,
-      @orExpressionAST,
+class @orExpressionAST,
       @orShortExpressionAST,
       @xorExpressionAST,
       @closedSliceExpressionAST,

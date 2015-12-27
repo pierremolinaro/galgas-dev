@@ -8623,18 +8623,6 @@ void GALGAS_templateInstructionListAST::method_last (GALGAS_templateInstructionA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::operator_concat (const GALGAS_templateInstructionListAST & inOperand
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::add_operation (const GALGAS_templateInstructionListAST & inOperand,
                                                                                     C_Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9048,18 +9036,6 @@ void GALGAS_templateExpressionListAST::method_last (GALGAS_lstring & outOperand0
     outOperand1 = p->mObject.mAttribute_mExpression ;
     outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::operator_concat (const GALGAS_templateExpressionListAST & inOperand
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateExpressionListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9501,18 +9477,6 @@ void GALGAS_templateInstructionIfBranchListAST::method_last (GALGAS_templateExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::operator_concat (const GALGAS_templateInstructionIfBranchListAST & inOperand
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfBranchListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::add_operation (const GALGAS_templateInstructionIfBranchListAST & inOperand,
                                                                                                     C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -9923,18 +9887,6 @@ void GALGAS_templateInstructionSwitchBranchListAST::method_last (GALGAS_lstringl
     outOperand0 = p->mObject.mAttribute_mConstantList ;
     outOperand1 = p->mObject.mAttribute_mInstructionList ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBranchListAST::operator_concat (const GALGAS_templateInstructionSwitchBranchListAST & inOperand
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionSwitchBranchListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11828,18 +11780,6 @@ void GALGAS_templateInstructionListForGeneration::method_last (GALGAS_templateIn
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::operator_concat (const GALGAS_templateInstructionListForGeneration & inOperand
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::add_operation (const GALGAS_templateInstructionListForGeneration & inOperand,
                                                                                                         C_Compiler * /* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) const {
@@ -12227,18 +12167,6 @@ void GALGAS_templateInstructionIfBranchListForGeneration::method_last (GALGAS_se
     outOperand0 = p->mObject.mAttribute_mExpression ;
     outOperand1 = p->mObject.mAttribute_mInstructionList ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIfBranchListForGeneration::operator_concat (const GALGAS_templateInstructionIfBranchListForGeneration & inOperand
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionIfBranchListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12653,18 +12581,6 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::method_last (GALGA
     outOperand0 = p->mObject.mAttribute_mConstantList ;
     outOperand1 = p->mObject.mAttribute_mInstructionList ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::operator_concat (const GALGAS_templateInstructionSwitchBranchListForGeneration & inOperand
-                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateInstructionSwitchBranchListForGeneration result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13366,18 +13282,6 @@ void GALGAS_lexicalInstructionListAST::method_last (GALGAS_lexicalInstructionAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::operator_concat (const GALGAS_lexicalInstructionListAST & inOperand
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalInstructionListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lexicalInstructionListAST GALGAS_lexicalInstructionListAST::add_operation (const GALGAS_lexicalInstructionListAST & inOperand,
                                                                                   C_Compiler * /* inCompiler */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
@@ -13776,18 +13680,6 @@ void GALGAS_metamodelTemplateDelimitorListAST::method_last (GALGAS_lstring & out
     outOperand1 = p->mObject.mAttribute_mOptionList ;
     outOperand2 = p->mObject.mAttribute_mEndString ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_metamodelTemplateDelimitorListAST GALGAS_metamodelTemplateDelimitorListAST::operator_concat (const GALGAS_metamodelTemplateDelimitorListAST & inOperand
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_metamodelTemplateDelimitorListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14210,18 +14102,6 @@ void GALGAS_templateReplacementListAST::method_last (GALGAS_lstring & outOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::operator_concat (const GALGAS_templateReplacementListAST & inOperand
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateReplacementListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_templateReplacementListAST GALGAS_templateReplacementListAST::add_operation (const GALGAS_templateReplacementListAST & inOperand,
                                                                                     C_Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -14584,18 +14464,6 @@ void GALGAS_lexicalRuleListAST::method_last (GALGAS_abstractLexicalRuleAST & out
     macroValidSharedObject (p, cCollectionElement_lexicalRuleListAST) ;
     outOperand0 = p->mObject.mAttribute_mLexicalRule ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalRuleListAST GALGAS_lexicalRuleListAST::operator_concat (const GALGAS_lexicalRuleListAST & inOperand
-                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalRuleListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14972,18 +14840,6 @@ void GALGAS_lexicalMessageDeclarationListAST::method_last (GALGAS_lstring & outO
     outOperand0 = p->mObject.mAttribute_mMessageName ;
     outOperand1 = p->mObject.mAttribute_mMessageValue ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalMessageDeclarationListAST GALGAS_lexicalMessageDeclarationListAST::operator_concat (const GALGAS_lexicalMessageDeclarationListAST & inOperand
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalMessageDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15372,18 +15228,6 @@ void GALGAS_lexicalAttributeListAST::method_last (GALGAS_lstring & outOperand0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::operator_concat (const GALGAS_lexicalAttributeListAST & inOperand
-                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalAttributeListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lexicalAttributeListAST GALGAS_lexicalAttributeListAST::add_operation (const GALGAS_lexicalAttributeListAST & inOperand,
                                                                               C_Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) const {
@@ -15764,18 +15608,6 @@ void GALGAS_lexicalStyleListAST::method_last (GALGAS_lstring & outOperand0,
     outOperand0 = p->mObject.mAttribute_mName ;
     outOperand1 = p->mObject.mAttribute_mComment ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalStyleListAST GALGAS_lexicalStyleListAST::operator_concat (const GALGAS_lexicalStyleListAST & inOperand
-                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalStyleListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16242,18 +16074,6 @@ void GALGAS_terminalDeclarationListAST::method_last (GALGAS_lstring & outOperand
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::operator_concat (const GALGAS_terminalDeclarationListAST & inOperand
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_terminalDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_terminalDeclarationListAST GALGAS_terminalDeclarationListAST::add_operation (const GALGAS_terminalDeclarationListAST & inOperand,
                                                                                     C_Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
@@ -16658,18 +16478,6 @@ void GALGAS_sentLexicalAttributeListAST::method_last (GALGAS_lstring & outOperan
     outOperand0 = p->mObject.mAttribute_mFormalSelector ;
     outOperand1 = p->mObject.mAttribute_mAttributeName ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_sentLexicalAttributeListAST GALGAS_sentLexicalAttributeListAST::operator_concat (const GALGAS_sentLexicalAttributeListAST & inOperand
-                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_sentLexicalAttributeListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17110,18 +16918,6 @@ void GALGAS_lexicalListEntryListAST::method_last (GALGAS_lstring & outOperand0,
     outOperand1 = p->mObject.mAttribute_mTerminalSpelling ;
     outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::operator_concat (const GALGAS_lexicalListEntryListAST & inOperand
-                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalListEntryListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17592,18 +17388,6 @@ void GALGAS_lexicalListDeclarationListAST::method_last (GALGAS_lstring & outOper
     outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
     outOperand4 = p->mObject.mAttribute_mEntryList ;
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::operator_concat (const GALGAS_lexicalListDeclarationListAST & inOperand
-                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

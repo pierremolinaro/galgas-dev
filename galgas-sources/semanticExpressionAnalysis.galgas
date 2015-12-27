@@ -1099,46 +1099,6 @@ proc checkDiadicOperator
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @concatExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @concatExpressionAST analyzeSemanticExpression
-  ?let @unifiedTypeMap-proxy unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?leftExpression]
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?rightExpression]
-#--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixConcatOperator ()) != 0
-    !"."
-    !mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @concatExpressionForGeneration.new {
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @orExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {

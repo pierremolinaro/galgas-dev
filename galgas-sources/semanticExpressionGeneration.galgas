@@ -297,25 +297,6 @@ override method @optionCommentExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @concatExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-#--- Left operand
-  @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".operator_concat ("
-                   + rightTemporaryOperand + " " + [mLocation commaSourceFile] + ")"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @orExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
