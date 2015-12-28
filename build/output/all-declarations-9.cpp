@@ -4439,7 +4439,7 @@ C_galgas_function_descriptor functionDescriptor_generateFewHeaderFiles ("generat
 static GALGAS_uint onceFunction_infixAddOperator (C_Compiler * /* inCompiler */
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 0U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 257)) ;
 //---
   return result_outMask ;
 }
@@ -5412,6 +5412,76 @@ C_galgas_function_descriptor functionDescriptor_prefixNotOperator ("prefixNotOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                            Once function 'isComparable'                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_uint onceFunction_isComparable (C_Compiler * /* inCompiler */
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_uint result_outMask ; // Returned variable
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 14U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 273)) ;
+//---
+  return result_outMask ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Function implementation                                                                                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static bool gOnceFunctionResultAvailable_isComparable = false ;
+static GALGAS_uint gOnceFunctionResult_isComparable ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint function_isComparable (class C_Compiler * inCompiler
+              COMMA_LOCATION_ARGS) {
+  if (! gOnceFunctionResultAvailable_isComparable) {
+    gOnceFunctionResult_isComparable = onceFunction_isComparable (inCompiler COMMA_THERE) ;
+    gOnceFunctionResultAvailable_isComparable = true ;
+  }
+  return gOnceFunctionResult_isComparable ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void releaseOnceFunctionResult_isComparable (void) {
+  gOnceFunctionResult_isComparable.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gEpilogueForOnceFunction_isComparable (NULL,
+                                                          releaseOnceFunctionResult_isComparable) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Function introspection                                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const C_galgas_type_descriptor * functionArgs_isComparable [1] = {
+  NULL
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_object functionWithGenericHeader_isComparable (C_Compiler * inCompiler,
+                                                             const cObjectArray & /* inEffectiveParameterArray */,
+                                                             const GALGAS_location & /* inErrorLocation */
+                                                             COMMA_LOCATION_ARGS) {
+  return function_isComparable (inCompiler COMMA_THERE).getter_object (THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_galgas_function_descriptor functionDescriptor_isComparable ("isComparable",
+                                                              functionWithGenericHeader_isComparable,
+                                                              & kTypeDescriptor_GALGAS_uint,
+                                                              0,
+                                                              functionArgs_isComparable) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                   Once function 'plusEqualOperatorWithExpression'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5419,7 +5489,7 @@ C_galgas_function_descriptor functionDescriptor_prefixNotOperator ("prefixNotOpe
 static GALGAS_uint onceFunction_plusEqualOperatorWithExpression (C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 15U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 273)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 15U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 275)) ;
 //---
   return result_outMask ;
 }
@@ -5489,7 +5559,7 @@ C_galgas_function_descriptor functionDescriptor_plusEqualOperatorWithExpression 
 static GALGAS_uint onceFunction_minusEqualOperatorWithExpression (C_Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 16U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 274)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 16U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 276)) ;
 //---
   return result_outMask ;
 }
@@ -5552,76 +5622,6 @@ C_galgas_function_descriptor functionDescriptor_minusEqualOperatorWithExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Once function 'isComparable'                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_uint onceFunction_isComparable (C_Compiler * /* inCompiler */
-                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 17U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 275)) ;
-//---
-  return result_outMask ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//  Function implementation                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static bool gOnceFunctionResultAvailable_isComparable = false ;
-static GALGAS_uint gOnceFunctionResult_isComparable ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint function_isComparable (class C_Compiler * inCompiler
-              COMMA_LOCATION_ARGS) {
-  if (! gOnceFunctionResultAvailable_isComparable) {
-    gOnceFunctionResult_isComparable = onceFunction_isComparable (inCompiler COMMA_THERE) ;
-    gOnceFunctionResultAvailable_isComparable = true ;
-  }
-  return gOnceFunctionResult_isComparable ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void releaseOnceFunctionResult_isComparable (void) {
-  gOnceFunctionResult_isComparable.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gEpilogueForOnceFunction_isComparable (NULL,
-                                                          releaseOnceFunctionResult_isComparable) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//  Function introspection                                                                                             *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const C_galgas_type_descriptor * functionArgs_isComparable [1] = {
-  NULL
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_object functionWithGenericHeader_isComparable (C_Compiler * inCompiler,
-                                                             const cObjectArray & /* inEffectiveParameterArray */,
-                                                             const GALGAS_location & /* inErrorLocation */
-                                                             COMMA_LOCATION_ARGS) {
-  return function_isComparable (inCompiler COMMA_THERE).getter_object (THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_galgas_function_descriptor functionDescriptor_isComparable ("isComparable",
-                                                              functionWithGenericHeader_isComparable,
-                                                              & kTypeDescriptor_GALGAS_uint,
-                                                              0,
-                                                              functionArgs_isComparable) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                        Once function 'infixAddOperatorNoOVF'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5629,7 +5629,7 @@ C_galgas_function_descriptor functionDescriptor_isComparable ("isComparable",
 static GALGAS_uint onceFunction_infixAddOperatorNoOVF (C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 18U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 277)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 17U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 278)) ;
 //---
   return result_outMask ;
 }
@@ -5699,7 +5699,7 @@ C_galgas_function_descriptor functionDescriptor_infixAddOperatorNoOVF ("infixAdd
 static GALGAS_uint onceFunction_infixSubOperatorNoOVF (C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 19U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 278)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 18U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 279)) ;
 //---
   return result_outMask ;
 }
@@ -5769,7 +5769,7 @@ C_galgas_function_descriptor functionDescriptor_infixSubOperatorNoOVF ("infixSub
 static GALGAS_uint onceFunction_infixMulOperatorNoOVF (C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 20U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 279)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 19U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 280)) ;
 //---
   return result_outMask ;
 }
@@ -5839,7 +5839,7 @@ C_galgas_function_descriptor functionDescriptor_infixMulOperatorNoOVF ("infixMul
 static GALGAS_uint onceFunction_infixDivOperatorNoOVF (C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 21U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 280)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 20U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 281)) ;
 //---
   return result_outMask ;
 }
@@ -5909,7 +5909,7 @@ C_galgas_function_descriptor functionDescriptor_infixDivOperatorNoOVF ("infixDiv
 static GALGAS_uint onceFunction_prefixMinusOperatorNoOVF (C_Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 22U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 281)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 21U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 282)) ;
 //---
   return result_outMask ;
 }
@@ -5979,7 +5979,7 @@ C_galgas_function_descriptor functionDescriptor_prefixMinusOperatorNoOVF ("prefi
 static GALGAS_uint onceFunction_incDecOperatorNoOVF (C_Compiler * /* inCompiler */
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 23U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 282)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 22U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 283)) ;
 //---
   return result_outMask ;
 }
@@ -6049,7 +6049,7 @@ C_galgas_function_descriptor functionDescriptor_incDecOperatorNoOVF ("incDecOper
 static GALGAS_uint onceFunction_supportWithAccessor (C_Compiler * /* inCompiler */
                                                      COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 26U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 284)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 26U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 285)) ;
 //---
   return result_outMask ;
 }
@@ -6119,7 +6119,7 @@ C_galgas_function_descriptor functionDescriptor_supportWithAccessor ("supportWit
 static GALGAS_uint onceFunction_plusEqualOperatorWithFieldListNeedsCompilerArg (C_Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 27U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 285)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 27U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 286)) ;
 //---
   return result_outMask ;
 }
@@ -6189,7 +6189,7 @@ C_galgas_function_descriptor functionDescriptor_plusEqualOperatorWithFieldListNe
 static GALGAS_uint onceFunction_generateEnumerationHelperMethods (C_Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 28U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 286)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 28U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 287)) ;
 //---
   return result_outMask ;
 }
@@ -6259,7 +6259,7 @@ C_galgas_function_descriptor functionDescriptor_generateEnumerationHelperMethods
 static GALGAS_uint onceFunction_doNotGenererateObjectCompare (C_Compiler * /* inCompiler */
                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 29U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 287)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 29U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 288)) ;
 //---
   return result_outMask ;
 }
@@ -6329,7 +6329,7 @@ C_galgas_function_descriptor functionDescriptor_doNotGenererateObjectCompare ("d
 static GALGAS_uint onceFunction_generateDescriptionGetterUtilityMethod (C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 30U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 288)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 30U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 289)) ;
 //---
   return result_outMask ;
 }
@@ -6399,7 +6399,7 @@ C_galgas_function_descriptor functionDescriptor_generateDescriptionGetterUtility
 static GALGAS_uint onceFunction_generateCopyConstructorAndAssignmentOperator (C_Compiler * /* inCompiler */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_uint result_outMask ; // Returned variable
-  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 31U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 289)) ;
+  result_outMask = GALGAS_uint ((uint32_t) 1U).left_shift_operation (GALGAS_uint ((uint32_t) 31U) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 290)) ;
 //---
   return result_outMask ;
 }

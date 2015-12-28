@@ -1451,6 +1451,15 @@ class GALGAS_uint function_prefixNotOperator (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                               Function 'isComparable'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_uint function_isComparable (class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                     Function 'plusEqualOperatorWithExpression'                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1466,15 +1475,6 @@ class GALGAS_uint function_plusEqualOperatorWithExpression (class C_Compiler * i
 
 class GALGAS_uint function_minusEqualOperatorWithExpression (class C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               Function 'isComparable'                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_isComparable (class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
