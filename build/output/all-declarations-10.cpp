@@ -10,6 +10,128 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                         Routine 'generateCategoryModifier'                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateCategoryModifier (const GALGAS_string constinArgument_inClassName,
+                                       const GALGAS_string constinArgument_inBaseClassName,
+                                       const GALGAS_string constinArgument_inMethodName,
+                                       GALGAS_stringset & ioArgument_ioInclusionSet,
+                                       const GALGAS_formalParameterListForGeneration constinArgument_inFormalArgumentList,
+                                       const GALGAS_semanticInstructionListForGeneration constinArgument_inInstructionList,
+                                       GALGAS_string & outArgument_outGeneratedCode,
+                                       C_Compiler * inCompiler
+                                       COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outGeneratedCode.drop () ; // Release 'out' argument
+  GALGAS_stringset var_unusedVariableCppNameSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 451)) ;
+  var_unusedVariableCppNameSet.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 452))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 452)) ;
+  var_unusedVariableCppNameSet.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 453)) ;
+  cEnumerator_formalParameterListForGeneration enumerator_19633 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
+  while (enumerator_19633.hasCurrentObject ()) {
+    var_unusedVariableCppNameSet.addAssign_operation (enumerator_19633.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 455)) ;
+    enumerator_19633.gotoNextObject () ;
+  }
+  GALGAS_uint var_temporaryVariableIndex = GALGAS_uint ((uint32_t) 0U) ;
+  GALGAS_string var_routineBody = GALGAS_string::makeEmptyString () ;
+  {
+  var_routineBody.modifier_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 460)) ;
+  }
+  cEnumerator_semanticInstructionListForGeneration enumerator_19839 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_19839.hasCurrentObject ()) {
+    callCategoryMethod_generateInstruction ((const cPtr_semanticInstructionForGeneration *) enumerator_19839.current_mInstruction (HERE).ptr (), ioArgument_ioInclusionSet, var_temporaryVariableIndex, var_unusedVariableCppNameSet, GALGAS_bool (false), var_routineBody, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 462)) ;
+    enumerator_19839.gotoNextObject () ;
+  }
+  {
+  var_routineBody.modifier_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 470)) ;
+  }
+  outArgument_outGeneratedCode = GALGAS_string ("static void categoryModifier_").add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (constinArgument_inMethodName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 472)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 472)) ;
+  GALGAS_uint var_colRef = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 473)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_0) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("cPtr_").add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 475)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 475)) ;
+  }else if (kBoolFalse == test_0) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("cPtr_").add_operation (constinArgument_inBaseClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 477)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 477)) ;
+  }
+  GALGAS_bool var_currentObjectIsUnused = var_unusedVariableCppNameSet.getter_hasKey (GALGAS_string ("object") COMMA_SOURCE_FILE ("semanticGeneration.galgas", 479)) ;
+  const enumGalgasBool test_1 = var_currentObjectIsUnused.boolEnum () ;
+  if (kBoolTrue == test_1) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* inObject */"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 481)) ;
+  }else if (kBoolFalse == test_1) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 483)) ;
+  }
+  cEnumerator_formalParameterListForGeneration enumerator_20766 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
+  while (enumerator_20766.hasCurrentObject ()) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 487)) ;
+    {
+    outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 488)) ;
+    }
+    switch (enumerator_20766.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
+    case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+      break ;
+    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
+      {
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 491)) ;
+      }
+      break ;
+    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+      {
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 493)) ;
+      }
+      break ;
+    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+      {
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 495)) ;
+      }
+      break ;
+    case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
+      {
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_20766.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 497)) ;
+      }
+      break ;
+    }
+    const enumGalgasBool test_2 = var_unusedVariableCppNameSet.getter_hasKey (enumerator_20766.current_mFormalArgumentCppName (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 499)).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (enumerator_20766.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 500)) ;
+    }else if (kBoolFalse == test_2) {
+      outArgument_outGeneratedCode.plusAssign_operation(enumerator_20766.current_mFormalArgumentCppName (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 502)) ;
+    }
+    enumerator_20766.gotoNextObject () ;
+  }
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 506)) ;
+  {
+  outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 507)) ;
+  }
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("C_Compiler * "), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 508)) ;
+  const enumGalgasBool test_3 = var_unusedVariableCppNameSet.getter_hasKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 509)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 509)).boolEnum () ;
+  if (kBoolTrue == test_3) {
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 510)) ;
+  }else if (kBoolFalse == test_3) {
+    outArgument_outGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 512)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 512)) ;
+  }
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 514)) ;
+  {
+  outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 515)) ;
+  }
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 516)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 517)) ;
+  const enumGalgasBool test_4 = var_currentObjectIsUnused.operator_not (SOURCE_FILE ("semanticGeneration.galgas", 519)).boolEnum () ;
+  if (kBoolTrue == test_4) {
+    const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_5) {
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  cPtr_").add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 521)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 521)) ;
+    }else if (kBoolFalse == test_5) {
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  cPtr_").add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 523)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (GALGAS_string (" * object = (cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 523)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 523)) ;
+    }
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (constinArgument_inClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 525)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 525)) ;
+  }
+  outArgument_outGeneratedCode.plusAssign_operation(var_routineBody, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 527)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("}"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 529)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                          Routine 'generateCategoryMethod'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -87,20 +209,20 @@ void routine_generateCategoryMethod (const GALGAS_unifiedTypeMap_2D_proxy consti
   GALGAS_uint var_colRef = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 589)) ;
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 591)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 591)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 591)) ;
   }else if (kBoolFalse == test_2) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const cPtr_").add_operation (constinArgument_inBaseClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 593)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const cPtr_").add_operation (constinArgument_inBaseClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 593)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 593)) ;
   }
   GALGAS_bool var_currentObjectIsUnused = var_unusedVariableCppNameSet.getter_hasKey (GALGAS_string ("object") COMMA_SOURCE_FILE ("semanticGeneration.galgas", 595)) ;
   const enumGalgasBool test_3 = var_currentObjectIsUnused.boolEnum () ;
   if (kBoolTrue == test_3) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* inObject */"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 597)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* inObject */"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 597)) ;
   }else if (kBoolFalse == test_3) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 599)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 599)) ;
   }
   cEnumerator_formalParameterListForGeneration enumerator_25543 (constinArgument_inFormalArgumentList, kEnumeration_up) ;
   while (enumerator_25543.hasCurrentObject ()) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 603)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 603)) ;
     {
     outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 604)) ;
     }
@@ -109,62 +231,62 @@ void routine_generateCategoryMethod (const GALGAS_unifiedTypeMap_2D_proxy consti
       break ;
     case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
       {
-        outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)) ;
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 607)) ;
       }
       break ;
     case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
       {
-        outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)) ;
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 609)) ;
       }
       break ;
     case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
       {
-        outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)) ;
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 611)) ;
       }
       break ;
     case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
       {
-        outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)) ;
+        outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_25543.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 613)) ;
       }
       break ;
     }
     const enumGalgasBool test_4 = var_unusedVariableCppNameSet.getter_hasKey (enumerator_25543.current_mFormalArgumentCppName (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 615)).boolEnum () ;
     if (kBoolTrue == test_4) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* ").add_operation (enumerator_25543.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (enumerator_25543.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 616)) ;
     }else if (kBoolFalse == test_4) {
-      outArgument_outGeneratedCode.plusAssign_operation (enumerator_25543.current_mFormalArgumentCppName (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 618)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(enumerator_25543.current_mFormalArgumentCppName (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 618)) ;
     }
     enumerator_25543.gotoNextObject () ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 622)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 622)) ;
   {
   outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 623)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("C_Compiler * "), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 624)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("C_Compiler * "), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 624)) ;
   const enumGalgasBool test_5 = var_unusedVariableCppNameSet.getter_hasKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 625)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 625)).boolEnum () ;
   if (kBoolTrue == test_5) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 626)) ;
   }else if (kBoolFalse == test_5) {
-    outArgument_outGeneratedCode.plusAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 628)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 628)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 628)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 628)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 630)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 630)) ;
   {
   outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 631)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 632)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 633)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 632)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (") {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 633)) ;
   const enumGalgasBool test_6 = var_currentObjectIsUnused.operator_not (SOURCE_FILE ("semanticGeneration.galgas", 635)).boolEnum () ;
   if (kBoolTrue == test_6) {
     const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_7) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 637)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 637)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 637)) ;
     }else if (kBoolFalse == test_7) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (GALGAS_string (" * object = (const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (GALGAS_string (" * object = (const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 639)) ;
     }
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 641)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 641)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 641)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (var_routineBody, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 643)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("}"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 645)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(var_routineBody, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 643)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("}"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 645)) ;
 }
 
 
@@ -248,22 +370,22 @@ void routine_generateCategoryGetter (const GALGAS_unifiedTypeMap_2D_proxy consti
     enumerator_29779.gotoNextObject () ;
   }
   outArgument_outGeneratedCode = GALGAS_string ("static GALGAS_").add_operation (constinArgument_inResultTypeName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 708)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 708)).add_operation (GALGAS_string (" extensionGetter_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 708)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (constinArgument_inGetterName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (constinArgument_inGetterName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 709)) ;
   GALGAS_uint var_colRef = outArgument_outGeneratedCode.getter_currentColumn (SOURCE_FILE ("semanticGeneration.galgas", 710)) ;
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 712)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 712)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 712)) ;
   }else if (kBoolFalse == test_2) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const cPtr_").add_operation (constinArgument_inBaseClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 714)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const cPtr_").add_operation (constinArgument_inBaseClassName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 714)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)).add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 714)) ;
   }
   GALGAS_bool var_currentObjectIsUnused = var_unusedVariableCppNameSet.getter_hasKey (GALGAS_string ("object") COMMA_SOURCE_FILE ("semanticGeneration.galgas", 716)) ;
   const enumGalgasBool test_3 = var_currentObjectIsUnused.boolEnum () ;
   if (kBoolTrue == test_3) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* inObject */"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 718)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* inObject */"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 718)) ;
   }else if (kBoolFalse == test_3) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 720)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("inObject"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 720)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 722)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 722)) ;
   {
   outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 723)) ;
   }
@@ -271,50 +393,50 @@ void routine_generateCategoryGetter (const GALGAS_unifiedTypeMap_2D_proxy consti
   while (enumerator_30687.hasCurrentObject ()) {
     const enumGalgasBool test_4 = enumerator_30687.current_mIsConstant (HERE).boolEnum () ;
     if (kBoolTrue == test_4) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("const GALGAS_").add_operation (enumerator_30687.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("const GALGAS_").add_operation (enumerator_30687.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)).add_operation (GALGAS_string (" & "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 727)) ;
     }else if (kBoolFalse == test_4) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("GALGAS_").add_operation (enumerator_30687.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (enumerator_30687.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 729)) ;
     }
     const enumGalgasBool test_5 = var_unusedVariableCppNameSet.getter_hasKey (enumerator_30687.current_mFormalArgumentCppName (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 731)).boolEnum () ;
     if (kBoolTrue == test_5) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* ").add_operation (enumerator_30687.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (enumerator_30687.current_mFormalArgumentCppName (HERE), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 732)) ;
     }else if (kBoolFalse == test_5) {
-      outArgument_outGeneratedCode.plusAssign_operation (enumerator_30687.current_mFormalArgumentCppName (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 734)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(enumerator_30687.current_mFormalArgumentCppName (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 734)) ;
     }
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 736)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (",\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 736)) ;
     {
     outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 737)) ;
     }
     enumerator_30687.gotoNextObject () ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (constinArgument_inCompilerTypeName.add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 740)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 740)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(constinArgument_inCompilerTypeName.add_operation (GALGAS_string (" * "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 740)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 740)) ;
   const enumGalgasBool test_6 = var_unusedVariableCppNameSet.getter_hasKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 741)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 741)).boolEnum () ;
   if (kBoolTrue == test_6) {
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("/* ").add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)).add_operation (GALGAS_string (" */"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 742)) ;
   }else if (kBoolFalse == test_6) {
-    outArgument_outGeneratedCode.plusAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 744)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 744)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 744)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 744)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 746)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 746)) ;
   {
   outArgument_outGeneratedCode.modifier_appendSpacesUntilColumn (var_colRef, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 747)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS)"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 748)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string (" {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 749)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  GALGAS_").add_operation (constinArgument_inResultTypeName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)).add_operation (constinArgument_inResultVariableCppName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 752)).add_operation (GALGAS_string (" ; // Returned variable\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 752)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("COMMA_UNUSED_LOCATION_ARGS)"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 748)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string (" {\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 749)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  GALGAS_").add_operation (constinArgument_inResultTypeName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 751)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)).add_operation (constinArgument_inResultVariableCppName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 752)).add_operation (GALGAS_string (" ; // Returned variable\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 752)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 751)) ;
   const enumGalgasBool test_7 = var_currentObjectIsUnused.operator_not (SOURCE_FILE ("semanticGeneration.galgas", 754)).boolEnum () ;
   if (kBoolTrue == test_7) {
     const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, constinArgument_inBaseClassName.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_8) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 756)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 756)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)).add_operation (GALGAS_string (" * object = inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 756)) ;
     }else if (kBoolFalse == test_8) {
-      outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (GALGAS_string (" * object = (const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)) ;
+      outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  const cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (GALGAS_string (" * object = (const cPtr_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)).add_operation (GALGAS_string (" *) inObject ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 758)) ;
     }
-    outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 760)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)) ;
+    outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  macroValidSharedObject (object, cPtr_").add_operation (var_className.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 760)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 760)) ;
   }
-  outArgument_outGeneratedCode.plusAssign_operation (var_routineBody, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 762)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("//---\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 764)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("  return ").add_operation (constinArgument_inResultVariableCppName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)) ;
-  outArgument_outGeneratedCode.plusAssign_operation (GALGAS_string ("}\n"
+  outArgument_outGeneratedCode.plusAssign_operation(var_routineBody, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 762)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("//---\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 764)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("  return ").add_operation (constinArgument_inResultVariableCppName, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 765)) ;
+  outArgument_outGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"
     "\n"), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 767)) ;
 }
 
@@ -510,41 +632,63 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       "\n" ;
   }else if (kBoolFalse == test_7) {
   }
-  const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 62)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_8 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_mulEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 62)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 62)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_8) {
+    result << "//--------------------------------- *= operator (with expression)\n"
+      "  public : VIRTUAL_IN_DEBUG void mulAssign_operation (const GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << " inOperand,\n"
+      "                                                      class C_Compiler * inCompiler\n"
+      "                                                      COMMA_LOCATION_ARGS) ;\n"
+      "\n" ;
+  }else if (kBoolFalse == test_8) {
+  }
+  const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_divEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_9) {
+    result << "//--------------------------------- /= operator (with expression)\n"
+      "  public : VIRTUAL_IN_DEBUG void divAssign_operation (const GALGAS_" ;
+    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+    result << " inOperand,\n"
+      "                                                      class C_Compiler * inCompiler\n"
+      "                                                      COMMA_LOCATION_ARGS) ;\n"
+      "\n" ;
+  }else if (kBoolFalse == test_9) {
+  }
+  const enumGalgasBool test_10 = GALGAS_bool (kIsStrictSup, in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 76)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_10) {
     result << "//--------------------------------- += operator (with list of field expressions)\n"
       "  public : VIRTUAL_IN_DEBUG void addAssign_operation (" ;
     columnMarker = result.currentColumn () ;
-    GALGAS_uint index_3114_IDX (0) ;
+    GALGAS_uint index_3966_IDX (0) ;
     if (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST.isValid ()) {
-      cEnumerator_functionSignature enumerator_3114 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-      while (enumerator_3114.hasCurrentObject ()) {
+      cEnumerator_functionSignature enumerator_3966 (in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+      while (enumerator_3966.hasCurrentObject ()) {
         result << "const class GALGAS_" ;
-        result << enumerator_3114.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 66)).stringValue () ;
+        result << enumerator_3966.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 80)).stringValue () ;
         result << " & inOperand" ;
-        result << index_3114_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 66)).stringValue () ;
-        if (enumerator_3114.hasNextObject ()) {
+        result << index_3966_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 80)).stringValue () ;
+        if (enumerator_3966.hasNextObject ()) {
           result << ",\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
         }
-        index_3114_IDX.increment () ;
-        enumerator_3114.gotoNextObject () ;
+        index_3966_IDX.increment () ;
+        enumerator_3966.gotoNextObject () ;
       }
     }
-    const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_plusEqualOperatorWithFieldListNeedsCompilerArg (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 69)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-    if (kBoolTrue == test_9) {
+    const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_plusEqualOperatorWithFieldListNeedsCompilerArg (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 83)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 83)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_11) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "C_Compiler * inCompiler" ;
-    }else if (kBoolFalse == test_9) {
+    }else if (kBoolFalse == test_11) {
     }
     result << "\n" ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) ;\n" ;
-  }else if (kBoolFalse == test_8) {
+  }else if (kBoolFalse == test_10) {
   }
-  const enumGalgasBool test_10 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAndOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 76)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 76)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_10) {
+  const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAndOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 90)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 90)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_12) {
     result << "//--------------------------------- & operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -556,10 +700,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_10) {
+  }else if (kBoolFalse == test_12) {
   }
-  const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixOrOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 82)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 82)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_11) {
+  const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixOrOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 96)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 96)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_13) {
     result << "//--------------------------------- | operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -571,10 +715,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_11) {
+  }else if (kBoolFalse == test_13) {
   }
-  const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixXorOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 88)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 88)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_12) {
+  const enumGalgasBool test_14 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixXorOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 102)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 102)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_14) {
     result << "//--------------------------------- ^ operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -586,28 +730,28 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_12) {
+  }else if (kBoolFalse == test_14) {
   }
-  const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixNotOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 94)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 94)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_13) {
+  const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixNotOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 108)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 108)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_15) {
     result << "//--------------------------------- not operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " operator_not (LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_13) {
+  }else if (kBoolFalse == test_15) {
   }
-  const enumGalgasBool test_14 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixTildeOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 99)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 99)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_14) {
+  const enumGalgasBool test_16 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixTildeOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 113)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 113)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_16) {
     result << "//--------------------------------- ~ operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " operator_tilde (LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_14) {
+  }else if (kBoolFalse == test_16) {
   }
-  const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 104)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 104)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_15) {
+  const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 118)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_17) {
     result << "//--------------------------------- + operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -621,10 +765,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_15) {
+  }else if (kBoolFalse == test_17) {
   }
-  const enumGalgasBool test_16 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAddOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 111)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 111)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_16) {
+  const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixAddOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 125)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 125)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_18) {
     result << "//--------------------------------- &+ operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -632,10 +776,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " & inOperand) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_16) {
+  }else if (kBoolFalse == test_18) {
   }
-  const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixSubOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 116)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 116)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_17) {
+  const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixSubOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 130)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_19) {
     result << "//--------------------------------- &- operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -643,10 +787,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " & inOperand) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_17) {
+  }else if (kBoolFalse == test_19) {
   }
-  const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixSubOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 121)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 121)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_18) {
+  const enumGalgasBool test_20 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixSubOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 135)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 135)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_20) {
     result << "//--------------------------------- - operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -660,10 +804,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_18) {
+  }else if (kBoolFalse == test_20) {
   }
-  const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixMulOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 128)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 128)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_19) {
+  const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixMulOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 142)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 142)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_21) {
     result << "//--------------------------------- * operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -677,10 +821,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_19) {
+  }else if (kBoolFalse == test_21) {
   }
-  const enumGalgasBool test_20 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixMulOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 135)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 135)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_20) {
+  const enumGalgasBool test_22 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixMulOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 149)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 149)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_22) {
     result << "//--------------------------------- &* operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -688,10 +832,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " & inOperand) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_20) {
+  }else if (kBoolFalse == test_22) {
   }
-  const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixDivOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 140)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 140)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_21) {
+  const enumGalgasBool test_23 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixDivOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 154)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 154)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_23) {
     result << "//--------------------------------- / operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -705,10 +849,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_21) {
+  }else if (kBoolFalse == test_23) {
   }
-  const enumGalgasBool test_22 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixDivOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 147)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 147)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_22) {
+  const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixDivOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 161)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 161)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_24) {
     result << "//--------------------------------- &/ operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -716,10 +860,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " & inOperand) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_22) {
+  }else if (kBoolFalse == test_24) {
   }
-  const enumGalgasBool test_23 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixModOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 152)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 152)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_23) {
+  const enumGalgasBool test_25 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_infixModOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 166)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 166)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_25) {
     result << "//--------------------------------- mod operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -733,10 +877,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_23) {
+  }else if (kBoolFalse == test_25) {
   }
-  const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixMinusOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 159)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 159)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_24) {
+  const enumGalgasBool test_26 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixMinusOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 173)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 173)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_26) {
     result << "//--------------------------------- prefix - operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -746,19 +890,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_24) {
+  }else if (kBoolFalse == test_26) {
   }
-  const enumGalgasBool test_25 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixMinusOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 165)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 165)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_25) {
+  const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_prefixMinusOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 179)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 179)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_27) {
     result << "//--------------------------------- prefix &- operator\n"
       "  public : VIRTUAL_IN_DEBUG GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " operator_unary_minus_no_ovf (void) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_25) {
+  }else if (kBoolFalse == test_27) {
   }
-  const enumGalgasBool test_26 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_incDecOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 170)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_26) {
+  const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_incDecOperator (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 184)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 184)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_28) {
     result << "//--------------------------------- ++, -- operators\n"
       "  public : VIRTUAL_IN_DEBUG void increment_operation (" ;
     columnMarker = result.currentColumn () ;
@@ -772,106 +916,106 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_26) {
+  }else if (kBoolFalse == test_28) {
   }
-  const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_incDecOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 177)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_27) {
+  const enumGalgasBool test_29 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_incDecOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 191)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 191)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_29) {
     result << "//--------------------------------- &++, &-- operators\n"
       "  public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;\n"
       "\n"
       "  public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_27) {
+  }else if (kBoolFalse == test_29) {
   }
-  const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_generateDescriptionGetterUtilityMethod (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 182)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_28) {
+  const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_generateDescriptionGetterUtilityMethod (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 196)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 196)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_30) {
     result << "//--------------------------------- Implementation of getter 'description'\n"
       "  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n"
       "                                              const int32_t inIndentation) const ;\n" ;
-  }else if (kBoolFalse == test_28) {
+  }else if (kBoolFalse == test_30) {
   }
-  const enumGalgasBool test_29 = GALGAS_bool (kIsEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 188)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 188)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_29) {
+  const enumGalgasBool test_31 = GALGAS_bool (kIsEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 202)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 202)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_31) {
     result << "//--------------------------------- Comparison\n"
       "  public : typeComparisonResult objectCompare (const GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " & inOperand) const ;\n" ;
-  }else if (kBoolFalse == test_29) {
+  }else if (kBoolFalse == test_31) {
   }
   result << "\n"
     "//--------------------------------- Setters\n" ;
-  GALGAS_uint index_9078_ (0) ;
+  GALGAS_uint index_9930_ (0) ;
   if (in_MODIFIER_5F_MAP.isValid ()) {
-    cEnumerator_setterMap enumerator_9078 (in_MODIFIER_5F_MAP, kEnumeration_up) ;
-    while (enumerator_9078.hasCurrentObject ()) {
-      const enumGalgasBool test_30 = GALGAS_bool (kIsEqual, enumerator_9078.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 198)))).boolEnum () ;
-      if (kBoolTrue == test_30) {
-        const enumGalgasBool test_31 = GALGAS_bool (kIsEqual, enumerator_9078.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_9078.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)))).operator_or (GALGAS_bool (kIsEqual, enumerator_9078.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)).operator_or (GALGAS_bool (kIsEqual, enumerator_9078.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 199)).boolEnum () ;
-        if (kBoolTrue == test_31) {
+    cEnumerator_setterMap enumerator_9930 (in_MODIFIER_5F_MAP, kEnumeration_up) ;
+    while (enumerator_9930.hasCurrentObject ()) {
+      const enumGalgasBool test_32 = GALGAS_bool (kIsEqual, enumerator_9930.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 212)))).boolEnum () ;
+      if (kBoolTrue == test_32) {
+        const enumGalgasBool test_33 = GALGAS_bool (kIsEqual, enumerator_9930.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_9930.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)))).operator_or (GALGAS_bool (kIsEqual, enumerator_9930.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)).operator_or (GALGAS_bool (kIsEqual, enumerator_9930.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)).boolEnum () ;
+        if (kBoolTrue == test_33) {
           result << "  public : VIRTUAL_IN_DEBUG void modifier_" ;
-          result << enumerator_9078.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 200)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 200)).stringValue () ;
+          result << enumerator_9930.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 214)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 214)).stringValue () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          GALGAS_uint index_9448_IDX (0) ;
-          if (enumerator_9078.current_mParameterList (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_9448 (enumerator_9078.current_mParameterList (HERE), kEnumeration_up) ;
-            while (enumerator_9448.hasCurrentObject ()) {
-              const enumGalgasBool test_32 = GALGAS_bool (kIsEqual, enumerator_9448.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 202)))).boolEnum () ;
-              if (kBoolTrue == test_32) {
+          GALGAS_uint index_10300_IDX (0) ;
+          if (enumerator_9930.current_mParameterList (HERE).isValid ()) {
+            cEnumerator_formalParameterSignature enumerator_10300 (enumerator_9930.current_mParameterList (HERE), kEnumeration_up) ;
+            while (enumerator_10300.hasCurrentObject ()) {
+              const enumGalgasBool test_34 = GALGAS_bool (kIsEqual, enumerator_10300.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 216)))).boolEnum () ;
+              if (kBoolTrue == test_34) {
                 result << "class GALGAS_" ;
-                result << enumerator_9448.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 203)).stringValue () ;
+                result << enumerator_10300.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 217)).stringValue () ;
                 result << " constinArgument" ;
-                result << index_9448_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 203)).stringValue () ;
-              }else if (kBoolFalse == test_32) {
-                const enumGalgasBool test_33 = GALGAS_bool (kIsEqual, enumerator_9448.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 204)))).boolEnum () ;
-                if (kBoolTrue == test_33) {
+                result << index_10300_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 217)).stringValue () ;
+              }else if (kBoolFalse == test_34) {
+                const enumGalgasBool test_35 = GALGAS_bool (kIsEqual, enumerator_10300.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 218)))).boolEnum () ;
+                if (kBoolTrue == test_35) {
                   result << "class GALGAS_" ;
-                  result << enumerator_9448.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 205)).stringValue () ;
+                  result << enumerator_10300.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)).stringValue () ;
                   result << " & ioArgument" ;
-                  result << index_9448_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 205)).stringValue () ;
-                }else if (kBoolFalse == test_33) {
-                  const enumGalgasBool test_34 = GALGAS_bool (kIsEqual, enumerator_9448.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 206)))).boolEnum () ;
-                  if (kBoolTrue == test_34) {
+                  result << index_10300_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 219)).stringValue () ;
+                }else if (kBoolFalse == test_35) {
+                  const enumGalgasBool test_36 = GALGAS_bool (kIsEqual, enumerator_10300.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 220)))).boolEnum () ;
+                  if (kBoolTrue == test_36) {
                     result << "class GALGAS_" ;
-                    result << enumerator_9448.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)).stringValue () ;
+                    result << enumerator_10300.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 221)).stringValue () ;
                     result << " & outArgument" ;
-                    result << index_9448_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 207)).stringValue () ;
-                  }else if (kBoolFalse == test_34) {
+                    result << index_10300_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 221)).stringValue () ;
+                  }else if (kBoolFalse == test_36) {
                     result << "class GALGAS_" ;
-                    result << enumerator_9448.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 209)).stringValue () ;
+                    result << enumerator_10300.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 223)).stringValue () ;
                     result << " inArgument" ;
-                    result << index_9448_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 209)).stringValue () ;
+                    result << index_10300_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 223)).stringValue () ;
                   }
                 }
               }
-              if (enumerator_9448.hasNextObject ()) {
+              if (enumerator_10300.hasNextObject ()) {
                 result << ",\n" ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_9448_IDX.increment () ;
-              enumerator_9448.gotoNextObject () ;
+              index_10300_IDX.increment () ;
+              enumerator_10300.gotoNextObject () ;
             }
           }
-          const enumGalgasBool test_35 = GALGAS_bool (kIsEqual, enumerator_9078.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 213)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-          if (kBoolTrue == test_35) {
-            const enumGalgasBool test_36 = enumerator_9078.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_36) {
+          const enumGalgasBool test_37 = GALGAS_bool (kIsEqual, enumerator_9930.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 227)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+          if (kBoolTrue == test_37) {
+            const enumGalgasBool test_38 = enumerator_9930.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_38) {
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_36) {
+            }else if (kBoolFalse == test_38) {
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "LOCATION_ARGS" ;
             }
-          }else if (kBoolFalse == test_35) {
-            const enumGalgasBool test_37 = enumerator_9078.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_37) {
+          }else if (kBoolFalse == test_37) {
+            const enumGalgasBool test_39 = enumerator_9930.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_39) {
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_37) {
+            }else if (kBoolFalse == test_39) {
               result << "\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
@@ -879,88 +1023,88 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
           }
           result << ") ;\n"
             "\n" ;
-        }else if (kBoolFalse == test_31) {
+        }else if (kBoolFalse == test_33) {
         }
-      }else if (kBoolFalse == test_30) {
+      }else if (kBoolFalse == test_32) {
       }
-      index_9078_.increment () ;
-      enumerator_9078.gotoNextObject () ;
+      index_9930_.increment () ;
+      enumerator_9930.gotoNextObject () ;
     }
   }
   result << "\n"
     "//--------------------------------- Instance Methods\n" ;
-  GALGAS_uint index_10754_ (0) ;
+  GALGAS_uint index_11606_ (0) ;
   if (in_INSTANCE_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_instanceMethodMap enumerator_10754 (in_INSTANCE_5F_METHOD_5F_MAP, kEnumeration_up) ;
-    while (enumerator_10754.hasCurrentObject ()) {
-      const enumGalgasBool test_38 = GALGAS_bool (kIsEqual, enumerator_10754.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 236)))).boolEnum () ;
-      if (kBoolTrue == test_38) {
-        const enumGalgasBool test_39 = GALGAS_bool (kIsEqual, enumerator_10754.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_10754.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))).operator_or (GALGAS_bool (kIsEqual, enumerator_10754.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)).operator_or (GALGAS_bool (kIsEqual, enumerator_10754.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 237)).boolEnum () ;
-        if (kBoolTrue == test_39) {
+    cEnumerator_instanceMethodMap enumerator_11606 (in_INSTANCE_5F_METHOD_5F_MAP, kEnumeration_up) ;
+    while (enumerator_11606.hasCurrentObject ()) {
+      const enumGalgasBool test_40 = GALGAS_bool (kIsEqual, enumerator_11606.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 250)))).boolEnum () ;
+      if (kBoolTrue == test_40) {
+        const enumGalgasBool test_41 = GALGAS_bool (kIsEqual, enumerator_11606.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_11606.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)))).operator_or (GALGAS_bool (kIsEqual, enumerator_11606.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)).operator_or (GALGAS_bool (kIsEqual, enumerator_11606.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)).boolEnum () ;
+        if (kBoolTrue == test_41) {
           result << "  public : VIRTUAL_IN_DEBUG void method_" ;
-          result << enumerator_10754.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 238)).stringValue () ;
+          result << enumerator_11606.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 252)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 252)).stringValue () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          GALGAS_uint index_11122_IDX (0) ;
-          if (enumerator_10754.current_mParameterList (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_11122 (enumerator_10754.current_mParameterList (HERE), kEnumeration_up) ;
-            while (enumerator_11122.hasCurrentObject ()) {
-              const enumGalgasBool test_40 = GALGAS_bool (kIsEqual, enumerator_11122.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 240)))).boolEnum () ;
-              if (kBoolTrue == test_40) {
+          GALGAS_uint index_11974_IDX (0) ;
+          if (enumerator_11606.current_mParameterList (HERE).isValid ()) {
+            cEnumerator_formalParameterSignature enumerator_11974 (enumerator_11606.current_mParameterList (HERE), kEnumeration_up) ;
+            while (enumerator_11974.hasCurrentObject ()) {
+              const enumGalgasBool test_42 = GALGAS_bool (kIsEqual, enumerator_11974.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 254)))).boolEnum () ;
+              if (kBoolTrue == test_42) {
                 result << "class GALGAS_" ;
-                result << enumerator_11122.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 241)).stringValue () ;
+                result << enumerator_11974.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 255)).stringValue () ;
                 result << " constinArgument" ;
-                result << index_11122_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 241)).stringValue () ;
-              }else if (kBoolFalse == test_40) {
-                const enumGalgasBool test_41 = GALGAS_bool (kIsEqual, enumerator_11122.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 242)))).boolEnum () ;
-                if (kBoolTrue == test_41) {
+                result << index_11974_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 255)).stringValue () ;
+              }else if (kBoolFalse == test_42) {
+                const enumGalgasBool test_43 = GALGAS_bool (kIsEqual, enumerator_11974.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 256)))).boolEnum () ;
+                if (kBoolTrue == test_43) {
                   result << "class GALGAS_" ;
-                  result << enumerator_11122.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 243)).stringValue () ;
+                  result << enumerator_11974.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 257)).stringValue () ;
                   result << " & ioArgument" ;
-                  result << index_11122_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 243)).stringValue () ;
-                }else if (kBoolFalse == test_41) {
-                  const enumGalgasBool test_42 = GALGAS_bool (kIsEqual, enumerator_11122.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 244)))).boolEnum () ;
-                  if (kBoolTrue == test_42) {
+                  result << index_11974_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 257)).stringValue () ;
+                }else if (kBoolFalse == test_43) {
+                  const enumGalgasBool test_44 = GALGAS_bool (kIsEqual, enumerator_11974.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 258)))).boolEnum () ;
+                  if (kBoolTrue == test_44) {
                     result << "class GALGAS_" ;
-                    result << enumerator_11122.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 245)).stringValue () ;
+                    result << enumerator_11974.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 259)).stringValue () ;
                     result << " & outArgument" ;
-                    result << index_11122_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 245)).stringValue () ;
-                  }else if (kBoolFalse == test_42) {
+                    result << index_11974_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 259)).stringValue () ;
+                  }else if (kBoolFalse == test_44) {
                     result << "class GALGAS_" ;
-                    result << enumerator_11122.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 247)).stringValue () ;
+                    result << enumerator_11974.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 261)).stringValue () ;
                     result << " inArgument" ;
-                    result << index_11122_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 247)).stringValue () ;
+                    result << index_11974_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 261)).stringValue () ;
                   }
                 }
               }
-              if (enumerator_11122.hasNextObject ()) {
+              if (enumerator_11974.hasNextObject ()) {
                 result << ",\n" ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_11122_IDX.increment () ;
-              enumerator_11122.gotoNextObject () ;
+              index_11974_IDX.increment () ;
+              enumerator_11974.gotoNextObject () ;
             }
           }
-          const enumGalgasBool test_43 = GALGAS_bool (kIsEqual, enumerator_10754.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 251)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-          if (kBoolTrue == test_43) {
-            const enumGalgasBool test_44 = enumerator_10754.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_44) {
+          const enumGalgasBool test_45 = GALGAS_bool (kIsEqual, enumerator_11606.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 265)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+          if (kBoolTrue == test_45) {
+            const enumGalgasBool test_46 = enumerator_11606.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_46) {
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_44) {
+            }else if (kBoolFalse == test_46) {
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "LOCATION_ARGS" ;
             }
-          }else if (kBoolFalse == test_43) {
-            const enumGalgasBool test_45 = enumerator_10754.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_45) {
+          }else if (kBoolFalse == test_45) {
+            const enumGalgasBool test_47 = enumerator_11606.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_47) {
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_45) {
+            }else if (kBoolFalse == test_47) {
               result << "\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
@@ -968,83 +1112,83 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
           }
           result << ") const ;\n"
             "\n" ;
-        }else if (kBoolFalse == test_39) {
+        }else if (kBoolFalse == test_41) {
         }
-      }else if (kBoolFalse == test_38) {
+      }else if (kBoolFalse == test_40) {
       }
-      index_10754_.increment () ;
-      enumerator_10754.gotoNextObject () ;
+      index_11606_.increment () ;
+      enumerator_11606.gotoNextObject () ;
     }
   }
   result << "//--------------------------------- Class Methods\n" ;
-  GALGAS_uint index_12427_ (0) ;
+  GALGAS_uint index_13279_ (0) ;
   if (in_CLASS_5F_METHOD_5F_MAP.isValid ()) {
-    cEnumerator_classMethodMap enumerator_12427 (in_CLASS_5F_METHOD_5F_MAP, kEnumeration_up) ;
-    while (enumerator_12427.hasCurrentObject ()) {
+    cEnumerator_classMethodMap enumerator_13279 (in_CLASS_5F_METHOD_5F_MAP, kEnumeration_up) ;
+    while (enumerator_13279.hasCurrentObject ()) {
       result << "  public : static void class_method_" ;
-      result << enumerator_12427.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 273)).stringValue () ;
+      result << enumerator_13279.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 287)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 287)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
-      GALGAS_uint index_12555_IDX (0) ;
-      if (enumerator_12427.current_mParameterList (HERE).isValid ()) {
-        cEnumerator_formalParameterSignature enumerator_12555 (enumerator_12427.current_mParameterList (HERE), kEnumeration_up) ;
-        while (enumerator_12555.hasCurrentObject ()) {
-          const enumGalgasBool test_46 = GALGAS_bool (kIsEqual, enumerator_12555.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 275)))).boolEnum () ;
-          if (kBoolTrue == test_46) {
+      GALGAS_uint index_13407_IDX (0) ;
+      if (enumerator_13279.current_mParameterList (HERE).isValid ()) {
+        cEnumerator_formalParameterSignature enumerator_13407 (enumerator_13279.current_mParameterList (HERE), kEnumeration_up) ;
+        while (enumerator_13407.hasCurrentObject ()) {
+          const enumGalgasBool test_48 = GALGAS_bool (kIsEqual, enumerator_13407.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 289)))).boolEnum () ;
+          if (kBoolTrue == test_48) {
             result << "class GALGAS_" ;
-            result << enumerator_12555.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue () ;
+            result << enumerator_13407.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 290)).stringValue () ;
             result << " constinArgument" ;
-            result << index_12555_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 276)).stringValue () ;
-          }else if (kBoolFalse == test_46) {
-            const enumGalgasBool test_47 = GALGAS_bool (kIsEqual, enumerator_12555.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 277)))).boolEnum () ;
-            if (kBoolTrue == test_47) {
+            result << index_13407_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 290)).stringValue () ;
+          }else if (kBoolFalse == test_48) {
+            const enumGalgasBool test_49 = GALGAS_bool (kIsEqual, enumerator_13407.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 291)))).boolEnum () ;
+            if (kBoolTrue == test_49) {
               result << "class GALGAS_" ;
-              result << enumerator_12555.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue () ;
+              result << enumerator_13407.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 292)).stringValue () ;
               result << " & ioArgument" ;
-              result << index_12555_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 278)).stringValue () ;
-            }else if (kBoolFalse == test_47) {
-              const enumGalgasBool test_48 = GALGAS_bool (kIsEqual, enumerator_12555.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 279)))).boolEnum () ;
-              if (kBoolTrue == test_48) {
+              result << index_13407_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 292)).stringValue () ;
+            }else if (kBoolFalse == test_49) {
+              const enumGalgasBool test_50 = GALGAS_bool (kIsEqual, enumerator_13407.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 293)))).boolEnum () ;
+              if (kBoolTrue == test_50) {
                 result << "class GALGAS_" ;
-                result << enumerator_12555.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 280)).stringValue () ;
+                result << enumerator_13407.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 294)).stringValue () ;
                 result << " & outArgument" ;
-                result << index_12555_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 280)).stringValue () ;
-              }else if (kBoolFalse == test_48) {
+                result << index_13407_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 294)).stringValue () ;
+              }else if (kBoolFalse == test_50) {
                 result << "class GALGAS_" ;
-                result << enumerator_12555.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).stringValue () ;
+                result << enumerator_13407.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 296)).stringValue () ;
                 result << " inArgument" ;
-                result << index_12555_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 282)).stringValue () ;
+                result << index_13407_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 296)).stringValue () ;
               }
             }
           }
-          if (enumerator_12555.hasNextObject ()) {
+          if (enumerator_13407.hasNextObject ()) {
             result << ",\n" ;
             result.appendSpacesUntilColumn (columnMarker) ;
           }
-          index_12555_IDX.increment () ;
-          enumerator_12555.gotoNextObject () ;
+          index_13407_IDX.increment () ;
+          enumerator_13407.gotoNextObject () ;
         }
       }
-      const enumGalgasBool test_49 = GALGAS_bool (kIsEqual, enumerator_12427.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 286)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-      if (kBoolTrue == test_49) {
-        const enumGalgasBool test_50 = enumerator_12427.current_mHasCompilerArgument (HERE).boolEnum () ;
-        if (kBoolTrue == test_50) {
+      const enumGalgasBool test_51 = GALGAS_bool (kIsEqual, enumerator_13279.current_mParameterList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 300)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+      if (kBoolTrue == test_51) {
+        const enumGalgasBool test_52 = enumerator_13279.current_mHasCompilerArgument (HERE).boolEnum () ;
+        if (kBoolTrue == test_52) {
           result << "C_Compiler * inCompiler\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "COMMA_LOCATION_ARGS" ;
-        }else if (kBoolFalse == test_50) {
+        }else if (kBoolFalse == test_52) {
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "LOCATION_ARGS" ;
         }
-      }else if (kBoolFalse == test_49) {
-        const enumGalgasBool test_51 = enumerator_12427.current_mHasCompilerArgument (HERE).boolEnum () ;
-        if (kBoolTrue == test_51) {
+      }else if (kBoolFalse == test_51) {
+        const enumGalgasBool test_53 = enumerator_13279.current_mHasCompilerArgument (HERE).boolEnum () ;
+        if (kBoolTrue == test_53) {
           result << ",\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "C_Compiler * inCompiler\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "COMMA_LOCATION_ARGS" ;
-        }else if (kBoolFalse == test_51) {
+        }else if (kBoolFalse == test_53) {
           result << "\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "COMMA_LOCATION_ARGS" ;
@@ -1052,61 +1196,61 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       }
       result << ") ;\n"
         "\n" ;
-      index_12427_.increment () ;
-      enumerator_12427.gotoNextObject () ;
+      index_13279_.increment () ;
+      enumerator_13279.gotoNextObject () ;
     }
   }
   result << "\n"
     "//--------------------------------- Getters\n" ;
-  GALGAS_uint index_13721_ (0) ;
+  GALGAS_uint index_14573_ (0) ;
   if (in_GETTER_5F_MAP.isValid ()) {
-    cEnumerator_getterMap enumerator_13721 (in_GETTER_5F_MAP, kEnumeration_up) ;
-    while (enumerator_13721.hasCurrentObject ()) {
-      const enumGalgasBool test_52 = GALGAS_bool (kIsEqual, enumerator_13721.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 307)))).boolEnum () ;
-      if (kBoolTrue == test_52) {
-        const enumGalgasBool test_53 = GALGAS_bool (kIsEqual, enumerator_13721.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_13721.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))).operator_or (GALGAS_bool (kIsEqual, enumerator_13721.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)).operator_or (GALGAS_bool (kIsEqual, enumerator_13721.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 308)).boolEnum () ;
-        if (kBoolTrue == test_53) {
+    cEnumerator_getterMap enumerator_14573 (in_GETTER_5F_MAP, kEnumeration_up) ;
+    while (enumerator_14573.hasCurrentObject ()) {
+      const enumGalgasBool test_54 = GALGAS_bool (kIsEqual, enumerator_14573.current_mKind (HERE).objectCompare (GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 321)))).boolEnum () ;
+      if (kBoolTrue == test_54) {
+        const enumGalgasBool test_55 = GALGAS_bool (kIsEqual, enumerator_14573.current_mErrorMessage (HERE).objectCompare (GALGAS_string::makeEmptyString ())).operator_and (GALGAS_bool (kIsEqual, enumerator_14573.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isAbstract (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)))).operator_or (GALGAS_bool (kIsEqual, enumerator_14573.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)).operator_or (GALGAS_bool (kIsEqual, enumerator_14573.current_mQualifier (HERE).objectCompare (GALGAS_methodQualifier::constructor_isBasicFinal (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)))) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 322)).boolEnum () ;
+        if (kBoolTrue == test_55) {
           result << "  public : VIRTUAL_IN_DEBUG class GALGAS_" ;
-          result << enumerator_13721.current_mReturnedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue () ;
+          result << enumerator_14573.current_mReturnedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 323)).stringValue () ;
           result << " getter_" ;
-          result << enumerator_13721.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 309)).stringValue () ;
+          result << enumerator_14573.current_lkey (HERE).getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 323)).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 323)).stringValue () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          GALGAS_uint index_14156_IDX (0) ;
-          if (enumerator_13721.current_mArgumentTypeList (HERE).isValid ()) {
-            cEnumerator_functionSignature enumerator_14156 (enumerator_13721.current_mArgumentTypeList (HERE), kEnumeration_up) ;
-            while (enumerator_14156.hasCurrentObject ()) {
+          GALGAS_uint index_15008_IDX (0) ;
+          if (enumerator_14573.current_mArgumentTypeList (HERE).isValid ()) {
+            cEnumerator_functionSignature enumerator_15008 (enumerator_14573.current_mArgumentTypeList (HERE), kEnumeration_up) ;
+            while (enumerator_15008.hasCurrentObject ()) {
               result << "const class GALGAS_" ;
-              result << enumerator_14156.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue () ;
+              result << enumerator_15008.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 325)).stringValue () ;
               result << " & constinOperand" ;
-              result << index_14156_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 311)).stringValue () ;
-              if (enumerator_14156.hasNextObject ()) {
+              result << index_15008_IDX.getter_string (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 325)).stringValue () ;
+              if (enumerator_15008.hasNextObject ()) {
                 result << ",\n" ;
                 result.appendSpacesUntilColumn (columnMarker) ;
               }
-              index_14156_IDX.increment () ;
-              enumerator_14156.gotoNextObject () ;
+              index_15008_IDX.increment () ;
+              enumerator_15008.gotoNextObject () ;
             }
           }
-          const enumGalgasBool test_54 = GALGAS_bool (kIsEqual, enumerator_13721.current_mArgumentTypeList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 314)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-          if (kBoolTrue == test_54) {
-            const enumGalgasBool test_55 = enumerator_13721.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_55) {
+          const enumGalgasBool test_56 = GALGAS_bool (kIsEqual, enumerator_14573.current_mArgumentTypeList (HERE).getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 328)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+          if (kBoolTrue == test_56) {
+            const enumGalgasBool test_57 = enumerator_14573.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_57) {
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_55) {
+            }else if (kBoolFalse == test_57) {
               result << "LOCATION_ARGS" ;
             }
-          }else if (kBoolFalse == test_54) {
-            const enumGalgasBool test_56 = enumerator_13721.current_mHasCompilerArgument (HERE).boolEnum () ;
-            if (kBoolTrue == test_56) {
+          }else if (kBoolFalse == test_56) {
+            const enumGalgasBool test_58 = enumerator_14573.current_mHasCompilerArgument (HERE).boolEnum () ;
+            if (kBoolTrue == test_58) {
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "C_Compiler * inCompiler\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
-            }else if (kBoolFalse == test_56) {
+            }else if (kBoolFalse == test_58) {
               result << "\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
               result << "COMMA_LOCATION_ARGS" ;
@@ -1114,27 +1258,27 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
           }
           result << ") const ;\n"
             "\n" ;
-        }else if (kBoolFalse == test_53) {
+        }else if (kBoolFalse == test_55) {
         }
-      }else if (kBoolFalse == test_52) {
+      }else if (kBoolFalse == test_54) {
       }
-      index_13721_.increment () ;
-      enumerator_13721.gotoNextObject () ;
+      index_14573_.increment () ;
+      enumerator_14573.gotoNextObject () ;
     }
   }
   result << "\n"
     "//--------------------------------- Introspection\n"
     "  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;\n" ;
-  const enumGalgasBool test_57 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_generateEnumerationHelperMethods (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 336)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 336)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_57) {
+  const enumGalgasBool test_59 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_generateEnumerationHelperMethods (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 350)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 350)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_59) {
     result << "//--------------------------------- Enumeration helper methods\n"
       "  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,\n"
       "                                                              const typeEnumerationOrder inOrder) const ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_57) {
+  }else if (kBoolFalse == test_59) {
   }
-  const enumGalgasBool test_58 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_supportWithAccessor (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 343)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_58) {
+  const enumGalgasBool test_60 = GALGAS_bool (kIsNotEqual, in_SUPPORTED_5F_OPERATORS.operator_and (function_supportWithAccessor (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 357)) COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 357)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_60) {
     result << "  public : VIRTUAL_IN_DEBUG cMapElement_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " * readWriteAccessForWithInstruction (" ;
@@ -1145,24 +1289,24 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "COMMA_LOCATION_ARGS) ;\n"
       "\n" ;
-  }else if (kBoolFalse == test_58) {
+  }else if (kBoolFalse == test_60) {
   }
-  const enumGalgasBool test_59 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 349)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_59) {
+  const enumGalgasBool test_61 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 363)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_61) {
     result << "//--------------------------------- Friend\n"
       "\n"
       "  friend class cEnumerator_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " ;\n" ;
-  }else if (kBoolFalse == test_59) {
+  }else if (kBoolFalse == test_61) {
   }
   result << " \n"
     "} ; // End of GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " class\n"
     "\n" ;
-  const enumGalgasBool test_60 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 356)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_60) {
+  const enumGalgasBool test_62 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 370)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_62) {
     result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "//   Enumerator declaration                                                                                            *\n"
       "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -1182,29 +1326,29 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << "const typeEnumerationOrder inOrder) ;\n"
       "\n"
       "//--- Current element access\n" ;
-    GALGAS_uint index_16418_ (0) ;
+    GALGAS_uint index_17270_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_16418 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kEnumeration_up) ;
-      while (enumerator_16418.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_17270 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kEnumeration_up) ;
+      while (enumerator_17270.hasCurrentObject ()) {
         result << "  public : class GALGAS_" ;
-        result << enumerator_16418.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 367)).stringValue () ;
+        result << enumerator_17270.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 381)).stringValue () ;
         result << " current_" ;
-        result << enumerator_16418.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 367)).stringValue () ;
+        result << enumerator_17270.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 381)).stringValue () ;
         result << " (LOCATION_ARGS) const ;\n" ;
-        index_16418_.increment () ;
-        enumerator_16418.gotoNextObject () ;
+        index_17270_.increment () ;
+        enumerator_17270.gotoNextObject () ;
       }
     }
-    const enumGalgasBool test_61 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 369)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 369)).boolEnum () ;
-    if (kBoolTrue == test_61) {
+    const enumGalgasBool test_63 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 383)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 383)).boolEnum () ;
+    if (kBoolTrue == test_63) {
       result << "//--- Current element access\n"
         "  public : class GALGAS_" ;
-      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).stringValue () ;
+      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 385)).stringValue () ;
       result << " current (LOCATION_ARGS) const ;\n" ;
-    }else if (kBoolFalse == test_61) {
+    }else if (kBoolFalse == test_63) {
     }
     result << "} ;\n" ;
-  }else if (kBoolFalse == test_60) {
+  }else if (kBoolFalse == test_62) {
   }
   result << "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8825,13 +8969,13 @@ void routine_generateWrapperContents (const GALGAS_string constinArgument_inFile
     const enumGalgasBool test_0 = enumerator_92665.current_mIsTextFile (HERE).boolEnum () ;
     if (kBoolTrue == test_0) {
       GALGAS_string var_contents = GALGAS_string::constructor_stringWithContentsOfFile (enumerator_92665.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2384)) ;
-      ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (enumerator_92665.current_lkey (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2385)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (GALGAS_string ("'\n"
+      ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (enumerator_92665.current_lkey (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2385)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (GALGAS_string ("'\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (GALGAS_string ("const char * gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2387)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2386)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2387)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2388)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2387)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2388)).add_operation (var_contents.getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2389)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2388)).add_operation (GALGAS_string (" ;\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2389)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2389)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2390)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2390)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2390)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2391)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2390)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2391)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2391)).add_operation (enumerator_92665.current_lkey (HERE).mAttribute_string.getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2392)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2392)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2392)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2392)).add_operation (enumerator_92665.current_lkey (HERE).mAttribute_string.getter_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2393)).getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2393)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2393)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2393)).add_operation (GALGAS_string ("  true, // Text file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2393)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2394)).add_operation (var_contents.getter_length (SOURCE_FILE ("semanticGeneration.galgas", 2395)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2395)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2395)).add_operation (GALGAS_string (", // Text length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2395)).add_operation (GALGAS_string ("  gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2395)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2396)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2396)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2396)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2396)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2396)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2396)).add_operation (GALGAS_string (") ;\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2396)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2385)) ;
     }else if (kBoolFalse == test_0) {
       GALGAS_data var_contents = GALGAS_data::constructor_dataWithContentsOfFile (enumerator_92665.current_mAbsoluteFilePath (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2399)) ;
-      ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (enumerator_92665.current_lkey (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2400)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (GALGAS_string ("'\n"
+      ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("//--- File '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (enumerator_92665.current_lkey (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2400)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (GALGAS_string ("'\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (GALGAS_string ("const uint8_t gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2402)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2401)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2402)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2403)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2402)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2403)).add_operation (var_contents.getter_length (SOURCE_FILE ("semanticGeneration.galgas", 2403)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2403)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2403)).add_operation (GALGAS_string ("] = {"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2403)).add_operation (var_contents.getter_cStringRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2404)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2403)).add_operation (GALGAS_string ("} ;\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2404)).add_operation (GALGAS_string ("const cRegularFileWrapper gWrapperFile_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2404)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2405)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2405)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2405)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2406)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2405)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2406)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2406)).add_operation (enumerator_92665.current_lkey (HERE).mAttribute_string.getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2407)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2407)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2407)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2407)).add_operation (enumerator_92665.current_lkey (HERE).mAttribute_string.getter_pathExtension (SOURCE_FILE ("semanticGeneration.galgas", 2408)).getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2408)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2408)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2408)).add_operation (GALGAS_string ("  false, // binary file\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2408)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2409)).add_operation (var_contents.getter_length (SOURCE_FILE ("semanticGeneration.galgas", 2410)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2410)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2410)).add_operation (GALGAS_string (", // Length\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2410)).add_operation (GALGAS_string ("  (const char *) gWrapperFileContent_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2410)).add_operation (enumerator_92665.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2411)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2411)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2411)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2411)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2411)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2411)).add_operation (GALGAS_string (") ;\n"
         "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2411)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2400)) ;
@@ -8845,25 +8989,25 @@ void routine_generateWrapperContents (const GALGAS_string constinArgument_inFile
     }
     enumerator_94538.gotoNextObject () ;
   }
-  ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("//--- All files of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2427)).add_operation (GALGAS_string ("' directory\n"
+  ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("//--- All files of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2427)).add_operation (GALGAS_string ("' directory\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2427)).add_operation (GALGAS_string ("static const cRegularFileWrapper * gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2427)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2429)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2428)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2429)).add_operation (constinArgument_inFilewrapperDirectoryIndex.getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2429)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2429)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2429)).add_operation (constinArgument_inFilewrapperRegularFileMap.getter_count (SOURCE_FILE ("semanticGeneration.galgas", 2430)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2430)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2430)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2430)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2430)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2427)) ;
   cEnumerator_wrapperFileMap enumerator_95118 (constinArgument_inFilewrapperRegularFileMap, kEnumeration_up) ;
   while (enumerator_95118.hasCurrentObject ()) {
-    ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("  & gWrapperFile_").add_operation (enumerator_95118.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)) ;
+    ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("  & gWrapperFile_").add_operation (enumerator_95118.current_mWrapperFileIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2432)) ;
     enumerator_95118.gotoNextObject () ;
   }
-  ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
+  ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2434)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2434)) ;
-  ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("//--- All sub-directories of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2437)).add_operation (GALGAS_string ("' directory\n"
+  ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("//--- All sub-directories of '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2437)).add_operation (GALGAS_string ("' directory\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2437)).add_operation (GALGAS_string ("static const cDirectoryWrapper * gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2437)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2439)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2438)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2439)).add_operation (constinArgument_inFilewrapperDirectoryIndex.getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2439)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2439)).add_operation (GALGAS_string (" ["), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2439)).add_operation (constinArgument_inFilewrapperDirectoryMap.getter_count (SOURCE_FILE ("semanticGeneration.galgas", 2440)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2440)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2440)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2440)).add_operation (GALGAS_string ("] = {\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2440)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2437)) ;
   cEnumerator_wrapperDirectoryMap enumerator_95715 (constinArgument_inFilewrapperDirectoryMap, kEnumeration_up) ;
   while (enumerator_95715.hasCurrentObject ()) {
-    ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("  & gWrapperDirectory_").add_operation (enumerator_95715.current_mWrapperDirectoryIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)) ;
+    ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("  & gWrapperDirectory_").add_operation (enumerator_95715.current_mWrapperDirectoryIndex (HERE).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2442)) ;
     enumerator_95715.gotoNextObject () ;
   }
-  ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
+  ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("  NULL\n").add_operation (GALGAS_string ("} ;\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2444)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2444)) ;
-  ioArgument_ioImplementation.plusAssign_operation (GALGAS_string ("//--- Directory '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2447)).add_operation (GALGAS_string ("'\n"
+  ioArgument_ioImplementation.plusAssign_operation(GALGAS_string ("//--- Directory '").add_operation (constinArgument_inFilewrapperDirectory, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2447)).add_operation (GALGAS_string ("'\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2447)).add_operation (GALGAS_string ("const cDirectoryWrapper gWrapperDirectory_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2447)).add_operation (constinArgument_inFilewrapperDirectoryIndex.getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2448)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2448)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2448)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2449)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2448)).add_operation (GALGAS_string (" (\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2449)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2449)).add_operation (constinArgument_inFilewrapperDirectory.getter_utf_38_Representation (SOURCE_FILE ("semanticGeneration.galgas", 2450)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2450)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2450)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2450)).add_operation (constinArgument_inFilewrapperRegularFileMap.getter_count (SOURCE_FILE ("semanticGeneration.galgas", 2451)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2451)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2451)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2451)).add_operation (GALGAS_string ("  gWrapperAllFiles_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2451)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2452)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2452)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2452)).add_operation (constinArgument_inFilewrapperDirectoryIndex.getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2452)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2452)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2452)).add_operation (GALGAS_string ("  "), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2452)).add_operation (constinArgument_inFilewrapperDirectoryMap.getter_count (SOURCE_FILE ("semanticGeneration.galgas", 2453)).getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2453)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2453)).add_operation (GALGAS_string (",\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2453)).add_operation (GALGAS_string ("  gWrapperAllDirectories_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2453)).add_operation (constinArgument_inFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("semanticGeneration.galgas", 2454)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2454)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2454)).add_operation (constinArgument_inFilewrapperDirectoryIndex.getter_string (SOURCE_FILE ("semanticGeneration.galgas", 2454)), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2454)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2454)).add_operation (GALGAS_string (") ;\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2454)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2447)) ;
 }
@@ -9902,7 +10046,7 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
       GALGAS_string var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (inCompiler, var_semanticContext.mAttribute_mTypeMap.getter_allKeys (SOURCE_FILE ("semanticGeneration.galgas", 2653)) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2652))) ;
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_104908 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
       while (enumerator_104908.hasCurrentObject ()) {
-        var_generatedCode.plusAssign_operation (callCategoryGetter_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104908.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2656)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2656)) ;
+        var_generatedCode.plusAssign_operation(callCategoryGetter_appendPrimitiveTypeDeclaration ((const cPtr_semanticDeclarationForGeneration *) enumerator_104908.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2656)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2656)) ;
         enumerator_104908.gotoNextObject () ;
       }
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105046 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
@@ -9910,16 +10054,16 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
         GALGAS_stringset var_unusedInclusionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2659)) ;
         GALGAS_string var_code ;
         callCategoryMethod_appendDeclaration_31_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105046.current_mDeclaration (HERE).ptr (), var_unusedInclusionSet, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2660)) ;
-        var_generatedCode.plusAssign_operation (var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)) ;
+        var_generatedCode.plusAssign_operation(var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2661)) ;
         enumerator_105046.gotoNextObject () ;
       }
-      var_generatedCode.plusAssign_operation (GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663))), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663)) ;
+      var_generatedCode.plusAssign_operation(GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663))), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2663)) ;
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_105362 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
       while (enumerator_105362.hasCurrentObject ()) {
         GALGAS_stringset var_inclusionSet_32_ = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2665)) ;
         GALGAS_string var_headerString_32_ ;
         callCategoryMethod_appendDeclaration_32_ ((const cPtr_semanticDeclarationForGeneration *) enumerator_105362.current_mDeclaration (HERE).ptr (), constinArgument_inDirectory, var_inclusionSet_32_, var_headerString_32_, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2666)) ;
-        var_generatedCode.plusAssign_operation (var_headerString_32_, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2667)) ;
+        var_generatedCode.plusAssign_operation(var_headerString_32_, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2667)) ;
         enumerator_105362.gotoNextObject () ;
       }
       const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2669)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
@@ -9933,11 +10077,11 @@ void routine_generatePredefinedTypeFiles (const GALGAS_string constinArgument_in
       var_generatedCode = GALGAS_string (filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2683))) ;
       cEnumerator_semanticDeclarationSortedListForGeneration enumerator_106204 (var_decoratedDeclarationListForGeneration, kEnumeration_up) ;
       while (enumerator_106204.hasCurrentObject ()) {
-        var_generatedCode.plusAssign_operation (callCategoryGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106204.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2685)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2685)) ;
+        var_generatedCode.plusAssign_operation(callCategoryGetter_appendTypeGenericImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106204.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2685)), inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2685)) ;
         GALGAS_stringset joker_106360 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2686)) ;
         GALGAS_string var_code ;
         callCategoryMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_106204.current_mDeclaration (HERE).ptr (), GALGAS_unifiedTypeMap::constructor_emptyMap (SOURCE_FILE ("semanticGeneration.galgas", 2686)), joker_106360, var_code, inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2686)) ;
-        var_generatedCode.plusAssign_operation (var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687)) ;
+        var_generatedCode.plusAssign_operation(var_code, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2687)) ;
         enumerator_106204.gotoNextObject () ;
       }
       const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("semanticGeneration.galgas", 2689)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
@@ -10312,22 +10456,22 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_s = GALGAS_string ("Features of @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249)).add_operation (GALGAS_string (" type:\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 249)) ;
-  var_s.plusAssign_operation (GALGAS_string (" - kind: ").add_operation (extensionGetter_kind (constinArgument_inTypeKindEnum, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)).add_operation (GALGAS_string (";\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)) ;
+  var_s.plusAssign_operation(GALGAS_string (" - kind: ").add_operation (extensionGetter_kind (constinArgument_inTypeKindEnum, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)).add_operation (GALGAS_string (";\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 250)) ;
   cEnumerator_typedPropertyList enumerator_13007 (constinArgument_inAllTypedAttributeList, kEnumeration_up) ;
   const bool bool_0 = true ;
   if (enumerator_13007.hasCurrentObject () && bool_0) {
-    var_s.plusAssign_operation (GALGAS_string (" - attribute(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 254)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - attribute(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 254)) ;
     while (enumerator_13007.hasCurrentObject () && bool_0) {
-      var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (enumerator_13007.current_mAttributeTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (enumerator_13007.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (enumerator_13007.current_mAttributeTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (enumerator_13007.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 256)) ;
       enumerator_13007.gotoNextObject () ;
     }
   }
   cEnumerator_constructorMap enumerator_13166 (constinArgument_inConstructorMap, kEnumeration_up) ;
   const bool bool_1 = true ;
   if (enumerator_13166.hasCurrentObject () && bool_1) {
-    var_s.plusAssign_operation (GALGAS_string (" - constructor(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 261)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - constructor(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 261)) ;
     while (enumerator_13166.hasCurrentObject () && bool_1) {
-      var_s.plusAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13166.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 263)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 263)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 263)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    ").add_operation (enumerator_13166.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 263)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 263)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 263)) ;
       cEnumerator_functionSignature enumerator_13267 (enumerator_13166.current_mArgumentTypeList (HERE), kEnumeration_up) ;
       while (enumerator_13267.hasCurrentObject ()) {
         GALGAS_string temp_2 ;
@@ -10337,19 +10481,19 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
         }else if (kBoolFalse == test_3) {
           temp_2 = GALGAS_string::makeEmptyString () ;
         }
-        var_s.plusAssign_operation (GALGAS_string (" \?").add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)).add_operation (enumerator_13267.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)) ;
+        var_s.plusAssign_operation(GALGAS_string (" \?").add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)).add_operation (enumerator_13267.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 265)) ;
         enumerator_13267.gotoNextObject () ;
       }
-      var_s.plusAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13166.current_mReturnedType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)) ;
+      var_s.plusAssign_operation(GALGAS_string (" -> @").add_operation (enumerator_13166.current_mReturnedType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 267)) ;
       enumerator_13166.gotoNextObject () ;
     }
   }
   cEnumerator_getterMap enumerator_13489 (constinArgument_inGetterMap, kEnumeration_up) ;
   const bool bool_4 = true ;
   if (enumerator_13489.hasCurrentObject () && bool_4) {
-    var_s.plusAssign_operation (GALGAS_string (" - getters(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 272)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - getters(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 272)) ;
     while (enumerator_13489.hasCurrentObject () && bool_4) {
-      var_s.plusAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13489.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 274)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 274)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 274)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    ").add_operation (enumerator_13489.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 274)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 274)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 274)) ;
       cEnumerator_functionSignature enumerator_13586 (enumerator_13489.current_mArgumentTypeList (HERE), kEnumeration_up) ;
       while (enumerator_13586.hasCurrentObject ()) {
         GALGAS_string temp_5 ;
@@ -10359,168 +10503,168 @@ void routine_printFeaturesOfType (const GALGAS_string constinArgument_inTypeName
         }else if (kBoolFalse == test_6) {
           temp_5 = GALGAS_string::makeEmptyString () ;
         }
-        var_s.plusAssign_operation (GALGAS_string (" \?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)).add_operation (enumerator_13586.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)) ;
+        var_s.plusAssign_operation(GALGAS_string (" \?").add_operation (temp_5, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)).add_operation (enumerator_13586.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 276)) ;
         enumerator_13586.gotoNextObject () ;
       }
-      var_s.plusAssign_operation (GALGAS_string (" -> @").add_operation (enumerator_13489.current_mReturnedType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)) ;
+      var_s.plusAssign_operation(GALGAS_string (" -> @").add_operation (enumerator_13489.current_mReturnedType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 278)) ;
       enumerator_13489.gotoNextObject () ;
     }
   }
   cEnumerator_setterMap enumerator_13808 (constinArgument_inSetterMap, kEnumeration_up) ;
   const bool bool_7 = true ;
   if (enumerator_13808.hasCurrentObject () && bool_7) {
-    var_s.plusAssign_operation (GALGAS_string (" - setter(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 283)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - setter(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 283)) ;
     while (enumerator_13808.hasCurrentObject () && bool_7) {
-      var_s.plusAssign_operation (GALGAS_string ("    ").add_operation (enumerator_13808.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 285)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 285)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 285)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    ").add_operation (enumerator_13808.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 285)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 285)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 285)) ;
       cEnumerator_formalParameterSignature enumerator_13901 (enumerator_13808.current_mParameterList (HERE), kEnumeration_up) ;
       while (enumerator_13901.hasCurrentObject ()) {
-        var_s.plusAssign_operation (GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_13901.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)).add_operation (enumerator_13901.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)) ;
+        var_s.plusAssign_operation(GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_13901.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)).add_operation (enumerator_13901.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 287)) ;
         enumerator_13901.gotoNextObject () ;
       }
-      var_s.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 289)) ;
+      var_s.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 289)) ;
       enumerator_13808.gotoNextObject () ;
     }
   }
   cEnumerator_instanceMethodMap enumerator_14056 (constinArgument_inInstanceMethodMap, kEnumeration_up) ;
   const bool bool_8 = true ;
   if (enumerator_14056.hasCurrentObject () && bool_8) {
-    var_s.plusAssign_operation (GALGAS_string (" - method(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 294)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - method(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 294)) ;
     while (enumerator_14056.hasCurrentObject () && bool_8) {
-      var_s.plusAssign_operation (GALGAS_string ("    ").add_operation (enumerator_14056.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 296)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 296)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 296)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    ").add_operation (enumerator_14056.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 296)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 296)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 296)) ;
       cEnumerator_formalParameterSignature enumerator_14149 (enumerator_14056.current_mParameterList (HERE), kEnumeration_up) ;
       while (enumerator_14149.hasCurrentObject ()) {
-        var_s.plusAssign_operation (GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_14149.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)).add_operation (enumerator_14149.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)) ;
+        var_s.plusAssign_operation(GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_14149.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)).add_operation (enumerator_14149.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 298)) ;
         enumerator_14149.gotoNextObject () ;
       }
-      var_s.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 300)) ;
+      var_s.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 300)) ;
       enumerator_14056.gotoNextObject () ;
     }
   }
   cEnumerator_classMethodMap enumerator_14301 (constinArgument_inClassMethodMap, kEnumeration_up) ;
   const bool bool_9 = true ;
   if (enumerator_14301.hasCurrentObject () && bool_9) {
-    var_s.plusAssign_operation (GALGAS_string (" - type proc(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 305)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - type proc(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 305)) ;
     while (enumerator_14301.hasCurrentObject () && bool_9) {
-      var_s.plusAssign_operation (GALGAS_string ("    ").add_operation (enumerator_14301.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 307)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 307)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 307)) ;
+      var_s.plusAssign_operation(GALGAS_string ("    ").add_operation (enumerator_14301.current_lkey (HERE).getter_string (SOURCE_FILE ("predefinedTypes.galgas", 307)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 307)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 307)) ;
       cEnumerator_formalParameterSignature enumerator_14397 (enumerator_14301.current_mParameterList (HERE), kEnumeration_up) ;
       while (enumerator_14397.hasCurrentObject ()) {
-        var_s.plusAssign_operation (GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_14397.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)).add_operation (enumerator_14397.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)) ;
+        var_s.plusAssign_operation(GALGAS_string (" ").add_operation (extensionGetter_string (enumerator_14397.current_mFormalArgumentPassingMode (HERE), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)).add_operation (enumerator_14397.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 309)) ;
         enumerator_14397.gotoNextObject () ;
       }
-      var_s.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 311)) ;
+      var_s.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 311)) ;
       enumerator_14301.gotoNextObject () ;
     }
   }
-  var_s.plusAssign_operation (GALGAS_string (" - operators(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 314)) ;
+  var_s.plusAssign_operation(GALGAS_string (" - operators(s):\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 314)) ;
   const enumGalgasBool test_10 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 315)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 315)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_10) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string (" + @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string (" + @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 316)) ;
   }
   const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixAddOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 318)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 318)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_11) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string (" &+ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string (" &+ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 319)) ;
   }
   const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixSubOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 321)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 321)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_12) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string (" - @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string (" - @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 322)) ;
   }
   const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixSubOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 324)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 324)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_13) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string (" &- @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string (" &- @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 325)) ;
   }
   const enumGalgasBool test_14 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixMulOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 327)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 327)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_14) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string (" * @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string (" * @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 328)) ;
   }
   const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixMulOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 330)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 330)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_15) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string (" &* @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string (" &* @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 331)) ;
   }
   const enumGalgasBool test_16 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixDivOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 333)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 333)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_16) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string (" / @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string (" / @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 334)) ;
   }
   const enumGalgasBool test_17 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixDivOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 336)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 336)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_17) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string (" &/ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string (" &/ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 337)) ;
   }
   const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixModOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 339)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_18) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string (" mod @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string (" mod @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 340)) ;
   }
   const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixAndOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 342)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 342)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_19) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string (" & @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string (" & @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 343)) ;
   }
   const enumGalgasBool test_20 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixOrOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 345)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 345)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_20) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string (" | @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string (" | @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 346)) ;
   }
   const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixXorOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 348)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 348)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_21) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string (" ^ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string (" ^ @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 349)) ;
   }
   const enumGalgasBool test_22 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_infixShiftOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 351)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 351)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_22) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (GALGAS_string (" >> @uint -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (GALGAS_string (" << @uint -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (GALGAS_string (" >> @uint -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 352)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (GALGAS_string (" << @uint -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 353)) ;
   }
   const enumGalgasBool test_23 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_prefixPlusOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 355)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 355)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_23) {
-    var_s.plusAssign_operation (GALGAS_string ("    + @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    + @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 356)) ;
   }
   const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_prefixMinusOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 358)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 358)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_24) {
-    var_s.plusAssign_operation (GALGAS_string ("    - @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    - @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 359)) ;
   }
   const enumGalgasBool test_25 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_prefixMinusOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 361)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 361)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_25) {
-    var_s.plusAssign_operation (GALGAS_string ("    &- @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    &- @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 362)) ;
   }
   const enumGalgasBool test_26 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_prefixTildeOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 364)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 364)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_26) {
-    var_s.plusAssign_operation (GALGAS_string ("    ~ @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    ~ @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 365)) ;
   }
   const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_prefixNotOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 367)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 367)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_27) {
-    var_s.plusAssign_operation (GALGAS_string ("    not @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    not @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (GALGAS_string (" -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 368)) ;
   }
   const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_incDecOperator (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 370)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 370)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_28) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (GALGAS_string (" ++ -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (GALGAS_string (" -- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (GALGAS_string (" ++ -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 371)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (GALGAS_string (" -- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 372)) ;
   }
   const enumGalgasBool test_29 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_incDecOperatorNoOVF (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 374)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 374)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_29) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string (" &++ -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string (" &-- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string (" &++ -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 375)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string (" &-- -> @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 376)) ;
   }
   cEnumerator_unifiedTypeMapProxyAndParameterList enumerator_17683 (constinArgument_inAddAssignOperatorArguments, kEnumeration_up) ;
   const bool bool_30 = true ;
   if (enumerator_17683.hasCurrentObject () && bool_30) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)).add_operation (GALGAS_string (" +="), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)).add_operation (GALGAS_string (" +="), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 380)) ;
     while (enumerator_17683.hasCurrentObject () && bool_30) {
-      var_s.plusAssign_operation (GALGAS_string (" !@").add_operation (enumerator_17683.current_mType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)) ;
+      var_s.plusAssign_operation(GALGAS_string (" !@").add_operation (enumerator_17683.current_mType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 382)) ;
       enumerator_17683.gotoNextObject () ;
     }
-    var_s.plusAssign_operation (GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 384)) ;
+    var_s.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 384)) ;
   }
   const enumGalgasBool test_31 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 386)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 386)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_31) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (GALGAS_string (" .= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (GALGAS_string (" .= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)).add_operation (GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 387)) ;
   }
   const enumGalgasBool test_32 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_isComparable (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 389)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 389)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_32) {
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (GALGAS_string (" <  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (GALGAS_string (" <= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (GALGAS_string (" >  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)) ;
-    var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (GALGAS_string (" >= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (GALGAS_string (" <  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 390)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (GALGAS_string (" <= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 391)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (GALGAS_string (" >  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 392)) ;
+    var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (GALGAS_string (" >= @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 393)) ;
   }
-  var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (GALGAS_string (" =  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)) ;
-  var_s.plusAssign_operation (GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (GALGAS_string (" != @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)) ;
+  var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (GALGAS_string (" =  @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 395)) ;
+  var_s.plusAssign_operation(GALGAS_string ("    @").add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (GALGAS_string (" != @"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (constinArgument_inTypeName, inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)).add_operation (GALGAS_string (" -> @bool\n"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 396)) ;
   const enumGalgasBool test_33 = GALGAS_bool (kIsNotEqual, constinArgument_inHandledOperatorFlags.operator_and (function_supportWithAccessor (inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 398)) COMMA_SOURCE_FILE ("predefinedTypes.galgas", 398)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_33) {
-    var_s.plusAssign_operation (GALGAS_string (" - 'with' accessor\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 399)) ;
+    var_s.plusAssign_operation(GALGAS_string (" - 'with' accessor\n"), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 399)) ;
   }
   inCompiler->printMessage (var_s  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 408)) ;
 }

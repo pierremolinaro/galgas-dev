@@ -401,6 +401,38 @@ void GALGAS_uint_36__34_::minusAssign_operation (const GALGAS_uint_36__34_ inOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_uint_36__34_::mulAssign_operation (const GALGAS_uint_36__34_ inOperand,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    const uint64_t r = mUInt64Value * inOperand.mUInt64Value ;
+    const bool ovf = (inOperand.mUInt64Value != 0) && ((r / inOperand.mUInt64Value) != mUInt64Value) ;
+    if (ovf) {
+      inCompiler->onTheFlyRunTimeError ("@uint64 *= operation overflow" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mUInt64Value = r ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint_36__34_::divAssign_operation (const GALGAS_uint_36__34_ inOperand,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    if (inOperand.mUInt64Value == 0) {
+      inCompiler->onTheFlyRunTimeError ("@uint64 /= divide by zero" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mUInt64Value /= inOperand.mUInt64Value ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_bool GALGAS_uint_36__34_::getter_canAdd (const GALGAS_uint_36__34_ & inOperand
                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;

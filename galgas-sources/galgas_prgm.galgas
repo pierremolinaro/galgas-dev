@@ -206,12 +206,13 @@ proc compileProject
 #  end if ;
 #---------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3 (
-      !declarationAST.mSyntaxComponentList
-      !declarationAST.mSyntaxExtensions
-      !?declarationAST.mDeclarationList
+    !declarationAST.mSyntaxComponentList
+    !declarationAST.mSyntaxExtensions
+    !?declarationAST.mDeclarationList
   )
 #---------------------------------- Compile semantic declarations
-  let productDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/output"
+  let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
+  let productDirectory = buildDirectory + "/output"
   var appProductFileList = @stringlist. emptyList
   var semanticContext = @semanticContext.default
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
@@ -292,7 +293,7 @@ proc compileProject
   if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
       !semanticContext.mTypeMap
-      !productDirectory
+      !buildDirectory
       !optionComponentMapForGeneration
       !appProductFileList
       !semanticDeclarationSortedListForGeneration
@@ -316,7 +317,7 @@ proc compileProject
 
 proc projectGeneration
   ?let @unifiedTypeMap inTypeMap
-  ?let @string inProductDirectory
+  ?let @string inBuildDirectory
   ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
   ?let @stringlist inAppProductFileList
   ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
@@ -336,14 +337,15 @@ proc projectGeneration
   end
   @stringset allProductFileSet = {}
 #---------------------------------- Create build/user-headers if does not exist
-  let userHeadersDir = inProductDirectory + "/../user-headers"
+  let userHeadersDir = inBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory] ;
 #---------------------------------- Generate GUI components
+  let productDirectory = inBuildDirectory + "/output"
 #  message "*** Generate GUI\n" ;
   if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       !inOptionComponentMapForGeneration
-      !inProductDirectory
+      !productDirectory
       !?appProductFileList
       !?allProductFileSet
     )
@@ -354,7 +356,7 @@ proc projectGeneration
   var toolHeaderFileList = @stringlist. emptyList
   generateSemanticDeclarationsGalgas3 (
     !inTypeMap
-    !inProductDirectory
+    !productDirectory
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?toolHeaderFileList
@@ -403,12 +405,12 @@ proc projectGeneration
 #---------------------------------- Remove useless files
   if 0 == @uint.errorCount then
     var allActualFileSet = @stringset. emptySet
-    for () in [inProductDirectory regularFiles !false] do
+    for () in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end
     let uselessFileSet = allActualFileSet - allProductFileSet
     for () in uselessFileSet do
-      [@string deleteFile !inProductDirectory + "/" + key]
+      [@string deleteFile !productDirectory + "/" + key]
     end
   end
 }

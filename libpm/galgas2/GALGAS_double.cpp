@@ -396,6 +396,33 @@ void GALGAS_double::minusAssign_operation (const GALGAS_double inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_double::mulAssign_operation (const GALGAS_double inOperand,
+                                         C_Compiler * /* inCompiler */
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mDoubleValue *= inOperand.mDoubleValue ;
+  }else{
+    mIsValid = false ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_double::divAssign_operation (const GALGAS_double inOperand,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    if (inOperand.mDoubleValue == 0) {
+      inCompiler->onTheFlyRunTimeError ("@double /= divide by zero" COMMA_THERE) ;
+      mIsValid = false ;
+    }else{
+      mDoubleValue /= inOperand.mDoubleValue ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_double::multiply_operation (const GALGAS_double & inOperand2,
                                                  C_Compiler * /* inCompiler */
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
