@@ -1711,9 +1711,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     )
     ioSemanticDeclarationListForGeneration +=
       !""
-#      !inSyntaxComponentRoot
       !syntaxDeclarationForGeneration
-#      !hasIndexing
       !""
   end
 }
@@ -1725,7 +1723,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  if [option .verbose_output value] then
+  if not [option .quiet_output value] then
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
 #---------------------------------------------------------- Parse syntax components

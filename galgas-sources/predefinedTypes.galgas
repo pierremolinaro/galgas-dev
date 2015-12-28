@@ -124,44 +124,44 @@ private proc appendStructASTForRangeType
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 {
-  ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!true !"timer" !.predefined_timer}
   ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !.predefined_application}
   ioDeclarationListASTs += !@bigintPredefinedTypeAST.new {!true !"bigint" !.predefined_bigint}
-  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}
-  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !.predefined_object}
+  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !.predefined_binaryset}
   ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !.predefined_bool}
-  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !.predefined_uint}
-  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !.predefined_uint64}
+  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !.predefined_char}
+  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !.predefined_data}
+  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !.predefined_double}
+  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}
+  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !.predefined_function}
+  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !.predefined_location}
+  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !.predefined_object}
   ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!true !"sint" !.predefined_sint}
   ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!true !"sint64" !.predefined_sint64}
-  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !.predefined_char}
-  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !.predefined_double}
   ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!true !"string" !.predefined_string}
-  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !.predefined_location}
   ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!true !"stringset" !.predefined_stringset}
-  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !.predefined_function}
+  ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!true !"timer" !.predefined_timer}
   ioDeclarationListASTs += !@typePredefinedTypeAST.new {!true !"type" !.predefined_type}
-  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !.predefined_binaryset}
-  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !.predefined_data}
+  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !.predefined_uint}
+  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !.predefined_uint64}
 
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" )
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"luint" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lstring" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"object" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"string" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" )
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint" )
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint64" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"string" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lstring" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"object" )
 
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bool" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint64" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"char" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"double" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint64" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"string" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" )
 
   appendPredefined2StringListTypeAST (!?ioDeclarationListASTs )
   appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs )

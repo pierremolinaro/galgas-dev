@@ -448,8 +448,9 @@ proc checkCategoryGetterDefinitionForClass
 
 proc performGalgas3ProjectGlobalCheckings
   ?let @semanticContext inSemanticContext
-  ?let @semanticDeclarationListAST inSemanticDeclarationList {
-  if [option .verbose_output value] then
+  ?let @semanticDeclarationListAST inSemanticDeclarationList
+{
+  if not [option .quiet_output value] then
     message "*** Perform global checkings\n"
   end
 #------ Build descendant type list map

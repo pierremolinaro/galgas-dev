@@ -57,3 +57,14 @@ gOption_generic_5F_cli_5F_options_display_5F_version ("generic_cli_options",
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+#if COMPILE_FOR_WINDOWS == 1
+  C_BoolCommandLineOption
+  gOption_generic_5F_cli_5F_options_nodialog ("generic_cli_options",
+                                              "nodialog",
+                                              '\0',
+                                              "no-dialog",
+                                              "Do Not Display any dialog when no input file (Windows only)") ;
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*

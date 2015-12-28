@@ -50,10 +50,10 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"verbose_output"
-    commandChar:'v'
-    commandString:@"verbose"
-    comment:@"Verbose Output"
+    identifier:@"quiet_output"
+    commandChar:'q'
+    commandString:@"quiet"
+    comment:@"Quiet Output"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;

@@ -324,7 +324,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   enumErrorKind errorFlag = kNoError ;
 
 //--- Verbose Output
-  const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
+  const bool verboseOptionOn = ! gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue ;
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file

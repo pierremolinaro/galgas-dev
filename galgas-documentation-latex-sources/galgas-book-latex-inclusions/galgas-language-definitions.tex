@@ -76,7 +76,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas --mode=latex:Galgas temp.galgas}
+  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
   {\singlespacing\begin{siderules}\ttfamily\input{temp.galgas.tex}\end{siderules}}
 }
 \makeatother
@@ -109,7 +109,7 @@
   \immediate\closeout\tempfile
   \@esphack
   \endgroup
-  \immediate\write18{galgas --mode=latex:Galgas temp.galgas}
+  \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
   {\singlespacing\begin{boxrules}\ttfamily\input{temp.galgas.tex}\end{boxrules}}
 }
 \makeatother

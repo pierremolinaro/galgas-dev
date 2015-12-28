@@ -72,8 +72,8 @@ for () in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 end
 %  </Compiler>
   <Linker>
-%if GENERATE_FOR_WINDOWS then !"   <Add library=\"Ws2_32\" />" else end%
-  </Linker>
+%if GENERATE_FOR_WINDOWS then !"   <Add library=\"Ws2_32\" />\n   <Add library=\"Comdlg32\" />" else end
+%  </Linker>
   <Unit filename="%!LIBPM_PATH%/all-libpm.cpp" />
   <Unit filename="%!LIBPM_PATH%/galgas2/all-galgas.cpp" />
 %

@@ -47,11 +47,11 @@ C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_trace ("galgas_buil
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BoolCommandLineOption
-gOption_galgas_5F_builtin_5F_options_verbose_5F_output ("galgas_builtin_options",
-                                                    "verbose_output",
-                                                    'v',
-                                                    "verbose",
-                                                    "Verbose Output") ;
+gOption_galgas_5F_builtin_5F_options_quiet_5F_output ("galgas_builtin_options",
+                                                      "quiet_output",
+                                                      'q',
+                                                      "quiet",
+                                                      "Quiet Output") ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
