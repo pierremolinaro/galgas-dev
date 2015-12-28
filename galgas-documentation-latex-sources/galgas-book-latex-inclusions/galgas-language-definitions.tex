@@ -150,7 +150,7 @@
       \immediate\openout\tempfile=temp.galgas%
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
-      \immediate\write18{galgas --mode=latex:Galgas temp.galgas}%
+      \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}%
       \colorbox{gray!6}{\ttfamily\input{temp.galgas.tex}\unskip}%
     }%
   }%

@@ -254,15 +254,15 @@ getter @typeKindEnum kind -> @string outResult {
 # @unifiedTypeMap map, for indicating the handled operators.                                                           *
 #----------------------------------------------------------------------------------------------------------------------*
 
-func %once infixAddOperator   -> @uint outMask { outMask = 1 }
-func %once infixSubOperator   -> @uint outMask { outMask = 1 << 1 }
-func %once infixMulOperator   -> @uint outMask { outMask = 1 << 2 }
-func %once infixDivOperator   -> @uint outMask { outMask = 1 << 3 }
-func %once infixModOperator   -> @uint outMask { outMask = 1 << 4 }
-func %once infixShiftOperator -> @uint outMask { outMask = 1 << 5 }
-func %once prefixPlusOperator   -> @uint outMask { outMask = 1 << 6 }
-func %once prefixMinusOperator  -> @uint outMask { outMask = 1 << 7 }
-func %once prefixTildeOperator  -> @uint outMask { outMask = 1 << 8 }
+func %once infixAddOperator    -> @uint outMask { outMask = 1 << 0 }
+func %once infixSubOperator    -> @uint outMask { outMask = 1 << 1 }
+func %once infixMulOperator    -> @uint outMask { outMask = 1 << 2 }
+func %once infixDivOperator    -> @uint outMask { outMask = 1 << 3 }
+func %once infixModOperator    -> @uint outMask { outMask = 1 << 4 }
+func %once infixShiftOperator  -> @uint outMask { outMask = 1 << 5 }
+func %once prefixPlusOperator  -> @uint outMask { outMask = 1 << 6 }
+func %once prefixMinusOperator -> @uint outMask { outMask = 1 << 7 }
+func %once prefixTildeOperator -> @uint outMask { outMask = 1 << 8 }
 func %once incDecOperator      -> @uint outMask { outMask = 1 << 9 }
 
 func %once infixAndOperator -> @uint outMask { outMask = 1 << 10 }
@@ -270,16 +270,17 @@ func %once infixOrOperator  -> @uint outMask { outMask = 1 << 11 }
 func %once infixXorOperator -> @uint outMask { outMask = 1 << 12 }
 func %once prefixNotOperator  -> @uint outMask { outMask = 1 << 13 }
 
+func %once isComparable -> @uint outMask { outMask = 1 << 14 } # Supports <, <=, >, >= operators
+
 func %once plusEqualOperatorWithExpression  -> @uint outMask { outMask = 1 << 15 } # var += exp ;
 func %once minusEqualOperatorWithExpression -> @uint outMask { outMask = 1 << 16 } # var -= exp ;
-func %once isComparable                     -> @uint outMask { outMask = 1 << 17 } # Supports <, <=, >, >= operators
 
-func %once infixAddOperatorNoOVF   -> @uint outMask { outMask = 1 << 18 }
-func %once infixSubOperatorNoOVF   -> @uint outMask { outMask = 1 << 19 }
-func %once infixMulOperatorNoOVF   -> @uint outMask { outMask = 1 << 20 }
-func %once infixDivOperatorNoOVF   -> @uint outMask { outMask = 1 << 21 }
-func %once prefixMinusOperatorNoOVF  -> @uint outMask { outMask = 1 << 22 }
-func %once incDecOperatorNoOVF      -> @uint outMask { outMask = 1 << 23 }
+func %once infixAddOperatorNoOVF    -> @uint outMask { outMask = 1 << 17 }
+func %once infixSubOperatorNoOVF    -> @uint outMask { outMask = 1 << 18 }
+func %once infixMulOperatorNoOVF    -> @uint outMask { outMask = 1 << 19 }
+func %once infixDivOperatorNoOVF    -> @uint outMask { outMask = 1 << 20 }
+func %once prefixMinusOperatorNoOVF -> @uint outMask { outMask = 1 << 21 }
+func %once incDecOperatorNoOVF      -> @uint outMask { outMask = 1 << 22 }
 
 func %once supportWithAccessor                            -> @uint outMask { outMask = 1 << 26 }
 func %once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask { outMask = 1 << 27 }
