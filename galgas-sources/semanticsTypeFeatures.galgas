@@ -135,6 +135,7 @@ override getter @uintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFla
     | generateDescriptionGetterUtilityMethod () | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | infixAddOperatorNoOVF () | infixSubOperatorNoOVF () | infixMulOperatorNoOVF () | infixDivOperatorNoOVF ()
     | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
+    | mulEqualOperatorWithExpression ()| divEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -147,6 +148,7 @@ override getter @sintPredefinedTypeAST getSupportedOperatorFlags -> @uint outFla
     | generateDescriptionGetterUtilityMethod ()  | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | infixAddOperatorNoOVF () | infixSubOperatorNoOVF () | infixMulOperatorNoOVF () | infixDivOperatorNoOVF ()
     | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
+    | mulEqualOperatorWithExpression ()| divEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -158,6 +160,7 @@ override getter @uint64PredefinedTypeAST getSupportedOperatorFlags ->@uint outFl
     | generateDescriptionGetterUtilityMethod () | incDecOperator () | incDecOperatorNoOVF () | isComparable ()
     | infixAddOperatorNoOVF () | infixSubOperatorNoOVF () | infixMulOperatorNoOVF () | infixDivOperatorNoOVF ()
     | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
+    | mulEqualOperatorWithExpression ()| divEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -170,6 +173,7 @@ override getter @sint64PredefinedTypeAST getSupportedOperatorFlags -> @uint outF
     | incDecOperator () | incDecOperatorNoOVF () | generateDescriptionGetterUtilityMethod () | isComparable ()
     | infixAddOperatorNoOVF () | infixSubOperatorNoOVF () | infixMulOperatorNoOVF () | infixDivOperatorNoOVF ()
     | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
+    | mulEqualOperatorWithExpression ()| divEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -179,6 +183,7 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags -> @uint outF
     | prefixPlusOperator () | prefixMinusOperator () | infixModOperator () | infixDivOperatorNoOVF ()
     | generateDescriptionGetterUtilityMethod () | isComparable ()
     | plusEqualOperatorWithExpression ()| minusEqualOperatorWithExpression ()
+    | mulEqualOperatorWithExpression ()| divEqualOperatorWithExpression ()
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

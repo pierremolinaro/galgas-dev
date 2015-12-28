@@ -146,6 +146,12 @@ end%
     if (type_mHandledOperatorFlags & minusEqualOperatorWithExpression ()) != 0 then
       %-= instruction: %!linkForType (!type_lkey.string)% -= %!linkForType (!type_lkey.string)%<br><br>%
     end
+    if (type_mHandledOperatorFlags & mulEqualOperatorWithExpression ()) != 0 then
+      %*= instruction: %!linkForType (!type_lkey.string)% *= %!linkForType (!type_lkey.string)%<br><br>%
+    end
+    if (type_mHandledOperatorFlags & divEqualOperatorWithExpression ()) != 0 then
+      %/= instruction: %!linkForType (!type_lkey.string)% /= %!linkForType (!type_lkey.string)%<br><br>%
+    end
     if (type_mHandledOperatorFlags & incDecOperator ()) != 0 then
       %incrementation instruction: %!linkForType (!type_lkey.string)% ++<br><br>%
       %decrementation instruction: %!linkForType (!type_lkey.string)% --<br><br>%
