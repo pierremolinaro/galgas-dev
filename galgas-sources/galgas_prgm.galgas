@@ -115,7 +115,7 @@ proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
   ?let @string inSourceToAnalyze
 {
-  if [option .verbose_output value] then
+  if not [option .quiet_output value] then
     message "*** Parsing project files\n"
   end
   grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
@@ -125,7 +125,7 @@ proc parseAndAnalyzeProject
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
       if cppCompilationTarget != "" then
-        if [option.verbose_output value] then
+        if not [option .quiet_output value] then
           message "*** Perform C++ compilation\n"
         end
         let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
@@ -331,7 +331,7 @@ proc projectGeneration
 {
   var appProductFileList = inAppProductFileList
 #---------------------------------- File generation
-  if [option .verbose_output value] then
+  if not [option .quiet_output value] then
     message "*** Generating files\n"
   end
   @stringset allProductFileSet = {}

@@ -1,20 +1,18 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Routines for building pure BNF grammar (without 'select' and 'repeat')     *
+//  Routines for building pure BNF grammar (without 'select' and 'repeat')                                             *
 //                                                                                                                     *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, École Centrale de Nantes (France)                                     *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                                                           *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU General Public License as published by the      *
-//  Free Software Foundation.                                                  *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//  more details.                                                              *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
+//  more details.                                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -34,11 +32,10 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void
-fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
-                                 cVocabulary & ioVocabulary,
-                                 const C_String & inSyntaxComponentName,
-                                 int32_t & ioCount) {
+static void fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
+                                             cVocabulary & ioVocabulary,
+                                             const C_String & inSyntaxComponentName,
+                                             int32_t & ioCount) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList, kEnumeration_up) ;
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
@@ -50,10 +47,9 @@ fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAna
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cPtr_repeatInstructionForGrammarAnalysis::
-fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                          const C_String & inSyntaxComponentName,
-                          int32_t & ioCount) {
+void cPtr_repeatInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+                                                                         const C_String & inSyntaxComponentName,
+                                                                         int32_t & ioCount) {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
                                      ioCount,
@@ -72,10 +68,9 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cPtr_selectInstructionForGrammarAnalysis::
-fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
-                          const C_String & inSyntaxComponentName,
-                          int32_t & ioCount) {
+void cPtr_selectInstructionForGrammarAnalysis::fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+                                                                         const C_String & inSyntaxComponentName,
+                                                                         int32_t & ioCount) {
   ioVocabulary.addNonTerminalSymbol ("select_",
                                      inSyntaxComponentName,
                                      ioCount,
@@ -200,12 +195,6 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount,
                    derivation,
                    0) ;
-//    p.mSourceFileName = inSyntaxComponentName ;
-//    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-//    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
-//    const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-//    p.mLeftNonTerminalIndex = idx ;
-//    swap (p.mDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
     currentBranch.gotoNextObject () ;
   }
@@ -253,11 +242,6 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    mAttribute_mStartLocation.startLocation ().lineNumber (),
                    mAttribute_mStartLocation.startLocation ().columnNumber (),
                    ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount) ;
-/*    p.mSourceFileName = inSyntaxComponentName ;
-    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
-    const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-    p.mLeftNonTerminalIndex = idx ;*/
     ioProductions.insertByExchange (p) ;
   }
 
@@ -277,7 +261,6 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   //--- insert sequence from X
     cEnumerator_branchListForGrammarAnalysis firstBranch (mAttribute_mRepeatBranchList, kEnumeration_up) ;
     cEnumerator_syntaxInstructionListForGrammarAnalysis firstBranchInstruction (firstBranch.current_mSyntaxInstructionList (HERE), kEnumeration_up) ;
-//    instruction = firstBranch->mInstructionList.firstObject () ;
     while (firstBranchInstruction.hasCurrentObject ()) {
       cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
@@ -293,11 +276,6 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                    idx,
                    derivation,
                    0) ;
-/*    p.mSourceFileName = inSyntaxComponentName ;
-    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
-    p.mLeftNonTerminalIndex = idx ;
-    swap (p.mDerivation, derivation) ;*/
     ioProductions.insertByExchange (p) ;
     currentBranch.gotoNextObject () ;
   }
@@ -386,13 +364,6 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                      terminalSymbolsCount + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue (),
                      derivation,
                      currentRule.current_mProductionIndex (HERE).uintValue ()) ;
-/*      p.mSourceFileName = currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue () ;
-      p.mDefinitionLine = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber () ;
-      p.mColumnDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().columnNumber () ;
-      p.mProductionIndex = currentRule.current_mProductionIndex (HERE).uintValue () ;
-      p.mLeftNonTerminalIndex = terminalSymbolsCount
-                                 + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue () ;
-      swap (p.mDerivation, derivation) ;*/
       ioProductions.insertByExchange (p) ;
       currentRule.gotoNextObject () ;
     }
@@ -430,10 +401,6 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                    ioVocabulary.getAllSymbolsCount () - 1,
                    derivation,
                    0) ;
-/*    p.mDefinitionLine = 0 ;
-    p.mColumnDefinition = 0 ;
-    p.mLeftNonTerminalIndex = ioVocabulary.getAllSymbolsCount () - 1 ;
-    swap (p.mDerivation, derivation) ;*/
     ioProductions.insertByExchange (p) ;
   }
 //--- Build productions arraies

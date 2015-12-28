@@ -52,4 +52,10 @@ extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_vers
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#if COMPILE_FOR_WINDOWS == 1
+  extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_nodialog ;
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #endif

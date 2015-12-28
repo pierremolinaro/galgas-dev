@@ -68,7 +68,7 @@
   </Compiler>
   <Linker>
    <Add library="Ws2_32" />
-  </Linker>
+   <Add library="Comdlg32" />  </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />
   <Unit filename="../build/output/all-declarations-26.cpp" />

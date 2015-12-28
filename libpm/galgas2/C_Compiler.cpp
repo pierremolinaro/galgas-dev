@@ -535,7 +535,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
                                          const C_String & inFileName,
                                          const C_String & inContents) {
 //--- Verbose option ?
-  const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
+  const bool verboseOptionOn = ! gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue ;
 //--- Start path : by default, use source file directory
   const C_String startPath = (inStartPath.length () == 0)
    ? sourceFilePath ().stringByDeletingLastPathComponent ()
@@ -637,7 +637,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
   const bool inMakeExecutable
 ) {
 //--- Verbose option ?
-  const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
+  const bool verboseOptionOn = ! gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue ;
 //--- User zones
   const C_String kSTART_OF_USER_ZONE_1 = C_String (inLineCommentPrefix) + START_OF_USER_ZONE_1 ;
   const C_String kEND_OF_USER_ZONE_1   = C_String (inLineCommentPrefix) + END_OF_USER_ZONE_1 ;

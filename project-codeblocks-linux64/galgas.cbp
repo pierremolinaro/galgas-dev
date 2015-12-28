@@ -67,7 +67,6 @@
   <Add directory="../hand_coded_sources" />
   </Compiler>
   <Linker>
-
   </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />

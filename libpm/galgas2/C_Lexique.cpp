@@ -170,7 +170,7 @@ mLatexNextCharacterToEnterIndex (0) {
   C_SourceTextInString * sourceTextPtr = NULL ;    
   macroMyNew (sourceTextPtr, C_SourceTextInString (inSourceString,
                                                    inStringForError,
-                                                   gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue
+                                                   !gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue
                                                    COMMA_HERE)) ;
   resetAndLoadSourceFromText (sourceTextPtr) ;
   mTokenStartLocation.resetWithSourceText (sourceTextPtr) ;

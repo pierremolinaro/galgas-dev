@@ -20,7 +20,7 @@ proc compileSemanticDeclarationsGalgas3
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
 {
-  if [option.verbose_output value] then
+  if not [option .quiet_output value] then
     message "*** Building semantic context\n"
   end
 #------ Add predefined types to semantics declarations
@@ -71,7 +71,7 @@ proc compileSemanticDeclarationsGalgas3
     ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
   )
 #---
-  if [option .verbose_output value] then
+  if not [option .quiet_output value] then
     message "*** Semantic analysis\n"
   end
 #------ Check there is no undefined types
