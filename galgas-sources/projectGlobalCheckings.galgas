@@ -450,7 +450,7 @@ proc performGalgas3ProjectGlobalCheckings
   ?let @semanticContext inSemanticContext
   ?let @semanticDeclarationListAST inSemanticDeclarationList
 {
-  if not [option .quiet_output value] then
+  if @application.verboseOutput then
     message "*** Perform global checkings\n"
   end
 #------ Build descendant type list map

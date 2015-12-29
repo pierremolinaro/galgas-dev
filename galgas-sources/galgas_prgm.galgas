@@ -115,7 +115,7 @@ proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
   ?let @string inSourceToAnalyze
 {
-  if not [option .quiet_output value] then
+  if @application.verboseOutput then
     message "*** Parsing project files\n"
   end
   grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
@@ -125,7 +125,7 @@ proc parseAndAnalyzeProject
     if 0 == @uint.errorCount then
       let cppCompilationTarget = [option galgas_cli_options.cppCompile value]
       if cppCompilationTarget != "" then
-        if not [option .quiet_output value] then
+        if @application.verboseOutput then
           message "*** Perform C++ compilation\n"
         end
         let buildFile = [inProjectSourceFile stringByDeletingLastPathComponent] + "/" + cppCompilationTarget + "/build.py"
@@ -332,7 +332,7 @@ proc projectGeneration
 {
   var appProductFileList = inAppProductFileList
 #---------------------------------- File generation
-  if not [option .quiet_output value] then
+  if @application.verboseOutput then
     message "*** Generating files\n"
   end
   @stringset allProductFileSet = {}
@@ -370,7 +370,7 @@ proc projectGeneration
       handledExtensionSet += !mSourceFileExtension.string
     end
   #--- Build qualified feature map
-    var ignoredFeatureSet = @stringset. emptySet
+    @stringset ignoredFeatureSet = {}
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
     ignoredFeatureSet += !"app-source"

@@ -655,6 +655,7 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "utilities/F_DisplayException.h"
 #include "galgas2/C_galgas_CLI_Options.h"
+#include "galgas2/F_verbose_output.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -830,8 +831,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
                          kSourceFileHelpMessages,
                          print_tool_help_message) ;
 //---
-  bool verboseOptionOn = true ;
-  int16_t returnCode = 0 ; // No error
+  int returnCode = 0 ; // No error
 //--- Set Execution mode
   C_String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
@@ -844,7 +844,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     macroMyNew (commonLexique, C_Compiler (NULL, "", "" COMMA_HERE)) ;
     try{
       routine_before (commonLexique COMMA_HERE) ;
-      verboseOptionOn = !gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue ;
+      const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
           enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
@@ -853,7 +853,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonLexique->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
-        int16_t r = 0 ;
+        int r = 0 ;
         if (fileExtension == "galgas") {
           switch (executionMode ()) {
           case kExecutionModeNormal :
@@ -931,7 +931,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     //--- Epilogue
       routine_after (commonLexique COMMA_HERE) ;
     //--- Display error and warnings count
-      if (!gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
+      if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         C_String message ;
         if (totalWarningCount () == 0) {
           message << "No warning" ;

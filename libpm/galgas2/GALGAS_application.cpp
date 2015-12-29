@@ -25,6 +25,7 @@
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "galgas2/F_verbose_output.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -64,6 +65,12 @@ typeComparisonResult GALGAS_application::objectCompare (const GALGAS_application
 void GALGAS_application::description (C_String & ioString,
                                       const int32_t /* inIndentation */) const {
   ioString << "<@application:not built>" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_application::constructor_verboseOutput (UNUSED_LOCATION_ARGS) {
+  return GALGAS_bool (verboseOutput ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

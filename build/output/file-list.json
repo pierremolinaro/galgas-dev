@@ -31,6 +31,7 @@
         "all-declarations-2.cpp",
         "all-declarations-1.cpp",
         "all-declarations-0.cpp",
+        "C_galgas_quiet_option.cpp",
         "cDecisionTableElement.cpp",
         "cVocabulary.cpp",
         "buildPureBNFgrammar.cpp",

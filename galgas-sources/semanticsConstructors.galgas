@@ -283,6 +283,13 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !name:"verboseOutput"
+    !resultTypeName:"bool"
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !name:"projectVersionString"
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false

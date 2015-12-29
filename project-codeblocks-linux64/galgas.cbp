@@ -97,6 +97,7 @@
   <Unit filename="../build/output/all-declarations-2.cpp" />
   <Unit filename="../build/output/all-declarations-1.cpp" />
   <Unit filename="../build/output/all-declarations-0.cpp" />
+  <Unit filename="../build/output/C_galgas_quiet_option.cpp" />
   <Unit filename="../hand_coded_sources/cDecisionTableElement.cpp" />
   <Unit filename="../hand_coded_sources/cVocabulary.cpp" />
   <Unit filename="../hand_coded_sources/buildPureBNFgrammar.cpp" />
