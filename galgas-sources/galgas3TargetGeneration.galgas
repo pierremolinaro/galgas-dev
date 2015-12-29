@@ -331,7 +331,8 @@ proc updateGalgas3Targets
   ?let @stringset inHandledExtensionSet
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedSourceAppFileList
-  ?let @stringlist inHandCodedLinkAppFileList {
+  ?let @stringlist inHandCodedLinkAppFileList
+{
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
 #--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
@@ -339,6 +340,14 @@ proc updateGalgas3Targets
     ?*
   ]
   ioAllProductFileSet += !"project_header.h"
+#----------------------------------------------------------- %quietByDefault
+  let quietByDefault = [inProjectQualifiedFeatureMap hasKey !"quietByDefault"]
+  var toolCppFileList = inToolCppFileList
+  if quietByDefault then 
+    toolCppFileList += !"C_galgas_verbose_option.cpp"
+  else
+    toolCppFileList += !"C_galgas_quiet_option.cpp"
+  end
 #----------------------------------------------------------- Update LIBPM
   @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
@@ -354,11 +363,12 @@ proc updateGalgas3Targets
 #--- 
 #--- Check target names, file base name uniqueness, and build target file list
 #---
-  var guiSourceSet_app =@stringset.setWithStringList{!inAppProductFileList}
+  @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
 #---
-  var sourceFileSet =@stringset.emptySet{}
+  @stringset sourceFileSet = {}
 #--- Parse features
-  var availableGenerationFeatures =@stringset.emptySet{}
+  @stringset availableGenerationFeatures = {}
+  availableGenerationFeatures += !"quietByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
   availableGenerationFeatures += !"codeblocks-linux64"
@@ -376,7 +386,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"ElCapitanYosemite"
   availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"LatestMacOS"
-  var generationFeatures =@stringset.emptySet{}
+  @stringset generationFeatures = {}
 #--- Check xcode target architectures
   @string SDK = ""
   @string MACOSX_DEPLOYMENT_TARGET = ""
@@ -477,7 +487,7 @@ proc updateGalgas3Targets
     generateGalgasCodeBlocksWindowsTarget (
       !projectDirectory
       !inTargetName
-      !inToolCppFileList
+      !toolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
@@ -487,7 +497,7 @@ proc updateGalgas3Targets
     generateGalgasCodeBlocksMacTarget (
       !projectDirectory
       !inTargetName
-      !inToolCppFileList
+      !toolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
@@ -497,7 +507,7 @@ proc updateGalgas3Targets
     generateGalgasCodeBlocksLinuxI686Target (
       !projectDirectory
       !inTargetName
-      !inToolCppFileList
+      !toolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
@@ -507,7 +517,7 @@ proc updateGalgas3Targets
     generateGalgasCodeBlocksLinuxX86_64Target (
       !projectDirectory
       !inTargetName
-      !inToolCppFileList
+      !toolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
@@ -535,7 +545,7 @@ proc updateGalgas3Targets
   let @string jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
     !inHandCodedSourceDirectorySet
     !handCodedSourceToolFileList
-    !inToolCppFileList
+    !toolCppFileList
     !linkOptionForLinkingFrameworkWithTool
     !libpmPath
 
@@ -714,7 +724,7 @@ proc updateGalgas3Targets
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (App)"
         !groupPath:"../"
-        !fileNames:@stringset. setWithStringList {!inHandCodedSourceAppFileList}
+        !fileNames:@stringset.setWithStringList {!inHandCodedSourceAppFileList}
         !?cFileRefs:*
         !?cppFileRefs:*
         !?mFileRefs:m_HandCodedSourceFileRefForAppList
@@ -754,7 +764,7 @@ proc updateGalgas3Targets
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources (Tool)"
         !groupPath:"../"
-        !fileNames:@stringset. setWithStringList {!inHandCodedSourceToolFileList}
+        !fileNames:@stringset.setWithStringList {!inHandCodedSourceToolFileList}
         !?cFileRefs:buildCFileRefListForTool
         !?cppFileRefs:buildCppFileRefListForTool
         !?mFileRefs:m_FileRefList
@@ -771,7 +781,7 @@ proc updateGalgas3Targets
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks (Tool)"
         !groupPath:"/System/Library/Frameworks"
-        !fileNames:@stringset. setWithStringList {!inFrameworkToolFileList}
+        !fileNames:@stringset.setWithStringList {!inFrameworkToolFileList}
         !?cFileRefs:*
         !?cppFileRefs:*
         !?mFileRefs:*
@@ -786,7 +796,7 @@ proc updateGalgas3Targets
     [!?xcodeProject addGroupWithFiles
       !groupName:"Generated by GALGAS"
       !groupPath:"../build/output"
-      !fileNames:@stringset. setWithStringList {!inToolCppFileList + inToolHeaderFileList + inAppProductFileList}
+      !fileNames:@stringset.setWithStringList {!inToolCppFileList + inToolHeaderFileList + inAppProductFileList}
       !?cFileRefs:buildCFileRefListForTool
       !?cppFileRefs:buildCppFileRefListForTool
       !?mFileRefs:m_FileRefList
@@ -1038,6 +1048,9 @@ proc updateGalgas3Targets
         !"C_galgas_class_inspector.h",
         !"C_galgas_CLI_Options.cpp",
         !"C_galgas_CLI_Options.h",
+        !if quietByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
+        !if quietByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
+        !"F_verbose_output.h",
         !"C_galgas_function_descriptor.cpp",
         !"C_galgas_function_descriptor.h",
         !"C_galgas_io.cpp",

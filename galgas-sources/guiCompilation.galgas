@@ -101,19 +101,20 @@ proc compileAllGuiComponentFromASTGalgas3
 private proc compileGuiComponentGalgas3
   ?let @galgas3GUIComponentListAST-element inGUIComponentAST
   ?let @semanticContext inSemanticContext
-  ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration {
+  ?!@optionComponentMapForGeneration ioOptionComponentMapForGeneration
+{
   if inGUIComponentAST.mGUIComponentName.string != "cocoa" then
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
 #--- 
-  var context =@guiAnalysisContext.new{
+  @guiAnalysisContext context = .new {
     !@stringlist. emptyList
-    !@guiCommandLineOptionList. emptyList # Bool options
-    !@guiCommandLineOptionList. emptyList # UInt options
-    !@guiCommandLineOptionList. emptyList # string options
-    !@stringlist. emptyList
-    !@extensionMap. emptyMap
-    !@importedLexiqueList. emptyList
+    !@guiCommandLineOptionList.emptyList # Bool options
+    !@guiCommandLineOptionList.emptyList # UInt options
+    !@guiCommandLineOptionList.emptyList # string options
+    !@stringlist.emptyList
+    !@extensionMap.emptyMap
+    !@importedLexiqueList.emptyList
   }
 #--- Check imported options components
   for () in inGUIComponentAST.mImportedOptionList do

@@ -32,6 +32,7 @@
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
 #include "strings/C_HTMLString.h"
+#include "galgas2/F_verbose_output.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -324,8 +325,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   enumErrorKind errorFlag = kNoError ;
 
 //--- Verbose Output
-  const bool verboseOptionOn = ! gOption_galgas_5F_builtin_5F_options_quiet_5F_output.mValue ;
-//--- If 'HTMLfileName' is the empty string, no file is created
+  const bool verboseOptionOn = verboseOutput () ;
 
 //--- Create output HTML file
   const C_String title = C_String ("'") + inTargetFileName.mAttribute_string.stringValue () + "' grammar" ;

@@ -966,7 +966,8 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?let @bool optionComponentIsPredefined

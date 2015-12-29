@@ -20,7 +20,7 @@ proc compileSemanticDeclarationsGalgas3
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
 {
-  if not [option .quiet_output value] then
+  if @application.verboseOutput then
     message "*** Building semantic context\n"
   end
 #------ Add predefined types to semantics declarations
@@ -71,7 +71,7 @@ proc compileSemanticDeclarationsGalgas3
     ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
   )
 #---
-  if not [option .quiet_output value] then
+  if @application.verboseOutput then
     message "*** Semantic analysis\n"
   end
 #------ Check there is no undefined types
@@ -80,7 +80,7 @@ proc compileSemanticDeclarationsGalgas3
   end
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
     for () in sortedSemanticDeclarationListAST do
       [mSemanticDeclaration semanticAnalysis

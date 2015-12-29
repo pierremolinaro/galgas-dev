@@ -3013,7 +3013,8 @@ override method @listmapDeclarationAST addAssociatedElement
     !mIsPredefined
     !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
     !structAttributeList
-    !""}
+    !""
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3024,7 +3025,8 @@ override method @listmapDeclarationAST addAssociatedElement
 
 proc buildSemanticContext
   ?let @semanticDeclarationListAST inSemanticDeclarationList
-  !@semanticContext outSemanticContext {
+  !@semanticContext outSemanticContext
+{
 #------ Create associated type (@TYPE.element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
   for () in inSemanticDeclarationList do
@@ -3034,11 +3036,11 @@ proc buildSemanticContext
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
-  var semanticTypePrecedenceGraph =@semanticTypePrecedenceGraph.emptyGraph{}
-  var categoryMethodMapForBuildingContext =@categoryMethodMapForBuildingContext.emptyMap{}
-  var categoryGetterMapForBuildingContext =@categoryGetterMapForBuildingContext.emptyMap{}
-  var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
-  var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
+  var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
+  var categoryMethodMapForBuildingContext = @categoryMethodMapForBuildingContext.emptyMap{}
+  var categoryGetterMapForBuildingContext = @categoryGetterMapForBuildingContext.emptyMap{}
+  var categoryModifierMapForBuildingContext = @categoryModifierMapForBuildingContext.emptyMap{}
+  var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph

@@ -920,7 +920,8 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?let @bool isPredefined
@@ -1722,8 +1723,9 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  if not [option .quiet_output value] then
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+  if @application.verboseOutput then
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
 #---------------------------------------------------------- Parse syntax components

@@ -509,7 +509,8 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
 
 override method @templateOptionAccessAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?var @bool optionComponentIsPredefined
@@ -518,18 +519,18 @@ override method @templateOptionAccessAST templateExpressionAnalysis
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
-  @bool found = [boolOptionMap hasKey ![mOptionName string]]
+  var found = [boolOptionMap hasKey !mOptionName.string]
   @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = [uintOptionMap hasKey ![mOptionName string]]
+    found = [uintOptionMap hasKey !mOptionName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = [stringOptionMap hasKey ![mOptionName string]]
+    found = [stringOptionMap hasKey !mOptionName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if not found then
-    found = [stringListOptionMap hasKey ![mOptionName string]]
+    found = [stringListOptionMap hasKey !mOptionName.string]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
@@ -539,28 +540,32 @@ override method @templateOptionAccessAST templateExpressionAnalysis
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
-        ![mOptionName string]}
+        !mOptionName.string
+      }
     elsif [mGetterName string] == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
-        ![mOptionName string]}
+        !mOptionName.string
+      }
     elsif [mGetterName string] == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
-        ![mOptionName string]}
+        !mOptionName.string
+      }
     elsif [mGetterName string] == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
-        ![mOptionName string]}
+        !mOptionName.string
+      }
     else
       error mGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end

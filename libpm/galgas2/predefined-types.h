@@ -170,6 +170,8 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static GALGAS__32_stringlist constructor_uintOptionNameList (LOCATION_ARGS) ;
 
+  public : static GALGAS_bool constructor_verboseOutput (LOCATION_ARGS) ;
+
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
