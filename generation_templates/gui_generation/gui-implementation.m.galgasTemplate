@@ -2,7 +2,7 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 %for () in [GUI_CONTEXT mWithLexiqueList] do
-  %#import "%if GENERATE_FOR_GALGAS3 then %lexique-%end !mLexiqueClassName%-cocoa.m"\n%
+  %#import "lexique-%!mLexiqueClassName%-cocoa.m"\n%
 end
 for () in [GUI_CONTEXT mNibAndClassList] do
   %#import "%!mValue%.h"\n%
@@ -51,7 +51,7 @@ end
 
 %
 for () in [GUI_CONTEXT mImportedOptionComponentList] do
-  %#import "%if GENERATE_FOR_GALGAS3 then %option-%end!mValue%-cocoa.m"\n%
+  %#import "option-%!mValue%-cocoa.m"\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*
@@ -64,7 +64,28 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
 for () in [GUI_CONTEXT mImportedOptionComponentList] do
   %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;\n%
 end
-%}
+
+if QUIET_OUTPUT_BY_DEFAULT then
+%  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
+%    initWithDomainName:@"galgas_cli_options"\n%
+%    identifier:@"quiet_output"\n%
+%    commandChar:'q'\n%
+%    commandString:@"quiet"\n%
+%    comment:@"Quiet output"\n%
+%    defaultValue:@""\n%
+%  ] ;\n%
+else
+%  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
+%    initWithDomainName:@"galgas_cli_options"\n%
+%    identifier:@"verbose_output"\n%
+%    commandChar:'v'\n%
+%    commandString:@"verbose"\n%
+%    comment:@"Verbose output"\n%
+%    defaultValue:@""\n%
+%  ] ;\n%
+end
+%  [ioBoolOptionArray addObject:option] ;
+}
 
 %for () in [GUI_CONTEXT mWithLexiqueList] do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%

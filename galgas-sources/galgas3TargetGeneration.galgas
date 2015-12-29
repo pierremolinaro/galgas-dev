@@ -153,7 +153,6 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !inHandCodedSourceDirectorySet
     !windows:true
     !platform:"Windows"
-#    !gmpPostix:"win32"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -178,7 +177,6 @@ private proc generateGalgasCodeBlocksMacTarget
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Mac"
-#    !gmpPostix:"Darwin-Intel"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -203,7 +201,6 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
-#    !gmpPostix:"Linux-i686"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -228,7 +225,6 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
-#    !gmpPostix:"Linux-x86_64"
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -322,6 +318,7 @@ proc updateGalgas3Targets
   ?let @string inProjectVersionString
   ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap
   ?let @lstringlist inTargetFeatureList
+  ?let @bool inQuietOutputByDefault
   ?let @stringlist inToolCppFileList
   ?let @stringlist inToolHeaderFileList
   ?let @stringlist inAppProductFileList
@@ -340,15 +337,14 @@ proc updateGalgas3Targets
     ?*
   ]
   ioAllProductFileSet += !"project_header.h"
-#----------------------------------------------------------- %quietByDefault
-  let quietByDefault = [inProjectQualifiedFeatureMap hasKey !"quietByDefault"]
+#----------------------------------------------------------- %quietOutputByDefault
   var toolCppFileList = inToolCppFileList
-  if quietByDefault then 
+  if inQuietOutputByDefault then 
     toolCppFileList += !"C_galgas_verbose_option.cpp"
   else
     toolCppFileList += !"C_galgas_quiet_option.cpp"
   end
-#----------------------------------------------------------- Update LIBPM
+#----------------------------------------------------------- LIBPM path
   @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
     if mFeatureValue.string == "" then
@@ -368,7 +364,7 @@ proc updateGalgas3Targets
   @stringset sourceFileSet = {}
 #--- Parse features
   @stringset availableGenerationFeatures = {}
-  availableGenerationFeatures += !"quietByDefault"
+  availableGenerationFeatures += !"quietOutputByDefault"
   availableGenerationFeatures += !"codeblocks-windows"
   availableGenerationFeatures += !"codeblocks-linux32"
   availableGenerationFeatures += !"codeblocks-linux64"
@@ -469,7 +465,7 @@ proc updateGalgas3Targets
   end
 #--- Generation
   if [generationFeatures hasKey !"makefile-macosx"] then
-    generateGalgas3MakefileMacOSXTarget (!projectDirectory !inTargetName )
+    generateGalgas3MakefileMacOSXTarget (!projectDirectory !inTargetName)
   end
   if [generationFeatures hasKey !"makefile-unix"] then
     generateGalgas3MakefileUnixTarget (!projectDirectory !inTargetName )
@@ -542,13 +538,12 @@ proc updateGalgas3Targets
       handCodedSourceToolFileList += ![f lastPathComponent]
     end
   end
-  let @string jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
+  let jsonFileListContents = [filewrapper targetGalgas3GenerationFileWrapper.json_file_list
     !inHandCodedSourceDirectorySet
     !handCodedSourceToolFileList
     !toolCppFileList
     !linkOptionForLinkingFrameworkWithTool
     !libpmPath
-
   ]
   let jsonFileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.json"
   [jsonFileListContents writeToFileWhenDifferentContents !jsonFileListPath ?*]
@@ -1048,8 +1043,8 @@ proc updateGalgas3Targets
         !"C_galgas_class_inspector.h",
         !"C_galgas_CLI_Options.cpp",
         !"C_galgas_CLI_Options.h",
-        !if quietByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
-        !if quietByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
+        !if inQuietOutputByDefault then "C_galgas_verbose_option.cpp" else "C_galgas_quiet_option.cpp" end,
+        !if inQuietOutputByDefault then "C_galgas_verbose_option.h" else "C_galgas_quiet_option.h" end,
         !"F_verbose_output.h",
         !"C_galgas_function_descriptor.cpp",
         !"C_galgas_function_descriptor.h",
@@ -1441,7 +1436,6 @@ proc updateGalgas3Targets
         !"GCC_OPTIMIZATION_LEVEL = 2",
         !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
-#        !"OTHER_LDFLAGS = \"" + libpmPath + "/gmp/libgmp-Darwin-Intel.a\""
       }
       ?targetRef:let releaseTargetRef
       ?productFileRef:let releaseProductFileRef
@@ -1457,7 +1451,6 @@ proc updateGalgas3Targets
         !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
         !"GCC_PREPROCESSOR_DEFINITIONS = ()",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
-#        !"OTHER_LDFLAGS = \"" + libpmPath + "/gmp/libgmp-Darwin-Intel.a\""
       }
       ?targetRef:let debugTargetRef
       ?productFileRef:let debugProductFileRef
