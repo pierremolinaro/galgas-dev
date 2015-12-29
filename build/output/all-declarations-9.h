@@ -1264,8 +1264,8 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (class C_Compiler * inCompiler,
-                                                                                const class GALGAS_bool & in_GENERATE_5F_FOR_5F_GALGAS_33_,
-                                                                                const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT
+                                                                                const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
+                                                                                const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1300,8 +1300,9 @@ void routine_compileGuiComponentGalgas_33_ (const class GALGAS_galgas_33_GUIComp
 
 void routine_generateAllGuiComponentsGalgas_33_ (const class GALGAS_optionComponentMapForGeneration constinArgument0,
                                                  const class GALGAS_string constinArgument1,
-                                                 class GALGAS_stringlist & ioArgument2,
-                                                 class GALGAS_stringset & ioArgument3,
+                                                 const class GALGAS_bool constinArgument2,
+                                                 class GALGAS_stringlist & ioArgument3,
+                                                 class GALGAS_stringset & ioArgument4,
                                                  class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 

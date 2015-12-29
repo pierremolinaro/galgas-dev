@@ -50,6 +50,15 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
                    NSMutableArray * ioStringOptionArray,
                    NSMutableArray * ioStringListOptionArray) {
   enterOptionsFor_galgas_5F_cli_5F_options (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray, ioStringListOptionArray) ;
+  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"verbose_output"
+    commandChar:'v'
+    commandString:@"verbose"
+    comment:@"Verbose output"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

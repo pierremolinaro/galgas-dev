@@ -1391,16 +1391,17 @@ void routine_updateGalgas_33_Targets (const class GALGAS_string constinArgument0
                                       const class GALGAS_string constinArgument3,
                                       const class GALGAS_projectQualifiedFeatureMap constinArgument4,
                                       const class GALGAS_lstringlist constinArgument5,
-                                      const class GALGAS_stringlist constinArgument6,
+                                      const class GALGAS_bool constinArgument6,
                                       const class GALGAS_stringlist constinArgument7,
                                       const class GALGAS_stringlist constinArgument8,
                                       const class GALGAS_stringlist constinArgument9,
                                       const class GALGAS_stringlist constinArgument10,
-                                      const class GALGAS_stringset constinArgument11,
+                                      const class GALGAS_stringlist constinArgument11,
                                       const class GALGAS_stringset constinArgument12,
-                                      class GALGAS_stringset & ioArgument13,
-                                      const class GALGAS_stringlist constinArgument14,
+                                      const class GALGAS_stringset constinArgument13,
+                                      class GALGAS_stringset & ioArgument14,
                                       const class GALGAS_stringlist constinArgument15,
+                                      const class GALGAS_stringlist constinArgument16,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 

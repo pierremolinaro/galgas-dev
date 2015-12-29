@@ -28,8 +28,6 @@ project (3:1:4) -> "galgas" {
   %codeblocks-linux64
   %codeblocks-mac
 
-  %quietByDefault
-
 #--- Command Line Options
   "galgas-sources/galgas_cli_options.galgas"
 

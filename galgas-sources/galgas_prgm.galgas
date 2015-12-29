@@ -256,7 +256,7 @@ proc compileProject
       !programComponentForGeneration
       !"z"
   end
-#------------------------------------ Build a text file that contains all declared types
+#------------------------------------ Build an HTML file that contains all declared types
   let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
     var firstLetterSet =@stringset.emptySet{}
@@ -339,6 +339,8 @@ proc projectGeneration
 #---------------------------------- Create build/user-headers if does not exist
   let userHeadersDir = inBuildDirectory + "/user-headers"
   [userHeadersDir makeDirectory] ;
+#---------------------------------- %quietOutputByDefault
+  let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 #---------------------------------- Generate GUI components
   let productDirectory = inBuildDirectory + "/output"
 #  message "*** Generate GUI\n" ;
@@ -346,6 +348,7 @@ proc projectGeneration
     generateAllGuiComponentsGalgas3 (
       !inOptionComponentMapForGeneration
       !productDirectory
+      !quietOutputByDefault
       !?appProductFileList
       !?allProductFileSet
     )
@@ -374,7 +377,7 @@ proc projectGeneration
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
     ignoredFeatureSet += !"app-source"
-    var projectQualifiedFeatureMap =@projectQualifiedFeatureMap.emptyMap{}
+    @projectQualifiedFeatureMap projectQualifiedFeatureMap = {}
     for () in inProjectComponentAST.mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName.string] then
         [!?projectQualifiedFeatureMap insertKey
@@ -390,6 +393,7 @@ proc projectGeneration
       ![inProjectComponentAST.mMajorVersion.uint string] + "." + inProjectComponentAST.mMinorVersion.uint + "." + inProjectComponentAST.mRevisionVersion.uint
       !projectQualifiedFeatureMap
       !inProjectComponentAST.mGenerationFeatureList
+      !quietOutputByDefault
       !toolCppFileList
       !toolHeaderFileList
       !appProductFileList
