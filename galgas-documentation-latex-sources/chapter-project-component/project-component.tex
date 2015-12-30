@@ -200,6 +200,35 @@ project (0:0:1) -> "logo" {
 
 
 
+\sectionLabel{Déclaration \texttt{\%quietOutputByDefault}}{projetDeclarationQuietOutputByDefault}\index{\%quietOutputByDefault}
+
+À partir de la version 3.1.4, GALGAS et les exécutables engendrés par GALGAS sont verbeux par défaut, c'est-à-dire que leur exécution affiche sur le terminal de nombreuses informations sur le déroulement de l'exécution, comme par exemple la mise à jour ou la création de fichiers. L'option de la ligne de commande \emph{quiet} (\refSubsectionPage{optionsQuietVerbose}) permet d'inhiber l'émission de ces messages.
+
+On peut inverser ce comportement en faisant figurer \ggs!%quietOutputByDefault! parmi les déclarations du fichier projet :
+\begin{galgas}
+project (0:0:1) -> "logo" {
+  ...
+  %quietOutputByDefault
+  ...
+}
+\end{galgas}
+
+ Dans ce cas, l'exécutable engendré par GALGAS est silencieux par défaut, et bavard grâce à l'option de la ligne de commande \emph{verbose} (\refSubsectionPage{optionsQuietVerbose}).
+
+En résumé :
+\begin{itemize}
+\item par défaut, sans l'option \ggs!%quietOutputByDefault! parmi les déclarations du fichier projet, l'exécutable est bavard par défaut, et l'option de la ligne de commande \emph{quiet} permet de le rendre silencieux ; l'option de la ligne de commande \emph{verbose} n'existe pas ;
+\item si l'option \ggs!%quietOutputByDefault! est présente parmi les déclarations du fichier projet, l'exécutable est silencieux par défaut, et l'option de la ligne de commande \emph{verbose} permet de le rendre bavard ; l'option de la ligne de commande \emph{quiet} n'existe pas.
+\end{itemize}
+
+Une conséquence est que ni la présence de l'option \emph{quiet} ni la présence de l'option \emph{verbose} ne peuvent être testées par la construction \ggs+[option nom_composant_option.nom_option nom_info]+ (voir \refSubsectionPage{appelOption}). Il faut utiliser le \refConstructorPage{application}{verboseOutput}.
+
+
+
+
+
+
+
 \sectionLabel{Déclaration des fichiers sources du projet}{defFichierSourceProjet}
 
 Deux types de fichiers sources peuvent être déclarés :

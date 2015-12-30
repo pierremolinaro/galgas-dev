@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{application}
 
-Le type \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant.
+Le type \ggs+@application+ ne définit que des constructeurs qui permettent d'obtenir des informations sur le programme courant et son exécution.
 
 
 \section{Numéros de version}
@@ -360,4 +360,23 @@ end
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+\sectionConstructor{verboseOutput}{application}
+
+\begin{galgasbox}
+constructor @application verboseOutput -> @bool
+\end{galgasbox}
+
+Ce constructeur permet de savoir si l'indicateur de sortie verbeuse est activé ou non.
+
+La sortie verbeuse est controllée par les options de la ligne de commande \emph{quiet} et \emph{verbose} (\refSubsectionPage{optionsQuietVerbose}) ; leur présence dans le compilateur engendré dépend de la présence de la déclaration \ggs!%quietOutputByDefault!\index{\%quietOutputByDefault} parmi les déclarations du fichier projet (\refSectionPage{projetDeclarationQuietOutputByDefault}).
+
+Les deux options de la ligne de commande \emph{quiet} et \emph{verbose} s'excluent et ne peuvent pas être appelées par la construction \ggs+[option nom_composant_option.nom_option nom_info]+ (voir \refSubsectionPage{appelOption}) : c'est ce constructeur, qui s'adapte à la configuration du compilateur, qu'il faut appeler.
+
+Par exemple :
+\begin{galgas}
+if @application.verboseOutput then
+  # impressions de la sortie verbeuse
+end
+\end{galgas}
 

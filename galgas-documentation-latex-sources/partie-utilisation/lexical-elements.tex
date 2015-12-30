@@ -32,26 +32,23 @@ Un identificateur commence par une lettre minuscule ou majuscule, suivie de zér
 
 \section{Les mots réservés}
 
-Les mots réservés de GALGAS 2 et de GALGAS 3 sont les identificateurs listés dans le \refTableau{mots-reserves}. Les mots réservés de GALGAS 3 apparaissent en gras, et de couleur bleue.
+Les mots réservés de GALGAS 3 sont les identificateurs listés dans le \refTableau{mots-reserves}.
 
 \begin{table}[t]
   \centering
   \begin{tabular}{llllllll}
-    \ggs=abstract=    & \ggs=after=    & \ggs=array=    & \ggs=before=    & \ggs=between=     & \ggs=block=     & \ggs=case=    \\
-    \ggs=cast=        & \ggs=cast=     & \ggs=class=    & \ggs=const=     & \ggs=constructor= & \ggs=default=   & \ggs=do=   \\
-    \ggs=drop=        & \ggs=else=     & \ggs=elsif=    & \ggs=end=       & \ggs=enum=        & \ggs=error=     & \ggs=extension= \\
-    \ggs=extends=     & \ggs=extern=   & \ggs=false=    & \ggs=feature=   & \ggs=filewrapper= & \ggs=for=       & \ggs=foreach=    \\
-    \ggs=func=        & \ggs=function= & \ggs=getter=   & \ggs=grammar=   & \ggs=graph=       & \ggs=gui=       & \ggs=here=  \\
-    \ggs=if=          & \ggs=import=   & \ggs=in=       & \ggs=index=     & \ggs=indexing=    & \ggs=insert=    & \ggs=is=      \\
-    \ggs=label=       & \ggs=let=      & \ggs=lexique=  & \ggs=list=      & \ggs=listmap=     & \ggs=local=     & \ggs=log=   \\
-    \ggs=loop=        & \ggs=map=      & \ggs=match=    & \ggs=message=   & \ggs=method=      & \ggs=mod=       & \ggs=modifier= \\
-    \ggs=nonterminal= & \ggs=not=      & \ggs=on=       & \ggs=once=      & \ggs=operator=    & \ggs=option=    & \ggs=or=      \\
-    \ggs=override=    & \ggs=parse=    & \ggs=private=  & \ggs=proc=      & \ggs=project=     & \ggs=program=   & \ggs=reader=  \\
-    \ggs=remove=      & \ggs=replace=  & \ggs=repeat=   & \ggs=rewind=    & \ggs=root=        & \ggs=routine=   & \ggs=rule= \\
-    \ggs=search=      & \ggs=select=   & \ggs=self=     & \ggs=selfcopy=  & \ggs=semantics=   & \ggs=send=      & \ggs=setter= \\
-    \ggs=sortedlist=  & \ggs=state=    & \ggs=struct=   & \ggs=style=     & \ggs=switch=      & \ggs=syntax=    & \ggs=tag= \\
-    \ggs=template=    & \ggs=then=     & \ggs=true=     & \ggs=sharedmap= & \ggs=unused=      & \ggs=var=       & \ggs=warning= \\
-    \ggs=when=        & \ggs=while=    & \ggs=with=     &                 &                   &                 &  \\
+    \ggs=abstract=    & \ggs=after=       & \ggs=array=       & \ggs=before=      & \ggs=between=     & \ggs=block=     & \ggs=case=    \\
+    \ggs=cast=        & \ggs=cast=        & \ggs=class=       & \ggs=constructor= & \ggs=default=     & \ggs=do=        & \ggs=drop=       \\
+    \ggs=else=        & \ggs=elsif=       & \ggs=end=         & \ggs=enum=        & \ggs=error=       & \ggs=extension= & \ggs=extern= \\
+    \ggs=false=       & \ggs=filewrapper= & \ggs=for=         & \ggs=func=        & \ggs=getter=      & \ggs=grammar=   & \ggs=graph= \\
+    \ggs=gui=         & \ggs=if=          & \ggs=in=          & \ggs=indexing=    & \ggs=insert=      & \ggs=is=        & \ggs=label= \\
+    \ggs=let=         & \ggs=lexique=     & \ggs=list=        & \ggs=listmap=     & \ggs=local=       & \ggs=log=       & \ggs=loop=   \\
+    \ggs=map=         & \ggs=match=       & \ggs=message=     & \ggs=method=      & \ggs=mod=         & \ggs=not=       & \ggs=on=   \\
+    \ggs=operator=    & \ggs=option=      & \ggs=or=          & \ggs=override=    & \ggs=parse=       & \ggs=private=   & \ggs=proc=      \\
+    \ggs=project=     & \ggs=remove=      & \ggs=replace=     & \ggs=repeat=      & \ggs=rewind=      & \ggs=rule=      & \ggs=search=  \\
+    \ggs=select=      & \ggs=self=        & \ggs=send=        & \ggs=setter=      & \ggs=sortedlist=  & \ggs=state=     & \ggs=struct=  \\
+    \ggs=style=       & \ggs=switch=      & \ggs=syntax=      & \ggs=tag=         & \ggs=template=    & \ggs=then=      & \ggs=true=   \\
+    \ggs=sharedmap=   & \ggs=unused=      & \ggs=var=         & \ggs=warning=     & \ggs=while=       & \ggs=with=      &  \\
   \end{tabular}
   \caption{Mots réservés du langage GALGAS}
   \labelTableau{mots-reserves}
@@ -67,8 +64,9 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableau{delimiteurs}
   \centering
   \begin{tabular}{llllllllllllll}
     \ggs=*=  & \ggs=,=  & \ggs=+=  & \ggs=&+= & \ggs=&-= & \ggs=&*= & \ggs=&/= & \ggs=>=  & \ggs+>=+ & \ggs=<=  & \ggs+<=+ & \ggs+==+ & \ggs+!=+ & \ggs+=+ \\
-    \ggs=;=  & \ggs=:=  & \ggs=:>= & \ggs=-=  & \ggs=(=  & \ggs=)=  & \ggs=->= & \ggs=&&= & \ggs=[=  & \ggs=]=  & \ggs-+=- & \ggs=|=  & \ggs=/=  & \ggs=&= \\
-    \ggs={=  & \ggs=}=  & \ggs=`=  & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--=& \ggs=&++=& \ggs=.=  & \ggs=...=  \\
+    \ggs=;=  & \ggs=:=  & \ggs=:>= & \ggs=-=  & \ggs=(=  & \ggs=)=  & \ggs=->= & \ggs=&&= & \ggs=[=  & \ggs=]=  & \ggs-`- & \ggs=|=  & \ggs=/=  & \ggs=&= \\
+    \ggs={=  & \ggs=}=   & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--= & \ggs=&++=& \ggs=.=  & \ggs=...= & \ggs!+=!  \\
+    \ggs!-=!  & \ggs!*=!  & \ggs!/=!  \\
   \end{tabular}
   \caption{Délimiteurs du langage GALGAS}
   \labelTableau{delimiteurs}
