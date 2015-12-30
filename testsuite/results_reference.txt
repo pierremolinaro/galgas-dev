@@ -623,3 +623,4 @@ YES
 --- complementBitAtIndex
 0x5234
 -0x10000001234
+No warning, no error.
