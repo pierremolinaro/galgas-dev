@@ -2115,6 +2115,13 @@ override method @timerPredefinedTypeAST getGetterMap
     !returnedTypeName:"string"
     !false
   )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"isRunning"
+    !returnedTypeName:"bool"
+    !false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

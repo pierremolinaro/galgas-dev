@@ -3,74 +3,91 @@
 
 \chapitreTypePredefiniLabelIndex{timer}
 
-%Le type \ggs!@range! définit les intervalles d'entiers non signés 32 bits (\ggs!@uint!).
-%
-%La déclaration du type \ggs+@range+ est équivalent à la déclaration du type structure :
-%\begin{galgas}
-%struct @range {
-%  @uint start
-%  @uint length
-%}
-%\end{galgas}
-%
-%La plupart des propriétés du type \ggs!@range! découle de cette définition (\refChapterPage{typeStructure}).
-%
-%\ggs+@range.new {!a !b}+, où \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, représente :
-%\begin{itemize}
-%  \item un intervalle vide si \ggs!b! est égal à zéro ;
-%  \item l'intervalle $[a, a+b-1]$ si \ggs!b! est strictement positif.
-%\end{itemize}
-%
-%
-%
-%\sectionLabel{Opérateurs \texttt{...} et \texttt{..<}}{operateurIntervalleRange}
-%
-%Deux opérateurs permettent de construire plus facilement des objets de type \ggs!@range!.
-%
-%L'opérateur \ggs!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure : si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ... b! est équivalente à la construction \ggs*@range.new {!a !b - a + 1}*. Une exception est levée si $b < a$. 
-%
-%L'opérateur \ggs!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure : si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ..< b! est équivalente à \ggs*@range.new {!a !b - a}*. Une exception est levée si $b < a$.
-%
-%\section{Type \texttt{@range} et instruction \texttt{for}}
-%
-%On peut utiliser une expression de type \ggs!@range! avec l'instruction \ggs!for! :
-%
-%\begin{galgas}
-%for i in @range.new {!12 !5} do
-%  # i prend successivement les valeurs 12, 13, 14, 15, 16
-%end
-%\end{galgas}
-%
-%Et, avec l'opérateur \ggs!...! :
-%\begin{galgas}
-%for i in 12 ... 16 do
-%  # i prend successivement les valeurs 12, 13, 14, 15, 16
-%end
-%\end{galgas}
-%
-%Et l'opérateur \ggs!..<! :
-%\begin{galgas}
-%for i in 12 ..< 17 do
-%  # i prend successivement les valeurs 12, 13, 14, 15, 16
-%end
-%\end{galgas}
-%
-%Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggs!>! après le mot-clé \ggs!for! :
-%\begin{galgas}
-%for > i in @range.new {!12 !5} do
-%  # i prend successivement les valeurs 16, 15, 14, 13, 12
-%end
-%\end{galgas}
-% 
-%\begin{galgas}
-%for > i in 12 ... 16 do
-%  # i prend successivement les valeurs 16, 15, 14, 13, 12
-%end
-%\end{galgas}
-% 
-%\begin{galgas}
-%for > i in 12 ..< 17 do
-%  # i prend successivement les valeurs 16, 15, 14, 13, 12
-%end
-%\end{galgas}
- 
+
+\section{Constructeurs}
+
+Le type \ggs!@timer! accepte deux constructeurs :
+\begin{itemize}
+  \item le contructeur \ggs!start! ;
+  \item le constructeur \ggs!default! (\refSubsectionPage{constructeurParDefaut}), qui a le même effet que le constructeur \ggs!start!.
+\end{itemize}
+
+
+\subsectionConstructor{start}{timer}
+
+\begin{galgasbox}
+constructor @timer start -> @timer
+\end{galgasbox}
+
+Appeler le constructeur \ggs!start! est la seule façon d'instancier un objet \ggs!@timer!. Le chronomètre est enclenché, c'est-à-dire qu'il compte la durée à partir de laquelle le constructeur \ggs!start! a été appelé.
+
+
+
+
+
+
+
+\section{Setters}
+
+Le type \ggs!@timer! accepte deux \emph{setters} :
+\begin{itemize}
+  \item le \emph{setter} \ggs!resume! ;
+  \item le \emph{setter} \ggs!stop!.
+\end{itemize}
+
+\subsectionSetter{resume}{timer}
+
+\begin{galgasbox}
+setter @timer resume
+\end{galgasbox}
+
+Le \emph{setter} \ggs!resume! redémarre le chronomètre si il est arrêté, et le réinitialise si il est en marche.
+\subsectionSetter{stop}{timer}
+
+\begin{galgasbox}
+setter @timer stop
+\end{galgasbox}
+
+Le \emph{setter} \ggs!stop! arrête le chronomètre. Si il est déjà arrêté, appeler ce \emph{setter} n'a aucun effet.
+
+
+
+
+
+
+
+\section{Getters}
+
+Le type \ggs!@timer! accepte trois \emph{getters} :
+\begin{itemize}
+  \item le \emph{getter} \ggs!isRunning! ;
+  \item le \emph{getter} \ggs!msFromStart! ;
+  \item le \emph{getter} \ggs!string!.
+\end{itemize}
+
+\subsectionGetter{isRunning}{timer}
+
+\begin{galgasbox}
+getter @timer isRunning -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} renvoie  \ggs!true! si le récepteur décompte le temps, ou \ggs!false! si il a été arrêté par un appel au \emph{setter} \ggs!stop!.
+
+
+\subsectionGetter{msFromStart}{timer}
+
+\begin{galgasbox}
+getter @timer msFromStart -> @uint
+\end{galgasbox}
+
+La valeur obtenue par le \emph{getter} \ggs!msFromStart! est la durée écoulée depuis son instanciation (par le constructeur \ggs!start!) ou depuis le dernier appel au \emph{setter} \ggs!resume!. La durée est exprimée en millisecondes.
+
+
+\subsectionGetter{string}{timer}
+
+\begin{galgasbox}
+getter @timer string -> @string
+\end{galgasbox}
+
+La valeur obtenue par le \emph{getter} \ggs!string! est la durée écoulée depuis son instanciation (par le constructeur \ggs!start!) ou depuis le dernier appel au \emph{setter} \ggs!resume!. La durée est exprimée sous la forme d'une chaîne de caractères.
+
