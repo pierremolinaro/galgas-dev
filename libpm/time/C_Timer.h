@@ -74,6 +74,8 @@ class C_Timer {
   public : uint32_t msFromStart (void) const ;
 
   public : C_String timeString (void) const ;
+  
+  public : inline bool isRunning (void) const { return mRunning ; }
 
   friend AC_OutputStream & operator << (AC_OutputStream & inStream,
                                         const C_Timer & inTimer) ;

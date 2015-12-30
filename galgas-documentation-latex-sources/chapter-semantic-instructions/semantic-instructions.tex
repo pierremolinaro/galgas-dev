@@ -324,37 +324,23 @@ Note : si la variable \ggs+nom1+ ou  \ggs+nom2+ n'est pas utilisée dans la bran
 
 
 
-\sectionLabel{L'instruction d'ajout \texttt{+=}}{concatInstruction}
+\sectionLabel{L'instruction d'ajout \texttt{+=} d'un élément à une collection}{concatInstruction}
 
-Cette instruction permet d'ajouter un élément à une collection ; elle présente deux syntaxes, suivant que l'élément à ajouter est défini par :
+L'instruction \ggs!+=! présente deux syntaxes :
 \begin{itemize}
-  \item une expression : \ggs*cible += expression* ;
-  \item une liste d'expressions : \ggs*cible += !expression1 ... !expressionN*.
+  \item le membre de droite est une expression : \ggs*cible += expression* ; cette instruction est décrite \refSectionPage{instructionAffectationCombineeOperation} ;
+  \item le membre de droite est une liste d'expressions : \ggs*cible += !expression1 ... !expressionN* ; cette instruction est décrite ci-dessous.
 \end{itemize}
-
 
 La \ggs+cible+ est une variable ou un champ de structure.
 
 Cette instruction s'applique aux types suivants :
 \begin{itemize}
-  \item \ggs+@string+ (\refSubsectionPage{instructionConcatString}) ;
   \item \ggs+@stringset+ (\refSubsectionPage{instructionConcatStringset}) ;
   \item \ggs+list @T+ (\refSubsectionPage{instructionConcatList}) ;
   \item \ggs+sortedlist @T+ (\refSubsectionPage{instructionConcatSortedList}) ;
   \item \ggs+map @T+ (\refSubsectionPage{instructionConcatMap}).
 \end{itemize}
-
-
-\subsectionLabel{Instruction d'ajout et le type \texttt{@string}}{instructionConcatString}
-
-Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer des chaînes de caractères :
-\begin{galgas}
-var s = "abc"
-s += "def" # s vaut "abcdef"
-\end{galgas}
-
-La forme \ggs*cible += !expression1 ... !expressionN* n'est pas prise en compte pour le type \ggs+@string+.
-
 
 
 \subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
@@ -471,6 +457,49 @@ var table = @maTable {}
 @lstring clef = ...
 table += !clef !2 !"a"
 \end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Affectation combinée à une opération : \texttt{+=}, \texttt{-=}, \texttt{*=} et \texttt{/=}}{instructionAffectationCombineeOperation}
+
+L'instruction \ggs!+=! présente deux syntaxes :
+\begin{itemize}
+  \item le membre de droite est une expression : \ggs*cible += expression* ; cette instruction est décrite ci-dessous ;
+  \item le membre de droite est une liste d'expressions : \ggs*cible += !expression1 ... !expressionN* ; cette instruction est décrite \refSectionPage{concatInstruction}.
+\end{itemize}
+
+La \ggs+cible+ est une variable ou un champ de structure.
+
+Les instructions \ggs!+=!, \ggs!-=!, \ggs!*=!, \ggs!/=! s'appliquent :
+\begin{itemize}
+ \item aux types entiers \ggs!@sint! (\refSubsectionPage{instructionsSINT}, \ggs!@sint64! (\refSubsectionPage{instructionsSINT64}, \ggs!@uint! (\refSubsectionPage{instructionsUINT} et \ggs!@uint64! (\refSubsectionPage{instructionsUINT64} ;
+ \item au type flottant \ggs!@double! (\refSubsectionPage{affectationsCombineesDouble}).
+\end{itemize}
+
+L'instruction \ggs!+=! s'applique aussi au type \ggs+@string+ (\refSubsectionPage{instructionConcatString}).
+
+D'une manière générale, \texttt{x $op$= y} est équivalent à {x = x $op$ y}.
+
+
+\subsectionLabel{Instruction \texttt{+=} et le type \texttt{@string}}{instructionConcatString}
+
+Sous la forme \ggs*cible += expression*, l'instruction permet de concaténer des chaînes de caractères :
+\begin{galgas}
+var s = "abc"
+s += "def" # s vaut "abcdef"
+\end{galgas}
+
 
 
 
@@ -778,9 +807,9 @@ end
 \end{galgas}
 
 
-\subsectionLabel{Énumération « \texttt{() prefixe in expression} »}{enumerationImplicitePrefixee}
+\subsectionLabel{Énumération « \texttt{() pref{}ix in expression} »}{enumerationImplicitePrefixee}
 
-Cette écriture est une extension de celle de la section précédente : \ggs+prefixe+ est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente :
+Cette écriture est une extension de celle de la section précédente : \ggs+prefix+ est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente :
 
 \begin{galgas}
 @data d = ...
