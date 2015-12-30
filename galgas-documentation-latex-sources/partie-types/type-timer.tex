@@ -3,6 +3,14 @@
 
 \chapitreTypePredefiniLabelIndex{timer}
 
+Le type \ggs!@timer! permet de mesurer des durées d'exécution de portions de code ; une utilisation typique est :
+
+\begin{galgas}
+var @timer t = .start
+  # instructions
+message "Durée : " + [t string] + "\n" # Affiche la durée d'exécution des instructions
+\end{galgas}
+
 
 \section{Constructeurs}
 
