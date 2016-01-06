@@ -15,15 +15,16 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterInstanceMethodWithoutArgument
+private proc enterInstanceMethodWithoutArgument
   ?!@instanceMethodMap ioInstanceMethodMap
-  ?let @lstring inInstanceMethodName
-  ?let @bool inHasCompilerArgument {
+  ?methodName:let @string inInstanceMethodName
+  ?let @bool inHasCompilerArgument
+{
   [!?ioInstanceMethodMap insertKey
-    !inInstanceMethodName
-    !@methodKind. definedAsMember
+    ![inInstanceMethodName nowhere]
+    !@methodKind.definedAsMember
     !@formalParameterSignature. emptyList
-    ![inInstanceMethodName location]
+    !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
     !"" # No error message
@@ -32,22 +33,23 @@ proc enterInstanceMethodWithoutArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterInstanceMethodWithInputArgument
+private proc enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inInputArgumentTypeName
-  ?let @string inInputArgumentName
-  ?let @lstring inInstanceMethodName
-  ?let @bool inHasCompilerArgument {
+  ?inputArgTypeName:let @string inInputArgumentTypeName
+  ?inputArgName:let @string inInputArgumentName
+  ?methodName:let @string inInstanceMethodName
+  ?let @bool inHasCompilerArgument
+{
   @unifiedTypeMap-proxy argumentTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
   var argList = @formalParameterSignature.emptyList{}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
-    !inInstanceMethodName
+    ![inInstanceMethodName nowhere]
     !@methodKind. definedAsMember
     !argList
-    ![inInstanceMethodName location]
+    !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic
     !"" # No error message
@@ -56,36 +58,51 @@ proc enterInstanceMethodWithInputArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterInstanceMethodWithOutputArgument
-  ?!@instanceMethodMap ioInstanceMethodMap
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inOutputArgumentTypeName
-  ?let @string inOutputArgumentName
-  ?let @lstring inInstanceMethodName
-  ?let @bool inHasCompilerArgument {
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
-  var argList =@formalParameterSignature.emptyList{}
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
-  [!?ioInstanceMethodMap insertKey
-    !inInstanceMethodName
-    !@methodKind. definedAsMember
-    !argList
-    ![inInstanceMethodName location]
-    !inHasCompilerArgument
-    !@methodQualifier. isBasic
-    !"" # No error message
-  ]
-}
+#proc enterInstanceMethodWithOutputArgument
+#  ?!@instanceMethodMap ioInstanceMethodMap
+#  ?!@unifiedTypeMap ioUnifiedTypeMap
+#  ?outputArgTypeName:let @string inOutputArgumentTypeName
+#  ?outputArgName:let @string inOutputArgumentName
+#  ?methodName:let @lstring inInstanceMethodName
+#  ?let @bool inHasCompilerArgument
+#{
+#  @unifiedTypeMap-proxy argumentTypeIndex
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+#  var argList =@formalParameterSignature.emptyList{}
+#  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
+#  [!?ioInstanceMethodMap insertKey
+#    !inInstanceMethodName
+#    !@methodKind. definedAsMember
+#    !argList
+#    ![inInstanceMethodName location]
+#    !inHasCompilerArgument
+#    !@methodQualifier. isBasic
+#    !"" # No error message
+#  ]
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap {
-  outInstanceMethodMap = @instanceMethodMap. emptyMap
-  enterInstanceMethodWithInputArgument (!?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToFile" nowhere] !true )
-  enterInstanceMethodWithInputArgument (!?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToExecutableFile" nowhere] !true )
+  outInstanceMethodMap = {}
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"writeToFile"
+    !true
+  )
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"writeToExecutableFile"
+    !true
+  )
   var argList =@formalParameterSignature.emptyList{}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
@@ -109,19 +126,52 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap
 {
-  outInstanceMethodMap = @instanceMethodMap. emptyMap
+  outInstanceMethodMap = {}
   enterInstanceMethodWithInputArgument (
     !?outInstanceMethodMap
     !?ioUnifiedTypeMap
-    !"string"
-    !"inFilePath"
-    !.new {!"writeToFile" !.here}
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"writeToFile"
     !true
   )
-  enterInstanceMethodWithInputArgument (!?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"writeToExecutableFile" !@location.here} !true )
-  enterInstanceMethodWithInputArgument (!?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"makeDirectoryAndWriteToFile" !@location.here} !true )
-  enterInstanceMethodWithInputArgument (!?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"makeSymbolicLinkWithPath" !@location.here} !true )
-  enterInstanceMethodWithoutArgument (!?outInstanceMethodMap !@lstring.new {!"makeDirectory" !@location.here} !true )
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"writeToExecutableFile"
+    !true
+  )
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"makeDirectoryAndWriteToFile"
+    !true
+  )
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"makeDirectoryAndWriteToExecutableFile"
+    !true
+  )
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"makeSymbolicLinkWithPath"
+    !true
+  )
+  enterInstanceMethodWithoutArgument (
+    !?outInstanceMethodMap
+    !methodName:"makeDirectory"
+    !true
+  )
 #--- writeToFileWhenDifferentContents, writeToExecutableFileWhenDifferentContents
   @formalParameterSignature argList = {}
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-proxy t]
@@ -146,21 +196,6 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- popen
-#  argList = {}
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
-#  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outOutputString"
-#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"sint" ?t]
-#  argList += !["" nowhere] !t !@formalArgumentPassingModeAST.argumentOut !"outReturnCode"
-#  [!?outInstanceMethodMap insertKey
-#    !.new {!"popen" !.here}
-#    !@methodKind.definedAsMember
-#    !argList
-#    !@location.here
-#    !true
-#    !@methodQualifier.isBasic
-#    !"" # No error message
-#  ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

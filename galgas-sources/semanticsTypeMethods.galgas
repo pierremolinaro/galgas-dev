@@ -1,0 +1,120 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  semantics definitions for semantics component                                                                       *
+#                                                                                                                      *
+#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc enterClassMethodWithInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inClassMethodName
+  ?let @string inArgumentTypeName
+  ?let @string inArgumentName
+  ?let @bool inHasCompilerArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inArgumentName
+  [!?ioClassMethodMap insertOrReplace
+    !.new {!inClassMethodName !.here}
+    !argList
+    !inHasCompilerArgument
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc enterClassMethodWithStringInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inClassMethodName
+  ?let @string inStringArgumentName
+  ?let @bool inHasCompilerArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inStringArgumentName
+  [!?ioClassMethodMap insertOrReplace
+    !.new {!inClassMethodName !.here}
+    !argList
+    !inHasCompilerArgument
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @stringPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
+  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-proxy boolType]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
+  [!?outClassMethodMap insertOrReplace
+    !@lstring.new {!"generateFile" !@location.here}
+    !argList
+    !true
+  ]
+  argList = {}
+  argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
+  argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"
+  argList += !["lineComment" nowhere] !stringType !.argumentConstantIn !"inLineCommentPrefix"
+  argList += !["header" nowhere] !stringType !.argumentConstantIn !"inHeader"
+  argList += !["defaultUserZone1" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone1"
+  argList += !["generatedZone2" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone2"
+  argList += !["defaultUserZone2" nowhere] !stringType !.argumentConstantIn !"inDefaultUserZone2"
+  argList += !["generatedZone3" nowhere] !stringType !.argumentConstantIn !"inGeneratedZone3"
+  argList += !["makeExecutable" nowhere] !boolType !.argumentConstantIn !"inMakeExecutable"
+  [!?outClassMethodMap insertOrReplace
+    !@lstring.new {!"generateFileWithPattern" !@location.here}
+    !argList
+    !true
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @binarysetPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"setNodeTableSize"
+    !"uint"
+    !"inTableSize"
+    !false
+  )
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"setAndTableSize"
+    !"uint"
+    !"inTableSize"
+    !false
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+

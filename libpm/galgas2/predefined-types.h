@@ -2113,6 +2113,10 @@ class GALGAS_string : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG void method_makeDirectory (C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG void method_makeDirectoryAndWriteToExecutableFile (class GALGAS_string constinArgument0,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG void method_makeDirectoryAndWriteToFile (class GALGAS_string constinArgument0,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const ;

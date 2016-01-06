@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -38,6 +38,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef COMPILE_FOR_WINDOWS
+  #error COMPILE_FOR_WINDOWS is undefined
+#endif
 
 #if COMPILE_FOR_WINDOWS == 0
   #include <pwd.h>
@@ -1232,11 +1238,10 @@ void GALGAS_string::method_makeDirectory (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_string::
-method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
-  if (inFilePath.isValid ()) {
+void GALGAS_string::method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  if (isValid () && inFilePath.isValid ()) {
   //--- Make directory
     const C_String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
     bool ok = C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
@@ -1252,10 +1257,29 @@ method_makeDirectoryAndWriteToFile (GALGAS_string inFilePath,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_string::method_makeDirectoryAndWriteToExecutableFile (GALGAS_string inFilePath,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  if (isValid () && inFilePath.isValid ()) {
+  //--- Make directory
+    const C_String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
+    bool ok = C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    if (! ok) {
+      C_String message ;
+      message << "cannot create '" << directory << "' directory" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      method_writeToExecutableFile (inFilePath, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  if (inFilePath.isValid ()) {
+  if (isValid () && inFilePath.isValid ()) {
     if (C_Compiler::performGeneration ()) {
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
       const bool verboseOptionOn = verboseOutput () ;
@@ -1281,7 +1305,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
                                                              GALGAS_bool & outFileWritten,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
-  if (inFilePath.isValid ()) {
+  if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (fileAlreadyExists) {
@@ -1324,7 +1348,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
 void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  if (inFilePath.isValid ()) {
+  if (isValid () && inFilePath.isValid ()) {
  //   inCompiler->addDependancyOutputFilePath (inFilePath.mString) ;
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (C_Compiler::performGeneration ()) {
@@ -1351,7 +1375,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
                                                                        GALGAS_bool & outFileWritten,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
-  if (inFilePath.isValid ()) {
+  if (isValid () && inFilePath.isValid ()) {
     bool needToWrite = true ;
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
     if (fileAlreadyExists) {

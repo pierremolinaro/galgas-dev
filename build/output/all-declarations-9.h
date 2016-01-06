@@ -1897,7 +1897,7 @@ void routine_enterModifierWithoutArgument (class GALGAS_setterMap & ioArgument0,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterInstanceMethodWithoutArgument (class GALGAS_instanceMethodMap & ioArgument0,
-                                                 const class GALGAS_lstring constinArgument1,
+                                                 const class GALGAS_string constinArgument1,
                                                  const class GALGAS_bool constinArgument2,
                                                  class C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
@@ -1912,25 +1912,10 @@ void routine_enterInstanceMethodWithInputArgument (class GALGAS_instanceMethodMa
                                                    class GALGAS_unifiedTypeMap & ioArgument1,
                                                    const class GALGAS_string constinArgument2,
                                                    const class GALGAS_string constinArgument3,
-                                                   const class GALGAS_lstring constinArgument4,
+                                                   const class GALGAS_string constinArgument4,
                                                    const class GALGAS_bool constinArgument5,
                                                    class C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Routine 'enterInstanceMethodWithOutputArgument'                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterInstanceMethodWithOutputArgument (class GALGAS_instanceMethodMap & ioArgument0,
-                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                    const class GALGAS_string constinArgument2,
-                                                    const class GALGAS_string constinArgument3,
-                                                    const class GALGAS_lstring constinArgument4,
-                                                    const class GALGAS_bool constinArgument5,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
