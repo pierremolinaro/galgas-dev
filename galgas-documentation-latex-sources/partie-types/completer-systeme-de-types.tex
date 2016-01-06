@@ -1,0 +1,129 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+\chapter{Compléter le système de types}
+
+\section{Ajouter une méthode , un \emph{getter}, un \emph{setter} ou un constructeur à un type prédéfini}
+
+Ajouter une méthode, un \emph{getter}, un \emph{setter} ou un constructeur à un type prédéfini s'effectue en quatre temps :
+\begin{enumerate}
+\item ajouter la méthode, le \emph{getter}, le \emph{setter} ou le constructeur dans GALGAS ;
+\item reconstruire le fichier d'en-tête des types prédéfinis ;
+\item implémenter la méthode, le \emph{getter}, le \emph{setter} ou le constructeur en C++ ;
+\item mettre à jour la documentation \LaTeX.
+\end{enumerate}
+
+À titre d'exemple, nous allons montrer comment la méthode \ggs!makeDirectoryAndWriteToExecutableFile! de la classe \ggs!@string! a été ajoutée.
+
+\subsection{Ajouter la méthode dans GALGAS}
+
+Éditez le fichier GALGAS, en fonction du \refTableau{ajoutMethodeTypePrédéfini}. Comme c'est une méthode que nous voulons ajouter, on édite le fichier \texttt{galgas-sources/semanticsInstanceMethods.galgas}.
+
+Dans ce fichier, il y a une méthode pour chaque type prédéfini. Pour la classe \ggs!@string!, on a :
+\begin{galgas}
+override method @stringPredefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+{
+  outInstanceMethodMap = {}
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"writeToFile"
+    !true
+  )
+  ...
+\end{galgas}
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lll}
+    \textbf{Opération} & \textbf{Fichier} \\
+    Ajouter un constructeur &  \tpp{galgas-sources/semanticsConstructors.galgas}\\
+    Ajouter un \emph{getter} &  \tpp{galgas-sources/semanticsGetters.galgas}\\
+    Ajouter un \emph{setter} &  \tpp{galgas-sources/semanticsSetters.galgas}\\
+    Ajouter une méthode &  \tpp{galgas-sources/semanticsInstanceMethods.galgas}\\
+    Ajouter une méthode de type &  \tpp{galgas-sources/semanticsTypeMethods.galgas}\\
+  \end{tabular}
+  \caption{Fichier GALGAS à éditer pour compléter un type prédéfini}
+  \labelTableau{ajoutMethodeTypePrédéfini}
+  \ligne
+\end{table}
+
+Pour ajouter la méthode \ggs!makeDirectoryAndWriteToExecutableFile! de la classe \ggs!@string!, on complète cette méthode par :
+\begin{galgas}
+override method @stringPredefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap
+{
+  outInstanceMethodMap = {}
+  ...
+  enterInstanceMethodWithInputArgument (
+    !?outInstanceMethodMap
+    !?ioUnifiedTypeMap
+    !inputArgTypeName:"string"
+    !inputArgName:"inFilePath"
+    !methodName:"makeDirectoryAndWriteToExecutableFile"
+    !true
+  )
+}
+\end{galgas}
+
+\subsection{Reconstruire le fichier d'en-tête des types prédéfinis}
+
+Le fichier \tpp{libpm/galgas2/predefined-types.h} contient la déclaration C++ de tous les types prédéfinis. Le fichier \tpp{libpm/galgas2/predefined-types.cpp} contient l'implémentation des constructions génériques des types prédéfinis. {\bf Surtout n'éditez pas ces fichiers à la main !} On va utiliser GALGAS pour les reconstruire. Pour cela, appeler le script Shell \tpp{libpm/galgas2/-build-builtin-type-headers.command}. L'exécution de celui-ci recompile GALGAS, et engendre les nouvelles versions des fichiers \tpp{predefined-types.h} et \tpp{predefined-types.cpp}. Voici ce que l'on obtient :
+
+\begin{mdframed}[hidealllines=true,backgroundcolor=gray!10] \tt\small
+\textcolor{blue}{Native Compiling for Mac OS X (debug): all-declarations-26.cpp}\\
+...\\
+\textcolor{blue}{Native Compiling for Mac OS X (debug): check-gmp.cpp}\\
+\textcolor{blue}{Native Linking for Mac OS X (debug): galgas-debug}\\
+Done at +12s\\
+\textcolor{OliveGreen}{Replaced '/Volumes/dev-svn/galgas/libpm/galgas2/predefined-types.h'.}\\
+No warning, no error.\\
+\verb![!Displayed from file 'all-declarations-19.cpp' at line 952\verb!]!\\
+11800 memory blocks, 4158 arraies have been used.\\
+7052 POD arraies have been used, 706 have been reallocated (509 with pointer change).
+\end{mdframed}
+
+Ici, seul le fichier \tpp{predefined-types.h} a été modifié, le fichier \tpp{predefined-types.cpp} ne nécessitait pas de modification.
+
+
+
+\subsection{Implémenter la méthode en C++}
+
+Maintenant, effectuer la compilation C++ du projet GALGAS, soit avec Xcode, soit avec le \emph{makefile} natif de votre choix. {\bf Il est normal 
+que cette compilation échoue, la méthode n'a pas encore été implémentée.}
+
+Éditez le fichier \tpp{libpm/galgas2/GALGAS\_string.cpp} et ajouter la méthode :
+
+\begin{lstlisting}[language=C++]
+void GALGAS_string::
+method_makeDirectoryAndWriteToExecutableFile (GALGAS_string inFilePath,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  if (isValid () && inFilePath.isValid ()) {
+  //--- Make directory
+    const C_String directory = inFilePath.mString.stringByDeletingLastPathComponent () ;
+    bool ok = C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
+    if (! ok) {
+      C_String message ;
+      message << "cannot create '" << directory << "' directory" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      method_writeToExecutableFile (inFilePath, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+\end{lstlisting}
+
+Maintenant la compilation C++ de GALGAS s'effectue correctement. Mais ce n'est pas terminé !
+
+\subsection{Finaliser le nouveau compilateur GALGAS}
+
+L'exécutable GALGAS embarque le source de la libraire \tpp{libpm}. Or, à ce stade, c'est l'ancienne version qui est empbarquée. Lorsque l'on compile le projet \tpp{+galgas.galgasProject}, la librairie \tpp{libpm} est intégrée dans les sources C++ engendrés. 
+
+Il faut donc effectuer itérativement des cycles \emph{compilation GALGAS} -- \emph{compilation C++} tant que la compilation GALGAS apporte des modifications du code C++ engendré.
+
