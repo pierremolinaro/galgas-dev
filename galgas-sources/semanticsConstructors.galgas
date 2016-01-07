@@ -203,7 +203,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"stringWithEnvironmentVariable"
     !argTypeName:"string"
-    !argName:"inEnvironmentVariable"
+    !argName:"inVariableName"
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:true
   )
@@ -212,7 +212,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"stringWithEnvironmentVariableOrEmpty"
     !argTypeName:"string"
-    !argName:"inEnvironmentVariable"
+    !argName:"inVariableName"
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )
@@ -220,6 +220,13 @@ override method @stringPredefinedTypeAST getConstructorMap
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppLineComment"
+    !resultTypeName:"string"
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"CppSpaceComment"
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )
@@ -257,7 +264,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName1:"stringlist"
     !argName1:"inComponents"
     !argTypeName2:"string"
-    !argName2:"inString"
+    !argName2:"inSeparator"
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )

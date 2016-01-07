@@ -172,8 +172,7 @@ void AC_OutputStream::appendUTF32LiteralStringConstant (const C_String & inStrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
+void AC_OutputStream::appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARGS) {
   genericUnicodeArrayOutput (& inUnicodeCharacter, 1) ;
 }
 
@@ -204,10 +203,9 @@ void AC_OutputStream::appendDouble (const double inValue) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void
-printfUINT64 (char ioString [],
-              const uint64_t inValue,
-              int32_t & ioLength) {
+static void printfUINT64 (char ioString [],
+                          const uint64_t inValue,
+                          int32_t & ioLength) {
   const uint64_t quotient = inValue / 10UL ;
   if (quotient != 0) {
     printfUINT64 (ioString, quotient, ioLength) ;
@@ -230,10 +228,9 @@ void AC_OutputStream::appendUnsigned (const uint64_t inValue) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void
-printfUINT64Hex (char ioString [],
-                 const uint64_t inValue,
-                 int & ioLength) {
+static void printfUINT64Hex (char ioString [],
+                             const uint64_t inValue,
+                             int & ioLength) {
   const uint64_t quotient = inValue >> 4 ;
   if (quotient != 0) {
     printfUINT64Hex (ioString, quotient, ioLength) ;
@@ -300,8 +297,7 @@ void AC_OutputStream::appendBool (const bool inValue) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
+void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
   char s [32] = "" ;
   snprintf (s, 31, "%0*llu", inWidth, (unsigned long long) inValue) ;
   appendCString (s) ;
@@ -355,8 +351,7 @@ void AC_OutputStream::appendPointer (const void * inValue) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendSpaces (const int32_t inSpaceCount) {
+void AC_OutputStream::appendSpaces (const int32_t inSpaceCount) {
   for (int32_t i=0 ; i<inSpaceCount ; i++) {
     appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;
   }
@@ -364,8 +359,7 @@ appendSpaces (const int32_t inSpaceCount) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-writeStringMultiple (const C_String & inString, const int32_t inRepeatCount) {
+void AC_OutputStream::writeStringMultiple (const C_String & inString, const int32_t inRepeatCount) {
   for (int32_t i=0 ; i<inRepeatCount ; i++) {
     *this << inString ;
   }
@@ -379,8 +373,7 @@ static const int32_t kCommentMaxLength = 119 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendHyphenLineCommentWithoutExtraBlankLine (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendHyphenLineCommentWithoutExtraBlankLine (const C_String & inLineCommentPrefix) {
   *this << inLineCommentPrefix ;
   for (int32_t i=0 ; i<(kCommentMaxLength-2) ; i++) {
     *this << "-" ;
@@ -390,9 +383,8 @@ appendHyphenLineCommentWithoutExtraBlankLine (const C_String & inLineCommentPref
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendTitleComment (const C_String & inLineCommentPrefix,
-                    const C_String & inCommentString) {
+void AC_OutputStream::appendTitleComment (const C_String & inLineCommentPrefix,
+                                          const C_String & inCommentString) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
   appendSpaceLineComment (inLineCommentPrefix) ;
   appendCenterJustifiedComment (inLineCommentPrefix, inCommentString) ;
@@ -402,17 +394,15 @@ appendTitleComment (const C_String & inLineCommentPrefix,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendComment (const C_String & inLineCommentPrefix,
-               const C_String & inCommentString) {
+void AC_OutputStream::appendComment (const C_String & inLineCommentPrefix,
+                                     const C_String & inCommentString) {
   *this << inLineCommentPrefix << " " << inCommentString << "\n" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCenterJustifiedComment (const C_String & inLineCommentPrefix,
-                              const C_String & inCommentString) {
+void AC_OutputStream::appendCenterJustifiedComment (const C_String & inLineCommentPrefix,
+                                                    const C_String & inCommentString) {
   const int32_t commentLength = inCommentString.length () ;
   const int32_t n = (kCommentMaxLength - 3 - commentLength) / 2 ;
   
@@ -430,8 +420,7 @@ appendCenterJustifiedComment (const C_String & inLineCommentPrefix,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendSpaceLineComment (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendSpaceLineComment (const C_String & inLineCommentPrefix) {
   *this << inLineCommentPrefix ;
   for (int32_t i=0 ; i<(kCommentMaxLength-2) ; i++) {
     *this << " " ;
@@ -441,8 +430,7 @@ appendSpaceLineComment (const C_String & inLineCommentPrefix) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppHyphenLineComment (const C_String & inLineCommentPrefix) {
+void AC_OutputStream::appendCppHyphenLineComment (const C_String & inLineCommentPrefix) {
   appendHyphenLineCommentWithoutExtraBlankLine (inLineCommentPrefix) ;
   *this << "\n" ;
 }
@@ -473,50 +461,43 @@ void AC_OutputStream::append_C_SpaceLineComment (void) {
 //                        C++ Comments                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppHyphenLineCommentWithoutExtraBlankLine (void) {
+void AC_OutputStream::appendCppHyphenLineCommentWithoutExtraBlankLine (void) {
   appendHyphenLineCommentWithoutExtraBlankLine ("//") ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppTitleComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppTitleComment (const C_String & inCommentString) {
   appendTitleComment ("//", inCommentString) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppTitleComment (const char * inCommentString) {
+void AC_OutputStream::appendCppTitleComment (const char * inCommentString) {
   appendTitleComment ("//", inCommentString) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppComment (const C_String & inCommentString) {
   appendComment ("//", inCommentString) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppCenterJustifiedComment (const C_String & inCommentString) {
+void AC_OutputStream::appendCppCenterJustifiedComment (const C_String & inCommentString) {
   appendCenterJustifiedComment ("//", inCommentString) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppSpaceLineComment (void) {
+void AC_OutputStream::appendCppSpaceLineComment (void) {
   appendSpaceLineComment ("//") ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_OutputStream::
-appendCppHyphenLineComment (void) {
+void AC_OutputStream::appendCppHyphenLineComment (void) {
   appendCppHyphenLineComment ("//") ;
 }
 

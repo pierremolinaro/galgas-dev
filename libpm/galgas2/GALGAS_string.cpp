@@ -54,36 +54,20 @@
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#if COMPILE_FOR_WINDOWS == 0
-  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
-    return GALGAS_string (getpwuid (getuid ())->pw_dir) ;
-  }
-#endif
-
-#if COMPILE_FOR_WINDOWS == 1
-  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
-    char path [MAX_PATH] ;
-    SHGetFolderPath (NULL, CSIDL_PROFILE, NULL, 0, path) ;
-    return GALGAS_string (path).getter_unixPathWithNativePath (HERE) ;
-  }
-#endif
-
+//                                                                                                                     *
+//     C++ Management                                                                                                  *
+//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//     GALGAS_string                                                                                                   *
-//                                                                                                                     *
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark C++ Management
+#endif
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string::GALGAS_string (void) :
 mIsValid (false),
 mString () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string ("") ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -129,6 +113,253 @@ typeComparisonResult GALGAS_string::objectCompare (const GALGAS_string & inOpera
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     Constructors                                                                                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Constructors
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_CppChar (const GALGAS_char & inCharacter
+                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inCharacter.isValid ()) {
+    C_String s ;
+    s.appendCLiteralCharConstant (inCharacter.charValue ()) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_CppLineComment (UNUSED_LOCATION_ARGS) {
+  C_String s ; s.appendCppHyphenLineComment () ;
+  return GALGAS_string (s) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_CppTitleComment (const GALGAS_string & inTitle
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inTitle.isValid ()) {
+    C_String s ;
+    s.appendCppTitleComment (inTitle.mString) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_CppSpaceComment (UNUSED_LOCATION_ARGS) {
+  C_String s ; s.appendCppSpaceLineComment () ;
+  return GALGAS_string (s) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inString
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inString.isValid ()) {
+    C_String s ;
+    s.appendCLiteralStringConstant (inString.mString) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#if COMPILE_FOR_WINDOWS == 0
+  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+    return GALGAS_string (getpwuid (getuid ())->pw_dir) ;
+  }
+#endif
+
+#if COMPILE_FOR_WINDOWS == 1
+  GALGAS_string GALGAS_string::constructor_homeDirectory (UNUSED_LOCATION_ARGS) {
+    char path [MAX_PATH] ;
+    SHGetFolderPath (NULL, CSIDL_PROFILE, NULL, 0, path) ;
+    return GALGAS_string (path).getter_unixPathWithNativePath (HERE) ;
+  }
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string ("") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
+                                                                         const GALGAS_uint & inCount
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if ((inCount.isValid ()) && (inCharacter.isValid ())) {
+    const utf32 character = inCharacter.charValue () ;
+    C_String s ;
+    for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
+      s.appendUnicodeCharacter (character COMMA_HERE) ;
+    }
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (C_Compiler * inCompiler
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  return GALGAS_string (inCompiler->sourceFilePath ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_string & inFilePath,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inFilePath.isValid ()) {
+    inCompiler->logFileRead (inFilePath.mString) ;
+    if (C_FileManager::fileExistsAtPath (inFilePath.mString)) {
+      result = GALGAS_string (C_FileManager::stringWithContentOfFile (inFilePath.mString)) ;
+    }else{
+      C_String message ;
+      message << "cannot read '" << inFilePath.mString << "' file (does not exist)" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithCurrentDirectory (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string (C_FileManager::currentDirectory ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inEnvironmentVariableName.isValid ()) {
+    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
+    if (value == NULL) {
+      C_String message ;
+      message << "the '" << inEnvironmentVariableName.mString << "' environment variable does not exist" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      result = GALGAS_string (value) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariableOrEmpty (const GALGAS_string & inEnvironmentVariableName
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inEnvironmentVariableName.isValid ()) {
+    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
+    result = GALGAS_string (value) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_stringlist & inComponents,
+                                                                   const GALGAS_string & inSeparator
+                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
+    bool first = true ;
+    C_String s ;
+    cEnumerator_stringlist current (inComponents, kEnumeration_up) ;
+    while (current.hasCurrentObject ()) {
+      if (first) {
+        first = false ;
+      }else{
+        s << inSeparator.mString ;
+      }
+      s << current.current_mValue (HERE).mString ;
+      current.gotoNextObject () ;
+    }
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCATION_ARGS) {
+  const time_t currentTime = ::time (NULL) ;
+  char * timeString = NULL ;
+  bool ok = currentTime >= 0 ;
+  if (ok) {
+    timeString = ::ctime (& currentTime) ;
+    ok = timeString != NULL ;
+    if (ok) {
+      const size_t length = ::strlen (timeString) ;
+      ok = length > 0 ;
+      if (ok) {
+        timeString [length - 1] = '\0' ; // Suppress trailing '\n'
+      }
+    }
+  }
+  return GALGAS_string (ok ? timeString : "") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  return inCompiler->retrieveAndResetTemplateString () ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inSymbolicLink.isValid ()) {
+    bool ok = false ;
+    const C_String r = C_FileManager::stringWithSymbolicLinkContents (inSymbolicLink.mString, ok) ;
+    if (ok) {
+      result = GALGAS_string (r) ;
+    }else{
+      C_String s ;
+      s << "'@string stringWithSymbolicLinkContents' error; receiver's value '" << inSymbolicLink.mString << "' is not a symbolic link" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     + Operator                                                                                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark + Operator
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
                                             C_Compiler * /* inCompiler */
@@ -136,6 +367,26 @@ GALGAS_string GALGAS_string::add_operation (const GALGAS_string & inOperand2,
   GALGAS_string result ;
   if (isValid () && inOperand2.isValid ()) {
     result = GALGAS_string (mString + inOperand2.mString) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     Getters                                                                                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Getters
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_string::getter_HTMLRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mString.HTMLRepresentation ()) ;
   }
   return result ;
 }
@@ -209,16 +460,6 @@ GALGAS_string GALGAS_string::getter_utf_33__32_Representation (UNUSED_LOCATION_A
     C_String s ;
     s.appendUTF32LiteralStringConstant (mString) ;
     result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::getter_HTMLRepresentation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid ()) {
-    result = GALGAS_string (mString.HTMLRepresentation ()) ;
   }
   return result ;
 }
@@ -920,143 +1161,6 @@ GALGAS_stringlist GALGAS_string::getter_directoriesWithExtensions (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-//GALGAS_string GALGAS_string::stringWithColumnCount (const C_String & inString) {
-//  return GALGAS_string (true, C_String::stringWithRepeatedCharacter (TO_UNICODE (' '), inString.currentColumn ())) ;
-//}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithSequenceOfCharacters (const GALGAS_char & inCharacter,
-                                                                         const GALGAS_uint & inCount
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if ((inCount.isValid ()) && (inCharacter.isValid ())) {
-    const utf32 character = inCharacter.charValue () ;
-    C_String s ;
-    for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
-      s.appendUnicodeCharacter (character COMMA_HERE) ;
-    }
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithSourceFilePath (C_Compiler * inCompiler
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_string (inCompiler->sourceFilePath ()) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithContentsOfFile (const GALGAS_string & inFilePath,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inFilePath.isValid ()) {
-    inCompiler->logFileRead (inFilePath.mString) ;
-    if (C_FileManager::fileExistsAtPath (inFilePath.mString)) {
-      result = GALGAS_string (C_FileManager::stringWithContentOfFile (inFilePath.mString)) ;
-    }else{
-      C_String message ;
-      message << "cannot read '" << inFilePath.mString << "' file (does not exist)" ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithCurrentDirectory (UNUSED_LOCATION_ARGS) {
-  return GALGAS_string (C_FileManager::currentDirectory ()) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariable (const GALGAS_string & inEnvironmentVariableName,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inEnvironmentVariableName.isValid ()) {
-    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
-    if (value == NULL) {
-      C_String message ;
-      message << "the '" << inEnvironmentVariableName.mString << "' environment variable does not exist" ;
-      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-    }else{
-      result = GALGAS_string (value) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithEnvironmentVariableOrEmpty (const GALGAS_string & inEnvironmentVariableName
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inEnvironmentVariableName.isValid ()) {
-    const char * value = ::getenv (inEnvironmentVariableName.mString.cString (HERE)) ;
-    result = GALGAS_string (value) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_stringlist & inComponents,
-                                                                   const GALGAS_string & inSeparator
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
-    bool first = true ;
-    C_String s ;
-    cEnumerator_stringlist current (inComponents, kEnumeration_up) ;
-    while (current.hasCurrentObject ()) {
-      if (first) {
-        first = false ;
-      }else{
-        s << inSeparator.mString ;
-      }
-      s << current.current_mValue (HERE).mString ;
-      current.gotoNextObject () ;
-    }
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithCurrentDateTime (UNUSED_LOCATION_ARGS) {
-  const time_t currentTime = ::time (NULL) ;
-  char * timeString = NULL ;
-  bool ok = currentTime >= 0 ;
-  if (ok) {
-    timeString = ::ctime (& currentTime) ;
-    ok = timeString != NULL ;
-    if (ok) {
-      const size_t length = ::strlen (timeString) ;
-      ok = length > 0 ;
-      if (ok) {
-        timeString [length - 1] = '\0' ; // Suppress trailing '\n'
-      }
-    }
-  }
-  return GALGAS_string (ok ? timeString : "") ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  return inCompiler->retrieveAndResetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_bool GALGAS_string::getter_doesEnvironmentVariableExist (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (::getenv (mString.cString (HERE)) != NULL) ;
 }
@@ -1488,52 +1592,6 @@ void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::constructor_CppLineComment (UNUSED_LOCATION_ARGS) {
-  C_String s ; s.appendCppHyphenLineComment () ;
-  return GALGAS_string (s) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_CppTitleComment (const GALGAS_string & inTitle
-                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inTitle.isValid ()) {
-    C_String s ;
-    s.appendCppTitleComment (inTitle.mString) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_CppChar (const GALGAS_char & inCharacter
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inCharacter.isValid ()) {
-    C_String s ;
-    s.appendCLiteralCharConstant (inCharacter.charValue ()) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_CppString (const GALGAS_string & inString
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inString.isValid ()) {
-    C_String s ;
-    s.appendCLiteralStringConstant (inString.mString) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_bool GALGAS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS) const {
   bool isDecimalUnsignedNumber = true ;
   for (int32_t i=0 ; (i<mString.length ()) && isDecimalUnsignedNumber ; i++) {
@@ -1601,26 +1659,6 @@ GALGAS_bool GALGAS_string::getter_isSymbolicLink (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = GALGAS_bool (C_FileManager::isSymbolicLink (mString)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_string::constructor_stringWithSymbolicLinkContents (const GALGAS_string & inSymbolicLink,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  GALGAS_string result ;
-  if (inSymbolicLink.isValid ()) {
-    bool ok = false ;
-    const C_String r = C_FileManager::stringWithSymbolicLinkContents (inSymbolicLink.mString, ok) ;
-    if (ok) {
-      result = GALGAS_string (r) ;
-    }else{
-      C_String s ;
-      s << "'@string stringWithSymbolicLinkContents' error; receiver's value '" << inSymbolicLink.mString << "' is not a symbolic link" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
   }
   return result ;
 }
