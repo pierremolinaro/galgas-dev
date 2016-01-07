@@ -728,8 +728,8 @@ GALGAS_string GALGAS_string::getter_stringByRightPadding (const GALGAS_uint & in
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::getter_stringByLeftAndRightPadding (const GALGAS_uint & inPaddedStringLength,
-                                                                   const GALGAS_char & inPaddingChar
-                                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                 const GALGAS_char & inPaddingChar
+                                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if ((inPaddedStringLength.isValid ()) && (inPaddingChar.isValid ())) {
     const utf32 paddingChar = inPaddingChar.charValue () ;
@@ -757,9 +757,9 @@ GALGAS_string GALGAS_string::getter_lastPathComponent (UNUSED_LOCATION_ARGS) con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::getter_stringByReplacingStringByString (const GALGAS_string & inSearchedString,
-                                                                       const GALGAS_string & inReplacementString,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+                                                                     const GALGAS_string & inReplacementString,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if ((inSearchedString.isValid ()) && (inReplacementString.isValid ())) {
     if (inSearchedString.mString.length () == 0) {

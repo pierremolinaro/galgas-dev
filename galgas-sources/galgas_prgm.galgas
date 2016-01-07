@@ -18,6 +18,7 @@
 before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )
+#  message ["Hello" md5] + "\n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
