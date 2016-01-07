@@ -2029,6 +2029,8 @@ class GALGAS_string : public AC_GALGAS_root
 
   public : static GALGAS_string constructor_CppLineComment (LOCATION_ARGS) ;
 
+  public : static GALGAS_string constructor_CppSpaceComment (LOCATION_ARGS) ;
+
   public : static GALGAS_string constructor_CppString (const class GALGAS_string & inOperand0
                                                        COMMA_LOCATION_ARGS) ;
 
