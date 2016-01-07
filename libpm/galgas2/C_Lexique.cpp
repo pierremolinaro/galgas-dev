@@ -81,7 +81,7 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Constructors, Destructor
+  #pragma mark Constructors, Destructor
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -196,7 +196,7 @@ C_Lexique::~C_Lexique (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Scanner configuration
+  #pragma mark Scanner configuration
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -288,7 +288,7 @@ void C_Lexique::resetForSecondPass (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Template Delimiter Scanning
+  #pragma mark Template Delimiter Scanning
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -314,7 +314,7 @@ int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTempla
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Lexical Analysis
+  #pragma mark Lexical Analysis
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -489,7 +489,7 @@ int16_t C_Lexique::searchInList (const C_String & inString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Handling an error
+  #pragma mark Handling an error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -573,7 +573,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Scanner warning
+  #pragma mark Scanner warning
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -589,7 +589,7 @@ void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Top-down parsing
+  #pragma mark Top-down parsing
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1115,7 +1115,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Bottom up parsing
+  #pragma mark Bottom up parsing
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1442,7 +1442,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Second pass methods
+  #pragma mark Second pass methods
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1555,7 +1555,7 @@ void C_Lexique::generateIndexFile (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Handling Parsing context
+  #pragma mark Handling Parsing context
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1589,7 +1589,7 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= For Debugging parser
+  #pragma mark For Debugging parser
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1655,7 +1655,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Generate Latex file
+  #pragma mark Generate Latex file
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*

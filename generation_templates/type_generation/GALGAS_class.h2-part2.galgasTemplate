@@ -29,7 +29,7 @@
       %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% getter_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     end
     if mHasSetter then
-      %  public : VIRTUAL_IN_DEBUG void modifier_set%![[mAttributeName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
+      %  public : VIRTUAL_IN_DEBUG void setter_set%![[mAttributeName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
     end
   end
 

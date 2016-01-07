@@ -523,7 +523,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     GALGAS_lstring target ;
     target.mAttribute_string = targetNodePtr->mKey ;
     target.mAttribute_location = targetNodePtr->mDefinitionLocation ;
-    outResultingGraph.modifier_addEdge (source, target COMMA_THERE) ;
+    outResultingGraph.setter_addEdge (source, target COMMA_THERE) ;
   }
 }
 
@@ -783,7 +783,7 @@ void AC_GALGAS_graph::internalAddNode (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::modifier_noteNode (const GALGAS_lstring & inKey
+void AC_GALGAS_graph::setter_noteNode (const GALGAS_lstring & inKey
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     insulateGraph (THERE) ;
@@ -824,7 +824,7 @@ void cSharedGraph::addEdge (const C_String & inSourceNodeKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::modifier_addEdge (const GALGAS_lstring & inSourceNodeKey,
+void AC_GALGAS_graph::setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
                                         const GALGAS_lstring & inTargetNodeKey
                                         COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
@@ -1249,7 +1249,7 @@ GALGAS_lstringlist AC_GALGAS_graph::getter_undefinedNodeReferenceList (LOCATION_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::modifier_removeEdgesToNode (const GALGAS_string & inNodeName,
+void AC_GALGAS_graph::setter_removeEdgesToNode (const GALGAS_string & inNodeName,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inNodeName.isValid ()) {
@@ -1286,7 +1286,7 @@ void cSharedGraph::removeEdgesToNode (const C_String & inNodeName,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::modifier_removeEdgesToDominators (LOCATION_ARGS) {
+void AC_GALGAS_graph::setter_removeEdgesToDominators (LOCATION_ARGS) {
   if (isValid ()) {
     insulateGraph (HERE) ;
     MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;

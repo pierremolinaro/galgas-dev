@@ -207,7 +207,7 @@ end
 
 if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_closeBranch (%?^%GALGAS_location inErrorLocation,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_closeBranch (%?^%GALGAS_location inErrorLocation,\n%
                             !^%C_Compiler * inCompiler\n%
                             !^%COMMA_LOCATION_ARGS) {\n%
   %  closeBranch (inErrorLocation,\n%
@@ -280,7 +280,7 @@ for () in MAP_OVERRIDE_LIST do
   end  
   %} ;\n\n%
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_openOverrideFor%![[mOverrideName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_openOverrideFor%![[mOverrideName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
                                 !^%COMMA_LOCATION_ARGS) {\n%
   %  openOverride (kBranchBehaviourForOverride_%!TYPE_IDENTIFIER%_%![mOverrideName identifierRepresentation]%, %![[mBranchBehaviourSortedListForMapOverride length] string]%,\n%
   %                kBranchCombinationForOverride_%!TYPE_IDENTIFIER%_%![mOverrideName identifierRepresentation]%, %![[mBranchCombinationSortedListForMapOverride length] string]%,\n%
@@ -293,7 +293,7 @@ end
 %
 %for () in INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
     end
@@ -340,7 +340,7 @@ for () in SEARCH_METHOD_LIST do
     if [mActionName string] == "" then
       %method_%
     else
-      %modifier_%
+      %setter_%
     end
     ![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for () in ATTRIBUTE_LIST
@@ -399,7 +399,7 @@ end
 
 for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%

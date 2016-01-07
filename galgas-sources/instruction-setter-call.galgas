@@ -352,7 +352,7 @@ override method @setterCallInstructionForGeneration generateInstruction
     end
   case definedAsMember :
     [mReceiverType addHeaderFileName !?ioInclusionSet]
-    ioGeneratedCode += receiverCppName + ".modifier_" + [[mModifierName string] identifierRepresentation] + " ("
+    ioGeneratedCode += receiverCppName + ".setter_" + [[mModifierName string] identifierRepresentation] + " ("
   end
   for () in parameterCppNameList
     do ioGeneratedCode += mValue
@@ -408,9 +408,9 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
     end
   case definedAsMember :
     if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
-      ioGeneratedCode += mSelfCppName + "->modifier_" + [mModifierName identifierRepresentation] + " ("
+      ioGeneratedCode += mSelfCppName + "->setter_" + [mModifierName identifierRepresentation] + " ("
     else
-      ioGeneratedCode += mSelfCppName + ".modifier_" + [mModifierName identifierRepresentation] + " ("
+      ioGeneratedCode += mSelfCppName + ".setter_" + [mModifierName identifierRepresentation] + " ("
     end
   end
   for () in parameterCppNameList

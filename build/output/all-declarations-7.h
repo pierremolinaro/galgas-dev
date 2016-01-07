@@ -7760,21 +7760,21 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_stringset constinArgument1,
-                                                     class GALGAS_string constinArgument2,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_stringset constinArgument1,
+                                                   class GALGAS_string constinArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMHeaderStringForKey (class GALGAS_string constinArgument0,
-                                                                  class GALGAS_string constinArgument1,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_setMHeaderStringForKey (class GALGAS_string constinArgument0,
+                                                                class GALGAS_string constinArgument1,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMInclusionForKey (class GALGAS_stringset constinArgument0,
-                                                               class GALGAS_string constinArgument1,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInclusionForKey (class GALGAS_stringset constinArgument0,
+                                                             class GALGAS_string constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -7982,15 +7982,15 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_string constinArgument1,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_string constinArgument1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMHeaderFileNameForKey (class GALGAS_string constinArgument0,
-                                                                    class GALGAS_string constinArgument1,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_setMHeaderFileNameForKey (class GALGAS_string constinArgument0,
+                                                                  class GALGAS_string constinArgument1,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8185,15 +8185,15 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_lstring constinArgument1,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
+                                                   class GALGAS_lstring constinArgument1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMFeatureValueForKey (class GALGAS_lstring constinArgument0,
-                                                                  class GALGAS_string constinArgument1,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFeatureValueForKey (class GALGAS_lstring constinArgument0,
+                                                                class GALGAS_string constinArgument1,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8401,35 +8401,35 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_string constinArgument0,
-                                                         class GALGAS_string constinArgument1,
-                                                         class GALGAS_string constinArgument2,
-                                                         class GALGAS_stringlist constinArgument3,
-                                                         class GALGAS_uint constinArgument4,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
+                                                       class GALGAS_string constinArgument1,
+                                                       class GALGAS_string constinArgument2,
+                                                       class GALGAS_stringlist constinArgument3,
+                                                       class GALGAS_uint constinArgument4,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_string & outArgument0,
-                                                    class GALGAS_string & outArgument1,
-                                                    class GALGAS_string & outArgument2,
-                                                    class GALGAS_stringlist & outArgument3,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_string & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  class GALGAS_stringlist & outArgument3,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_string & outArgument0,
-                                                   class GALGAS_string & outArgument1,
-                                                   class GALGAS_string & outArgument2,
-                                                   class GALGAS_stringlist & outArgument3,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_string & outArgument0,
+                                                 class GALGAS_string & outArgument1,
+                                                 class GALGAS_string & outArgument2,
+                                                 class GALGAS_stringlist & outArgument3,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_string & outArgument0,
-                                                         class GALGAS_string & outArgument1,
-                                                         class GALGAS_string & outArgument2,
-                                                         class GALGAS_stringlist & outArgument3,
-                                                         class GALGAS_uint constinArgument4,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_string & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       class GALGAS_stringlist & outArgument3,
+                                                       class GALGAS_uint constinArgument4,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -8668,63 +8668,63 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_string constinArgument0,
-                                                         class GALGAS_string constinArgument1,
-                                                         class GALGAS_string constinArgument2,
-                                                         class GALGAS_string constinArgument3,
-                                                         class GALGAS_stringlist constinArgument4,
-                                                         class GALGAS_string constinArgument5,
-                                                         class GALGAS_string constinArgument6,
-                                                         class GALGAS_stringlist constinArgument7,
-                                                         class GALGAS_string constinArgument8,
-                                                         class GALGAS_stringlist constinArgument9,
-                                                         class GALGAS_string constinArgument10,
-                                                         class GALGAS_uint constinArgument11,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
+                                                       class GALGAS_string constinArgument1,
+                                                       class GALGAS_string constinArgument2,
+                                                       class GALGAS_string constinArgument3,
+                                                       class GALGAS_stringlist constinArgument4,
+                                                       class GALGAS_string constinArgument5,
+                                                       class GALGAS_string constinArgument6,
+                                                       class GALGAS_stringlist constinArgument7,
+                                                       class GALGAS_string constinArgument8,
+                                                       class GALGAS_stringlist constinArgument9,
+                                                       class GALGAS_string constinArgument10,
+                                                       class GALGAS_uint constinArgument11,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_string & outArgument0,
-                                                    class GALGAS_string & outArgument1,
-                                                    class GALGAS_string & outArgument2,
-                                                    class GALGAS_string & outArgument3,
-                                                    class GALGAS_stringlist & outArgument4,
-                                                    class GALGAS_string & outArgument5,
-                                                    class GALGAS_string & outArgument6,
-                                                    class GALGAS_stringlist & outArgument7,
-                                                    class GALGAS_string & outArgument8,
-                                                    class GALGAS_stringlist & outArgument9,
-                                                    class GALGAS_string & outArgument10,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_string & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  class GALGAS_string & outArgument3,
+                                                  class GALGAS_stringlist & outArgument4,
+                                                  class GALGAS_string & outArgument5,
+                                                  class GALGAS_string & outArgument6,
+                                                  class GALGAS_stringlist & outArgument7,
+                                                  class GALGAS_string & outArgument8,
+                                                  class GALGAS_stringlist & outArgument9,
+                                                  class GALGAS_string & outArgument10,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_string & outArgument0,
-                                                   class GALGAS_string & outArgument1,
-                                                   class GALGAS_string & outArgument2,
-                                                   class GALGAS_string & outArgument3,
-                                                   class GALGAS_stringlist & outArgument4,
-                                                   class GALGAS_string & outArgument5,
-                                                   class GALGAS_string & outArgument6,
-                                                   class GALGAS_stringlist & outArgument7,
-                                                   class GALGAS_string & outArgument8,
-                                                   class GALGAS_stringlist & outArgument9,
-                                                   class GALGAS_string & outArgument10,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_string & outArgument0,
+                                                 class GALGAS_string & outArgument1,
+                                                 class GALGAS_string & outArgument2,
+                                                 class GALGAS_string & outArgument3,
+                                                 class GALGAS_stringlist & outArgument4,
+                                                 class GALGAS_string & outArgument5,
+                                                 class GALGAS_string & outArgument6,
+                                                 class GALGAS_stringlist & outArgument7,
+                                                 class GALGAS_string & outArgument8,
+                                                 class GALGAS_stringlist & outArgument9,
+                                                 class GALGAS_string & outArgument10,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_string & outArgument0,
-                                                         class GALGAS_string & outArgument1,
-                                                         class GALGAS_string & outArgument2,
-                                                         class GALGAS_string & outArgument3,
-                                                         class GALGAS_stringlist & outArgument4,
-                                                         class GALGAS_string & outArgument5,
-                                                         class GALGAS_string & outArgument6,
-                                                         class GALGAS_stringlist & outArgument7,
-                                                         class GALGAS_string & outArgument8,
-                                                         class GALGAS_stringlist & outArgument9,
-                                                         class GALGAS_string & outArgument10,
-                                                         class GALGAS_uint constinArgument11,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_string & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       class GALGAS_string & outArgument3,
+                                                       class GALGAS_stringlist & outArgument4,
+                                                       class GALGAS_string & outArgument5,
+                                                       class GALGAS_string & outArgument6,
+                                                       class GALGAS_stringlist & outArgument7,
+                                                       class GALGAS_string & outArgument8,
+                                                       class GALGAS_stringlist & outArgument9,
+                                                       class GALGAS_string & outArgument10,
+                                                       class GALGAS_uint constinArgument11,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -9056,75 +9056,75 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_string constinArgument0,
-                                                         class GALGAS_string constinArgument1,
-                                                         class GALGAS_string constinArgument2,
-                                                         class GALGAS_string constinArgument3,
-                                                         class GALGAS_stringlist constinArgument4,
-                                                         class GALGAS_string constinArgument5,
-                                                         class GALGAS_string constinArgument6,
-                                                         class GALGAS_stringlist constinArgument7,
-                                                         class GALGAS_string constinArgument8,
-                                                         class GALGAS_stringlist constinArgument9,
-                                                         class GALGAS_string constinArgument10,
-                                                         class GALGAS__32_stringlist constinArgument11,
-                                                         class GALGAS_string constinArgument12,
-                                                         class GALGAS_stringlist constinArgument13,
-                                                         class GALGAS_uint constinArgument14,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
+                                                       class GALGAS_string constinArgument1,
+                                                       class GALGAS_string constinArgument2,
+                                                       class GALGAS_string constinArgument3,
+                                                       class GALGAS_stringlist constinArgument4,
+                                                       class GALGAS_string constinArgument5,
+                                                       class GALGAS_string constinArgument6,
+                                                       class GALGAS_stringlist constinArgument7,
+                                                       class GALGAS_string constinArgument8,
+                                                       class GALGAS_stringlist constinArgument9,
+                                                       class GALGAS_string constinArgument10,
+                                                       class GALGAS__32_stringlist constinArgument11,
+                                                       class GALGAS_string constinArgument12,
+                                                       class GALGAS_stringlist constinArgument13,
+                                                       class GALGAS_uint constinArgument14,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_string & outArgument0,
-                                                    class GALGAS_string & outArgument1,
-                                                    class GALGAS_string & outArgument2,
-                                                    class GALGAS_string & outArgument3,
-                                                    class GALGAS_stringlist & outArgument4,
-                                                    class GALGAS_string & outArgument5,
-                                                    class GALGAS_string & outArgument6,
-                                                    class GALGAS_stringlist & outArgument7,
-                                                    class GALGAS_string & outArgument8,
-                                                    class GALGAS_stringlist & outArgument9,
-                                                    class GALGAS_string & outArgument10,
-                                                    class GALGAS__32_stringlist & outArgument11,
-                                                    class GALGAS_string & outArgument12,
-                                                    class GALGAS_stringlist & outArgument13,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_string & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  class GALGAS_string & outArgument3,
+                                                  class GALGAS_stringlist & outArgument4,
+                                                  class GALGAS_string & outArgument5,
+                                                  class GALGAS_string & outArgument6,
+                                                  class GALGAS_stringlist & outArgument7,
+                                                  class GALGAS_string & outArgument8,
+                                                  class GALGAS_stringlist & outArgument9,
+                                                  class GALGAS_string & outArgument10,
+                                                  class GALGAS__32_stringlist & outArgument11,
+                                                  class GALGAS_string & outArgument12,
+                                                  class GALGAS_stringlist & outArgument13,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_string & outArgument0,
-                                                   class GALGAS_string & outArgument1,
-                                                   class GALGAS_string & outArgument2,
-                                                   class GALGAS_string & outArgument3,
-                                                   class GALGAS_stringlist & outArgument4,
-                                                   class GALGAS_string & outArgument5,
-                                                   class GALGAS_string & outArgument6,
-                                                   class GALGAS_stringlist & outArgument7,
-                                                   class GALGAS_string & outArgument8,
-                                                   class GALGAS_stringlist & outArgument9,
-                                                   class GALGAS_string & outArgument10,
-                                                   class GALGAS__32_stringlist & outArgument11,
-                                                   class GALGAS_string & outArgument12,
-                                                   class GALGAS_stringlist & outArgument13,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_string & outArgument0,
+                                                 class GALGAS_string & outArgument1,
+                                                 class GALGAS_string & outArgument2,
+                                                 class GALGAS_string & outArgument3,
+                                                 class GALGAS_stringlist & outArgument4,
+                                                 class GALGAS_string & outArgument5,
+                                                 class GALGAS_string & outArgument6,
+                                                 class GALGAS_stringlist & outArgument7,
+                                                 class GALGAS_string & outArgument8,
+                                                 class GALGAS_stringlist & outArgument9,
+                                                 class GALGAS_string & outArgument10,
+                                                 class GALGAS__32_stringlist & outArgument11,
+                                                 class GALGAS_string & outArgument12,
+                                                 class GALGAS_stringlist & outArgument13,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_string & outArgument0,
-                                                         class GALGAS_string & outArgument1,
-                                                         class GALGAS_string & outArgument2,
-                                                         class GALGAS_string & outArgument3,
-                                                         class GALGAS_stringlist & outArgument4,
-                                                         class GALGAS_string & outArgument5,
-                                                         class GALGAS_string & outArgument6,
-                                                         class GALGAS_stringlist & outArgument7,
-                                                         class GALGAS_string & outArgument8,
-                                                         class GALGAS_stringlist & outArgument9,
-                                                         class GALGAS_string & outArgument10,
-                                                         class GALGAS__32_stringlist & outArgument11,
-                                                         class GALGAS_string & outArgument12,
-                                                         class GALGAS_stringlist & outArgument13,
-                                                         class GALGAS_uint constinArgument14,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_string & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       class GALGAS_string & outArgument3,
+                                                       class GALGAS_stringlist & outArgument4,
+                                                       class GALGAS_string & outArgument5,
+                                                       class GALGAS_string & outArgument6,
+                                                       class GALGAS_stringlist & outArgument7,
+                                                       class GALGAS_string & outArgument8,
+                                                       class GALGAS_stringlist & outArgument9,
+                                                       class GALGAS_string & outArgument10,
+                                                       class GALGAS__32_stringlist & outArgument11,
+                                                       class GALGAS_string & outArgument12,
+                                                       class GALGAS_stringlist & outArgument13,
+                                                       class GALGAS_uint constinArgument14,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
@@ -9459,31 +9459,31 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
 
 
 //--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_string constinArgument0,
-                                                         class GALGAS_string constinArgument1,
-                                                         class GALGAS_string constinArgument2,
-                                                         class GALGAS_uint constinArgument3,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
+                                                       class GALGAS_string constinArgument1,
+                                                       class GALGAS_string constinArgument2,
+                                                       class GALGAS_uint constinArgument3,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_string & outArgument0,
-                                                    class GALGAS_string & outArgument1,
-                                                    class GALGAS_string & outArgument2,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_string & outArgument0,
+                                                  class GALGAS_string & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_string & outArgument0,
-                                                   class GALGAS_string & outArgument1,
-                                                   class GALGAS_string & outArgument2,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_string & outArgument0,
+                                                 class GALGAS_string & outArgument1,
+                                                 class GALGAS_string & outArgument2,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_string & outArgument0,
-                                                         class GALGAS_string & outArgument1,
-                                                         class GALGAS_string & outArgument2,
-                                                         class GALGAS_uint constinArgument3,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_string & outArgument0,
+                                                       class GALGAS_string & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       class GALGAS_uint constinArgument3,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods

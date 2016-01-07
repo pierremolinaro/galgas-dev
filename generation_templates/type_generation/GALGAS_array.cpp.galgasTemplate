@@ -379,7 +379,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_setValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+void GALGAS_%!TYPE_IDENTIFIER%::setter_setValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
 %
 for () in DIMENSION_LIST
  do !^%GALGAS_uint inIndex%!mValue%,\n%
@@ -404,7 +404,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+void GALGAS_%!TYPE_IDENTIFIER%::setter_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
 %for () in DIMENSION_LIST
  do !^%const GALGAS_uint inIndex%!mValue%,\n%
  end
@@ -438,7 +438,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSizeForAxis (%?^%GALGAS_uint inNewSize,
+void GALGAS_%!TYPE_IDENTIFIER%::setter_setSizeForAxis (%?^%GALGAS_uint inNewSize,
         %!^%GALGAS_uint inAxisIndex,
         %!^%C_Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) {
@@ -464,7 +464,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_invalidateValueAtIndex (%
+void GALGAS_%!TYPE_IDENTIFIER%::setter_invalidateValueAtIndex (%
 for () in DIMENSION_LIST
  before ?^
  do !^%GALGAS_uint inIndex%!mValue%,\n%
@@ -489,7 +489,7 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSize (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_setSize (%?^
 for () in DIMENSION_LIST
 do !^%const GALGAS_uint inNewSize%!mValue%,\n%
 end

@@ -417,7 +417,7 @@ GALGAS_bool GALGAS_bigint::getter_bitAtIndex (const GALGAS_uint & inBitIndex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_bigint::modifier_complementBitAtIndex (const GALGAS_uint inBitIndex
+void GALGAS_bigint::setter_complementBitAtIndex (const GALGAS_uint inBitIndex
                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitIndex.isValid ()) {
     mValue.complementBitAtIndex (inBitIndex.uintValue ()) ;
@@ -426,7 +426,7 @@ void GALGAS_bigint::modifier_complementBitAtIndex (const GALGAS_uint inBitIndex
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_bigint::modifier_setBitAtIndex (const GALGAS_bool inBitValue,
+void GALGAS_bigint::setter_setBitAtIndex (const GALGAS_bool inBitValue,
                                             const GALGAS_uint inBitIndex
                                             COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inBitValue.isValid () && inBitIndex.isValid ()) {

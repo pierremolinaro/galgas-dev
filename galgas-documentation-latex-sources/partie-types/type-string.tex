@@ -1136,6 +1136,88 @@ getter utf32Representation -> @string
 getter utf8Representation -> @string
 \end{galgasbox}
 
-Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationWithoutDelimiters}{string}
+
+\begin{galgasbox}
+getter utf8RepresentationWithoutDelimiters -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8 sans le délimiteur initial et ni le délimiteur terminal, c'est-à-dire qu'aucun caractère « \texttt{"} » n'est inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Méthodes}
+
+
+
+
+
+\subsectionMethod{makeDirectory}{string}
+
+\begin{galgasbox}
+method makeDirectory
+\end{galgasbox}
+
+Crée le répertoire désigné par la valeur du récepteur. Les répertoires intermédiaires sont créés si besoin. Si le répertoire existe déjà, aucune erreur n'est déclenchée.
+
+
+
+
+
+
+\subsectionMethod{makeDirectoryAndWriteToExecutableFile}{string}
+
+\begin{galgasbox}
+method makeDirectoryAndWriteToExecutableFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Les répertoires intermédiaires sont créés si besoin. Le fichier \ggs!inFilePath! est rendu exécutable.
+
+
+
+
+
+
+
+\subsectionMethod{makeDirectoryAndWriteToFile}{string}
+
+\begin{galgasbox}
+method makeDirectoryAndWriteToFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Les répertoires intermédiaires sont créés si besoin.
+
+
+
+
+
+
+
+
+\subsectionMethod{makeSymbolicLinkWithPath}{string}
+
+\begin{galgasbox}
+method makeSymbolicLinkWithPath ?@string inFilePath
+\end{galgasbox}
 
 

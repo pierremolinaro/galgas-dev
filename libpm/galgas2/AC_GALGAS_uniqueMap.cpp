@@ -725,7 +725,7 @@ void cSharedUniqueMapRoot::enterEdge (cUniqueMapNode * inSource,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMap::modifier_enterEdge (const GALGAS_lstring & inSource,
+void AC_GALGAS_uniqueMap::setter_enterEdge (const GALGAS_lstring & inSource,
                                               const GALGAS_lstring & inTarget
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inSource.isValid () && inTarget.isValid( )) {
@@ -1650,7 +1650,7 @@ void cSharedUniqueMapRoot::openBranch (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMap::modifier_openBranch (C_Compiler * inCompiler
+void AC_GALGAS_uniqueMap::setter_openBranch (C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedMap->openBranch (inCompiler COMMA_THERE) ;
@@ -1891,7 +1891,7 @@ void cSharedUniqueMapRoot::closeOverride (const GALGAS_location & inErrorLocatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMap::modifier_closeOverride (const GALGAS_location & inErrorLocation,
+void AC_GALGAS_uniqueMap::setter_closeOverride (const GALGAS_location & inErrorLocation,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {

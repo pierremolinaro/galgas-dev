@@ -124,11 +124,11 @@ void GALGAS_routineMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routineMap::modifier_insertKey (GALGAS_lstring inKey,
-                                            GALGAS_formalParameterSignature inArgument0,
-                                            GALGAS_bool inArgument1,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void GALGAS_routineMap::setter_insertKey (GALGAS_lstring inKey,
+                                          GALGAS_formalParameterSignature inArgument0,
+                                          GALGAS_bool inArgument1,
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   cMapElement_routineMap * p = NULL ;
   macroMyNew (p, cMapElement_routineMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -196,10 +196,10 @@ GALGAS_bool GALGAS_routineMap::getter_mIsInternalForKey (const GALGAS_string & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routineMap::modifier_setMRoutineSignatureForKey (GALGAS_formalParameterSignature inAttributeValue,
-                                                             GALGAS_string inKey,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_routineMap::setter_setMRoutineSignatureForKey (GALGAS_formalParameterSignature inAttributeValue,
+                                                           GALGAS_string inKey,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_routineMap * p = (cMapElement_routineMap *) attributes ;
   if (NULL != p) {
@@ -210,10 +210,10 @@ void GALGAS_routineMap::modifier_setMRoutineSignatureForKey (GALGAS_formalParame
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routineMap::modifier_setMIsInternalForKey (GALGAS_bool inAttributeValue,
-                                                       GALGAS_string inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_routineMap::setter_setMIsInternalForKey (GALGAS_bool inAttributeValue,
+                                                     GALGAS_string inKey,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_routineMap * p = (cMapElement_routineMap *) attributes ;
   if (NULL != p) {
@@ -443,12 +443,12 @@ void GALGAS_functionMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionMap::modifier_insertKey (GALGAS_lstring inKey,
-                                             GALGAS_functionSignature inArgument0,
-                                             GALGAS_unifiedTypeMap_2D_proxy inArgument1,
-                                             GALGAS_bool inArgument2,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void GALGAS_functionMap::setter_insertKey (GALGAS_lstring inKey,
+                                           GALGAS_functionSignature inArgument0,
+                                           GALGAS_unifiedTypeMap_2D_proxy inArgument1,
+                                           GALGAS_bool inArgument2,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
   cMapElement_functionMap * p = NULL ;
   macroMyNew (p, cMapElement_functionMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -534,10 +534,10 @@ GALGAS_bool GALGAS_functionMap::getter_mIsInternalForKey (const GALGAS_string & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionMap::modifier_setMFunctionSignatureForKey (GALGAS_functionSignature inAttributeValue,
-                                                               GALGAS_string inKey,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_functionMap::setter_setMFunctionSignatureForKey (GALGAS_functionSignature inAttributeValue,
+                                                             GALGAS_string inKey,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
@@ -548,10 +548,10 @@ void GALGAS_functionMap::modifier_setMFunctionSignatureForKey (GALGAS_functionSi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionMap::modifier_setMResultTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                        GALGAS_string inKey,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_functionMap::setter_setMResultTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+                                                      GALGAS_string inKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
@@ -562,10 +562,10 @@ void GALGAS_functionMap::modifier_setMResultTypeForKey (GALGAS_unifiedTypeMap_2D
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionMap::modifier_setMIsInternalForKey (GALGAS_bool inAttributeValue,
-                                                        GALGAS_string inKey,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_functionMap::setter_setMIsInternalForKey (GALGAS_bool inAttributeValue,
+                                                      GALGAS_string inKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
@@ -813,13 +813,13 @@ void GALGAS_wrapperFileMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperFileMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                GALGAS_string inArgument0,
-                                                GALGAS_bool inArgument1,
-                                                GALGAS_uint inArgument2,
-                                                GALGAS_uint inArgument3,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperFileMap::setter_insertKey (GALGAS_lstring inKey,
+                                              GALGAS_string inArgument0,
+                                              GALGAS_bool inArgument1,
+                                              GALGAS_uint inArgument2,
+                                              GALGAS_uint inArgument3,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   cMapElement_wrapperFileMap * p = NULL ;
   macroMyNew (p, cMapElement_wrapperFileMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -923,10 +923,10 @@ GALGAS_uint GALGAS_wrapperFileMap::getter_mWrapperFileIndexForKey (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperFileMap::modifier_setMAbsoluteFilePathForKey (GALGAS_string inAttributeValue,
-                                                                 GALGAS_string inKey,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperFileMap::setter_setMAbsoluteFilePathForKey (GALGAS_string inAttributeValue,
+                                                               GALGAS_string inKey,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
@@ -937,10 +937,10 @@ void GALGAS_wrapperFileMap::modifier_setMAbsoluteFilePathForKey (GALGAS_string i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperFileMap::modifier_setMIsTextFileForKey (GALGAS_bool inAttributeValue,
-                                                           GALGAS_string inKey,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperFileMap::setter_setMIsTextFileForKey (GALGAS_bool inAttributeValue,
+                                                         GALGAS_string inKey,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
@@ -951,10 +951,10 @@ void GALGAS_wrapperFileMap::modifier_setMIsTextFileForKey (GALGAS_bool inAttribu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperFileMap::modifier_setMWrapperDirectoryIndexForKey (GALGAS_uint inAttributeValue,
-                                                                      GALGAS_string inKey,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperFileMap::setter_setMWrapperDirectoryIndexForKey (GALGAS_uint inAttributeValue,
+                                                                    GALGAS_string inKey,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
@@ -965,10 +965,10 @@ void GALGAS_wrapperFileMap::modifier_setMWrapperDirectoryIndexForKey (GALGAS_uin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperFileMap::modifier_setMWrapperFileIndexForKey (GALGAS_uint inAttributeValue,
-                                                                 GALGAS_string inKey,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperFileMap::setter_setMWrapperFileIndexForKey (GALGAS_uint inAttributeValue,
+                                                               GALGAS_string inKey,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
@@ -1214,12 +1214,12 @@ void GALGAS_wrapperDirectoryMap::addAssign_operation (const GALGAS_lstring & inK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperDirectoryMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                     GALGAS_wrapperFileMap inArgument0,
-                                                     GALGAS_wrapperDirectoryMap inArgument1,
-                                                     GALGAS_uint inArgument2,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperDirectoryMap::setter_insertKey (GALGAS_lstring inKey,
+                                                   GALGAS_wrapperFileMap inArgument0,
+                                                   GALGAS_wrapperDirectoryMap inArgument1,
+                                                   GALGAS_uint inArgument2,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   cMapElement_wrapperDirectoryMap * p = NULL ;
   macroMyNew (p, cMapElement_wrapperDirectoryMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -1305,10 +1305,10 @@ GALGAS_uint GALGAS_wrapperDirectoryMap::getter_mWrapperDirectoryIndexForKey (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperDirectoryMap::modifier_setMRegularFileMapForKey (GALGAS_wrapperFileMap inAttributeValue,
-                                                                    GALGAS_string inKey,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperDirectoryMap::setter_setMRegularFileMapForKey (GALGAS_wrapperFileMap inAttributeValue,
+                                                                  GALGAS_string inKey,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
@@ -1319,10 +1319,10 @@ void GALGAS_wrapperDirectoryMap::modifier_setMRegularFileMapForKey (GALGAS_wrapp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperDirectoryMap::modifier_setMDirectoryMapForKey (GALGAS_wrapperDirectoryMap inAttributeValue,
-                                                                  GALGAS_string inKey,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperDirectoryMap::setter_setMDirectoryMapForKey (GALGAS_wrapperDirectoryMap inAttributeValue,
+                                                                GALGAS_string inKey,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
@@ -1333,10 +1333,10 @@ void GALGAS_wrapperDirectoryMap::modifier_setMDirectoryMapForKey (GALGAS_wrapper
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperDirectoryMap::modifier_setMWrapperDirectoryIndexForKey (GALGAS_uint inAttributeValue,
-                                                                           GALGAS_string inKey,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperDirectoryMap::setter_setMWrapperDirectoryIndexForKey (GALGAS_uint inAttributeValue,
+                                                                         GALGAS_string inKey,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
@@ -1564,11 +1564,11 @@ void GALGAS_filewrapperTemplateMap::addAssign_operation (const GALGAS_lstring & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                        GALGAS_functionSignature inArgument0,
-                                                        GALGAS_lstring inArgument1,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateMap::setter_insertKey (GALGAS_lstring inKey,
+                                                      GALGAS_functionSignature inArgument0,
+                                                      GALGAS_lstring inArgument1,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   cMapElement_filewrapperTemplateMap * p = NULL ;
   macroMyNew (p, cMapElement_filewrapperTemplateMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -1636,10 +1636,10 @@ GALGAS_lstring GALGAS_filewrapperTemplateMap::getter_mFilewrapperTemplatePathFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateMap::modifier_setMTemplateSignatureForKey (GALGAS_functionSignature inAttributeValue,
-                                                                          GALGAS_string inKey,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateMap::setter_setMTemplateSignatureForKey (GALGAS_functionSignature inAttributeValue,
+                                                                        GALGAS_string inKey,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) attributes ;
   if (NULL != p) {
@@ -1650,10 +1650,10 @@ void GALGAS_filewrapperTemplateMap::modifier_setMTemplateSignatureForKey (GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateMap::modifier_setMFilewrapperTemplatePathForKey (GALGAS_lstring inAttributeValue,
-                                                                                GALGAS_string inKey,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateMap::setter_setMFilewrapperTemplatePathForKey (GALGAS_lstring inAttributeValue,
+                                                                              GALGAS_string inKey,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) attributes ;
   if (NULL != p) {
@@ -1913,15 +1913,15 @@ void GALGAS_filewrapperMap::addAssign_operation (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                GALGAS_lstring inArgument0,
-                                                GALGAS_lstringlist inArgument1,
-                                                GALGAS_wrapperFileMap inArgument2,
-                                                GALGAS_wrapperDirectoryMap inArgument3,
-                                                GALGAS_filewrapperTemplateMap inArgument4,
-                                                GALGAS_bool inArgument5,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_insertKey (GALGAS_lstring inKey,
+                                              GALGAS_lstring inArgument0,
+                                              GALGAS_lstringlist inArgument1,
+                                              GALGAS_wrapperFileMap inArgument2,
+                                              GALGAS_wrapperDirectoryMap inArgument3,
+                                              GALGAS_filewrapperTemplateMap inArgument4,
+                                              GALGAS_bool inArgument5,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   cMapElement_filewrapperMap * p = NULL ;
   macroMyNew (p, cMapElement_filewrapperMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4, inArgument5 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -2061,10 +2061,10 @@ GALGAS_bool GALGAS_filewrapperMap::getter_mIsInternalForKey (const GALGAS_string
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMFilewrapperPathForKey (GALGAS_lstring inAttributeValue,
-                                                                GALGAS_string inKey,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMFilewrapperPathForKey (GALGAS_lstring inAttributeValue,
+                                                              GALGAS_string inKey,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2075,10 +2075,10 @@ void GALGAS_filewrapperMap::modifier_setMFilewrapperPathForKey (GALGAS_lstring i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMFilewrapperExtensionListForKey (GALGAS_lstringlist inAttributeValue,
-                                                                         GALGAS_string inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMFilewrapperExtensionListForKey (GALGAS_lstringlist inAttributeValue,
+                                                                       GALGAS_string inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2089,10 +2089,10 @@ void GALGAS_filewrapperMap::modifier_setMFilewrapperExtensionListForKey (GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMFilewrapperFileMapForKey (GALGAS_wrapperFileMap inAttributeValue,
-                                                                   GALGAS_string inKey,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMFilewrapperFileMapForKey (GALGAS_wrapperFileMap inAttributeValue,
+                                                                 GALGAS_string inKey,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2103,10 +2103,10 @@ void GALGAS_filewrapperMap::modifier_setMFilewrapperFileMapForKey (GALGAS_wrappe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMFilewrapperDirectoryMapForKey (GALGAS_wrapperDirectoryMap inAttributeValue,
-                                                                        GALGAS_string inKey,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMFilewrapperDirectoryMapForKey (GALGAS_wrapperDirectoryMap inAttributeValue,
+                                                                      GALGAS_string inKey,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2117,10 +2117,10 @@ void GALGAS_filewrapperMap::modifier_setMFilewrapperDirectoryMapForKey (GALGAS_w
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMFilewrapperTemplateMapForKey (GALGAS_filewrapperTemplateMap inAttributeValue,
-                                                                       GALGAS_string inKey,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMFilewrapperTemplateMapForKey (GALGAS_filewrapperTemplateMap inAttributeValue,
+                                                                     GALGAS_string inKey,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2131,10 +2131,10 @@ void GALGAS_filewrapperMap::modifier_setMFilewrapperTemplateMapForKey (GALGAS_fi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperMap::modifier_setMIsInternalForKey (GALGAS_bool inAttributeValue,
-                                                           GALGAS_string inKey,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperMap::setter_setMIsInternalForKey (GALGAS_bool inAttributeValue,
+                                                         GALGAS_string inKey,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
@@ -2416,14 +2416,14 @@ void GALGAS_optionComponentMapForSemanticAnalysis::addAssign_operation (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_insertKey (GALGAS_lstring inKey,
-                                                                       GALGAS_bool inArgument0,
-                                                                       GALGAS_commandLineOptionMap inArgument1,
-                                                                       GALGAS_commandLineOptionMap inArgument2,
-                                                                       GALGAS_commandLineOptionMap inArgument3,
-                                                                       GALGAS_commandLineOptionMap inArgument4,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_insertKey (GALGAS_lstring inKey,
+                                                                     GALGAS_bool inArgument0,
+                                                                     GALGAS_commandLineOptionMap inArgument1,
+                                                                     GALGAS_commandLineOptionMap inArgument2,
+                                                                     GALGAS_commandLineOptionMap inArgument3,
+                                                                     GALGAS_commandLineOptionMap inArgument4,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cMapElement_optionComponentMapForSemanticAnalysis * p = NULL ;
   macroMyNew (p, cMapElement_optionComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -2545,10 +2545,10 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::getter
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMIsPredefinedForKey (GALGAS_bool inAttributeValue,
-                                                                                    GALGAS_string inKey,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMIsPredefinedForKey (GALGAS_bool inAttributeValue,
+                                                                                  GALGAS_string inKey,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -2559,10 +2559,10 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMIsPredefinedForK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMBoolOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
-                                                                                     GALGAS_string inKey,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMBoolOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                                   GALGAS_string inKey,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -2573,10 +2573,10 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMBoolOptionMapFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMUIntOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
-                                                                                     GALGAS_string inKey,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMUIntOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                                   GALGAS_string inKey,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -2587,10 +2587,10 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMUIntOptionMapFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMStringOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
-                                                                                       GALGAS_string inKey,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMStringOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                                     GALGAS_string inKey,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -2601,10 +2601,10 @@ void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMStringOptionMapF
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentMapForSemanticAnalysis::modifier_setMStringListOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
-                                                                                           GALGAS_string inKey,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMStringListOptionMapForKey (GALGAS_commandLineOptionMap inAttributeValue,
+                                                                                         GALGAS_string inKey,
+                                                                                         C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -2878,14 +2878,14 @@ void GALGAS_optionMapForSemanticAnalysis::addAssign_operation (const GALGAS_lstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_insertKey (GALGAS_lstring inKey,
-                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                              GALGAS_char inArgument1,
-                                                              GALGAS_string inArgument2,
-                                                              GALGAS_string inArgument3,
-                                                              GALGAS_string inArgument4,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_insertKey (GALGAS_lstring inKey,
+                                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                            GALGAS_char inArgument1,
+                                                            GALGAS_string inArgument2,
+                                                            GALGAS_string inArgument3,
+                                                            GALGAS_string inArgument4,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   cMapElement_optionMapForSemanticAnalysis * p = NULL ;
   macroMyNew (p, cMapElement_optionMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2, inArgument3, inArgument4 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -3007,10 +3007,10 @@ GALGAS_string GALGAS_optionMapForSemanticAnalysis::getter_mDefaultValueForKey (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                                         GALGAS_string inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_setMOptionTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+                                                                       GALGAS_string inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionMapForSemanticAnalysis * p = (cMapElement_optionMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3021,10 +3021,10 @@ void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionTypeForKey (GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionCharForKey (GALGAS_char inAttributeValue,
-                                                                         GALGAS_string inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_setMOptionCharForKey (GALGAS_char inAttributeValue,
+                                                                       GALGAS_string inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionMapForSemanticAnalysis * p = (cMapElement_optionMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3035,10 +3035,10 @@ void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionCharForKey (GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionStringForKey (GALGAS_string inAttributeValue,
-                                                                           GALGAS_string inKey,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_setMOptionStringForKey (GALGAS_string inAttributeValue,
+                                                                         GALGAS_string inKey,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionMapForSemanticAnalysis * p = (cMapElement_optionMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3049,10 +3049,10 @@ void GALGAS_optionMapForSemanticAnalysis::modifier_setMOptionStringForKey (GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_setMCommentForKey (GALGAS_string inAttributeValue,
-                                                                      GALGAS_string inKey,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_setMCommentForKey (GALGAS_string inAttributeValue,
+                                                                    GALGAS_string inKey,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionMapForSemanticAnalysis * p = (cMapElement_optionMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3063,10 +3063,10 @@ void GALGAS_optionMapForSemanticAnalysis::modifier_setMCommentForKey (GALGAS_str
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionMapForSemanticAnalysis::modifier_setMDefaultValueForKey (GALGAS_string inAttributeValue,
-                                                                           GALGAS_string inKey,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_optionMapForSemanticAnalysis::setter_setMDefaultValueForKey (GALGAS_string inAttributeValue,
+                                                                         GALGAS_string inKey,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_optionMapForSemanticAnalysis * p = (cMapElement_optionMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3320,12 +3320,12 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::addAssign_operation (const G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_insertKey (GALGAS_lstring inKey,
-                                                                        GALGAS_terminalMap inArgument0,
-                                                                        GALGAS_indexingListAST inArgument1,
-                                                                        GALGAS_lstring inArgument2,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_insertKey (GALGAS_lstring inKey,
+                                                                      GALGAS_terminalMap inArgument0,
+                                                                      GALGAS_indexingListAST inArgument1,
+                                                                      GALGAS_lstring inArgument2,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = NULL ;
   macroMyNew (p, cMapElement_lexiqueComponentMapForSemanticAnalysis (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -3411,10 +3411,10 @@ GALGAS_lstring GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mIndexingDi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_setMTerminalMapForKey (GALGAS_terminalMap inAttributeValue,
-                                                                                    GALGAS_string inKey,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMTerminalMapForKey (GALGAS_terminalMap inAttributeValue,
+                                                                                  GALGAS_string inKey,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3425,10 +3425,10 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_setMTerminalMapForK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_setMIndexingListASTForKey (GALGAS_indexingListAST inAttributeValue,
-                                                                                        GALGAS_string inKey,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingListASTForKey (GALGAS_indexingListAST inAttributeValue,
+                                                                                      GALGAS_string inKey,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3439,10 +3439,10 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_setMIndexingListAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexiqueComponentMapForSemanticAnalysis::modifier_setMIndexingDirectoryForKey (GALGAS_lstring inAttributeValue,
-                                                                                          GALGAS_string inKey,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingDirectoryForKey (GALGAS_lstring inAttributeValue,
+                                                                                        GALGAS_string inKey,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
@@ -3690,13 +3690,13 @@ void GALGAS_syntaxComponentMap::addAssign_operation (const GALGAS_lstring & inKe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                    GALGAS_lstring inArgument0,
-                                                    GALGAS_nonterminalDeclarationListAST inArgument1,
-                                                    GALGAS_syntaxRuleListAST inArgument2,
-                                                    GALGAS_bool inArgument3,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_syntaxComponentMap::setter_insertKey (GALGAS_lstring inKey,
+                                                  GALGAS_lstring inArgument0,
+                                                  GALGAS_nonterminalDeclarationListAST inArgument1,
+                                                  GALGAS_syntaxRuleListAST inArgument2,
+                                                  GALGAS_bool inArgument3,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   cMapElement_syntaxComponentMap * p = NULL ;
   macroMyNew (p, cMapElement_syntaxComponentMap (inKey, inArgument0, inArgument1, inArgument2, inArgument3 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -3800,10 +3800,10 @@ GALGAS_bool GALGAS_syntaxComponentMap::getter_mHasTranslateFeatureForKey (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentMap::modifier_setMLexiqueNameForKey (GALGAS_lstring inAttributeValue,
-                                                                GALGAS_string inKey,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_syntaxComponentMap::setter_setMLexiqueNameForKey (GALGAS_lstring inAttributeValue,
+                                                              GALGAS_string inKey,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
@@ -3814,10 +3814,10 @@ void GALGAS_syntaxComponentMap::modifier_setMLexiqueNameForKey (GALGAS_lstring i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentMap::modifier_setMNonterminalDeclarationListForKey (GALGAS_nonterminalDeclarationListAST inAttributeValue,
-                                                                               GALGAS_string inKey,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_syntaxComponentMap::setter_setMNonterminalDeclarationListForKey (GALGAS_nonterminalDeclarationListAST inAttributeValue,
+                                                                             GALGAS_string inKey,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
@@ -3828,10 +3828,10 @@ void GALGAS_syntaxComponentMap::modifier_setMNonterminalDeclarationListForKey (G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentMap::modifier_setMRuleListForKey (GALGAS_syntaxRuleListAST inAttributeValue,
-                                                             GALGAS_string inKey,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_syntaxComponentMap::setter_setMRuleListForKey (GALGAS_syntaxRuleListAST inAttributeValue,
+                                                           GALGAS_string inKey,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
@@ -3842,10 +3842,10 @@ void GALGAS_syntaxComponentMap::modifier_setMRuleListForKey (GALGAS_syntaxRuleLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_syntaxComponentMap::modifier_setMHasTranslateFeatureForKey (GALGAS_bool inAttributeValue,
-                                                                        GALGAS_string inKey,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_syntaxComponentMap::setter_setMHasTranslateFeatureForKey (GALGAS_bool inAttributeValue,
+                                                                      GALGAS_string inKey,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
@@ -4071,10 +4071,10 @@ void GALGAS_categoryMethodMapForType::addAssign_operation (const GALGAS_lstring 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryMethodMapForType::modifier_insertKey (GALGAS_lstring inKey,
-                                                          GALGAS_formalParameterListAST inArgument0,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_categoryMethodMapForType::setter_insertKey (GALGAS_lstring inKey,
+                                                        GALGAS_formalParameterListAST inArgument0,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cMapElement_categoryMethodMapForType * p = NULL ;
   macroMyNew (p, cMapElement_categoryMethodMapForType (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4102,10 +4102,10 @@ GALGAS_formalParameterListAST GALGAS_categoryMethodMapForType::getter_mFormalPar
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryMethodMapForType::modifier_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
-                                                                              GALGAS_string inKey,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_categoryMethodMapForType::setter_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
+                                                                            GALGAS_string inKey,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryMethodMapForType * p = (cMapElement_categoryMethodMapForType *) attributes ;
   if (NULL != p) {
@@ -4307,10 +4307,10 @@ void GALGAS_categoryMethodMapForBuildingContext::addAssign_operation (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryMethodMapForBuildingContext::modifier_insertKey (GALGAS_lstring inKey,
-                                                                     GALGAS_categoryMethodMapForType inArgument0,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_categoryMethodMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
+                                                                   GALGAS_categoryMethodMapForType inArgument0,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cMapElement_categoryMethodMapForBuildingContext * p = NULL ;
   macroMyNew (p, cMapElement_categoryMethodMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4360,10 +4360,10 @@ GALGAS_categoryMethodMapForType GALGAS_categoryMethodMapForBuildingContext::gett
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryMethodMapForBuildingContext::modifier_setMCategoryMethodMapForTypeForKey (GALGAS_categoryMethodMapForType inAttributeValue,
-                                                                                              GALGAS_string inKey,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_categoryMethodMapForBuildingContext::setter_setMCategoryMethodMapForTypeForKey (GALGAS_categoryMethodMapForType inAttributeValue,
+                                                                                            GALGAS_string inKey,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryMethodMapForBuildingContext * p = (cMapElement_categoryMethodMapForBuildingContext *) attributes ;
   if (NULL != p) {
@@ -4565,10 +4565,10 @@ void GALGAS_categoryModifierMapForType::addAssign_operation (const GALGAS_lstrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryModifierMapForType::modifier_insertKey (GALGAS_lstring inKey,
-                                                            GALGAS_formalParameterListAST inArgument0,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_categoryModifierMapForType::setter_insertKey (GALGAS_lstring inKey,
+                                                          GALGAS_formalParameterListAST inArgument0,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   cMapElement_categoryModifierMapForType * p = NULL ;
   macroMyNew (p, cMapElement_categoryModifierMapForType (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4596,10 +4596,10 @@ GALGAS_formalParameterListAST GALGAS_categoryModifierMapForType::getter_mFormalP
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryModifierMapForType::modifier_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
-                                                                                GALGAS_string inKey,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_categoryModifierMapForType::setter_setMFormalParameterListForKey (GALGAS_formalParameterListAST inAttributeValue,
+                                                                              GALGAS_string inKey,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryModifierMapForType * p = (cMapElement_categoryModifierMapForType *) attributes ;
   if (NULL != p) {
@@ -4801,10 +4801,10 @@ void GALGAS_categoryModifierMapForBuildingContext::addAssign_operation (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryModifierMapForBuildingContext::modifier_insertKey (GALGAS_lstring inKey,
-                                                                       GALGAS_categoryModifierMapForType inArgument0,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_categoryModifierMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
+                                                                     GALGAS_categoryModifierMapForType inArgument0,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   cMapElement_categoryModifierMapForBuildingContext * p = NULL ;
   macroMyNew (p, cMapElement_categoryModifierMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -4854,10 +4854,10 @@ GALGAS_categoryModifierMapForType GALGAS_categoryModifierMapForBuildingContext::
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryModifierMapForBuildingContext::modifier_setMCategoryModifierMapForTypeForKey (GALGAS_categoryModifierMapForType inAttributeValue,
-                                                                                                  GALGAS_string inKey,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_categoryModifierMapForBuildingContext::setter_setMCategoryModifierMapForTypeForKey (GALGAS_categoryModifierMapForType inAttributeValue,
+                                                                                                GALGAS_string inKey,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryModifierMapForBuildingContext * p = (cMapElement_categoryModifierMapForBuildingContext *) attributes ;
   if (NULL != p) {
@@ -5069,11 +5069,11 @@ void GALGAS_categoryGetterMapForType::addAssign_operation (const GALGAS_lstring 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForType::modifier_insertKey (GALGAS_lstring inKey,
-                                                          GALGAS_lstring inArgument0,
-                                                          GALGAS_formalInputParameterListAST inArgument1,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_categoryGetterMapForType::setter_insertKey (GALGAS_lstring inKey,
+                                                        GALGAS_lstring inArgument0,
+                                                        GALGAS_formalInputParameterListAST inArgument1,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cMapElement_categoryGetterMapForType * p = NULL ;
   macroMyNew (p, cMapElement_categoryGetterMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -5116,10 +5116,10 @@ GALGAS_formalInputParameterListAST GALGAS_categoryGetterMapForType::getter_mInpu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForType::modifier_setMResultTypeNameForKey (GALGAS_lstring inAttributeValue,
-                                                                         GALGAS_string inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_categoryGetterMapForType::setter_setMResultTypeNameForKey (GALGAS_lstring inAttributeValue,
+                                                                       GALGAS_string inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryGetterMapForType * p = (cMapElement_categoryGetterMapForType *) attributes ;
   if (NULL != p) {
@@ -5130,10 +5130,10 @@ void GALGAS_categoryGetterMapForType::modifier_setMResultTypeNameForKey (GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForType::modifier_setMInputFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
-                                                                                   GALGAS_string inKey,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {
+void GALGAS_categoryGetterMapForType::setter_setMInputFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
+                                                                                 GALGAS_string inKey,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryGetterMapForType * p = (cMapElement_categoryGetterMapForType *) attributes ;
   if (NULL != p) {
@@ -5343,10 +5343,10 @@ void GALGAS_categoryGetterMapForBuildingContext::addAssign_operation (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForBuildingContext::modifier_insertKey (GALGAS_lstring inKey,
-                                                                     GALGAS_categoryGetterMapForType inArgument0,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_categoryGetterMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
+                                                                   GALGAS_categoryGetterMapForType inArgument0,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cMapElement_categoryGetterMapForBuildingContext * p = NULL ;
   macroMyNew (p, cMapElement_categoryGetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -5396,10 +5396,10 @@ GALGAS_categoryGetterMapForType GALGAS_categoryGetterMapForBuildingContext::gett
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryGetterMapForBuildingContext::modifier_setMCategoryGetterMapForTypeForKey (GALGAS_categoryGetterMapForType inAttributeValue,
-                                                                                              GALGAS_string inKey,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_categoryGetterMapForBuildingContext::setter_setMCategoryGetterMapForTypeForKey (GALGAS_categoryGetterMapForType inAttributeValue,
+                                                                                            GALGAS_string inKey,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_categoryGetterMapForBuildingContext * p = (cMapElement_categoryGetterMapForBuildingContext *) attributes ;
   if (NULL != p) {
@@ -5591,9 +5591,9 @@ void GALGAS_wrapperExtensionMap::addAssign_operation (const GALGAS_lstring & inK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_wrapperExtensionMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_wrapperExtensionMap::setter_insertKey (GALGAS_lstring inKey,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   cMapElement_wrapperExtensionMap * p = NULL ;
   macroMyNew (p, cMapElement_wrapperExtensionMap (inKey COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -5703,10 +5703,10 @@ GALGAS_semanticTypePrecedenceGraph GALGAS_semanticTypePrecedenceGraph::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticTypePrecedenceGraph::modifier_addNode (GALGAS_lstring inKey,
-                                                           GALGAS_semanticDeclarationAST inArgument_0,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_semanticTypePrecedenceGraph::setter_addNode (GALGAS_lstring inKey,
+                                                         GALGAS_semanticDeclarationAST inArgument_0,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   GALGAS_semanticDeclarationListAST::makeAttributesFromObjects (attributes, inArgument_0 COMMA_THERE) ;
   const char * kErrorMessage = "the '%K' type is already declared at %L" ;
@@ -5991,10 +5991,10 @@ void GALGAS_semanticExpressionListForGeneration::addAssign_operation (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticExpressionListForGeneration::modifier_insertAtIndex (const GALGAS_semanticExpressionForGeneration inOperand0,
-                                                                         const GALGAS_uint inInsertionIndex,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_semanticExpressionListForGeneration::setter_insertAtIndex (const GALGAS_semanticExpressionForGeneration inOperand0,
+                                                                       const GALGAS_uint inInsertionIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_semanticExpressionListForGeneration (inOperand0 COMMA_THERE)) ;
@@ -6007,10 +6007,10 @@ void GALGAS_semanticExpressionListForGeneration::modifier_insertAtIndex (const G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticExpressionListForGeneration::modifier_removeAtIndex (GALGAS_semanticExpressionForGeneration & outOperand0,
-                                                                         const GALGAS_uint inRemoveIndex,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_semanticExpressionListForGeneration::setter_removeAtIndex (GALGAS_semanticExpressionForGeneration & outOperand0,
+                                                                       const GALGAS_uint inRemoveIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -6026,9 +6026,9 @@ void GALGAS_semanticExpressionListForGeneration::modifier_removeAtIndex (GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticExpressionListForGeneration::modifier_popFirst (GALGAS_semanticExpressionForGeneration & outOperand0,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_semanticExpressionListForGeneration::setter_popFirst (GALGAS_semanticExpressionForGeneration & outOperand0,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticExpressionListForGeneration * p = (cCollectionElement_semanticExpressionListForGeneration *) attributes.ptr () ;
@@ -6042,9 +6042,9 @@ void GALGAS_semanticExpressionListForGeneration::modifier_popFirst (GALGAS_seman
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticExpressionListForGeneration::modifier_popLast (GALGAS_semanticExpressionForGeneration & outOperand0,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
+void GALGAS_semanticExpressionListForGeneration::setter_popLast (GALGAS_semanticExpressionForGeneration & outOperand0,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticExpressionListForGeneration * p = (cCollectionElement_semanticExpressionListForGeneration *) attributes.ptr () ;
@@ -6396,14 +6396,14 @@ void GALGAS_formalParameterListForGeneration::addAssign_operation (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalParameterListForGeneration::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                      const GALGAS_formalArgumentPassingModeAST inOperand1,
-                                                                      const GALGAS_unifiedTypeMap_2D_proxy inOperand2,
-                                                                      const GALGAS_lstring inOperand3,
-                                                                      const GALGAS_string inOperand4,
-                                                                      const GALGAS_uint inInsertionIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_formalParameterListForGeneration::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                    const GALGAS_formalArgumentPassingModeAST inOperand1,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy inOperand2,
+                                                                    const GALGAS_lstring inOperand3,
+                                                                    const GALGAS_string inOperand4,
+                                                                    const GALGAS_uint inInsertionIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_formalParameterListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -6416,14 +6416,14 @@ void GALGAS_formalParameterListForGeneration::modifier_insertAtIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalParameterListForGeneration::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                      GALGAS_formalArgumentPassingModeAST & outOperand1,
-                                                                      GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
-                                                                      GALGAS_lstring & outOperand3,
-                                                                      GALGAS_string & outOperand4,
-                                                                      const GALGAS_uint inRemoveIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_formalParameterListForGeneration::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                    GALGAS_formalArgumentPassingModeAST & outOperand1,
+                                                                    GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
+                                                                    GALGAS_lstring & outOperand3,
+                                                                    GALGAS_string & outOperand4,
+                                                                    const GALGAS_uint inRemoveIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -6447,13 +6447,13 @@ void GALGAS_formalParameterListForGeneration::modifier_removeAtIndex (GALGAS_lst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalParameterListForGeneration::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                                 GALGAS_formalArgumentPassingModeAST & outOperand1,
-                                                                 GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
-                                                                 GALGAS_lstring & outOperand3,
-                                                                 GALGAS_string & outOperand4,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_formalParameterListForGeneration::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                               GALGAS_formalArgumentPassingModeAST & outOperand1,
+                                                               GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
+                                                               GALGAS_lstring & outOperand3,
+                                                               GALGAS_string & outOperand4,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -6475,13 +6475,13 @@ void GALGAS_formalParameterListForGeneration::modifier_popFirst (GALGAS_lstring 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalParameterListForGeneration::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                                GALGAS_formalArgumentPassingModeAST & outOperand1,
-                                                                GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
-                                                                GALGAS_lstring & outOperand3,
-                                                                GALGAS_string & outOperand4,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_formalParameterListForGeneration::setter_popLast (GALGAS_lstring & outOperand0,
+                                                              GALGAS_formalArgumentPassingModeAST & outOperand1,
+                                                              GALGAS_unifiedTypeMap_2D_proxy & outOperand2,
+                                                              GALGAS_lstring & outOperand3,
+                                                              GALGAS_string & outOperand4,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formalParameterListForGeneration * p = (cCollectionElement_formalParameterListForGeneration *) attributes.ptr () ;
@@ -6957,14 +6957,14 @@ void GALGAS_formalInputParameterListForGeneration::addAssign_operation (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalInputParameterListForGeneration::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                           const GALGAS_unifiedTypeMap_2D_proxy inOperand1,
-                                                                           const GALGAS_string inOperand2,
-                                                                           const GALGAS_lstring inOperand3,
-                                                                           const GALGAS_bool inOperand4,
-                                                                           const GALGAS_uint inInsertionIndex,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_formalInputParameterListForGeneration::setter_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                         const GALGAS_unifiedTypeMap_2D_proxy inOperand1,
+                                                                         const GALGAS_string inOperand2,
+                                                                         const GALGAS_lstring inOperand3,
+                                                                         const GALGAS_bool inOperand4,
+                                                                         const GALGAS_uint inInsertionIndex,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_formalInputParameterListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
@@ -6977,14 +6977,14 @@ void GALGAS_formalInputParameterListForGeneration::modifier_insertAtIndex (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalInputParameterListForGeneration::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                           GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
-                                                                           GALGAS_string & outOperand2,
-                                                                           GALGAS_lstring & outOperand3,
-                                                                           GALGAS_bool & outOperand4,
-                                                                           const GALGAS_uint inRemoveIndex,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_formalInputParameterListForGeneration::setter_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                         GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                         GALGAS_string & outOperand2,
+                                                                         GALGAS_lstring & outOperand3,
+                                                                         GALGAS_bool & outOperand4,
+                                                                         const GALGAS_uint inRemoveIndex,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -7008,13 +7008,13 @@ void GALGAS_formalInputParameterListForGeneration::modifier_removeAtIndex (GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalInputParameterListForGeneration::modifier_popFirst (GALGAS_lstring & outOperand0,
-                                                                      GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
-                                                                      GALGAS_string & outOperand2,
-                                                                      GALGAS_lstring & outOperand3,
-                                                                      GALGAS_bool & outOperand4,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_formalInputParameterListForGeneration::setter_popFirst (GALGAS_lstring & outOperand0,
+                                                                    GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                    GALGAS_string & outOperand2,
+                                                                    GALGAS_lstring & outOperand3,
+                                                                    GALGAS_bool & outOperand4,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -7036,13 +7036,13 @@ void GALGAS_formalInputParameterListForGeneration::modifier_popFirst (GALGAS_lst
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_formalInputParameterListForGeneration::modifier_popLast (GALGAS_lstring & outOperand0,
-                                                                     GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
-                                                                     GALGAS_string & outOperand2,
-                                                                     GALGAS_lstring & outOperand3,
-                                                                     GALGAS_bool & outOperand4,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_formalInputParameterListForGeneration::setter_popLast (GALGAS_lstring & outOperand0,
+                                                                   GALGAS_unifiedTypeMap_2D_proxy & outOperand1,
+                                                                   GALGAS_string & outOperand2,
+                                                                   GALGAS_lstring & outOperand3,
+                                                                   GALGAS_bool & outOperand4,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_formalInputParameterListForGeneration * p = (cCollectionElement_formalInputParameterListForGeneration *) attributes.ptr () ;
@@ -7478,10 +7478,10 @@ void GALGAS_actualParameterListForGeneration::addAssign_operation (const GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_actualParameterListForGeneration::modifier_insertAtIndex (const GALGAS_actualParameterForGeneration inOperand0,
-                                                                      const GALGAS_uint inInsertionIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_actualParameterListForGeneration::setter_insertAtIndex (const GALGAS_actualParameterForGeneration inOperand0,
+                                                                    const GALGAS_uint inInsertionIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_actualParameterListForGeneration (inOperand0 COMMA_THERE)) ;
@@ -7494,10 +7494,10 @@ void GALGAS_actualParameterListForGeneration::modifier_insertAtIndex (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_actualParameterListForGeneration::modifier_removeAtIndex (GALGAS_actualParameterForGeneration & outOperand0,
-                                                                      const GALGAS_uint inRemoveIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
+void GALGAS_actualParameterListForGeneration::setter_removeAtIndex (GALGAS_actualParameterForGeneration & outOperand0,
+                                                                    const GALGAS_uint inRemoveIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -7513,9 +7513,9 @@ void GALGAS_actualParameterListForGeneration::modifier_removeAtIndex (GALGAS_act
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_actualParameterListForGeneration::modifier_popFirst (GALGAS_actualParameterForGeneration & outOperand0,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_actualParameterListForGeneration::setter_popFirst (GALGAS_actualParameterForGeneration & outOperand0,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_actualParameterListForGeneration * p = (cCollectionElement_actualParameterListForGeneration *) attributes.ptr () ;
@@ -7529,9 +7529,9 @@ void GALGAS_actualParameterListForGeneration::modifier_popFirst (GALGAS_actualPa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_actualParameterListForGeneration::modifier_popLast (GALGAS_actualParameterForGeneration & outOperand0,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_actualParameterListForGeneration::setter_popLast (GALGAS_actualParameterForGeneration & outOperand0,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_actualParameterListForGeneration * p = (cCollectionElement_actualParameterListForGeneration *) attributes.ptr () ;
@@ -7843,10 +7843,10 @@ void GALGAS_semanticInstructionListForGeneration::addAssign_operation (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticInstructionListForGeneration::modifier_insertAtIndex (const GALGAS_semanticInstructionForGeneration inOperand0,
-                                                                          const GALGAS_uint inInsertionIndex,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_semanticInstructionListForGeneration::setter_insertAtIndex (const GALGAS_semanticInstructionForGeneration inOperand0,
+                                                                        const GALGAS_uint inInsertionIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_semanticInstructionListForGeneration (inOperand0 COMMA_THERE)) ;
@@ -7859,10 +7859,10 @@ void GALGAS_semanticInstructionListForGeneration::modifier_insertAtIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticInstructionListForGeneration::modifier_removeAtIndex (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                          const GALGAS_uint inRemoveIndex,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_semanticInstructionListForGeneration::setter_removeAtIndex (GALGAS_semanticInstructionForGeneration & outOperand0,
+                                                                        const GALGAS_uint inRemoveIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -7878,9 +7878,9 @@ void GALGAS_semanticInstructionListForGeneration::modifier_removeAtIndex (GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticInstructionListForGeneration::modifier_popFirst (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_semanticInstructionListForGeneration::setter_popFirst (GALGAS_semanticInstructionForGeneration & outOperand0,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticInstructionListForGeneration * p = (cCollectionElement_semanticInstructionListForGeneration *) attributes.ptr () ;
@@ -7894,9 +7894,9 @@ void GALGAS_semanticInstructionListForGeneration::modifier_popFirst (GALGAS_sema
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticInstructionListForGeneration::modifier_popLast (GALGAS_semanticInstructionForGeneration & outOperand0,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_semanticInstructionListForGeneration::setter_popLast (GALGAS_semanticInstructionForGeneration & outOperand0,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_semanticInstructionListForGeneration * p = (cCollectionElement_semanticInstructionListForGeneration *) attributes.ptr () ;
@@ -8218,11 +8218,11 @@ void GALGAS_listOfSemanticInstructionListForGeneration::addAssign_operation (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listOfSemanticInstructionListForGeneration::modifier_insertAtIndex (const GALGAS_semanticInstructionListForGeneration inOperand0,
-                                                                                const GALGAS_location inOperand1,
-                                                                                const GALGAS_uint inInsertionIndex,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_listOfSemanticInstructionListForGeneration::setter_insertAtIndex (const GALGAS_semanticInstructionListForGeneration inOperand0,
+                                                                              const GALGAS_location inOperand1,
+                                                                              const GALGAS_uint inInsertionIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_listOfSemanticInstructionListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -8235,11 +8235,11 @@ void GALGAS_listOfSemanticInstructionListForGeneration::modifier_insertAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listOfSemanticInstructionListForGeneration::modifier_removeAtIndex (GALGAS_semanticInstructionListForGeneration & outOperand0,
-                                                                                GALGAS_location & outOperand1,
-                                                                                const GALGAS_uint inRemoveIndex,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_listOfSemanticInstructionListForGeneration::setter_removeAtIndex (GALGAS_semanticInstructionListForGeneration & outOperand0,
+                                                                              GALGAS_location & outOperand1,
+                                                                              const GALGAS_uint inRemoveIndex,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -8257,10 +8257,10 @@ void GALGAS_listOfSemanticInstructionListForGeneration::modifier_removeAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listOfSemanticInstructionListForGeneration::modifier_popFirst (GALGAS_semanticInstructionListForGeneration & outOperand0,
-                                                                           GALGAS_location & outOperand1,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_listOfSemanticInstructionListForGeneration::setter_popFirst (GALGAS_semanticInstructionListForGeneration & outOperand0,
+                                                                         GALGAS_location & outOperand1,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_listOfSemanticInstructionListForGeneration * p = (cCollectionElement_listOfSemanticInstructionListForGeneration *) attributes.ptr () ;
@@ -8276,10 +8276,10 @@ void GALGAS_listOfSemanticInstructionListForGeneration::modifier_popFirst (GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listOfSemanticInstructionListForGeneration::modifier_popLast (GALGAS_semanticInstructionListForGeneration & outOperand0,
-                                                                          GALGAS_location & outOperand1,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_listOfSemanticInstructionListForGeneration::setter_popLast (GALGAS_semanticInstructionListForGeneration & outOperand0,
+                                                                        GALGAS_location & outOperand1,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_listOfSemanticInstructionListForGeneration * p = (cCollectionElement_listOfSemanticInstructionListForGeneration *) attributes.ptr () ;
@@ -8643,11 +8643,11 @@ void GALGAS_semanticDeclarationSortedListForGeneration::plusAssign_operation (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticDeclarationSortedListForGeneration::modifier_popSmallest (GALGAS_string & outOperand0,
-                                                                              GALGAS_semanticDeclarationForGeneration & outOperand1,
-                                                                              GALGAS_string & outOperand2,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_semanticDeclarationSortedListForGeneration::setter_popSmallest (GALGAS_string & outOperand0,
+                                                                            GALGAS_semanticDeclarationForGeneration & outOperand1,
+                                                                            GALGAS_string & outOperand2,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
   removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_semanticDeclarationSortedListForGeneration * p = (cSortedListElement_semanticDeclarationSortedListForGeneration *) attributes.ptr () ;
@@ -8665,11 +8665,11 @@ void GALGAS_semanticDeclarationSortedListForGeneration::modifier_popSmallest (GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_semanticDeclarationSortedListForGeneration::modifier_popGreatest (GALGAS_string & outOperand0,
-                                                                              GALGAS_semanticDeclarationForGeneration & outOperand1,
-                                                                              GALGAS_string & outOperand2,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_semanticDeclarationSortedListForGeneration::setter_popGreatest (GALGAS_string & outOperand0,
+                                                                            GALGAS_semanticDeclarationForGeneration & outOperand1,
+                                                                            GALGAS_string & outOperand2,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
   removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
   cSortedListElement_semanticDeclarationSortedListForGeneration * p = (cSortedListElement_semanticDeclarationSortedListForGeneration *) attributes.ptr () ;
@@ -8953,11 +8953,11 @@ void GALGAS_signatureForGrammarAnalysis::addAssign_operation (const GALGAS_forma
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_signatureForGrammarAnalysis::modifier_insertAtIndex (const GALGAS_formalArgumentPassingModeAST inOperand0,
-                                                                 const GALGAS_lstring inOperand1,
-                                                                 const GALGAS_uint inInsertionIndex,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_signatureForGrammarAnalysis::setter_insertAtIndex (const GALGAS_formalArgumentPassingModeAST inOperand0,
+                                                               const GALGAS_lstring inOperand1,
+                                                               const GALGAS_uint inInsertionIndex,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_signatureForGrammarAnalysis (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -8970,11 +8970,11 @@ void GALGAS_signatureForGrammarAnalysis::modifier_insertAtIndex (const GALGAS_fo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_signatureForGrammarAnalysis::modifier_removeAtIndex (GALGAS_formalArgumentPassingModeAST & outOperand0,
-                                                                 GALGAS_lstring & outOperand1,
-                                                                 const GALGAS_uint inRemoveIndex,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_signatureForGrammarAnalysis::setter_removeAtIndex (GALGAS_formalArgumentPassingModeAST & outOperand0,
+                                                               GALGAS_lstring & outOperand1,
+                                                               const GALGAS_uint inRemoveIndex,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -8992,10 +8992,10 @@ void GALGAS_signatureForGrammarAnalysis::modifier_removeAtIndex (GALGAS_formalAr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_signatureForGrammarAnalysis::modifier_popFirst (GALGAS_formalArgumentPassingModeAST & outOperand0,
-                                                            GALGAS_lstring & outOperand1,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_signatureForGrammarAnalysis::setter_popFirst (GALGAS_formalArgumentPassingModeAST & outOperand0,
+                                                          GALGAS_lstring & outOperand1,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_signatureForGrammarAnalysis * p = (cCollectionElement_signatureForGrammarAnalysis *) attributes.ptr () ;
@@ -9011,10 +9011,10 @@ void GALGAS_signatureForGrammarAnalysis::modifier_popFirst (GALGAS_formalArgumen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_signatureForGrammarAnalysis::modifier_popLast (GALGAS_formalArgumentPassingModeAST & outOperand0,
-                                                           GALGAS_lstring & outOperand1,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_signatureForGrammarAnalysis::setter_popLast (GALGAS_formalArgumentPassingModeAST & outOperand0,
+                                                         GALGAS_lstring & outOperand1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_signatureForGrammarAnalysis * p = (cCollectionElement_signatureForGrammarAnalysis *) attributes.ptr () ;
@@ -9334,10 +9334,10 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::addAssign_operation (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::modifier_insertKey (GALGAS_lstring inKey,
-                                                                             GALGAS_signatureForGrammarAnalysis inArgument0,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::setter_insertKey (GALGAS_lstring inKey,
+                                                                           GALGAS_signatureForGrammarAnalysis inArgument0,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) {
   cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = NULL ;
   macroMyNew (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -9387,10 +9387,10 @@ GALGAS_signatureForGrammarAnalysis GALGAS_nonterminalSymbolLabelMapForGrammarAna
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::modifier_setMFormalParametersListForKey (GALGAS_signatureForGrammarAnalysis inAttributeValue,
-                                                                                                  GALGAS_string inKey,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::setter_setMFormalParametersListForKey (GALGAS_signatureForGrammarAnalysis inAttributeValue,
+                                                                                                GALGAS_string inKey,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
@@ -9602,11 +9602,11 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::addAssign_operation (const G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::modifier_insertKey (GALGAS_lstring inKey,
-                                                                        GALGAS_uint inArgument0,
-                                                                        GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument1,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::setter_insertKey (GALGAS_lstring inKey,
+                                                                      GALGAS_uint inArgument0,
+                                                                      GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inArgument1,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = NULL ;
   macroMyNew (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -9674,10 +9674,10 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::modifier_setMNonTerminalIndexForKey (GALGAS_uint inAttributeValue,
-                                                                                         GALGAS_string inKey,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalIndexForKey (GALGAS_uint inAttributeValue,
+                                                                                       GALGAS_string inKey,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
@@ -9688,10 +9688,10 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::modifier_setMNonTerminalInde
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::modifier_setMNonterminalSymbolParametersMapForKey (GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inAttributeValue,
-                                                                                                       GALGAS_string inKey,
-                                                                                                       C_Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonterminalSymbolParametersMapForKey (GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis inAttributeValue,
+                                                                                                     GALGAS_string inKey,
+                                                                                                     C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
@@ -9934,11 +9934,11 @@ void GALGAS_nonTerminalToAddList::addAssign_operation (const GALGAS_string & inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalToAddList::modifier_insertAtIndex (const GALGAS_string inOperand0,
-                                                          const GALGAS_uint inOperand1,
-                                                          const GALGAS_uint inInsertionIndex,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalToAddList::setter_insertAtIndex (const GALGAS_string inOperand0,
+                                                        const GALGAS_uint inOperand1,
+                                                        const GALGAS_uint inInsertionIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_nonTerminalToAddList (inOperand0, inOperand1 COMMA_THERE)) ;
@@ -9951,11 +9951,11 @@ void GALGAS_nonTerminalToAddList::modifier_insertAtIndex (const GALGAS_string in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalToAddList::modifier_removeAtIndex (GALGAS_string & outOperand0,
-                                                          GALGAS_uint & outOperand1,
-                                                          const GALGAS_uint inRemoveIndex,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalToAddList::setter_removeAtIndex (GALGAS_string & outOperand0,
+                                                        GALGAS_uint & outOperand1,
+                                                        const GALGAS_uint inRemoveIndex,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -9973,10 +9973,10 @@ void GALGAS_nonTerminalToAddList::modifier_removeAtIndex (GALGAS_string & outOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalToAddList::modifier_popFirst (GALGAS_string & outOperand0,
-                                                     GALGAS_uint & outOperand1,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalToAddList::setter_popFirst (GALGAS_string & outOperand0,
+                                                   GALGAS_uint & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_nonTerminalToAddList * p = (cCollectionElement_nonTerminalToAddList *) attributes.ptr () ;
@@ -9992,10 +9992,10 @@ void GALGAS_nonTerminalToAddList::modifier_popFirst (GALGAS_string & outOperand0
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_nonTerminalToAddList::modifier_popLast (GALGAS_string & outOperand0,
-                                                    GALGAS_uint & outOperand1,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_nonTerminalToAddList::setter_popLast (GALGAS_string & outOperand0,
+                                                  GALGAS_uint & outOperand1,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_nonTerminalToAddList * p = (cCollectionElement_nonTerminalToAddList *) attributes.ptr () ;
@@ -10358,12 +10358,12 @@ void GALGAS_terminalCheckAssignementList::addAssign_operation (const GALGAS_stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_terminalCheckAssignementList::modifier_insertAtIndex (const GALGAS_string inOperand0,
-                                                                  const GALGAS_string inOperand1,
-                                                                  const GALGAS_string inOperand2,
-                                                                  const GALGAS_uint inInsertionIndex,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_terminalCheckAssignementList::setter_insertAtIndex (const GALGAS_string inOperand0,
+                                                                const GALGAS_string inOperand1,
+                                                                const GALGAS_string inOperand2,
+                                                                const GALGAS_uint inInsertionIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_terminalCheckAssignementList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -10376,12 +10376,12 @@ void GALGAS_terminalCheckAssignementList::modifier_insertAtIndex (const GALGAS_s
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_terminalCheckAssignementList::modifier_removeAtIndex (GALGAS_string & outOperand0,
-                                                                  GALGAS_string & outOperand1,
-                                                                  GALGAS_string & outOperand2,
-                                                                  const GALGAS_uint inRemoveIndex,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_terminalCheckAssignementList::setter_removeAtIndex (GALGAS_string & outOperand0,
+                                                                GALGAS_string & outOperand1,
+                                                                GALGAS_string & outOperand2,
+                                                                const GALGAS_uint inRemoveIndex,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -10401,11 +10401,11 @@ void GALGAS_terminalCheckAssignementList::modifier_removeAtIndex (GALGAS_string 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_terminalCheckAssignementList::modifier_popFirst (GALGAS_string & outOperand0,
-                                                             GALGAS_string & outOperand1,
-                                                             GALGAS_string & outOperand2,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_terminalCheckAssignementList::setter_popFirst (GALGAS_string & outOperand0,
+                                                           GALGAS_string & outOperand1,
+                                                           GALGAS_string & outOperand2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_terminalCheckAssignementList * p = (cCollectionElement_terminalCheckAssignementList *) attributes.ptr () ;
@@ -10423,11 +10423,11 @@ void GALGAS_terminalCheckAssignementList::modifier_popFirst (GALGAS_string & out
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_terminalCheckAssignementList::modifier_popLast (GALGAS_string & outOperand0,
-                                                            GALGAS_string & outOperand1,
-                                                            GALGAS_string & outOperand2,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_terminalCheckAssignementList::setter_popLast (GALGAS_string & outOperand0,
+                                                          GALGAS_string & outOperand1,
+                                                          GALGAS_string & outOperand2,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_terminalCheckAssignementList * p = (cCollectionElement_terminalCheckAssignementList *) attributes.ptr () ;
@@ -10821,12 +10821,12 @@ void GALGAS_abstractMethodDefinitionListForGeneration::addAssign_operation (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractMethodDefinitionListForGeneration::modifier_insertAtIndex (const GALGAS_bool inOperand0,
-                                                                               const GALGAS_lstring inOperand1,
-                                                                               const GALGAS_formalParameterListForGeneration inOperand2,
-                                                                               const GALGAS_uint inInsertionIndex,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_abstractMethodDefinitionListForGeneration::setter_insertAtIndex (const GALGAS_bool inOperand0,
+                                                                             const GALGAS_lstring inOperand1,
+                                                                             const GALGAS_formalParameterListForGeneration inOperand2,
+                                                                             const GALGAS_uint inInsertionIndex,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_abstractMethodDefinitionListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -10839,12 +10839,12 @@ void GALGAS_abstractMethodDefinitionListForGeneration::modifier_insertAtIndex (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractMethodDefinitionListForGeneration::modifier_removeAtIndex (GALGAS_bool & outOperand0,
-                                                                               GALGAS_lstring & outOperand1,
-                                                                               GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                               const GALGAS_uint inRemoveIndex,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) {
+void GALGAS_abstractMethodDefinitionListForGeneration::setter_removeAtIndex (GALGAS_bool & outOperand0,
+                                                                             GALGAS_lstring & outOperand1,
+                                                                             GALGAS_formalParameterListForGeneration & outOperand2,
+                                                                             const GALGAS_uint inRemoveIndex,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -10864,11 +10864,11 @@ void GALGAS_abstractMethodDefinitionListForGeneration::modifier_removeAtIndex (G
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractMethodDefinitionListForGeneration::modifier_popFirst (GALGAS_bool & outOperand0,
-                                                                          GALGAS_lstring & outOperand1,
-                                                                          GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_abstractMethodDefinitionListForGeneration::setter_popFirst (GALGAS_bool & outOperand0,
+                                                                        GALGAS_lstring & outOperand1,
+                                                                        GALGAS_formalParameterListForGeneration & outOperand2,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_abstractMethodDefinitionListForGeneration * p = (cCollectionElement_abstractMethodDefinitionListForGeneration *) attributes.ptr () ;
@@ -10886,11 +10886,11 @@ void GALGAS_abstractMethodDefinitionListForGeneration::modifier_popFirst (GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractMethodDefinitionListForGeneration::modifier_popLast (GALGAS_bool & outOperand0,
-                                                                         GALGAS_lstring & outOperand1,
-                                                                         GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+void GALGAS_abstractMethodDefinitionListForGeneration::setter_popLast (GALGAS_bool & outOperand0,
+                                                                       GALGAS_lstring & outOperand1,
+                                                                       GALGAS_formalParameterListForGeneration & outOperand2,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_abstractMethodDefinitionListForGeneration * p = (cCollectionElement_abstractMethodDefinitionListForGeneration *) attributes.ptr () ;
@@ -11294,13 +11294,13 @@ void GALGAS_methodDefinitionListForGeneration::addAssign_operation (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_methodDefinitionListForGeneration::modifier_insertAtIndex (const GALGAS_bool inOperand0,
-                                                                       const GALGAS_lstring inOperand1,
-                                                                       const GALGAS_formalParameterListForGeneration inOperand2,
-                                                                       const GALGAS_semanticInstructionListForGeneration inOperand3,
-                                                                       const GALGAS_uint inInsertionIndex,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_methodDefinitionListForGeneration::setter_insertAtIndex (const GALGAS_bool inOperand0,
+                                                                     const GALGAS_lstring inOperand1,
+                                                                     const GALGAS_formalParameterListForGeneration inOperand2,
+                                                                     const GALGAS_semanticInstructionListForGeneration inOperand3,
+                                                                     const GALGAS_uint inInsertionIndex,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_methodDefinitionListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
@@ -11313,13 +11313,13 @@ void GALGAS_methodDefinitionListForGeneration::modifier_insertAtIndex (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_methodDefinitionListForGeneration::modifier_removeAtIndex (GALGAS_bool & outOperand0,
-                                                                       GALGAS_lstring & outOperand1,
-                                                                       GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                       GALGAS_semanticInstructionListForGeneration & outOperand3,
-                                                                       const GALGAS_uint inRemoveIndex,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_methodDefinitionListForGeneration::setter_removeAtIndex (GALGAS_bool & outOperand0,
+                                                                     GALGAS_lstring & outOperand1,
+                                                                     GALGAS_formalParameterListForGeneration & outOperand2,
+                                                                     GALGAS_semanticInstructionListForGeneration & outOperand3,
+                                                                     const GALGAS_uint inRemoveIndex,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -11341,12 +11341,12 @@ void GALGAS_methodDefinitionListForGeneration::modifier_removeAtIndex (GALGAS_bo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_methodDefinitionListForGeneration::modifier_popFirst (GALGAS_bool & outOperand0,
-                                                                  GALGAS_lstring & outOperand1,
-                                                                  GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                  GALGAS_semanticInstructionListForGeneration & outOperand3,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+void GALGAS_methodDefinitionListForGeneration::setter_popFirst (GALGAS_bool & outOperand0,
+                                                                GALGAS_lstring & outOperand1,
+                                                                GALGAS_formalParameterListForGeneration & outOperand2,
+                                                                GALGAS_semanticInstructionListForGeneration & outOperand3,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_methodDefinitionListForGeneration * p = (cCollectionElement_methodDefinitionListForGeneration *) attributes.ptr () ;
@@ -11366,12 +11366,12 @@ void GALGAS_methodDefinitionListForGeneration::modifier_popFirst (GALGAS_bool & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_methodDefinitionListForGeneration::modifier_popLast (GALGAS_bool & outOperand0,
-                                                                 GALGAS_lstring & outOperand1,
-                                                                 GALGAS_formalParameterListForGeneration & outOperand2,
-                                                                 GALGAS_semanticInstructionListForGeneration & outOperand3,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_methodDefinitionListForGeneration::setter_popLast (GALGAS_bool & outOperand0,
+                                                               GALGAS_lstring & outOperand1,
+                                                               GALGAS_formalParameterListForGeneration & outOperand2,
+                                                               GALGAS_semanticInstructionListForGeneration & outOperand3,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_methodDefinitionListForGeneration * p = (cCollectionElement_methodDefinitionListForGeneration *) attributes.ptr () ;
@@ -11796,12 +11796,12 @@ void GALGAS_filewrapperTemplateListForGeneration::addAssign_operation (const GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateListForGeneration::modifier_insertAtIndex (const GALGAS_string inOperand0,
-                                                                          const GALGAS_formalInputParameterListForGeneration inOperand1,
-                                                                          const GALGAS_templateInstructionListForGeneration inOperand2,
-                                                                          const GALGAS_uint inInsertionIndex,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateListForGeneration::setter_insertAtIndex (const GALGAS_string inOperand0,
+                                                                        const GALGAS_formalInputParameterListForGeneration inOperand1,
+                                                                        const GALGAS_templateInstructionListForGeneration inOperand2,
+                                                                        const GALGAS_uint inInsertionIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_filewrapperTemplateListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
@@ -11814,12 +11814,12 @@ void GALGAS_filewrapperTemplateListForGeneration::modifier_insertAtIndex (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateListForGeneration::modifier_removeAtIndex (GALGAS_string & outOperand0,
-                                                                          GALGAS_formalInputParameterListForGeneration & outOperand1,
-                                                                          GALGAS_templateInstructionListForGeneration & outOperand2,
-                                                                          const GALGAS_uint inRemoveIndex,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateListForGeneration::setter_removeAtIndex (GALGAS_string & outOperand0,
+                                                                        GALGAS_formalInputParameterListForGeneration & outOperand1,
+                                                                        GALGAS_templateInstructionListForGeneration & outOperand2,
+                                                                        const GALGAS_uint inRemoveIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
     removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
@@ -11839,11 +11839,11 @@ void GALGAS_filewrapperTemplateListForGeneration::modifier_removeAtIndex (GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateListForGeneration::modifier_popFirst (GALGAS_string & outOperand0,
-                                                                     GALGAS_formalInputParameterListForGeneration & outOperand1,
-                                                                     GALGAS_templateInstructionListForGeneration & outOperand2,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateListForGeneration::setter_popFirst (GALGAS_string & outOperand0,
+                                                                   GALGAS_formalInputParameterListForGeneration & outOperand1,
+                                                                   GALGAS_templateInstructionListForGeneration & outOperand2,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_filewrapperTemplateListForGeneration * p = (cCollectionElement_filewrapperTemplateListForGeneration *) attributes.ptr () ;
@@ -11861,11 +11861,11 @@ void GALGAS_filewrapperTemplateListForGeneration::modifier_popFirst (GALGAS_stri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperTemplateListForGeneration::modifier_popLast (GALGAS_string & outOperand0,
-                                                                    GALGAS_formalInputParameterListForGeneration & outOperand1,
-                                                                    GALGAS_templateInstructionListForGeneration & outOperand2,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+void GALGAS_filewrapperTemplateListForGeneration::setter_popLast (GALGAS_string & outOperand0,
+                                                                  GALGAS_formalInputParameterListForGeneration & outOperand1,
+                                                                  GALGAS_templateInstructionListForGeneration & outOperand2,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
   cCollectionElement_filewrapperTemplateListForGeneration * p = (cCollectionElement_filewrapperTemplateListForGeneration *) attributes.ptr () ;
@@ -12458,9 +12458,9 @@ static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_variableMap [23] = 
 } ;
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_closeBranch (GALGAS_location inErrorLocation,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_closeBranch (GALGAS_location inErrorLocation,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
   closeBranch (inErrorLocation,
                kMapAutomatonFinalIssue_variableMap,
                #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -12563,8 +12563,8 @@ static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverrid
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_openOverrideForSelectBlock (C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_openOverrideForSelectBlock (C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   openOverride (kBranchBehaviourForOverride_variableMap_selectBlock, 30,
                 kBranchCombinationForOverride_variableMap_selectBlock, 42,
                 "selectBlock",
@@ -12636,8 +12636,8 @@ static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverrid
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_openOverrideForRepeatBlock (C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_openOverrideForRepeatBlock (C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   openOverride (kBranchBehaviourForOverride_variableMap_repeatBlock, 30,
                 kBranchCombinationForOverride_variableMap_repeatBlock, 20,
                 "repeatBlock",
@@ -12648,12 +12648,12 @@ void GALGAS_variableMap::modifier_openOverrideForRepeatBlock (C_Compiler * inCom
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertMutableAttribute (GALGAS_lstring inKey,
-                                                          GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                          GALGAS_string inArgument1,
-                                                          GALGAS_string inArgument2,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertMutableAttribute (GALGAS_lstring inKey,
+                                                        GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                        GALGAS_string inArgument1,
+                                                        GALGAS_string inArgument2,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12672,12 +12672,12 @@ void GALGAS_variableMap::modifier_insertMutableAttribute (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertNonMutableAttribute (GALGAS_lstring inKey,
-                                                             GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                             GALGAS_string inArgument1,
-                                                             GALGAS_string inArgument2,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertNonMutableAttribute (GALGAS_lstring inKey,
+                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                           GALGAS_string inArgument1,
+                                                           GALGAS_string inArgument2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12696,12 +12696,12 @@ void GALGAS_variableMap::modifier_insertNonMutableAttribute (GALGAS_lstring inKe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertUndefinedLocalVariable (GALGAS_lstring inKey,
-                                                                GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                GALGAS_string inArgument1,
-                                                                GALGAS_string inArgument2,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertUndefinedLocalVariable (GALGAS_lstring inKey,
+                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                              GALGAS_string inArgument1,
+                                                              GALGAS_string inArgument2,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12720,12 +12720,12 @@ void GALGAS_variableMap::modifier_insertUndefinedLocalVariable (GALGAS_lstring i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertDefinedLocalVariable (GALGAS_lstring inKey,
-                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                              GALGAS_string inArgument1,
-                                                              GALGAS_string inArgument2,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertDefinedLocalVariable (GALGAS_lstring inKey,
+                                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                            GALGAS_string inArgument1,
+                                                            GALGAS_string inArgument2,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12744,12 +12744,12 @@ void GALGAS_variableMap::modifier_insertDefinedLocalVariable (GALGAS_lstring inK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertUndefinedLocalConstant (GALGAS_lstring inKey,
-                                                                GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                GALGAS_string inArgument1,
-                                                                GALGAS_string inArgument2,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertUndefinedLocalConstant (GALGAS_lstring inKey,
+                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                              GALGAS_string inArgument1,
+                                                              GALGAS_string inArgument2,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12768,12 +12768,12 @@ void GALGAS_variableMap::modifier_insertUndefinedLocalConstant (GALGAS_lstring i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertLocalConstant (GALGAS_lstring inKey,
-                                                       GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                       GALGAS_string inArgument1,
-                                                       GALGAS_string inArgument2,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertLocalConstant (GALGAS_lstring inKey,
+                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                     GALGAS_string inArgument1,
+                                                     GALGAS_string inArgument2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12792,12 +12792,12 @@ void GALGAS_variableMap::modifier_insertLocalConstant (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertUsedLocalConstant (GALGAS_lstring inKey,
-                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                           GALGAS_string inArgument1,
-                                                           GALGAS_string inArgument2,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertUsedLocalConstant (GALGAS_lstring inKey,
+                                                         GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                         GALGAS_string inArgument1,
+                                                         GALGAS_string inArgument2,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12816,12 +12816,12 @@ void GALGAS_variableMap::modifier_insertUsedLocalConstant (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertInputFormalArgument (GALGAS_lstring inKey,
-                                                             GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                             GALGAS_string inArgument1,
-                                                             GALGAS_string inArgument2,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertInputFormalArgument (GALGAS_lstring inKey,
+                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                           GALGAS_string inArgument1,
+                                                           GALGAS_string inArgument2,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12840,12 +12840,12 @@ void GALGAS_variableMap::modifier_insertInputFormalArgument (GALGAS_lstring inKe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                             GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                             GALGAS_string inArgument1,
-                                                                             GALGAS_string inArgument2,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                           GALGAS_string inArgument1,
+                                                                           GALGAS_string inArgument2,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12864,12 +12864,12 @@ void GALGAS_variableMap::modifier_insertInputFormalArgumentDeclaredAsUnused (GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertConstantInputFormalArgument (GALGAS_lstring inKey,
-                                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                     GALGAS_string inArgument1,
-                                                                     GALGAS_string inArgument2,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertConstantInputFormalArgument (GALGAS_lstring inKey,
+                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                   GALGAS_string inArgument1,
+                                                                   GALGAS_string inArgument2,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12888,12 +12888,12 @@ void GALGAS_variableMap::modifier_insertConstantInputFormalArgument (GALGAS_lstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                                     GALGAS_string inArgument1,
-                                                                                     GALGAS_string inArgument2,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertConstantInputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                                   GALGAS_string inArgument1,
+                                                                                   GALGAS_string inArgument2,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12912,12 +12912,12 @@ void GALGAS_variableMap::modifier_insertConstantInputFormalArgumentDeclaredAsUnu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertOutputFormalArgument (GALGAS_lstring inKey,
-                                                              GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                              GALGAS_string inArgument1,
-                                                              GALGAS_string inArgument2,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertOutputFormalArgument (GALGAS_lstring inKey,
+                                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                            GALGAS_string inArgument1,
+                                                            GALGAS_string inArgument2,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12936,12 +12936,12 @@ void GALGAS_variableMap::modifier_insertOutputFormalArgument (GALGAS_lstring inK
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertInputOutputFormalArgument (GALGAS_lstring inKey,
-                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                   GALGAS_string inArgument1,
-                                                                   GALGAS_string inArgument2,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertInputOutputFormalArgument (GALGAS_lstring inKey,
+                                                                 GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                 GALGAS_string inArgument1,
+                                                                 GALGAS_string inArgument2,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12960,12 +12960,12 @@ void GALGAS_variableMap::modifier_insertInputOutputFormalArgument (GALGAS_lstrin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
-                                                                                   GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                                                                   GALGAS_string inArgument1,
-                                                                                   GALGAS_string inArgument2,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_insertInputOutputFormalArgumentDeclaredAsUnused (GALGAS_lstring inKey,
+                                                                                 GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                                                                 GALGAS_string inArgument1,
+                                                                                 GALGAS_string inArgument2,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) {
   cMapElement_variableMap * p = NULL ;
   macroMyNew (p, cMapElement_variableMap (inKey, inArgument0, inArgument1, inArgument2 COMMA_HERE)) ;
   capCollectionElement attributes ;
@@ -12988,12 +12988,12 @@ const char * kSearchErrorMessage_variableMap_searchForReadAccess = "the '%K' var
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_searchForReadAccess (GALGAS_lstring inKey,
-                                                       GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                                       GALGAS_string & outArgument1,
-                                                       GALGAS_string & outArgument2,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_searchForReadAccess (GALGAS_lstring inKey,
+                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_string & outArgument1,
+                                                     GALGAS_string & outArgument2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
                                                                                          inCompiler,
                                                                                          kMapAction_variableMap_readAccess,
@@ -13024,12 +13024,12 @@ const char * kSearchErrorMessage_variableMap_searchForWriteAccess = "the '%K' va
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_searchForWriteAccess (GALGAS_lstring inKey,
-                                                        GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                                        GALGAS_string & outArgument1,
-                                                        GALGAS_string & outArgument2,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_searchForWriteAccess (GALGAS_lstring inKey,
+                                                      GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                      GALGAS_string & outArgument1,
+                                                      GALGAS_string & outArgument2,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
                                                                                          inCompiler,
                                                                                          kMapAction_variableMap_writeAccess,
@@ -13060,12 +13060,12 @@ const char * kSearchErrorMessage_variableMap_searchForReadWriteAccess = "the '%K
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_searchForReadWriteAccess (GALGAS_lstring inKey,
-                                                            GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                                            GALGAS_string & outArgument1,
-                                                            GALGAS_string & outArgument2,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
+                                                          GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                          GALGAS_string & outArgument1,
+                                                          GALGAS_string & outArgument2,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
                                                                                          inCompiler,
                                                                                          kMapAction_variableMap_readWriteAccess,
@@ -13096,12 +13096,12 @@ const char * kSearchErrorMessage_variableMap_searchForDropAccess = "the '%K' var
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_searchForDropAccess (GALGAS_lstring inKey,
-                                                       GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                                       GALGAS_string & outArgument1,
-                                                       GALGAS_string & outArgument2,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_searchForDropAccess (GALGAS_lstring inKey,
+                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_string & outArgument1,
+                                                     GALGAS_string & outArgument2,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
                                                                                          inCompiler,
                                                                                          kMapAction_variableMap_dropAccess,
@@ -13132,12 +13132,12 @@ const char * kSearchErrorMessage_variableMap_neutralAccess = "the '%K' variable 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_neutralAccess (GALGAS_lstring inKey,
-                                                 GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                                 GALGAS_string & outArgument1,
-                                                 GALGAS_string & outArgument2,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
+                                               GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                               GALGAS_string & outArgument1,
+                                               GALGAS_string & outArgument2,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
                                                                                          inCompiler,
                                                                                          kMapAction_variableMap_neutralAccess,
@@ -13209,10 +13209,10 @@ GALGAS_string GALGAS_variableMap::getter_mNameForCheckingFormalParameterUsingFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                       GALGAS_string inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+                                                     GALGAS_string inKey,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
@@ -13223,10 +13223,10 @@ void GALGAS_variableMap::modifier_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_setMCppNameForKey (GALGAS_string inAttributeValue,
-                                                     GALGAS_string inKey,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_setMCppNameForKey (GALGAS_string inAttributeValue,
+                                                   GALGAS_string inKey,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
@@ -13237,10 +13237,10 @@ void GALGAS_variableMap::modifier_setMCppNameForKey (GALGAS_string inAttributeVa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_variableMap::modifier_setMNameForCheckingFormalParameterUsingForKey (GALGAS_string inAttributeValue,
-                                                                                 GALGAS_string inKey,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) {
+void GALGAS_variableMap::setter_setMNameForCheckingFormalParameterUsingForKey (GALGAS_string inAttributeValue,
+                                                                               GALGAS_string inKey,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {

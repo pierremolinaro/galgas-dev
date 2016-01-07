@@ -217,7 +217,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   protected : VIRTUAL_IN_DEBUG void makeNewEmptyMap (LOCATION_ARGS) ;
 
 //--------------------------------- 'enterEdge' modifier declaration
-  public : VIRTUAL_IN_DEBUG void modifier_enterEdge (const GALGAS_lstring & inSource,
+  public : VIRTUAL_IN_DEBUG void setter_enterEdge (const GALGAS_lstring & inSource,
                                                      const GALGAS_lstring & inTarget
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -331,12 +331,12 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Close override for block
-  public : VIRTUAL_IN_DEBUG void modifier_closeOverride (const GALGAS_location & inErrorLocation,
+  public : VIRTUAL_IN_DEBUG void setter_closeOverride (const GALGAS_location & inErrorLocation,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Branch Handling
-  public : VIRTUAL_IN_DEBUG void modifier_openBranch (C_Compiler * inCompiler
+  public : VIRTUAL_IN_DEBUG void setter_openBranch (C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
