@@ -104,7 +104,7 @@ class C_Compiler : public C_SharedObject {
   public : C_String sourceFilePath (void) const ;
 
 //--- Syntax error message for 'end of source':
-  protected : static const utf32 kEndOfSourceLexicalErrorMessage [] ;
+  protected : static const char * kEndOfSourceLexicalErrorMessage ;
 
 //--- Location in source
   public : inline C_LocationInSource currentLocationInSource (void) const {

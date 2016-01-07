@@ -58,7 +58,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 %
   for () in LEXICAL_MESSAGE_MAP do
-   %\nstatic const utf32 gLexicalMessage_%!LEXIQUE_IDENTIFIER%_%![lkey string]% [] = % ![mLexicalMessage utf32Representation]% ;\n%
+   %\nstatic const char * gLexicalMessage_%!LEXIQUE_IDENTIFIER%_%![lkey string]% = % ![mLexicalMessage utf8Representation]% ;\n%
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
@@ -67,7 +67,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 %
   for () in TERMINAL_LIST do
    %\n//--- Syntax error message for terminal '$%![mTerminalName string]%$' :\n%
-   %static const utf32 gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![[mTerminalName string] identifierRepresentation]% [] = %![mSyntaxErrorMessage utf32Representation]% ;\n%
+   %static const char * gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![[mTerminalName string] identifierRepresentation]% = %![mSyntaxErrorMessage utf8Representation]% ;\n%
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
@@ -75,7 +75,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
+  static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   for () in TERMINAL_LIST do
    %,\n    gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![[mTerminalName string] identifierRepresentation]
   end
