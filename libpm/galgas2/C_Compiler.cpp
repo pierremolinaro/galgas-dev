@@ -54,7 +54,7 @@ bool C_Compiler::performLogFileRead (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Constructor and destructor
+  #pragma mark Constructor and destructor
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -100,7 +100,7 @@ C_String C_Compiler::sourceFilePath (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Sent String Management
+  #pragma mark Sent String Management
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -116,7 +116,7 @@ GALGAS_string C_Compiler::sentString (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Template String Management
+  #pragma mark Template String Management
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -137,7 +137,7 @@ void C_Compiler::resetTemplateString (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Scanner configuration
+  #pragma mark Scanner configuration
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -151,7 +151,7 @@ void C_Compiler::resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTe
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= On the fly semantic error Message
+  #pragma mark On the fly semantic error Message
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -167,7 +167,7 @@ void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= On the fly semantic Warning Message
+  #pragma mark On the fly semantic Warning Message
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -183,7 +183,7 @@ void C_Compiler::onTheFlySemanticWarning (const C_String & inWarningMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Print Message
+  #pragma mark Print Message
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -207,7 +207,7 @@ void C_Compiler::printMessage (const C_String & inMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Log File Read
+  #pragma mark Log File Read
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -221,7 +221,7 @@ void C_Compiler::logFileRead (const C_String & inFilePath) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Loop variant run time error
+  #pragma mark Loop variant run time error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -233,7 +233,7 @@ void C_Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Cast error
+  #pragma mark Cast error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -249,7 +249,7 @@ void C_Compiler::castError (const C_String & inTargetTypeName,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= GALGAS 2 Error
+  #pragma mark GALGAS 2 Error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -363,7 +363,7 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= GALGAS 2 Warnings
+  #pragma mark GALGAS 2 Warnings
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -404,7 +404,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Run Time Error
+  #pragma mark Run Time Error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -417,7 +417,7 @@ void C_Compiler::onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= here
+  #pragma mark here
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -477,7 +477,7 @@ void closeTrace (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Check And Generate File
+  #pragma mark Check And Generate File
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*

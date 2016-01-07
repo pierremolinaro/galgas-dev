@@ -184,7 +184,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertAtIndex (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
     %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
@@ -212,7 +212,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertAtIndex (%?^
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_removeAtIndex (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
     %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
@@ -240,7 +240,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_removeAtIndex (%?^
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
   for () in ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
@@ -265,7 +265,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
   for () in ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
@@ -393,7 +393,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 for () in ATTRIBUTE_LIST do index IDX
   if mHasSetter then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%

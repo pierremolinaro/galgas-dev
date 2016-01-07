@@ -136,7 +136,7 @@ GALGAS_string GALGAS_data::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendByte (GALGAS_uint inArgument0,
+void GALGAS_data::setter_appendByte (GALGAS_uint inArgument0,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -151,7 +151,7 @@ void GALGAS_data::modifier_appendByte (GALGAS_uint inArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendShortBE (GALGAS_uint inArgument0,
+void GALGAS_data::setter_appendShortBE (GALGAS_uint inArgument0,
                                           C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -167,7 +167,7 @@ void GALGAS_data::modifier_appendShortBE (GALGAS_uint inArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendShortLE (GALGAS_uint inArgument0,
+void GALGAS_data::setter_appendShortLE (GALGAS_uint inArgument0,
                                           C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
@@ -183,7 +183,7 @@ void GALGAS_data::modifier_appendShortLE (GALGAS_uint inArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendUIntBE (GALGAS_uint inArgument0
+void GALGAS_data::setter_appendUIntBE (GALGAS_uint inArgument0
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
@@ -196,7 +196,7 @@ void GALGAS_data::modifier_appendUIntBE (GALGAS_uint inArgument0
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendUIntLE (GALGAS_uint inArgument0
+void GALGAS_data::setter_appendUIntLE (GALGAS_uint inArgument0
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const uint32_t value = inArgument0.uintValue () ;
@@ -209,7 +209,7 @@ void GALGAS_data::modifier_appendUIntLE (GALGAS_uint inArgument0
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendUTF_38_String (GALGAS_string inString
+void GALGAS_data::setter_appendUTF_38_String (GALGAS_string inString
                                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (inString.isValid ()) {
     const C_String s = inString.stringValue () ;
@@ -227,7 +227,7 @@ void GALGAS_data::modifier_appendUTF_38_String (GALGAS_string inString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::modifier_appendData (GALGAS_data inData
+void GALGAS_data::setter_appendData (GALGAS_data inData
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (inData.isValid ()) {
     mData.appendData (inData.mData) ;

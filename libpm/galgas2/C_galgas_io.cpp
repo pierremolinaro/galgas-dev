@@ -39,10 +39,9 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_unicode_lexique_table_entry::
-C_unicode_lexique_table_entry (const utf32 * inEntryString,
-                               const int16_t inEntryStringLength,
-                               const int16_t inTokenCode) :
+C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const utf32 * inEntryString,
+                                                              const int16_t inEntryStringLength,
+                                                              const int16_t inTokenCode) :
 mEntryString (inEntryString),
 mEntryStringLength (inEntryStringLength),
 mTokenCode (inTokenCode) {
@@ -50,8 +49,7 @@ mTokenCode (inTokenCode) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_unicode_lexique_table_entry::
-C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) :
+C_unicode_lexique_table_entry::C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) :
 mEntryString (inOperand.mEntryString),
 mEntryStringLength (inOperand.mEntryStringLength),
 mTokenCode (inOperand.mTokenCode) {
@@ -510,7 +508,7 @@ void signalRunTimeWarning (const C_String & inWarningMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Actual Message Print
+  #pragma mark Actual Message Print
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -671,7 +669,7 @@ void ggs_printMessage (const C_String & inMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= cToken
+  #pragma mark cToken
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -693,7 +691,7 @@ cToken::~cToken (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= C_parsingContext
+  #pragma mark C_parsingContext
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*

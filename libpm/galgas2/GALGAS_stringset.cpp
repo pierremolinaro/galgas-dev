@@ -696,7 +696,7 @@ void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_stringset::modifier_removeKey (GALGAS_string inKey
+void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
                                            COMMA_LOCATION_ARGS) {
   // printf ("OPERATION -=\n") ; fflush (stdout) ;
   if (isValid () && inKey.isValid ()) {

@@ -54,7 +54,7 @@ GALGAS_timer GALGAS_timer::constructor_start (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_timer::modifier_stop (UNUSED_LOCATION_ARGS) {
+void GALGAS_timer::setter_stop (UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mTimer.stopTimer () ;
   }
@@ -62,7 +62,7 @@ void GALGAS_timer::modifier_stop (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_timer::modifier_resume (UNUSED_LOCATION_ARGS) {
+void GALGAS_timer::setter_resume (UNUSED_LOCATION_ARGS) {
   if (isValid ()) {
     mTimer = C_Timer () ;
   }

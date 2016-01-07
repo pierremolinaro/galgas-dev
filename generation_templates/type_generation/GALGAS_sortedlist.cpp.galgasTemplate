@@ -182,7 +182,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
   for () in ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
@@ -207,7 +207,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
   for () in ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end

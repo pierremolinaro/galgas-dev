@@ -211,7 +211,7 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare ()) == 0 then
 for () in MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-      %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
+      %  public : VIRTUAL_IN_DEBUG void setter_%![[lkey string] identifierRepresentation]% (%?^
       for () in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]

@@ -134,7 +134,7 @@ end
 
 %for () in INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
     end
@@ -189,7 +189,7 @@ end
 
 for () in REMOVE_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
     end
@@ -212,7 +212,7 @@ end
 
 if HAS_INSERT_OR_REPLACE then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%GALGAS_lstring inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_insertOrReplace (%?^%GALGAS_lstring inKey%
   for () in ATTRIBUTE_LIST
     do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
   end
@@ -248,7 +248,7 @@ end
 
 for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%

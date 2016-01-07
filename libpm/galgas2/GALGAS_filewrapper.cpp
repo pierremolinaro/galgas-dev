@@ -421,7 +421,7 @@ GALGAS_data GALGAS_filewrapper::getter_binaryFileContentsAtPath (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapper::modifier_setCurrentDirectory (const GALGAS_string inNewDirectory,
+void GALGAS_filewrapper::setter_setCurrentDirectory (const GALGAS_string inNewDirectory,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if ((mRootDirectoryPtr != NULL) && inNewDirectory.isValid ()) {
