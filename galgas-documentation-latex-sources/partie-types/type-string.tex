@@ -649,7 +649,7 @@ Retourne le nombre de caractères du récepteur.
 \subsectionGetter{lowercaseString}{string}
 
 \begin{galgasbox}
-getter lowercaseString -> @uint
+getter lowercaseString -> @string
 \end{galgasbox}
 
 Retourne la valeur du récepteur, dans laquelle toutes les lettres majuscules sont transformées en minuscules.
@@ -658,6 +658,25 @@ Par exemple :
 \begin{galgas}
 let x = ["AbcD" lowercaseString] # "abcd"
 let y = ["ÊÆ" lowercaseString] # "êæ"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionGetter{md5}{string}
+
+\begin{galgasbox}
+getter md5 -> @string
+\end{galgasbox}
+
+Retourne la somme de contrôle MD5 du récepteur sous la forme d'une chaîne de 32 caractères hexadécimaux.
+
+Par exemple :
+\begin{galgas}
+let x = ["Hello" md5] # "8B1A9953C4611296A827ABF8C47804D7"
 \end{galgas}
 
 
@@ -694,6 +713,315 @@ Voir aussi le \refGetterPage{string}{identifierRepresentation} qui encode un chi
 
 
 
+\subsectionGetter{nativePathWithUnixPath}{string}
+
+\begin{galgasbox}
+getter nativePathWithUnixPath -> @string
+\end{galgasbox}
+
+Sous Unix, ce \emph{getter} retourne la valeur du récepteur. Sous Windows, il retourne la valeur du récepteur encodé \emph{à la Windows}.
+
+Par exemple, sous Windows :
+\begin{galgas}
+let x = ["/C/Program Files/f" nativePathWithUnixPath] # "C:\Program Files\f"
+\end{galgas}
+
+
+
+
+
+
+
+\subsectionGetter{nowhere}{string}
+
+\begin{galgasbox}
+getter nowhere -> @lstring
+\end{galgasbox}
+
+Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du réception, et dont le champ \ggs!location! est vide.
+
+
+
+
+
+
+
+\subsectionGetter{pathExtension}{string}
+
+\begin{galgasbox}
+getter pathExtension -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{.} », la chaîne vide est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui suit la dernière occurrence du caractère « \texttt{.} ».
+
+
+
+
+
+
+
+
+\subsectionGetter{popen}{string}
+
+\begin{galgasbox}
+getter popen -> @string
+\end{galgasbox}
+
+Ce \emph{getter} exécute la commande Shell exprimée par la valeur du récepteur. La sortie de cette commande est accumulée et retournée par ce \emph{getter} lorsque la commande est terminée.
+
+
+
+
+
+
+
+
+\subsectionGetter{range}{string}
+
+\begin{galgasbox}
+getter range -> @range
+\end{galgasbox}
+
+Retourne un objet de type \refTypePredefini{range} dont le champ \ggs!start! est $0$ et le champ \ggs!length! est égal au nombre de caractères du récepteur.
+
+
+
+
+
+
+
+
+\subsectionGetter{regularFiles}{string}
+
+\begin{galgasbox}
+getter regularFiles ?@bool inRecursiveSearch -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{regularFilesWithExtensions}{string}
+
+\begin{galgasbox}
+getter regularFilesWithExtensions
+    ?@bool inRecursiveSearch
+    ?@stringlist inExtensionList -> @stringlist
+\end{galgasbox}
+
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur, en ne retenant que les fichiers dont l'extension est nommée dans \ggs!inExtensionList!. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{relativePathFromPath}{string}
+
+\begin{galgasbox}
+getter relativePathFromPath ?@string inPath -> @string
+\end{galgasbox}
+
+Retourne le chemin relatif du récepteur à partir du chemin \ggs!inPath!.
+
+
+
+
+
+
+
+
+
+\subsectionGetter{reversedString}{string}
+
+\begin{galgasbox}
+getter reversedString -> @string
+\end{galgasbox}
+
+Retourne la valeur renversée du récepteur.
+
+\begin{galgas}
+let x = ["abcde" reversedString] # "edcba"
+\end{galgas}
+
+
+
+
+
+
+
+
+\subsectionGetter{rightSubString}{string}
+
+\begin{galgasbox}
+getter rightSubString ?@uint inLength -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne constituée des \ggs!inLength! premiers caractères du récepteur. Si celui-ci contient moins de \ggs!inLength! caractères, une erreur d'exécution est déclenchée.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByCapitalizingFirstCharacter}{string}
+
+\begin{galgasbox}
+getter stringByCapitalizingFirstCharacter -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur dans laquelle le premier caractère, si il est une lettre, a été mis en majuscule.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByDeletingLastPathComponent}{string}
+
+\begin{galgasbox}
+getter stringByDeletingLastPathComponent -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{/} », la chaîne vide est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère « \texttt{/} ».
+
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByDeletingPathExtension}{string}
+
+\begin{galgasbox}
+getter stringByDeletingPathExtension -> @string
+\end{galgasbox}
+
+Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère « \texttt{.} ».
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByLeftAndRightPadding}{string}
+
+\begin{galgasbox}
+getter stringByLeftAndRightPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur précédée et suivie d'un nombre égal de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!. Si le nombre de caractères à ajouter est impair, le nombre de caractères ajoutés est supérieur d'une unité au nombre de caractères insérés au début.
+
+
+
+
+
+
+
+
+\subsectionGetter{stringByLeftPadding}{string}
+
+\begin{galgasbox}
+getter stringByLeftPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur suivie d'un nombre de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!.
+
+
+
+
+
+
+
+\subsectionGetter{stringByRemovingCharacterAtIndex}{string}
+
+\begin{galgasbox}
+getter stringByRemovingCharacterAtIndex ?@uint inIndex -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, amputée du caractère situé à l'indice \ggs!inIndex!. Une erreur d'exécution est déclenchée si \ggs!inIndex! est supérieur ou égal au nombre de caractères du récepteur.
+
+
+
+
+
+
+
+\subsectionGetter{stringByReplacingStringByString}{string}
+
+\begin{galgasbox}
+getter stringByReplacingStringByString
+     ?@string inSearchedString
+     ?@string inReplacementString  -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle chaque occurrence de \ggs!inSearchedString! est remplacée par \ggs!inReplacementString!.
+
+
+
+
+
+
+
+\subsectionGetter{stringByRightPadding}{string}
+
+\begin{galgasbox}
+getter stringByRightPadding
+   ?@uint inPaddedStringLength
+   ?@char inPaddingChar -> @string
+\end{galgasbox}
+
+Si la longueur de la valeur du récepteur est supérieure ou égal à \ggs!inPaddedStringLength!, la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la valeur du récepteur précédée d'un nombre de caractères \ggs!inPaddingChar!, de façon à atteindre la longueur \ggs!inPaddedStringLength!.
+
+
+
+
+\subsectionGetter{stringByStandardizingPath}{string}
+
+\begin{galgasbox}
+getter stringByStandardizingPath -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle les séquences « \texttt{./} » et « \texttt{../} » sont supprimées.
+
+
+
+
+
+
+
+\subsectionGetter{stringByTrimmingWhiteSpaces}{string}
+
+\begin{galgasbox}
+getter stringByTrimmingWhiteSpaces -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur dans laquelles les espaces en tête et en fin ont été supprimés.
+
+
+
+
 \subsectionGetter{subString}{string}
 
 \begin{galgasbox}
@@ -702,5 +1030,112 @@ getter subString ?@uint inStart ?@uint inLength -> @string
 
 Retourne la sous-chaîne de \ggs!inLength! caractères extraite de la valeur du récepteur à partir de l'indice \ggs!inStart!.
 
+
+
+
+
+
+\subsectionGetter{subStringFromIndex}{string}
+
+\begin{galgasbox}
+getter subStringFromIndex ?@uint inIndex -> @string
+\end{galgasbox}
+
+Retourne la sous-chaîne de caractères extraite de la valeur du récepteur à partir de l'indice \ggs!inIndex!. Si \ggs!inIndex! est supérieur ou égal au nombre de caractères du récepteur, la chaîne vide est retournée.
+
+
+
+
+
+
+\subsectionGetter{system}{string}
+
+\begin{galgasbox}
+getter system -> @sint
+\end{galgasbox}
+
+Appelle la routine C \texttt{system} avec la valeur du récepteur en argument. La valeur retournée par cet appel est la valeur retournée par ce \emph{getter}.
+
+
+
+
+
+
+\subsectionGetter{unixPathWithNativePath}{string}
+
+\begin{galgasbox}
+getter unixPathWithNativePath -> @string
+\end{galgasbox}
+
+La valeur du récepteur est un chemin valide pour la plateforme courante.
+
+Sous Windows, ce \emph{getter} retourne la valeur du récepteur sous la forme d'un chemin Unix. Sous Unix, la valeur du récepteur est renvoyée.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{uppercaseString}{string}
+
+\begin{galgasbox}
+getter uppercaseString -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur, dans laquelle toutes les lettres minuscules sont transformées en majuscules.
+
+Par exemple :
+\begin{galgas}
+let x = ["AbcD" uppercaseString] # "ABCD"
+let y = ["êæ" uppercaseString] # "ÊÆ"
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf32Representation}{string}
+
+\begin{galgasbox}
+getter utf32Representation -> @string
+\end{galgasbox}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8Representation}{string}
+
+\begin{galgasbox}
+getter utf8Representation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
 
 
