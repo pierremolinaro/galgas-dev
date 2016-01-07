@@ -176,7 +176,7 @@ class C_Lexique : public C_Compiler {
 
   protected : bool notTestForInputUTF32String (const utf32 * inTestString,
                                                const int32_t inStringLength,
-                                               const utf32 * inEndOfFileErrorMessage
+                                               const char * inEndOfFileErrorMessage
                                                COMMA_LOCATION_ARGS) ;
 
   protected : void lexicalLog (LOCATION_ARGS) ;

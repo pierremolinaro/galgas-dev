@@ -423,7 +423,7 @@ bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
 
 bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
                                             const int32_t inStringLength,
-                                            const utf32 * inEndOfFileErrorMessage
+                                            const char * inEndOfFileErrorMessage
                                             COMMA_LOCATION_ARGS) {
   bool ok = UNICODE_VALUE (sourceText ()->readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
   if (! ok) { // End of input file reached
