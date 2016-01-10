@@ -231,12 +231,24 @@
 %   C O N S T R U C T O R   C R O S S    R E F E R E N C I N G                                                          *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand\sectionConstructor[2]{\section{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}}
+\newcommand\sectionConstructor[2]{\section{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructeur}}
 
-\newcommand\subsectionConstructor[2]{\subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}}
+\newcommand\subsectionConstructor[2]{\subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructeur}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand \refConstructorPage[2] {\hyperref[constructor:#1:#2]{\em constructeur \texttt{#2} du type \texttt{@#1} (page \pageref{constructor:#1:#2})}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%   S T A T I C    P R O C   C R O S S    R E F E R E N C I N G                                                     *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newcommand\sectionStaticProc[2]{\section{Procédure de type \texttt{#1}}\label{staticProc:#2:#1}\index{#1!"@#2 procédure de type}}
+
+\newcommand\subsectionStaticProc[2]{\subsection{Procédure de type \texttt{#1}}\label{staticProc:#2:#1}\index{#1!"@#2 procédure de type}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\newcommand \refStaticProcPage[2] {\hyperref[staticProc:#1:#2]{\em procédure \texttt{#2} du type \texttt{@#1} (page \pageref{staticProc:#1:#2})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*

@@ -257,33 +257,6 @@ constructor stringWithSymbolicLinkContents ?@string inPath -> @string
 
 \section{Getters}
 
-\subsectionGetter{HTMLRepresentation}{string}
-
-\begin{galgasbox}
-getter HTMLRepresentation -> @string
-\end{galgasbox}
-Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. Les caractères sont modifiés selon le \refTableauPage{codageHTML}.
-
-
-\begin{table}[t]
-  \centering
-  \begin{tabular}{lllllll}
-  \textbf{Caractère} & \textbf{Codage en HTML} \\
-  \texttt{\&} & \texttt{\&amp;} \\
-  \texttt{"} & \texttt{\&quot;} \\
-  \texttt{<} & \texttt{\&lt;} \\
-  \texttt{>} & \texttt{\&gt;} \\
-  \end{tabular}
-  \caption{Codage des caractères HTML, \refGetterPage{string}{HTMLRepresentation}}
-  \labelTableau{codageHTML}
-  \ligne
-\end{table}
-
-
-
-
-
-
 \subsectionGetter{absolutePathFromPath}{string}
 
 \begin{galgasbox}
@@ -525,6 +498,33 @@ Retourne la liste des fichiers cachés du répertoire désigné par la valeur du
 
 
 
+
+
+
+
+
+
+\subsectionGetter{HTMLRepresentation}{string}
+
+\begin{galgasbox}
+getter HTMLRepresentation -> @string
+\end{galgasbox}
+Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. Les caractères sont modifiés selon le \refTableauPage{codageHTML}.
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lllllll}
+  \textbf{Caractère} & \textbf{Codage en HTML} \\
+  \texttt{\&} & \texttt{\&amp;} \\
+  \texttt{"} & \texttt{\&quot;} \\
+  \texttt{<} & \texttt{\&lt;} \\
+  \texttt{>} & \texttt{\&gt;} \\
+  \end{tabular}
+  \caption{Codage des caractères HTML, \refGetterPage{string}{HTMLRepresentation}}
+  \labelTableau{codageHTML}
+  \ligne
+\end{table}
 
 
 
@@ -1219,5 +1219,255 @@ Le récepteur contient la chaîne de caractères qui est écrit dans le fichier 
 \begin{galgasbox}
 method makeSymbolicLinkWithPath ?@string inFilePath
 \end{galgasbox}
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToExecutableFile}{string}
+
+\begin{galgasbox}
+method writeToExecutableFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas. Si il a été écrit avec succès, le fichier \ggs!inFilePath! est rendu exécutable.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToExecutableFileWhenDifferentContents}{string}
+
+\begin{galgasbox}
+method writeToExecutableFileWhenDifferentContents
+    ?@string inFilePath
+    !@bool outFileModified
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas. Si il a été écrit avec succès, le fichier \ggs!inFilePath! est rendu exécutable. Le booléen \ggs!outFileModified! permet de savoir si le contenu original du fichier a été modifié.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToFile}{string}
+
+\begin{galgasbox}
+method writeToFile ?@string inFilePath
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas.
+
+
+
+
+
+
+
+
+
+\subsectionMethod{writeToFileWhenDifferentContents}{string}
+
+\begin{galgasbox}
+method writeToFileWhenDifferentContents
+    ?@string inFilePath
+    !@bool outFileModified
+\end{galgasbox}
+
+Le récepteur contient la chaîne de caractères qui est écrit dans le fichier \ggs!inFilePath!. Aucun répertoire intermédiaire n'est créé, c'est une erreur d'exécution si ils n'existent pas.Le booléen \ggs!outFileModified! permet de savoir si le contenu original du fichier a été modifié.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{setters}
+
+\subsectionSetter{appendSpacesUntilColumn}{string}
+
+\begin{galgasbox}
+setter appendSpacesUntilColumn ?@uint inColumnIndex
+\end{galgasbox}
+
+Ce \emph{setter} ajoute des espaces en fin de ligne jusqu'à atteindre la colonne \ggs!inColumnIndex!.
+
+
+
+
+\subsectionSetter{decIndentation}{string}
+
+\begin{galgasbox}
+setter decIndentation ?@uint inAmount
+\end{galgasbox}
+
+Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Le \refSetterPage{string}{incIndentation} permet de l'incrémenter, ce \emph{setter} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
+
+
+
+
+
+\subsectionSetter{incIndentation}{string}
+
+\begin{galgasbox}
+setter incIndentation ?@uint inAmount
+\end{galgasbox}
+
+Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement insérés à la suite. Initialement, ce nombre est nul. Ce \emph{setter} permet de l'incrémenter, le \refSetterPage{string}{incIndentation} de le décrémenter. Ces deux \emph{setters} permettent d'obtenir facilement des sorties où le texte est indenté.
+
+
+
+
+
+
+
+
+\subsectionSetter{setCapacity}{string}
+
+\begin{galgasbox}
+setter setCapacity ?@uint inCapacity
+\end{galgasbox}
+
+
+Ce \emph{setter} ajuste la zone mémoire allouée au buffer de la chaîne de caractères. Si \ggs!inCapacity! est strictemement inférieur au nombre de caractères, ce \emph{setter} n'a pas d'effet.
+
+
+
+
+
+
+
+
+
+
+\subsectionSetter{setCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter setCharacterAtIndex
+   ?@char inChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} remplace le caractère d'indice \ggs!inIndex! par le caractère \ggs!inChar!. Si \ggs!inIndex! est supérieur ou égal au nombre de caractères, une erreur d'exécution est déclenchée. 
+
+
+
+
+\section{Procédures de type}
+
+
+\subsectionStaticProc{deleteFile}{string}
+
+
+\begin{galgasbox}
+proc @string deleteFile ?@string inFilePath
+\end{galgasbox}
+
+Supprime le fichier \ggs!inFilePath!. Une erreur d'exécution est déclenchée si le fichier n'existe pas.
+
+
+
+
+\subsectionStaticProc{deleteFileIfExists}{string}
+
+
+\begin{galgasbox}
+proc @string deleteFileIfExists ?@string inFilePath
+\end{galgasbox}
+
+Supprime le fichier \ggs!inFilePath!. Aucune erreur d'exécution n'est déclenchée si le fichier n'existe pas.
+
+
+
+
+
+
+\subsectionStaticProc{generateFile}{string}
+
+
+\begin{galgasbox}
+proc @string generateFile
+   ?@string inStartPath
+   ?@string inFileName
+   ?@string inContents
+\end{galgasbox}
+
+Cette procédure commence par rechercher le fichier \ggs!inFileName! dans le répertoire \ggs!inStartPath!, et récursivement dans ses sous-répertoires.
+
+Si le fichier existe, son contenu est remplacé par \ggs!inContents!.
+
+Si il n'existe pas, il est créé dans le répertoire \ggs!inStartPath! avec le nom \ggs!inFileName!, et le contenu \ggs!inContents!.
+
+
+
+
+
+
+
+
+\subsectionStaticProc{generateFileWithPattern}{string}
+
+
+\begin{galgasbox}
+proc @string generateFileWithPattern
+   ?startPath:@string inStartPath
+   ?fileName:@string inFileName
+   ?lineComment:@string inLineCommentPrefix
+   ?header:@string inHeader
+   ?defaultUserZone1:@string inDefaultUserZone1
+   ?generatedZone2:@string inGeneratedZone2
+   ?defaultUserZone2:@string inDefaultUserZone2
+   ?generatedZone3:@string inGeneratedZone3
+   ?makeExecutable:@bool inMakeExecutable
+\end{galgasbox}
+
+
+
+
+
+
+\subsectionStaticProc{removeDirectoryRecursively}{string}
+
+
+\begin{galgasbox}
+proc @string removeDirectoryRecursively ?@string inDirectoryPath
+\end{galgasbox}
+
+Supprime le répertoire \ggs!inDirectoryPath!, après avoir supprimé tous ses fichiers et récursivement tous ses sous-répertoires.
+
+
+
+
+
+
+
+\subsectionStaticProc{removeEmptyDirectory}{string}
+
+
+\begin{galgasbox}
+proc @string removeEmptyDirectory ?@string inDirectoryPath
+\end{galgasbox}
+
+Supprime le répertoire \ggs!inDirectoryPath!. Une erreur d'exécution est déclenchée si le répertoire n'est pas vide.
 
 
