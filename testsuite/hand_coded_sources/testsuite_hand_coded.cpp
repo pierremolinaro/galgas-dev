@@ -15,7 +15,7 @@ static void routine_test_dictionary (void) {
 //--- First remove
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
     C_String s ; s << cStringWithSigned (i) ;
-    dictionary.modifier_removeKey (GALGAS_string (s) COMMA_HERE) ;
+    dictionary.setter_removeKey (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;
 //--- Second insertion
@@ -27,7 +27,7 @@ static void routine_test_dictionary (void) {
 //--- Second Remove
   for (int32_t i=0 ; i<TEST_SIZE ; i++) {
     C_String s ; s << cStringWithSigned (i) ;
-    dictionary.modifier_removeKey (GALGAS_string (s) COMMA_HERE) ;
+    dictionary.setter_removeKey (GALGAS_string (s) COMMA_HERE) ;
   }
   printf ("Delete Test Done\n") ;
 }
