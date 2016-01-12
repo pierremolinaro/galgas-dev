@@ -1625,8 +1625,8 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_string::setter_appendSpacesUntilColumn (GALGAS_uint inColumnIndex,
-                                                      C_Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
+                                                    C_Compiler * /* inCompiler */
+                                                    COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inColumnIndex.isValid ()) {
     mString.appendSpacesUntilColumn (inColumnIndex.uintValue ()) ;
   }
@@ -1635,8 +1635,8 @@ void GALGAS_string::setter_appendSpacesUntilColumn (GALGAS_uint inColumnIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
-                                          C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+                                        C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   if (inNewCapacity.isValid ()) {
     if (inNewCapacity.uintValue () <= ((uint32_t) INT32_MAX)) {
       mString.setCapacity (inNewCapacity.uintValue ()) ; 
@@ -1653,8 +1653,8 @@ void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
-                                             C_Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+                                           C_Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inIndentation.isValid ()) {
     mString.incIndentation ((int32_t) inIndentation.uintValue ()) ; 
   }
@@ -1663,8 +1663,8 @@ void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_string::setter_decIndentation (GALGAS_uint inIndentation,
-                                             C_Compiler * /* inCompiler */
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+                                           C_Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (inIndentation.isValid ()) {
     mString.incIndentation (- ((int32_t) inIndentation.uintValue ())) ; 
   }
@@ -1673,9 +1673,9 @@ void GALGAS_string::setter_decIndentation (GALGAS_uint inIndentation,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
-                                                  GALGAS_uint inIndex,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+                                                GALGAS_uint inIndex,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   if ((inCharacter.isValid ()) && (inIndex.isValid ())) {
     const int32_t idx = (int32_t) inIndex.uintValue () ;
     const int32_t stringLength = mString.length () ;
