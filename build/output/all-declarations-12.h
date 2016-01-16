@@ -847,7 +847,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
                                                                                                const class GALGAS_stringlist & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST,
                                                                                                const class GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET,
                                                                                                const class GALGAS_bool & in_GENERATE_5F_FOR_5F_WINDOWS,
-                                                                                               const class GALGAS_string & in_PLATFORM
+                                                                                               const class GALGAS_string & in_PLATFORM,
+                                                                                               const class GALGAS_bool & in_VERBOSE_5F_OPTION
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -918,6 +919,7 @@ void routine_generateGalgasCodeBlocksWindowsTarget (const class GALGAS_string co
                                                     const class GALGAS_string constinArgument3,
                                                     const class GALGAS_stringlist constinArgument4,
                                                     const class GALGAS_stringset constinArgument5,
+                                                    const class GALGAS_bool constinArgument6,
                                                     class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -933,6 +935,7 @@ void routine_generateGalgasCodeBlocksMacTarget (const class GALGAS_string consti
                                                 const class GALGAS_string constinArgument3,
                                                 const class GALGAS_stringlist constinArgument4,
                                                 const class GALGAS_stringset constinArgument5,
+                                                const class GALGAS_bool constinArgument6,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
@@ -948,6 +951,7 @@ void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const class GALGA
                                                                const class GALGAS_string constinArgument3,
                                                                const class GALGAS_stringlist constinArgument4,
                                                                const class GALGAS_stringset constinArgument5,
+                                                               const class GALGAS_bool constinArgument6,
                                                                class C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
@@ -963,6 +967,7 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const cla
                                                                        const class GALGAS_string constinArgument3,
                                                                        const class GALGAS_stringlist constinArgument4,
                                                                        const class GALGAS_stringset constinArgument5,
+                                                                       const class GALGAS_bool constinArgument6,
                                                                        class C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) ;
 

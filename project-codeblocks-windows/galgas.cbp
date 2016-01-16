@@ -71,6 +71,7 @@
    <Add library="Comdlg32" />  </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />
+  <Unit filename="../libpm/galgas2/C_galgas_quiet_option.cpp" />
   <Unit filename="../build/output/all-declarations-26.cpp" />
   <Unit filename="../build/output/all-declarations-25.cpp" />
   <Unit filename="../build/output/all-declarations-24.cpp" />
@@ -98,7 +99,6 @@
   <Unit filename="../build/output/all-declarations-2.cpp" />
   <Unit filename="../build/output/all-declarations-1.cpp" />
   <Unit filename="../build/output/all-declarations-0.cpp" />
-  <Unit filename="../build/output/C_galgas_quiet_option.cpp" />
   <Unit filename="../hand_coded_sources/cDecisionTableElement.cpp" />
   <Unit filename="../hand_coded_sources/cVocabulary.cpp" />
   <Unit filename="../hand_coded_sources/buildPureBNFgrammar.cpp" />
