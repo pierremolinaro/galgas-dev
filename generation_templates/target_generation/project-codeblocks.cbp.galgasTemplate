@@ -76,7 +76,12 @@ end
 %  </Linker>
   <Unit filename="%!LIBPM_PATH%/all-libpm.cpp" />
   <Unit filename="%!LIBPM_PATH%/galgas2/all-galgas.cpp" />
+%if VERBOSE_OPTION then
+%  <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_verbose_option.cpp" />
+%else
+%  <Unit filename="%!LIBPM_PATH%/galgas2/C_galgas_quiet_option.cpp" />
 %
+end
 for () in TOOL_CPP_FILE_LIST do
 %  <Unit filename="../build/output/%!mValue%" />\n%
 end

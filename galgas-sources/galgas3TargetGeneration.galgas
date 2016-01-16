@@ -110,7 +110,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
     ?@stringset HAND_CODED_SOURCE_TOOL_DIRECTORY_SET
     ?windows:@bool GENERATE_FOR_WINDOWS
     ?platform:@string PLATFORM
-#    ?gmpPostix:@string GMPLIB_POSTFIX
+    ?verboseOption:@bool VERBOSE_OPTION
 
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
@@ -142,7 +142,8 @@ private proc generateGalgasCodeBlocksWindowsTarget
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringset inHandCodedSourceDirectorySet
- {
+  ?let @bool inVerboseOption
+{
   let @string dir = inProjectDirectory + "/project-codeblocks-windows"
   [dir makeDirectory]
   let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
@@ -153,6 +154,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
     !inHandCodedSourceDirectorySet
     !windows:true
     !platform:"Windows"
+    !verboseOption:inVerboseOption
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -166,7 +168,8 @@ private proc generateGalgasCodeBlocksMacTarget
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringset inHandCodedSourceDirectorySet
- {
+  ?let @bool inVerboseOption
+{
   let @string dir = inProjectDirectory + "/project-codeblocks-mac"
   [dir makeDirectory]
   let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
@@ -177,6 +180,7 @@ private proc generateGalgasCodeBlocksMacTarget
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Mac"
+    !verboseOption:inVerboseOption
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -190,6 +194,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringset inHandCodedSourceDirectorySet
+  ?let @bool inVerboseOption
  {
   let @string dir = inProjectDirectory + "/project-codeblocks-linux32"
   [dir makeDirectory]
@@ -201,6 +206,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
+    !verboseOption:inVerboseOption
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -214,7 +220,8 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @string inLIBPMpath
   ?let @stringlist inHandCodedSourceToolFileList
   ?let @stringset inHandCodedSourceDirectorySet
- {
+  ?let @bool inVerboseOption
+{
   let @string dir = inProjectDirectory + "/project-codeblocks-linux64"
   [dir makeDirectory]
   let s = [filewrapper targetGalgas3GenerationFileWrapper.codeblocks_project
@@ -225,6 +232,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
     !inHandCodedSourceDirectorySet
     !windows:false
     !platform:"Unix"
+    !verboseOption:inVerboseOption
   ]
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
@@ -483,40 +491,44 @@ proc updateGalgas3Targets
     generateGalgasCodeBlocksWindowsTarget (
       !projectDirectory
       !inTargetName
-      !toolCppFileList
+      !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
+      !inQuietOutputByDefault
     )
   end
   if [generationFeatures hasKey !"codeblocks-mac"] then
     generateGalgasCodeBlocksMacTarget (
       !projectDirectory
       !inTargetName
-      !toolCppFileList
+      !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
+      !inQuietOutputByDefault
     )
   end
   if [generationFeatures hasKey !"codeblocks-linux32"] then
     generateGalgasCodeBlocksLinuxI686Target (
       !projectDirectory
       !inTargetName
-      !toolCppFileList
+      !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
+      !inQuietOutputByDefault
     )
   end
   if [generationFeatures hasKey !"codeblocks-linux64"] then
     generateGalgasCodeBlocksLinuxX86_64Target (
       !projectDirectory
       !inTargetName
-      !toolCppFileList
+      !inToolCppFileList
       !libpmPath
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
+      !inQuietOutputByDefault
     )
   end
 #--- Frameworks to link with tool
