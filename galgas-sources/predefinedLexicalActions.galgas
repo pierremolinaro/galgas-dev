@@ -182,6 +182,16 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !{!"inCharacterIsNotDecimalDigitError"}
     !false # Is not extern
   ]
+#--- enterBinaryDigitIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inBinaryDigitCharacter"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioBigInt"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"enterBinaryDigitIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotBinaryDigitError"}
+    !false # Is not extern
+  ]
 #--- enterHexDigitIntoBigInt
   lexicalRoutineFormalArgumentList = {}
   lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_char !"inHexDigitCharacter"
@@ -200,6 +210,16 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !.new {!"convertDecimalStringIntoBigInt" !.here}
     !lexicalRoutineFormalArgumentList
     !{!"inCharacterIsNotDecimalDigitError"}
+    !false # Is not extern
+  ]
+#--- convertBinaryStringIntoBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioUnsignedNumber"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"convertBinaryStringIntoBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{!"inCharacterIsNotBinaryDigitError"}
     !false # Is not extern
   ]
 #--- convertHexStringIntoBigInt

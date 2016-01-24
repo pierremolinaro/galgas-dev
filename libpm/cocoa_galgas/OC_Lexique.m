@@ -1408,4 +1408,33 @@ void scanner_cocoa_routine_convertHexStringIntoBigInt (BOOL * ioScanningOk,
   }
 }
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_enterBinaryDigitIntoBigInt (BOOL * ioScanningOk,
+                                                       const utf32 inChar,
+                                                       NSMutableString * ioString) {
+  if ((UNICODE_VALUE (inChar) >= '0') && (UNICODE_VALUE (inChar) <= '1')) {
+    [ioString appendFormat:@"%C", (uint16_t) inChar] ;
+  }else{
+    * ioScanningOk = NO ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_convertBinaryStringIntoBigInt (BOOL * ioScanningOk,
+                                                          NSString * inHexString,
+                                                          NSMutableString * ioString) {
+  for (NSUInteger i=0 ; i < inHexString.length ; i++) {
+    const unichar c = [inHexString characterAtIndex:i] ;
+    if ((c >= '0') && (c <= '1')) {
+      [ioString appendFormat:@"%C", c] ;
+    }else{
+      * ioScanningOk = NO ;
+    }
+  }
+}
+
+
 //---------------------------------------------------------------------------------------------------------------------*

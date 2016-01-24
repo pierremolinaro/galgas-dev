@@ -837,3 +837,37 @@ void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Predefined Scanner Actions (from GALGAS 3.1.6)
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
+                                                 const utf32 inCharacter,
+                                                 C_BigInt & ioBigInt,
+                                                 const char * inCharacterIsNotBinaryDigitError) {
+  if ((UNICODE_VALUE (inCharacter) < '0') || (UNICODE_VALUE (inCharacter) > '1')) {
+    inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
+  }else{
+    const uint32_t digit = UNICODE_VALUE (inCharacter) - '0' ;
+    ioBigInt *= 2 ;
+    ioBigInt += digit ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
+                                                     const C_String & inBinaryString,
+                                                     C_BigInt & outValue,
+                                                     const char * inCharacterIsNotBinaryDigitError) {
+  bool ok = true ;
+  outValue = C_BigInt (inBinaryString.cString (HERE), 2, ok) ;
+  if (! ok) {
+    inLexique.lexicalError (inCharacterIsNotBinaryDigitError LINE_AND_SOURCE_FILE_FOR_SCANNER_ACTIONS) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

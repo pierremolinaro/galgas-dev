@@ -241,6 +241,18 @@ void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
                                                  C_BigInt & outValue,
                                                  const char * inCharacterIsNotHexDigitError) ;
 
+//--- Methods introduced in GALGAS 3.1.6
+void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
+                                                 const utf32 inCharacter,
+                                                 class C_BigInt & ioBigInt,
+                                                 const char * inCharacterIsNotBinaryDigitError) ;
+
+void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
+                                                    const C_String & inBinaryString,
+                                                    C_BigInt & outValue,
+                                                    const char * inCharacterIsNotBinaryDigitError) ;
+
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions
