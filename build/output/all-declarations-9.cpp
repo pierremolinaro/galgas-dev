@@ -547,10 +547,10 @@ void routine_projectCreation (const GALGAS_string constinArgument_inProjectPath,
 void routine_enterTemplateString (GALGAS_templateInstructionListAST & ioArgument_outResultingInstructionList,
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 446)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s.getter_length (SOURCE_FILE ("templateTypesForAST.galgas", 447)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_string var_s = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 442)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s.getter_length (SOURCE_FILE ("templateTypesForAST.galgas", 443)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 448))  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 448)) ;
+    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 444))  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 444)) ;
   }
 }
 
@@ -588,10 +588,10 @@ void routine_templateCodeGenerationForListInstruction (const GALGAS_templateInst
                                                        GALGAS_bool & ioArgument_ioUseColumnMarker,
                                                        C_Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListForGeneration enumerator_2619 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_2619.hasCurrentObject ()) {
-    callCategoryMethod_templateCodeGeneration ((const cPtr_templateInstructionForGeneration *) enumerator_2619.current_mInstruction (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 35)) ;
-    enumerator_2619.gotoNextObject () ;
+  cEnumerator_templateInstructionListForGeneration enumerator_2620 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_2620.hasCurrentObject ()) {
+    callCategoryMethod_templateCodeGeneration ((const cPtr_templateInstructionForGeneration *) enumerator_2620.current_mInstruction (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, ioArgument_ioUseColumnMarker, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 36)) ;
+    enumerator_2620.gotoNextObject () ;
   }
 }
 
@@ -3864,19 +3864,19 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
   if (kBoolTrue == test_1) {
     result << "  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n"
       "    initWithDomainName:@\"galgas_cli_options\"\n"
-      "    identifier:@\"quiet_output\"\n"
-      "    commandChar:'q'\n"
-      "    commandString:@\"quiet\"\n"
-      "    comment:@\"Quiet output\"\n"
+      "    identifier:@\"verbose_output\"\n"
+      "    commandChar:'v'\n"
+      "    commandString:@\"verbose\"\n"
+      "    comment:@\"Verbose output\"\n"
       "    defaultValue:@\"\"\n"
       "  ] ;\n" ;
   }else if (kBoolFalse == test_1) {
     result << "  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n"
       "    initWithDomainName:@\"galgas_cli_options\"\n"
-      "    identifier:@\"verbose_output\"\n"
-      "    commandChar:'v'\n"
-      "    commandString:@\"verbose\"\n"
-      "    comment:@\"Verbose output\"\n"
+      "    identifier:@\"quiet_output\"\n"
+      "    commandChar:'q'\n"
+      "    commandString:@\"quiet\"\n"
+      "    comment:@\"Quiet output\"\n"
       "    defaultValue:@\"\"\n"
       "  ] ;\n" ;
   }

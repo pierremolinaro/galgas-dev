@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Template Abstract Syntax Tree types                                      *
+#  Template Abstract Syntax Tree types                                                                                 *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @templateInstructionAST {
@@ -75,7 +71,7 @@ class @templateFileWrapperWithStaticPathAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
+#   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
@@ -85,7 +81,7 @@ class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   C A T E G O R Y    T E M P L A T E     C A L L                          *
+#   C A T E G O R Y    T E M P L A T E     C A L L                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateCategoryTemplateCallAST : @templateExpressionAST {
@@ -95,7 +91,7 @@ class @templateCategoryTemplateCallAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   B O O L E A N    O P E R A T I O N S                                    *
+#   B O O L E A N    O P E R A T I O N S                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateAndOperationAST : @templateExpressionAST {
@@ -232,7 +228,7 @@ class @templateVarInExpressionAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   A D D I T I O N    O P E R A T I O N                                    *
+#   A D D I T I O N    O P E R A T I O N                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateAddOperationAST : @templateExpressionAST {
@@ -242,7 +238,7 @@ class @templateAddOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   S U B S T R A C T I O N    O P E R A T I O N                            *
+#   S U B S T R A C T I O N    O P E R A T I O N                                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateSubOperationAST : @templateExpressionAST {
@@ -252,7 +248,7 @@ class @templateSubOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   M U L T I P L I C A T I O N    O P E R A T I O N                        *
+#   M U L T I P L I C A T I O N    O P E R A T I O N                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateMultiplyOperationAST : @templateExpressionAST {
@@ -262,7 +258,7 @@ class @templateMultiplyOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   D I V I S I O N    O P E R A T I O N                                    *
+#   D I V I S I O N    O P E R A T I O N                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateDivideOperationAST : @templateExpressionAST {
@@ -272,7 +268,7 @@ class @templateDivideOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   M O D U L O    O P E R A T I O N                                        *
+#   M O D U L O    O P E R A T I O N                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateModuloOperationAST : @templateExpressionAST {
@@ -282,7 +278,7 @@ class @templateModuloOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   U N A R Y   -    O P E R A T I O N                                      *
+#   U N A R Y   -    O P E R A T I O N                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateUnaryMinusOperationAST : @templateExpressionAST {
@@ -291,7 +287,7 @@ class @templateUnaryMinusOperationAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#  ==    O P E R A T I O N                                                  *
+#  ==    O P E R A T I O N                                                                                             *
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateEqualTestAST : @templateExpressionAST {
@@ -364,7 +360,7 @@ class @templateClassToTypeOperandAST : @templateExpressionAST {
  
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N S T R U C T I O N S                                                *
+#    I N S T R U C T I O N S                                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
