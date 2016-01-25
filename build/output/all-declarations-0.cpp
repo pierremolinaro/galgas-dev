@@ -70,6 +70,8 @@ static const char * gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge 
 
 static const char * gLexicalMessage_galgasTemplateScanner_floatNumberConversionError = "invalid float number" ;
 
+static const char * gLexicalMessage_galgasTemplateScanner_hexDigitError = "0x should be followed by a hexadecimal digit" ;
+
 static const char * gLexicalMessage_galgasTemplateScanner_incorrectCharConstant = "incorrect literal character" ;
 
 static const char * gLexicalMessage_galgasTemplateScanner_incorrectHTMLescapeSequence = "Invalid HTML sequence, should be '&...;'" ;
@@ -3323,6 +3325,53 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
           }
           token.mTokenCode = kToken_type_5F_name ;
           enterToken (token) ;
+        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__30_x, 2, true)) {
+          do {
+            if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+            }else{
+              mLoop = false ;
+            }
+          }while (mLoop) ;
+          mLoop = true ;
+          if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+            do {
+              if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+              }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
+                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+              }else if (testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
+                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+              }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
+              }else{
+                mLoop = false ;
+              }
+            }while (mLoop) ;
+            mLoop = true ;
+            if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner_LS, 2, true)) {
+              ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+              token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
+              enterToken (token) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
+              ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+              token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
+              enterToken (token) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
+              ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+              token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
+              enterToken (token) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
+              ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasTemplateScanner_internalError) ;
+              token.mTokenCode = kToken_bigint ;
+              enterToken (token) ;
+            }else{
+              ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
+              token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
+              enterToken (token) ;
+            }
+          }else{
+            lexicalError (gLexicalMessage_galgasTemplateScanner_hexDigitError COMMA_LINE_AND_SOURCE_FILE) ;
+          }
         }else if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
           do {
@@ -3366,41 +3415,6 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
             enterToken (token) ;
           }else{
             ::scanner_routine_convertDecimalStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
-            token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
-            enterToken (token) ;
-          }
-        }else if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner__30_x, 2, true)) {
-          do {
-            if (testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else if (testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('f'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else if (testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('F'))) {
-              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            }else if (testForInputUTF32Char (TO_UNICODE ('_'))) {
-            }else{
-              mLoop = false ;
-            }
-          }while (mLoop) ;
-          mLoop = true ;
-          if (testForInputUTF32String (kUnicodeString_galgasTemplateScanner_LS, 2, true)) {
-            ::scanner_routine_convertHexStringIntoSInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
-            token.mTokenCode = kToken_signed_5F_literal_5F_integer_36__34_ ;
-            enterToken (token) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('S')) || testForInputUTF32Char (TO_UNICODE ('s'))) {
-            ::scanner_routine_convertHexStringIntoSInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_sint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
-            token.mTokenCode = kToken_signed_5F_literal_5F_integer ;
-            enterToken (token) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('L'))) {
-            ::scanner_routine_convertHexStringIntoUInt64 (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_36__34_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
-            token.mTokenCode = kToken_unsigned_5F_literal_5F_integer_36__34_ ;
-            enterToken (token) ;
-          }else if (testForInputUTF32Char (TO_UNICODE ('G'))) {
-            ::scanner_routine_convertHexStringIntoBigInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_bigintValue, gLexicalMessage_galgasTemplateScanner_internalError) ;
-            token.mTokenCode = kToken_bigint ;
-            enterToken (token) ;
-          }else{
-            ::scanner_routine_convertHexStringIntoUInt (*this, token.mLexicalAttribute_tokenString, token.mLexicalAttribute_uint_33__32_value, gLexicalMessage_galgasTemplateScanner_decimalNumberTooLarge, gLexicalMessage_galgasTemplateScanner_internalError) ;
             token.mTokenCode = kToken_unsigned_5F_literal_5F_integer ;
             enterToken (token) ;
           }

@@ -442,6 +442,48 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           scanningOk = NO ;
         }
         mTokenCode = galgasTemplateScanner_1_type_5F_name ;
+      }else if (scanningOk && ([self testForInputString:@"0x" advance:YES])) {
+        do {
+          if (scanningOk && ([self testForInputChar:95])) {
+          }else{
+            mLoop = NO ;
+          }
+        }while (mLoop && scanningOk) ;
+        mLoop = YES ;
+        if (scanningOk && ([self testForInputFromChar:48 toChar:57] || [self testForInputFromChar:97 toChar:102] || [self testForInputFromChar:65 toChar:70])) {
+          scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+          do {
+            if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else if (scanningOk && ([self testForInputFromChar:97 toChar:102])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else if (scanningOk && ([self testForInputFromChar:65 toChar:70])) {
+              scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
+            }else if (scanningOk && ([self testForInputChar:95])) {
+            }else{
+              mLoop = NO ;
+            }
+          }while (mLoop && scanningOk) ;
+          mLoop = YES ;
+          if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
+            scanner_cocoa_routine_convertHexStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
+            mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ ;
+          }else if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
+            scanner_cocoa_routine_convertHexStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
+            mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer ;
+          }else if (scanningOk && ([self testForInputChar:76])) {
+            scanner_cocoa_routine_convertHexStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
+            mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ ;
+          }else if (scanningOk && ([self testForInputChar:71])) {
+            scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
+            mTokenCode = galgasTemplateScanner_1_bigint ;
+          }else{
+            scanner_cocoa_routine_convertHexStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
+            mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer ;
+          }
+        }else{
+          scanningOk = NO ;
+        }
       }else if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
         scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
         do {
@@ -480,36 +522,6 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mTokenCode = galgasTemplateScanner_1_literal_5F_double ;
         }else{
           scanner_cocoa_routine_convertDecimalStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
-          mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer ;
-        }
-      }else if (scanningOk && ([self testForInputString:@"0x" advance:YES])) {
-        do {
-          if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          }else if (scanningOk && ([self testForInputFromChar:97 toChar:102])) {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          }else if (scanningOk && ([self testForInputFromChar:65 toChar:70])) {
-            scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          }else if (scanningOk && ([self testForInputChar:95])) {
-          }else{
-            mLoop = NO ;
-          }
-        }while (mLoop && scanningOk) ;
-        mLoop = YES ;
-        if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
-          scanner_cocoa_routine_convertHexStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
-          mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ ;
-        }else if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
-          scanner_cocoa_routine_convertHexStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
-          mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer ;
-        }else if (scanningOk && ([self testForInputChar:76])) {
-          scanner_cocoa_routine_convertHexStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
-          mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ ;
-        }else if (scanningOk && ([self testForInputChar:71])) {
-          scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-          mTokenCode = galgasTemplateScanner_1_bigint ;
-        }else{
-          scanner_cocoa_routine_convertHexStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
           mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer ;
         }
       }else if (scanningOk && ([self testForInputChar:46])) {

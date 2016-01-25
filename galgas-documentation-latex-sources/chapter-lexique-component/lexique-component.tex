@@ -367,15 +367,24 @@ Running the \texttt{-{}-print-predefined-lexical-actions} command line option li
 \subsection{Routine \texttt{codePointToUnicode}}
 
 \begin{galgas}
-codePointToUnicode !@string inCodePointString
-                   ?!@string ioString
+codePointToUnicode ?@string inCodePointString
+                   !@string outString
 \end{galgas}
+
+\subsection{\texttt{convertBinaryStringIntoBigInt}}
+
+\begin{galgas}
+convertBinaryStringIntoBigInt ?@string inString
+                              !@bigint outBigInt
+                              error inCharacterIsNotBinaryDigitError
+\end{galgas}
+
 
 \subsection{\texttt{convertDecimalStringIntoBigInt}}
 
 \begin{galgas}
-convertDecimalStringIntoBigInt !@string inString
-                               ?!@bigint ioSignedNumber
+convertDecimalStringIntoBigInt ?@string inString
+                               !@bigint outBigInt
                                error inCharacterIsNotDecimalDigitError
 \end{galgas}
 
@@ -383,8 +392,8 @@ convertDecimalStringIntoBigInt !@string inString
 \subsection{\texttt{convertDecimalStringIntoSInt}}
 
 \begin{galgas}
-convertDecimalStringIntoSInt !@string inString
-                             ?!@sint ioSignedNumber
+convertDecimalStringIntoSInt ?@string inString
+                             !@sint outSignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
 \end{galgas}
@@ -392,8 +401,8 @@ convertDecimalStringIntoSInt !@string inString
 \subsection{Routine \texttt{convertDecimalStringIntoSInt64}}
 
 \begin{galgas}
-convertDecimalStringIntoSInt64 !@string inString
-                               ?!@sint64 ioSignedNumber
+convertDecimalStringIntoSInt64 ?@string inString
+                               !@sint64 outSignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
 \end{galgas}
@@ -401,8 +410,8 @@ convertDecimalStringIntoSInt64 !@string inString
 \subsection{Routine \texttt{convertDecimalStringIntoUInt}}
 
 \begin{galgas}
-convertDecimalStringIntoUInt !@string inString
-                             ?!@uint ioUnsignedNumber
+convertDecimalStringIntoUInt ?@string inString
+                             !@uint outUnsignedNumber
                              error inNumberTooLargeError,
                                    inCharacterIsNotDecimalDigitError
 \end{galgas}
@@ -410,8 +419,8 @@ convertDecimalStringIntoUInt !@string inString
 \subsection{Routine \texttt{convertDecimalStringIntoUInt64}}
 
 \begin{galgas}
-convertDecimalStringIntoUInt64 !@string inString
-                               ?!@uint64 ioUnsignedNumber
+convertDecimalStringIntoUInt64 ?@string inString
+                               !@uint64 outUnsignedNumber
                                error inNumberTooLargeError,
                                      inCharacterIsNotDecimalDigitError
 \end{galgas}
@@ -419,8 +428,8 @@ convertDecimalStringIntoUInt64 !@string inString
 \subsection{\texttt{convertHexStringIntoBigInt}}
 
 \begin{galgas}
-convertHexStringIntoBigInt !@string inString
-                           ?!@bigint ioSignedNumber
+convertHexStringIntoBigInt ?@string inString
+                           !@bigint outSignedNumber
                            error inCharacterIsNotHexDigitError
 \end{galgas}
 
@@ -429,16 +438,16 @@ convertHexStringIntoBigInt !@string inString
 \subsection{Routine \texttt{convertHTMLSequenceToUnicodeCharacter}}
 
 \begin{galgas}
-convertHTMLSequenceToUnicodeCharacter ?!@string inString
-                                      ?!@char ioUnicodeCharacter
+convertHTMLSequenceToUnicodeCharacter ?@string inString
+                                      !@char outUnicodeCharacter
                                       error inUnassignedHTMLSequenceError
 \end{galgas}
 
 \subsection{Routine \texttt{convertHexStringIntoSInt}}
 
 \begin{galgas}
-convertHexStringIntoSInt !@string inString
-                         ?!@sint ioSignedNumber
+convertHexStringIntoSInt ?@string inString
+                         !@sint outSignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
 \end{galgas}
@@ -446,8 +455,8 @@ convertHexStringIntoSInt !@string inString
 \subsection{Routine \texttt{convertHexStringIntoSInt64}}
 
 \begin{galgas}
-convertHexStringIntoSInt64 !@string inString
-                           ?!@sint64 ioSignedNumber
+convertHexStringIntoSInt64 ?@string inString
+                           !@sint64 outSignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
 \end{galgas}
@@ -455,8 +464,8 @@ convertHexStringIntoSInt64 !@string inString
 \subsection{Routine \texttt{convertHexStringIntoUInt}}
 
 \begin{galgas}
-convertHexStringIntoUInt !@string inString
-                         ?!@uint ioUnsignedNumber
+convertHexStringIntoUInt ?@string inString
+                         !@uint outUnsignedNumber
                          error inNumberTooLargeError,
                                inCharacterIsNotHexDigitError
 \end{galgas}
@@ -464,8 +473,8 @@ convertHexStringIntoUInt !@string inString
 \subsection{Routine \texttt{convertHexStringIntoUInt64}}
 
 \begin{galgas}
-convertHexStringIntoUInt64 !@string inString
-                           ?!@uint64 ioUnsignedNumber
+convertHexStringIntoUInt64 ?@string inString
+                           !@uint64 outUnsignedNumber
                            error inNumberTooLargeError,
                                  inCharacterIsNotHexDigitError
 \end{galgas}
@@ -473,8 +482,8 @@ convertHexStringIntoUInt64 !@string inString
 \subsection{Routine \texttt{convertStringToDouble}}
 
 \begin{galgas}
-convertStringToDouble !@string inString
-                      ?!@double ioDouble
+convertStringToDouble ?@string inString
+                      !@double outDouble
                       error inConversionError
 \end{galgas}
 
@@ -484,7 +493,7 @@ This action tries to convert the string value of the first argument into a doubl
 
 \begin{galgas}
 convertUInt64ToSInt64 !@uint64 inUnsignedNumber
-                      ?!@sint64 ioSignedNumber
+                      !@sint64 outSignedNumber
                       error inNumberTooLargeError
 \end{galgas}
 
@@ -494,7 +503,7 @@ If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<s
 
 \begin{galgas}
 convertUIntToSInt !@uint inUnsignedNumber
-                  ?!@sint ioSignedNumber
+                  !@sint outSignedNumber
                   error inNumberTooLargeError
 \end{galgas}
 
@@ -503,24 +512,32 @@ If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<s
 \subsection{Routine \texttt{convertUnsignedNumberToUnicodeChar}}
 
 \begin{galgas}
-convertUnsignedNumberToUnicodeChar ?!@uint inUnsignedNumber
-                                   ?!@char ioUnicodeCharacter
+convertUnsignedNumberToUnicodeChar ?@uint inUnsignedNumber
+                                   !@char outUnicodeCharacter
                                    error inUnassignedUnicodeValueError
 \end{galgas}
 
-\subsection{Routine \texttt{enterBinDigitIntoUInt}}
+\subsection{Routine \texttt{enterBinaryDigitIntoBigInt}}
 
 \begin{galgas}
-enterBinDigitIntoUInt !@char inCharacter
-                      ?!@uint ioUnsignedNumber
-                      error inNumberTooLargeError,
-                            inCharacterIsNotBinDigitError
+enterBinaryDigitIntoBigInt ?@char inCharacter
+                           ?!@bigint ioBigInt
+                           error inCharacterIsNotBinDigitError
 \end{galgas}
 
 \subsection{Routine \texttt{enterBinDigitIntoUInt64}}
 
 \begin{galgas}
-enterBinDigitIntoUInt64 !@char inCharacter
+enterBinDigitIntoUInt64 ?@char inCharacter
+                        ?!@uint64 ioUnsignedNumber
+                        error inNumberTooLargeError,
+                              inCharacterIsNotBinDigitError
+\end{galgas}
+
+\subsection{Routine \texttt{enterBinDigitIntoUInt64}}
+
+\begin{galgas}
+enterBinDigitIntoUInt64 ?@char inCharacter
                         ?!@uint64 ioUnsignedNumber
                         error inNumberTooLargeError,
                               inCharacterIsNotBinDigitError
@@ -530,7 +547,7 @@ enterBinDigitIntoUInt64 !@char inCharacter
 
 \begin{galgas}
 enterCharacterIntoCharacter ?!@char ioCharacter
-                            !@char inCharacter
+                            ?@char inCharacter
 \end{galgas}
 
 This routine performs ''ioCharacter = inCharacter'' assignment.
@@ -539,7 +556,7 @@ This routine performs ''ioCharacter = inCharacter'' assignment.
 
 \begin{galgas}
 enterCharacterIntoString ?!@string ioString
-                         !@char inCharacter
+                         ?@char inCharacter
 \end{galgas}
 
 Appends the character value of the second argument to the string value of the first argument. The resulting string is set to the first argument.
@@ -547,7 +564,7 @@ Appends the character value of the second argument to the string value of the fi
 \subsection{Routine \texttt{enterDecimalDigitIntoBigInt}}
 
 \begin{galgas}
-enterDecimalDigitIntoBigInt !@char inCharacter
+enterDecimalDigitIntoBigInt ?@char inCharacter
                             ?!@bigint ioBigInt
                             error inCharacterIsNotDecimalDigitError
 \end{galgas}
@@ -610,7 +627,7 @@ Note: this lexical action treats characters as unsigned values.
 \subsection{Routine \texttt{enterHexDigitIntoBigInt}}
 
 \begin{galgas}
-enterHexDigitIntoBigInt !@char inCharacter
+enterHexDigitIntoBigInt ?@char inCharacter
                         ?!@bigint ioBigInt
                         error inCharacterIsNotHexDigitError
 \end{galgas}
