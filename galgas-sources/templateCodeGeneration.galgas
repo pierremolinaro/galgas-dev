@@ -30,7 +30,8 @@ proc templateCodeGenerationForListInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?!@bool ioUseColumnMarker {
+  ?!@bool ioUseColumnMarker
+ {
   for () in inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode

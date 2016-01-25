@@ -68,19 +68,19 @@ end
 if QUIET_OUTPUT_BY_DEFAULT then
 %  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
 %    initWithDomainName:@"galgas_cli_options"\n%
-%    identifier:@"quiet_output"\n%
-%    commandChar:'q'\n%
-%    commandString:@"quiet"\n%
-%    comment:@"Quiet output"\n%
+%    identifier:@"verbose_output"\n%
+%    commandChar:'v'\n%
+%    commandString:@"verbose"\n%
+%    comment:@"Verbose output"\n%
 %    defaultValue:@""\n%
 %  ] ;\n%
 else
 %  OC_GGS_CommandLineOption * option = [[OC_GGS_CommandLineOption alloc]\n%
 %    initWithDomainName:@"galgas_cli_options"\n%
-%    identifier:@"verbose_output"\n%
-%    commandChar:'v'\n%
-%    commandString:@"verbose"\n%
-%    comment:@"Verbose output"\n%
+%    identifier:@"quiet_output"\n%
+%    commandChar:'q'\n%
+%    commandString:@"quiet"\n%
+%    comment:@"Quiet output"\n%
 %    defaultValue:@""\n%
 %  ] ;\n%
 end
