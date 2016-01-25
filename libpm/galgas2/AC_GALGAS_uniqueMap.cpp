@@ -455,7 +455,7 @@ void cSharedUniqueMapRoot::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_uniqueMap::description (C_String & ioString,
-                              const int32_t inIndentation) const {
+                                       const int32_t inIndentation) const {
   ioString << "<map @"
            << staticTypeDescriptor ()->mGalgasTypeName ;
   if (isValid ()) {
@@ -1089,8 +1089,8 @@ GALGAS_lstringlist AC_GALGAS_uniqueMap::getter_unsolvedProxyList (UNUSED_LOCATIO
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cSharedUniqueMapRoot::getter_locationForKey (const GALGAS_string & inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (inKey.isValid ()) {
     const C_String key = inKey.stringValue () ;
@@ -1111,8 +1111,8 @@ GALGAS_location cSharedUniqueMapRoot::getter_locationForKey (const GALGAS_string
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location AC_GALGAS_uniqueMap::getter_locationForKey (const GALGAS_string & inKey,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (isValid ()) {
     result = mSharedMap->getter_locationForKey (inKey, inCompiler COMMA_THERE) ;
@@ -1129,7 +1129,7 @@ GALGAS_location AC_GALGAS_uniqueMap::getter_locationForKey (const GALGAS_string 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cSharedUniqueMapRoot::getter_hasKey (const GALGAS_string & inKey
-                                           COMMA_UNUSED_LOCATION_ARGS) const {
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (inKey.isValid ()) {
     const C_String key = inKey.stringValue () ;
@@ -1142,7 +1142,7 @@ GALGAS_bool cSharedUniqueMapRoot::getter_hasKey (const GALGAS_string & inKey
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool AC_GALGAS_uniqueMap::getter_hasKey (const GALGAS_string & inKey
-                                          COMMA_LOCATION_ARGS) const {
+                                                COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
     result = mSharedMap->getter_hasKey (inKey COMMA_THERE) ;
@@ -1336,13 +1336,16 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
         const GALGAS_location loc = inKey.mAttribute_location ;
         const C_String warningMessage = buildIssueMessage (transition.mIssueMessage, inKey.mAttribute_string.stringValue ()) ;
         inCompiler->semanticWarningAtLocation (loc, warningMessage COMMA_THERE) ;
-        } break ;
+        }
+        break ;
       case kMapAutomatonIssueError : {
         macroValidSharedObject (node->mAttributes.ptr (), cMapElement) ;
         const GALGAS_location loc = inKey.mAttribute_location ;
         const C_String errorMessage = buildIssueMessage (transition.mIssueMessage, inKey.mAttribute_string.stringValue ()) ;
         inCompiler->semanticErrorAtLocation (loc, errorMessage COMMA_THERE) ;
-        } break ;
+        result = NULL ; // All output arguments will not be built
+        }
+        break ;
       }
     }
   }
@@ -1358,8 +1361,8 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cMapElement * cSharedUniqueMapRoot::searchForReadingAttribute (const GALGAS_string & inKey,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
   cMapElement * result = NULL ;
   if (inKey.isValid ()) {
     const C_String key = inKey.stringValue () ;
@@ -1380,8 +1383,8 @@ const cMapElement * cSharedUniqueMapRoot::searchForReadingAttribute (const GALGA
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cMapElement * AC_GALGAS_uniqueMap::searchForReadingAttribute (const GALGAS_string & inKey,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
   const cMapElement * result = NULL ;
   if (isValid ()) {
     result = mSharedMap->searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -1398,8 +1401,8 @@ const cMapElement * AC_GALGAS_uniqueMap::searchForReadingAttribute (const GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cSharedUniqueMapRoot::searchForReadWriteAttribute (const GALGAS_string & inKey,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   cMapElement * result = NULL ;
   if (inKey.isValid ()) {
     const C_String key = inKey.stringValue () ;
@@ -1415,8 +1418,8 @@ cMapElement * cSharedUniqueMapRoot::searchForReadWriteAttribute (const GALGAS_st
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * AC_GALGAS_uniqueMap::searchForReadWriteAttribute (const GALGAS_string & inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   cMapElement * result = NULL ;
   if (isValid ()) {
     result = (cMapElement *) mSharedMap->searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
@@ -1433,9 +1436,9 @@ cMapElement * AC_GALGAS_uniqueMap::searchForReadWriteAttribute (const GALGAS_str
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cSharedUniqueMapRoot::searchForReadWriteAttribute (const GALGAS_lstring & inKey,
-                                                           C_Compiler * inCompiler,
-                                                           const char * inSearchErrorMessage
-                                                           COMMA_LOCATION_ARGS) {
+                                                                 C_Compiler * inCompiler,
+                                                                 const char * inSearchErrorMessage
+                                                                 COMMA_LOCATION_ARGS) {
   cMapElement * result = NULL ;
   if (inKey.isValid ()) {
     const C_String key = inKey.mAttribute_string.stringValue () ;
@@ -1454,9 +1457,9 @@ cMapElement * cSharedUniqueMapRoot::searchForReadWriteAttribute (const GALGAS_ls
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * AC_GALGAS_uniqueMap::searchForReadWriteAttribute (const GALGAS_lstring & inKey,
-                                                          C_Compiler * inCompiler,
-                                                          const char * inSearchErrorMessage
-                                                          COMMA_LOCATION_ARGS) {
+                                                                C_Compiler * inCompiler,
+                                                                const char * inSearchErrorMessage
+                                                                COMMA_LOCATION_ARGS) {
   cMapElement * result = NULL ;
   if (isValid ()) {
     result = mSharedMap->searchForReadWriteAttribute (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
@@ -1651,7 +1654,7 @@ void cSharedUniqueMapRoot::openBranch (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_uniqueMap::setter_openBranch (C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+                                             COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedMap->openBranch (inCompiler COMMA_THERE) ;
   }
@@ -1859,8 +1862,8 @@ static void recursiveSetFinalState (cUniqueMapNode * inNode,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedUniqueMapRoot::closeOverride (const GALGAS_location & inErrorLocation,
-                                  C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) {
+                                          C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) {
   // printf ("-------------------------- closeOverride\n") ;
   if (NULL != mOverrideName) {
     C_String m ;
@@ -1892,8 +1895,8 @@ void cSharedUniqueMapRoot::closeOverride (const GALGAS_location & inErrorLocatio
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_uniqueMap::setter_closeOverride (const GALGAS_location & inErrorLocation,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     mSharedMap->closeOverride (inErrorLocation, inCompiler COMMA_THERE) ;
     macroValidSharedObject (mSharedMap->mOverridenMap, cSharedUniqueMapRoot) ;
@@ -1949,18 +1952,18 @@ static void recursiveCheckAutomatonStates (const cUniqueMapNode * inNode,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedUniqueMapRoot::checkAutomatonStates (const GALGAS_location & inErrorLocation,
-                                           const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) const {
+                                                 const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
   recursiveCheckAutomatonStates (mRoot, inCompiler, inErrorLocation, inAutomatonFinalIssueArray COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_uniqueMap::checkAutomatonStates (const GALGAS_location & inErrorLocation,
-                                          const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
-                                          C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) const {
+                                                const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
   if (isValid () && inErrorLocation.isValid ()) {
     mSharedMap->checkAutomatonStates (inErrorLocation, inAutomatonFinalIssueArray, inCompiler COMMA_THERE) ;
   }
