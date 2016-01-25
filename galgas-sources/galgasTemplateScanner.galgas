@@ -199,6 +199,45 @@ $bigint$ !bigintValue  style bigintStyle error message "a big integer number"
 message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
 message internalError : "internal error"
+message hexDigitError : "0x should be followed by a hexadecimal digit"
+
+rule "0x" {
+  repeat
+  while '_' :
+  end
+  select
+  case '0'->'9' | 'a'->'f' | 'A'->'F' :
+    enterCharacterIntoString (!?tokenString !* )
+    repeat
+    while '0'->'9' :
+      enterCharacterIntoString (!?tokenString !* )
+    while 'a'->'f' :
+      enterCharacterIntoString (!?tokenString !* )
+    while 'A'->'F' :
+      enterCharacterIntoString (!?tokenString !* )
+    while '_' :
+    end
+    select
+    case "LS" :
+      convertHexStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
+      send $signed_literal_integer64$
+    case 'S' | 's' :
+      convertHexStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
+      send $signed_literal_integer$
+    case 'L' :
+      convertHexStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
+      send $unsigned_literal_integer64$
+    case 'G' :
+      convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError )
+      send $bigint$
+    default
+      convertHexStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
+      send $unsigned_literal_integer$
+    end
+  default
+    error hexDigitError
+  end
+}
 
 rule '0'->'9' {
   enterCharacterIntoString ( !?tokenString !* )
@@ -231,35 +270,6 @@ rule '0'->'9' {
     send $literal_double$
   default
     convertDecimalStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
-    send $unsigned_literal_integer$
-  end
-}
-
-rule "0x" {
-  repeat
-  while '0'->'9' :
-    enterCharacterIntoString (!?tokenString !* )
-  while 'a'->'f' :
-    enterCharacterIntoString (!?tokenString !* )
-  while 'A'->'F' :
-    enterCharacterIntoString (!?tokenString !* )
-  while '_' :
-  end
-  select
-  case "LS" :
-    convertHexStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
-    send $signed_literal_integer64$
-  case 'S' | 's' :
-    convertHexStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
-    send $signed_literal_integer$
-  case 'L' :
-    convertHexStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
-    send $unsigned_literal_integer64$
-  case 'G' :
-    convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError )
-    send $bigint$
-  default
-    convertHexStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
     send $unsigned_literal_integer$
   end
 }
