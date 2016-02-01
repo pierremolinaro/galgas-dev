@@ -3603,7 +3603,6 @@ static void categoryMethod_listDeclarationAST_enterInSemanticContext (const cPtr
   {
   var_modifierMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("removeAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("list.galgas", 206))  COMMA_SOURCE_FILE ("list.galgas", 206)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("list.galgas", 207)), var_modifierOutputFormalArgumentList, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("list.galgas", 210)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("list.galgas", 205)) ;
   }
-  var_modifierOutputFormalArgumentList.drop () ; // drop instruction
   cEnumerator_typedPropertyList enumerator_8415 (var_typedAttributeList, kEnumeration_up) ;
   while (enumerator_8415.hasCurrentObject ()) {
     const enumGalgasBool test_4 = enumerator_8415.current_mHasSetter (HERE).boolEnum () ;
@@ -3621,7 +3620,6 @@ static void categoryMethod_listDeclarationAST_enterInSemanticContext (const cPtr
   {
   var_modifierMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("insertAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("list.galgas", 232))  COMMA_SOURCE_FILE ("list.galgas", 232)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("list.galgas", 233)), var_modifierInputFormalArgumentList, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("list.galgas", 236)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("list.galgas", 231)) ;
   }
-  var_modifierInputFormalArgumentList.drop () ; // drop instruction
   GALGAS_stringlist var_enumerationVariants = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("list.galgas", 241)) ;
   var_enumerationVariants.addAssign_operation (GALGAS_string ("up")  COMMA_SOURCE_FILE ("list.galgas", 242)) ;
   var_enumerationVariants.addAssign_operation (GALGAS_string ("down")  COMMA_SOURCE_FILE ("list.galgas", 243)) ;

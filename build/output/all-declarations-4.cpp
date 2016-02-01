@@ -12203,40 +12203,42 @@ GALGAS_variableMap GALGAS_variableMap::constructor_emptyMap (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  static const uint32_t kMapStateCount_variableMap = 23 ;
+  static const uint32_t kMapStateCount_variableMap = 24 ;
 #endif
-static const uint32_t kMapState_variableMap_constantInputFormalArgument = 13 ;
-static const uint32_t kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused = 15 ;
-static const uint32_t kMapState_variableMap_currentInstanceAttribute = 20 ;
-static const uint32_t kMapState_variableMap_currentInstanceAttributeInModifier = 21 ;
-static const uint32_t kMapState_variableMap_currentInstanceDroppedAttributeInModifier = 22 ;
-static const uint32_t kMapState_variableMap_definedLocalVariable = 4 ;
-static const uint32_t kMapState_variableMap_definedOutputFormalArgument = 8 ;
-static const uint32_t kMapState_variableMap_droppedInputFormalArgument = 18 ;
-static const uint32_t kMapState_variableMap_droppedInputOutputFormalArgument = 11 ;
-static const uint32_t kMapState_variableMap_droppedLocalVariable = 6 ;
-static const uint32_t kMapState_variableMap_inputFormalArgumentDeclaredAsUnused = 19 ;
-static const uint32_t kMapState_variableMap_inputFormalParameter = 16 ;
-static const uint32_t kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused = 12 ;
+static const uint32_t kMapState_variableMap_constantInputFormalArgument = 14 ;
+static const uint32_t kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused = 16 ;
+static const uint32_t kMapState_variableMap_currentInstanceAttribute = 21 ;
+static const uint32_t kMapState_variableMap_currentInstanceAttributeInModifier = 22 ;
+static const uint32_t kMapState_variableMap_currentInstanceDroppedAttributeInModifier = 23 ;
+static const uint32_t kMapState_variableMap_definedLocalVariable = 5 ;
+static const uint32_t kMapState_variableMap_definedOutputFormalArgument = 9 ;
+static const uint32_t kMapState_variableMap_droppedInputFormalArgument = 19 ;
+static const uint32_t kMapState_variableMap_droppedInputOutputFormalArgument = 12 ;
+static const uint32_t kMapState_variableMap_droppedLocalConstant = 3 ;
+static const uint32_t kMapState_variableMap_droppedLocalVariable = 7 ;
+static const uint32_t kMapState_variableMap_inputFormalArgumentDeclaredAsUnused = 20 ;
+static const uint32_t kMapState_variableMap_inputFormalParameter = 17 ;
+static const uint32_t kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused = 13 ;
 static const uint32_t kMapState_variableMap_localConstant = 1 ;
+static const uint32_t kMapState_variableMap_readLocalConstant = 0 ;
 static const uint32_t kMapState_variableMap_undefinedLocalConstant = 2 ;
-static const uint32_t kMapState_variableMap_undefinedLocalVariable = 3 ;
-static const uint32_t kMapState_variableMap_undefinedOutputFormalArgument = 7 ;
-static const uint32_t kMapState_variableMap_unusedInputOutputFormalArgument = 9 ;
-static const uint32_t kMapState_variableMap_usedConstantInputFormalArgument = 14 ;
-static const uint32_t kMapState_variableMap_usedInputFormalArgument = 17 ;
-static const uint32_t kMapState_variableMap_usedInputOutputFormalArgument = 10 ;
-static const uint32_t kMapState_variableMap_usedLocalConstant = 0 ;
-static const uint32_t kMapState_variableMap_usedLocalVariable = 5 ;
+static const uint32_t kMapState_variableMap_undefinedLocalVariable = 4 ;
+static const uint32_t kMapState_variableMap_undefinedOutputFormalArgument = 8 ;
+static const uint32_t kMapState_variableMap_unusedInputOutputFormalArgument = 10 ;
+static const uint32_t kMapState_variableMap_usedConstantInputFormalArgument = 15 ;
+static const uint32_t kMapState_variableMap_usedInputFormalArgument = 18 ;
+static const uint32_t kMapState_variableMap_usedInputOutputFormalArgument = 11 ;
+static const uint32_t kMapState_variableMap_usedLocalVariable = 6 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Map automaton state names                                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const char * kMapStateNames_variableMap [23] = {
-  "usedLocalConstant",
+static const char * kMapStateNames_variableMap [24] = {
+  "readLocalConstant",
   "localConstant",
   "undefinedLocalConstant",
+  "droppedLocalConstant",
   "undefinedLocalVariable",
   "definedLocalVariable",
   "usedLocalVariable",
@@ -12286,175 +12288,182 @@ static const char * kMapActionNames_variableMap [5] = {
 //  Map automaton transitions                                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cMapAutomatonTransition kMapTransitions_variableMap [23 * 5] = {
-// State 'usedLocalConstant', index 0 
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be drop"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+static const cMapAutomatonTransition kMapTransitions_variableMap [24 * 5] = {
+// State 'readLocalConstant', index 0 
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'localConstant', index 1 
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be drop"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the '%K' constant value is unused"}, // for action 'dropAccess', (index 3)
   {kMapState_variableMap_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'undefinedLocalConstant', index 2 
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "the dropped constant is undefined"}, // for action 'dropAccess', (index 3)
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'undefinedLocalVariable', index 3 
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueWarning, "the local variable has no value"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'definedLocalVariable', index 4 
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueWarning, "the local variable has been dropped without any read"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'usedLocalVariable', index 5 
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'droppedLocalVariable', index 6 
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueWarning, "the local variable is already dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'undefinedOutputFormalArgument', index 7 
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueWarning, "the output formal parameter has no value"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'definedOutputFormalArgument', index 8 
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'unusedInputOutputFormalArgument', index 9 
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'usedInputOutputFormalArgument', index 10 
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'droppedInputOutputFormalArgument', index 11 
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal argument is already dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'inputOutputFormalArgumentDeclaredAsUnused', index 12 
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'constantInputFormalArgument', index 13 
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'usedConstantInputFormalArgument', index 14 
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'constantInputFormalArgumentDeclaredAsUnused', index 15 
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueWarning, "the constant input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'inputFormalParameter', index 16 
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'usedInputFormalArgument', index 17 
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'droppedInputFormalArgument', index 18 
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is already dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'inputFormalArgumentDeclaredAsUnused', index 19 
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'currentInstanceAttribute', index 20 
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be written within a method or a getter"}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be modified within a method or a getter"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be dropped within a method or a getter"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'currentInstanceAttributeInModifier', index 21 
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
-// State 'currentInstanceDroppedAttributeInModifier', index 22 
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueError, "the attribute cannot be read, it has been dropped"}, // for action 'readAccess', (index 0)
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueError, "the attribute cannot be read/written, it has been dropped"}, // for action 'readWriteAccess', (index 2)
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueWarning, "the attribute is already dropped"}, // for action 'dropAccess', (index 3)
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedLocalConstant', index 3 
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_localConstant /* 1 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant has been dropped"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueWarning, "the constant has been dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'undefinedLocalVariable', index 4 
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueWarning, "the local variable has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'definedLocalVariable', index 5 
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueWarning, "the local variable has been dropped without any read"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedLocalVariable', index 6 
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedLocalVariable', index 7 
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueWarning, "the local variable is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'undefinedOutputFormalArgument', index 8 
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueWarning, "the output formal parameter has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'definedOutputFormalArgument', index 9 
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'unusedInputOutputFormalArgument', index 10 
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedInputOutputFormalArgument', index 11 
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedInputOutputFormalArgument', index 12 
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueWarning, "the input/output formal argument is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputOutputFormalArgumentDeclaredAsUnused', index 13 
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'constantInputFormalArgument', index 14 
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedConstantInputFormalArgument', index 15 
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'constantInputFormalArgumentDeclaredAsUnused', index 16 
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueWarning, "the constant input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputFormalParameter', index 17 
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'usedInputFormalArgument', index 18 
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'droppedInputFormalArgument', index 19 
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueWarning, "the input formal parameter is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'inputFormalArgumentDeclaredAsUnused', index 20 
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstanceAttribute', index 21 
+  {kMapState_variableMap_currentInstanceAttribute /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_currentInstanceAttribute /* 21 */, kMapAutomatonIssueError, "an attribute cannot be written within a method or a getter"}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_currentInstanceAttribute /* 21 */, kMapAutomatonIssueError, "an attribute cannot be modified within a method or a getter"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_currentInstanceAttribute /* 21 */, kMapAutomatonIssueError, "an attribute cannot be dropped within a method or a getter"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceAttribute /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstanceAttributeInModifier', index 22 
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
+// State 'currentInstanceDroppedAttributeInModifier', index 23 
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonIssueError, "the attribute cannot be read, it has been dropped"}, // for action 'readAccess', (index 0)
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonIssueError, "the attribute cannot be read/written, it has been dropped"}, // for action 'readWriteAccess', (index 2)
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonIssueWarning, "the attribute is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //  Map automaton final state issues                                           *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_variableMap [23] = {
-  {kMapAutomatonNoIssue, ""},// state 'usedLocalConstant' (index 0)
+static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_variableMap [24] = {
+  {kMapAutomatonNoIssue, ""},// state 'readLocalConstant' (index 0)
   {kMapAutomatonIssueWarning, "the '%K' constant value is unused"},// state 'localConstant' (index 1)
   {kMapAutomatonIssueWarning, "the '%K' constant value is unused"},// state 'undefinedLocalConstant' (index 2)
-  {kMapAutomatonIssueWarning, "the '%K' local variable is unused"},// state 'undefinedLocalVariable' (index 3)
-  {kMapAutomatonNoIssue, ""},// state 'definedLocalVariable' (index 4)
-  {kMapAutomatonNoIssue, ""},// state 'usedLocalVariable' (index 5)
-  {kMapAutomatonNoIssue, ""},// state 'droppedLocalVariable' (index 6)
-  {kMapAutomatonIssueError, "the '%K' output formal parameter is undefined"},// state 'undefinedOutputFormalArgument' (index 7)
-  {kMapAutomatonNoIssue, ""},// state 'definedOutputFormalArgument' (index 8)
-  {kMapAutomatonIssueWarning, "the '%K' input/output formal parameter is unused"},// state 'unusedInputOutputFormalArgument' (index 9)
-  {kMapAutomatonNoIssue, ""},// state 'usedInputOutputFormalArgument' (index 10)
-  {kMapAutomatonIssueError, "the '%K' input/ouput formal argument should be valuated at the end of the routine"},// state 'droppedInputOutputFormalArgument' (index 11)
-  {kMapAutomatonNoIssue, ""},// state 'inputOutputFormalArgumentDeclaredAsUnused' (index 12)
-  {kMapAutomatonIssueWarning, "the constant '%K' input formal parameter is not used and is not declared as unused"},// state 'constantInputFormalArgument' (index 13)
-  {kMapAutomatonNoIssue, ""},// state 'usedConstantInputFormalArgument' (index 14)
-  {kMapAutomatonNoIssue, ""},// state 'constantInputFormalArgumentDeclaredAsUnused' (index 15)
-  {kMapAutomatonIssueWarning, "the '%K' input formal parameter is not used and is not declared as unused"},// state 'inputFormalParameter' (index 16)
-  {kMapAutomatonNoIssue, ""},// state 'usedInputFormalArgument' (index 17)
-  {kMapAutomatonNoIssue, ""},// state 'droppedInputFormalArgument' (index 18)
-  {kMapAutomatonNoIssue, ""},// state 'inputFormalArgumentDeclaredAsUnused' (index 19)
-  {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttribute' (index 20)
-  {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttributeInModifier' (index 21)
-  {kMapAutomatonIssueWarning, "the '%K' attribute is in the dropped state at the end of the setter"},// state 'currentInstanceDroppedAttributeInModifier' (index 22)
+  {kMapAutomatonNoIssue, ""},// state 'droppedLocalConstant' (index 3)
+  {kMapAutomatonIssueWarning, "the '%K' local variable is unused"},// state 'undefinedLocalVariable' (index 4)
+  {kMapAutomatonNoIssue, ""},// state 'definedLocalVariable' (index 5)
+  {kMapAutomatonNoIssue, ""},// state 'usedLocalVariable' (index 6)
+  {kMapAutomatonNoIssue, ""},// state 'droppedLocalVariable' (index 7)
+  {kMapAutomatonIssueError, "the '%K' output formal parameter is undefined"},// state 'undefinedOutputFormalArgument' (index 8)
+  {kMapAutomatonNoIssue, ""},// state 'definedOutputFormalArgument' (index 9)
+  {kMapAutomatonIssueWarning, "the '%K' input/output formal parameter is unused"},// state 'unusedInputOutputFormalArgument' (index 10)
+  {kMapAutomatonNoIssue, ""},// state 'usedInputOutputFormalArgument' (index 11)
+  {kMapAutomatonIssueError, "the '%K' input/ouput formal argument should be valuated at the end of the routine"},// state 'droppedInputOutputFormalArgument' (index 12)
+  {kMapAutomatonNoIssue, ""},// state 'inputOutputFormalArgumentDeclaredAsUnused' (index 13)
+  {kMapAutomatonIssueWarning, "the constant '%K' input formal parameter is not used and is not declared as unused"},// state 'constantInputFormalArgument' (index 14)
+  {kMapAutomatonNoIssue, ""},// state 'usedConstantInputFormalArgument' (index 15)
+  {kMapAutomatonNoIssue, ""},// state 'constantInputFormalArgumentDeclaredAsUnused' (index 16)
+  {kMapAutomatonIssueWarning, "the '%K' input formal parameter is not used and is not declared as unused"},// state 'inputFormalParameter' (index 17)
+  {kMapAutomatonNoIssue, ""},// state 'usedInputFormalArgument' (index 18)
+  {kMapAutomatonNoIssue, ""},// state 'droppedInputFormalArgument' (index 19)
+  {kMapAutomatonNoIssue, ""},// state 'inputFormalArgumentDeclaredAsUnused' (index 20)
+  {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttribute' (index 21)
+  {kMapAutomatonNoIssue, ""},// state 'currentInstanceAttributeInModifier' (index 22)
+  {kMapAutomatonIssueWarning, "the '%K' attribute is in the dropped state at the end of the setter"},// state 'currentInstanceDroppedAttributeInModifier' (index 23)
 } ;
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12481,92 +12490,109 @@ void GALGAS_variableMap::method_checkAutomatonStates (GALGAS_location inErrorLoc
 //                                             map override 'selectBlock'                                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_variableMap_selectBlock [30] = {
-  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_variableMap_selectBlock [39] = {
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones do not define it"},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones drop it"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch defines the '%K' constant, while previous ones let it undefined"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch let the '%K' constant defined, while previous ones drop it"},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch lets the '%K' undefined, while previous ones drop it"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch drops the '%K' constant, while previous ones let it undefined"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""},
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_variableMap_selectBlock [42] = {
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous defines let it"},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "this branch defines the '%K' output formal argument, while previous ones let it undefined"},
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it defined"},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonIssueError, "this branch lets the '%K' input formal argument defined, while previous ones drop it"},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument defined, while previous ones let it defined"},
-  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalParameter /* 16 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous let it defined"},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueError, "this branch defines the '%K' input formal argument, while previous ones let it dropped"},
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonIssueError, "this branch drops the '%K' attribute, while previous ones let it defined"},
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonIssueError, "this branch lets the '%K' attribute defined, while previous ones drop it"},
+static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_variableMap_selectBlock [50] = {
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones do not define it"},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch lets the '%K' constant defined, while previous ones drop it"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch let the '%K' constant defined, while previous ones drop it"},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch lets the '%K' undefined, while previous ones drop it"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "this branch drops the '%K' constant, while previous ones let it defined"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "this branch drops the '%K' constant, while previous ones let it undefined"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones let it undefined"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous defines let it"},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "this branch drops the '%K' variable, while previous ones let it defined"},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "this branch defines the '%K' variable, while previous ones drop it"},
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch defines the '%K' output formal argument, while previous ones let it undefined"},
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "this branch lets the '%K' variable undefined, while previous ones define it"},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "this branch drops the '%K' input/output formal argument, while previous ones let it defined"},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"},
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "this branch lets the '%K' input formal argument defined, while previous ones drop it"},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument defined, while previous ones let it defined"},
+  {kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_inputFormalParameter /* 17 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous let it defined"},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "this branch drops the '%K' input formal argument, while previous ones let it defined"},
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "this branch defines the '%K' input formal argument, while previous ones let it dropped"},
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonIssueError, "this branch drops the '%K' attribute, while previous ones let it defined"},
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonIssueError, "this branch lets the '%K' attribute defined, while previous ones drop it"},
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_variableMap::setter_openOverrideForSelectBlock (C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  openOverride (kBranchBehaviourForOverride_variableMap_selectBlock, 30,
-                kBranchCombinationForOverride_variableMap_selectBlock, 42,
+  openOverride (kBranchBehaviourForOverride_variableMap_selectBlock, 39,
+                kBranchCombinationForOverride_variableMap_selectBlock, 50,
                 "selectBlock",
                 inCompiler
                 COMMA_THERE) ;
@@ -12576,70 +12602,85 @@ void GALGAS_variableMap::setter_openOverrideForSelectBlock (C_Compiler * inCompi
 //                                             map override 'repeatBlock'                                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_variableMap_repeatBlock [30] = {
-  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_variableMap_repeatBlock [39] = {
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonIssueError, "a branch lets the '%K' constant undefined"},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant undefined"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "the repeated branch should not define the dropped '%K' variable"},
-  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' output formal argument"},
-  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' output formal argument"},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
-  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "the repeated branch should define the '%K' input formal argument"},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
-  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalParameter /* 16 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
-  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' attribute"},
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' variable"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' variable"},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonIssueError, "the repeated branch should not define the dropped '%K' variable"},
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapAutomatonIssueError, "the repeated branch should not define the '%K' output formal argument"},
+  {kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapState_variableMap_undefinedOutputFormalArgument /* 8 */, kMapState_variableMap_definedOutputFormalArgument /* 9 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' output formal argument"},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapAutomatonIssueError, "the repeated branch should define the '%K' input formal argument"},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_droppedInputOutputFormalArgument /* 12 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input/output formal argument"},
+  {kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_inputFormalParameter /* 17 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_droppedInputFormalArgument /* 19 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' input formal argument"},
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonIssueError, "the repeated branch should not drop the '%K' attribute"},
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""},
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_variableMap_repeatBlock [20] = {
-  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapState_variableMap_definedLocalVariable /* 4 */, kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_inputFormalParameter /* 16 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""},
-  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""},
+static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_variableMap_repeatBlock [26] = {
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "a branch drops the '%K' constant, while other one lets it undefined"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_readLocalConstant /* 0 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_localConstant /* 1 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueError, "a branch lets the '%K' constant dropped"},
+  {kMapState_variableMap_droppedLocalConstant /* 3 */, kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapState_variableMap_droppedLocalConstant /* 3 */, kMapAutomatonIssueWarning, "a branch drops the '%K' constant, while other one lets it undefined"},
+  {kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedLocalVariable /* 6 */, kMapState_variableMap_definedLocalVariable /* 5 */, kMapState_variableMap_usedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_droppedLocalVariable /* 7 */, kMapState_variableMap_undefinedLocalVariable /* 4 */, kMapState_variableMap_droppedLocalVariable /* 7 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_unusedInputOutputFormalArgument /* 10 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 13 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapState_variableMap_usedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_constantInputFormalArgument /* 14 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 16 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapState_variableMap_usedConstantInputFormalArgument /* 15 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalParameter /* 17 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 20 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapState_variableMap_usedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""},
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 23 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapState_variableMap_currentInstanceAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""},
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_variableMap::setter_openOverrideForRepeatBlock (C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
-  openOverride (kBranchBehaviourForOverride_variableMap_repeatBlock, 30,
-                kBranchCombinationForOverride_variableMap_repeatBlock, 20,
+  openOverride (kBranchBehaviourForOverride_variableMap_repeatBlock, 39,
+                kBranchCombinationForOverride_variableMap_repeatBlock, 26,
                 "repeatBlock",
                 inCompiler
                 COMMA_THERE) ;
@@ -12807,8 +12848,8 @@ void GALGAS_variableMap::setter_insertUsedLocalConstant (GALGAS_lstring inKey,
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes,
                         inCompiler,
-                        kMapState_variableMap_usedLocalConstant,
-                        kMapStateNames_variableMap [kMapState_variableMap_usedLocalConstant],
+                        kMapState_variableMap_readLocalConstant,
+                        kMapStateNames_variableMap [kMapState_variableMap_readLocalConstant],
                         kInsertErrorMessage,
                         kShadowErrorMessage
                         COMMA_THERE) ;

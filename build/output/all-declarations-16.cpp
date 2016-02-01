@@ -11578,217 +11578,6 @@ GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGenerat
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_dropInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_dropInstructionForGeneration * p = (const cPtr_dropInstructionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_dropInstructionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mDropList.objectCompare (p->mAttribute_mDropList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mComment.objectCompare (p->mAttribute_mComment) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mDropTypeList.objectCompare (p->mAttribute_mDropTypeList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_dropInstructionForGeneration::objectCompare (const GALGAS_dropInstructionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dropInstructionForGeneration::GALGAS_dropInstructionForGeneration (void) :
-GALGAS_semanticInstructionForGeneration () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dropInstructionForGeneration GALGAS_dropInstructionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_dropInstructionForGeneration::constructor_new (GALGAS_stringlist::constructor_emptyList (HERE),
-                                                               GALGAS_string::constructor_default (HERE),
-                                                               GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)
-                                                               COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dropInstructionForGeneration::GALGAS_dropInstructionForGeneration (const cPtr_dropInstructionForGeneration * inSourcePtr) :
-GALGAS_semanticInstructionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_dropInstructionForGeneration) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dropInstructionForGeneration GALGAS_dropInstructionForGeneration::constructor_new (const GALGAS_stringlist & inAttribute_mDropList,
-                                                                                          const GALGAS_string & inAttribute_mComment,
-                                                                                          const GALGAS_unifiedTypeMapProxyList & inAttribute_mDropTypeList
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_dropInstructionForGeneration result ;
-  if (inAttribute_mDropList.isValid () && inAttribute_mComment.isValid () && inAttribute_mDropTypeList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_dropInstructionForGeneration (inAttribute_mDropList, inAttribute_mComment, inAttribute_mDropTypeList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_stringlist GALGAS_dropInstructionForGeneration::getter_mDropList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_stringlist result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_dropInstructionForGeneration * p = (const cPtr_dropInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dropInstructionForGeneration) ;
-    result = p->mAttribute_mDropList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_stringlist cPtr_dropInstructionForGeneration::getter_mDropList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mDropList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_dropInstructionForGeneration::getter_mComment (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_dropInstructionForGeneration * p = (const cPtr_dropInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dropInstructionForGeneration) ;
-    result = p->mAttribute_mComment ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cPtr_dropInstructionForGeneration::getter_mComment (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mComment ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList GALGAS_dropInstructionForGeneration::getter_mDropTypeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxyList result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_dropInstructionForGeneration * p = (const cPtr_dropInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dropInstructionForGeneration) ;
-    result = p->mAttribute_mDropTypeList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList cPtr_dropInstructionForGeneration::getter_mDropTypeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mDropTypeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @dropInstructionForGeneration class                                *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_dropInstructionForGeneration::cPtr_dropInstructionForGeneration (const GALGAS_stringlist & in_mDropList,
-                                                                      const GALGAS_string & in_mComment,
-                                                                      const GALGAS_unifiedTypeMapProxyList & in_mDropTypeList
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionForGeneration (THERE),
-mAttribute_mDropList (in_mDropList),
-mAttribute_mComment (in_mComment),
-mAttribute_mDropTypeList (in_mDropTypeList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_dropInstructionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dropInstructionForGeneration ;
-}
-
-void cPtr_dropInstructionForGeneration::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "[@dropInstructionForGeneration:" ;
-  mAttribute_mDropList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mComment.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mDropTypeList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_dropInstructionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_dropInstructionForGeneration (mAttribute_mDropList, mAttribute_mComment, mAttribute_mDropTypeList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @dropInstructionForGeneration type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_dropInstructionForGeneration ("dropInstructionForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_dropInstructionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_dropInstructionForGeneration ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_dropInstructionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_dropInstructionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dropInstructionForGeneration GALGAS_dropInstructionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_dropInstructionForGeneration result ;
-  const GALGAS_dropInstructionForGeneration * p = (const GALGAS_dropInstructionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_dropInstructionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("dropInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
 typeComparisonResult cPtr_errorInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_errorInstructionForGeneration * p = (const cPtr_errorInstructionForGeneration *) inOperandPtr ;
@@ -13792,6 +13581,190 @@ GALGAS_incDecNoOVFInstructionForGeneration GALGAS_incDecNoOVFInstructionForGener
       result = *p ;
     }else{
       inCompiler->castError ("incDecNoOVFInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_localVariableDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_localVariableDeclarationForGeneration * p = (const cPtr_localVariableDeclarationForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mVariableType.objectCompare (p->mAttribute_mVariableType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mCppVariableName.objectCompare (p->mAttribute_mCppVariableName) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_localVariableDeclarationForGeneration::objectCompare (const GALGAS_localVariableDeclarationForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localVariableDeclarationForGeneration::GALGAS_localVariableDeclarationForGeneration (void) :
+GALGAS_semanticInstructionForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_localVariableDeclarationForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                        GALGAS_string::constructor_default (HERE)
+                                                                        COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localVariableDeclarationForGeneration::GALGAS_localVariableDeclarationForGeneration (const cPtr_localVariableDeclarationForGeneration * inSourcePtr) :
+GALGAS_semanticInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_localVariableDeclarationForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mVariableType,
+                                                                                                            const GALGAS_string & inAttribute_mCppVariableName
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_localVariableDeclarationForGeneration result ;
+  if (inAttribute_mVariableType.isValid () && inAttribute_mCppVariableName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_localVariableDeclarationForGeneration (inAttribute_mVariableType, inAttribute_mCppVariableName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_localVariableDeclarationForGeneration::getter_mVariableType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_localVariableDeclarationForGeneration * p = (const cPtr_localVariableDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
+    result = p->mAttribute_mVariableType ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cPtr_localVariableDeclarationForGeneration::getter_mVariableType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mVariableType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_localVariableDeclarationForGeneration::getter_mCppVariableName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_localVariableDeclarationForGeneration * p = (const cPtr_localVariableDeclarationForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
+    result = p->mAttribute_mCppVariableName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_localVariableDeclarationForGeneration::getter_mCppVariableName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCppVariableName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                           Pointer class for @localVariableDeclarationForGeneration class                            *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_localVariableDeclarationForGeneration::cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mVariableType,
+                                                                                        const GALGAS_string & in_mCppVariableName
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticInstructionForGeneration (THERE),
+mAttribute_mVariableType (in_mVariableType),
+mAttribute_mCppVariableName (in_mCppVariableName) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_localVariableDeclarationForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
+}
+
+void cPtr_localVariableDeclarationForGeneration::description (C_String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString << "[@localVariableDeclarationForGeneration:" ;
+  mAttribute_mVariableType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mCppVariableName.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_localVariableDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_localVariableDeclarationForGeneration (mAttribute_mVariableType, mAttribute_mCppVariableName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @localVariableDeclarationForGeneration type                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ("localVariableDeclarationForGeneration",
+                                                              & kTypeDescriptor_GALGAS_semanticInstructionForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_localVariableDeclarationForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_localVariableDeclarationForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_localVariableDeclarationForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_localVariableDeclarationForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_localVariableDeclarationForGeneration result ;
+  const GALGAS_localVariableDeclarationForGeneration * p = (const GALGAS_localVariableDeclarationForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_localVariableDeclarationForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("localVariableDeclarationForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

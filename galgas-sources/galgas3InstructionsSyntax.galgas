@@ -274,22 +274,6 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 
 #! const declaration instruction
 
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $let$
-  $type_name$ ?let typeName
-  $identifier$ ?let variableName
-  $=$
-  <expression> ?let @semanticExpressionAST sourceExpression
-  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
-    ![typeName location]
-    !true # Is Constant
-    !typeName
-    !variableName
-    !sourceExpression}
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
@@ -298,17 +282,6 @@ rule <semantic_instruction>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $let$
-  $identifier$ ?let variableName
-  $=$
-  <expression> ?let @semanticExpressionAST sourceExpression
-  outInstruction = @localConstantDeclarationWithAssignmentAST.new {
-    ![variableName location]
-    !variableName
-    !sourceExpression}
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *

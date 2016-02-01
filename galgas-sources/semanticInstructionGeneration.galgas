@@ -101,22 +101,6 @@ override method @semanticBlockInstructionForGeneration generateInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  [mTargetType addHeaderFileName !?ioInclusionSet]
-  [mSourceExpression generateExpression
-     !?ioGeneratedCode
-     !?ioInclusionSet
-     !?ioTemporaryVariableIndex
-     !?ioUnusedVariableCppNameSet
-     ?let @string sourceVar
-  ]
-  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " = " + sourceVar + " ;\n"
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

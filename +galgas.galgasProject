@@ -94,6 +94,7 @@ project (3:1:6) -> "galgas" {
   "galgas-sources/instruction-grammar.galgas"
   "galgas-sources/instruction-inc-dec.galgas"
   "galgas-sources/instruction-if.galgas"
+  "galgas-sources/instruction-let.galgas"
   "galgas-sources/instruction-log.galgas"
   "galgas-sources/instruction-loop.galgas"
   "galgas-sources/instruction-match.galgas"

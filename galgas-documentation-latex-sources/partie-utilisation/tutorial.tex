@@ -5,12 +5,11 @@
 \chapter{Tutorial : le langage LOGO}
 %-------------------------------------------------------------
 
-Le but de ce tutorial est de construire en utilisant GALGAS un compilateur d’un langage inspiré de LOGO, qui fournit en sortie un fichier SVG\footnote{Vous trouverez des informations sur le format SVG sur la page : \url{http://www.canarlake.org/index.cgi?theme=svg}.} contenant les tracés définis par un programme source LOGO.
+Le but de ce tutorial est de construire en utilisant GALGAS un compilateur d’un langage inspiré de LOGO, qui fournit en sortie un fichier SVG\footnote{Vous trouverez des informations sur le format SVG sur la page : \url{http://www.canarlake.org/index.cgi?theme=svg}.} contenant les tracés définis par un programme source LOGO. La génération des fichiers SVG à partir de GALGAS sera faite par un template.
 
 
 Il est rédigé pour être réalisé sur Unix (Linux, Mac OS X).
 
-La génération des fichiers SVG à partir de GALGAS sera faite par un template.
 
 
 
@@ -25,177 +24,77 @@ Un programme LOGO est contenu dans un fichier texte, d'extension \tpp{.logo}. Il
 
 Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo} et \refTableauPage{hexagoneOctogoneLogo}). Le \refTableauPage{logoErreurSemantiques} liste des programmes présentant des erreurs sémantiques : le compilateur qui va être écrit décelera ces erreurs.
 
+
 \begin{table}[t]
   \centering
   \small
-
-\begin{multicols}{3}
-
-\textbf{Dessin d'un carré}
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE trace
-  BEGIN
-    FORWARD 50 ;
-    ROTATE 90 ;
-  END
-
-BEGIN
-  FORWARD 100 ;
-  ROTATE 90 ;
-  FORWARD 100 ;
-  ROTATE 270 ;
-  PEN DOWN ;
-  CALL trace ;
-  CALL trace ;
-  CALL trace ;
-  CALL trace ;
-END.
-\end{lstlisting}
-
-\columnbreak
-
-\textbf{Dessin d'une étoile}
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE trace
-  BEGIN
-    FORWARD 70;
-    ROTATE 160;
-  END
-
-  ROUTINE trace3
-  BEGIN
-    CALL trace;
-    CALL trace;
-    CALL trace;
-  END
-
-BEGIN
-  FORWARD 200;
-  ROTATE 90;
-  FORWARD 300;
-  ROTATE 270;
-  PEN DOWN;
-  CALL trace3;
-  CALL trace3;
-  CALL trace3;
-END.
-\end{lstlisting}
-
-\columnbreak
-
-\textbf{Dessin d'un pentagone}
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE trace
-  BEGIN
-    FORWARD 70;
-    ROTATE 72;
-  END
-
-BEGIN
-  FORWARD 200;
-  ROTATE 90;
-  FORWARD 300;
-  ROTATE 270;
-  PEN DOWN;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-END.
-\end{lstlisting}
-
-\end{multicols}
-
+  \begin{tabular}{l|l|l}
+  \textbf{Dessin d'un carré}    &  \textbf{Dessin d'une étoile}  &  \textbf{Dessin d'un pentagone} \\
+  \texttt{PROGRAM}              &  \texttt{PROGRAM}              &  \texttt{PROGRAM}               \\
+  \texttt{  ROUTINE trace}      &  \texttt{  ROUTINE trace}      &  \texttt{  ROUTINE trace}       \\
+  \texttt{  BEGIN}              &  \texttt{  BEGIN}              &  \texttt{  BEGIN}               \\
+  \texttt{    FORWARD 50 ;}     &  \texttt{    FORWARD 70 ;}     &  \texttt{    FORWARD 70 ;}      \\
+  \texttt{    ROTATE 90 ;}      &  \texttt{    ROTATE 160 ;}     &  \texttt{    ROTATE 72 ;}       \\
+  \texttt{  END}                &  \texttt{  END}                &  \texttt{  END}                 \\
+  \texttt{BEGIN}                &  \texttt{  ROUTINE trace3}     &  \texttt{BEGIN}                 \\
+  \texttt{  FORWARD 100 ;}      &  \texttt{BEGIN}                &  \texttt{  FORWARD 200;}        \\
+  \texttt{  ROTATE 90 ;}        &  \texttt{  CALL trace;}        &  \texttt{  ROTATE 90;}          \\
+  \texttt{  FORWARD 100 ;}      &  \texttt{  CALL trace;}        &  \texttt{  FORWARD 300;}        \\
+  \texttt{  ROTATE 270 ;}       &  \texttt{  CALL trace;}        &  \texttt{  ROTATE 270;}         \\
+  \texttt{  PEN DOWN ;}         &  \texttt{  END}                &  \texttt{  PEN DOWN;}           \\
+  \texttt{  CALL trace ;}       &  \texttt{BEGIN}                &  \texttt{  CALL trace;}         \\
+  \texttt{  CALL trace ;}       &  \texttt{  FORWARD 200;}       &  \texttt{  CALL trace;}         \\
+  \texttt{  CALL trace ;}       &  \texttt{  ROTATE 90;}         &  \texttt{  CALL trace;}         \\
+  \texttt{  CALL trace ;}       &  \texttt{  FORWARD 300;}       &  \texttt{END.}\\
+  \texttt{END.}                 &  \texttt{  ROTATE 270;}        & \\
+                                &  \texttt{  PEN DOWN;}          & \\
+                                &  \texttt{  CALL trace3;}       & \\ 
+                                &  \texttt{  CALL trace3;}       & \\ 
+                                &  \texttt{  CALL trace3;}       & \\ 
+                                &  \texttt{END.}                 & \\ 
+  \end{tabular}
   \caption{Carré, étoile et pentagone en LOGO}
   \labelTableau{carreEtoilePentagoneLogo}
   \ligne
 \end{table}
 
 
+
 \begin{table}[t]
   \centering
   \small
-
-
-\begin{multicols}{2}
-
-\textbf{Dessin d'un hexagone}
-
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE trace
-  BEGIN
-    FORWARD 70 ;
-    ROTATE 60 ;
-  END
-
-BEGIN
-  FORWARD 100 ;
-  ROTATE 90;
-  FORWARD 100;
-  ROTATE 270;
-  PEN DOWN;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-  CALL trace;
-END.
-\end{lstlisting}
-
-
-\columnbreak
-
-\textbf{Dessin d'un octogone}
-
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE trace
-  BEGIN
-    FORWARD 70;
-    ROTATE 45;
-  END
-
-  ROUTINE trace1
-  BEGIN
-  CALL trace;
-  CALL trace;
-  END
-
-  ROUTINE trace2
-  BEGIN
-  CALL trace1;
-  CALL trace1;
-  END
-
-  ROUTINE trace3
-  BEGIN
-  CALL trace2;
-  CALL trace2;
-  END
-
-BEGIN
-  FORWARD 100;
-  ROTATE 90;
-  FORWARD 100;
-  ROTATE 270;
-  PEN DOWN;
-  CALL trace3;
-END.
-\end{lstlisting}
-
-\end{multicols}
-
+  \begin{tabular}{l|l}
+  \textbf{Dessin d'un hexagone} &  \textbf{Dessin d'un octogone} \\
+  \texttt{PROGRAM}              &  \texttt{PROGRAM}              \\
+  \texttt{  ROUTINE trace}      &  \texttt{  ROUTINE trace}      \\
+  \texttt{  BEGIN}              &  \texttt{  BEGIN}              \\
+  \texttt{    FORWARD 70 ;}     &  \texttt{    FORWARD 70 ;}     \\
+  \texttt{    ROTATE 60 ;}      &  \texttt{    ROTATE 45 ;}      \\
+  \texttt{  END}                &  \texttt{  END}                \\
+  \texttt{BEGIN}                &  \texttt{  ROUTINE trace1}     \\
+  \texttt{  FORWARD 100 ;}      &  \texttt{  BEGIN}              \\
+  \texttt{  ROTATE 90 ;}        &  \texttt{    CALL trace;}      \\
+  \texttt{  FORWARD 100 ;}      &  \texttt{    CALL trace;}      \\
+  \texttt{  ROTATE 270 ;}       &  \texttt{  END}                \\
+  \texttt{  PEN DOWN ;}         &  \texttt{  ROUTINE trace2}     \\
+  \texttt{  CALL trace ;}       &  \texttt{  BEGIN}              \\
+  \texttt{  CALL trace ;}       &  \texttt{    CALL trace1;}     \\
+  \texttt{  CALL trace ;}       &  \texttt{    CALL trace1;}     \\
+  \texttt{  CALL trace ;}       &  \texttt{  END}                \\
+  \texttt{  CALL trace ;}       &  \texttt{  ROUTINE trace3}     \\
+  \texttt{  CALL trace ;}       &  \texttt{  BEGIN}              \\
+  \texttt{END.}                 &  \texttt{   CALL trace2;}      \\ 
+                                &  \texttt{    CALL trace2;}     \\ 
+                                &  \texttt{  END}                \\ 
+                                &  \texttt{BEGIN}                \\ 
+                                &  \texttt{  FORWARD 100 ;}      \\ 
+                                &  \texttt{  ROTATE 90 ;}        \\ 
+                                &  \texttt{  FORWARD 100 ;}      \\ 
+                                &  \texttt{  ROTATE 270 ;}       \\ 
+                                &  \texttt{  PEN DOWN ;}         \\ 
+                                &  \texttt{  CALL trace3 ;}      \\ 
+                                &  \texttt{END.}                 \\ 
+  \end{tabular}
   \caption{Hexagone et octogone en LOGO}
   \labelTableau{hexagoneOctogoneLogo}
   \ligne
@@ -203,63 +102,26 @@ END.
 
 
 
-
 \begin{table}[t]
   \centering
   \small
-
-\begin{multicols}{3}
-
-\textbf{Routine récursive}
-
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE routine
-  BEGIN
-    CALL routine;
-  END
-  
-BEGIN
-END.
-\end{lstlisting}
-
-\columnbreak
-
-\textbf{Routine indéfinie}
-
-\begin{lstlisting}
-PROGRAM
-
-BEGIN
-  CALL routine;
-END.
-\end{lstlisting}
-
-\columnbreak
-\textbf{Routine définie plusieurs fois}
-
-\begin{lstlisting}
-PROGRAM
-
-  ROUTINE routine
-  BEGIN
-  END
-  
-  ROUTINE routine
-  BEGIN
-  END
-  
-BEGIN
-END.
-\end{lstlisting}
-
-\end{multicols}
-
+  \begin{tabular}{l|l|l}
+  \textbf{Routine récursive}    &  \textbf{Routine indéfinie}    &  \textbf{Routine définie plusieurs fois} \\
+  \texttt{PROGRAM}              &  \texttt{PROGRAM}              &  \texttt{PROGRAM}               \\
+  \texttt{  ROUTINE routine}    &  \texttt{BEGIN}                &  \texttt{  ROUTINE routine}     \\
+  \texttt{  BEGIN}              &  \texttt{  CALL routine;}      &  \texttt{  BEGIN}               \\
+  \texttt{    CALL routine ;}   &  \texttt{END.}                 &  \texttt{  END}                 \\
+  \texttt{  END}                &                                &  \texttt{  ROUTINE routine}     \\
+  \texttt{BEGIN}                &                                &  \texttt{  BEGIN}               \\
+  \texttt{END.}                 &                                &  \texttt{  END}                 \\
+                                &                                &  \texttt{BEGIN}                 \\
+                                &                                &  \texttt{END.}                  \\
+  \end{tabular}
   \caption{Programmes LOGO contenant des erreurs sémantiques}
   \labelTableau{logoErreurSemantiques}
   \ligne
 \end{table}
+
 
 \subsection{Définition lexicale}
 
@@ -271,9 +133,9 @@ Les constantes littérales entières sont écrites en décimal (une séquence no
 
 Les séparateurs sont tous les caractères compris entre le point de code Unicode \tpp{\textquotesingle\textbackslash u0001\textquotesingle} et l’espace (point de code \tpp{\textquotesingle\textbackslash u0020\textquotesingle}), ce qui inclut la tabulation horizontale et les différentes formes de la fin de ligne.
 
-Les délimiteurs sont le point ('.') et le point virgule (';').
+Les délimiteurs sont le point (« \tpp{.} ») et le point virgule (« \tpp{;} »).
 
-Un commentaire commence par le caractère dièse (\#) et s'étend jusqu'à la fin de la ligne courante.
+Un commentaire commence par le caractère dièse « \tpp{\#} ») et s'étend jusqu'à la fin de la ligne courante.
 
 
 \subsectionLabel{Définition syntaxique}{definitionSyntaxiqueLOGO}

@@ -585,23 +585,7 @@ class @localVariableOrConstantDeclarationWithDefaultConstructorAST : @semanticIn
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
-  @bool mIsConstant
-  @lstring mOptionalTypeName
-  @lstring mVariableName
-  @semanticExpressionAST mSourceExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
-  @lstring mVariableName
-  @semanticExpressionAST mSourceExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @lstring mVariableName
   @semanticExpressionAST mSourceExpression
 }
