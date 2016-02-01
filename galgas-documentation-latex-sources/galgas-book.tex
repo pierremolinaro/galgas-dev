@@ -1,6 +1,6 @@
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass [a4paper, 10pt, openany] {book}
+\documentclass [a4paper, 11pt, openany] {book}
 \usepackage{verbatim}
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -98,8 +98,8 @@
 %\usepackage{fouriernc}
 %\usepackage[scaled=0.875]{helvet}
 
-\usepackage[scaled=0.9, default]{sourcecodepro}
-\usepackage[default]{sourcesanspro}
+\usepackage[scaled=0.85, default]{sourcecodepro}
+\usepackage[scaled=1.0, default]{sourcesanspro}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -195,6 +195,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \usepackage{tikz}
+\usepackage{tkz-graph}
 \usetikzlibrary{calc}
 \usepackage{pgfplots}
 \usetikzlibrary{arrows}
@@ -361,37 +362,6 @@
 % \refFigurePageSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z page n" où x.y est le n° de la figure
 \newcommand\refFigurePageSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
 
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   S H O W K E Y S    ( P O U R    D É B O G U E R )                                                                   *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%\usepackage{showkeys}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   T I T L E T O C                                                                                                     *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%--- Description dans le paquetage titlesec
-% http://forum.mathematex.net/latex-f6/formatage-avance-de-la-table-des-matieres-t11559.html
-
-%\usepackage{titletoc}
-
-
-%--- Par défaut dans la tables des matières, le numéro de sous-section est trop long et mange le début du titre
-%\titlecontents{subsection}[2.5cm]{}{\hspace*{-5.0em}\hyperref[subsection \thecontentslabel]{\thecontentslabel}\hspace*{0.5em}}{}{\titlerule*[0.66pc]{.}\contentspage}{}
-
-%\titlecontents{subsection}[2.5cm]{}{\hspace*{-5.0em}\thecontentslabel\hspace*{0.5em}}{}{\titlerule*[0.66pc]{.}\contentspage}{}
-
-%\titlecontents{subsection}
-%  [2cm]% retrait gauche
-%  {}% pour les entrées numérotées et non numérotées
-%  {\hspace*{-3.0em}\makebox[2.5em]{\hspace*{0pt plus 1 fill minus 1fill}\thecontentslabel.}\hspace*{0.5em}}% pour les entrées numérotées uniquement
-%  {}% pour les entrées non numérotées uniquement
-%  {\titlerule*[0.66em]{.}\contentspage}% numéro de page
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -521,18 +491,32 @@
   \input{partie-types/extern-type.tex}
   \input{partie-types/completer-systeme-de-types.tex}
 
+
+
+
+
+
 \part{Sous-programmes}
 \input{partie-sous-programmes/sous-programmes.tex}
 \input{partie-sous-programmes/fonctions-procedures.tex}
 \input{partie-sous-programmes/extensions.tex}
 
 
+
+
+
+
 \part{Filewrappers et templates}
 \input{partie-filewrappers-templates/filewrappers.tex}
 
 
-\part{Instructions et expressions}
 
+
+
+
+
+\part{Instructions et expressions}
+\input{chapter-semantic-instructions/automate-lie-aux-objets.tex}
 \input{chapter-semantic-instructions/semantic-expressions.tex}
 \input{chapter-semantic-instructions/semantic-instructions.tex}
 \input{chapter-semantic-instructions/syntax-instructions.tex}

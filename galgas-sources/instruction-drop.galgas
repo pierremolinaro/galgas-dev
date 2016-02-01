@@ -45,47 +45,51 @@ override method @dropInstructionAST enterInstructionInSemanticContext ?!@unified
 
 override method @dropInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  var cppNameDropList =@stringlist.emptyList{}
-  var dropTypeList = @unifiedTypeMapProxyList. emptyList
+#  var cppNameDropList =@stringlist.emptyList{}
+#  var dropTypeList = @unifiedTypeMapProxyList. emptyList
   for () in mDropList do
-    @string variableCppName
-    [!?ioVariableMap searchForDropAccess !mValue ?let @unifiedTypeMap-proxy t ?variableCppName ?*]
-    cppNameDropList += !variableCppName
-    dropTypeList += !t
+    [!?ioVariableMap searchForDropAccess !mValue ?3*]
+#    [!?ioVariableMap searchForDropAccess
+#      !mValue
+#      ?let @unifiedTypeMap-proxy t
+#      ?let variableCppName
+#      ?*]
+#    cppNameDropList += !variableCppName
+#    dropTypeList += !t
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@dropInstructionForGeneration.new {
-     !cppNameDropList
-     !"drop instruction"
-     !dropTypeList}  
+#  ioInstructionListForGeneration += !@dropInstructionForGeneration.new {
+#     !cppNameDropList
+#     !"drop instruction"
+#     !dropTypeList}  
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! GENERATION
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @dropInstructionForGeneration : @semanticInstructionForGeneration {
-  @stringlist mDropList
-  @string mComment
-  @unifiedTypeMapProxyList mDropTypeList
-}
+#class @dropInstructionForGeneration : @semanticInstructionForGeneration {
+#  @stringlist mDropList
+#  @string mComment
+#  @unifiedTypeMapProxyList mDropTypeList
+#}
 
 #·····················································································································*
 
-override method @dropInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  for (t) in mDropTypeList do
-    [t addHeaderFileName !?ioInclusionSet]
-  end
-  for () in mDropList do
-    ioGeneratedCode += mValue + ".drop () ; // " + mComment + "\n"
-  end
-}
+#override method @dropInstructionForGeneration generateInstruction
+#  ?!@stringset ioInclusionSet
+#  ?!@uint unused ioTemporaryVariableIndex
+#  ?!@stringset unused ioUnusedVariableCppNameSet
+#  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+#  ?!@string ioGeneratedCode {
+#  for (t) in mDropTypeList do
+#    [t addHeaderFileName !?ioInclusionSet]
+#  end
+#  for () in mDropList do
+#    ioGeneratedCode += mValue + ".drop () ; // " + mComment + "\n"
+#  end
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*

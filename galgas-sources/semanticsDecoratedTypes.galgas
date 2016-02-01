@@ -704,15 +704,6 @@ class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mTargetType
-  @bool mIsConstant
-  @string mCppVariableName
-  @semanticExpressionForGeneration mSourceExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @unifiedTypeMap-proxy mTargetType

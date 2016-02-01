@@ -1,0 +1,238 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @bool mIsConstant
+  @lstring mOptionalTypeName
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
+  @lstring mConstantTypeName
+  @lstring mConstantName
+}
+
+#·····················································································································*
+
+class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $let$
+    $type_name$ ?let typeName
+    $identifier$ ?let constantName
+    outInstruction = @undefinedLocalConstantDeclarationAST.new {
+      ![typeName location]
+      !typeName
+      !constantName
+   }
+  }
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $let$
+    $type_name$ ?let typeName
+    $identifier$ ?let variableName
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
+      ![typeName location]
+      !true # Is Constant
+      !typeName
+      !variableName
+      !sourceExpression}
+  }
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $let$
+    $identifier$ ?let variableName
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localConstantDeclarationWithAssignmentAST.new {
+      ![variableName location]
+      !variableName
+      !sourceExpression}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @undefinedLocalConstantDeclarationAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#······················································································································*
+
+  
+override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#······················································································································*
+
+override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mOptionalTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mOptionalTypeName ?*]
+  end
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mConstantTypeName}
+  let targetVariableCppName = "var_" + [mConstantName identifierRepresentation]
+  [!?ioVariableMap insertUndefinedLocalConstant
+    !mConstantName
+    !targetType
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@undefinedLocalConstantDeclarationForGeneration.new {
+    !targetType
+    !targetVariableCppName
+  }
+}
+
+#······················································································································*
+
+override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Enter target variable
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+    ![expression mResultType]
+    !true
+    !targetVariableCppName
+    !expression}
+}
+
+#······················································································································*
+
+override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Check target variable
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  if mIsConstant then
+    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+    !targetType
+    !mIsConstant
+    !targetVariableCppName
+    !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mTargetType
+  @string mCppVariableName
+}
+
+#······················································································································*
+
+class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mTargetType
+  @bool mIsConstant
+  @string mCppVariableName
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#······················································································································*
+
+override method @undefinedLocalConstantDeclarationForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " ;\n"
+}
+
+#······················································································································*
+
+override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [mSourceExpression generateExpression
+     !?ioGeneratedCode
+     !?ioInclusionSet
+     !?ioTemporaryVariableIndex
+     !?ioUnusedVariableCppNameSet
+     ?let @string sourceVar
+  ]
+  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " = " + sourceVar + " ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

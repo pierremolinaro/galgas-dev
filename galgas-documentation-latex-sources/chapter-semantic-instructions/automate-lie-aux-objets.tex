@@ -1,0 +1,325 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Contrôle de l'accès aux objets}
+%-------------------------------------------------------------
+
+%---------------------- PARAMÉTRAGE DE L'AFFICHAGE DES AUTOMATES ------------------------------
+% https://en.wikibooks.org/wiki/LaTeX/Colors
+
+\newcommand\FondAutomate{LightGray!25}
+
+\newcommand\VertAutomate{PineGreen}
+\newcommand\OrangeAutomate{Orange}
+\newcommand\RougeAutomate{Red}
+
+\newcommand\EtatVert[4]{
+  \SetVertexNormal[Shape=rectangle, LineColor=\VertAutomate, FillColor=\FondAutomate, LineWidth=1pt]
+  \Vertex[x=#3, y=#4, L={\sc #2}]{#1}
+}
+
+\newcommand\EtatOrange[4]{
+  \SetVertexNormal[Shape=rectangle, LineColor=\OrangeAutomate, FillColor=\FondAutomate, LineWidth=1pt]
+  \Vertex[x=#3, y=#4, L={\sc #2}]{#1}
+}
+
+\newcommand\EtatRouge[4]{
+  \SetVertexNormal[Shape=rectangle, LineColor=\RougeAutomate, FillColor=\FondAutomate, LineWidth=1pt]
+  \Vertex[x=#3, y=#4, L={\sc #2}]{#1}
+}
+
+\newcommand\FlecheVerte[4]{
+  \draw [-stealth, thick, \VertAutomate] (#1) edge[#4] node[draw=\VertAutomate, rounded corners, fill=\FondAutomate] {\it #2} (#3) ;
+}
+
+\newcommand\FlecheOrange[4]{
+  \draw [-stealth, thick, \OrangeAutomate] (#1) edge[#4] node[draw=\OrangeAutomate, rounded corners, fill=\FondAutomate] {\it#2} (#3) ;
+}
+
+\newcommand\FlecheRouge[4]{
+  \draw [-stealth, thick, \RougeAutomate] (#1) edge[#4] node[draw=\RougeAutomate, rounded corners, fill=\FondAutomate] {\it#2} (#3) ;
+}
+
+
+\newcommand\BoucleVerte[3]{
+  \path (#1) edge [loop #2, -stealth, thick, \VertAutomate] node[draw=\VertAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+}
+
+\newcommand\BoucleOrange[3]{
+  \path (#1) edge [loop #2, -stealth, thick, \OrangeAutomate] node[draw=\OrangeAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+}
+
+\newcommand\BoucleRouge[3]{
+  \path (#1) edge [loop #2, -stealth, thick, \RougeAutomate] node[draw=\RougeAutomate, rounded corners, fill=\FondAutomate] {\it#3} (#1) ;
+}
+
+%----------------------------------------------------------------------------------------------
+
+Le compilateur GALGAS effectue une surveillance très stricte des accès aux objets -- constantes, variables et paramètres formels. Il signale ainsi par des \emph{alertes} et des \emph{erreurs} tout violation des règles d'accès.
+
+On peut illustrer le résultat de cette surveillance par le fragment de code suivant :
+\begin{galgas}
+@uint x
+if condition then
+  x = 2
+end # Une erreur de compilation est déclenchée ici
+\end{galgas}
+
+Quelle serait la valeur de la variable \ggs!x! à l'issue de l'exécution de ce code ? Si \ggs!condition! est vrai, \ggs!x! vaut $2$ ; sinon, \ggs!x! n'a pas de valeur.
+
+Le compilateur GALGAS détecte cette situation et émet un message d'erreur à l'issue de l'analyse sémantique de l'instruction \ggs!if!. Pour que l'analyse sémantique ne détecte pas d'erreur, il faut soit que les deux branches affectent une valeur à \ggs!x! :
+
+\begin{galgas}
+@uint x
+if condition then
+  x = 2
+else
+  x = 4
+end
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Constante locale}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatOrange{definedLocalConstant}{Defined Local constant}{0cm}{3cm}
+    \EtatOrange{undefinedLocalConstant}{Undefined local constant}{6cm}{3cm}
+    \EtatVert{readLocalConstant}{Read local constant}{0cm}{0cm}
+    \EtatVert{droppedLocalConstant}{Dropped local constant}{6cm}{0cm}
+
+    \FlecheVerte{definedLocalConstant}{read}{readLocalConstant}{bend right}
+    \FlecheVerte{readLocalConstant}{drop}{droppedLocalConstant}{bend right}
+    \FlecheVerte{undefinedLocalConstant}{write}{definedLocalConstant}{bend right}
+    \FlecheOrange{definedLocalConstant}{drop}{droppedLocalConstant}{}
+    \FlecheOrange{undefinedLocalConstant}{drop}{droppedLocalConstant}{bend left}
+    \BoucleRouge{definedLocalConstant}{left}{write, rw}
+    \BoucleRouge{readLocalConstant}{left}{write, rw}
+    \BoucleRouge{undefinedLocalConstant}{right}{read, rw}
+    \BoucleRouge{droppedLocalConstant}{right}{write, rw, read}
+    \BoucleVerte{readLocalConstant}{below}{read}
+    \BoucleOrange{droppedLocalConstant}{below}{drop}
+  \end{tikzpicture}
+  \caption{Automate des états d'une constante locale}
+  \labelFigure{automateEtatsConstanteLocale}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+\section{Variable locale}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatOrange{definedLocalVariable}{Defined Local variable}{0cm}{3cm}
+    \EtatOrange{undefinedLocalVariable}{Undefined local variable}{6cm}{3cm}
+    \EtatVert{readLocalVariable}{Read local variable}{0cm}{0cm}
+    \EtatVert{droppedLocalVariable}{Dropped local variable}{6cm}{0cm}
+
+    \FlecheVerte{readLocalVariable}{drop}{droppedLocalVariable}{bend right}
+    \FlecheVerte{undefinedLocalVariable}{write}{definedLocalVariable}{bend right}
+    \FlecheOrange{undefinedLocalVariable}{drop}{droppedLocalVariable}{bend left}
+
+    \FlecheVerte{readLocalVariable}{write, rw}{definedLocalVariable}{bend right=35}
+    \FlecheVerte{definedLocalVariable}{read}{readLocalVariable}{bend right=35}
+
+    \FlecheOrange{definedLocalVariable}{drop}{droppedLocalVariable}{bend right=10}
+    \FlecheVerte{droppedLocalVariable}{write}{definedLocalVariable}{bend right=10}
+
+    \BoucleOrange{definedLocalVariable}{left}{write}
+    \BoucleRouge{undefinedLocalVariable}{right}{read, rw}
+    \BoucleRouge{droppedLocalVariable}{right}{rw, read}
+    \BoucleVerte{readLocalVariable}{left}{read}
+    \BoucleVerte{definedLocalVariable}{above}{rw}
+    \BoucleOrange{droppedLocalVariable}{below}{drop}
+  \end{tikzpicture}
+  \caption{Automate des états d'une variable locale}
+  \labelFigure{automateEtatsVariableLocale}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+
+
+
+\section{Paramètre formel constant en entrée}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatVert{constantInputDeclaredAsUnused}{Constant input declared unused}{0cm}{3cm}
+    \EtatOrange{constantInput}{Constant input}{6cm}{3cm}
+    \EtatVert{readConstantInput}{Read constant input}{0cm}{0cm}
+    \EtatVert{droppedConstantInput}{Dropped constant input}{6cm}{0cm}
+
+    \FlecheOrange{constantInputDeclaredAsUnused}{drop}{droppedConstantInput}{bend left=20}
+    \FlecheVerte{constantInput}{read}{readConstantInput}{bend right=20}
+    \FlecheVerte{constantInput}{drop}{droppedConstantInput}{bend left}
+
+    \FlecheVerte{readConstantInput}{drop}{droppedConstantInput}{bend right}
+
+    \FlecheOrange{constantInputDeclaredAsUnused}{read}{readConstantInput}{bend right}
+
+    \BoucleRouge{droppedConstantInput}{right}{write, rw, read}
+    \BoucleOrange{droppedConstantInput}{below}{drop}
+    \BoucleRouge{readConstantInput}{below}{write, rw}
+    \BoucleRouge{constantInput}{right}{write, rw}
+    \BoucleVerte{readConstantInput}{left}{read}
+    \BoucleRouge{constantInputDeclaredAsUnused}{above}{rw, write}
+  \end{tikzpicture}
+  \caption{Automate des états d'un paramètre formel constant en entrée}
+  \labelFigure{automateEtatsParametreEntreeConstant}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+
+
+
+\section{Paramètre formel variable en entrée}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatVert{inputDeclaredAsUnused}{Mutable input parameter declared unused}{0cm}{3cm}
+    \EtatOrange{input}{Mutable unread input parameter}{6cm}{3cm}
+    \EtatVert{readInput}{Read mutable input parameter}{0cm}{0cm}
+    \EtatRouge{droppedInput}{Dropped mutable input parameter}{6cm}{0cm}
+
+    \FlecheOrange{inputDeclaredAsUnused}{drop}{droppedInput}{bend right=20}
+    \FlecheVerte{input}{read}{readInput}{bend right=20}
+    \FlecheVerte{readInput}{write, rw}{input}{bend right=10}
+    \FlecheVerte{input}{drop}{droppedInput}{bend left}
+    \FlecheVerte{droppedInput}{write}{input}{bend left}
+
+    \FlecheVerte{readInput}{drop}{droppedInput}{bend right}
+
+    \FlecheOrange{inputDeclaredAsUnused}{read}{readInput}{bend right}
+    \FlecheOrange{inputDeclaredAsUnused}{rw, write}{input}{bend left}
+
+    \BoucleOrange{input}{above}{write}
+    \BoucleVerte{input}{right}{rw}
+    \BoucleRouge{droppedInput}{right}{rw, read}
+    \BoucleOrange{droppedInput}{below}{drop}
+    \BoucleVerte{readInput}{left}{read}
+  \end{tikzpicture}
+  \caption{Automate des états d'un paramètre formel variable en entrée}
+  \labelFigure{automateEtatsParametreEntreeVariable}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Paramètre formel en entrée / sortie}
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatVert{inputOutputDeclaredAsUnused}{Inout parameter declared unused}{0cm}{3cm}
+    \EtatOrange{unaccessedInputOutput}{Unaccessed inout parameter}{6cm}{3cm}
+    \EtatVert{accessedInputOutput}{Accessed inout parameter}{0cm}{0cm}
+    \EtatRouge{droppedInputOutput}{Dropped inout parameter}{6cm}{0cm}
+
+    \FlecheVerte{unaccessedInputOutput}{read, rw, write}{accessedInputOutput}{bend right=20}
+
+    \FlecheVerte{unaccessedInputOutput}{drop}{droppedInputOutput}{bend left}
+    \FlecheVerte{droppedInputOutput}{write}{accessedInputOutput}{bend right}
+
+    \FlecheVerte{accessedInputOutput}{drop}{droppedInputOutput}{bend right}
+
+    \FlecheOrange{inputOutputDeclaredAsUnused}{read, rw, write}{accessedInputOutput}{bend right}
+    \FlecheOrange{inputOutputDeclaredAsUnused}{drop}{droppedInputOutput}{bend left=20}
+
+    \BoucleRouge{droppedInputOutput}{right}{rw, read}
+    \BoucleOrange{droppedInputOutput}{below}{drop}
+    \BoucleVerte{accessedInputOutput}{left}{read, rw, write}
+  \end{tikzpicture}
+  \caption{Automate des états d'un paramètre formel en entrée / sortie}
+  \labelFigure{automateEtatsParametreEntreeSortie}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Paramètre formel en sortie}
+
+
+\begin{figure}[t]
+  \centering
+  \small
+  \begin{tikzpicture}
+    \EtatVert{definedOutputParameter}{Defined output parameter}{0cm}{3cm}
+    \EtatRouge{undefinedOutputParameter}{Undefined output parameter}{6cm}{3cm}
+
+    \FlecheVerte{undefinedOutputParameter}{write}{definedOutputParameter}{bend right}
+
+    \FlecheVerte{definedOutputParameter}{drop}{undefinedOutputParameter}{bend right}
+
+    \BoucleOrange{definedOutputParameter}{left}{write}
+    \BoucleRouge{undefinedOutputParameter}{right}{read, rw}
+    \BoucleVerte{definedOutputParameter}{above}{rw, read}
+    \BoucleOrange{undefinedOutputParameter}{below}{drop}
+  \end{tikzpicture}
+  \caption{Automate des états d'un paramètre formel en sortie}
+  \labelFigure{automateEtatsParametreSortie}
+  \ligne
+\end{figure}
+

@@ -19,27 +19,39 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+#func Azerty ?let @bool c -> @uint result {
+#  let @uint r
+#  if c then
+#    r = 7
+#  else
+#    r = 5
+#  end
+#  result = r
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 sharedmap @variableMap {
   @unifiedTypeMap-proxy mTypeProxy
   @string mCppName
   @string mNameForCheckingFormalParameterUsing
 
-#--- Used local constant
-  state usedLocalConstant {
-    neutralAccess   -> usedLocalConstant
-    readAccess      -> usedLocalConstant
-    writeAccess     -> usedLocalConstant error "a constant cannot be written"
-    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
-    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
+#--- Used local constant (no warning if not read)
+  state readLocalConstant {
+    neutralAccess   -> readLocalConstant
+    readAccess      -> readLocalConstant
+    writeAccess     -> readLocalConstant error "a constant cannot be written"
+    readWriteAccess -> readLocalConstant error "a constant cannot be written"
+    dropAccess      -> droppedLocalConstant
   }
 
 #--- Local constant
   state localConstant warning "the '%K' constant value is unused" {
     neutralAccess   -> localConstant
-    readAccess      -> usedLocalConstant
-    writeAccess     -> usedLocalConstant error "a constant cannot be written"
-    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
-    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
+    readAccess      -> readLocalConstant
+    writeAccess     -> readLocalConstant error "a constant cannot be written"
+    readWriteAccess -> readLocalConstant error "a constant cannot be written"
+    dropAccess      -> droppedLocalConstant warning "the '%K' constant value is unused"
   }
 
 #--- Undefined Local constant
@@ -48,7 +60,16 @@ sharedmap @variableMap {
     readAccess      -> undefinedLocalConstant error "the constant is undefined"
     writeAccess     -> localConstant
     readWriteAccess -> undefinedLocalConstant error "the constant is undefined"
-    dropAccess      -> undefinedLocalConstant error "the constant is undefined"
+    dropAccess      -> droppedLocalConstant warning "the dropped constant is undefined"
+  }
+
+#--- Dropped Local constant
+  state droppedLocalConstant {
+    neutralAccess   -> droppedLocalConstant
+    readAccess      -> undefinedLocalConstant error "the constant has been dropped"
+    writeAccess     -> localConstant          error "the constant has been dropped"
+    readWriteAccess -> undefinedLocalConstant error "the constant has been dropped"
+    dropAccess      -> undefinedLocalConstant warning "the constant has been dropped"
   }
 
 #--- Local variable
@@ -219,7 +240,7 @@ sharedmap @variableMap {
   insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)"
   insert insertUndefinedLocalConstant state undefinedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
   insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
-  insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertUsedLocalConstant state readLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
   insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)"
   insert insertInputFormalArgumentDeclaredAsUnused state inputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
   insert insertConstantInputFormalArgument state constantInputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
@@ -253,7 +274,7 @@ sharedmap @variableMap {
     inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
     inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
     inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    localConstant:usedLocalConstant -> usedLocalConstant
+    localConstant:readLocalConstant -> readLocalConstant
     undefinedLocalVariable:definedLocalVariable -> definedLocalVariable
     undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument
     unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
@@ -266,46 +287,102 @@ sharedmap @variableMap {
     undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
     undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
     undefinedLocalConstant:localConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
-    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+    droppedLocalConstant:localConstant -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
+    localConstant:droppedLocalConstant
+      -> droppedLocalConstant error "this branch let the '%K' constant defined, while previous ones drop it"
+    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
+    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "this branch lets the '%K' constant defined, while previous ones drop it"
+    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant warning "this branch drops the '%K' constant, while previous ones let it undefined"
+    undefinedLocalConstant:droppedLocalConstant
+      -> droppedLocalConstant warning "this branch lets the '%K' undefined, while previous ones drop it"
+    localConstant:undefinedLocalConstant -> droppedLocalConstant warning "this branch defines the '%K' constant, while previous ones let it undefined"
+    readLocalConstant:localConstant -> readLocalConstant
+    readLocalConstant:undefinedLocalConstant -> undefinedLocalConstant error "this branch lets the '%K' constant defined, while previous ones do not define it"
   }{
-    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
-    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
-    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
-    definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
-    definedLocalVariable:undefinedLocalVariable -> definedLocalVariable error "this branch lets the '%K' variable undefined, while previous ones define it"
-    definedLocalVariable:usedLocalVariable -> usedLocalVariable
-    definedOutputFormalArgument:undefinedOutputFormalArgument -> definedOutputFormalArgument error "this branch lets the '%K' variable undefined, while previous ones define it"
-    droppedInputFormalArgument:inputFormalParameter -> droppedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
-    droppedInputFormalArgument:inputFormalArgumentDeclaredAsUnused -> droppedInputFormalArgument
-    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument error "this branch defines the '%K' input formal argument, while previous ones let it dropped"
-    droppedInputOutputFormalArgument:inputOutputFormalArgumentDeclaredAsUnused -> inputOutputFormalArgumentDeclaredAsUnused error "this branch lets the '%K' input formal argument defined, while previous ones drop it"
-    droppedInputOutputFormalArgument:unusedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
-    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
-    droppedLocalVariable:definedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
-    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
-    inputFormalParameter:droppedInputFormalArgument ->inputFormalParameter error "this branch drops the '%K' input formal argument, while previous let it defined"
-    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
-    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
-    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "this branch drops the '%K' input formal argument defined, while previous ones let it defined"
-    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused
-    localConstant:usedLocalConstant -> usedLocalConstant
-    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
-    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument error "this branch defines the '%K' output formal argument, while previous ones let it undefined"
-    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"
-    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
-    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
-    usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
-    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
-    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
-    usedLocalVariable:undefinedLocalVariable -> usedLocalVariable error "this branch lets the '%K' variable undefined, while previous defines let it"
+    readLocalConstant:undefinedLocalConstant -> undefinedLocalConstant error "this branch lets the '%K' constant defined, while previous ones do not define it"
+    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "this branch lets the '%K' constant defined, while previous ones drop it"
+    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedLocalConstant:droppedLocalConstant
+      -> droppedLocalConstant warning "this branch lets the '%K' undefined, while previous ones drop it"
+    localConstant:droppedLocalConstant
+      -> droppedLocalConstant error "this branch let the '%K' constant defined, while previous ones drop it"
+    droppedLocalConstant:readLocalConstant
+       -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
+    droppedLocalConstant:localConstant
+        -> droppedLocalConstant error "this branch drops the '%K' constant, while previous ones let it defined"
+    droppedLocalConstant:undefinedLocalConstant
+        -> droppedLocalConstant warning "this branch drops the '%K' constant, while previous ones let it undefined"
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier
+        -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier
+        -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
+    constantInputFormalArgument:usedConstantInputFormalArgument
+        -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument
+        -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable
+        -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    definedLocalVariable:undefinedLocalVariable
+        -> definedLocalVariable error "this branch lets the '%K' variable undefined, while previous ones define it"
+    definedLocalVariable:usedLocalVariable
+        -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument
+        -> definedOutputFormalArgument error "this branch lets the '%K' variable undefined, while previous ones define it"
+    droppedInputFormalArgument:inputFormalParameter
+       -> droppedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    droppedInputFormalArgument:inputFormalArgumentDeclaredAsUnused
+       -> droppedInputFormalArgument
+    droppedInputFormalArgument:usedInputFormalArgument
+       -> usedInputFormalArgument error "this branch defines the '%K' input formal argument, while previous ones let it dropped"
+    droppedInputOutputFormalArgument:inputOutputFormalArgumentDeclaredAsUnused
+       -> inputOutputFormalArgumentDeclaredAsUnused error "this branch lets the '%K' input formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:unusedInputOutputFormalArgument
+       -> unusedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument
+       -> usedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedLocalVariable:definedLocalVariable
+       -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    droppedLocalVariable:usedLocalVariable
+       -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    inputFormalParameter:droppedInputFormalArgument
+       ->inputFormalParameter error "this branch drops the '%K' input formal argument, while previous let it defined"
+    inputFormalParameter:usedInputFormalArgument
+       -> usedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument
+       -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument
+       -> inputOutputFormalArgumentDeclaredAsUnused error "this branch drops the '%K' input formal argument defined, while previous ones let it defined"
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument
+       -> inputOutputFormalArgumentDeclaredAsUnused
+    localConstant:readLocalConstant
+       -> readLocalConstant
+    undefinedLocalVariable:definedLocalVariable
+       -> definedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedOutputFormalArgument:definedOutputFormalArgument
+       -> definedOutputFormalArgument error "this branch defines the '%K' output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument
+       -> unusedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument
+       -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument
+       -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument
+       -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
+    usedLocalVariable:droppedLocalVariable 
+       -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    droppedLocalVariable:undefinedLocalVariable
+       -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable
+       -> undefinedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    usedLocalVariable:undefinedLocalVariable
+       -> usedLocalVariable error "this branch lets the '%K' variable undefined, while previous defines let it"
   }
 
 #--- 'repeatBlock' override definitions
   override repeatBlock {
     undefinedLocalConstant:localConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
-    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
+    undefinedLocalConstant:readLocalConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
     currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "the repeated branch should not drop the '%K' attribute"
     currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
@@ -322,7 +399,7 @@ sharedmap @variableMap {
     inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
     inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "the repeated branch should not drop the '%K' input/output formal argument"
     inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
-    localConstant:usedLocalConstant -> usedLocalConstant
+    localConstant:readLocalConstant -> readLocalConstant
     undefinedLocalVariable:definedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
     undefinedOutputFormalArgument:definedOutputFormalArgument -> undefinedOutputFormalArgument error "the repeated branch should not define the '%K' output formal argument"
     unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
@@ -334,14 +411,29 @@ sharedmap @variableMap {
     droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "the repeated branch should not define the dropped '%K' variable"
     undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
     undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
+    localConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    droppedLocalConstant:localConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    localConstant:undefinedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant undefined"
+    readLocalConstant:undefinedLocalConstant -> readLocalConstant error "a branch lets the '%K' constant undefined"
+    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant
+    undefinedLocalConstant:droppedLocalConstant -> droppedLocalConstant
+    readLocalConstant:localConstant -> readLocalConstant
   }{
+    droppedLocalConstant:localConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    localConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    droppedLocalConstant:readLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    readLocalConstant:droppedLocalConstant -> droppedLocalConstant error "a branch lets the '%K' constant dropped"
+    droppedLocalConstant:undefinedLocalConstant -> droppedLocalConstant warning "a branch drops the '%K' constant, while other one lets it undefined"
+    undefinedLocalConstant:droppedLocalConstant -> droppedLocalConstant warning "a branch drops the '%K' constant, while other one lets it undefined"
     currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     definedLocalVariable:usedLocalVariable -> usedLocalVariable
     inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
     inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
-    localConstant:usedLocalConstant -> usedLocalConstant
+    localConstant:readLocalConstant -> readLocalConstant
     inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
     usedInputOutputFormalArgument:unusedInputOutputFormalArgument -> usedInputOutputFormalArgument
     droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
