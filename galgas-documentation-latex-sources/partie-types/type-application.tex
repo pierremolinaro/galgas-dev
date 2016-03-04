@@ -395,14 +395,14 @@ end
 
 \section{Instrospection des composants lexique}
 
-\subsectionConstructor{keywordListIdentifiers}{application}
+\subsectionConstructor{keywordIdentifierSet}{application}
 
 \begin{galgasbox}
-constructor @application keywordListIdentifiers -> @stringlist
+constructor @application keywordIdentifierSet -> @stringset
 \end{galgasbox}
 
 
-Ce constructeur renvoie la liste des identificateurs des listes de mots réservés définies dans les composants lexiques du projet. Un identificateur est composé du nom du lexique, suivi de « \texttt{:} », et du nom de la liste de mots réservés.
+Ce constructeur renvoie l'ensemble des identificateurs des listes de mots réservés définies dans les composants lexiques du projet. Un identificateur est composé du nom du lexique, suivi de «~\texttt{:}~», et du nom de la liste des mots réservés.
 
 
 Si par exemple un projet définit le composant lexique suivant :
@@ -419,8 +419,40 @@ lexique monLexique {
 
 Alors :
 \begin{galgas}
-let theList = @application.keywordListIdentifiers
+let theList = @application.keywordIdentifierSet
 log theList # "monLexique:mots1", "monLexique:mots2"
+\end{galgas}
+
+
+
+
+
+\subsectionConstructor{keywordListForIdentifier}{application}
+
+\begin{galgasbox}
+constructor @application keywordListForIdentifier
+  ?@string inIdentifier
+  -> @stringlist
+\end{galgasbox}
+
+
+Ce constructeur renvoie le contenu de la liste désignée par \ggs!inIdentifier!. Si \ggs!inIdentifier! n'est pas une des valeurs renvoyées par le \refConstructorPage{application}{keywordIdentifierSet}, la liste retournée est vide.
+
+
+Si par exemple un projet définit le composant lexique suivant :
+
+\begin{galgas}
+lexique monLexique {
+  ...
+  list mots ... { "a", "b", "c" }
+  ...
+}
+\end{galgas}
+
+Alors :
+\begin{galgas}
+let theList = @application.keywordListForIdentifier {!"monLexique:mots"}
+log theList # "a", "b", "c"
 \end{galgas}
 
 
