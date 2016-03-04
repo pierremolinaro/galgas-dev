@@ -10243,15 +10243,151 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void getKeywordLists_galgas_33_Scanner (TC_UniqueArray <C_String> & ioList) {
-  ioList.addObject ("galgas_33_Scanner:galgasDelimitorsList") ;
-  ioList.addObject ("galgas_33_Scanner:galgasKeyWordList") ;
+  ioList.addObject ("galgas3Scanner:galgasDelimitorsList") ;
+  ioList.addObject ("galgas3Scanner:galgasKeyWordList") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdentifier,
+                                                        bool & ioFound,
+                                                        TC_UniqueArray <C_String> & ioList) {
+  if (inIdentifier == "galgas3Scanner:galgasDelimitorsList") {
+    ioFound = true ;
+    ioList.addObject ("&") ;
+    ioList.addObject ("(") ;
+    ioList.addObject (")") ;
+    ioList.addObject ("*") ;
+    ioList.addObject ("+") ;
+    ioList.addObject (",") ;
+    ioList.addObject ("-") ;
+    ioList.addObject ("/") ;
+    ioList.addObject (":") ;
+    ioList.addObject (";") ;
+    ioList.addObject ("=") ;
+    ioList.addObject (">") ;
+    ioList.addObject ("[") ;
+    ioList.addObject ("]") ;
+    ioList.addObject ("^") ;
+    ioList.addObject ("`") ;
+    ioList.addObject ("{") ;
+    ioList.addObject ("|") ;
+    ioList.addObject ("}") ;
+    ioList.addObject ("~") ;
+    ioList.addObject ("!=") ;
+    ioList.addObject ("&&") ;
+    ioList.addObject ("&*") ;
+    ioList.addObject ("&+") ;
+    ioList.addObject ("&-") ;
+    ioList.addObject ("&/") ;
+    ioList.addObject ("*=") ;
+    ioList.addObject ("++") ;
+    ioList.addObject ("+=") ;
+    ioList.addObject ("--") ;
+    ioList.addObject ("-=") ;
+    ioList.addObject ("->") ;
+    ioList.addObject ("/=") ;
+    ioList.addObject (":>") ;
+    ioList.addObject ("==") ;
+    ioList.addObject (">=") ;
+    ioList.addObject (">>") ;
+    ioList.addObject ("||") ;
+    ioList.addObject ("&++") ;
+    ioList.addObject ("&--") ;
+  }
+  if (inIdentifier == "galgas3Scanner:galgasKeyWordList") {
+    ioFound = true ;
+    ioList.addObject ("as") ;
+    ioList.addObject ("do") ;
+    ioList.addObject ("if") ;
+    ioList.addObject ("in") ;
+    ioList.addObject ("is") ;
+    ioList.addObject ("on") ;
+    ioList.addObject ("or") ;
+    ioList.addObject ("end") ;
+    ioList.addObject ("for") ;
+    ioList.addObject ("gui") ;
+    ioList.addObject ("let") ;
+    ioList.addObject ("log") ;
+    ioList.addObject ("map") ;
+    ioList.addObject ("mod") ;
+    ioList.addObject ("not") ;
+    ioList.addObject ("tag") ;
+    ioList.addObject ("var") ;
+    ioList.addObject ("case") ;
+    ioList.addObject ("cast") ;
+    ioList.addObject ("drop") ;
+    ioList.addObject ("else") ;
+    ioList.addObject ("enum") ;
+    ioList.addObject ("func") ;
+    ioList.addObject ("list") ;
+    ioList.addObject ("loop") ;
+    ioList.addObject ("proc") ;
+    ioList.addObject ("rule") ;
+    ioList.addObject ("self") ;
+    ioList.addObject ("send") ;
+    ioList.addObject ("then") ;
+    ioList.addObject ("true") ;
+    ioList.addObject ("with") ;
+    ioList.addObject ("after") ;
+    ioList.addObject ("array") ;
+    ioList.addObject ("block") ;
+    ioList.addObject ("class") ;
+    ioList.addObject ("elsif") ;
+    ioList.addObject ("error") ;
+    ioList.addObject ("false") ;
+    ioList.addObject ("graph") ;
+    ioList.addObject ("label") ;
+    ioList.addObject ("local") ;
+    ioList.addObject ("match") ;
+    ioList.addObject ("parse") ;
+    ioList.addObject ("state") ;
+    ioList.addObject ("style") ;
+    ioList.addObject ("while") ;
+    ioList.addObject ("before") ;
+    ioList.addObject ("extern") ;
+    ioList.addObject ("getter") ;
+    ioList.addObject ("insert") ;
+    ioList.addObject ("method") ;
+    ioList.addObject ("option") ;
+    ioList.addObject ("remove") ;
+    ioList.addObject ("repeat") ;
+    ioList.addObject ("rewind") ;
+    ioList.addObject ("search") ;
+    ioList.addObject ("select") ;
+    ioList.addObject ("setter") ;
+    ioList.addObject ("struct") ;
+    ioList.addObject ("switch") ;
+    ioList.addObject ("syntax") ;
+    ioList.addObject ("unused") ;
+    ioList.addObject ("between") ;
+    ioList.addObject ("default") ;
+    ioList.addObject ("grammar") ;
+    ioList.addObject ("lexique") ;
+    ioList.addObject ("listmap") ;
+    ioList.addObject ("message") ;
+    ioList.addObject ("private") ;
+    ioList.addObject ("project") ;
+    ioList.addObject ("replace") ;
+    ioList.addObject ("warning") ;
+    ioList.addObject ("abstract") ;
+    ioList.addObject ("indexing") ;
+    ioList.addObject ("operator") ;
+    ioList.addObject ("override") ;
+    ioList.addObject ("template") ;
+    ioList.addObject ("extension") ;
+    ioList.addObject ("sharedmap") ;
+    ioList.addObject ("sortedlist") ;
+    ioList.addObject ("constructor") ;
+    ioList.addObject ("filewrapper") ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 static cLexiqueIntrospection lexiqueIntrospection_galgas_33_Scanner
 __attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner) ;
+__attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner, getKeywordsForIdentifier_galgas_33_Scanner) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *

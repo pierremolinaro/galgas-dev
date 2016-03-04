@@ -451,7 +451,16 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !name:"keywordListIdentifiers"
+    !name:"keywordIdentifierSet"
+    !resultTypeName:"stringset"
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"keywordListForIdentifier"
+    !argTypeName:"string"
+    !argName:"inIdentifier"
     !resultTypeName:"stringlist"
     !hasLexiqueAndLocationArgs:false
   )

@@ -4318,9 +4318,155 @@ static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <C_String> & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inIdentifier,
+                                                            bool & ioFound,
+                                                            TC_UniqueArray <C_String> & ioList) {
+  if (inIdentifier == "galgasTemplateScanner:galgasDelimitorsList") {
+    ioFound = true ;
+    ioList.addObject ("&") ;
+    ioList.addObject ("(") ;
+    ioList.addObject (")") ;
+    ioList.addObject ("*") ;
+    ioList.addObject ("+") ;
+    ioList.addObject (",") ;
+    ioList.addObject ("-") ;
+    ioList.addObject ("/") ;
+    ioList.addObject (":") ;
+    ioList.addObject (";") ;
+    ioList.addObject (">") ;
+    ioList.addObject ("[") ;
+    ioList.addObject ("]") ;
+    ioList.addObject ("^") ;
+    ioList.addObject ("{") ;
+    ioList.addObject ("|") ;
+    ioList.addObject ("}") ;
+    ioList.addObject ("~") ;
+    ioList.addObject ("!=") ;
+    ioList.addObject ("!^") ;
+    ioList.addObject ("&+") ;
+    ioList.addObject ("&/") ;
+    ioList.addObject ("++") ;
+    ioList.addObject ("+=") ;
+    ioList.addObject ("--") ;
+    ioList.addObject ("->") ;
+    ioList.addObject (":=") ;
+    ioList.addObject (":>") ;
+    ioList.addObject ("==") ;
+    ioList.addObject (">=") ;
+    ioList.addObject (">>") ;
+    ioList.addObject ("\?\?") ;
+    ioList.addObject ("\?^") ;
+    ioList.addObject ("&++") ;
+    ioList.addObject ("&--") ;
+  }
+  if (inIdentifier == "galgasTemplateScanner:galgasKeyWordList") {
+    ioFound = true ;
+    ioList.addObject ("do") ;
+    ioList.addObject ("if") ;
+    ioList.addObject ("in") ;
+    ioList.addObject ("is") ;
+    ioList.addObject ("on") ;
+    ioList.addObject ("or") ;
+    ioList.addObject ("end") ;
+    ioList.addObject ("for") ;
+    ioList.addObject ("gui") ;
+    ioList.addObject ("let") ;
+    ioList.addObject ("log") ;
+    ioList.addObject ("map") ;
+    ioList.addObject ("mod") ;
+    ioList.addObject ("not") ;
+    ioList.addObject ("tag") ;
+    ioList.addObject ("var") ;
+    ioList.addObject ("case") ;
+    ioList.addObject ("cast") ;
+    ioList.addObject ("drop") ;
+    ioList.addObject ("else") ;
+    ioList.addObject ("enum") ;
+    ioList.addObject ("func") ;
+    ioList.addObject ("here") ;
+    ioList.addObject ("list") ;
+    ioList.addObject ("loop") ;
+    ioList.addObject ("once") ;
+    ioList.addObject ("proc") ;
+    ioList.addObject ("root") ;
+    ioList.addObject ("rule") ;
+    ioList.addObject ("self") ;
+    ioList.addObject ("send") ;
+    ioList.addObject ("then") ;
+    ioList.addObject ("true") ;
+    ioList.addObject ("when") ;
+    ioList.addObject ("with") ;
+    ioList.addObject ("after") ;
+    ioList.addObject ("array") ;
+    ioList.addObject ("block") ;
+    ioList.addObject ("class") ;
+    ioList.addObject ("const") ;
+    ioList.addObject ("elsif") ;
+    ioList.addObject ("error") ;
+    ioList.addObject ("false") ;
+    ioList.addObject ("graph") ;
+    ioList.addObject ("index") ;
+    ioList.addObject ("label") ;
+    ioList.addObject ("local") ;
+    ioList.addObject ("match") ;
+    ioList.addObject ("parse") ;
+    ioList.addObject ("state") ;
+    ioList.addObject ("style") ;
+    ioList.addObject ("while") ;
+    ioList.addObject ("before") ;
+    ioList.addObject ("extern") ;
+    ioList.addObject ("getter") ;
+    ioList.addObject ("import") ;
+    ioList.addObject ("insert") ;
+    ioList.addObject ("method") ;
+    ioList.addObject ("option") ;
+    ioList.addObject ("remove") ;
+    ioList.addObject ("repeat") ;
+    ioList.addObject ("rewind") ;
+    ioList.addObject ("search") ;
+    ioList.addObject ("select") ;
+    ioList.addObject ("setter") ;
+    ioList.addObject ("struct") ;
+    ioList.addObject ("switch") ;
+    ioList.addObject ("syntax") ;
+    ioList.addObject ("unused") ;
+    ioList.addObject ("between") ;
+    ioList.addObject ("default") ;
+    ioList.addObject ("extends") ;
+    ioList.addObject ("feature") ;
+    ioList.addObject ("foreach") ;
+    ioList.addObject ("grammar") ;
+    ioList.addObject ("lexique") ;
+    ioList.addObject ("listmap") ;
+    ioList.addObject ("message") ;
+    ioList.addObject ("private") ;
+    ioList.addObject ("project") ;
+    ioList.addObject ("replace") ;
+    ioList.addObject ("routine") ;
+    ioList.addObject ("warning") ;
+    ioList.addObject ("abstract") ;
+    ioList.addObject ("function") ;
+    ioList.addObject ("indexing") ;
+    ioList.addObject ("modifier") ;
+    ioList.addObject ("operator") ;
+    ioList.addObject ("override") ;
+    ioList.addObject ("selfcopy") ;
+    ioList.addObject ("template") ;
+    ioList.addObject ("extension") ;
+    ioList.addObject ("semantics") ;
+    ioList.addObject ("sharedmap") ;
+    ioList.addObject ("sortedlist") ;
+    ioList.addObject ("constructor") ;
+    ioList.addObject ("filewrapper") ;
+    ioList.addObject ("nonterminal") ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 static cLexiqueIntrospection lexiqueIntrospection_galgasTemplateScanner
 __attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner) ;
+__attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForIdentifier_galgasTemplateScanner) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *

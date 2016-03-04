@@ -357,7 +357,24 @@ if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for () in LEXICAL_TOKEN_LIST_MAP do
-  %  ioList.addObject (%![LEXIQUE_IDENTIFIER + ":" + lkey utf8Representation]%) ;\n%
+  %  ioList.addObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
+end
+%}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER% (%?^%const C_String & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* inIdentifier */% else %inIdentifier% end%,
+     %!^%bool & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioFound */% else %ioFound% end%,
+     %!^%TC_UniqueArray <C_String> & %if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
+%) {
+%
+for () in LEXICAL_TOKEN_LIST_MAP do
+  %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) {\n%
+  %    ioFound = true ;\n%
+  for () in mTokenSortedList do
+    %    ioList.addObject (%![mName utf8Representation]%) ;\n%
+  end
+  %  }\n%
 end
 %}
 
@@ -365,7 +382,7 @@ end
 
 static cLexiqueIntrospection lexiqueIntrospection_%!LEXIQUE_IDENTIFIER%
 __attribute__ ((used))
-__attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%) ;
+__attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%, getKeywordsForIdentifier_%!LEXIQUE_IDENTIFIER%) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *
