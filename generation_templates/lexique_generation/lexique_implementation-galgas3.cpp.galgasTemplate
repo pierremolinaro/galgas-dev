@@ -6,6 +6,7 @@
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
+#include "galgas2/cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -348,6 +349,23 @@ GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   end
 %  return result ;
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordLists_%!LEXIQUE_IDENTIFIER% (TC_UniqueArray <C_String> & %
+if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
+%) {
+%
+for () in LEXICAL_TOKEN_LIST_MAP do
+  %  ioList.addObject (%![LEXIQUE_IDENTIFIER + ":" + lkey utf8Representation]%) ;\n%
+end
+%}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static cLexiqueIntrospection lexiqueIntrospection_%!LEXIQUE_IDENTIFIER%
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_%!LEXIQUE_IDENTIFIER%) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *

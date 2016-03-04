@@ -50,6 +50,8 @@ extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOp
 
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_generatePredefinedTypes ;
 
+extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_outputKeywordList ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              String List options                                                                    *

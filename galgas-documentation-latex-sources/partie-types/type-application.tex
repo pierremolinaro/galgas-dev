@@ -379,3 +379,48 @@ if @application.verboseOutput then
   # impressions de la sortie verbeuse
 end
 \end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Instrospection des composants lexique}
+
+\subsectionConstructor{keywordListIdentifiers}{application}
+
+\begin{galgasbox}
+constructor @application keywordListIdentifiers -> @stringlist
+\end{galgasbox}
+
+
+Ce constructeur renvoie la liste des identificateurs des listes de mots réservés définies dans les composants lexiques du projet. Un identificateur est composé du nom du lexique, suivi de « \texttt{:} », et du nom de la liste de mots réservés.
+
+
+Si par exemple un projet définit le composant lexique suivant :
+
+\begin{galgas}
+lexique monLexique {
+  ...
+  list mots1 ... { ... }
+  ...
+  list mots2 ... { ... }
+  ...
+}
+\end{galgas}
+
+Alors :
+\begin{galgas}
+let theList = @application.keywordListIdentifiers
+log theList # "monLexique:mots1", "monLexique:mots2"
+\end{galgas}
+
+
