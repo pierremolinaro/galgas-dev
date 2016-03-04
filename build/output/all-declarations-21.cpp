@@ -10,314 +10,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList_2D_element::GALGAS_typeNameFormalParameterNameList_2D_element (void) :
-mAttribute_mFormalSelector (),
-mAttribute_mFormalParameterTypeName (),
-mAttribute_mFormalParameterName () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList_2D_element::~ GALGAS_typeNameFormalParameterNameList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList_2D_element::GALGAS_typeNameFormalParameterNameList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                      const GALGAS_lstring & inOperand1,
-                                                                                                      const GALGAS_lstring & inOperand2) :
-mAttribute_mFormalSelector (inOperand0),
-mAttribute_mFormalParameterTypeName (inOperand1),
-mAttribute_mFormalParameterName (inOperand2) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameterNameList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_typeNameFormalParameterNameList_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameterNameList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                      const GALGAS_lstring & inOperand1,
-                                                                                                                      const GALGAS_lstring & inOperand2 
-                                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_typeNameFormalParameterNameList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_typeNameFormalParameterNameList_2D_element (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_typeNameFormalParameterNameList_2D_element::objectCompare (const GALGAS_typeNameFormalParameterNameList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalSelector.objectCompare (inOperand.mAttribute_mFormalSelector) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalParameterTypeName.objectCompare (inOperand.mAttribute_mFormalParameterTypeName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalParameterName.objectCompare (inOperand.mAttribute_mFormalParameterName) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_typeNameFormalParameterNameList_2D_element::isValid (void) const {
-  return mAttribute_mFormalSelector.isValid () && mAttribute_mFormalParameterTypeName.isValid () && mAttribute_mFormalParameterName.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_typeNameFormalParameterNameList_2D_element::drop (void) {
-  mAttribute_mFormalSelector.drop () ;
-  mAttribute_mFormalParameterTypeName.drop () ;
-  mAttribute_mFormalParameterName.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_typeNameFormalParameterNameList_2D_element::description (C_String & ioString,
-                                                                     const int32_t inIndentation) const {
-  ioString << "<struct @typeNameFormalParameterNameList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mFormalSelector.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalParameterTypeName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalParameterName.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalSelector (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalSelector ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalParameterTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalParameterTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_typeNameFormalParameterNameList_2D_element::getter_mFormalParameterName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalParameterName ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @typeNameFormalParameterNameList-element type                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2D_element ("typeNameFormalParameterNameList-element",
-                                                                   NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_typeNameFormalParameterNameList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_typeNameFormalParameterNameList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_typeNameFormalParameterNameList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList_2D_element GALGAS_typeNameFormalParameterNameList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_typeNameFormalParameterNameList_2D_element result ;
-  const GALGAS_typeNameFormalParameterNameList_2D_element * p = (const GALGAS_typeNameFormalParameterNameList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_typeNameFormalParameterNameList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("typeNameFormalParameterNameList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element::GALGAS_externTypeConstructorList_2D_element (void) :
-mAttribute_mConstructorName (),
-mAttribute_mResultTypeName (),
-mAttribute_mParameterList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element::~ GALGAS_externTypeConstructorList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element::GALGAS_externTypeConstructorList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_lstring & inOperand1,
-                                                                                          const GALGAS_typeNameFormalParameterNameList & inOperand2) :
-mAttribute_mConstructorName (inOperand0),
-mAttribute_mResultTypeName (inOperand1),
-mAttribute_mParameterList (inOperand2) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_externTypeConstructorList_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_typeNameFormalParameterNameList::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                          const GALGAS_lstring & inOperand1,
-                                                                                                          const GALGAS_typeNameFormalParameterNameList & inOperand2 
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_externTypeConstructorList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_externTypeConstructorList_2D_element (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_externTypeConstructorList_2D_element::objectCompare (const GALGAS_externTypeConstructorList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mConstructorName.objectCompare (inOperand.mAttribute_mConstructorName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mResultTypeName.objectCompare (inOperand.mAttribute_mResultTypeName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mParameterList.objectCompare (inOperand.mAttribute_mParameterList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_externTypeConstructorList_2D_element::isValid (void) const {
-  return mAttribute_mConstructorName.isValid () && mAttribute_mResultTypeName.isValid () && mAttribute_mParameterList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_externTypeConstructorList_2D_element::drop (void) {
-  mAttribute_mConstructorName.drop () ;
-  mAttribute_mResultTypeName.drop () ;
-  mAttribute_mParameterList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_externTypeConstructorList_2D_element::description (C_String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString << "<struct @externTypeConstructorList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mConstructorName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mResultTypeName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mParameterList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::getter_mConstructorName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mConstructorName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_externTypeConstructorList_2D_element::getter_mResultTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mResultTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_typeNameFormalParameterNameList GALGAS_externTypeConstructorList_2D_element::getter_mParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mParameterList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       @externTypeConstructorList-element type                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ("externTypeConstructorList-element",
-                                                             NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_externTypeConstructorList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_externTypeConstructorList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_externTypeConstructorList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_externTypeConstructorList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_externTypeConstructorList_2D_element GALGAS_externTypeConstructorList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_externTypeConstructorList_2D_element result ;
-  const GALGAS_externTypeConstructorList_2D_element * p = (const GALGAS_externTypeConstructorList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_externTypeConstructorList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("externTypeConstructorList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_externTypeGetterList_2D_element::GALGAS_externTypeGetterList_2D_element (void) :
 mAttribute_mGetterName (),
 mAttribute_mResultTypeName (),
@@ -14811,4 +14503,117 @@ static void defineCategoryMethod_templateGetterCallInExpressionAST_templateExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis (defineCategoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                   Overriding category method '@templateConstructorAST templateExpressionAnalysis'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                                              const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+                                                                              GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_templateConstructorAST * object = (const cPtr_templateConstructorAST *) inObject ;
+  macroValidSharedObject (object, cPtr_templateConstructorAST) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_constructorType = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mTypeName, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 163)) ;
+  GALGAS_constructorMap var_constructorMap = var_constructorType.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 165)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_returnedType ;
+  GALGAS_bool var_hasCompilerArgument ;
+  GALGAS_functionSignature var_constructorFormalArgumentTypeList ;
+  const cMapElement_constructorMap * objectArray_9468 = (const cMapElement_constructorMap *) var_constructorMap.readAccessForWithInstruction (object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 170))) ;
+  if (NULL != objectArray_9468) {
+      macroValidSharedObject (objectArray_9468, cMapElement_constructorMap) ;
+    var_constructorFormalArgumentTypeList = objectArray_9468->mAttribute_mArgumentTypeList ;
+    var_hasCompilerArgument = objectArray_9468->mAttribute_mHasCompilerArgument ;
+    var_returnedType = objectArray_9468->mAttribute_mReturnedType ;
+  }else{
+    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_constructorMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 175)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      GALGAS_location location_1 (object->mAttribute_mConstructorName.getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_1, GALGAS_string ("the '@").add_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 177)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 177)).add_operation (GALGAS_string ("' type does not define any constructor"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 177))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 176)) ;
+      var_constructorFormalArgumentTypeList.drop () ; // Release error dropped variable
+      var_hasCompilerArgument.drop () ; // Release error dropped variable
+      var_returnedType.drop () ; // Release error dropped variable
+    }else if (kBoolFalse == test_0) {
+      GALGAS_string var_s = GALGAS_string::makeEmptyString () ;
+      cEnumerator_constructorMap enumerator_9939 (var_constructorMap, kEnumeration_up) ;
+      while (enumerator_9939.hasCurrentObject ()) {
+        var_s.plusAssign_operation(GALGAS_string ("\n"
+          "  - ").add_operation (enumerator_9939.current_lkey (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 182)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 182)) ;
+        cEnumerator_functionSignature enumerator_10007 (enumerator_9939.current_mArgumentTypeList (HERE), kEnumeration_up) ;
+        while (enumerator_10007.hasCurrentObject ()) {
+          GALGAS_string temp_2 ;
+          const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, enumerator_10007.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+          if (kBoolTrue == test_3) {
+            temp_2 = enumerator_10007.current_mFormalSelector (HERE).mAttribute_string.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)) ;
+          }else if (kBoolFalse == test_3) {
+            temp_2 = GALGAS_string::makeEmptyString () ;
+          }
+          var_s.plusAssign_operation(GALGAS_string (" \?").add_operation (temp_2, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)).add_operation (GALGAS_string ("@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)).add_operation (enumerator_10007.current_mFormalArgumentType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 184)) ;
+          enumerator_10007.gotoNextObject () ;
+        }
+        var_s.plusAssign_operation(GALGAS_string (" -> @").add_operation (enumerator_9939.current_mReturnedType (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 186)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 186)) ;
+        enumerator_9939.gotoNextObject () ;
+      }
+      GALGAS_string temp_4 ;
+      const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, var_constructorMap.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 190)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+      if (kBoolTrue == test_5) {
+        temp_4 = GALGAS_string ("available constructors are") ;
+      }else if (kBoolFalse == test_5) {
+        temp_4 = GALGAS_string ("available constructor is") ;
+      }
+      GALGAS_location location_6 (object->mAttribute_mConstructorName.getter_location (HERE)) ; // Implicit use of 'location' getter
+      inCompiler->emitSemanticError (location_6, GALGAS_string ("the '@").add_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string ("' type does not define the '"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string ("' constructor; "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (temp_4, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 189)).add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 190)).add_operation (var_s, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 191))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 188)) ;
+      var_constructorFormalArgumentTypeList.drop () ; // Release error dropped variable
+      var_hasCompilerArgument.drop () ; // Release error dropped variable
+      var_returnedType.drop () ; // Release error dropped variable
+    }
+  }
+  GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList ;
+  const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, object->mAttribute_mExpressionList.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 197)).objectCompare (var_constructorFormalArgumentTypeList.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 197)))).boolEnum () ;
+  if (kBoolTrue == test_7) {
+    GALGAS_location location_8 (object->mAttribute_mConstructorName.getter_location (HERE)) ; // Implicit use of 'location' getter
+    inCompiler->emitSemanticError (location_8, GALGAS_string ("calling the '").add_operation (object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string ("' constructor of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 199)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string ("' requires "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (var_constructorFormalArgumentTypeList.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 200)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 200)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 199)).add_operation (GALGAS_string (" parameter(s), while this call has "), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 200)).add_operation (object->mAttribute_mExpressionList.getter_length (SOURCE_FILE ("templateAnalysis.galgas", 201)).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 200)).add_operation (GALGAS_string (" parameter(s)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 201))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 198)) ;
+    var_constructorEffectiveParameterList.drop () ; // Release error dropped variable
+  }else if (kBoolFalse == test_7) {
+    var_constructorEffectiveParameterList = GALGAS_semanticExpressionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 204)) ;
+    cEnumerator_templateExpressionListAST enumerator_11173 (object->mAttribute_mExpressionList, kEnumeration_up) ;
+    cEnumerator_functionSignature enumerator_11214 (var_constructorFormalArgumentTypeList, kEnumeration_up) ;
+    while (enumerator_11173.hasCurrentObject () && enumerator_11214.hasCurrentObject ()) {
+      GALGAS_semanticExpressionForGeneration var_exp ;
+      callCategoryMethod_templateExpressionAnalysis ((const cPtr_templateExpressionAST *) enumerator_11173.current_mExpression (HERE).ptr (), constinArgument_inAnalysisContext, var_exp, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 207)) ;
+      const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, enumerator_11214.current_mFormalSelector (HERE).mAttribute_string.objectCompare (enumerator_11173.current_mActualSelector (HERE).mAttribute_string)).boolEnum () ;
+      if (kBoolTrue == test_9) {
+        GALGAS_string temp_10 ;
+        const enumGalgasBool test_11 = GALGAS_bool (kIsNotEqual, enumerator_11214.current_mFormalSelector (HERE).mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        if (kBoolTrue == test_11) {
+          temp_10 = GALGAS_string (":") ;
+        }else if (kBoolFalse == test_11) {
+          temp_10 = GALGAS_string::makeEmptyString () ;
+        }
+        GALGAS_location location_12 (enumerator_11173.current_mActualSelector (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
+        inCompiler->emitSemanticError (location_12, GALGAS_string ("the selector should be '!").add_operation (enumerator_11214.current_mFormalSelector (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)).add_operation (temp_10, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 209)) ;
+      }
+      {
+      routine_checkAssignmentTypes (enumerator_11214.current_mFormalArgumentType (HERE), var_exp.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 211)), enumerator_11173.current_mEndOfExpressionLocation (HERE), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 211)) ;
+      }
+      var_constructorEffectiveParameterList.addAssign_operation (var_exp  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 212)) ;
+      enumerator_11173.gotoNextObject () ;
+      enumerator_11214.gotoNextObject () ;
+    }
+  }
+  outArgument_outExpression = GALGAS_constructorExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mConstructorName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 218)), var_constructorType, object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 220)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 216)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_templateConstructorAST_templateExpressionAnalysis (void) {
+  enterCategoryMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateConstructorAST.mSlotID,
+                                                  categoryMethod_templateConstructorAST_templateExpressionAnalysis) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_templateConstructorAST_templateExpressionAnalysis (defineCategoryMethod_templateConstructorAST_templateExpressionAnalysis, NULL) ;
 

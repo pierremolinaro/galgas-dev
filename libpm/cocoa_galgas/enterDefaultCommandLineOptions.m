@@ -48,28 +48,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
   [ioBoolOptionArray addObject:option] ;
   
 
-//  option = [[OC_GGS_CommandLineOption alloc]
-//    initWithDomainName:@"galgas_cli_options"
-//    identifier:@"quiet_output"
-//    commandChar:'q'
-//    commandString:@"quiet"
-//    comment:@"Quiet output"
-//    defaultValue:@""
-//  ] ;
-//  [ioBoolOptionArray addObject:option] ;
-  
-
-//  option = [[OC_GGS_CommandLineOption alloc]
-//    initWithDomainName:@"galgas_cli_options"
-//    identifier:@"verbose_output"
-//    commandChar:'v'
-//    commandString:@"verbose"
-//    comment:@"Verbose output"
-//    defaultValue:@""
-//  ] ;
-//  [ioBoolOptionArray addObject:option] ;
-  
-
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
     identifier:@"log_file_read"
@@ -156,7 +134,17 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioStringOptionArray addObject:option] ;
+  
+
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
+    identifier:@"outputKeywordList"
+    commandChar:'\0'
+    commandString:@"output-keyword-list-file"
+    comment:@"Output a Latex file containing keyword list"
+    defaultValue:@""
+  ] ;
+  [ioStringOptionArray addObject:option] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-

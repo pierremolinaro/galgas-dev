@@ -1132,6 +1132,17 @@ void C_String::reverseStringInPlace (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool C_String::isUnsignedInteger (void) const {
+  bool ok = length () > 0 ;
+  for (int32_t i=0 ; (i < length ()) && ok ; i++) {
+    const uint32_t c = UNICODE_VALUE (this->operator () (i COMMA_HERE)) ;
+    ok = (c >= '0') && (c <= '9') ;
+  }
+  return ok ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 uint32_t C_String::unsignedIntegerValue (void) const {
   uint32_t result = 0 ;
   bool ok = true ;

@@ -15,58 +15,58 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-before {
-  let keywordListSpecif = [option galgas_cli_options.outputKeywordList value]
-  if keywordListSpecif != "" then
-    let optionFormat = "lexique_name:list_name:columns:prefix:postfix:path"
-    message "Option \"--" + [option galgas_cli_options.outputKeywordList string] + "=" + keywordListSpecif + "\":\n"
-    let components = [keywordListSpecif componentsSeparatedByString !":"]
-    if [components length] != 6 then
-      error ["" nowhere] : "invalid option ; should be \"--"
-       + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\""
-    elsif not [[components mValueAtIndex !2] isDecimalUnsignedNumber] then
-      error ["" nowhere] : "invalid option ; in \"--"
-       + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\", "
-       + "\"columns\" should be an decimal unsigned number"
-    else
-      let columns = [[components mValueAtIndex !2] decimalUnsignedNumber]
-      let prefix = [components mValueAtIndex !3]
-      let postfix = [components mValueAtIndex !4]
-      let keywordIdentifierSet = @application.keywordIdentifierSet
-      let identifier = [components mValueAtIndex !0] + ":" + [components mValueAtIndex !1]
-      if [keywordIdentifierSet hasKey !identifier] then
-        let nameList = @application.keywordListForIdentifier {!identifier}
-        var idx = 0
-        var s = ""
-        for (name) in nameList do
-          s += "  " + prefix + name + postfix + "  "
-          idx += 1
-          if idx < columns then
-            s += "&"
-          else
-            s += "\\\\\n"
-            idx = 0
-          end
-        end
-        if idx > 0 then
-          for i in idx+1 ..< columns do
-            s += "  &  "
-          end
-          s += "  \\\\\n"
-        end
-        let path = [components mValueAtIndex !5]
-        [s writeToFileWhenDifferentContents !path ?*]
-      else
-        error ["" nowhere] : "invalid option ; in \"--"
-         + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\", "
-         + "available values for \"lexique_name:list_name\" are:"
-        for (l) in keywordIdentifierSet do
-          message "  - " + l + "\n"
-        end
-      end
-    end
-  end
-}
+#before {
+#  let keywordListSpecif = [option galgas_cli_options.outputKeywordList value]
+#  if keywordListSpecif != "" then
+#    let optionFormat = "lexique_name:list_name:columns:prefix:postfix:path"
+#    message "Option \"--" + [option galgas_cli_options.outputKeywordList string] + "=" + keywordListSpecif + "\":\n"
+#    let components = [keywordListSpecif componentsSeparatedByString !":"]
+#    if [components length] != 6 then
+#      error ["" nowhere] : "invalid option ; should be \"--"
+#       + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\""
+#    elsif not [[components mValueAtIndex !2] isDecimalUnsignedNumber] then
+#      error ["" nowhere] : "invalid option ; in \"--"
+#       + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\", "
+#       + "\"columns\" should be an decimal unsigned number"
+#    else
+#      let columns = [[components mValueAtIndex !2] decimalUnsignedNumber]
+#      let prefix = [components mValueAtIndex !3]
+#      let postfix = [components mValueAtIndex !4]
+#      let keywordIdentifierSet = @application.keywordIdentifierSet
+#      let identifier = [components mValueAtIndex !0] + ":" + [components mValueAtIndex !1]
+#      if [keywordIdentifierSet hasKey !identifier] then
+#        let nameList = @application.keywordListForIdentifier {!identifier}
+#        var idx = 0
+#        var s = ""
+#        for (name) in nameList do
+#          s += "  " + prefix + name + postfix + "  "
+#          idx += 1
+#          if idx < columns then
+#            s += "&"
+#          else
+#            s += "\\\\\n"
+#            idx = 0
+#          end
+#        end
+#        if idx > 0 then
+#          for i in idx+1 ..< columns do
+#            s += "  &  "
+#          end
+#          s += "  \\\\\n"
+#        end
+#        let path = [components mValueAtIndex !5]
+#        [s writeToFileWhenDifferentContents !path ?*]
+#      else
+#        error ["" nowhere] : "invalid option ; in \"--"
+#         + [option galgas_cli_options.outputKeywordList string] + "=" + optionFormat + "\", "
+#         + "available values for \"lexique_name:list_name\" are:"
+#        for (l) in keywordIdentifierSet do
+#          message "  - " + l + "\n"
+#        end
+#      end
+#    end
+#  end
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

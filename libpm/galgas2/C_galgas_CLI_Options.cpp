@@ -101,6 +101,15 @@ C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ("galgas_cli
                                          "") ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_outputKeywordList ("galgas_cli_options",
+                                         "outputKeywordList",
+                                         0,
+                                         "output-keyword-list-file",
+                                         "Output a Latex file containing keyword list",
+                                         "") ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //   EXECUTION MODE                                                                                                    *
 //                                                                                                                     *

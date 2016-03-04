@@ -15,7 +15,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 option galgas_cli_options {
-  @string outputKeywordList: '\0', "output-keyword-list-file" -> "Output a Latex file containing keyword list"
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component"
   @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file" -> "Output a HTML file that contains all defined types"
   @string create_project : '\0', "create-project" -> "Create a new GALGAS Project"
