@@ -273,12 +273,29 @@ GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const 
 
 //----------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_application::constructor_keywordListIdentifiers (LOCATION_ARGS) {
-  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+GALGAS_stringset GALGAS_application::constructor_keywordIdentifierSet (LOCATION_ARGS) {
+  GALGAS_stringset result = GALGAS_stringset::constructor_emptySet (THERE) ;
   TC_UniqueArray <C_String> list ;
   cLexiqueIntrospection::getKeywordListNames (list) ;
   for (int32_t i=0 ; i < list.count () ; i++) {
     result.addAssign_operation (GALGAS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_application::constructor_keywordListForIdentifier (const GALGAS_string & inIdentifier
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_stringlist result ;
+  if (inIdentifier.isValid ()) {
+    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    TC_UniqueArray <C_String> list ;
+    bool found = false ;
+    cLexiqueIntrospection::getKeywordListForIdentifier (inIdentifier.stringValue(), found, list) ;
+    for (int32_t i=0 ; i < list.count () ; i++) {
+      result.addAssign_operation (GALGAS_string (list (i COMMA_HERE)) COMMA_HERE) ;
+    }
   }
   return result ;
 }

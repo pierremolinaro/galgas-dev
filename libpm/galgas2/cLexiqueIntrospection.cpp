@@ -28,9 +28,11 @@ static cLexiqueIntrospection * gLexiqueIntrospectionRoot = NULL ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cLexiqueIntrospection::cLexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <C_String> & ioList)) :
+cLexiqueIntrospection::cLexiqueIntrospection (void (*appendKeywordListNames) (TC_UniqueArray <C_String> & ioList),
+                                              Type_getKeywordsForIdentifier getKeywordsForIdentifier) :
 mNext (gLexiqueIntrospectionRoot),
-mAppendKeywordListNames (appendKeywordListNames) {
+mAppendKeywordListNames (appendKeywordListNames),
+mGetKeywordsForIdentifier (getKeywordsForIdentifier) {
   gLexiqueIntrospectionRoot = this ;
 }
 
@@ -41,6 +43,20 @@ void cLexiqueIntrospection::getKeywordListNames (TC_UniqueArray <C_String> & out
   cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
   while (NULL != p) {
     p->mAppendKeywordListNames (outList) ;
+    p = p->mNext ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cLexiqueIntrospection::getKeywordListForIdentifier (const C_String & inIdentifier,
+                                                         bool & outFound,
+                                                         TC_UniqueArray <C_String> & outList) {
+  outFound = false ;
+  outList.setCountToZero () ;
+  cLexiqueIntrospection * p = gLexiqueIntrospectionRoot ;
+  while ((NULL != p) && !outFound) {
+    p->mGetKeywordsForIdentifier (inIdentifier, outFound, outList) ;
     p = p->mNext ;
   }
 }

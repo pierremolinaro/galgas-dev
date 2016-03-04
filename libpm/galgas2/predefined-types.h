@@ -140,7 +140,10 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static GALGAS_string constructor_galgasVersionString (LOCATION_ARGS) ;
 
-  public : static GALGAS_stringlist constructor_keywordListIdentifiers (LOCATION_ARGS) ;
+  public : static GALGAS_stringset constructor_keywordIdentifierSet (LOCATION_ARGS) ;
+
+  public : static GALGAS_stringlist constructor_keywordListForIdentifier (const class GALGAS_string & inOperand0
+                                                                          COMMA_LOCATION_ARGS) ;
 
   public : static GALGAS_string constructor_projectVersionString (LOCATION_ARGS) ;
 
