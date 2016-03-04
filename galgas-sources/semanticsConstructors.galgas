@@ -447,6 +447,14 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )
+#--- Constructors for lexical keyword lists
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"keywordListIdentifiers"
+    !resultTypeName:"stringlist"
+    !hasLexiqueAndLocationArgs:false
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -6350,6 +6350,7 @@ GALGAS_categoryGetterMapForGlobalCheckings GALGAS_categoryGetterMapForGlobalChec
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
+#include "galgas2/cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10238,6 +10239,19 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("&++") COMMA_THERE) ;
   return result ;
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void getKeywordLists_galgas_33_Scanner (TC_UniqueArray <C_String> & ioList) {
+  ioList.addObject ("galgas_33_Scanner:galgasDelimitorsList") ;
+  ioList.addObject ("galgas_33_Scanner:galgasKeyWordList") ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static cLexiqueIntrospection lexiqueIntrospection_galgas_33_Scanner
+__attribute__ ((used))
+__attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   S T Y L E   I N D E X    F O R    T E R M I N A L                                                                 *

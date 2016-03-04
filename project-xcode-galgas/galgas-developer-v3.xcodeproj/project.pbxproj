@@ -459,6 +459,8 @@
 		CF9E75B81BAE137600DBEFEE /* mpz-cdiv_q_ui.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9E75B61BAE137600DBEFEE /* mpz-cdiv_q_ui.c */; };
 		CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
 		CF9FB046127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
+		CFA1756B1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
+		CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
 		CFA59E4F128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
 		CFA59E50128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
 		CFAC1A0B1C3318B800465212 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
@@ -935,6 +937,8 @@
 		CF9F4E37092A71F10055C8C3 /* C_BDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = C_BDD.h; path = bdd/C_BDD.h; sourceTree = "<group>"; };
 		CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF9FB042127A0A0200335160 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
+		CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cLexiqueIntrospection.cpp; sourceTree = "<group>"; };
+		CFA1756A1C89BF8E00BB0B17 /* cLexiqueIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cLexiqueIntrospection.h; sourceTree = "<group>"; };
 		CFA3D868199684AE0028A63B /* option-galgas_cli_options-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "option-galgas_cli_options-cocoa.h"; sourceTree = "<group>"; };
 		CFA3D869199684AE0028A63B /* option-galgas_cli_options-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "option-galgas_cli_options-cocoa.m"; sourceTree = "<group>"; };
 		CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_uint.cpp; sourceTree = "<group>"; };
@@ -1613,6 +1617,8 @@
 				CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */,
 				CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */,
 				CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */,
+				CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */,
+				CFA1756A1C89BF8E00BB0B17 /* cLexiqueIntrospection.h */,
 				CF01558B1267796800917801 /* cObjectArray.cpp */,
 				CF01558C1267796800917801 /* cObjectArray.h */,
 				CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */,
@@ -2526,6 +2532,7 @@
 				CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */,
 				CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CF9E75961BADE30A00DBEFEE /* root-tal-notreent.c in Sources */,
+				CFA1756B1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */,
 				CF9234031BADBEB2001032DA /* mpz-clrbit.c in Sources */,
 				CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CF9234551BADCD3D001032DA /* mpn-mu_div_qr.c in Sources */,
@@ -2785,6 +2792,7 @@
 				CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CF9E75321BADD83300DBEFEE /* mpn-toom_eval_pm1.c in Sources */,
 				CF9234041BADBEB2001032DA /* mpz-clrbit.c in Sources */,
+				CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */,
 				CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CF9234561BADCD3D001032DA /* mpn-mu_div_qr.c in Sources */,
 				CFF9DEDD1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */,

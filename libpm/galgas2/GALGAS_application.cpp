@@ -26,6 +26,7 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "galgas2/F_verbose_output.h"
+#include "cLexiqueIntrospection.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -266,6 +267,18 @@ GALGAS_string GALGAS_application::constructor_commandLineArgumentAtIndex (const 
               << cStringWithUnsigned (commandLineArgumentCount ()) ;
       inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_application::constructor_keywordListIdentifiers (LOCATION_ARGS) {
+  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+  TC_UniqueArray <C_String> list ;
+  cLexiqueIntrospection::getKeywordListNames (list) ;
+  for (int32_t i=0 ; i < list.count () ; i++) {
+    result.addAssign_operation (GALGAS_string (list (i COMMA_HERE)) COMMA_HERE) ;
   }
   return result ;
 }
