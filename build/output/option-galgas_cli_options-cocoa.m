@@ -113,15 +113,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     defaultValue:@""
   ] ;
   [ioStringOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputKeywordList"
-    commandChar:0
-    commandString:@"output-keyword-list-file"
-    comment:@"Output a Latex file containing keyword list"
-    defaultValue:@""
-  ] ;
-  [ioStringOptionArray addObject:option] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

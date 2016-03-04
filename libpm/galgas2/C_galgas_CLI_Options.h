@@ -63,6 +63,10 @@ extern C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+extern C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_outputKeywordList ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void setExecutionMode (C_String & outErrorMessage) ;
 
 typedef enum {

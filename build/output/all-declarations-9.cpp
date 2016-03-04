@@ -96,13 +96,6 @@ C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_generatePredefinedTyp
                                          "Generate C++ files of predefined types (reserved for GALGAS development)",
                                          "") ;
 
-C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_outputKeywordList ("galgas_cli_options",
-                                         "outputKeywordList",
-                                         0,
-                                         "output-keyword-list-file",
-                                         "Output a Latex file containing keyword list",
-                                         "") ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              String List options                                                                    *

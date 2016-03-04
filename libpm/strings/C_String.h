@@ -279,6 +279,7 @@ class C_String : public AC_OutputStream {
   public : void reverseStringInPlace (void) ;
 
 //--- Return unsigned integer value
+  public : bool isUnsignedInteger (void) const ;
   public : uint32_t unsignedIntegerValue (void) const ;
 
 //--- Get current column index (starting from 0)
