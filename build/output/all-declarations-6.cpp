@@ -10294,6 +10294,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.addObject ("||") ;
     ioList.addObject ("&++") ;
     ioList.addObject ("&--") ;
+    ioList.sortArrayUsingCompareMethod() ;
   }
   if (inIdentifier == "galgas3Scanner:galgasKeyWordList") {
     ioFound = true ;
@@ -10380,6 +10381,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.addObject ("sortedlist") ;
     ioList.addObject ("constructor") ;
     ioList.addObject ("filewrapper") ;
+    ioList.sortArrayUsingCompareMethod() ;
   }
 }
 
