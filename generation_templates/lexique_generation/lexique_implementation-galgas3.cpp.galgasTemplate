@@ -374,6 +374,7 @@ for () in LEXICAL_TOKEN_LIST_MAP do
   for () in mTokenSortedList do
     %    ioList.addObject (%![mName utf8Representation]%) ;\n%
   end
+  %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%
 end
 %}
