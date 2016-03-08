@@ -143,7 +143,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "lexique",
   "list",
   "listmap",
-  "local",
   "log",
   "loop",
   "map",

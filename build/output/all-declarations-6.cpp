@@ -6627,9 +6627,6 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_list = "the 'list' key
 //--- Syntax error message for terminal '$listmap$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_listmap = "the 'listmap' keyword" ;
 
-//--- Syntax error message for terminal '$local$' :
-static const char * gSyntaxErrorMessage_galgas_33_Scanner_local = "the 'local' keyword" ;
-
 //--- Syntax error message for terminal '$log$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_log = "the 'log' keyword" ;
 
@@ -6884,7 +6881,7 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner__26__2B__2B_ = "the '&
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [149] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [148] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_33_Scanner_identifier,
     gSyntaxErrorMessage_galgas_33_Scanner_literal_5F_double,
     gSyntaxErrorMessage_galgas_33_Scanner_unsigned_5F_literal_5F_integer,
@@ -6949,7 +6946,6 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner_lexique,
     gSyntaxErrorMessage_galgas_33_Scanner_list,
     gSyntaxErrorMessage_galgas_33_Scanner_listmap,
-    gSyntaxErrorMessage_galgas_33_Scanner_local,
     gSyntaxErrorMessage_galgas_33_Scanner_log,
     gSyntaxErrorMessage_galgas_33_Scanner_loop,
     gSyntaxErrorMessage_galgas_33_Scanner_map,
@@ -7695,16 +7691,6 @@ static const utf32 kUnicodeString_galgas_33_Scanner_listmap [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$local$'
-static const utf32 kUnicodeString_galgas_33_Scanner_local [] = {
-  TO_UNICODE ('l'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('l'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$log$'
 static const utf32 kUnicodeString_galgas_33_Scanner_log [] = {
   TO_UNICODE ('l'),
@@ -8237,7 +8223,7 @@ int16_t C_Lexique_galgas_33_Scanner::search_into_galgasDelimitorsList (const C_S
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 83 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 82 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [ktable_size_galgas_33_Scanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_as, 2, C_Lexique_galgas_33_Scanner::kToken_as),
@@ -8281,7 +8267,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_false, 5, C_Lexique_galgas_33_Scanner::kToken_false),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_graph, 5, C_Lexique_galgas_33_Scanner::kToken_graph),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_label, 5, C_Lexique_galgas_33_Scanner::kToken_label),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_local, 5, C_Lexique_galgas_33_Scanner::kToken_local),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_match, 5, C_Lexique_galgas_33_Scanner::kToken_match),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_parse, 5, C_Lexique_galgas_33_Scanner::kToken_parse),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_state, 5, C_Lexique_galgas_33_Scanner::kToken_state),
@@ -8698,11 +8683,6 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
     case kToken_listmap:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("listmap") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_local:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("local") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_log:
@@ -10153,7 +10133,6 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("lexique") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("list") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("listmap") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("local") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("log") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("loop") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("map") COMMA_THERE) ;
@@ -10339,7 +10318,6 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.addObject ("false") ;
     ioList.addObject ("graph") ;
     ioList.addObject ("label") ;
-    ioList.addObject ("local") ;
     ioList.addObject ("match") ;
     ioList.addObject ("parse") ;
     ioList.addObject ("state") ;
@@ -10396,7 +10374,7 @@ __attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner, getKeywordsForIdent
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [149] = {0,
+  static const uint32_t kTerminalSymbolStyles [148] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_literal_5F_double */,
     6 /* galgas3Scanner_1_unsigned_5F_literal_5F_integer */,
@@ -10461,7 +10439,6 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_lexique */,
     1 /* galgas3Scanner_1_list */,
     1 /* galgas3Scanner_1_listmap */,
-    1 /* galgas3Scanner_1_local */,
     1 /* galgas3Scanner_1_log */,
     1 /* galgas3Scanner_1_loop */,
     1 /* galgas3Scanner_1_map */,
