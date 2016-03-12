@@ -181,7 +181,9 @@ Ce constructeur retourne une chaîne de caractères contenant le chemin absolu d
 \subsectionConstructor{stringWithEnvironmentVariable}{string}
 
 \begin{galgasbox}
-constructor stringWithEnvironmentVariable ?@string inVariableName -> @string
+constructor stringWithEnvironmentVariable
+  ?@string inVariableName
+  -> @string
 \end{galgasbox}
 
 Ce constructeur retourne la valeur associée à la variable d'environnement \ggs!inVariableName!. Une erreur d'exécution est déclenchée si la variable d'environnement n'est pas définie. L'existence d'une variable d'environnement peut être testée par le \refGetterPage{string}{doesEnvironmentVariableExist}.
@@ -194,7 +196,8 @@ Ce constructeur retourne la valeur associée à la variable d'environnement \ggs
 
 \begin{galgasbox}
 constructor stringWithEnvironmentVariableOrEmpty
-      ?@string inVariableName -> @string
+  ?@string inVariableName
+  -> @string
 \end{galgasbox}
 
 Ce constructeur retourne la valeur associée à la variable d'environnement \ggs!inVariableName!. Si la variable d'environnement n'est pas définie, la chaîne vide est retournée et aucune erreur n'est déclenchée.
@@ -208,8 +211,9 @@ Ce constructeur retourne la valeur associée à la variable d'environnement \ggs
 
 \begin{galgasbox}
 constructor stringWithSequenceOfCharacters
-        ?@char inChar
-        ?@uint inCount -> @string
+  ?@char inChar
+  ?@uint inCount
+  -> @string
 \end{galgasbox}
 
 Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! caractères \ggs!inChar!.
@@ -307,7 +311,7 @@ Retourne le caractère situé à l'indice \ggs!inIndex! de la valeur du récepte
 \subsectionGetter{componentsSeparatedByString}{string}
 
 \begin{galgasbox}
-getter componentsSeparatedByString  ?@string inSeparator -> @stringlist
+getter componentsSeparatedByString ?@string inSeparator -> @stringlist
 \end{galgasbox}
 Retourne une liste des sous-chaînes de la valeur du récepteur qui a été divisée par \ggs!inSeparator!.
 
@@ -344,7 +348,10 @@ let b = ["abcdef" containsCharacter!'c'] # true
 
 \subsectionGetter{containsCharacterInRange}{string}
 \begin{galgasbox}
-getter containsCharacterInRange ?@char inFirstCharacter ?@char inLastCharacter -> @bool
+getter containsCharacterInRange
+  ?@char inFirstCharacter
+  ?@char inLastCharacter
+  -> @bool
 \end{galgasbox}
 
 Retourne \ggs!true! si le récepteur contient un ou plusieurs caractère dont le point de code est supérieur ou égal à celui de \ggs!inLastCharacter! et inférieur ou égal à celui de \ggs!inFirstCharacter!, et \ggs!false! dans le cas contraire. En conséquence, si le point de code Unicode de \ggs!inFirstCharacter! doit être strictement supérieur au point de de code de \ggs!inLastCharacter!, la valeur renvoyée est toujours \ggs!false!.
@@ -400,7 +407,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 getter directories ?@bool inRecursiveSearch -> @stringlist
 \end{galgasbox}
 
-Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
 
 
 
@@ -418,7 +425,7 @@ getter directoriesWithExtensions
     ?@stringlist inExtensionList -> @stringlist
 \end{galgasbox}
 
-Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur, en ne retenant que les répertoires dont l'extension appartient à liste \ggs!inExtensionList!. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+Retourne la liste des sous-répertoires du répertoire désigné par la valeur du récepteur, en ne retenant que les répertoires dont l'extension appartient à liste \ggs!inExtensionList!. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
 
 
 
@@ -479,7 +486,21 @@ Retourne \ggs!true! si la valeur du récepteur désigne un fichier existant, et 
 getter firstCharacterOrNul -> @char
 \end{galgasbox}
 
-Retourne le premier caractère du récepteur désigne un fichier existant, ou le caractère \texttt{NUL} si le récepteur est vide.
+Si la longueur de la valeur du récepteur est non nulle, retourne son premier caractère, sinon le caractère \texttt{NUL}.
+
+
+
+
+
+
+
+\subsectionGetter{here}{string}
+
+\begin{galgasbox}
+getter here -> @lstring
+\end{galgasbox}
+
+Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du récepteur, et dont le champ \ggs!location! désigne la position courante de l'analyse. L'expression \ggs![s here]! est équivalente à \ggs*@lstring.new{!s !@location.here}*.
 
 
 
@@ -494,7 +515,8 @@ Retourne le premier caractère du récepteur désigne un fichier existant, ou le
 getter hiddenFiles ?@bool inRecursiveSearch -> @stringlist
 \end{galgasbox}
 
-Retourne la liste des fichiers cachés du répertoire désigné par la valeur du récepteur. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+Retourne la liste des fichiers cachés du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+
 
 
 
@@ -509,7 +531,7 @@ Retourne la liste des fichiers cachés du répertoire désigné par la valeur du
 \begin{galgasbox}
 getter HTMLRepresentation -> @string
 \end{galgasbox}
-Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. Les caractères sont modifiés selon le \refTableauPage{codageHTML}.
+Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. Les caractères «~\texttt{\&}~», « \texttt{"} », « \texttt{<} » et « \texttt{>} » sont modifiés selon le \refTableauPage{codageHTML}.
 
 
 \begin{table}[t]
@@ -521,7 +543,7 @@ Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. L
   \texttt{<} & \texttt{\&lt;} \\
   \texttt{>} & \texttt{\&gt;} \\
   \end{tabular}
-  \caption{Codage des caractères HTML, \refGetterPage{string}{HTMLRepresentation}}
+  \caption{Codage des caractères, \refGetterPage{string}{HTMLRepresentation}}
   \labelTableau{codageHTML}
   \ligne
 \end{table}
@@ -797,7 +819,7 @@ Retourne un objet de type \refTypePredefini{range} dont le champ \ggs!start! est
 getter regularFiles ?@bool inRecursiveSearch -> @stringlist
 \end{galgasbox}
 
-Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
 
 
 
@@ -815,7 +837,7 @@ getter regularFilesWithExtensions
     ?@stringlist inExtensionList -> @stringlist
 \end{galgasbox}
 
-Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur, en ne retenant que les fichiers dont l'extension est nommée dans \ggs!inExtensionList!. Si \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
+Retourne la liste des fichiers non cachés du répertoire désigné par la valeur du récepteur, en ne retenant que les fichiers dont l'extension est nommée dans \ggs!inExtensionList!. Si le paramètre \ggs!inRecursiveSearch! est vrai, une recherche récursive dans les sous répertoires est effectuée.
 
 
 
@@ -912,7 +934,7 @@ Si le récepteur ne contient pas de caractère « \texttt{/} », la chaîne vide
 getter stringByDeletingPathExtension -> @string
 \end{galgasbox}
 
-Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère « \texttt{.} ».
+Si le récepteur ne contient pas de caractère « \texttt{.} », la valeur du récepteur est retournée. Sinon, ce \emph{getter} retourne la sous-chaîne de caractères qui précède la dernière occurrence du caractère «~\texttt{.}~».
 
 
 

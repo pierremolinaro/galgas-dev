@@ -442,6 +442,13 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"here"
+    !returnedTypeName:"lstring"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"doesEnvironmentVariableExist"
     !returnedTypeName:"bool"
     !false
