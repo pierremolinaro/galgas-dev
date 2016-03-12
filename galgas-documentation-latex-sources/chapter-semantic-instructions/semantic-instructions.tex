@@ -1503,7 +1503,7 @@ Le \ggs+variant_expression+ est une expression de type \ggs+@uint+ qui assure qu
 
 L'\ggs+expression+ est une expression de type \ggs+@bool+ qui exprime la continuation de l'exécution de la boucle.
 
-L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
+L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la \refFigurePage{}{loopInstructionFlowchart}.
 
 
 \begin{figure}[t]
@@ -1534,7 +1534,7 @@ L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la
     \draw [o-stealth, thick] (secondTest) -- (loopVariantError2) ;
     \draw [-stealth, thick] (loopVariantError.east) -- +(1, 0) |- (end.east) ;
     \draw [-stealth, thick] (loopVariantError2.east) -- +(1, 0) ;
-    \draw [o-stealth, thick] (expression.east) -- +(4.1, 0) ;
+    \draw [o-stealth, thick] (expression.east) -- +(4.4, 0) ;
     \draw [-stealth, thick] (instructions1) -- (expression) ;
     \draw [>-stealth, thick] (premierTest) -- (instructions1) ;
     \draw [>-stealth, thick] (expression) -- (secondTest) ;
@@ -1547,6 +1547,26 @@ L'exécution de l'instruction \ggs+loop+ est illustrée par l'organigramme de la
   \ligne
 \end{figure}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{poison}}{instructionPoison}
+
+\begin{galgasbox}
+poison variable_poison, ... : variable_empoisonnee, ...
+\end{galgasbox}
 
 
 

@@ -1,0 +1,110 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @poisonInstructionAST : @semanticInstructionAST {
+  @lstringlist mPoisonVariableList
+  @lstringlist mAffectedVariableList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $poison$
+    let instructionLocation = @location.here
+    @lstringlist poisonVariableList = {}
+    repeat
+      $identifier$ ?let poisonVariableName
+      poisonVariableList += !poisonVariableName
+    while
+      $,$
+    end
+    $:$
+    @lstringlist affectedVariableList = {}
+    repeat
+      $identifier$ ?let affectedVariableName
+      affectedVariableList += !affectedVariableName
+    while
+      $,$
+    end
+    outInstruction = @poisonInstructionAST.new {!instructionLocation !poisonVariableList !affectedVariableList}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @poisonInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @poisonInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+  @stringlist poisonCppVariableList = {}
+  for () in mPoisonVariableList do
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
+    poisonCppVariableList += !varCppName
+  end
+  @stringlist affectedCppVariableList = {}
+  for () in mAffectedVariableList do
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
+    affectedCppVariableList += !varCppName
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@poisonInstructionForGeneration.new {
+    !poisonCppVariableList
+    !affectedCppVariableList
+  }  
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @poisonInstructionForGeneration : @semanticInstructionForGeneration {
+  @stringlist mPoisonVariableList
+  @stringlist mAffectedVariableList
+}
+
+#······················································································································*
+
+override method @poisonInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  ioGeneratedCode += "if ("
+  for () in mPoisonVariableList
+  do
+   [!?ioUnusedVariableCppNameSet removeKey !mValue]
+   ioGeneratedCode += "(! " + mValue + ".isBuilt ())"
+  between
+    ioGeneratedCode += " || "
+  end
+  ioGeneratedCode += ") {\n"
+  for () in mAffectedVariableList do
+    [!?ioUnusedVariableCppNameSet removeKey !mValue]
+    ioGeneratedCode += "  " + mValue + ".drop () ; // Release error dropped variable\n"
+  end
+  ioGeneratedCode += "\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

@@ -92,7 +92,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [152] = {
   NO /* identifier */,
   NO /* type_name */,
   NO /* literal_double */,
@@ -176,6 +176,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
   NO /* or */,
   NO /* override */,
   NO /* parse */,
+  NO /* poison */,
   NO /* private */,
   NO /* proc */,
   NO /* project */,
@@ -253,7 +254,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [94] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [95] = {
   {"do", galgasTemplateScanner_1_do},
   {"if", galgasTemplateScanner_1_if},
   {"in", galgasTemplateScanner_1_in},
@@ -312,6 +313,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"insert", galgasTemplateScanner_1_insert},
   {"method", galgasTemplateScanner_1_method},
   {"option", galgasTemplateScanner_1_option},
+  {"poison", galgasTemplateScanner_1_poison},
   {"remove", galgasTemplateScanner_1_remove},
   {"repeat", galgasTemplateScanner_1_repeat},
   {"rewind", galgasTemplateScanner_1_rewind},
@@ -351,7 +353,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
 } ;
 
 static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 94) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 95) ;
 }
 
 
@@ -984,7 +986,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 151 ;
+  return 152 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1014,7 +1016,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [152] = {0,
+  static const NSUInteger kTerminalSymbolStyles [153] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1_type_5F_name */,
     7 /* galgasTemplateScanner_1_literal_5F_double */,
@@ -1098,6 +1100,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_or */,
     1 /* galgasTemplateScanner_1_override */,
     1 /* galgasTemplateScanner_1_parse */,
+    1 /* galgasTemplateScanner_1_poison */,
     1 /* galgasTemplateScanner_1_private */,
     1 /* galgasTemplateScanner_1_proc */,
     1 /* galgasTemplateScanner_1_project */,
@@ -1177,7 +1180,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [152] = {NO,
+  static const BOOL kTerminalAtomicSelection [153] = {NO,
     YES /* galgasTemplateScanner_1_identifier */,
     YES /* galgasTemplateScanner_1_type_5F_name */,
     YES /* galgasTemplateScanner_1_literal_5F_double */,
@@ -1261,6 +1264,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_or */,
     YES /* galgasTemplateScanner_1_override */,
     YES /* galgasTemplateScanner_1_parse */,
+    YES /* galgasTemplateScanner_1_poison */,
     YES /* galgasTemplateScanner_1_private */,
     YES /* galgasTemplateScanner_1_proc */,
     YES /* galgasTemplateScanner_1_project */,
