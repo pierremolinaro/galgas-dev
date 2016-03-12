@@ -136,10 +136,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
     ?let useLocationGetter
   )
 #--- Handle dropped variables
-  var builtVariableCppNameList =@stringlist.emptyList{}
+  var builtVariableCppNameList = @stringlist {}
   for () in mBuiltVariableList do
-    @string varCppName
-    [!?ioVariableMap searchForWriteAccess !mValue ?* ?varCppName ?*]
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
     builtVariableCppNameList += !varCppName
   end
 #--- Generate instruction
@@ -148,7 +147,8 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !locationExpression
     !useLocationGetter
     !messageExpression
-    !builtVariableCppNameList}
+    !builtVariableCppNameList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
