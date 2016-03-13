@@ -68,8 +68,6 @@ class cSharedList : public C_SharedObject {
                                    C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const ;
 
-  protected : void prependAttributeArray (const capCollectionElement & inAttributeArray) ;
-
   protected : void appendList (const cSharedList * inListToAppend) ;
 
 //--- Object handling
@@ -88,8 +86,8 @@ class cSharedList : public C_SharedObject {
                                         COMMA_LOCATION_ARGS) ;
 
   protected : void removeFirstObject (capCollectionElement & outObjectAttributeArray,
-                                   C_Compiler * inCompiler
-                                   COMMA_LOCATION_ARGS) ;
+                                      C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
   protected : void removeLastObject (capCollectionElement & outObjectAttributeArray,
                                   C_Compiler * inCompiler
@@ -418,22 +416,15 @@ void cSharedList::subListToIndex (cSharedList * & ioSharedList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedList::prependAttributeArray (const capCollectionElement & inAttributeArray) {
-  macroUniqueSharedObject (this) ;
-  setCapacity (mObjectArray.count () + 1) ;
-  mObjectArray.predendObject (inAttributeArray) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void cSharedList::appendList (const cSharedList * inListToAppend) {
   macroUniqueSharedObject (this) ;
-  if (NULL != inListToAppend) {
+  macroValidPointer (inListToAppend) ;
+//  if (NULL != inListToAppend) {
     setCapacity (mObjectArray.count () + inListToAppend->count ()) ;
     for (uint32_t i=0 ; i<inListToAppend->count () ; i++) {
       mObjectArray.addObject (inListToAppend->mObjectArray.objectAtIndex (i COMMA_HERE)) ;
     }
-  }
+//  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -694,9 +685,11 @@ void AC_GALGAS_list::subListToIndex (AC_GALGAS_list & outList,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_list::appendList (const AC_GALGAS_list & inList) {
-  if (NULL != mSharedList) {
+  if ((NULL != mSharedList) && (NULL != inList.mSharedList)) {
     insulateList (HERE) ;
     mSharedList->appendList (inList.mSharedList) ;
+  }else{
+    drop () ;
   }
 }
 

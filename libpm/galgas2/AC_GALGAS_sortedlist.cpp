@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2005, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2005, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -509,14 +509,15 @@ void AC_GALGAS_sortedlist::addObject (capSortedListElement & inAttributes) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedSortedListRoot::appendSortedList (const cSharedSortedListRoot * inList) {
-  if (inList != NULL) {
-    const cSortedListNode * p = inList->mFirst ;
-    while (p != NULL) {
-      bool extension = false ; // Unused here
-      addEntry (mRoot, NULL, p->mAttributes, extension) ;
-      p = p->mNextPtr ;
-    }
+//  if (inList != NULL) {
+  macroValidPointer (inList) ;
+  const cSortedListNode * p = inList->mFirst ;
+  while (p != NULL) {
+    bool extension = false ; // Unused here
+    addEntry (mRoot, NULL, p->mAttributes, extension) ;
+    p = p->mNextPtr ;
   }
+//  }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
   #endif
@@ -525,8 +526,10 @@ void cSharedSortedListRoot::appendSortedList (const cSharedSortedListRoot * inLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_sortedlist::appendSortedList (const AC_GALGAS_sortedlist & inList) {
-  if (NULL != mSharedRoot) {
+  if ((NULL != mSharedRoot) && (NULL != inList.mSharedRoot)) {
     mSharedRoot->appendSortedList (inList.mSharedRoot) ;
+  }else{
+    drop () ;
   }
 }
 
