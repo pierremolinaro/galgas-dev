@@ -820,6 +820,8 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (HERE) ;
     #endif
+  }else{
+    drop () ;
   }
 }
 
@@ -832,7 +834,6 @@ void GALGAS_stringset::plusAssign_operation (const GALGAS_stringset inOperand2,
 GALGAS_stringset GALGAS_stringset::substract_operation (const GALGAS_stringset & inOperand2,
                                                         C_Compiler * /* inCompiler */
                                                         COMMA_LOCATION_ARGS) const {
-// printf ("OPERATION SUBSTRACT\n") ; fflush (stdout) ;
   GALGAS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS

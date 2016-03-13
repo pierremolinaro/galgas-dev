@@ -4097,7 +4097,6 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_or,
    kToken_override,
    kToken_parse,
-   kToken_poison,
    kToken_private,
    kToken_proc,
    kToken_project,
@@ -4265,7 +4264,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 148 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 147 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -11780,13 +11779,6 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i59_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
 
 
 //--- Select methods
@@ -11931,10 +11923,6 @@ class cParser_galgas_33_InstructionsSyntax {
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_69 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_70 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_galgas_33_InstructionsSyntax_71 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_galgas_33_InstructionsSyntax_72 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;
@@ -15801,98 +15789,6 @@ class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAS
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                             @poisonInstructionAST class                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_poisonInstructionAST : public GALGAS_semanticInstructionAST {
-//--- Constructor
-  public : GALGAS_poisonInstructionAST (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_poisonInstructionAST constructor_default (LOCATION_ARGS) ;
-
-//---
-  public : inline const class cPtr_poisonInstructionAST * ptr (void) const { return (const cPtr_poisonInstructionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_poisonInstructionAST (const cPtr_poisonInstructionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_poisonInstructionAST extractObject (const GALGAS_object & inObject,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static GALGAS_poisonInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_lstringlist & inOperand1,
-                                                               const class GALGAS_lstringlist & inOperand2
-                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_poisonInstructionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAffectedVariableList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mPoisonVariableList (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_poisonInstructionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_poisonInstructionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Pointer class for @poisonInstructionAST class                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_poisonInstructionAST : public cPtr_semanticInstructionAST {
-//--- Attributes
-  public : GALGAS_lstringlist mAttribute_mPoisonVariableList ;
-  public : GALGAS_lstringlist mAttribute_mAffectedVariableList ;
-
-//--- Constructor
-  public : cPtr_poisonInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                      const GALGAS_lstringlist & in_mPoisonVariableList,
-                                      const GALGAS_lstringlist & in_mAffectedVariableList
-                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mPoisonVariableList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mAffectedVariableList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

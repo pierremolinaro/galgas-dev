@@ -4,6 +4,10 @@ DIR=`dirname $0` &&
 cd $DIR/../makefile-macosx && python build.py release &&
 PATH=$DIR/../makefile-macosx:$PATH &&
 cd $DIR &&
+#--- Reconstruire la table des mots réservés et celle des délimiteurs
+../makefile-macosx/galgas --output-keyword-list-file=galgas3Scanner:galgasKeyWordList:5:\\ggs!:!:partie-utilisation/included-keyword-list.tex &&
+../makefile-macosx/galgas --output-keyword-list-file=galgas3Scanner:galgasDelimitorsList:15:\\ggs0:0:partie-utilisation/included-delimiter-list.tex &&
+#--- Compilation LaTex
 rm -f galgas-book.pdf ref.* galgas-book.ilg galgas-book.ind &&
 rm -f galgas-book.aux galgas-book.idx galgas-book.lof galgas-book.lot galgas-book.toc &&
 rm -f galgas-book.log galgas-book.out galgas-book.synctex.gz &&

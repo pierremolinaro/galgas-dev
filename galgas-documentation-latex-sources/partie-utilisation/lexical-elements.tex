@@ -32,23 +32,12 @@ Un identificateur commence par une lettre minuscule ou majuscule, suivie de zér
 
 \section{Les mots réservés}
 
-Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableau{mots-reserves}.
+Les mots réservés de GALGAS sont les identificateurs listés dans le \refTableauPage{mots-reserves}.
 
 \begin{table}[t]
   \centering
   \begin{tabular}{llllllll}
-    \ggs=abstract=    & \ggs=after=       & \ggs=array=       & \ggs=before=      & \ggs=between=     & \ggs=block=     & \ggs=case=    \\
-    \ggs=cast=        & \ggs=cast=        & \ggs=class=       & \ggs=constructor= & \ggs=default=     & \ggs=do=        & \ggs=drop=       \\
-    \ggs=else=        & \ggs=elsif=       & \ggs=end=         & \ggs=enum=        & \ggs=error=       & \ggs=extension= & \ggs=extern= \\
-    \ggs=false=       & \ggs=filewrapper= & \ggs=for=         & \ggs=func=        & \ggs=getter=      & \ggs=grammar=   & \ggs=graph= \\
-    \ggs=gui=         & \ggs=if=          & \ggs=in=          & \ggs=indexing=    & \ggs=insert=      & \ggs=is=        & \ggs=label= \\
-    \ggs=let=         & \ggs=lexique=     & \ggs=list=        & \ggs=listmap=     & \ggs=local=       & \ggs=log=       & \ggs=loop=   \\
-    \ggs=map=         & \ggs=match=       & \ggs=message=     & \ggs=method=      & \ggs=mod=         & \ggs=not=       & \ggs=on=   \\
-    \ggs=operator=    & \ggs=option=      & \ggs=or=          & \ggs=override=    & \ggs=parse=       & \ggs=private=   & \ggs=proc=      \\
-    \ggs=project=     & \ggs=remove=      & \ggs=replace=     & \ggs=repeat=      & \ggs=rewind=      & \ggs=rule=      & \ggs=search=  \\
-    \ggs=select=      & \ggs=self=        & \ggs=send=        & \ggs=setter=      & \ggs=sortedlist=  & \ggs=state=     & \ggs=struct=  \\
-    \ggs=style=       & \ggs=switch=      & \ggs=syntax=      & \ggs=tag=         & \ggs=template=    & \ggs=then=      & \ggs=true=   \\
-    \ggs=sharedmap=   & \ggs=unused=      & \ggs=var=         & \ggs=warning=     & \ggs=while=       & \ggs=with=      &  \\
+    \input{partie-utilisation/included-keyword-list.tex}
   \end{tabular}
   \caption{Mots réservés du langage GALGAS}
   \labelTableau{mots-reserves}
@@ -58,15 +47,12 @@ Les mots réservés de GALGAS sont les identificateurs listés dans le \refTable
 
 \section{Les délimiteurs}
 
-Les délimiteurs du langage GALGAS sont listés dans le \refTableau{delimiteurs}.
+Les délimiteurs du langage GALGAS sont listés dans le \refTableauPage{delimiteurs}.
 
 \begin{table}[t]
   \centering
-  \begin{tabular}{llllllllllllll}
-    \ggs=*=  & \ggs=,=  & \ggs=+=  & \ggs=&+= & \ggs=&-= & \ggs=&*= & \ggs=&/= & \ggs=>=  & \ggs+>=+ & \ggs=<=  & \ggs+<=+ & \ggs+==+ & \ggs+!=+ & \ggs+=+ \\
-    \ggs=;=  & \ggs=:=  & \ggs=:>= & \ggs=-=  & \ggs=(=  & \ggs=)=  & \ggs=->= & \ggs=&&= & \ggs=[=  & \ggs=]=  & \ggs-`- & \ggs=|=  & \ggs=/=  & \ggs=&= \\
-    \ggs={=  & \ggs=}=   & \ggs=||= & \ggs=^=  & \ggs=>>= & \ggs=<<= & \ggs=~=  & \ggs=--= & \ggs=++= & \ggs=&--= & \ggs=&++=& \ggs=.=  & \ggs=...= & \ggs!+=!  \\
-    \ggs!-=!  & \ggs!*=!  & \ggs!/=!  \\
+  \begin{tabular}{lllllllllllllllll}
+    \input{partie-utilisation/included-delimiter-list.tex}
   \end{tabular}
   \caption{Délimiteurs du langage GALGAS}
   \labelTableau{delimiteurs}
@@ -87,7 +73,7 @@ Les délimiteurs du langage GALGAS sont listés dans le \refTableau{delimiteurs}
   \ligne
 \end{table}
 
-Les sélecteurs du langage GALGAS sont listés dans le \refTableau{selecteurs}.
+Les sélecteurs du langage GALGAS sont listés dans le \refTableauPage{selecteurs}.
 
 
 
@@ -103,7 +89,7 @@ Les séparateurs du langage GALGAS sont :
 
 \section{Les commentaires}
 
-Un commentaire commence par le caractère \texttt{\#} s'étend jusqu'à la fin de la ligne courante.
+Un commentaire commence par le caractère « \texttt{\#} » s'étend jusqu'à la fin de la ligne courante.
 
 
 

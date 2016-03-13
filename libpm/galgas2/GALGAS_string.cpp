@@ -408,6 +408,8 @@ void GALGAS_string::plusAssign_operation (GALGAS_string inOperand,
                                           COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand.isValid ()) {
     mString << inOperand.mString ;
+  }else{
+    drop () ;
   }
 }
 
