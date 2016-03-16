@@ -509,7 +509,6 @@ void AC_GALGAS_sortedlist::addObject (capSortedListElement & inAttributes) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedSortedListRoot::appendSortedList (const cSharedSortedListRoot * inList) {
-//  if (inList != NULL) {
   macroValidPointer (inList) ;
   const cSortedListNode * p = inList->mFirst ;
   while (p != NULL) {
@@ -517,7 +516,6 @@ void cSharedSortedListRoot::appendSortedList (const cSharedSortedListRoot * inLi
     addEntry (mRoot, NULL, p->mAttributes, extension) ;
     p = p->mNextPtr ;
   }
-//  }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
   #endif
