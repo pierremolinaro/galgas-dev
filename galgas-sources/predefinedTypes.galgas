@@ -152,6 +152,8 @@ proc appendPredefinedTypesASTs
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" )
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint" )
   appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint64" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"bigint" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lbigint" )
 
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bool" )
   appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" )
