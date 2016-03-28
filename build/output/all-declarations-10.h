@@ -966,7 +966,7 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
+//                 Extension getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -987,7 +987,7 @@ class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPt
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
+//                Extension getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1008,7 +1008,7 @@ class GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendDeclaration1'                        *
+//                       Extension method '@semanticDeclarationForGeneration appendDeclaration1'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1033,7 +1033,7 @@ void callCategoryMethod_appendDeclaration_31_ (const class cPtr_semanticDeclarat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendDeclaration2'                        *
+//                       Extension method '@semanticDeclarationForGeneration appendDeclaration2'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1060,7 +1060,7 @@ void callCategoryMethod_appendDeclaration_32_ (const class cPtr_semanticDeclarat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Category method '@semanticDeclarationForGeneration appendSpecificImplementation'                   *
+//                  Extension method '@semanticDeclarationForGeneration appendSpecificImplementation'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2943,7 +2943,7 @@ void routine_printFeaturesOfType (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category getter '@typeKindEnum kind' (as function)                                  *
+//                                 Extension getter '@typeKindEnum kind' (as function)                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -13790,7 +13790,7 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::extractObject (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@semanticExpressionForGeneration generateExpression'                    *
+//                   Abstract extension method '@semanticExpressionForGeneration generateExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -13855,7 +13855,7 @@ void callCategoryMethod_generateExpression (const cPtr_semanticExpressionForGene
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category getter '@semanticExpressionForGeneration isTrueExpression'                         *
+//                        Extension getter '@semanticExpressionForGeneration isTrueExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -13934,7 +13934,7 @@ C_PrologueEpilogue gGetter_semanticExpressionForGeneration_isTrueExpression (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addICNS_file'                                *
+//                               Extension method '@XcodeProjectDescriptor addICNS_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14343,7 +14343,7 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element GALGAS_forInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateGetterCallInExpressionAST templateExpressionAnalysis'              *
+//             Overriding extension method '@templateGetterCallInExpressionAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14493,6 +14493,7 @@ static void categoryMethod_templateGetterCallInExpressionAST_templateExpressionA
     outArgument_outExpression = GALGAS_getterCallExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mGetterName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 146)), var_kind, var_receiverExpression, var_fieldList, object->mAttribute_mGetterName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 150)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 144)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateGetterCallInExpressionAST_templateExpressionAnalysis (void) {
@@ -14506,7 +14507,7 @@ C_PrologueEpilogue gMethod_templateGetterCallInExpressionAST_templateExpressionA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@templateConstructorAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateConstructorAST templateExpressionAnalysis'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -14606,6 +14607,7 @@ static void categoryMethod_templateConstructorAST_templateExpressionAnalysis (co
   }
   outArgument_outExpression = GALGAS_constructorExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mConstructorName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 218)), var_constructorType, object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 220)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 216)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateConstructorAST_templateExpressionAnalysis (void) {

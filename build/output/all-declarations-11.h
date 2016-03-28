@@ -258,7 +258,7 @@ class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Category method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
+//                     Extension method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -369,7 +369,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category getter '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
+//                    Extension getter '@semanticInstructionForGeneration compareSyntaxInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -537,7 +537,7 @@ void routine_checkLabelMap (const class GALGAS_location constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@formalArgumentPassingModeAST formalArgumentString' (as function)                  *
+//                 Extension getter '@formalArgumentPassingModeAST formalArgumentString' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -583,7 +583,7 @@ void routine_transformInstructionList (const class GALGAS_syntaxInstructionList 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category method '@syntaxInstructionAST transformInstruction'                        *
+//                       Abstract extension method '@syntaxInstructionAST transformInstruction'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1462,7 +1462,7 @@ void routine_checkCategoryGetterDefinitionForClass (const class GALGAS_string co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category method '@semanticDeclarationAST buildCategoryListMaps'                           *
+//                          Extension method '@semanticDeclarationAST buildCategoryListMaps'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -1092,7 +1092,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category method '@templateExpressionAST templateExpressionAnalysis'                     *
+//                    Abstract extension method '@templateExpressionAST templateExpressionAnalysis'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1154,7 +1154,7 @@ void callCategoryMethod_templateExpressionAnalysis (const cPtr_templateExpressio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@templateInstructionAST templateInstructionAnalysis'                    *
+//                   Abstract extension method '@templateInstructionAST templateInstructionAnalysis'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1215,7 +1215,7 @@ void callCategoryMethod_templateInstructionAnalysis (const cPtr_templateInstruct
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Abstract category method '@templateInstructionForGeneration templateCodeGeneration'                 *
+//                Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1279,7 +1279,7 @@ void callCategoryMethod_templateCodeGeneration (const cPtr_templateInstructionFo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category Getter '@lexicalArgumentModeAST lexicalFormalModeName'                           *
+//                          Extension Getter '@lexicalArgumentModeAST lexicalFormalModeName'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1311,7 +1311,7 @@ GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category Getter '@lexicalArgumentModeAST cppConstInFormalArgument'                          *
+//                         Extension Getter '@lexicalArgumentModeAST cppConstInFormalArgument'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1343,7 +1343,7 @@ GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Getter '@lexicalArgumentModeAST cppReferenceInFormalArgument'                        *
+//                       Extension Getter '@lexicalArgumentModeAST cppReferenceInFormalArgument'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1375,7 +1375,7 @@ GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexical
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category Getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument'                        *
+//                       Extension Getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1407,7 +1407,7 @@ GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexical
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Getter '@lexicalTypeEnum lexicalTypeBaseName'                                *
+//                               Extension Getter '@lexicalTypeEnum lexicalTypeBaseName'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1469,7 +1469,7 @@ GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category getter '@lexicalExpressionAST generateConditionCode'                        *
+//                       Abstract extension getter '@lexicalExpressionAST generateConditionCode'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1530,7 +1530,7 @@ GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    Abstract category getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'     *
+//    Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1590,7 +1590,7 @@ GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Abstract category getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'             *
+//            Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1650,7 +1650,7 @@ GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
+//                  Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1711,7 +1711,7 @@ GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSend
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category getter '@lexicalInstructionAST generateInstructionCode'                      *
+//                     Abstract extension getter '@lexicalInstructionAST generateInstructionCode'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1773,7 +1773,7 @@ GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Abstract category getter '@abstractLexicalRuleAST generateCode'                           *
+//                          Abstract extension getter '@abstractLexicalRuleAST generateCode'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1835,7 +1835,7 @@ GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category getter '@lexicalExpressionAST generateCocoaConditionCode'                     *
+//                    Abstract extension getter '@lexicalExpressionAST generateCocoaConditionCode'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1896,7 +1896,7 @@ GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalE
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Abstract category getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'  *
+// Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1956,7 +1956,7 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Abstract category getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'           *
+//          Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2017,7 +2017,7 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstra
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Abstract category getter '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'                 *
+//                Abstract extension getter '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2078,7 +2078,7 @@ GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexica
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category getter '@lexicalInstructionAST generateCocoaInstructionCode'                    *
+//                   Abstract extension getter '@lexicalInstructionAST generateCocoaInstructionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2140,7 +2140,7 @@ GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexica
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category getter '@abstractLexicalRuleAST generateCocoaCode'                         *
+//                        Abstract extension getter '@abstractLexicalRuleAST generateCocoaCode'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2202,7 +2202,7 @@ GALGAS_string callCategoryGetter_generateCocoaCode (const cPtr_abstractLexicalRu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Getter '@lexicalTypeEnum cppTypeName'                                    *
+//                                   Extension Getter '@lexicalTypeEnum cppTypeName'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2264,7 +2264,7 @@ GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Getter '@lexicalTypeEnum appendMethodName'                                 *
+//                                Extension Getter '@lexicalTypeEnum appendMethodName'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2326,7 +2326,7 @@ GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category Getter '@lexicalTypeEnum appendArgumentOfMethod'                              *
+//                             Extension Getter '@lexicalTypeEnum appendArgumentOfMethod'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2388,7 +2388,7 @@ GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Getter '@lexicalTypeEnum initialization'                                  *
+//                                 Extension Getter '@lexicalTypeEnum initialization'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2450,7 +2450,7 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Getter '@lexicalTypeEnum cocoaTypeName'                                   *
+//                                  Extension Getter '@lexicalTypeEnum cocoaTypeName'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2512,7 +2512,7 @@ GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
+//                       Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2574,7 +2574,7 @@ GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category Getter '@lexicalTypeEnum cocoaInitializationCode'                              *
+//                             Extension Getter '@lexicalTypeEnum cocoaInitializationCode'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2636,7 +2636,7 @@ GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeE
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category Getter '@lexicalTypeEnum cocoaResetPrefix'                                 *
+//                                Extension Getter '@lexicalTypeEnum cocoaResetPrefix'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2698,7 +2698,7 @@ GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                    Category Getter '@lexicalTypeEnum cocoaReset'                                    *
+//                                   Extension Getter '@lexicalTypeEnum cocoaReset'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2760,7 +2760,7 @@ GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObjec
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'                  *
+//                 Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2820,7 +2820,7 @@ void callCategoryMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefault
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category method '@lexicalExpressionAST checkLexicalExpression'                       *
+//                      Abstract extension method '@lexicalExpressionAST checkLexicalExpression'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2880,7 +2880,7 @@ void callCategoryMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//     Abstract category method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'     *
+//    Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2941,7 +2941,7 @@ void callCategoryMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRout
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//     Abstract category method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument'      *
+//     Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument'     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3002,7 +3002,7 @@ void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRouti
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Abstract category method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'         *
+//        Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3064,7 +3064,7 @@ void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@lexicalInstructionAST checkLexicalInstruction'                      *
+//                     Abstract extension method '@lexicalInstructionAST checkLexicalInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3125,7 +3125,7 @@ void callCategoryMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Abstract category method '@abstractLexicalRuleAST checkLexicalRule'                         *
+//                        Abstract extension method '@abstractLexicalRuleAST checkLexicalRule'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3629,7 +3629,7 @@ GALGAS_parsedComponentStruct GALGAS_parsedComponentStruct::extractObject (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category Getter '@formalArgumentPassingModeAST string'                                *
+//                               Extension Getter '@formalArgumentPassingModeAST string'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3671,7 +3671,7 @@ GALGAS_string extensionGetter_string (const GALGAS_formalArgumentPassingModeAST 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Getter '@formalArgumentPassingModeAST formalArgumentMessage'                        *
+//                       Extension Getter '@formalArgumentPassingModeAST formalArgumentMessage'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3713,7 +3713,7 @@ GALGAS_string extensionGetter_formalArgumentMessage (const GALGAS_formalArgument
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category Getter '@formalArgumentPassingModeAST formalArgumentString'                         *
+//                        Extension Getter '@formalArgumentPassingModeAST formalArgumentString'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3977,7 +3977,7 @@ GALGAS_galgas_33_DeclarationAST GALGAS_galgas_33_DeclarationAST::extractObject (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        Category Getter '@typeKindEnum kind'                                         *
+//                                        Extension Getter '@typeKindEnum kind'                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4064,7 +4064,7 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@predefinedTypeAST getConstructorMap'                                *
+//                               Extension method '@predefinedTypeAST getConstructorMap'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4140,7 +4140,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getConstructorMap (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category method '@predefinedTypeAST getGetterMap'                                  *
+//                                 Extension method '@predefinedTypeAST getGetterMap'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4216,7 +4216,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineCategoryMethod_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category method '@predefinedTypeAST getModifierMap'                                 *
+//                                Extension method '@predefinedTypeAST getModifierMap'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4292,7 +4292,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineCategoryMetho
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@predefinedTypeAST getInstanceMethodMap'                              *
+//                             Extension method '@predefinedTypeAST getInstanceMethodMap'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4368,7 +4368,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getInstanceMethodMap (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@predefinedTypeAST getClassMethodMap'                                *
+//                               Extension method '@predefinedTypeAST getClassMethodMap'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4444,7 +4444,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category getter '@predefinedTypeAST getSupportedOperatorFlags'                            *
+//                           Extension getter '@predefinedTypeAST getSupportedOperatorFlags'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4523,7 +4523,7 @@ C_PrologueEpilogue gGetter_predefinedTypeAST_getSupportedOperatorFlags (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category method '@predefinedTypeAST getAddAssignArgumentList'                            *
+//                           Extension method '@predefinedTypeAST getAddAssignArgumentList'                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4599,7 +4599,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getAddAssignArgumentList (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@predefinedTypeAST getEnumerationList'                               *
+//                              Extension method '@predefinedTypeAST getEnumerationList'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4683,7 +4683,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getEnumerationList (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       Category Getter '@location sourceFile'                                        *
+//                                       Extension Getter '@location sourceFile'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4709,7 +4709,7 @@ GALGAS_string extensionGetter_sourceFile (const GALGAS_location & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Category Getter '@location commaSourceFile'                                     *
+//                                    Extension Getter '@location commaSourceFile'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4728,7 +4728,7 @@ GALGAS_string extensionGetter_commaSourceFile (const GALGAS_location & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Abstract category method '@semanticInstructionAST enterInstructionInSemanticContext'                 *
+//                Abstract extension method '@semanticInstructionAST enterInstructionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4788,7 +4788,7 @@ void callCategoryMethod_enterInstructionInSemanticContext (const cPtr_semanticIn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Abstract category method '@semanticExpressionAST enterExpressionInSemanticContext'                  *
+//                 Abstract extension method '@semanticExpressionAST enterExpressionInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4848,7 +4848,7 @@ void callCategoryMethod_enterExpressionInSemanticContext (const cPtr_semanticExp
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category method '@semanticInstructionListAST enterInstructionListInSemanticContext'                 *
+//                Extension method '@semanticInstructionListAST enterInstructionListInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4867,7 +4867,7 @@ void categoryMethod_enterInstructionListInSemanticContext (const GALGAS_semantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category method '@actualOutputExpressionList enterInSemanticContext'                         *
+//                        Extension method '@actualOutputExpressionList enterInSemanticContext'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4886,7 +4886,7 @@ void categoryMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionL
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category getter '@semanticDeclarationAST keyRepresentation'                         *
+//                        Abstract extension getter '@semanticDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4946,7 +4946,7 @@ GALGAS_string callCategoryGetter_keyRepresentation (const cPtr_semanticDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@semanticDeclarationAST enterInSemanticContext'                      *
+//                     Abstract extension method '@semanticDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5009,7 +5009,7 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category Getter '@predefinedTypeKindEnum defaultConstructorName'                           *
+//                          Extension Getter '@predefinedTypeKindEnum defaultConstructorName'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5098,7 +5098,7 @@ GALGAS_string extensionGetter_defaultConstructorName (const GALGAS_predefinedTyp
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category method '@semanticDeclarationAST enterDeclarationInGraph'                      *
+//                     Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5162,7 +5162,7 @@ void callCategoryMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category method '@semanticDeclarationAST addAssociatedElement'                            *
+//                           Extension method '@semanticDeclarationAST addAssociatedElement'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5234,7 +5234,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_addAssociatedElement (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@semanticInstructionForGeneration generateInstruction'                   *
+//                  Abstract extension method '@semanticInstructionForGeneration generateInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5298,7 +5298,7 @@ void callCategoryMethod_generateInstruction (const cPtr_semanticInstructionForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                  *
+//                 Extension getter '@semanticDeclarationForGeneration appendPrimitiveTypeDeclaration'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5377,7 +5377,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendPrimitiveTypeD
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Abstract category getter '@semanticDeclarationForGeneration implementationCppFileName'                *
+//               Abstract extension getter '@semanticDeclarationForGeneration implementationCppFileName'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5437,7 +5437,7 @@ GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticD
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
+//                   Abstract extension getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5497,7 +5497,7 @@ GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category getter '@semanticDeclarationForGeneration isPredefined'                      *
+//                     Abstract extension getter '@semanticDeclarationForGeneration isPredefined'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5557,7 +5557,7 @@ GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category getter '@semanticDeclarationForGeneration headerKind'                       *
+//                      Abstract extension getter '@semanticDeclarationForGeneration headerKind'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5617,7 +5617,7 @@ GALGAS_headerKind callCategoryGetter_headerKind (const cPtr_semanticDeclarationF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendDeclaration1'                        *
+//                       Extension method '@semanticDeclarationForGeneration appendDeclaration1'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5693,7 +5693,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_31
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendDeclaration2'                        *
+//                       Extension method '@semanticDeclarationForGeneration appendDeclaration2'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5771,7 +5771,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
+//                Extension getter '@semanticDeclarationForGeneration appendTypeGenericImplementation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5850,7 +5850,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendTypeGenericImp
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Category method '@semanticDeclarationForGeneration appendSpecificImplementation'                   *
+//                  Extension method '@semanticDeclarationForGeneration appendSpecificImplementation'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5928,7 +5928,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificImplem
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
+//                      Extension method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6002,7 +6002,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificFiles 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category method '@semanticExpressionAST analyzeSemanticExpression'                     *
+//                    Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6066,7 +6066,7 @@ void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@abstractCollectionValueElement enterInSemanticContext'                  *
+//                 Abstract extension method '@abstractCollectionValueElement enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6126,7 +6126,7 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_abstractCollectionVal
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Abstract category method '@abstractCollectionValueElement analyze'                          *
+//                         Abstract extension method '@abstractCollectionValueElement analyze'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6189,7 +6189,7 @@ void callCategoryMethod_analyze (const cPtr_abstractCollectionValueElement * inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category method '@semanticInstructionAST analyzeSemanticInstruction'                    *
+//                   Abstract extension method '@semanticInstructionAST analyzeSemanticInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6251,7 +6251,7 @@ void callCategoryMethod_analyzeSemanticInstruction (const cPtr_semanticInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@actualParameterAST checkAgainstFormalArgument'                      *
+//                     Abstract extension method '@actualParameterAST checkAgainstFormalArgument'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6318,7 +6318,7 @@ void callCategoryMethod_checkAgainstFormalArgument (const cPtr_actualParameterAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'                *
+//               Extension Getter '@formalArgumentPassingModeAST correspondingEffectiveParameterString'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6360,7 +6360,7 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@actualParameterAST enterParameterInSemanticContext'                    *
+//                   Abstract extension method '@actualParameterAST enterParameterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6420,7 +6420,7 @@ void callCategoryMethod_enterParameterInSemanticContext (const cPtr_actualParame
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// Abstract category method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT'  *
+// Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT' *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6484,7 +6484,7 @@ void callCategoryMethod_analyzeGrammarInstructionSDT (const cPtr_abstractGrammar
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Abstract category method '@semanticDeclarationAST semanticAnalysis'                         *
+//                        Abstract extension method '@semanticDeclarationAST semanticAnalysis'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6547,7 +6547,7 @@ void callCategoryMethod_semanticAnalysis (const cPtr_semanticDeclarationAST * in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@syntaxInstructionAST analyzeSyntaxInstruction'                      *
+//                     Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6616,7 +6616,7 @@ void callCategoryMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@abstractInputParameter analyzeInputParameter'                       *
+//                      Abstract extension method '@abstractInputParameter analyzeInputParameter'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6680,7 +6680,7 @@ void callCategoryMethod_analyzeInputParameter (const cPtr_abstractInputParameter
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Abstract category method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'           *
+//          Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6742,7 +6742,7 @@ void callCategoryMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxD
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Abstract category method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'          *
+//         Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6805,7 +6805,7 @@ void callCategoryMethod_generateCode (const cPtr_abstractGrammarInstructionSynta
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Abstract category method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'        *
+//       Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6870,7 +6870,7 @@ void callCategoryMethod_generateCollectionElementCode (const cPtr_abstractCollec
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Abstract category method '@abstractEnumeratedCollectionAST enterInSemanticContext'                  *
+//                 Abstract extension method '@abstractEnumeratedCollectionAST enterInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6930,7 +6930,7 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCol
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@abstractEnumeratedCollectionAST analyzeEnumeration'                    *
+//                   Abstract extension method '@abstractEnumeratedCollectionAST analyzeEnumeration'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6996,7 +6996,7 @@ void callCategoryMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollect
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Category method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
+//                     Extension method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7070,7 +7070,7 @@ C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignatur
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category getter '@semanticInstructionForGeneration compareSyntaxInstruction'                     *
+//                    Extension getter '@semanticInstructionForGeneration compareSyntaxInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7151,7 +7151,7 @@ C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareSyntaxInstruc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category method '@syntaxInstructionAST transformInstruction'                        *
+//                       Abstract extension method '@syntaxInstructionAST transformInstruction'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7214,7 +7214,7 @@ void callCategoryMethod_transformInstruction (const cPtr_syntaxInstructionAST * 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category method '@semanticDeclarationAST buildCategoryListMaps'                           *
+//                          Extension method '@semanticDeclarationAST buildCategoryListMaps'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

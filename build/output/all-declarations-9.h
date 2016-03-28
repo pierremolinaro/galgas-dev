@@ -273,7 +273,7 @@ void routine_templateInstructionListAnalysis (const class GALGAS_templateAnalysi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@templateInstructionAST templateInstructionAnalysis'                    *
+//                   Abstract extension method '@templateInstructionAST templateInstructionAnalysis'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -651,7 +651,7 @@ void routine_templateCodeGenerationForListInstruction (const class GALGAS_templa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Abstract category method '@templateInstructionForGeneration templateCodeGeneration'                 *
+//                Abstract extension method '@templateInstructionForGeneration templateCodeGeneration'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -743,7 +743,7 @@ void routine_printPredefinedLexicalActions (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Category getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)                    *
+//                   Extension getter '@lexicalArgumentModeAST lexicalFormalModeName' (as function)                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -753,7 +753,7 @@ class GALGAS_string extensionGetter_lexicalFormalModeName (const class GALGAS_le
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                         *
+//                        Extension getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -871,7 +871,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category getter '@abstractLexicalRuleAST generateCocoaCode'                         *
+//                        Abstract extension getter '@abstractLexicalRuleAST generateCocoaCode'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -896,7 +896,7 @@ class GALGAS_string callCategoryGetter_generateCocoaCode (const class cPtr_abstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Abstract category getter '@abstractLexicalRuleAST generateCode'                           *
+//                          Abstract extension getter '@abstractLexicalRuleAST generateCode'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -921,7 +921,7 @@ class GALGAS_string callCategoryGetter_generateCode (const class cPtr_abstractLe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)                 *
+//                Extension getter '@lexicalArgumentModeAST cocoaPointerInFormalArgument' (as function)                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -931,7 +931,7 @@ class GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const class GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Category getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)                   *
+//                  Extension getter '@lexicalArgumentModeAST cppConstInFormalArgument' (as function)                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -941,7 +941,7 @@ class GALGAS_string extensionGetter_cppConstInFormalArgument (const class GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Category getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)                 *
+//                Extension getter '@lexicalArgumentModeAST cppReferenceInFormalArgument' (as function)                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -951,7 +951,7 @@ class GALGAS_string extensionGetter_cppReferenceInFormalArgument (const class GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)                       *
+//                      Extension getter '@lexicalTypeEnum appendArgumentOfMethod' (as function)                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -961,7 +961,7 @@ class GALGAS_string extensionGetter_appendArgumentOfMethod (const class GALGAS_l
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category getter '@lexicalTypeEnum appendMethodName' (as function)                          *
+//                         Extension getter '@lexicalTypeEnum appendMethodName' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -971,7 +971,7 @@ class GALGAS_string extensionGetter_appendMethodName (const class GALGAS_lexical
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Category getter '@lexicalTypeEnum cocoaInitializationCode' (as function)                       *
+//                      Extension getter '@lexicalTypeEnum cocoaInitializationCode' (as function)                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -981,7 +981,7 @@ class GALGAS_string extensionGetter_cocoaInitializationCode (const class GALGAS_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category getter '@lexicalTypeEnum cocoaReset' (as function)                             *
+//                            Extension getter '@lexicalTypeEnum cocoaReset' (as function)                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -991,7 +991,7 @@ class GALGAS_string extensionGetter_cocoaReset (const class GALGAS_lexicalTypeEn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Category getter '@lexicalTypeEnum cocoaResetPrefix' (as function)                          *
+//                         Extension getter '@lexicalTypeEnum cocoaResetPrefix' (as function)                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1001,7 +1001,7 @@ class GALGAS_string extensionGetter_cocoaResetPrefix (const class GALGAS_lexical
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category getter '@lexicalTypeEnum cocoaTypeName' (as function)                            *
+//                           Extension getter '@lexicalTypeEnum cocoaTypeName' (as function)                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1011,7 +1011,7 @@ class GALGAS_string extensionGetter_cocoaTypeName (const class GALGAS_lexicalTyp
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category getter '@lexicalTypeEnum cppTypeName' (as function)                             *
+//                            Extension getter '@lexicalTypeEnum cppTypeName' (as function)                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1021,7 +1021,7 @@ class GALGAS_string extensionGetter_cppTypeName (const class GALGAS_lexicalTypeE
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category getter '@lexicalTypeEnum initialization' (as function)                           *
+//                          Extension getter '@lexicalTypeEnum initialization' (as function)                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2020,7 +2020,7 @@ void routine_buildSemanticContext (const class GALGAS_semanticDeclarationListAST
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Abstract category getter '@semanticDeclarationAST keyRepresentation'                         *
+//                        Abstract extension getter '@semanticDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2041,7 +2041,7 @@ class GALGAS_string callCategoryGetter_keyRepresentation (const class cPtr_seman
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category method '@semanticDeclarationAST addAssociatedElement'                            *
+//                           Extension method '@semanticDeclarationAST addAssociatedElement'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2064,7 +2064,7 @@ void callCategoryMethod_addAssociatedElement (const class cPtr_semanticDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category method '@semanticDeclarationAST enterDeclarationInGraph'                      *
+//                     Abstract extension method '@semanticDeclarationAST enterDeclarationInGraph'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2095,7 +2095,7 @@ void callCategoryMethod_enterDeclarationInGraph (const class cPtr_semanticDeclar
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@semanticDeclarationAST enterInSemanticContext'                      *
+//                     Abstract extension method '@semanticDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2139,7 +2139,7 @@ void routine_generateInstructionList (class GALGAS_stringset & ioArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@semanticInstructionForGeneration generateInstruction'                   *
+//                  Abstract extension method '@semanticInstructionForGeneration generateInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2201,7 +2201,7 @@ void routine_analyzeConstructorInvocation (const class GALGAS_unifiedTypeMap_2D_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Abstract category method '@semanticExpressionAST analyzeSemanticExpression'                     *
+//                    Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2473,7 +2473,7 @@ void routine_analyzeSemanticInstructionList (const class GALGAS_analysisContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category method '@semanticInstructionAST analyzeSemanticInstruction'                    *
+//                   Abstract extension method '@semanticInstructionAST analyzeSemanticInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2517,7 +2517,7 @@ void routine_analyzeRoutineArguments (const class GALGAS_analysisContext constin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@actualParameterAST checkAgainstFormalArgument'                      *
+//                     Abstract extension method '@actualParameterAST checkAgainstFormalArgument'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2682,7 +2682,7 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Category getter '@formalArgumentPassingModeAST formalArgumentMessage' (as function)                 *
+//                Extension getter '@formalArgumentPassingModeAST formalArgumentMessage' (as function)                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2692,7 +2692,7 @@ class GALGAS_string extensionGetter_formalArgumentMessage (const class GALGAS_fo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Category getter '@formalArgumentPassingModeAST string' (as function)                         *
+//                        Extension getter '@formalArgumentPassingModeAST string' (as function)                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2822,7 +2822,7 @@ void routine_performSemanticAnalysis (const class GALGAS_string constinArgument0
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Abstract category method '@semanticDeclarationAST semanticAnalysis'                         *
+//                        Abstract extension method '@semanticDeclarationAST semanticAnalysis'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2950,7 +2950,7 @@ void routine_analyzeSyntaxInstructionList (const class GALGAS_analysisContext co
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category method '@syntaxInstructionAST analyzeSyntaxInstruction'                      *
+//                     Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3054,7 +3054,7 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMap-proxy addHeaderFileName'                              *
+//                             Extension method '@unifiedTypeMap-proxy addHeaderFileName'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

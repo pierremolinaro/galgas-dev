@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Abstract category method '@" + [RECEIVER_TYPE key] + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Abstract extension method '@" + [RECEIVER_TYPE key] + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

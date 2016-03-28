@@ -3926,7 +3926,7 @@ GALGAS_programComponentAST GALGAS_programComponentAST::extractObject (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Category Getter '@unifiedTypeMap-proxy baseType'                                   *
+//                                  Extension Getter '@unifiedTypeMap-proxy baseType'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3963,7 +3963,7 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMap-proxy addHeaderFileName'                              *
+//                             Extension method '@unifiedTypeMap-proxy addHeaderFileName'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3983,7 +3983,7 @@ void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category method '@unifiedTypeMap-proxy addHeaderFileName1'                              *
+//                             Extension method '@unifiedTypeMap-proxy addHeaderFileName1'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4021,7 +4021,7 @@ void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@actualParameterForGeneration generateActualParameter'                   *
+//                  Abstract extension method '@actualParameterForGeneration generateActualParameter'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4975,7 +4975,7 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::extractObject (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addTIFF_file'                                *
+//                               Extension method '@XcodeProjectDescriptor addTIFF_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4994,7 +4994,7 @@ void categoryModifier_addTIFF_5F_file (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category method '@XcodeProjectDescriptor addInfoPlistFile'                              *
+//                             Extension method '@XcodeProjectDescriptor addInfoPlistFile'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5013,7 +5013,7 @@ void categoryModifier_addInfoPlistFile (GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category method '@XcodeProjectDescriptor addXIBFile'                                 *
+//                                Extension method '@XcodeProjectDescriptor addXIBFile'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5032,7 +5032,7 @@ void categoryModifier_addXIBFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category method '@XcodeProjectDescriptor addFrameworkFile'                              *
+//                             Extension method '@XcodeProjectDescriptor addFrameworkFile'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5051,7 +5051,7 @@ void categoryModifier_addFrameworkFile (GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category method '@XcodeProjectDescriptor addMFile'                                  *
+//                                 Extension method '@XcodeProjectDescriptor addMFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5070,7 +5070,7 @@ void categoryModifier_addMFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category method '@XcodeProjectDescriptor addMMFile'                                 *
+//                                Extension method '@XcodeProjectDescriptor addMMFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5089,7 +5089,7 @@ void categoryModifier_addMMFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category method '@XcodeProjectDescriptor addCppFile'                                 *
+//                                Extension method '@XcodeProjectDescriptor addCppFile'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5108,7 +5108,7 @@ void categoryModifier_addCppFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category method '@XcodeProjectDescriptor addCFile'                                  *
+//                                 Extension method '@XcodeProjectDescriptor addCFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5127,7 +5127,7 @@ void categoryModifier_addCFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addHeaderFile'                               *
+//                              Extension method '@XcodeProjectDescriptor addHeaderFile'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5146,7 +5146,7 @@ void categoryModifier_addHeaderFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addBuildFile'                                *
+//                               Extension method '@XcodeProjectDescriptor addBuildFile'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5166,7 +5166,7 @@ void categoryModifier_addBuildFile (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addToolTarget'                               *
+//                              Extension method '@XcodeProjectDescriptor addToolTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5210,7 +5210,7 @@ void categoryModifier_addToolTarget (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category method '@XcodeProjectDescriptor addAppTarget'                                *
+//                               Extension method '@XcodeProjectDescriptor addAppTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5280,7 +5280,7 @@ void categoryModifier_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category method '@XcodeProjectDescriptor addGroup'                                  *
+//                                 Extension method '@XcodeProjectDescriptor addGroup'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5319,7 +5319,7 @@ void categoryModifier_addGroup (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category method '@XcodeProjectDescriptor addGroupWithFiles'                             *
+//                            Extension method '@XcodeProjectDescriptor addGroupWithFiles'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5500,7 +5500,7 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category method '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
+//                          Extension method '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5514,7 +5514,7 @@ void categoryModifier_placeGroupAsMainGroup (GALGAS_XcodeProjectDescriptor & ioO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Category method '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
+//                    Extension method '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5528,7 +5528,7 @@ void categoryModifier_addSettingsToDefaultConfiguration (GALGAS_XcodeProjectDesc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@XcodeProjectDescriptor getReferenceKey'                              *
+//                             Extension method '@XcodeProjectDescriptor getReferenceKey'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5549,7 +5549,7 @@ void categoryModifier_getReferenceKey (GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@XcodeProjectDescriptor generateAtPath'                               *
+//                              Extension method '@XcodeProjectDescriptor generateAtPath'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
