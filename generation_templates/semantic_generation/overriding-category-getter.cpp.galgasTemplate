@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Overriding category getter '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Overriding extension getter '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

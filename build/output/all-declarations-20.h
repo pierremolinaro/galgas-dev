@@ -11,7 +11,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category getter '@unifiedTypeMap-proxy baseType' (as function)                            *
+//                           Extension getter '@unifiedTypeMap-proxy baseType' (as function)                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -21,7 +21,7 @@ class GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const class GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category method '@unifiedTypeMap-proxy addHeaderFileName1'                              *
+//                             Extension method '@unifiedTypeMap-proxy addHeaderFileName1'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -32,7 +32,7 @@ void categoryMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMap_2D_
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Abstract category method '@actualParameterForGeneration generateActualParameter'                   *
+//                  Abstract extension method '@actualParameterForGeneration generateActualParameter'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -67,7 +67,7 @@ void callCategoryMethod_generateActualParameter (const class cPtr_actualParamete
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addTIFF_file'                                *
+//                               Extension setter '@XcodeProjectDescriptor addTIFF_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -79,7 +79,7 @@ void categoryModifier_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category setter '@XcodeProjectDescriptor getReferenceKey'                              *
+//                             Extension setter '@XcodeProjectDescriptor getReferenceKey'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -90,7 +90,7 @@ void categoryModifier_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category setter '@XcodeProjectDescriptor addInfoPlistFile'                              *
+//                             Extension setter '@XcodeProjectDescriptor addInfoPlistFile'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -102,7 +102,7 @@ void categoryModifier_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category setter '@XcodeProjectDescriptor addXIBFile'                                 *
+//                                Extension setter '@XcodeProjectDescriptor addXIBFile'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -114,7 +114,7 @@ void categoryModifier_addXIBFile (class GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category setter '@XcodeProjectDescriptor addFrameworkFile'                              *
+//                             Extension setter '@XcodeProjectDescriptor addFrameworkFile'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -126,7 +126,7 @@ void categoryModifier_addFrameworkFile (class GALGAS_XcodeProjectDescriptor & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category setter '@XcodeProjectDescriptor addMFile'                                  *
+//                                 Extension setter '@XcodeProjectDescriptor addMFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -138,7 +138,7 @@ void categoryModifier_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category setter '@XcodeProjectDescriptor addMMFile'                                 *
+//                                Extension setter '@XcodeProjectDescriptor addMMFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -150,7 +150,7 @@ void categoryModifier_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                Category setter '@XcodeProjectDescriptor addCppFile'                                 *
+//                                Extension setter '@XcodeProjectDescriptor addCppFile'                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -162,7 +162,7 @@ void categoryModifier_addCppFile (class GALGAS_XcodeProjectDescriptor & ioObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category setter '@XcodeProjectDescriptor addCFile'                                  *
+//                                 Extension setter '@XcodeProjectDescriptor addCFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -174,7 +174,7 @@ void categoryModifier_addCFile (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addHeaderFile'                               *
+//                              Extension setter '@XcodeProjectDescriptor addHeaderFile'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -186,7 +186,7 @@ void categoryModifier_addHeaderFile (class GALGAS_XcodeProjectDescriptor & ioObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addBuildFile'                                *
+//                               Extension setter '@XcodeProjectDescriptor addBuildFile'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -199,7 +199,7 @@ void categoryModifier_addBuildFile (class GALGAS_XcodeProjectDescriptor & ioObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addICNS_file'                                *
+//                               Extension setter '@XcodeProjectDescriptor addICNS_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

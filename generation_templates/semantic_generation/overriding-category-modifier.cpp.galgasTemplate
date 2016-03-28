@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Overriding category setter '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Overriding extension setter '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -10,7 +10,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@methodCallInstructionForGeneration generateInstruction'                 *
+//                Overriding extension method '@methodCallInstructionForGeneration generateInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -91,6 +91,7 @@ static void categoryMethod_methodCallInstructionForGeneration_generateInstructio
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 181)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-method-call.galgas", 181)), inCompiler  COMMA_SOURCE_FILE ("instruction-method-call.galgas", 181)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_methodCallInstructionForGeneration_generateInstruction (void) {
@@ -104,7 +105,7 @@ C_PrologueEpilogue gMethod_methodCallInstructionForGeneration_generateInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@procCallInstructionAST enterInstructionInSemanticContext'                *
+//               Overriding extension method '@procCallInstructionAST enterInstructionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -120,6 +121,7 @@ static void categoryMethod_procCallInstructionAST_enterInstructionInSemanticCont
     enumerator_1673.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_procCallInstructionAST_enterInstructionInSemanticContext (void) {
@@ -133,7 +135,7 @@ C_PrologueEpilogue gMethod_procCallInstructionAST_enterInstructionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@procCallInstructionAST analyzeSemanticInstruction'                   *
+//                  Overriding extension method '@procCallInstructionAST analyzeSemanticInstruction'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -163,6 +165,7 @@ static void categoryMethod_procCallInstructionAST_analyzeSemanticInstruction (co
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_procCallInstructionForGeneration::constructor_new (object->mAttribute_mRoutineName, var_actualParameterListForGeneration  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 76))  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 76)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_procCallInstructionAST_analyzeSemanticInstruction (void) {
@@ -176,7 +179,7 @@ C_PrologueEpilogue gMethod_procCallInstructionAST_analyzeSemanticInstruction (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@procCallInstructionForGeneration generateInstruction'                  *
+//                 Overriding extension method '@procCallInstructionForGeneration generateInstruction'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -214,6 +217,7 @@ static void categoryMethod_procCallInstructionForGeneration_generateInstruction 
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)).add_operation (extensionGetter_commaSourceFile (object->mAttribute_mRoutineName.getter_location (SOURCE_FILE ("instruction-proc-call.galgas", 122)), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)), inCompiler  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 122)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-proc-call.galgas", 123)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_procCallInstructionForGeneration_generateInstruction (void) {
@@ -227,7 +231,7 @@ C_PrologueEpilogue gMethod_procCallInstructionForGeneration_generateInstruction 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext'        *
+//       Overriding extension method '@selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -239,6 +243,7 @@ static void categoryMethod_selfPlusEqualExpressionInstructionAST_enterInstructio
   macroValidSharedObject (object, cPtr_selfPlusEqualExpressionInstructionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 113)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfPlusEqualExpressionInstructionAST_enterInstructionInSemanticContext (void) {
@@ -252,7 +257,7 @@ C_PrologueEpilogue gMethod_selfPlusEqualExpressionInstructionAST_enterInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Overriding category method '@selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext'        *
+//       Overriding extension method '@selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext'       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -264,6 +269,7 @@ static void categoryMethod_selfMinusEqualExpressionInstructionAST_enterInstructi
   macroValidSharedObject (object, cPtr_selfMinusEqualExpressionInstructionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 119)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfMinusEqualExpressionInstructionAST_enterInstructionInSemanticContext (void) {
@@ -277,7 +283,7 @@ C_PrologueEpilogue gMethod_selfMinusEqualExpressionInstructionAST_enterInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext'         *
+//        Overriding extension method '@selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -289,6 +295,7 @@ static void categoryMethod_selfMulEqualExpressionInstructionAST_enterInstruction
   macroValidSharedObject (object, cPtr_selfMulEqualExpressionInstructionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 125)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfMulEqualExpressionInstructionAST_enterInstructionInSemanticContext (void) {
@@ -302,7 +309,7 @@ C_PrologueEpilogue gMethod_selfMulEqualExpressionInstructionAST_enterInstruction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext'         *
+//        Overriding extension method '@selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -314,6 +321,7 @@ static void categoryMethod_selfDivEqualExpressionInstructionAST_enterInstruction
   macroValidSharedObject (object, cPtr_selfDivEqualExpressionInstructionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 131)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfDivEqualExpressionInstructionAST_enterInstructionInSemanticContext (void) {
@@ -327,7 +335,7 @@ C_PrologueEpilogue gMethod_selfDivEqualExpressionInstructionAST_enterInstruction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Overriding category method '@selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext'         *
+//        Overriding extension method '@selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -339,6 +347,7 @@ static void categoryMethod_selfPlusEqualElementsInstructionAST_enterInstructionI
   macroValidSharedObject (object, cPtr_selfPlusEqualElementsInstructionAST) ;
   categoryMethod_enterInSemanticContext (object->mAttribute_mExpressions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 137)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfPlusEqualElementsInstructionAST_enterInstructionInSemanticContext (void) {
@@ -352,7 +361,7 @@ C_PrologueEpilogue gMethod_selfPlusEqualElementsInstructionAST_enterInstructionI
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@selfPlusEqualElementsInstructionAST analyzeSemanticInstruction'             *
+//            Overriding extension method '@selfPlusEqualElementsInstructionAST analyzeSemanticInstruction'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -413,6 +422,7 @@ static void categoryMethod_selfPlusEqualElementsInstructionAST_analyzeSemanticIn
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfPlusEqualElementsInstructionAST_analyzeSemanticInstruction (void) {
@@ -426,7 +436,7 @@ C_PrologueEpilogue gMethod_selfPlusEqualElementsInstructionAST_analyzeSemanticIn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction'            *
+//           Overriding extension method '@selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -460,6 +470,7 @@ static void categoryMethod_selfPlusEqualExpressionInstructionAST_analyzeSemantic
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_opEqualInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_selfTypeProxy, var_selfObjectCppName, GALGAS_string::makeEmptyString (), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-self-concat.galgas", 229)), var_expression, GALGAS_string ("plusAssign_operation")  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 224))  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 224)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfPlusEqualExpressionInstructionAST_analyzeSemanticInstruction (void) {
@@ -473,7 +484,7 @@ C_PrologueEpilogue gMethod_selfPlusEqualExpressionInstructionAST_analyzeSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction'           *
+//          Overriding extension method '@selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -507,6 +518,7 @@ static void categoryMethod_selfMinusEqualExpressionInstructionAST_analyzeSemanti
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_opEqualInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_selfTypeProxy, var_selfObjectCppName, GALGAS_string::makeEmptyString (), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-self-concat.galgas", 270)), var_expression, GALGAS_string ("minusAssign_operation")  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265))  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 265)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfMinusEqualExpressionInstructionAST_analyzeSemanticInstruction (void) {
@@ -520,7 +532,7 @@ C_PrologueEpilogue gMethod_selfMinusEqualExpressionInstructionAST_analyzeSemanti
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@selfMulEqualExpressionInstructionAST analyzeSemanticInstruction'            *
+//           Overriding extension method '@selfMulEqualExpressionInstructionAST analyzeSemanticInstruction'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -554,6 +566,7 @@ static void categoryMethod_selfMulEqualExpressionInstructionAST_analyzeSemanticI
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_opEqualInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_selfTypeProxy, var_selfObjectCppName, GALGAS_string::makeEmptyString (), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-self-concat.galgas", 311)), var_expression, GALGAS_string ("mulAssign_operation")  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 306))  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 306)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfMulEqualExpressionInstructionAST_analyzeSemanticInstruction (void) {
@@ -567,7 +580,7 @@ C_PrologueEpilogue gMethod_selfMulEqualExpressionInstructionAST_analyzeSemanticI
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@selfDivEqualExpressionInstructionAST analyzeSemanticInstruction'            *
+//           Overriding extension method '@selfDivEqualExpressionInstructionAST analyzeSemanticInstruction'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -601,6 +614,7 @@ static void categoryMethod_selfDivEqualExpressionInstructionAST_analyzeSemanticI
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_opEqualInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_selfTypeProxy, var_selfObjectCppName, GALGAS_string::makeEmptyString (), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("instruction-self-concat.galgas", 352)), var_expression, GALGAS_string ("divAssign_operation")  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 347))  COMMA_SOURCE_FILE ("instruction-self-concat.galgas", 347)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfDivEqualExpressionInstructionAST_analyzeSemanticInstruction (void) {
@@ -614,7 +628,7 @@ C_PrologueEpilogue gMethod_selfDivEqualExpressionInstructionAST_analyzeSemanticI
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@setterCallInstructionAST enterInstructionInSemanticContext'               *
+//              Overriding extension method '@setterCallInstructionAST enterInstructionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -630,6 +644,7 @@ static void categoryMethod_setterCallInstructionAST_enterInstructionInSemanticCo
     enumerator_3382.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_setterCallInstructionAST_enterInstructionInSemanticContext (void) {
@@ -643,7 +658,7 @@ C_PrologueEpilogue gMethod_setterCallInstructionAST_enterInstructionInSemanticCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@selfSetterCallInstructionAST enterInstructionInSemanticContext'             *
+//            Overriding extension method '@selfSetterCallInstructionAST enterInstructionInSemanticContext'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -659,6 +674,7 @@ static void categoryMethod_selfSetterCallInstructionAST_enterInstructionInSemant
     enumerator_3797.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfSetterCallInstructionAST_enterInstructionInSemanticContext (void) {
@@ -672,7 +688,7 @@ C_PrologueEpilogue gMethod_selfSetterCallInstructionAST_enterInstructionInSemant
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@setterCallInstructionAST analyzeSemanticInstruction'                  *
+//                 Overriding extension method '@setterCallInstructionAST analyzeSemanticInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -756,6 +772,7 @@ static void categoryMethod_setterCallInstructionAST_analyzeSemanticInstruction (
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_setterCallInstructionForGeneration::constructor_new (object->mAttribute_mReceiverName.mAttribute_location, var_receiverVariableCppName, var_receiverVariableBaseName, object->mAttribute_mReceiverStructAttributes, var_castType, var_receiverType, object->mAttribute_mModifierName, var_kind, var_actualParameterListForGeneration, var_hasCompilerArgument, var_baseType  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 188))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 188)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_setterCallInstructionAST_analyzeSemanticInstruction (void) {
@@ -769,7 +786,7 @@ C_PrologueEpilogue gMethod_setterCallInstructionAST_analyzeSemanticInstruction (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@selfSetterCallInstructionAST analyzeSemanticInstruction'                *
+//               Overriding extension method '@selfSetterCallInstructionAST analyzeSemanticInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -805,6 +822,7 @@ static void categoryMethod_selfSetterCallInstructionAST_analyzeSemanticInstructi
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_selfSetterCallInstructionForGeneration::constructor_new (var_selfObjectCppName, var_selfTypeProxy, object->mAttribute_mModifierName, var_kind, var_actualParameterListForGeneration, var_hasCompilerArgument  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 235))  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 235)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfSetterCallInstructionAST_analyzeSemanticInstruction (void) {
@@ -818,7 +836,7 @@ C_PrologueEpilogue gMethod_selfSetterCallInstructionAST_analyzeSemanticInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@setterCallInstructionForGeneration generateInstruction'                 *
+//                Overriding extension method '@setterCallInstructionForGeneration generateInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -919,6 +937,7 @@ static void categoryMethod_setterCallInstructionForGeneration_generateInstructio
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (object->mAttribute_mModifierName.getter_location (SOURCE_FILE ("instruction-setter-call.galgas", 371)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 371)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 371)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 371)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 372)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_setterCallInstructionForGeneration_generateInstruction (void) {
@@ -932,7 +951,7 @@ C_PrologueEpilogue gMethod_setterCallInstructionForGeneration_generateInstructio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@selfSetterCallInstructionForGeneration generateInstruction'               *
+//              Overriding extension method '@selfSetterCallInstructionForGeneration generateInstruction'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1013,6 +1032,7 @@ static void categoryMethod_selfSetterCallInstructionForGeneration_generateInstru
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (object->mAttribute_mModifierName.getter_location (SOURCE_FILE ("instruction-setter-call.galgas", 430)), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 430)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 430)), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 430)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-setter-call.galgas", 431)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfSetterCallInstructionForGeneration_generateInstruction (void) {
@@ -1026,7 +1046,7 @@ C_PrologueEpilogue gMethod_selfSetterCallInstructionForGeneration_generateInstru
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@switchInstructionAST enterInstructionInSemanticContext'                 *
+//                Overriding extension method '@switchInstructionAST enterInstructionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1043,6 +1063,7 @@ static void categoryMethod_switchInstructionAST_enterInstructionInSemanticContex
     enumerator_3977.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_switchInstructionAST_enterInstructionInSemanticContext (void) {
@@ -1056,7 +1077,7 @@ C_PrologueEpilogue gMethod_switchInstructionAST_enterInstructionInSemanticContex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@switchInstructionAST analyzeSemanticInstruction'                    *
+//                   Overriding extension method '@switchInstructionAST analyzeSemanticInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1184,6 +1205,7 @@ static void categoryMethod_switchInstructionAST_analyzeSemanticInstruction (cons
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_switchInstructionForGeneration::constructor_new (var_switchExpression.getter_mResultType (SOURCE_FILE ("instruction-switch.galgas", 220)), var_switchExpression, var_switchBranchesForGeneration  COMMA_SOURCE_FILE ("instruction-switch.galgas", 219))  COMMA_SOURCE_FILE ("instruction-switch.galgas", 219)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_switchInstructionAST_analyzeSemanticInstruction (void) {
@@ -1197,7 +1219,7 @@ C_PrologueEpilogue gMethod_switchInstructionAST_analyzeSemanticInstruction (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@switchInstructionForGeneration generateInstruction'                   *
+//                  Overriding extension method '@switchInstructionForGeneration generateInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1250,6 +1272,7 @@ static void categoryMethod_switchInstructionForGeneration_generateInstruction (c
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-switch.galgas", 299)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_switchInstructionForGeneration_generateInstruction (void) {
@@ -1263,7 +1286,7 @@ C_PrologueEpilogue gMethod_switchInstructionForGeneration_generateInstruction (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@typeMethodCallInstructionAST enterInstructionInSemanticContext'             *
+//            Overriding extension method '@typeMethodCallInstructionAST enterInstructionInSemanticContext'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1279,6 +1302,7 @@ static void categoryMethod_typeMethodCallInstructionAST_enterInstructionInSemant
     enumerator_1830.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_typeMethodCallInstructionAST_enterInstructionInSemanticContext (void) {
@@ -1292,7 +1316,7 @@ C_PrologueEpilogue gMethod_typeMethodCallInstructionAST_enterInstructionInSemant
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@typeMethodCallInstructionAST analyzeSemanticInstruction'                *
+//               Overriding extension method '@typeMethodCallInstructionAST analyzeSemanticInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1314,6 +1338,7 @@ static void categoryMethod_typeMethodCallInstructionAST_analyzeSemanticInstructi
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_typeMethodCallInstructionForGeneration::constructor_new (object->mAttribute_mTypeName, object->mAttribute_mMethodName, var_actualParameterListForGeneration, var_hasCompilerArgument  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 73))  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 73)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_typeMethodCallInstructionAST_analyzeSemanticInstruction (void) {
@@ -1327,7 +1352,7 @@ C_PrologueEpilogue gMethod_typeMethodCallInstructionAST_analyzeSemanticInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@typeMethodCallInstructionForGeneration generateInstruction'               *
+//              Overriding extension method '@typeMethodCallInstructionForGeneration generateInstruction'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1379,6 +1404,7 @@ static void categoryMethod_typeMethodCallInstructionForGeneration_generateInstru
   ioArgument_ioGeneratedCode.plusAssign_operation(extensionGetter_sourceFile (object->mAttribute_mMethodName.getter_location (SOURCE_FILE ("instruction-type-method-call.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 132)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 132)), inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 132)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-type-method-call.galgas", 133)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_typeMethodCallInstructionForGeneration_generateInstruction (void) {
@@ -1392,7 +1418,7 @@ C_PrologueEpilogue gMethod_typeMethodCallInstructionForGeneration_generateInstru
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@warningInstructionAST enterInstructionInSemanticContext'                *
+//               Overriding extension method '@warningInstructionAST enterInstructionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1405,6 +1431,7 @@ static void categoryMethod_warningInstructionAST_enterInstructionInSemanticConte
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLocationExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 43)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mMessageExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 44)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_warningInstructionAST_enterInstructionInSemanticContext (void) {
@@ -1418,7 +1445,7 @@ C_PrologueEpilogue gMethod_warningInstructionAST_enterInstructionInSemanticConte
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@warningInstructionAST analyzeSemanticInstruction'                    *
+//                   Overriding extension method '@warningInstructionAST analyzeSemanticInstruction'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1438,6 +1465,7 @@ static void categoryMethod_warningInstructionAST_analyzeSemanticInstruction (con
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_warningInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_locationExpression, var_useLocationReader, var_messageExpression  COMMA_SOURCE_FILE ("instruction-warning.galgas", 68))  COMMA_SOURCE_FILE ("instruction-warning.galgas", 68)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_warningInstructionAST_analyzeSemanticInstruction (void) {
@@ -1451,7 +1479,7 @@ C_PrologueEpilogue gMethod_warningInstructionAST_analyzeSemanticInstruction (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@warningInstructionForGeneration generateInstruction'                  *
+//                 Overriding extension method '@warningInstructionForGeneration generateInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1481,6 +1509,7 @@ static void categoryMethod_warningInstructionForGeneration_generateInstruction (
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (GALGAS_string ("->emitSemanticWarning ("), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (var_receiverCppVarName, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (var_messageCppVarName, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)).add_operation (extensionGetter_commaSourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 110)), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 110)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-warning.galgas", 110)), inCompiler  COMMA_SOURCE_FILE ("instruction-warning.galgas", 109)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_warningInstructionForGeneration_generateInstruction (void) {
@@ -1494,7 +1523,7 @@ C_PrologueEpilogue gMethod_warningInstructionForGeneration_generateInstruction (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@readAccessWithInstructionAST enterInstructionInSemanticContext'             *
+//            Overriding extension method '@readAccessWithInstructionAST enterInstructionInSemanticContext'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1509,6 +1538,7 @@ static void categoryMethod_readAccessWithInstructionAST_enterInstructionInSemant
   categoryMethod_enterInstructionListInSemanticContext (object->mAttribute_mDoBranchInstructions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 165)) ;
   categoryMethod_enterInstructionListInSemanticContext (object->mAttribute_mElseBranchInstructions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 166)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readAccessWithInstructionAST_enterInstructionInSemanticContext (void) {
@@ -1522,7 +1552,7 @@ C_PrologueEpilogue gMethod_readAccessWithInstructionAST_enterInstructionInSemant
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category method '@readWriteAccessWithInstructionAST enterInstructionInSemanticContext'          *
+//         Overriding extension method '@readWriteAccessWithInstructionAST enterInstructionInSemanticContext'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1536,6 +1566,7 @@ static void categoryMethod_readWriteAccessWithInstructionAST_enterInstructionInS
   categoryMethod_enterInstructionListInSemanticContext (object->mAttribute_m_5F_do_5F_Instructions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 175)) ;
   categoryMethod_enterInstructionListInSemanticContext (object->mAttribute_m_5F_else_5F_Instructions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-with.galgas", 176)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readWriteAccessWithInstructionAST_enterInstructionInSemanticContext (void) {
@@ -1549,7 +1580,7 @@ C_PrologueEpilogue gMethod_readWriteAccessWithInstructionAST_enterInstructionInS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@readAccessWithInstructionAST analyzeSemanticInstruction'                *
+//               Overriding extension method '@readAccessWithInstructionAST analyzeSemanticInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1614,6 +1645,7 @@ static void categoryMethod_readAccessWithInstructionAST_analyzeSemanticInstructi
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_readOnlyWithInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_receiverExpression, var_objectArrayCppName, var_keyExpression, object->mAttribute_mSearchMethodNameForErrorSignaling.mAttribute_string, var_do_5F_instructionList, var_else_5F_instructionList  COMMA_SOURCE_FILE ("instruction-with.galgas", 256))  COMMA_SOURCE_FILE ("instruction-with.galgas", 256)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readAccessWithInstructionAST_analyzeSemanticInstruction (void) {
@@ -1627,7 +1659,7 @@ C_PrologueEpilogue gMethod_readAccessWithInstructionAST_analyzeSemanticInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@readWriteAccessWithInstructionAST analyzeSemanticInstruction'              *
+//             Overriding extension method '@readWriteAccessWithInstructionAST analyzeSemanticInstruction'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1715,6 +1747,7 @@ static void categoryMethod_readWriteAccessWithInstructionAST_analyzeSemanticInst
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_readWriteWithInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_receiverVariableCppName, var_targetType, object->mAttribute_mFieldList, var_objectArrayCppName, var_keyExpression, object->mAttribute_mSearchMethodNameForErrorSignaling.mAttribute_string, var_do_5F_instructionList, var_else_5F_instructionList  COMMA_SOURCE_FILE ("instruction-with.galgas", 359))  COMMA_SOURCE_FILE ("instruction-with.galgas", 359)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readWriteAccessWithInstructionAST_analyzeSemanticInstruction (void) {
@@ -1728,7 +1761,7 @@ C_PrologueEpilogue gMethod_readWriteAccessWithInstructionAST_analyzeSemanticInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@readOnlyWithInstructionForGeneration generateInstruction'                *
+//               Overriding extension method '@readOnlyWithInstructionForGeneration generateInstruction'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1770,6 +1803,7 @@ static void categoryMethod_readOnlyWithInstructionForGeneration_generateInstruct
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 448)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readOnlyWithInstructionForGeneration_generateInstruction (void) {
@@ -1783,7 +1817,7 @@ C_PrologueEpilogue gMethod_readOnlyWithInstructionForGeneration_generateInstruct
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@readWriteWithInstructionForGeneration generateInstruction'               *
+//              Overriding extension method '@readWriteWithInstructionForGeneration generateInstruction'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1832,6 +1866,7 @@ static void categoryMethod_readWriteWithInstructionForGeneration_generateInstruc
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-with.galgas", 499)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_readWriteWithInstructionForGeneration_generateInstruction (void) {
@@ -1845,7 +1880,7 @@ C_PrologueEpilogue gMethod_readWriteWithInstructionForGeneration_generateInstruc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@enumDeclarationAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@enumDeclarationAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1903,6 +1938,7 @@ static void categoryMethod_enumDeclarationAST_enterDeclarationInGraph (const cPt
     enumerator_4075.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumDeclarationAST_enterDeclarationInGraph (void) {
@@ -1916,7 +1952,7 @@ C_PrologueEpilogue gMethod_enumDeclarationAST_enterDeclarationInGraph (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@enumDeclarationAST enterInSemanticContext'                       *
+//                      Overriding extension method '@enumDeclarationAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2010,6 +2046,7 @@ static void categoryMethod_enumDeclarationAST_enterInSemanticContext (const cPtr
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mEnumTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("enum.galgas", 187)), GALGAS_typeKindEnum::constructor_enumType (SOURCE_FILE ("enum.galgas", 188)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("enum.galgas", 190)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("enum.galgas", 191)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("enum.galgas", 192)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("enum.galgas", 197)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("enum.galgas", 198)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("enum.galgas", 199)), function_generateDescriptionGetterUtilityMethod (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 200)).operator_or (function_isComparable (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 200)) COMMA_SOURCE_FILE ("enum.galgas", 200)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("enum.galgas", 201)), var_constantMap, object->mAttribute_mConstantList, GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("enum.galgas", 204)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("enum.galgas", 205)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("enum.galgas", 207)), GALGAS_string::makeEmptyString (), GALGAS_string ("enum-").add_operation (object->mAttribute_mEnumTypeName.getter_string (SOURCE_FILE ("enum.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("enum.galgas", 209)), temp_1, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 183)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumDeclarationAST_enterInSemanticContext (void) {
@@ -2023,7 +2060,7 @@ C_PrologueEpilogue gMethod_enumDeclarationAST_enterInSemanticContext (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@enumDeclarationAST semanticAnalysis'                          *
+//                         Overriding extension method '@enumDeclarationAST semanticAnalysis'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2064,6 +2101,7 @@ static void categoryMethod_enumDeclarationAST_semanticAnalysis (const cPtr_seman
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("enum ").add_operation (object->mAttribute_mEnumTypeName.getter_string (SOURCE_FILE ("enum.galgas", 244)), inCompiler COMMA_SOURCE_FILE ("enum.galgas", 244)), GALGAS_enumTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mEnumTypeName, inCompiler  COMMA_SOURCE_FILE ("enum.galgas", 246)), var_enumConstantListForGeneration  COMMA_SOURCE_FILE ("enum.galgas", 245)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("enum.galgas", 243)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumDeclarationAST_semanticAnalysis (void) {
@@ -2077,7 +2115,7 @@ C_PrologueEpilogue gMethod_enumDeclarationAST_semanticAnalysis (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@enumTypeForGeneration appendDeclaration1'                        *
+//                       Overriding extension method '@enumTypeForGeneration appendDeclaration1'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2103,6 +2141,7 @@ static void categoryMethod_enumTypeForGeneration_appendDeclaration_31_ (const cP
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 302)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 303)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 301))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 308)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 309)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 310)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 311)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 312)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 313)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 314)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 315)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 316)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 317)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 318)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 319)) COMMA_SOURCE_FILE ("enum.galgas", 307))), inCompiler  COMMA_SOURCE_FILE ("enum.galgas", 307)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumTypeForGeneration_appendDeclaration_31_ (void) {
@@ -2116,7 +2155,7 @@ C_PrologueEpilogue gMethod_enumTypeForGeneration_appendDeclaration_31_ (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@enumTypeForGeneration appendDeclaration2'                        *
+//                       Overriding extension method '@enumTypeForGeneration appendDeclaration2'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2151,6 +2190,7 @@ static void categoryMethod_enumTypeForGeneration_appendDeclaration_32_ (const cP
   }
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 339)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 340)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 338))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumTypeForGeneration_appendDeclaration_32_ (void) {
@@ -2164,7 +2204,7 @@ C_PrologueEpilogue gMethod_enumTypeForGeneration_appendDeclaration_32_ (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@enumTypeForGeneration appendSpecificImplementation'                   *
+//                  Overriding extension method '@enumTypeForGeneration appendSpecificImplementation'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2191,6 +2231,7 @@ static void categoryMethod_enumTypeForGeneration_appendSpecificImplementation (c
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("enum.galgas", 356)) ;
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 358)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("enum.galgas", 359)), object->mAttribute_mConstantList, var_hasAssociatedValues COMMA_SOURCE_FILE ("enum.galgas", 357))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_enumTypeForGeneration_appendSpecificImplementation (void) {
@@ -2204,7 +2245,7 @@ C_PrologueEpilogue gMethod_enumTypeForGeneration_appendSpecificImplementation (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@sharedMapDeclarationAST enterDeclarationInGraph'                    *
+//                   Overriding extension method '@sharedMapDeclarationAST enterDeclarationInGraph'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2231,6 +2272,7 @@ static void categoryMethod_sharedMapDeclarationAST_enterDeclarationInGraph (cons
     enumerator_10928.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapDeclarationAST_enterDeclarationInGraph (void) {
@@ -2244,7 +2286,7 @@ C_PrologueEpilogue gMethod_sharedMapDeclarationAST_enterDeclarationInGraph (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category getter '@sharedMapDeclarationAST keyRepresentation'                       *
+//                      Overriding extension getter '@sharedMapDeclarationAST keyRepresentation'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2273,7 +2315,7 @@ C_PrologueEpilogue gGetter_sharedMapDeclarationAST_keyRepresentation (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@sharedMapDeclarationAST enterInSemanticContext'                     *
+//                    Overriding extension method '@sharedMapDeclarationAST enterInSemanticContext'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2507,6 +2549,7 @@ static void categoryMethod_sharedMapDeclarationAST_enterInSemanticContext (const
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mMapTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("shared-map.galgas", 581)), GALGAS_typeKindEnum::constructor_uniqueMapType (SOURCE_FILE ("shared-map.galgas", 582)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("shared-map.galgas", 584)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("shared-map.galgas", 585)), var_typedAttributeList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("shared-map.galgas", 591)), var_enumerationDescriptor, var_enumerationVariants, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 594)).operator_or (function_supportWithAccessor (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 594)) COMMA_SOURCE_FILE ("shared-map.galgas", 594)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("shared-map.galgas", 595)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("shared-map.galgas", 596)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("shared-map.galgas", 597)), object->mAttribute_mSearchMethodList, GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("shared-map.galgas", 599)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("shared-map.galgas", 601)), GALGAS_string ("emptyMap"), GALGAS_string ("uniquemap-").add_operation (object->mAttribute_mMapTypeName.getter_string (SOURCE_FILE ("shared-map.galgas", 603)), inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 603)), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("shared-map.galgas", 604)), inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 577)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapDeclarationAST_enterInSemanticContext (void) {
@@ -2520,7 +2563,7 @@ C_PrologueEpilogue gMethod_sharedMapDeclarationAST_enterInSemanticContext (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@sharedMapDeclarationAST semanticAnalysis'                        *
+//                       Overriding extension method '@sharedMapDeclarationAST semanticAnalysis'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3034,6 +3077,7 @@ static void categoryMethod_sharedMapDeclarationAST_semanticAnalysis (const cPtr_
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapDeclarationAST_semanticAnalysis (void) {
@@ -3047,7 +3091,7 @@ C_PrologueEpilogue gMethod_sharedMapDeclarationAST_semanticAnalysis (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@sharedMapTypeForGeneration appendDeclaration1'                     *
+//                    Overriding extension method '@sharedMapTypeForGeneration appendDeclaration1'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3066,6 +3110,7 @@ static void categoryMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (con
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1096)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1097)), object->mAttribute_mTypedAttributeList, object->mAttribute_mSearchMethodList COMMA_SOURCE_FILE ("shared-map.galgas", 1095))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1102)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1103)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1104)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1105)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1106)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1107)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1108)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1109)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1110)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1111)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1112)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1113)) COMMA_SOURCE_FILE ("shared-map.galgas", 1101))), inCompiler  COMMA_SOURCE_FILE ("shared-map.galgas", 1101)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (void) {
@@ -3079,7 +3124,7 @@ C_PrologueEpilogue gMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@sharedMapTypeForGeneration appendDeclaration2'                     *
+//                    Overriding extension method '@sharedMapTypeForGeneration appendDeclaration2'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3093,6 +3138,7 @@ static void categoryMethod_sharedMapTypeForGeneration_appendDeclaration_32_ (con
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_32_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1125)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1126)), object->mAttribute_mTypedAttributeList COMMA_SOURCE_FILE ("shared-map.galgas", 1124))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapTypeForGeneration_appendDeclaration_32_ (void) {
@@ -3106,7 +3152,7 @@ C_PrologueEpilogue gMethod_sharedMapTypeForGeneration_appendDeclaration_32_ (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@sharedMapTypeForGeneration appendSpecificImplementation'                *
+//               Overriding extension method '@sharedMapTypeForGeneration appendSpecificImplementation'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3127,6 +3173,7 @@ static void categoryMethod_sharedMapTypeForGeneration_appendSpecificImplementati
   }
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("shared-map.galgas", 1143)), object->mAttribute_mTypedAttributeList, object->mAttribute_mInsertMethodList, object->mAttribute_mSearchMethodList, object->mAttribute_mMapAutomatonStateMap, object->mAttribute_mMapAutomatonActionMap, object->mAttribute_mMapStateSortedList, object->mAttribute_mMapOverrideList, var_keySortedList COMMA_SOURCE_FILE ("shared-map.galgas", 1142))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sharedMapTypeForGeneration_appendSpecificImplementation (void) {
@@ -3140,7 +3187,7 @@ C_PrologueEpilogue gMethod_sharedMapTypeForGeneration_appendSpecificImplementati
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@mapProxyDeclarationAST enterDeclarationInGraph'                     *
+//                    Overriding extension method '@mapProxyDeclarationAST enterDeclarationInGraph'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3163,6 +3210,7 @@ static void categoryMethod_mapProxyDeclarationAST_enterDeclarationInGraph (const
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key, GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (object->mAttribute_mAssociatedMapTypeName.getter_string (SOURCE_FILE ("map-proxy.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 22)), object->mAttribute_mAssociatedMapTypeName.getter_location (SOURCE_FILE ("map-proxy.galgas", 22))  COMMA_SOURCE_FILE ("map-proxy.galgas", 22)) COMMA_SOURCE_FILE ("map-proxy.galgas", 22)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapProxyDeclarationAST_enterDeclarationInGraph (void) {
@@ -3176,7 +3224,7 @@ C_PrologueEpilogue gMethod_mapProxyDeclarationAST_enterDeclarationInGraph (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@mapProxyDeclarationAST enterInSemanticContext'                     *
+//                    Overriding extension method '@mapProxyDeclarationAST enterInSemanticContext'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3321,6 +3369,7 @@ static void categoryMethod_mapProxyDeclarationAST_enterInSemanticContext (const 
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mMapProxyTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("map-proxy.galgas", 189)), GALGAS_typeKindEnum::constructor_mapProxyType (SOURCE_FILE ("map-proxy.galgas", 190)), GALGAS_bool (false), var_mapTypedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("map-proxy.galgas", 193)), var_mapTypedAttributeList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("map-proxy.galgas", 200)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("map-proxy.galgas", 201)), function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 202)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("map-proxy.galgas", 203)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("map-proxy.galgas", 204)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("map-proxy.galgas", 205)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("map-proxy.galgas", 206)), var_searchMethodList, GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("map-proxy.galgas", 209)), GALGAS_string ("null"), GALGAS_string ("mapproxy-").add_operation (object->mAttribute_mMapProxyTypeName.getter_string (SOURCE_FILE ("map-proxy.galgas", 211)), inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 211)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("map-proxy.galgas", 212)), inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 185)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapProxyDeclarationAST_enterInSemanticContext (void) {
@@ -3334,7 +3383,7 @@ C_PrologueEpilogue gMethod_mapProxyDeclarationAST_enterInSemanticContext (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@mapProxyDeclarationAST semanticAnalysis'                        *
+//                       Overriding extension method '@mapProxyDeclarationAST semanticAnalysis'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3376,6 +3425,7 @@ static void categoryMethod_mapProxyDeclarationAST_semanticAnalysis (const cPtr_s
   constinArgument_inSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mAssociatedMapTypeName, joker_9196_7, joker_9196_6, joker_9196_5, joker_9196_4, joker_9196_3, joker_9196_2, joker_9196_1, var_listTypeAttributeList, joker_9254_11, joker_9254_10, joker_9254_9, joker_9254_8, joker_9254_7, joker_9254_6, joker_9254_5, joker_9254_4, joker_9254_3, joker_9254_2, joker_9254_1, var_searchMethodList, joker_9313_6, joker_9313_5, joker_9313_4, joker_9313_3, joker_9313_2, joker_9313_1, inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 226)) ;
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("map proxy ").add_operation (object->mAttribute_mMapProxyTypeName.getter_string (SOURCE_FILE ("map-proxy.galgas", 236)), inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 236)), GALGAS_mapProxyTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mMapProxyTypeName, inCompiler  COMMA_SOURCE_FILE ("map-proxy.galgas", 238)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mAssociatedMapTypeName, inCompiler  COMMA_SOURCE_FILE ("map-proxy.galgas", 239)), var_listTypeAttributeList, var_searchMethodList  COMMA_SOURCE_FILE ("map-proxy.galgas", 237)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("map-proxy.galgas", 235)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapProxyDeclarationAST_semanticAnalysis (void) {
@@ -3389,7 +3439,7 @@ C_PrologueEpilogue gMethod_mapProxyDeclarationAST_semanticAnalysis (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@mapProxyTypeForGeneration appendDeclaration1'                      *
+//                     Overriding extension method '@mapProxyTypeForGeneration appendDeclaration1'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3403,6 +3453,7 @@ static void categoryMethod_mapProxyTypeForGeneration_appendDeclaration_31_ (cons
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 280)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 281)) COMMA_SOURCE_FILE ("map-proxy.galgas", 279))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 284)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 285)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 286)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 287)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 288)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 289)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 290)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 291)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 292)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 293)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 294)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 295)) COMMA_SOURCE_FILE ("map-proxy.galgas", 283))), inCompiler  COMMA_SOURCE_FILE ("map-proxy.galgas", 283)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapProxyTypeForGeneration_appendDeclaration_31_ (void) {
@@ -3416,7 +3467,7 @@ C_PrologueEpilogue gMethod_mapProxyTypeForGeneration_appendDeclaration_31_ (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@mapProxyTypeForGeneration appendSpecificImplementation'                 *
+//                Overriding extension method '@mapProxyTypeForGeneration appendSpecificImplementation'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3432,6 +3483,7 @@ static void categoryMethod_mapProxyTypeForGeneration_appendSpecificImplementatio
   categoryMethod_addHeaderFileName (object->mAttribute_mAssociatedMapTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 306)) ;
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 308)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 309)), object->mAttribute_mAssociatedMapTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("map-proxy.galgas", 310)), object->mAttribute_mAssociatedMapTypedAttributeList, object->mAttribute_mSearchMethodList COMMA_SOURCE_FILE ("map-proxy.galgas", 307))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapProxyTypeForGeneration_appendSpecificImplementation (void) {
@@ -3445,7 +3497,7 @@ C_PrologueEpilogue gMethod_mapProxyTypeForGeneration_appendSpecificImplementatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@listDeclarationAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@listDeclarationAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3472,6 +3524,7 @@ static void categoryMethod_listDeclarationAST_enterDeclarationInGraph (const cPt
     enumerator_2405.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listDeclarationAST_enterDeclarationInGraph (void) {
@@ -3485,7 +3538,7 @@ C_PrologueEpilogue gMethod_listDeclarationAST_enterDeclarationInGraph (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@listDeclarationAST enterInSemanticContext'                       *
+//                      Overriding extension method '@listDeclarationAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3630,6 +3683,7 @@ static void categoryMethod_listDeclarationAST_enterInSemanticContext (const cPtr
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("list.galgas", 260)), GALGAS_typeKindEnum::constructor_listType (SOURCE_FILE ("list.galgas", 261)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 264)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("list.galgas", 265)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 270)), var_enumerationDescriptor, var_enumerationVariants, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)).operator_or (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("list.galgas", 273)) COMMA_SOURCE_FILE ("list.galgas", 273)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("list.galgas", 275)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("list.galgas", 276)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 277)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("list.galgas", 278)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptyList"), GALGAS_string ("list-").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("list.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 282)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("list.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 256)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listDeclarationAST_enterInSemanticContext (void) {
@@ -3643,7 +3697,7 @@ C_PrologueEpilogue gMethod_listDeclarationAST_enterInSemanticContext (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@listDeclarationAST addAssociatedElement'                        *
+//                       Overriding extension method '@listDeclarationAST addAssociatedElement'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3661,6 +3715,7 @@ static void categoryMethod_listDeclarationAST_addAssociatedElement (const cPtr_s
   }
   ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("list.galgas", 301)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 301)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("list.galgas", 301)), var_structAttributeList, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("list.galgas", 299))  COMMA_SOURCE_FILE ("list.galgas", 299)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listDeclarationAST_addAssociatedElement (void) {
@@ -3674,7 +3729,7 @@ C_PrologueEpilogue gMethod_listDeclarationAST_addAssociatedElement (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@listDeclarationAST semanticAnalysis'                          *
+//                         Overriding extension method '@listDeclarationAST semanticAnalysis'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3728,6 +3783,7 @@ static void categoryMethod_listDeclarationAST_semanticAnalysis (const cPtr_seman
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("list type ").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("list.galgas", 347)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 347)), GALGAS_listTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, inCompiler  COMMA_SOURCE_FILE ("list.galgas", 349)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("list.galgas", 350)), inCompiler COMMA_SOURCE_FILE ("list.galgas", 350)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("list.galgas", 350)), inCompiler  COMMA_SOURCE_FILE ("list.galgas", 350)), var_typedAttributeList  COMMA_SOURCE_FILE ("list.galgas", 348)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("list.galgas", 346)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listDeclarationAST_semanticAnalysis (void) {
@@ -3741,7 +3797,7 @@ C_PrologueEpilogue gMethod_listDeclarationAST_semanticAnalysis (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@listTypeForGeneration appendDeclaration1'                        *
+//                       Overriding extension method '@listTypeForGeneration appendDeclaration1'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3755,6 +3811,7 @@ static void categoryMethod_listTypeForGeneration_appendDeclaration_31_ (const cP
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("list.galgas", 387)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("list.galgas", 388)), object->mAttribute_mTypedAttributeList COMMA_SOURCE_FILE ("list.galgas", 386))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("list.galgas", 392)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("list.galgas", 393)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("list.galgas", 394)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("list.galgas", 395)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("list.galgas", 396)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("list.galgas", 397)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("list.galgas", 398)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("list.galgas", 399)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("list.galgas", 400)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("list.galgas", 401)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("list.galgas", 402)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("list.galgas", 403)) COMMA_SOURCE_FILE ("list.galgas", 391))), inCompiler  COMMA_SOURCE_FILE ("list.galgas", 391)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listTypeForGeneration_appendDeclaration_31_ (void) {
@@ -3768,7 +3825,7 @@ C_PrologueEpilogue gMethod_listTypeForGeneration_appendDeclaration_31_ (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@listTypeForGeneration appendSpecificImplementation'                   *
+//                  Overriding extension method '@listTypeForGeneration appendSpecificImplementation'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3789,6 +3846,7 @@ static void categoryMethod_listTypeForGeneration_appendSpecificImplementation (c
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("list.galgas", 417)) ;
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("list.galgas", 419)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("list.galgas", 420)), object->mAttribute_mTypedAttributeList COMMA_SOURCE_FILE ("list.galgas", 418))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listTypeForGeneration_appendSpecificImplementation (void) {
@@ -3802,7 +3860,7 @@ C_PrologueEpilogue gMethod_listTypeForGeneration_appendSpecificImplementation (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@structDeclarationAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@structDeclarationAST enterDeclarationInGraph'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3830,6 +3888,7 @@ static void categoryMethod_structDeclarationAST_enterDeclarationInGraph (const c
     enumerator_2437.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structDeclarationAST_enterDeclarationInGraph (void) {
@@ -3843,7 +3902,7 @@ C_PrologueEpilogue gMethod_structDeclarationAST_enterDeclarationInGraph (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@structDeclarationAST enterInSemanticContext'                      *
+//                     Overriding extension method '@structDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3928,6 +3987,7 @@ static void categoryMethod_structDeclarationAST_enterInSemanticContext (const cP
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mStructTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("struct.galgas", 144)), GALGAS_typeKindEnum::constructor_structType (SOURCE_FILE ("struct.galgas", 145)), GALGAS_bool (false), var_typedAttributeList, var_attributeMap, var_typedAttributeList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("struct.galgas", 154)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("struct.galgas", 155)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("struct.galgas", 156)), function_generateDescriptionGetterUtilityMethod (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 157)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("struct.galgas", 158)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("struct.galgas", 159)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("struct.galgas", 160)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("struct.galgas", 161)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("struct.galgas", 162)), GALGAS_bool (false), var_enumeratedType, var_defaultConstructorName, GALGAS_string ("struct-").add_operation (object->mAttribute_mStructTypeName.getter_string (SOURCE_FILE ("struct.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("struct.galgas", 166)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("struct.galgas", 167)), inCompiler COMMA_SOURCE_FILE ("struct.galgas", 140)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structDeclarationAST_enterInSemanticContext (void) {
@@ -3941,7 +4001,7 @@ C_PrologueEpilogue gMethod_structDeclarationAST_enterInSemanticContext (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@structDeclarationAST semanticAnalysis'                         *
+//                        Overriding extension method '@structDeclarationAST semanticAnalysis'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3992,6 +4052,7 @@ static void categoryMethod_structDeclarationAST_semanticAnalysis (const cPtr_sem
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("struct ").add_operation (object->mAttribute_mStructTypeName.getter_string (SOURCE_FILE ("struct.galgas", 217)), inCompiler COMMA_SOURCE_FILE ("struct.galgas", 217)), GALGAS_structTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mStructTypeName, inCompiler  COMMA_SOURCE_FILE ("struct.galgas", 219)), var_typedAttributeList  COMMA_SOURCE_FILE ("struct.galgas", 218)), GALGAS_string ("~")  COMMA_SOURCE_FILE ("struct.galgas", 216)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structDeclarationAST_semanticAnalysis (void) {
@@ -4005,7 +4066,7 @@ C_PrologueEpilogue gMethod_structDeclarationAST_semanticAnalysis (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@structTypeForGeneration appendDeclaration1'                       *
+//                      Overriding extension method '@structTypeForGeneration appendDeclaration1'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4024,6 +4085,7 @@ static void categoryMethod_structTypeForGeneration_appendDeclaration_31_ (const 
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_structGenerationTemplate_structTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 262)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 263)), object->mAttribute_mTypedAttributeList, GALGAS_bool (kIsNotEqual, object->mAttribute_mTypeProxy.getter_mDefaultConstructorName (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 265)).objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("struct.galgas", 261))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 268)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 269)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 270)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 271)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 272)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 273)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 274)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 275)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 276)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 277)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 278)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 279)) COMMA_SOURCE_FILE ("struct.galgas", 267))), inCompiler  COMMA_SOURCE_FILE ("struct.galgas", 267)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structTypeForGeneration_appendDeclaration_31_ (void) {
@@ -4037,7 +4099,7 @@ C_PrologueEpilogue gMethod_structTypeForGeneration_appendDeclaration_31_ (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@structTypeForGeneration appendSpecificImplementation'                  *
+//                 Overriding extension method '@structTypeForGeneration appendSpecificImplementation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4052,6 +4114,7 @@ static void categoryMethod_structTypeForGeneration_appendSpecificImplementation 
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("struct.galgas", 290)) ;
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_structGenerationTemplate_structTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 292)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 293)), object->mAttribute_mTypedAttributeList, GALGAS_bool (kIsNotEqual, object->mAttribute_mTypeProxy.getter_mDefaultConstructorName (inCompiler COMMA_SOURCE_FILE ("struct.galgas", 295)).objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("struct.galgas", 291))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structTypeForGeneration_appendSpecificImplementation (void) {
@@ -4065,7 +4128,7 @@ C_PrologueEpilogue gMethod_structTypeForGeneration_appendSpecificImplementation 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@sortedListDeclarationAST enterDeclarationInGraph'                    *
+//                   Overriding extension method '@sortedListDeclarationAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4092,6 +4155,7 @@ static void categoryMethod_sortedListDeclarationAST_enterDeclarationInGraph (con
     enumerator_2914.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListDeclarationAST_enterDeclarationInGraph (void) {
@@ -4105,7 +4169,7 @@ C_PrologueEpilogue gMethod_sortedListDeclarationAST_enterDeclarationInGraph (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@sortedListDeclarationAST addAssociatedElement'                     *
+//                    Overriding extension method '@sortedListDeclarationAST addAssociatedElement'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4123,6 +4187,7 @@ static void categoryMethod_sortedListDeclarationAST_addAssociatedElement (const 
   }
   ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mSortedListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 89)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 89)), object->mAttribute_mSortedListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("sorted-list.galgas", 89)), var_structAttributeList, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("sorted-list.galgas", 87))  COMMA_SOURCE_FILE ("sorted-list.galgas", 87)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListDeclarationAST_addAssociatedElement (void) {
@@ -4136,7 +4201,7 @@ C_PrologueEpilogue gMethod_sortedListDeclarationAST_addAssociatedElement (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@sortedListDeclarationAST enterInSemanticContext'                    *
+//                   Overriding extension method '@sortedListDeclarationAST enterInSemanticContext'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4213,6 +4278,7 @@ static void categoryMethod_sortedListDeclarationAST_enterInSemanticContext (cons
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mSortedListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("sorted-list.galgas", 205)), GALGAS_typeKindEnum::constructor_sortedListType (SOURCE_FILE ("sorted-list.galgas", 206)), GALGAS_bool (true), var_typedAttributeList, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 209)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 210)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 215)), var_enumerationDescriptor, var_enumerationVariants, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 218)) COMMA_SOURCE_FILE ("sorted-list.galgas", 218)), var_constructorAttributeTypeList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("sorted-list.galgas", 220)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 221)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 222)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("sorted-list.galgas", 223)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptySortedList"), GALGAS_string ("sortedlist-").add_operation (object->mAttribute_mSortedListTypeName.getter_string (SOURCE_FILE ("sorted-list.galgas", 229)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 229)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("sorted-list.galgas", 230)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 201)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListDeclarationAST_enterInSemanticContext (void) {
@@ -4226,7 +4292,7 @@ C_PrologueEpilogue gMethod_sortedListDeclarationAST_enterInSemanticContext (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@sortedListDeclarationAST semanticAnalysis'                       *
+//                      Overriding extension method '@sortedListDeclarationAST semanticAnalysis'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4269,6 +4335,7 @@ static void categoryMethod_sortedListDeclarationAST_semanticAnalysis (const cPtr
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("sorted list ").add_operation (object->mAttribute_mSortedListTypeName.getter_string (SOURCE_FILE ("sorted-list.galgas", 270)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 270)), GALGAS_sortedListTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mSortedListTypeName, inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 272)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mSortedListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), object->mAttribute_mSortedListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 273)), var_typedAttributeList, var_sortDescriptorList  COMMA_SOURCE_FILE ("sorted-list.galgas", 271)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("sorted-list.galgas", 269)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListDeclarationAST_semanticAnalysis (void) {
@@ -4282,7 +4349,7 @@ C_PrologueEpilogue gMethod_sortedListDeclarationAST_semanticAnalysis (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@sortedListTypeForGeneration appendDeclaration1'                     *
+//                    Overriding extension method '@sortedListTypeForGeneration appendDeclaration1'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4296,6 +4363,7 @@ static void categoryMethod_sortedListTypeForGeneration_appendDeclaration_31_ (co
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 320)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 321)), object->mAttribute_mTypedAttributeList COMMA_SOURCE_FILE ("sorted-list.galgas", 319))) ;
   outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 325)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 326)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 327)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 328)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 329)), object->mAttribute_mTypeProxy.getter_mModifierMap (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 330)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 331)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 332)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 333)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 334)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 335)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 336)) COMMA_SOURCE_FILE ("sorted-list.galgas", 324))), inCompiler  COMMA_SOURCE_FILE ("sorted-list.galgas", 324)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListTypeForGeneration_appendDeclaration_31_ (void) {
@@ -4309,7 +4377,7 @@ C_PrologueEpilogue gMethod_sortedListTypeForGeneration_appendDeclaration_31_ (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@sortedListTypeForGeneration appendSpecificImplementation'                *
+//               Overriding extension method '@sortedListTypeForGeneration appendSpecificImplementation'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4330,6 +4398,7 @@ static void categoryMethod_sortedListTypeForGeneration_appendSpecificImplementat
   categoryMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 350)) ;
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("sorted-list.galgas", 352)), object->mAttribute_mTypedAttributeList, object->mAttribute_mSortDescriptorList COMMA_SOURCE_FILE ("sorted-list.galgas", 351))) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sortedListTypeForGeneration_appendSpecificImplementation (void) {
@@ -4343,7 +4412,7 @@ C_PrologueEpilogue gMethod_sortedListTypeForGeneration_appendSpecificImplementat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@nonterminalInstructionForGeneration appendSyntaxSignature'               *
+//              Overriding extension method '@nonterminalInstructionForGeneration appendSyntaxSignature'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4356,6 +4425,7 @@ static void categoryMethod_nonterminalInstructionForGeneration_appendSyntaxSigna
   macroValidSharedObject (object, cPtr_nonterminalInstructionForGeneration) ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_nonterminalInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mNonterminalName, constinArgument_inPosfix, GALGAS_actualParameterListForGeneration::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 49)), GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxSignature.galgas", 50))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 45))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 45)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_nonterminalInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4369,7 +4439,7 @@ C_PrologueEpilogue gMethod_nonterminalInstructionForGeneration_appendSyntaxSigna
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@terminalCheckInstructionForGeneration appendSyntaxSignature'              *
+//             Overriding extension method '@terminalCheckInstructionForGeneration appendSyntaxSignature'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4382,6 +4452,7 @@ static void categoryMethod_terminalCheckInstructionForGeneration_appendSyntaxSig
   macroValidSharedObject (object, cPtr_terminalCheckInstructionForGeneration) ;
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_terminalCheckInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mTerminalName, object->mAttribute_mLexiqueIdentifier, GALGAS_terminalCheckAssignementList::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 64)), object->mAttribute_mIndexingKeyList, GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxSignature.galgas", 66)), GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxSignature.galgas", 67))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 60))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 60)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_terminalCheckInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4395,7 +4466,7 @@ C_PrologueEpilogue gMethod_terminalCheckInstructionForGeneration_appendSyntaxSig
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@repeatInstructionForGeneration appendSyntaxSignature'                  *
+//                 Overriding extension method '@repeatInstructionForGeneration appendSyntaxSignature'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4415,6 +4486,7 @@ static void categoryMethod_repeatInstructionForGeneration_appendSyntaxSignature 
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_repeatInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mSyntaxComponentName, object->mAttribute_mChoiceIndex, var_repeated_5F_instructionList, object->mAttribute_mEndOfRepeatedInstructions, var_listOfSemanticInstructionListForGeneration  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 85))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 85)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_repeatInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4428,7 +4500,7 @@ C_PrologueEpilogue gMethod_repeatInstructionForGeneration_appendSyntaxSignature 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@selectInstructionForGeneration appendSyntaxSignature'                  *
+//                 Overriding extension method '@selectInstructionForGeneration appendSyntaxSignature'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4447,6 +4519,7 @@ static void categoryMethod_selectInstructionForGeneration_appendSyntaxSignature 
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_selectInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mSyntaxComponentName, object->mAttribute_mChoiceIndex, var_listOfSemanticInstructionListForGeneration  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 106))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 106)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selectInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4460,7 +4533,7 @@ C_PrologueEpilogue gMethod_selectInstructionForGeneration_appendSyntaxSignature 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@parseRewindInstructionForGeneration appendSyntaxSignature'               *
+//              Overriding extension method '@parseRewindInstructionForGeneration appendSyntaxSignature'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4476,6 +4549,7 @@ static void categoryMethod_parseRewindInstructionForGeneration_appendSyntaxSigna
   object->mAttribute_mListOfSemanticInstructionListForGeneration.method_first (var_instructionList, joker_6420, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 119)) ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, var_instructionList, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 120)), inCompiler  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 120)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseRewindInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4489,7 +4563,7 @@ C_PrologueEpilogue gMethod_parseRewindInstructionForGeneration_appendSyntaxSigna
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@parseLoopInstructionForGeneration appendSyntaxSignature'                *
+//               Overriding extension method '@parseLoopInstructionForGeneration appendSyntaxSignature'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4502,6 +4576,7 @@ static void categoryMethod_parseLoopInstructionForGeneration_appendSyntaxSignatu
   macroValidSharedObject (object, cPtr_parseLoopInstructionForGeneration) ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_mInstructionList, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 128)), inCompiler  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 128)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseLoopInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4515,7 +4590,7 @@ C_PrologueEpilogue gMethod_parseLoopInstructionForGeneration_appendSyntaxSignatu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@parseWhenInstructionForGeneration appendSyntaxSignature'                *
+//               Overriding extension method '@parseWhenInstructionForGeneration appendSyntaxSignature'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4528,6 +4603,7 @@ static void categoryMethod_parseWhenInstructionForGeneration_appendSyntaxSignatu
   macroValidSharedObject (object, cPtr_parseWhenInstructionForGeneration) ;
   ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_mInstructionList, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 136)), inCompiler  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 136)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseWhenInstructionForGeneration_appendSyntaxSignature (void) {
@@ -4541,7 +4617,7 @@ C_PrologueEpilogue gMethod_parseWhenInstructionForGeneration_appendSyntaxSignatu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category getter '@terminalCheckInstructionForGeneration compareSyntaxInstruction'             *
+//            Overriding extension getter '@terminalCheckInstructionForGeneration compareSyntaxInstruction'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4591,7 +4667,7 @@ C_PrologueEpilogue gGetter_terminalCheckInstructionForGeneration_compareSyntaxIn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category getter '@nonterminalInstructionForGeneration compareSyntaxInstruction'              *
+//             Overriding extension getter '@nonterminalInstructionForGeneration compareSyntaxInstruction'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4641,7 +4717,7 @@ C_PrologueEpilogue gGetter_nonterminalInstructionForGeneration_compareSyntaxInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@repeatInstructionForGeneration compareSyntaxInstruction'                *
+//               Overriding extension getter '@repeatInstructionForGeneration compareSyntaxInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4705,7 +4781,7 @@ C_PrologueEpilogue gGetter_repeatInstructionForGeneration_compareSyntaxInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@selectInstructionForGeneration compareSyntaxInstruction'                *
+//               Overriding extension getter '@selectInstructionForGeneration compareSyntaxInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4769,7 +4845,7 @@ C_PrologueEpilogue gGetter_selectInstructionForGeneration_compareSyntaxInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@semanticInstructionAST transformInstruction'                      *
+//                     Overriding extension method '@semanticInstructionAST transformInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4781,6 +4857,7 @@ static void categoryMethod_semanticInstructionAST_transformInstruction (const cP
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_semanticInstructionAST_transformInstruction (void) {
@@ -4794,7 +4871,7 @@ C_PrologueEpilogue gMethod_semanticInstructionAST_transformInstruction (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@syntaxSendInstruction transformInstruction'                       *
+//                      Overriding extension method '@syntaxSendInstruction transformInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4806,6 +4883,7 @@ static void categoryMethod_syntaxSendInstruction_transformInstruction (const cPt
                                                                        C_Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_syntaxSendInstruction_transformInstruction (void) {
@@ -4819,7 +4897,7 @@ C_PrologueEpilogue gMethod_syntaxSendInstruction_transformInstruction (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@terminalCheckInstruction transformInstruction'                     *
+//                    Overriding extension method '@terminalCheckInstruction transformInstruction'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4845,6 +4923,7 @@ static void categoryMethod_terminalCheckInstruction_transformInstruction (const 
   }
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_terminalInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mTerminalName, var_terminalSymbolIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 200))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 200)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_terminalCheckInstruction_transformInstruction (void) {
@@ -4858,7 +4937,7 @@ C_PrologueEpilogue gMethod_terminalCheckInstruction_transformInstruction (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@nonterminalCallInstruction transformInstruction'                    *
+//                   Overriding extension method '@nonterminalCallInstruction transformInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4876,6 +4955,7 @@ static void categoryMethod_nonterminalCallInstruction_transformInstruction (cons
   constinArgument_inNonTerminalSymbolMap.method_searchKey (object->mAttribute_mNonterminalName, var_nonTerminalSymbolIndex, joker_11105, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas", 214)) ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_nonTerminalInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mNonterminalName, var_nonTerminalSymbolIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 215))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 215)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_nonterminalCallInstruction_transformInstruction (void) {
@@ -4889,7 +4969,7 @@ C_PrologueEpilogue gMethod_nonterminalCallInstruction_transformInstruction (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@repeatInstruction transformInstruction'                         *
+//                        Overriding extension method '@repeatInstruction transformInstruction'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4920,6 +5000,7 @@ static void categoryMethod_repeatInstruction_transformInstruction (const cPtr_sy
   }
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_repeatInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, var_repeatBranchList, var_addedNonTerminalIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 253))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 253)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_repeatInstruction_transformInstruction (void) {
@@ -4933,7 +5014,7 @@ C_PrologueEpilogue gMethod_repeatInstruction_transformInstruction (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@selectInstruction transformInstruction'                         *
+//                        Overriding extension method '@selectInstruction transformInstruction'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4960,6 +5041,7 @@ static void categoryMethod_selectInstruction_transformInstruction (const cPtr_sy
   }
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_selectInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, var_selectBranchList, var_addedNonTerminalIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 282))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 282)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selectInstruction_transformInstruction (void) {
@@ -4973,7 +5055,7 @@ C_PrologueEpilogue gMethod_selectInstruction_transformInstruction (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@parseRewindInstruction transformInstruction'                      *
+//                     Overriding extension method '@parseRewindInstruction transformInstruction'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4993,6 +5075,7 @@ static void categoryMethod_parseRewindInstruction_transformInstruction (const cP
   routine_transformInstructionList (var_syntaxInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 298)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseRewindInstruction_transformInstruction (void) {
@@ -5006,7 +5089,7 @@ C_PrologueEpilogue gMethod_parseRewindInstruction_transformInstruction (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@parseWhenInstruction transformInstruction'                       *
+//                      Overriding extension method '@parseWhenInstruction transformInstruction'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5023,6 +5106,7 @@ static void categoryMethod_parseWhenInstruction_transformInstruction (const cPtr
   routine_transformInstructionList (object->mAttribute_mElseInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 314)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseWhenInstruction_transformInstruction (void) {
@@ -5036,7 +5120,7 @@ C_PrologueEpilogue gMethod_parseWhenInstruction_transformInstruction (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@parseLoopInstruction transformInstruction'                       *
+//                      Overriding extension method '@parseLoopInstruction transformInstruction'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5053,6 +5137,7 @@ static void categoryMethod_parseLoopInstruction_transformInstruction (const cPtr
   routine_transformInstructionList (object->mAttribute_mDoInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 330)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_parseLoopInstruction_transformInstruction (void) {
@@ -5066,7 +5151,7 @@ C_PrologueEpilogue gMethod_parseLoopInstruction_transformInstruction (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryModifierAST buildCategoryListMaps'                   *
+//                  Overriding extension method '@abstractCategoryModifierAST buildCategoryListMaps'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5089,6 +5174,7 @@ static void categoryMethod_abstractCategoryModifierAST_buildCategoryListMaps (co
   macroValidSharedObject (object, cPtr_abstractCategoryModifierAST) ;
   ioArgument_ioAbstractCategoryModifierListMapAST.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 61)), object->mAttribute_mAbstractCategoryModifierName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 60)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryModifierAST_buildCategoryListMaps (void) {
@@ -5102,7 +5188,7 @@ C_PrologueEpilogue gMethod_abstractCategoryModifierAST_buildCategoryListMaps (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@categoryModifierAST buildCategoryListMaps'                       *
+//                      Overriding extension method '@categoryModifierAST buildCategoryListMaps'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5125,6 +5211,7 @@ static void categoryMethod_categoryModifierAST_buildCategoryListMaps (const cPtr
   macroValidSharedObject (object, cPtr_categoryModifierAST) ;
   ioArgument_ioCategoryModifierListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 81)), object->mAttribute_mCategoryModifierName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 80)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryModifierAST_buildCategoryListMaps (void) {
@@ -5138,7 +5225,7 @@ C_PrologueEpilogue gMethod_categoryModifierAST_buildCategoryListMaps (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryModifierAST buildCategoryListMaps'                  *
+//                 Overriding extension method '@overridingCategoryModifierAST buildCategoryListMaps'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5161,6 +5248,7 @@ static void categoryMethod_overridingCategoryModifierAST_buildCategoryListMaps (
   macroValidSharedObject (object, cPtr_overridingCategoryModifierAST) ;
   ioArgument_ioOverridingCategoryModifierListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 101)), object->mAttribute_mOverridingCategoryModifierName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 100)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryModifierAST_buildCategoryListMaps (void) {
@@ -5174,7 +5262,7 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierAST_buildCategoryListMaps (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryModifierAST buildCategoryListMaps'              *
+//             Overriding extension method '@overridingAbstractCategoryModifierAST buildCategoryListMaps'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5197,6 +5285,7 @@ static void categoryMethod_overridingAbstractCategoryModifierAST_buildCategoryLi
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryModifierAST) ;
   ioArgument_ioOverridingAbstractCategoryModifierListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 121)), object->mAttribute_mOverridingCategoryModifierName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 120)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryModifierAST_buildCategoryListMaps (void) {
@@ -5210,7 +5299,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryModifierAST_buildCategoryLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@abstractCategoryMethodAST buildCategoryListMaps'                    *
+//                   Overriding extension method '@abstractCategoryMethodAST buildCategoryListMaps'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5233,6 +5322,7 @@ static void categoryMethod_abstractCategoryMethodAST_buildCategoryListMaps (cons
   macroValidSharedObject (object, cPtr_abstractCategoryMethodAST) ;
   ioArgument_ioAbstractCategoryMethodListMapAST.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 141)), object->mAttribute_mAbstractCategoryMethodName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 140)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryMethodAST_buildCategoryListMaps (void) {
@@ -5246,7 +5336,7 @@ C_PrologueEpilogue gMethod_abstractCategoryMethodAST_buildCategoryListMaps (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@categoryMethodAST buildCategoryListMaps'                        *
+//                       Overriding extension method '@categoryMethodAST buildCategoryListMaps'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5269,6 +5359,7 @@ static void categoryMethod_categoryMethodAST_buildCategoryListMaps (const cPtr_s
   macroValidSharedObject (object, cPtr_categoryMethodAST) ;
   ioArgument_ioCategoryMethodListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 161)), object->mAttribute_mCategoryMethodName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 160)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryMethodAST_buildCategoryListMaps (void) {
@@ -5282,7 +5373,7 @@ C_PrologueEpilogue gMethod_categoryMethodAST_buildCategoryListMaps (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@overridingCategoryMethodAST buildCategoryListMaps'                   *
+//                  Overriding extension method '@overridingCategoryMethodAST buildCategoryListMaps'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5305,6 +5396,7 @@ static void categoryMethod_overridingCategoryMethodAST_buildCategoryListMaps (co
   macroValidSharedObject (object, cPtr_overridingCategoryMethodAST) ;
   ioArgument_ioOverridingCategoryMethodListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 181)), object->mAttribute_mOverridingCategoryMethodName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 180)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryMethodAST_buildCategoryListMaps (void) {
@@ -5318,7 +5410,7 @@ C_PrologueEpilogue gMethod_overridingCategoryMethodAST_buildCategoryListMaps (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@overridingAbstractCategoryMethodAST buildCategoryListMaps'               *
+//              Overriding extension method '@overridingAbstractCategoryMethodAST buildCategoryListMaps'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5341,6 +5433,7 @@ static void categoryMethod_overridingAbstractCategoryMethodAST_buildCategoryList
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryMethodAST) ;
   ioArgument_ioOverridingAbstractCategoryMethodListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 201)), object->mAttribute_mOverridingCategoryMethodName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 200)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryMethodAST_buildCategoryListMaps (void) {
@@ -5354,7 +5447,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryMethodAST_buildCategoryList
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@abstractCategoryGetterAST buildCategoryListMaps'                    *
+//                   Overriding extension method '@abstractCategoryGetterAST buildCategoryListMaps'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5377,6 +5470,7 @@ static void categoryMethod_abstractCategoryGetterAST_buildCategoryListMaps (cons
   macroValidSharedObject (object, cPtr_abstractCategoryGetterAST) ;
   ioArgument_ioAbstractCategoryGetterListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 221)), object->mAttribute_mAbstractCategoryGetterName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 220)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryGetterAST_buildCategoryListMaps (void) {
@@ -5390,7 +5484,7 @@ C_PrologueEpilogue gMethod_abstractCategoryGetterAST_buildCategoryListMaps (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@categoryGetterAST buildCategoryListMaps'                        *
+//                       Overriding extension method '@categoryGetterAST buildCategoryListMaps'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5413,6 +5507,7 @@ static void categoryMethod_categoryGetterAST_buildCategoryListMaps (const cPtr_s
   macroValidSharedObject (object, cPtr_categoryGetterAST) ;
   ioArgument_ioCategoryGetterListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 241)), object->mAttribute_mCategoryGetterName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 240)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryGetterAST_buildCategoryListMaps (void) {
@@ -5426,7 +5521,7 @@ C_PrologueEpilogue gMethod_categoryGetterAST_buildCategoryListMaps (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@overridingCategoryGetterAST buildCategoryListMaps'                   *
+//                  Overriding extension method '@overridingCategoryGetterAST buildCategoryListMaps'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5449,6 +5544,7 @@ static void categoryMethod_overridingCategoryGetterAST_buildCategoryListMaps (co
   macroValidSharedObject (object, cPtr_overridingCategoryGetterAST) ;
   ioArgument_ioOverridingCategoryGetterListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 261)), object->mAttribute_mOverridingCategoryGetterName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 260)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryGetterAST_buildCategoryListMaps (void) {
@@ -5462,7 +5558,7 @@ C_PrologueEpilogue gMethod_overridingCategoryGetterAST_buildCategoryListMaps (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@overridingAbstractCategoryGetterAST buildCategoryListMaps'               *
+//              Overriding extension method '@overridingAbstractCategoryGetterAST buildCategoryListMaps'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5485,6 +5581,7 @@ static void categoryMethod_overridingAbstractCategoryGetterAST_buildCategoryList
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryGetterAST) ;
   ioArgument_ioOverridingAbstractCategoryGetterListMap.addAssign_operation (object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("projectGlobalCheckings.galgas", 281)), object->mAttribute_mAbstractCategoryGetterName  COMMA_SOURCE_FILE ("projectGlobalCheckings.galgas", 280)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryGetterAST_buildCategoryListMaps (void) {

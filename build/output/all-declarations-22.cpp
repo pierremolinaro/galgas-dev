@@ -10,7 +10,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@templateFileWrapperWithStaticPathAST templateExpressionAnalysis'            *
+//           Overriding extension method '@templateFileWrapperWithStaticPathAST templateExpressionAnalysis'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -25,6 +25,7 @@ static void categoryMethod_templateFileWrapperWithStaticPathAST_templateExpressi
   inCompiler->emitSemanticError (location_0, GALGAS_string ("unhandled @templateFileWrapperWithStaticPathAST templateExpressionAnalysis")  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 232)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateFileWrapperWithStaticPathAST_templateExpressionAnalysis (void) {
@@ -38,7 +39,7 @@ C_PrologueEpilogue gMethod_templateFileWrapperWithStaticPathAST_templateExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateFileWrapperTemplateCallAST templateExpressionAnalysis'             *
+//            Overriding extension method '@templateFileWrapperTemplateCallAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -53,6 +54,7 @@ static void categoryMethod_templateFileWrapperTemplateCallAST_templateExpression
   inCompiler->emitSemanticError (location_0, GALGAS_string ("unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis")  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 242)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateFileWrapperTemplateCallAST_templateExpressionAnalysis (void) {
@@ -66,7 +68,7 @@ C_PrologueEpilogue gMethod_templateFileWrapperTemplateCallAST_templateExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateAndOperationAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateAndOperationAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -87,6 +89,7 @@ static void categoryMethod_templateAndOperationAST_templateExpressionAnalysis (c
   }
   outArgument_outExpression = GALGAS_andExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 269)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateAndOperationAST_templateExpressionAnalysis (void) {
@@ -100,7 +103,7 @@ C_PrologueEpilogue gMethod_templateAndOperationAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@templateOrOperationAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateOrOperationAST templateExpressionAnalysis'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -121,6 +124,7 @@ static void categoryMethod_templateOrOperationAST_templateExpressionAnalysis (co
   }
   outArgument_outExpression = GALGAS_orExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 298)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateOrOperationAST_templateExpressionAnalysis (void) {
@@ -134,7 +138,7 @@ C_PrologueEpilogue gMethod_templateOrOperationAST_templateExpressionAnalysis (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateXorOperationAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateXorOperationAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -155,6 +159,7 @@ static void categoryMethod_templateXorOperationAST_templateExpressionAnalysis (c
   }
   outArgument_outExpression = GALGAS_xorExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 327)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateXorOperationAST_templateExpressionAnalysis (void) {
@@ -168,7 +173,7 @@ C_PrologueEpilogue gMethod_templateXorOperationAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@templateTrueBoolAST templateExpressionAnalysis'                     *
+//                    Overriding extension method '@templateTrueBoolAST templateExpressionAnalysis'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -181,6 +186,7 @@ static void categoryMethod_templateTrueBoolAST_templateExpressionAnalysis (const
   macroValidSharedObject (object, cPtr_templateTrueBoolAST) ;
   outArgument_outExpression = GALGAS_trueExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 339)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateTrueBoolAST_templateExpressionAnalysis (void) {
@@ -194,7 +200,7 @@ C_PrologueEpilogue gMethod_templateTrueBoolAST_templateExpressionAnalysis (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@templateFalseBoolAST templateExpressionAnalysis'                    *
+//                   Overriding extension method '@templateFalseBoolAST templateExpressionAnalysis'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -207,6 +213,7 @@ static void categoryMethod_templateFalseBoolAST_templateExpressionAnalysis (cons
   macroValidSharedObject (object, cPtr_templateFalseBoolAST) ;
   outArgument_outExpression = GALGAS_falseExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 347)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateFalseBoolAST_templateExpressionAnalysis (void) {
@@ -220,7 +227,7 @@ C_PrologueEpilogue gMethod_templateFalseBoolAST_templateExpressionAnalysis (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateLiteralStringExpressionAST templateExpressionAnalysis'             *
+//            Overriding extension method '@templateLiteralStringExpressionAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -239,6 +246,7 @@ static void categoryMethod_templateLiteralStringExpressionAST_templateExpression
   }
   outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mStringType, object->mAttribute_mLocation, var_s  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 359)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralStringExpressionAST_templateExpressionAnalysis (void) {
@@ -252,7 +260,7 @@ C_PrologueEpilogue gMethod_templateLiteralStringExpressionAST_templateExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@templateLiteralUIntExpressionAST templateExpressionAnalysis'              *
+//             Overriding extension method '@templateLiteralUIntExpressionAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -265,6 +273,7 @@ static void categoryMethod_templateLiteralUIntExpressionAST_templateExpressionAn
   macroValidSharedObject (object, cPtr_templateLiteralUIntExpressionAST) ;
   outArgument_outExpression = GALGAS_literalUIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUIntType, object->mAttribute_mLiteralInt.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 369)), object->mAttribute_mLiteralInt.getter_uint (SOURCE_FILE ("templateAnalysis.galgas", 370))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 367)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralUIntExpressionAST_templateExpressionAnalysis (void) {
@@ -278,7 +287,7 @@ C_PrologueEpilogue gMethod_templateLiteralUIntExpressionAST_templateExpressionAn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@templateLiteralSIntExpressionAST templateExpressionAnalysis'              *
+//             Overriding extension method '@templateLiteralSIntExpressionAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -291,6 +300,7 @@ static void categoryMethod_templateLiteralSIntExpressionAST_templateExpressionAn
   macroValidSharedObject (object, cPtr_templateLiteralSIntExpressionAST) ;
   outArgument_outExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSIntType, object->mAttribute_mLiteralInt.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 380)), object->mAttribute_mLiteralInt.getter_sint (SOURCE_FILE ("templateAnalysis.galgas", 381))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 378)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralSIntExpressionAST_templateExpressionAnalysis (void) {
@@ -304,7 +314,7 @@ C_PrologueEpilogue gMethod_templateLiteralSIntExpressionAST_templateExpressionAn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateLiteralUInt64ExpressionAST templateExpressionAnalysis'             *
+//            Overriding extension method '@templateLiteralUInt64ExpressionAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -317,6 +327,7 @@ static void categoryMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpr
   macroValidSharedObject (object, cPtr_templateLiteralUInt_36__34_ExpressionAST) ;
   outArgument_outExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUInt_36__34_Type, object->mAttribute_mLiteralInt.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 391)), object->mAttribute_mLiteralInt.getter_uint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 392))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 389)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
@@ -330,7 +341,7 @@ C_PrologueEpilogue gMethod_templateLiteralUInt_36__34_ExpressionAST_templateExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateLiteralSInt64ExpressionAST templateExpressionAnalysis'             *
+//            Overriding extension method '@templateLiteralSInt64ExpressionAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -343,6 +354,7 @@ static void categoryMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpr
   macroValidSharedObject (object, cPtr_templateLiteralSInt_36__34_ExpressionAST) ;
   outArgument_outExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSInt_36__34_Type, object->mAttribute_mLiteralInt.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 402)), object->mAttribute_mLiteralInt.getter_sint_36__34_ (SOURCE_FILE ("templateAnalysis.galgas", 403))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 400)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (void) {
@@ -356,7 +368,7 @@ C_PrologueEpilogue gMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@templateLiteralCharExpressionAST templateExpressionAnalysis'              *
+//             Overriding extension method '@templateLiteralCharExpressionAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -369,6 +381,7 @@ static void categoryMethod_templateLiteralCharExpressionAST_templateExpressionAn
   macroValidSharedObject (object, cPtr_templateLiteralCharExpressionAST) ;
   outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mCharType, object->mAttribute_mLiteralChar.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 413)), object->mAttribute_mLiteralChar.getter_char (SOURCE_FILE ("templateAnalysis.galgas", 414))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 411)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis (void) {
@@ -382,7 +395,7 @@ C_PrologueEpilogue gMethod_templateLiteralCharExpressionAST_templateExpressionAn
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateLiteralDoubleExpressionAST templateExpressionAnalysis'             *
+//            Overriding extension method '@templateLiteralDoubleExpressionAST templateExpressionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -395,6 +408,7 @@ static void categoryMethod_templateLiteralDoubleExpressionAST_templateExpression
   macroValidSharedObject (object, cPtr_templateLiteralDoubleExpressionAST) ;
   outArgument_outExpression = GALGAS_literalDoubleExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mDoubleType, object->mAttribute_mLiteralDouble.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 424)), object->mAttribute_mLiteralDouble.getter_double (SOURCE_FILE ("templateAnalysis.galgas", 425))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 422)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLiteralDoubleExpressionAST_templateExpressionAnalysis (void) {
@@ -408,7 +422,7 @@ C_PrologueEpilogue gMethod_templateLiteralDoubleExpressionAST_templateExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@templateIfThenElseExpressionAST templateExpressionAnalysis'               *
+//              Overriding extension method '@templateIfThenElseExpressionAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -439,6 +453,7 @@ static void categoryMethod_templateIfThenElseExpressionAST_templateExpressionAna
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateIfThenElseExpressionAST_templateExpressionAnalysis (void) {
@@ -452,7 +467,7 @@ C_PrologueEpilogue gMethod_templateIfThenElseExpressionAST_templateExpressionAna
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@templateNotOperatorAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateNotOperatorAST templateExpressionAnalysis'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -474,6 +489,7 @@ static void categoryMethod_templateNotOperatorAST_templateExpressionAnalysis (co
     outArgument_outExpression = GALGAS_notExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 478)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateNotOperatorAST_templateExpressionAnalysis (void) {
@@ -487,7 +503,7 @@ C_PrologueEpilogue gMethod_templateNotOperatorAST_templateExpressionAnalysis (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateLogicalNegateAST templateExpressionAnalysis'                  *
+//                 Overriding extension method '@templateLogicalNegateAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -509,6 +525,7 @@ static void categoryMethod_templateLogicalNegateAST_templateExpressionAnalysis (
     outArgument_outExpression = GALGAS_tildeExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 501)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLogicalNegateAST_templateExpressionAnalysis (void) {
@@ -522,7 +539,7 @@ C_PrologueEpilogue gMethod_templateLogicalNegateAST_templateExpressionAnalysis (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateOptionAccessAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateOptionAccessAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -606,6 +623,7 @@ static void categoryMethod_templateOptionAccessAST_templateExpressionAnalysis (c
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateOptionAccessAST_templateExpressionAnalysis (void) {
@@ -619,7 +637,7 @@ C_PrologueEpilogue gMethod_templateOptionAccessAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateFunctionCallAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateFunctionCallAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -677,6 +695,7 @@ static void categoryMethod_templateFunctionCallAST_templateExpressionAnalysis (c
     outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::constructor_new (var_resultType, object->mAttribute_mFunctionName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 629)), object->mAttribute_mFunctionName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 630)), var_semanticExpressionListForGeneration  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 627)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateFunctionCallAST_templateExpressionAnalysis (void) {
@@ -690,7 +709,7 @@ C_PrologueEpilogue gMethod_templateFunctionCallAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@templateCategoryTemplateCallAST templateExpressionAnalysis'               *
+//              Overriding extension method '@templateCategoryTemplateCallAST templateExpressionAnalysis'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -705,6 +724,7 @@ static void categoryMethod_templateCategoryTemplateCallAST_templateExpressionAna
   inCompiler->emitSemanticError (location_0, GALGAS_string ("INTERNAL ERROR: @templateCategoryTemplateCallAST templateExpressionAnalysis not implemented yet")  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 642)) ;
   outArgument_outExpression.drop () ; // Release error dropped variable
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateCategoryTemplateCallAST_templateExpressionAnalysis (void) {
@@ -718,7 +738,7 @@ C_PrologueEpilogue gMethod_templateCategoryTemplateCallAST_templateExpressionAna
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateVarInExpressionAST templateExpressionAnalysis'                 *
+//                Overriding extension method '@templateVarInExpressionAST templateExpressionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -734,6 +754,7 @@ static void categoryMethod_templateVarInExpressionAST_templateExpressionAnalysis
   constinArgument_inAnalysisContext.mAttribute_mTemplateVariableMap.method_searchKey (object->mAttribute_mVarName, var_type, var_sourceVariableCppName, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 656)) ;
   outArgument_outExpression = GALGAS_varInExpressionForGeneration::constructor_new (var_type, object->mAttribute_mVarName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 659)), var_sourceVariableCppName, var_sourceVariableCppName  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 657)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateVarInExpressionAST_templateExpressionAnalysis (void) {
@@ -747,7 +768,7 @@ C_PrologueEpilogue gMethod_templateVarInExpressionAST_templateExpressionAnalysis
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateAddOperationAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateAddOperationAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -768,6 +789,7 @@ static void categoryMethod_templateAddOperationAST_templateExpressionAnalysis (c
   }
   outArgument_outExpression = GALGAS_addExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 688)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateAddOperationAST_templateExpressionAnalysis (void) {
@@ -781,7 +803,7 @@ C_PrologueEpilogue gMethod_templateAddOperationAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateSubOperationAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateSubOperationAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -802,6 +824,7 @@ static void categoryMethod_templateSubOperationAST_templateExpressionAnalysis (c
   }
   outArgument_outExpression = GALGAS_subExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 719)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateSubOperationAST_templateExpressionAnalysis (void) {
@@ -815,7 +838,7 @@ C_PrologueEpilogue gMethod_templateSubOperationAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@templateMultiplyOperationAST templateExpressionAnalysis'                *
+//               Overriding extension method '@templateMultiplyOperationAST templateExpressionAnalysis'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -836,6 +859,7 @@ static void categoryMethod_templateMultiplyOperationAST_templateExpressionAnalys
   }
   outArgument_outExpression = GALGAS_multiplicationExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 750)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateMultiplyOperationAST_templateExpressionAnalysis (void) {
@@ -849,7 +873,7 @@ C_PrologueEpilogue gMethod_templateMultiplyOperationAST_templateExpressionAnalys
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateDivideOperationAST templateExpressionAnalysis'                 *
+//                Overriding extension method '@templateDivideOperationAST templateExpressionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -870,6 +894,7 @@ static void categoryMethod_templateDivideOperationAST_templateExpressionAnalysis
   }
   outArgument_outExpression = GALGAS_divisionExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 781)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateDivideOperationAST_templateExpressionAnalysis (void) {
@@ -883,7 +908,7 @@ C_PrologueEpilogue gMethod_templateDivideOperationAST_templateExpressionAnalysis
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateModuloOperationAST templateExpressionAnalysis'                 *
+//                Overriding extension method '@templateModuloOperationAST templateExpressionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -904,6 +929,7 @@ static void categoryMethod_templateModuloOperationAST_templateExpressionAnalysis
   }
   outArgument_outExpression = GALGAS_moduloExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 812)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateModuloOperationAST_templateExpressionAnalysis (void) {
@@ -917,7 +943,7 @@ C_PrologueEpilogue gMethod_templateModuloOperationAST_templateExpressionAnalysis
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateUnaryMinusOperationAST templateExpressionAnalysis'               *
+//              Overriding extension method '@templateUnaryMinusOperationAST templateExpressionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -939,6 +965,7 @@ static void categoryMethod_templateUnaryMinusOperationAST_templateExpressionAnal
     outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 837)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateUnaryMinusOperationAST_templateExpressionAnalysis (void) {
@@ -952,7 +979,7 @@ C_PrologueEpilogue gMethod_templateUnaryMinusOperationAST_templateExpressionAnal
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@structFieldAccessTemplateExpressionAST templateExpressionAnalysis'           *
+//          Overriding extension method '@structFieldAccessTemplateExpressionAST templateExpressionAnalysis'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -975,6 +1002,7 @@ static void categoryMethod_structFieldAccessTemplateExpressionAST_templateExpres
   var_attributeMap.method_searchKey (object->mAttribute_mStructFieldName, var_type, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 859)) ;
   outArgument_outExpression = GALGAS_structFieldAccessExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression, object->mAttribute_mStructFieldName.mAttribute_string  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 868)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structFieldAccessTemplateExpressionAST_templateExpressionAnalysis (void) {
@@ -988,7 +1016,7 @@ C_PrologueEpilogue gMethod_structFieldAccessTemplateExpressionAST_templateExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@templateEqualTestAST templateExpressionAnalysis'                    *
+//                   Overriding extension method '@templateEqualTestAST templateExpressionAnalysis'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1013,6 +1041,7 @@ static void categoryMethod_templateEqualTestAST_templateExpressionAnalysis (cons
     outArgument_outExpression = GALGAS_equalExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 897)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateEqualTestAST_templateExpressionAnalysis (void) {
@@ -1026,7 +1055,7 @@ C_PrologueEpilogue gMethod_templateEqualTestAST_templateExpressionAnalysis (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateNonEqualTestAST templateExpressionAnalysis'                   *
+//                  Overriding extension method '@templateNonEqualTestAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1051,6 +1080,7 @@ static void categoryMethod_templateNonEqualTestAST_templateExpressionAnalysis (c
     outArgument_outExpression = GALGAS_notEqualExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 925)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateNonEqualTestAST_templateExpressionAnalysis (void) {
@@ -1064,7 +1094,7 @@ C_PrologueEpilogue gMethod_templateNonEqualTestAST_templateExpressionAnalysis (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateStrictInfTestAST templateExpressionAnalysis'                  *
+//                 Overriding extension method '@templateStrictInfTestAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1095,6 +1125,7 @@ static void categoryMethod_templateStrictInfTestAST_templateExpressionAnalysis (
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateStrictInfTestAST_templateExpressionAnalysis (void) {
@@ -1108,7 +1139,7 @@ C_PrologueEpilogue gMethod_templateStrictInfTestAST_templateExpressionAnalysis (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateInfOrEqualTestAST templateExpressionAnalysis'                  *
+//                 Overriding extension method '@templateInfOrEqualTestAST templateExpressionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1139,6 +1170,7 @@ static void categoryMethod_templateInfOrEqualTestAST_templateExpressionAnalysis 
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInfOrEqualTestAST_templateExpressionAnalysis (void) {
@@ -1152,7 +1184,7 @@ C_PrologueEpilogue gMethod_templateInfOrEqualTestAST_templateExpressionAnalysis 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@templateStrictSupTestAST templateExpressionAnalysis'                  *
+//                 Overriding extension method '@templateStrictSupTestAST templateExpressionAnalysis'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1183,6 +1215,7 @@ static void categoryMethod_templateStrictSupTestAST_templateExpressionAnalysis (
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateStrictSupTestAST_templateExpressionAnalysis (void) {
@@ -1196,7 +1229,7 @@ C_PrologueEpilogue gMethod_templateStrictSupTestAST_templateExpressionAnalysis (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateSupOrEqualTestAST templateExpressionAnalysis'                  *
+//                 Overriding extension method '@templateSupOrEqualTestAST templateExpressionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1227,6 +1260,7 @@ static void categoryMethod_templateSupOrEqualTestAST_templateExpressionAnalysis 
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateSupOrEqualTestAST_templateExpressionAnalysis (void) {
@@ -1240,7 +1274,7 @@ C_PrologueEpilogue gMethod_templateSupOrEqualTestAST_templateExpressionAnalysis 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateLeftShiftOperationAST templateExpressionAnalysis'                *
+//               Overriding extension method '@templateLeftShiftOperationAST templateExpressionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1271,6 +1305,7 @@ static void categoryMethod_templateLeftShiftOperationAST_templateExpressionAnaly
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateLeftShiftOperationAST_templateExpressionAnalysis (void) {
@@ -1284,7 +1319,7 @@ C_PrologueEpilogue gMethod_templateLeftShiftOperationAST_templateExpressionAnaly
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateRightShiftOperationAST templateExpressionAnalysis'               *
+//              Overriding extension method '@templateRightShiftOperationAST templateExpressionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1315,6 +1350,7 @@ static void categoryMethod_templateRightShiftOperationAST_templateExpressionAnal
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateRightShiftOperationAST_templateExpressionAnalysis (void) {
@@ -1328,7 +1364,7 @@ C_PrologueEpilogue gMethod_templateRightShiftOperationAST_templateExpressionAnal
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateClassToTypeOperandAST templateExpressionAnalysis'                *
+//               Overriding extension method '@templateClassToTypeOperandAST templateExpressionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1368,6 +1404,7 @@ static void categoryMethod_templateClassToTypeOperandAST_templateExpressionAnaly
   constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mTypeName, joker_52309_26, joker_52309_25, joker_52309_24, joker_52309_23, joker_52309_22, joker_52309_21, joker_52309_20, joker_52309_19, joker_52309_18, joker_52309_17, joker_52309_16, joker_52309_15, joker_52309_14, joker_52309_13, joker_52309_12, joker_52309_11, joker_52309_10, joker_52309_9, joker_52309_8, joker_52309_7, joker_52309_6, joker_52309_5, joker_52309_4, joker_52309_3, joker_52309_2, joker_52309_1, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1131)) ;
   outArgument_outExpression = GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("type"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1134))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1134)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1134)), object->mAttribute_mTypeName.getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1135)), object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1136))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1133)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateClassToTypeOperandAST_templateExpressionAnalysis (void) {
@@ -1381,7 +1418,7 @@ C_PrologueEpilogue gMethod_templateClassToTypeOperandAST_templateExpressionAnaly
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateInstructionStringAST templateInstructionAnalysis'                *
+//               Overriding extension method '@templateInstructionStringAST templateInstructionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1394,6 +1431,7 @@ static void categoryMethod_templateInstructionStringAST_templateInstructionAnaly
   macroValidSharedObject (object, cPtr_templateInstructionStringAST) ;
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionStringForGeneration::constructor_new (object->mAttribute_mTemplateString  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1165))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1165)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionStringAST_templateInstructionAnalysis (void) {
@@ -1407,7 +1445,7 @@ C_PrologueEpilogue gMethod_templateInstructionStringAST_templateInstructionAnaly
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateInstructionExpressionAST templateInstructionAnalysis'              *
+//             Overriding extension method '@templateInstructionExpressionAST templateInstructionAnalysis'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1426,6 +1464,7 @@ static void categoryMethod_templateInstructionExpressionAST_templateInstructionA
   }
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionExpressionForGeneration::constructor_new (var_expression  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1178)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionExpressionAST_templateInstructionAnalysis (void) {
@@ -1439,7 +1478,7 @@ C_PrologueEpilogue gMethod_templateInstructionExpressionAST_templateInstructionA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@templateBlockInstructionAST templateInstructionAnalysis'                *
+//               Overriding extension method '@templateBlockInstructionAST templateInstructionAnalysis'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1462,6 +1501,7 @@ static void categoryMethod_templateBlockInstructionAST_templateInstructionAnalys
   }
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateBlockInstructionForGeneration::constructor_new (var_expression, object->mAttribute_mLocation, var_blockInstructionList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1193))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1193)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateBlockInstructionAST_templateInstructionAnalysis (void) {
@@ -1475,7 +1515,7 @@ C_PrologueEpilogue gMethod_templateBlockInstructionAST_templateInstructionAnalys
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category method '@templateInstructionGetColumnLocationAST templateInstructionAnalysis'          *
+//         Overriding extension method '@templateInstructionGetColumnLocationAST templateInstructionAnalysis'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1486,6 +1526,7 @@ static void categoryMethod_templateInstructionGetColumnLocationAST_templateInstr
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGetColumnLocationForGeneration::constructor_new (SOURCE_FILE ("templateAnalysis.galgas", 1201))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1201)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionGetColumnLocationAST_templateInstructionAnalysis (void) {
@@ -1499,7 +1540,7 @@ C_PrologueEpilogue gMethod_templateInstructionGetColumnLocationAST_templateInstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Overriding category method '@templateInstructionGotoColumnLocationAST templateInstructionAnalysis'          *
+//         Overriding extension method '@templateInstructionGotoColumnLocationAST templateInstructionAnalysis'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1510,6 +1551,7 @@ static void categoryMethod_templateInstructionGotoColumnLocationAST_templateInst
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionGotoColumnLocationForGeneration::constructor_new (SOURCE_FILE ("templateAnalysis.galgas", 1209))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1209)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionGotoColumnLocationAST_templateInstructionAnalysis (void) {
@@ -1523,7 +1565,7 @@ C_PrologueEpilogue gMethod_templateInstructionGotoColumnLocationAST_templateInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateInstructionForeachAST templateInstructionAnalysis'               *
+//              Overriding extension method '@templateInstructionForeachAST templateInstructionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1576,6 +1618,7 @@ static void categoryMethod_templateInstructionForeachAST_templateInstructionAnal
   }
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionForeachForGeneration::constructor_new (object->mAttribute_mIsAscending, var_expression, var_enumeratorCppName, var_beforeInstructionList, var_doInstructionList, var_cppIndexVarName, var_betweenInstructionList, var_afterInstructionList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1255))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1255)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionForeachAST_templateInstructionAnalysis (void) {
@@ -1589,7 +1632,7 @@ C_PrologueEpilogue gMethod_templateInstructionForeachAST_templateInstructionAnal
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@templateInstructionIfAST templateInstructionAnalysis'                  *
+//                 Overriding extension method '@templateInstructionIfAST templateInstructionAnalysis'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1622,6 +1665,7 @@ static void categoryMethod_templateInstructionIfAST_templateInstructionAnalysis 
   }
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionIfForGeneration::constructor_new (var_templateInstructionIfBranchList, var_elseInstructionList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1286))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1286)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionIfAST_templateInstructionAnalysis (void) {
@@ -1635,7 +1679,7 @@ C_PrologueEpilogue gMethod_templateInstructionIfAST_templateInstructionAnalysis 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateInstructionSwitchAST templateInstructionAnalysis'                *
+//               Overriding extension method '@templateInstructionSwitchAST templateInstructionAnalysis'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1693,6 +1737,7 @@ static void categoryMethod_templateInstructionSwitchAST_templateInstructionAnaly
   }
   ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchForGeneration::constructor_new (var_switchExpression, var_templateInstructionSwitchBranchList  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1330))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1330)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionSwitchAST_templateInstructionAnalysis (void) {
@@ -1706,7 +1751,7 @@ C_PrologueEpilogue gMethod_templateInstructionSwitchAST_templateInstructionAnaly
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateInstructionStringForGeneration templateCodeGeneration'             *
+//            Overriding extension method '@templateInstructionStringForGeneration templateCodeGeneration'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1722,6 +1767,7 @@ static void categoryMethod_templateInstructionStringForGeneration_templateCodeGe
   macroValidSharedObject (object, cPtr_templateInstructionStringForGeneration) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (object->mAttribute_mTemplateString.getter_utf_38_Representation (SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 54)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionStringForGeneration_templateCodeGeneration (void) {
@@ -1735,7 +1781,7 @@ C_PrologueEpilogue gMethod_templateInstructionStringForGeneration_templateCodeGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@templateInstructionExpressionForGeneration templateCodeGeneration'           *
+//          Overriding extension method '@templateInstructionExpressionForGeneration templateCodeGeneration'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1753,6 +1799,7 @@ static void categoryMethod_templateInstructionExpressionForGeneration_templateCo
   callCategoryMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppName, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 67)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result << ").add_operation (var_cppName, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 68)).add_operation (GALGAS_string (".stringValue () ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 68)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 68)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionExpressionForGeneration_templateCodeGeneration (void) {
@@ -1766,7 +1813,7 @@ C_PrologueEpilogue gMethod_templateInstructionExpressionForGeneration_templateCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateBlockInstructionForGeneration templateCodeGeneration'              *
+//             Overriding extension method '@templateBlockInstructionForGeneration templateCodeGeneration'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1792,6 +1839,7 @@ static void categoryMethod_templateBlockInstructionForGeneration_templateCodeGen
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  result.incIndentation (- ((int32_t) ").add_operation (var_indendationVarCppName, inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 94)).add_operation (GALGAS_string (".uintValue ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 94)), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 94)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 95)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateBlockInstructionForGeneration_templateCodeGeneration (void) {
@@ -1805,7 +1853,7 @@ C_PrologueEpilogue gMethod_templateBlockInstructionForGeneration_templateCodeGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Overriding category method '@templateInstructionGetColumnLocationForGeneration templateCodeGeneration'        *
+//       Overriding extension method '@templateInstructionGetColumnLocationForGeneration templateCodeGeneration'       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1820,6 +1868,7 @@ static void categoryMethod_templateInstructionGetColumnLocationForGeneration_tem
   ioArgument_ioUseColumnMarker = GALGAS_bool (true) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("columnMarker = result.currentColumn () ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 107)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionGetColumnLocationForGeneration_templateCodeGeneration (void) {
@@ -1833,7 +1882,7 @@ C_PrologueEpilogue gMethod_templateInstructionGetColumnLocationForGeneration_tem
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Overriding category method '@templateInstructionGotoColumnLocationForGeneration templateCodeGeneration'       *
+//      Overriding extension method '@templateInstructionGotoColumnLocationForGeneration templateCodeGeneration'       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1848,6 +1897,7 @@ static void categoryMethod_templateInstructionGotoColumnLocationForGeneration_te
   ioArgument_ioUseColumnMarker = GALGAS_bool (true) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("result.appendSpacesUntilColumn (columnMarker) ;\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 119)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionGotoColumnLocationForGeneration_templateCodeGeneration (void) {
@@ -1861,7 +1911,7 @@ C_PrologueEpilogue gMethod_templateInstructionGotoColumnLocationForGeneration_te
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@templateInstructionForeachForGeneration templateCodeGeneration'             *
+//            Overriding extension method '@templateInstructionForeachForGeneration templateCodeGeneration'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1960,6 +2010,7 @@ static void categoryMethod_templateInstructionForeachForGeneration_templateCodeG
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 211)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionForeachForGeneration_templateCodeGeneration (void) {
@@ -1973,7 +2024,7 @@ C_PrologueEpilogue gMethod_templateInstructionForeachForGeneration_templateCodeG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@templateInstructionIfForGeneration templateCodeGeneration'               *
+//              Overriding extension method '@templateInstructionIfForGeneration templateCodeGeneration'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2022,6 +2073,7 @@ static void categoryMethod_templateInstructionIfForGeneration_templateCodeGenera
     enumerator_10982.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionIfForGeneration_templateCodeGeneration (void) {
@@ -2035,7 +2087,7 @@ C_PrologueEpilogue gMethod_templateInstructionIfForGeneration_templateCodeGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@templateInstructionSwitchForGeneration templateCodeGeneration'             *
+//            Overriding extension method '@templateInstructionSwitchForGeneration templateCodeGeneration'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2086,6 +2138,7 @@ static void categoryMethod_templateInstructionSwitchForGeneration_templateCodeGe
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("templateCodeGeneration.galgas", 296)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_templateInstructionSwitchForGeneration_templateCodeGeneration (void) {
@@ -2099,7 +2152,7 @@ C_PrologueEpilogue gMethod_templateInstructionSwitchForGeneration_templateCodeGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@lexicalOrExpressionAST generateConditionCode'                      *
+//                     Overriding extension getter '@lexicalOrExpressionAST generateConditionCode'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2131,7 +2184,7 @@ C_PrologueEpilogue gGetter_lexicalOrExpressionAST_generateConditionCode (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalCharacterIntervalMatchAST generateConditionCode'                 *
+//                Overriding extension getter '@lexicalCharacterIntervalMatchAST generateConditionCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2166,7 +2219,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterIntervalMatchAST_generateConditionCod
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@lexicalStringMatchAST generateConditionCode'                      *
+//                     Overriding extension getter '@lexicalStringMatchAST generateConditionCode'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2199,7 +2252,7 @@ C_PrologueEpilogue gGetter_lexicalStringMatchAST_generateConditionCode (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@lexicalStringNotMatchAST generateConditionCode'                     *
+//                    Overriding extension getter '@lexicalStringNotMatchAST generateConditionCode'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2236,7 +2289,7 @@ C_PrologueEpilogue gGetter_lexicalStringNotMatchAST_generateConditionCode (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@lexicalCharacterMatchAST generateConditionCode'                     *
+//                    Overriding extension getter '@lexicalCharacterMatchAST generateConditionCode'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2268,7 +2321,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterMatchAST_generateConditionCode (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalCharacterSetMatchAST generateConditionCode'                   *
+//                  Overriding extension getter '@lexicalCharacterSetMatchAST generateConditionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2300,7 +2353,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterSetMatchAST_generateConditionCode (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category getter '@lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument'           *
+//          Overriding extension getter '@lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2329,7 +2382,7 @@ C_PrologueEpilogue gGetter_lexicalAttributeInputArgumentAST_generateRoutineOrFun
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category getter '@lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument'           *
+//          Overriding extension getter '@lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2358,7 +2411,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterInputArgumentAST_generateRoutineOrFun
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category getter '@lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument'           *
+//          Overriding extension getter '@lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2387,7 +2440,7 @@ C_PrologueEpilogue gGetter_lexicalUnsignedInputArgumentAST_generateRoutineOrFunc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Overriding category getter '@lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument'       *
+//      Overriding extension getter '@lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument'       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2414,7 +2467,7 @@ C_PrologueEpilogue gGetter_lexicalCurrentCharacterInputArgumentAST_generateRouti
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category getter '@lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument'           *
+//          Overriding extension getter '@lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2449,7 +2502,7 @@ C_PrologueEpilogue gGetter_lexicalFunctionInputArgumentAST_generateRoutineOrFunc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category getter '@lexicalAttributeInputOutputArgumentAST generateRoutineArgument'             *
+//            Overriding extension getter '@lexicalAttributeInputOutputArgumentAST generateRoutineArgument'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2478,7 +2531,7 @@ C_PrologueEpilogue gGetter_lexicalAttributeInputOutputArgumentAST_generateRoutin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalFormalInputArgumentAST generateRoutineArgument'                 *
+//                Overriding extension getter '@lexicalFormalInputArgumentAST generateRoutineArgument'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2507,7 +2560,7 @@ C_PrologueEpilogue gGetter_lexicalFormalInputArgumentAST_generateRoutineArgument
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalSendTerminalByDefaultAST generateDefaultSendCode'                *
+//               Overriding extension getter '@lexicalSendTerminalByDefaultAST generateDefaultSendCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2537,7 +2590,7 @@ C_PrologueEpilogue gGetter_lexicalSendTerminalByDefaultAST_generateDefaultSendCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalErrorByDefaultAST generateDefaultSendCode'                    *
+//                   Overriding extension getter '@lexicalErrorByDefaultAST generateDefaultSendCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2567,7 +2620,7 @@ C_PrologueEpilogue gGetter_lexicalErrorByDefaultAST_generateDefaultSendCode (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category getter '@lexicalStructuredSendInstructionAST generateInstructionCode'              *
+//             Overriding extension getter '@lexicalStructuredSendInstructionAST generateInstructionCode'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2609,7 +2662,7 @@ C_PrologueEpilogue gGetter_lexicalStructuredSendInstructionAST_generateInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalDropInstructionAST generateInstructionCode'                   *
+//                  Overriding extension getter '@lexicalDropInstructionAST generateInstructionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2640,7 +2693,7 @@ C_PrologueEpilogue gGetter_lexicalDropInstructionAST_generateInstructionCode (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalSimpleSendInstructionAST generateInstructionCode'                *
+//               Overriding extension getter '@lexicalSimpleSendInstructionAST generateInstructionCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2672,7 +2725,7 @@ C_PrologueEpilogue gGetter_lexicalSimpleSendInstructionAST_generateInstructionCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalRepeatInstructionAST generateInstructionCode'                  *
+//                 Overriding extension getter '@lexicalRepeatInstructionAST generateInstructionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2740,7 +2793,7 @@ C_PrologueEpilogue gGetter_lexicalRepeatInstructionAST_generateInstructionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalSelectInstructionAST generateInstructionCode'                  *
+//                 Overriding extension getter '@lexicalSelectInstructionAST generateInstructionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2808,7 +2861,7 @@ C_PrologueEpilogue gGetter_lexicalSelectInstructionAST_generateInstructionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalRoutineInstructionAST generateInstructionCode'                  *
+//                 Overriding extension getter '@lexicalRoutineInstructionAST generateInstructionCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2850,7 +2903,7 @@ C_PrologueEpilogue gGetter_lexicalRoutineInstructionAST_generateInstructionCode 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalErrorInstructionAST generateInstructionCode'                   *
+//                  Overriding extension getter '@lexicalErrorInstructionAST generateInstructionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2881,7 +2934,7 @@ C_PrologueEpilogue gGetter_lexicalErrorInstructionAST_generateInstructionCode (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalWarningInstructionAST generateInstructionCode'                  *
+//                 Overriding extension getter '@lexicalWarningInstructionAST generateInstructionCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2912,7 +2965,7 @@ C_PrologueEpilogue gGetter_lexicalWarningInstructionAST_generateInstructionCode 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalTagInstructionAST generateInstructionCode'                    *
+//                   Overriding extension getter '@lexicalTagInstructionAST generateInstructionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2943,7 +2996,7 @@ C_PrologueEpilogue gGetter_lexicalTagInstructionAST_generateInstructionCode (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalRewindInstructionAST generateInstructionCode'                  *
+//                 Overriding extension getter '@lexicalRewindInstructionAST generateInstructionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2974,7 +3027,7 @@ C_PrologueEpilogue gGetter_lexicalRewindInstructionAST_generateInstructionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalLogInstructionAST generateInstructionCode'                    *
+//                   Overriding extension getter '@lexicalLogInstructionAST generateInstructionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3003,7 +3056,7 @@ C_PrologueEpilogue gGetter_lexicalLogInstructionAST_generateInstructionCode (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@lexicalImplicitRuleAST generateCode'                          *
+//                         Overriding extension getter '@lexicalImplicitRuleAST generateCode'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3050,7 +3103,7 @@ C_PrologueEpilogue gGetter_lexicalImplicitRuleAST_generateCode (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@lexicalExplicitRuleAST generateCode'                          *
+//                         Overriding extension getter '@lexicalExplicitRuleAST generateCode'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3095,7 +3148,7 @@ C_PrologueEpilogue gGetter_lexicalExplicitRuleAST_generateCode (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalOrExpressionAST generateCocoaConditionCode'                   *
+//                  Overriding extension getter '@lexicalOrExpressionAST generateCocoaConditionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3127,7 +3180,7 @@ C_PrologueEpilogue gGetter_lexicalOrExpressionAST_generateCocoaConditionCode (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category getter '@lexicalCharacterIntervalMatchAST generateCocoaConditionCode'              *
+//             Overriding extension getter '@lexicalCharacterIntervalMatchAST generateCocoaConditionCode'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3162,7 +3215,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterIntervalMatchAST_generateCocoaConditi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@lexicalStringMatchAST generateCocoaConditionCode'                    *
+//                   Overriding extension getter '@lexicalStringMatchAST generateCocoaConditionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3193,7 +3246,7 @@ C_PrologueEpilogue gGetter_lexicalStringMatchAST_generateCocoaConditionCode (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalStringNotMatchAST generateCocoaConditionCode'                  *
+//                 Overriding extension getter '@lexicalStringNotMatchAST generateCocoaConditionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3225,7 +3278,7 @@ C_PrologueEpilogue gGetter_lexicalStringNotMatchAST_generateCocoaConditionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@lexicalCharacterMatchAST generateCocoaConditionCode'                  *
+//                 Overriding extension getter '@lexicalCharacterMatchAST generateCocoaConditionCode'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3257,7 +3310,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterMatchAST_generateCocoaConditionCode (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalCharacterSetMatchAST generateCocoaConditionCode'                 *
+//                Overriding extension getter '@lexicalCharacterSetMatchAST generateCocoaConditionCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3289,7 +3342,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterSetMatchAST_generateCocoaConditionCod
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category getter '@lexicalAttributeInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
+//       Overriding extension getter '@lexicalAttributeInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3318,7 +3371,7 @@ C_PrologueEpilogue gGetter_lexicalAttributeInputArgumentAST_generateCocoaRoutine
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category getter '@lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
+//       Overriding extension getter '@lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3347,7 +3400,7 @@ C_PrologueEpilogue gGetter_lexicalCharacterInputArgumentAST_generateCocoaRoutine
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category getter '@lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument'         *
+//        Overriding extension getter '@lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3376,7 +3429,7 @@ C_PrologueEpilogue gGetter_lexicalUnsignedInputArgumentAST_generateCocoaRoutineO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    Overriding category getter '@lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument'     *
+//    Overriding extension getter '@lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument'    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3403,7 +3456,7 @@ C_PrologueEpilogue gGetter_lexicalCurrentCharacterInputArgumentAST_generateCocoa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category getter '@lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument'         *
+//        Overriding extension getter '@lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3441,7 +3494,7 @@ C_PrologueEpilogue gGetter_lexicalFunctionInputArgumentAST_generateCocoaRoutineO
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category getter '@lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument'          *
+//         Overriding extension getter '@lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3478,7 +3531,7 @@ C_PrologueEpilogue gGetter_lexicalAttributeInputOutputArgumentAST_generateCocoaR
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category getter '@lexicalFormalInputArgumentAST generateCocoaRoutineArgument'               *
+//              Overriding extension getter '@lexicalFormalInputArgumentAST generateCocoaRoutineArgument'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3508,7 +3561,7 @@ C_PrologueEpilogue gGetter_lexicalFormalInputArgumentAST_generateCocoaRoutineArg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category getter '@lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode'              *
+//             Overriding extension getter '@lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3538,7 +3591,7 @@ C_PrologueEpilogue gGetter_lexicalSendTerminalByDefaultAST_generateCocoaDefaultS
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalErrorByDefaultAST generateCocoaDefaultSendCode'                 *
+//                Overriding extension getter '@lexicalErrorByDefaultAST generateCocoaDefaultSendCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3566,7 +3619,7 @@ C_PrologueEpilogue gGetter_lexicalErrorByDefaultAST_generateCocoaDefaultSendCode
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category getter '@lexicalStructuredSendInstructionAST generateCocoaInstructionCode'            *
+//           Overriding extension getter '@lexicalStructuredSendInstructionAST generateCocoaInstructionCode'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3607,7 +3660,7 @@ C_PrologueEpilogue gGetter_lexicalStructuredSendInstructionAST_generateCocoaInst
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category getter '@lexicalSimpleSendInstructionAST generateCocoaInstructionCode'              *
+//             Overriding extension getter '@lexicalSimpleSendInstructionAST generateCocoaInstructionCode'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3638,7 +3691,7 @@ C_PrologueEpilogue gGetter_lexicalSimpleSendInstructionAST_generateCocoaInstruct
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category getter '@lexicalRepeatInstructionAST generateCocoaInstructionCode'                *
+//               Overriding extension getter '@lexicalRepeatInstructionAST generateCocoaInstructionCode'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3706,7 +3759,7 @@ C_PrologueEpilogue gGetter_lexicalRepeatInstructionAST_generateCocoaInstructionC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category getter '@lexicalSelectInstructionAST generateCocoaInstructionCode'                *
+//               Overriding extension getter '@lexicalSelectInstructionAST generateCocoaInstructionCode'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3774,7 +3827,7 @@ C_PrologueEpilogue gGetter_lexicalSelectInstructionAST_generateCocoaInstructionC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category getter '@lexicalRoutineInstructionAST generateCocoaInstructionCode'               *
+//              Overriding extension getter '@lexicalRoutineInstructionAST generateCocoaInstructionCode'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3811,7 +3864,7 @@ C_PrologueEpilogue gGetter_lexicalRoutineInstructionAST_generateCocoaInstruction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalDropInstructionAST generateCocoaInstructionCode'                 *
+//                Overriding extension getter '@lexicalDropInstructionAST generateCocoaInstructionCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3842,7 +3895,7 @@ C_PrologueEpilogue gGetter_lexicalDropInstructionAST_generateCocoaInstructionCod
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@lexicalErrorInstructionAST generateCocoaInstructionCode'                *
+//               Overriding extension getter '@lexicalErrorInstructionAST generateCocoaInstructionCode'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3871,7 +3924,7 @@ C_PrologueEpilogue gGetter_lexicalErrorInstructionAST_generateCocoaInstructionCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category getter '@lexicalWarningInstructionAST generateCocoaInstructionCode'               *
+//              Overriding extension getter '@lexicalWarningInstructionAST generateCocoaInstructionCode'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3900,7 +3953,7 @@ C_PrologueEpilogue gGetter_lexicalWarningInstructionAST_generateCocoaInstruction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalTagInstructionAST generateCocoaInstructionCode'                 *
+//                Overriding extension getter '@lexicalTagInstructionAST generateCocoaInstructionCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3932,7 +3985,7 @@ C_PrologueEpilogue gGetter_lexicalTagInstructionAST_generateCocoaInstructionCode
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category getter '@lexicalRewindInstructionAST generateCocoaInstructionCode'                *
+//               Overriding extension getter '@lexicalRewindInstructionAST generateCocoaInstructionCode'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3964,7 +4017,7 @@ C_PrologueEpilogue gGetter_lexicalRewindInstructionAST_generateCocoaInstructionC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@lexicalLogInstructionAST generateCocoaInstructionCode'                 *
+//                Overriding extension getter '@lexicalLogInstructionAST generateCocoaInstructionCode'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3993,7 +4046,7 @@ C_PrologueEpilogue gGetter_lexicalLogInstructionAST_generateCocoaInstructionCode
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category getter '@lexicalImplicitRuleAST generateCocoaCode'                        *
+//                       Overriding extension getter '@lexicalImplicitRuleAST generateCocoaCode'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4037,7 +4090,7 @@ C_PrologueEpilogue gGetter_lexicalImplicitRuleAST_generateCocoaCode (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category getter '@lexicalExplicitRuleAST generateCocoaCode'                        *
+//                       Overriding extension getter '@lexicalExplicitRuleAST generateCocoaCode'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4082,7 +4135,7 @@ C_PrologueEpilogue gGetter_lexicalExplicitRuleAST_generateCocoaCode (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@lexicalSendTerminalByDefaultAST checkLexicalDefaultAction'               *
+//              Overriding extension method '@lexicalSendTerminalByDefaultAST checkLexicalDefaultAction'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4095,6 +4148,7 @@ static void categoryMethod_lexicalSendTerminalByDefaultAST_checkLexicalDefaultAc
   GALGAS_lexicalSentValueList joker_8289 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.getter_mTerminalMap (SOURCE_FILE ("lexiqueCompilation.galgas", 163)).method_searchKey (object->mAttribute_mDefaultSentTerminal, joker_8289, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 163)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalSendTerminalByDefaultAST_checkLexicalDefaultAction (void) {
@@ -4108,7 +4162,7 @@ C_PrologueEpilogue gMethod_lexicalSendTerminalByDefaultAST_checkLexicalDefaultAc
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalErrorByDefaultAST checkLexicalDefaultAction'                   *
+//                  Overriding extension method '@lexicalErrorByDefaultAST checkLexicalDefaultAction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4122,6 +4176,7 @@ static void categoryMethod_lexicalErrorByDefaultAST_checkLexicalDefaultAction (c
   ioArgument_ioLexiqueAnalysisContext.mAttribute_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GALGAS_bool (true), object->mAttribute_mDefaultErrorMessageName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 170)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalErrorByDefaultAST_checkLexicalDefaultAction (void) {
@@ -4135,7 +4190,7 @@ C_PrologueEpilogue gMethod_lexicalErrorByDefaultAST_checkLexicalDefaultAction (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@lexicalOrExpressionAST checkLexicalExpression'                     *
+//                    Overriding extension method '@lexicalOrExpressionAST checkLexicalExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4148,6 +4203,7 @@ static void categoryMethod_lexicalOrExpressionAST_checkLexicalExpression (const 
   callCategoryMethod_checkLexicalExpression ((const cPtr_lexicalExpressionAST *) object->mAttribute_mLeftOperand.ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 184)) ;
   callCategoryMethod_checkLexicalExpression ((const cPtr_lexicalExpressionAST *) object->mAttribute_mRightOperand.ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 185)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalOrExpressionAST_checkLexicalExpression (void) {
@@ -4161,7 +4217,7 @@ C_PrologueEpilogue gMethod_lexicalOrExpressionAST_checkLexicalExpression (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@lexicalCharacterMatchAST checkLexicalExpression'                    *
+//                   Overriding extension method '@lexicalCharacterMatchAST checkLexicalExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4170,6 +4226,7 @@ static void categoryMethod_lexicalCharacterMatchAST_checkLexicalExpression (cons
                                                                             C_Compiler * /* inCompiler */
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCharacterMatchAST_checkLexicalExpression (void) {
@@ -4183,7 +4240,7 @@ C_PrologueEpilogue gMethod_lexicalCharacterMatchAST_checkLexicalExpression (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalCharacterSetMatchAST checkLexicalExpression'                   *
+//                  Overriding extension method '@lexicalCharacterSetMatchAST checkLexicalExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4206,6 +4263,7 @@ static void categoryMethod_lexicalCharacterSetMatchAST_checkLexicalExpression (c
     inCompiler->emitSemanticError (location_1, var_s  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 203)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCharacterSetMatchAST_checkLexicalExpression (void) {
@@ -4219,7 +4277,7 @@ C_PrologueEpilogue gMethod_lexicalCharacterSetMatchAST_checkLexicalExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@lexicalCharacterIntervalMatchAST checkLexicalExpression'                *
+//               Overriding extension method '@lexicalCharacterIntervalMatchAST checkLexicalExpression'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4228,6 +4286,7 @@ static void categoryMethod_lexicalCharacterIntervalMatchAST_checkLexicalExpressi
                                                                                     C_Compiler * /* inCompiler */
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCharacterIntervalMatchAST_checkLexicalExpression (void) {
@@ -4241,7 +4300,7 @@ C_PrologueEpilogue gMethod_lexicalCharacterIntervalMatchAST_checkLexicalExpressi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@lexicalStringMatchAST checkLexicalExpression'                      *
+//                     Overriding extension method '@lexicalStringMatchAST checkLexicalExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4253,6 +4312,7 @@ static void categoryMethod_lexicalStringMatchAST_checkLexicalExpression (const c
   macroValidSharedObject (object, cPtr_lexicalStringMatchAST) ;
   ioArgument_ioLexiqueAnalysisContext.mAttribute_mUnicodeStringToGenerate.addAssign_operation (object->mAttribute_mString.getter_string (SOURCE_FILE ("lexiqueCompilation.galgas", 217))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 217)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalStringMatchAST_checkLexicalExpression (void) {
@@ -4266,7 +4326,7 @@ C_PrologueEpilogue gMethod_lexicalStringMatchAST_checkLexicalExpression (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@lexicalStringNotMatchAST checkLexicalExpression'                    *
+//                   Overriding extension method '@lexicalStringNotMatchAST checkLexicalExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4281,6 +4341,7 @@ static void categoryMethod_lexicalStringNotMatchAST_checkLexicalExpression (cons
   ioArgument_ioLexiqueAnalysisContext.mAttribute_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GALGAS_bool (true), object->mAttribute_mErrorMessage.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 225)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalStringNotMatchAST_checkLexicalExpression (void) {
@@ -4294,7 +4355,7 @@ C_PrologueEpilogue gMethod_lexicalStringNotMatchAST_checkLexicalExpression (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument'           *
+//          Overriding extension method '@lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4313,6 +4374,7 @@ static void categoryMethod_lexicalAttributeInputArgumentAST_checkLexicalFunction
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 249)).add_operation (GALGAS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 250)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 252)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 251)).add_operation (GALGAS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 252))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 249)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalAttributeInputArgumentAST_checkLexicalFunctionCallArgument (void) {
@@ -4326,7 +4388,7 @@ C_PrologueEpilogue gMethod_lexicalAttributeInputArgumentAST_checkLexicalFunction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument'           *
+//          Overriding extension method '@lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4343,6 +4405,7 @@ static void categoryMethod_lexicalCharacterInputArgumentAST_checkLexicalFunction
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, a literal character has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 265)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 266))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 264)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCharacterInputArgumentAST_checkLexicalFunctionCallArgument (void) {
@@ -4356,7 +4419,7 @@ C_PrologueEpilogue gMethod_lexicalCharacterInputArgumentAST_checkLexicalFunction
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument'            *
+//           Overriding extension method '@lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4373,6 +4436,7 @@ static void categoryMethod_lexicalUnsignedInputArgumentAST_checkLexicalFunctionC
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, a literal character has @uint").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 280)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 279)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 280))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 278)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalUnsignedInputArgumentAST_checkLexicalFunctionCallArgument (void) {
@@ -4386,7 +4450,7 @@ C_PrologueEpilogue gMethod_lexicalUnsignedInputArgumentAST_checkLexicalFunctionC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Overriding category method '@lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument'        *
+//       Overriding extension method '@lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument'       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4402,6 +4466,7 @@ static void categoryMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalF
     inCompiler->emitSemanticError (object->mAttribute_mLocation, GALGAS_string ("type error, current character value has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 292)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 294)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 293)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 294))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 292)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalFunctionCallArgument (void) {
@@ -4415,7 +4480,7 @@ C_PrologueEpilogue gMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument'            *
+//           Overriding extension method '@lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4454,6 +4519,7 @@ static void categoryMethod_lexicalFunctionInputArgumentAST_checkLexicalFunctionC
     enumerator_16336.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalFunctionInputArgumentAST_checkLexicalFunctionCallArgument (void) {
@@ -4467,7 +4533,7 @@ C_PrologueEpilogue gMethod_lexicalFunctionInputArgumentAST_checkLexicalFunctionC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument'            *
+//           Overriding extension method '@lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4486,6 +4552,7 @@ static void categoryMethod_lexicalAttributeInputArgumentAST_checkLexicalRoutineC
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, attribute type is @").add_operation (extensionGetter_lexicalTypeBaseName (var_attributeLexicalType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 365)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 364)).add_operation (GALGAS_string (" type, but lexical routine prototype requires @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 365)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 367)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 366)).add_operation (GALGAS_string (" type"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 367))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 364)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalAttributeInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4499,7 +4566,7 @@ C_PrologueEpilogue gMethod_lexicalAttributeInputArgumentAST_checkLexicalRoutineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument'            *
+//           Overriding extension method '@lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4516,6 +4583,7 @@ static void categoryMethod_lexicalCharacterInputArgumentAST_checkLexicalRoutineC
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, a literal character has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 379)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 381)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 380)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 381))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 379)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCharacterInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4529,7 +4597,7 @@ C_PrologueEpilogue gMethod_lexicalCharacterInputArgumentAST_checkLexicalRoutineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument'            *
+//           Overriding extension method '@lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4546,6 +4614,7 @@ static void categoryMethod_lexicalUnsignedInputArgumentAST_checkLexicalRoutineCa
     inCompiler->emitSemanticError (location_1, GALGAS_string ("type error, a literal unsigned value has @uint").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 393)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 394)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 395))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 393)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalUnsignedInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4559,7 +4628,7 @@ C_PrologueEpilogue gMethod_lexicalUnsignedInputArgumentAST_checkLexicalRoutineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument'        *
+//       Overriding extension method '@lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4575,6 +4644,7 @@ static void categoryMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalR
     inCompiler->emitSemanticError (object->mAttribute_mLocation, GALGAS_string ("type error, current character value has @char").add_operation (GALGAS_string (" type, but lexical routine prototype requires an @"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 407)).add_operation (extensionGetter_lexicalTypeBaseName (inArgument_inLexicalRoutineFormalArgumentType, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 409)), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 408)).add_operation (GALGAS_string (" type value"), inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 409))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 407)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4588,7 +4658,7 @@ C_PrologueEpilogue gMethod_lexicalCurrentCharacterInputArgumentAST_checkLexicalR
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument'            *
+//           Overriding extension method '@lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4627,6 +4697,7 @@ static void categoryMethod_lexicalFunctionInputArgumentAST_checkLexicalRoutineCa
     enumerator_21479.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalFunctionInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4640,7 +4711,7 @@ C_PrologueEpilogue gMethod_lexicalFunctionInputArgumentAST_checkLexicalRoutineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument'         *
+//        Overriding extension method '@lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4664,6 +4735,7 @@ static void categoryMethod_lexicalAttributeInputOutputArgumentAST_checkLexicalRo
     inCompiler->emitSemanticError (object->mAttribute_mActualPassingModeLocation, GALGAS_string ("the output mode (!) is required here, not an output/input mode")  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 489)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalAttributeInputOutputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4677,7 +4749,7 @@ C_PrologueEpilogue gMethod_lexicalAttributeInputOutputArgumentAST_checkLexicalRo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument'             *
+//            Overriding extension method '@lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4695,6 +4767,7 @@ static void categoryMethod_lexicalFormalInputArgumentAST_checkLexicalRoutineCall
     inCompiler->emitSemanticError (object->mAttribute_mActualPassingModeLocation, GALGAS_string ("the output/input mode (!\?) is required here, not an input mode")  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 506)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalFormalInputArgumentAST_checkLexicalRoutineCallArgument (void) {
@@ -4708,7 +4781,7 @@ C_PrologueEpilogue gMethod_lexicalFormalInputArgumentAST_checkLexicalRoutineCall
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@lexicalStructuredSendInstructionAST checkLexicalInstruction'              *
+//             Overriding extension method '@lexicalStructuredSendInstructionAST checkLexicalInstruction'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4730,6 +4803,7 @@ static void categoryMethod_lexicalStructuredSendInstructionAST_checkLexicalInstr
   }
   callCategoryMethod_checkLexicalDefaultAction ((const cPtr_lexicalSendDefaultActionAST *) object->mAttribute_mLexicalSendDefaultAction.ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 527)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalStructuredSendInstructionAST_checkLexicalInstruction (void) {
@@ -4743,7 +4817,7 @@ C_PrologueEpilogue gMethod_lexicalStructuredSendInstructionAST_checkLexicalInstr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@lexicalSimpleSendInstructionAST checkLexicalInstruction'                *
+//               Overriding extension method '@lexicalSimpleSendInstructionAST checkLexicalInstruction'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4757,6 +4831,7 @@ static void categoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstructi
   GALGAS_lexicalSentValueList joker_25659 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.getter_mTerminalMap (SOURCE_FILE ("lexiqueCompilation.galgas", 535)).method_searchKey (object->mAttribute_mSentTerminal, joker_25659, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 535)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction (void) {
@@ -4770,7 +4845,7 @@ C_PrologueEpilogue gMethod_lexicalSimpleSendInstructionAST_checkLexicalInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalRepeatInstructionAST checkLexicalInstruction'                  *
+//                 Overriding extension method '@lexicalRepeatInstructionAST checkLexicalInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4799,6 +4874,7 @@ static void categoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (
     enumerator_26345.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (void) {
@@ -4812,7 +4888,7 @@ C_PrologueEpilogue gMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalSelectInstructionAST checkLexicalInstruction'                  *
+//                 Overriding extension method '@lexicalSelectInstructionAST checkLexicalInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4841,6 +4917,7 @@ static void categoryMethod_lexicalSelectInstructionAST_checkLexicalInstruction (
     enumerator_27120.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalSelectInstructionAST_checkLexicalInstruction (void) {
@@ -4854,7 +4931,7 @@ C_PrologueEpilogue gMethod_lexicalSelectInstructionAST_checkLexicalInstruction (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@lexicalRoutineInstructionAST checkLexicalInstruction'                  *
+//                 Overriding extension method '@lexicalRoutineInstructionAST checkLexicalInstruction'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4894,6 +4971,7 @@ static void categoryMethod_lexicalRoutineInstructionAST_checkLexicalInstruction 
     enumerator_28879.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalRoutineInstructionAST_checkLexicalInstruction (void) {
@@ -4907,7 +4985,7 @@ C_PrologueEpilogue gMethod_lexicalRoutineInstructionAST_checkLexicalInstruction 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@lexicalLogInstructionAST checkLexicalInstruction'                    *
+//                   Overriding extension method '@lexicalLogInstructionAST checkLexicalInstruction'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4917,6 +4995,7 @@ static void categoryMethod_lexicalLogInstructionAST_checkLexicalInstruction (con
                                                                              C_Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalLogInstructionAST_checkLexicalInstruction (void) {
@@ -4930,7 +5009,7 @@ C_PrologueEpilogue gMethod_lexicalLogInstructionAST_checkLexicalInstruction (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalRewindInstructionAST checkLexicalInstruction'                  *
+//                 Overriding extension method '@lexicalRewindInstructionAST checkLexicalInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4945,6 +5024,7 @@ static void categoryMethod_lexicalRewindInstructionAST_checkLexicalInstruction (
   GALGAS_lexicalSentValueList joker_29797 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.getter_mTerminalMap (SOURCE_FILE ("lexiqueCompilation.galgas", 631)).method_searchKey (object->mAttribute_mTerminalName, joker_29797, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 631)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalRewindInstructionAST_checkLexicalInstruction (void) {
@@ -4958,7 +5038,7 @@ C_PrologueEpilogue gMethod_lexicalRewindInstructionAST_checkLexicalInstruction (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@lexicalDropInstructionAST checkLexicalInstruction'                   *
+//                  Overriding extension method '@lexicalDropInstructionAST checkLexicalInstruction'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4972,6 +5052,7 @@ static void categoryMethod_lexicalDropInstructionAST_checkLexicalInstruction (co
   GALGAS_lexicalSentValueList joker_30152 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.getter_mTerminalMap (SOURCE_FILE ("lexiqueCompilation.galgas", 639)).method_searchKey (object->mAttribute_mTerminalName, joker_30152, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 639)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalDropInstructionAST_checkLexicalInstruction (void) {
@@ -4985,7 +5066,7 @@ C_PrologueEpilogue gMethod_lexicalDropInstructionAST_checkLexicalInstruction (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@lexicalTagInstructionAST checkLexicalInstruction'                    *
+//                   Overriding extension method '@lexicalTagInstructionAST checkLexicalInstruction'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5000,6 +5081,7 @@ static void categoryMethod_lexicalTagInstructionAST_checkLexicalInstruction (con
   ioArgument_ioTagMap.setter_insertKey (object->mAttribute_mLexicalTagName, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 647)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalTagInstructionAST_checkLexicalInstruction (void) {
@@ -5013,7 +5095,7 @@ C_PrologueEpilogue gMethod_lexicalTagInstructionAST_checkLexicalInstruction (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lexicalErrorInstructionAST checkLexicalInstruction'                   *
+//                  Overriding extension method '@lexicalErrorInstructionAST checkLexicalInstruction'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5028,6 +5110,7 @@ static void categoryMethod_lexicalErrorInstructionAST_checkLexicalInstruction (c
   ioArgument_ioLexiqueAnalysisContext.mAttribute_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GALGAS_bool (true), object->mAttribute_mErrorMessageName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 655)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalErrorInstructionAST_checkLexicalInstruction (void) {
@@ -5041,7 +5124,7 @@ C_PrologueEpilogue gMethod_lexicalErrorInstructionAST_checkLexicalInstruction (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@lexicalWarningInstructionAST checkLexicalInstruction'                  *
+//                 Overriding extension method '@lexicalWarningInstructionAST checkLexicalInstruction'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5056,6 +5139,7 @@ static void categoryMethod_lexicalWarningInstructionAST_checkLexicalInstruction 
   ioArgument_ioLexiqueAnalysisContext.mAttribute_mLexicalMessageMap.setter_setMMessageIsUsedForKey (GALGAS_bool (true), object->mAttribute_mWarningMessageName.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 663)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalWarningInstructionAST_checkLexicalInstruction (void) {
@@ -5069,7 +5153,7 @@ C_PrologueEpilogue gMethod_lexicalWarningInstructionAST_checkLexicalInstruction 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@lexicalImplicitRuleAST checkLexicalRule'                        *
+//                       Overriding extension method '@lexicalImplicitRuleAST checkLexicalRule'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5084,6 +5168,7 @@ static void categoryMethod_lexicalImplicitRuleAST_checkLexicalRule (const cPtr_a
   GALGAS_bool joker_32051 ; // Joker input parameter
   ioArgument_ioLexiqueAnalysisContext.getter_mLexicalTokenListMap (SOURCE_FILE ("lexiqueCompilation.galgas", 677)).method_searchKey (object->mAttribute_mListName, joker_32045, joker_32048, joker_32051, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 677)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalImplicitRuleAST_checkLexicalRule (void) {
@@ -5097,7 +5182,7 @@ C_PrologueEpilogue gMethod_lexicalImplicitRuleAST_checkLexicalRule (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@lexicalExplicitRuleAST checkLexicalRule'                        *
+//                       Overriding extension method '@lexicalExplicitRuleAST checkLexicalRule'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5115,6 +5200,7 @@ static void categoryMethod_lexicalExplicitRuleAST_checkLexicalRule (const cPtr_a
     enumerator_32436.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexicalExplicitRuleAST_checkLexicalRule (void) {
@@ -5128,7 +5214,7 @@ C_PrologueEpilogue gMethod_lexicalExplicitRuleAST_checkLexicalRule (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@stringsetPredefinedTypeAST getEnumerationList'                     *
+//                    Overriding extension method '@stringsetPredefinedTypeAST getEnumerationList'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5150,6 +5236,7 @@ static void categoryMethod_stringsetPredefinedTypeAST_getEnumerationList (const 
   outArgument_outEnumerationVariant.addAssign_operation (GALGAS_string ("down")  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 33)) ;
   outArgument_outEnumeratedType = GALGAS_string ("string") ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringsetPredefinedTypeAST_getEnumerationList (void) {
@@ -5163,7 +5250,7 @@ C_PrologueEpilogue gMethod_stringsetPredefinedTypeAST_getEnumerationList (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@dataPredefinedTypeAST getEnumerationList'                        *
+//                       Overriding extension method '@dataPredefinedTypeAST getEnumerationList'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5185,6 +5272,7 @@ static void categoryMethod_dataPredefinedTypeAST_getEnumerationList (const cPtr_
   outArgument_outEnumerationVariant.addAssign_operation (GALGAS_string ("down")  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 50)) ;
   outArgument_outEnumeratedType = GALGAS_string ("uint") ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dataPredefinedTypeAST_getEnumerationList (void) {
@@ -5198,7 +5286,7 @@ C_PrologueEpilogue gMethod_dataPredefinedTypeAST_getEnumerationList (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@stringsetPredefinedTypeAST getModifierMap'                       *
+//                      Overriding extension method '@stringsetPredefinedTypeAST getModifierMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5216,6 +5304,7 @@ static void categoryMethod_stringsetPredefinedTypeAST_getModifierMap (const cPtr
   outArgument_outModifierMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("removeKey"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 68))  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 68)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsTypeFeatures.galgas", 69)), GALGAS_formalParameterSignature::constructor_listWithValue (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeFeatures.galgas", 70)), var_stringType, GALGAS_formalArgumentPassingModeAST::constructor_argumentIn (SOURCE_FILE ("semanticsTypeFeatures.galgas", 70)), GALGAS_string ("inKey")  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 70)), GALGAS_bool (false), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsTypeFeatures.galgas", 72)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 67)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringsetPredefinedTypeAST_getModifierMap (void) {
@@ -5229,7 +5318,7 @@ C_PrologueEpilogue gMethod_stringsetPredefinedTypeAST_getModifierMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@applicationPredefinedTypeAST getSupportedOperatorFlags'                 *
+//                Overriding extension getter '@applicationPredefinedTypeAST getSupportedOperatorFlags'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5256,7 +5345,7 @@ C_PrologueEpilogue gGetter_applicationPredefinedTypeAST_getSupportedOperatorFlag
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@bigintPredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@bigintPredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5283,7 +5372,7 @@ C_PrologueEpilogue gGetter_bigintPredefinedTypeAST_getSupportedOperatorFlags (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@timerPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@timerPredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5310,7 +5399,7 @@ C_PrologueEpilogue gGetter_timerPredefinedTypeAST_getSupportedOperatorFlags (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@objectPredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@objectPredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5337,7 +5426,7 @@ C_PrologueEpilogue gGetter_objectPredefinedTypeAST_getSupportedOperatorFlags (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@stringPredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@stringPredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5364,7 +5453,7 @@ C_PrologueEpilogue gGetter_stringPredefinedTypeAST_getSupportedOperatorFlags (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@charPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@charPredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5391,7 +5480,7 @@ C_PrologueEpilogue gGetter_charPredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@boolPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@boolPredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5418,7 +5507,7 @@ C_PrologueEpilogue gGetter_boolPredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@uintPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@uintPredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5445,7 +5534,7 @@ C_PrologueEpilogue gGetter_uintPredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@sintPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@sintPredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5472,7 +5561,7 @@ C_PrologueEpilogue gGetter_sintPredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@uint64PredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@uint64PredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5499,7 +5588,7 @@ C_PrologueEpilogue gGetter_uint_36__34_PredefinedTypeAST_getSupportedOperatorFla
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@sint64PredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@sint64PredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5526,7 +5615,7 @@ C_PrologueEpilogue gGetter_sint_36__34_PredefinedTypeAST_getSupportedOperatorFla
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category getter '@doublePredefinedTypeAST getSupportedOperatorFlags'                   *
+//                  Overriding extension getter '@doublePredefinedTypeAST getSupportedOperatorFlags'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5553,7 +5642,7 @@ C_PrologueEpilogue gGetter_doublePredefinedTypeAST_getSupportedOperatorFlags (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@stringsetPredefinedTypeAST getSupportedOperatorFlags'                  *
+//                 Overriding extension getter '@stringsetPredefinedTypeAST getSupportedOperatorFlags'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5580,7 +5669,7 @@ C_PrologueEpilogue gGetter_stringsetPredefinedTypeAST_getSupportedOperatorFlags 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@binarysetPredefinedTypeAST getSupportedOperatorFlags'                  *
+//                 Overriding extension getter '@binarysetPredefinedTypeAST getSupportedOperatorFlags'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5607,7 +5696,7 @@ C_PrologueEpilogue gGetter_binarysetPredefinedTypeAST_getSupportedOperatorFlags 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@typePredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@typePredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5634,7 +5723,7 @@ C_PrologueEpilogue gGetter_typePredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@dataPredefinedTypeAST getSupportedOperatorFlags'                    *
+//                   Overriding extension getter '@dataPredefinedTypeAST getSupportedOperatorFlags'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5661,7 +5750,7 @@ C_PrologueEpilogue gGetter_dataPredefinedTypeAST_getSupportedOperatorFlags (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@functionPredefinedTypeAST getSupportedOperatorFlags'                  *
+//                 Overriding extension getter '@functionPredefinedTypeAST getSupportedOperatorFlags'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5688,7 +5777,7 @@ C_PrologueEpilogue gGetter_functionPredefinedTypeAST_getSupportedOperatorFlags (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@locationPredefinedTypeAST getSupportedOperatorFlags'                  *
+//                 Overriding extension getter '@locationPredefinedTypeAST getSupportedOperatorFlags'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5715,7 +5804,7 @@ C_PrologueEpilogue gGetter_locationPredefinedTypeAST_getSupportedOperatorFlags (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@filewrapperPredefinedTypeAST getSupportedOperatorFlags'                 *
+//                Overriding extension getter '@filewrapperPredefinedTypeAST getSupportedOperatorFlags'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5742,7 +5831,7 @@ C_PrologueEpilogue gGetter_filewrapperPredefinedTypeAST_getSupportedOperatorFlag
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@stringsetPredefinedTypeAST getAddAssignArgumentList'                  *
+//                 Overriding extension method '@stringsetPredefinedTypeAST getAddAssignArgumentList'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5759,6 +5848,7 @@ static void categoryMethod_stringsetPredefinedTypeAST_getAddAssignArgumentList (
   temp_0.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("semanticsTypeFeatures.galgas", 245)), var_stringTypeIndex, GALGAS_string ("inString")  COMMA_SOURCE_FILE ("semanticsTypeFeatures.galgas", 245)) ;
   outArgument_outAddAssignArgumentList = temp_0 ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringsetPredefinedTypeAST_getAddAssignArgumentList (void) {
@@ -5772,7 +5862,7 @@ C_PrologueEpilogue gMethod_stringsetPredefinedTypeAST_getAddAssignArgumentList (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@locationPredefinedTypeAST getConstructorMap'                      *
+//                     Overriding extension method '@locationPredefinedTypeAST getConstructorMap'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5789,6 +5879,7 @@ static void categoryMethod_locationPredefinedTypeAST_getConstructorMap (const cP
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("here"), GALGAS_string ("location"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 133)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_locationPredefinedTypeAST_getConstructorMap (void) {
@@ -5802,7 +5893,7 @@ C_PrologueEpilogue gMethod_locationPredefinedTypeAST_getConstructorMap (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@stringPredefinedTypeAST getConstructorMap'                       *
+//                      Overriding extension method '@stringPredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5861,6 +5952,7 @@ static void categoryMethod_stringPredefinedTypeAST_getConstructorMap (const cPtr
   routine_enterConstructorWith_32_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("stringWithSequenceOfCharacters"), GALGAS_string ("char"), GALGAS_string ("inChar"), GALGAS_string ("uint"), GALGAS_string ("inCount"), GALGAS_string ("string"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 271)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringPredefinedTypeAST_getConstructorMap (void) {
@@ -5874,7 +5966,7 @@ C_PrologueEpilogue gMethod_stringPredefinedTypeAST_getConstructorMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@applicationPredefinedTypeAST getConstructorMap'                     *
+//                    Overriding extension method '@applicationPredefinedTypeAST getConstructorMap'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5942,6 +6034,7 @@ static void categoryMethod_applicationPredefinedTypeAST_getConstructorMap (const
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("keywordListForIdentifier"), GALGAS_string ("string"), GALGAS_string ("inIdentifier"), GALGAS_string ("stringlist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 458)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_applicationPredefinedTypeAST_getConstructorMap (void) {
@@ -5955,7 +6048,7 @@ C_PrologueEpilogue gMethod_applicationPredefinedTypeAST_getConstructorMap (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@charPredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@charPredefinedTypeAST getConstructorMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5972,6 +6065,7 @@ static void categoryMethod_charPredefinedTypeAST_getConstructorMap (const cPtr_p
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("unicodeCharacterWithUnsigned"), GALGAS_string ("uint"), GALGAS_string ("inValue"), GALGAS_string ("char"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 482)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_charPredefinedTypeAST_getConstructorMap (void) {
@@ -5985,7 +6079,7 @@ C_PrologueEpilogue gMethod_charPredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@uintPredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@uintPredefinedTypeAST getConstructorMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6011,6 +6105,7 @@ static void categoryMethod_uintPredefinedTypeAST_getConstructorMap (const cPtr_p
   routine_enterConstructorWith_32_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("valueWithMask"), GALGAS_string ("uint"), GALGAS_string ("inLowerIndex"), GALGAS_string ("uint"), GALGAS_string ("inUpperIndex"), GALGAS_string ("uint"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 527)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_uintPredefinedTypeAST_getConstructorMap (void) {
@@ -6024,7 +6119,7 @@ C_PrologueEpilogue gMethod_uintPredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@sintPredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@sintPredefinedTypeAST getConstructorMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6041,6 +6136,7 @@ static void categoryMethod_sintPredefinedTypeAST_getConstructorMap (const cPtr_p
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("min"), GALGAS_string ("sint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 553)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sintPredefinedTypeAST_getConstructorMap (void) {
@@ -6054,7 +6150,7 @@ C_PrologueEpilogue gMethod_sintPredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@uint64PredefinedTypeAST getConstructorMap'                       *
+//                      Overriding extension method '@uint64PredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6077,6 +6173,7 @@ static void categoryMethod_uint_36__34_PredefinedTypeAST_getConstructorMap (cons
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("uint64WithBitString"), GALGAS_string ("string"), GALGAS_string ("inBitString"), GALGAS_string ("uint64"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 593)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_uint_36__34_PredefinedTypeAST_getConstructorMap (void) {
@@ -6090,7 +6187,7 @@ C_PrologueEpilogue gMethod_uint_36__34_PredefinedTypeAST_getConstructorMap (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@sint64PredefinedTypeAST getConstructorMap'                       *
+//                      Overriding extension method '@sint64PredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6107,6 +6204,7 @@ static void categoryMethod_sint_36__34_PredefinedTypeAST_getConstructorMap (cons
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("min"), GALGAS_string ("sint64"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 617)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sint_36__34_PredefinedTypeAST_getConstructorMap (void) {
@@ -6120,7 +6218,7 @@ C_PrologueEpilogue gMethod_sint_36__34_PredefinedTypeAST_getConstructorMap (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@stringsetPredefinedTypeAST getConstructorMap'                      *
+//                     Overriding extension method '@stringsetPredefinedTypeAST getConstructorMap'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6143,6 +6241,7 @@ static void categoryMethod_stringsetPredefinedTypeAST_getConstructorMap (const c
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("setWithLStringList"), GALGAS_string ("lstringlist"), GALGAS_string ("inLStringList"), GALGAS_string ("stringset"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 657)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringsetPredefinedTypeAST_getConstructorMap (void) {
@@ -6156,7 +6255,7 @@ C_PrologueEpilogue gMethod_stringsetPredefinedTypeAST_getConstructorMap (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@binarysetPredefinedTypeAST getConstructorMap'                      *
+//                     Overriding extension method '@binarysetPredefinedTypeAST getConstructorMap'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6215,6 +6314,7 @@ static void categoryMethod_binarysetPredefinedTypeAST_getConstructorMap (const c
   routine_enterConstructorWith_33_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("binarySetWithGreaterOrEqualToConstant"), GALGAS_string ("uint"), GALGAS_string ("inBitIndex"), GALGAS_string ("uint"), GALGAS_string ("inBitCount"), GALGAS_string ("uint64"), GALGAS_string ("inConstant"), GALGAS_string ("binaryset"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 849)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_binarysetPredefinedTypeAST_getConstructorMap (void) {
@@ -6228,7 +6328,7 @@ C_PrologueEpilogue gMethod_binarysetPredefinedTypeAST_getConstructorMap (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@typePredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@typePredefinedTypeAST getConstructorMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6242,6 +6342,7 @@ static void categoryMethod_typePredefinedTypeAST_getConstructorMap (const cPtr_p
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("typeList"), GALGAS_string ("typelist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 870)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_typePredefinedTypeAST_getConstructorMap (void) {
@@ -6255,7 +6356,7 @@ C_PrologueEpilogue gMethod_typePredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@bigintPredefinedTypeAST getConstructorMap'                       *
+//                      Overriding extension method '@bigintPredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6269,6 +6370,7 @@ static void categoryMethod_bigintPredefinedTypeAST_getConstructorMap (const cPtr
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("zero"), GALGAS_string ("bigint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 886)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_bigintPredefinedTypeAST_getConstructorMap (void) {
@@ -6282,7 +6384,7 @@ C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getConstructorMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@dataPredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@dataPredefinedTypeAST getConstructorMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6299,6 +6401,7 @@ static void categoryMethod_dataPredefinedTypeAST_getConstructorMap (const cPtr_p
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("dataWithContentsOfFile"), GALGAS_string ("string"), GALGAS_string ("inFilePath"), GALGAS_string ("data"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 909)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dataPredefinedTypeAST_getConstructorMap (void) {
@@ -6312,7 +6415,7 @@ C_PrologueEpilogue gMethod_dataPredefinedTypeAST_getConstructorMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@functionPredefinedTypeAST getConstructorMap'                      *
+//                     Overriding extension method '@functionPredefinedTypeAST getConstructorMap'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6332,6 +6435,7 @@ static void categoryMethod_functionPredefinedTypeAST_getConstructorMap (const cP
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("isFunctionDefined"), GALGAS_string ("string"), GALGAS_string ("inFunctionName"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 942)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_functionPredefinedTypeAST_getConstructorMap (void) {
@@ -6345,7 +6449,7 @@ C_PrologueEpilogue gMethod_functionPredefinedTypeAST_getConstructorMap (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@doublePredefinedTypeAST getConstructorMap'                       *
+//                      Overriding extension method '@doublePredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6362,6 +6466,7 @@ static void categoryMethod_doublePredefinedTypeAST_getConstructorMap (const cPtr
   routine_enterConstructorWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("doubleWithBinaryImage"), GALGAS_string ("uint64"), GALGAS_string ("inBinaryImage"), GALGAS_string ("double"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 967)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_doublePredefinedTypeAST_getConstructorMap (void) {
@@ -6375,7 +6480,7 @@ C_PrologueEpilogue gMethod_doublePredefinedTypeAST_getConstructorMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@timerPredefinedTypeAST getConstructorMap'                        *
+//                       Overriding extension method '@timerPredefinedTypeAST getConstructorMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6389,6 +6494,7 @@ static void categoryMethod_timerPredefinedTypeAST_getConstructorMap (const cPtr_
   routine_enterConstructorWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("start"), GALGAS_string ("timer"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsConstructors.galgas", 985)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_timerPredefinedTypeAST_getConstructorMap (void) {
@@ -6402,7 +6508,7 @@ C_PrologueEpilogue gMethod_timerPredefinedTypeAST_getConstructorMap (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@locationPredefinedTypeAST getGetterMap'                         *
+//                        Overriding extension method '@locationPredefinedTypeAST getGetterMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6433,6 +6539,7 @@ static void categoryMethod_locationPredefinedTypeAST_getGetterMap (const cPtr_pr
   routine_enterBaseGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("isNowhere"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 413)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_locationPredefinedTypeAST_getGetterMap (void) {
@@ -6446,7 +6553,7 @@ C_PrologueEpilogue gMethod_locationPredefinedTypeAST_getGetterMap (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@stringPredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@stringPredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6624,6 +6731,7 @@ static void categoryMethod_stringPredefinedTypeAST_getGetterMap (const cPtr_pred
   routine_enterBaseGetterWith_32_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("regularFilesWithExtensions"), GALGAS_string ("bool"), GALGAS_string ("inRecursiveSearch"), GALGAS_string ("stringlist"), GALGAS_string ("inExtensionList"), GALGAS_string ("stringlist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 810)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringPredefinedTypeAST_getGetterMap (void) {
@@ -6637,7 +6745,7 @@ C_PrologueEpilogue gMethod_stringPredefinedTypeAST_getGetterMap (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@charPredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@charPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6710,6 +6818,7 @@ static void categoryMethod_charPredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("unicodeToUpper"), GALGAS_string ("char"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 958)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_charPredefinedTypeAST_getGetterMap (void) {
@@ -6723,7 +6832,7 @@ C_PrologueEpilogue gMethod_charPredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@boolPredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@boolPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6757,6 +6866,7 @@ static void categoryMethod_boolPredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("bigint"), GALGAS_string ("bigint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1015)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_boolPredefinedTypeAST_getGetterMap (void) {
@@ -6770,7 +6880,7 @@ C_PrologueEpilogue gMethod_boolPredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@uintPredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@uintPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6834,6 +6944,7 @@ static void categoryMethod_uintPredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("canDivide"), GALGAS_string ("uint"), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1143)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_uintPredefinedTypeAST_getGetterMap (void) {
@@ -6847,7 +6958,7 @@ C_PrologueEpilogue gMethod_uintPredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@sintPredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@sintPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6896,6 +7007,7 @@ static void categoryMethod_sintPredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("canDivide"), GALGAS_string ("sint"), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1236)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sintPredefinedTypeAST_getGetterMap (void) {
@@ -6909,7 +7021,7 @@ C_PrologueEpilogue gMethod_sintPredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@uint64PredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@uint64PredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6961,6 +7073,7 @@ static void categoryMethod_uint_36__34_PredefinedTypeAST_getGetterMap (const cPt
   routine_enterBaseFinalGetterWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("canDivide"), GALGAS_string ("uint64"), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1336)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_uint_36__34_PredefinedTypeAST_getGetterMap (void) {
@@ -6974,7 +7087,7 @@ C_PrologueEpilogue gMethod_uint_36__34_PredefinedTypeAST_getGetterMap (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@sint64PredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@sint64PredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7023,6 +7136,7 @@ static void categoryMethod_sint_36__34_PredefinedTypeAST_getGetterMap (const cPt
   routine_enterBaseFinalGetterWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("canDivide"), GALGAS_string ("sint64"), GALGAS_string ("inOperand"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1429)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_sint_36__34_PredefinedTypeAST_getGetterMap (void) {
@@ -7036,7 +7150,7 @@ C_PrologueEpilogue gMethod_sint_36__34_PredefinedTypeAST_getGetterMap (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@doublePredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@doublePredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7103,6 +7217,7 @@ static void categoryMethod_doublePredefinedTypeAST_getGetterMap (const cPtr_pred
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("binaryImage"), GALGAS_string ("uint64"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1563)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_doublePredefinedTypeAST_getGetterMap (void) {
@@ -7116,7 +7231,7 @@ C_PrologueEpilogue gMethod_doublePredefinedTypeAST_getGetterMap (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@stringsetPredefinedTypeAST getGetterMap'                        *
+//                       Overriding extension method '@stringsetPredefinedTypeAST getGetterMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7141,6 +7256,7 @@ static void categoryMethod_stringsetPredefinedTypeAST_getGetterMap (const cPtr_p
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("stringList"), GALGAS_string ("stringlist"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1599)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringsetPredefinedTypeAST_getGetterMap (void) {
@@ -7154,7 +7270,7 @@ C_PrologueEpilogue gMethod_stringsetPredefinedTypeAST_getGetterMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@binarysetPredefinedTypeAST getGetterMap'                        *
+//                       Overriding extension method '@binarysetPredefinedTypeAST getGetterMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7284,6 +7400,7 @@ static void categoryMethod_binarysetPredefinedTypeAST_getGetterMap (const cPtr_p
   routine_enterBaseFinalGetterWith_32_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("existsOnBitRange"), GALGAS_string ("uint"), GALGAS_string ("inFirstBit"), GALGAS_string ("uint"), GALGAS_string ("inBitCount"), GALGAS_string ("binaryset"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1891)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_binarysetPredefinedTypeAST_getGetterMap (void) {
@@ -7297,7 +7414,7 @@ C_PrologueEpilogue gMethod_binarysetPredefinedTypeAST_getGetterMap (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@typePredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@typePredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7319,6 +7436,7 @@ static void categoryMethod_typePredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("superclass"), GALGAS_string ("type"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1920)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_typePredefinedTypeAST_getGetterMap (void) {
@@ -7332,7 +7450,7 @@ C_PrologueEpilogue gMethod_typePredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@dataPredefinedTypeAST getGetterMap'                           *
+//                          Overriding extension method '@dataPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7351,6 +7469,7 @@ static void categoryMethod_dataPredefinedTypeAST_getGetterMap (const cPtr_predef
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("cStringRepresentation"), GALGAS_string ("string"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1942)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dataPredefinedTypeAST_getGetterMap (void) {
@@ -7364,7 +7483,7 @@ C_PrologueEpilogue gMethod_dataPredefinedTypeAST_getGetterMap (defineCategoryMet
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@functionPredefinedTypeAST getGetterMap'                         *
+//                        Overriding extension method '@functionPredefinedTypeAST getGetterMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7389,6 +7508,7 @@ static void categoryMethod_functionPredefinedTypeAST_getGetterMap (const cPtr_pr
   routine_enterBaseFinalGetterWith_32_Arguments (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("invoke"), GALGAS_string ("objectlist"), GALGAS_string ("inParameters"), GALGAS_string ("location"), GALGAS_string ("inErrorLocation"), GALGAS_string ("object"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1978)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_functionPredefinedTypeAST_getGetterMap (void) {
@@ -7402,7 +7522,7 @@ C_PrologueEpilogue gMethod_functionPredefinedTypeAST_getGetterMap (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@objectPredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@objectPredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7421,6 +7541,7 @@ static void categoryMethod_objectPredefinedTypeAST_getGetterMap (const cPtr_pred
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("objectDynamicType"), GALGAS_string ("type"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 1997)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_objectPredefinedTypeAST_getGetterMap (void) {
@@ -7434,7 +7555,7 @@ C_PrologueEpilogue gMethod_objectPredefinedTypeAST_getGetterMap (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@filewrapperPredefinedTypeAST getGetterMap'                       *
+//                      Overriding extension method '@filewrapperPredefinedTypeAST getGetterMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7486,6 +7607,7 @@ static void categoryMethod_filewrapperPredefinedTypeAST_getGetterMap (const cPtr
   routine_enterBaseFinalGetterWithArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("textFilesAtPath"), GALGAS_string ("string"), GALGAS_string ("inPath"), GALGAS_string ("stringlist"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2096)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_filewrapperPredefinedTypeAST_getGetterMap (void) {
@@ -7499,7 +7621,7 @@ C_PrologueEpilogue gMethod_filewrapperPredefinedTypeAST_getGetterMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category method '@timerPredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@timerPredefinedTypeAST getGetterMap'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7521,6 +7643,7 @@ static void categoryMethod_timerPredefinedTypeAST_getGetterMap (const cPtr_prede
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("isRunning"), GALGAS_string ("bool"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2126)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_timerPredefinedTypeAST_getGetterMap (void) {
@@ -7534,7 +7657,7 @@ C_PrologueEpilogue gMethod_timerPredefinedTypeAST_getGetterMap (defineCategoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@bigintPredefinedTypeAST getGetterMap'                          *
+//                         Overriding extension method '@bigintPredefinedTypeAST getGetterMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7619,6 +7742,7 @@ static void categoryMethod_bigintPredefinedTypeAST_getGetterMap (const cPtr_pred
   routine_enterBaseFinalGetterWithoutArgument (outArgument_outMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("extract64ForSignedRepresentation"), GALGAS_string ("uint64list"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsGetters.galgas", 2305)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_bigintPredefinedTypeAST_getGetterMap (void) {
@@ -7632,7 +7756,7 @@ C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getGetterMap (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@stringPredefinedTypeAST getModifierMap'                         *
+//                        Overriding extension method '@stringPredefinedTypeAST getModifierMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7658,6 +7782,7 @@ static void categoryMethod_stringPredefinedTypeAST_getModifierMap (const cPtr_pr
   routine_enterModifierWith_32_InputArguments (outArgument_outModifierMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("char"), GALGAS_string ("inChar"), GALGAS_string ("uint"), GALGAS_string ("inIndex"), GALGAS_string ("setCharacterAtIndex"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 178)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringPredefinedTypeAST_getModifierMap (void) {
@@ -7671,7 +7796,7 @@ C_PrologueEpilogue gMethod_stringPredefinedTypeAST_getModifierMap (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@dataPredefinedTypeAST getModifierMap'                          *
+//                         Overriding extension method '@dataPredefinedTypeAST getModifierMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7703,6 +7828,7 @@ static void categoryMethod_dataPredefinedTypeAST_getModifierMap (const cPtr_pred
   routine_enterModifierWithInputArgument (outArgument_outModifierMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("data"), GALGAS_string ("inValue"), GALGAS_string ("appendData"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 244)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dataPredefinedTypeAST_getModifierMap (void) {
@@ -7716,7 +7842,7 @@ C_PrologueEpilogue gMethod_dataPredefinedTypeAST_getModifierMap (defineCategoryM
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@filewrapperPredefinedTypeAST getModifierMap'                      *
+//                     Overriding extension method '@filewrapperPredefinedTypeAST getModifierMap'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7730,6 +7856,7 @@ static void categoryMethod_filewrapperPredefinedTypeAST_getModifierMap (const cP
   routine_enterModifierWithInputArgument (outArgument_outModifierMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("string"), GALGAS_string ("inDirectoryPath"), GALGAS_string ("setCurrentDirectory"), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 261)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_filewrapperPredefinedTypeAST_getModifierMap (void) {
@@ -7743,7 +7870,7 @@ C_PrologueEpilogue gMethod_filewrapperPredefinedTypeAST_getModifierMap (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@bigintPredefinedTypeAST getModifierMap'                         *
+//                        Overriding extension method '@bigintPredefinedTypeAST getModifierMap'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7760,6 +7887,7 @@ static void categoryMethod_bigintPredefinedTypeAST_getModifierMap (const cPtr_pr
   routine_enterModifierWithInputArgument (outArgument_outModifierMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("uint"), GALGAS_string ("inIndex"), GALGAS_string ("complementBitAtIndex"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 288)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_bigintPredefinedTypeAST_getModifierMap (void) {
@@ -7773,7 +7901,7 @@ C_PrologueEpilogue gMethod_bigintPredefinedTypeAST_getModifierMap (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category method '@timerPredefinedTypeAST getModifierMap'                         *
+//                        Overriding extension method '@timerPredefinedTypeAST getModifierMap'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7790,6 +7918,7 @@ static void categoryMethod_timerPredefinedTypeAST_getModifierMap (const cPtr_pre
   routine_enterModifierWithoutArgument (outArgument_outModifierMap, GALGAS_string ("resume"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsSetters.galgas", 310)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_timerPredefinedTypeAST_getModifierMap (void) {
@@ -7803,7 +7932,7 @@ C_PrologueEpilogue gMethod_timerPredefinedTypeAST_getModifierMap (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@dataPredefinedTypeAST getInstanceMethodMap'                       *
+//                      Overriding extension method '@dataPredefinedTypeAST getInstanceMethodMap'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7833,6 +7962,7 @@ static void categoryMethod_dataPredefinedTypeAST_getInstanceMethodMap (const cPt
   outArgument_outInstanceMethodMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("writeToFileWhenDifferentContents"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 113))  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 113)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsInstanceMethods.galgas", 114)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 116)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsInstanceMethods.galgas", 118)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 112)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_dataPredefinedTypeAST_getInstanceMethodMap (void) {
@@ -7846,7 +7976,7 @@ C_PrologueEpilogue gMethod_dataPredefinedTypeAST_getInstanceMethodMap (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@stringPredefinedTypeAST getInstanceMethodMap'                      *
+//                     Overriding extension method '@stringPredefinedTypeAST getInstanceMethodMap'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7891,6 +8021,7 @@ static void categoryMethod_stringPredefinedTypeAST_getInstanceMethodMap (const c
   outArgument_outInstanceMethodMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("writeToExecutableFileWhenDifferentContents"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 191))  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 191)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsInstanceMethods.galgas", 192)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 194)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsInstanceMethods.galgas", 196)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 190)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringPredefinedTypeAST_getInstanceMethodMap (void) {
@@ -7904,7 +8035,7 @@ C_PrologueEpilogue gMethod_stringPredefinedTypeAST_getInstanceMethodMap (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@bigintPredefinedTypeAST getInstanceMethodMap'                      *
+//                     Overriding extension method '@bigintPredefinedTypeAST getInstanceMethodMap'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7932,6 +8063,7 @@ static void categoryMethod_bigintPredefinedTypeAST_getInstanceMethodMap (const c
   outArgument_outInstanceMethodMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("ceilDivideBy"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 233))  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 233)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("semanticsInstanceMethods.galgas", 234)), var_argList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 236)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("semanticsInstanceMethods.galgas", 238)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("semanticsInstanceMethods.galgas", 232)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_bigintPredefinedTypeAST_getInstanceMethodMap (void) {

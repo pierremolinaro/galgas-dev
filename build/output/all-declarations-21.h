@@ -11,7 +11,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Abstract category method '@semanticExpressionForGeneration generateExpression'                    *
+//                   Abstract extension method '@semanticExpressionForGeneration generateExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -42,7 +42,7 @@ void callCategoryMethod_generateExpression (const class cPtr_semanticExpressionF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Category getter '@semanticExpressionForGeneration isTrueExpression'                         *
+//                        Extension getter '@semanticExpressionForGeneration isTrueExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

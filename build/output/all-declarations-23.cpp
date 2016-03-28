@@ -10,7 +10,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@stringPredefinedTypeAST getClassMethodMap'                       *
+//                      Overriding extension method '@stringPredefinedTypeAST getClassMethodMap'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -61,6 +61,7 @@ static void categoryMethod_stringPredefinedTypeAST_getClassMethodMap (const cPtr
   outArgument_outClassMethodMap.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("generateFileWithPattern"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 88))  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 88)), var_argList, GALGAS_bool (true) COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 87)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_stringPredefinedTypeAST_getClassMethodMap (void) {
@@ -74,7 +75,7 @@ C_PrologueEpilogue gMethod_stringPredefinedTypeAST_getClassMethodMap (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@binarysetPredefinedTypeAST getClassMethodMap'                      *
+//                     Overriding extension method '@binarysetPredefinedTypeAST getClassMethodMap'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -91,6 +92,7 @@ static void categoryMethod_binarysetPredefinedTypeAST_getClassMethodMap (const c
   routine_enterClassMethodWithInputArgument (outArgument_outClassMethodMap, ioArgument_ioUnifiedTypeMap, GALGAS_string ("setAndTableSize"), GALGAS_string ("uint"), GALGAS_string ("inTableSize"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("semanticsTypeMethods.galgas", 109)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_binarysetPredefinedTypeAST_getClassMethodMap (void) {
@@ -104,7 +106,7 @@ C_PrologueEpilogue gMethod_binarysetPredefinedTypeAST_getClassMethodMap (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@galgas3GrammarComponentAST keyRepresentation'                      *
+//                     Overriding extension getter '@galgas3GrammarComponentAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -133,7 +135,7 @@ C_PrologueEpilogue gGetter_galgas_33_GrammarComponentAST_keyRepresentation (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@galgas3SyntaxComponentAST keyRepresentation'                      *
+//                     Overriding extension getter '@galgas3SyntaxComponentAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -162,7 +164,7 @@ C_PrologueEpilogue gGetter_galgas_33_SyntaxComponentAST_keyRepresentation (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@lexiqueComponentAST keyRepresentation'                         *
+//                        Overriding extension getter '@lexiqueComponentAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -191,7 +193,7 @@ C_PrologueEpilogue gGetter_lexiqueComponentAST_keyRepresentation (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@abstractCategoryModifierAST keyRepresentation'                     *
+//                    Overriding extension getter '@abstractCategoryModifierAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -220,7 +222,7 @@ C_PrologueEpilogue gGetter_abstractCategoryModifierAST_keyRepresentation (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@categoryModifierAST keyRepresentation'                         *
+//                        Overriding extension getter '@categoryModifierAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -249,7 +251,7 @@ C_PrologueEpilogue gGetter_categoryModifierAST_keyRepresentation (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@overridingCategoryModifierAST keyRepresentation'                    *
+//                   Overriding extension getter '@overridingCategoryModifierAST keyRepresentation'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -278,7 +280,7 @@ C_PrologueEpilogue gGetter_overridingCategoryModifierAST_keyRepresentation (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@overridingAbstractCategoryModifierAST keyRepresentation'                *
+//               Overriding extension getter '@overridingAbstractCategoryModifierAST keyRepresentation'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -307,7 +309,7 @@ C_PrologueEpilogue gGetter_overridingAbstractCategoryModifierAST_keyRepresentati
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@abstractCategoryMethodAST keyRepresentation'                      *
+//                     Overriding extension getter '@abstractCategoryMethodAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -336,7 +338,7 @@ C_PrologueEpilogue gGetter_abstractCategoryMethodAST_keyRepresentation (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@categoryMethodAST keyRepresentation'                          *
+//                         Overriding extension getter '@categoryMethodAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -365,7 +367,7 @@ C_PrologueEpilogue gGetter_categoryMethodAST_keyRepresentation (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@overridingCategoryMethodAST keyRepresentation'                     *
+//                    Overriding extension getter '@overridingCategoryMethodAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -394,7 +396,7 @@ C_PrologueEpilogue gGetter_overridingCategoryMethodAST_keyRepresentation (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@overridingAbstractCategoryMethodAST keyRepresentation'                 *
+//                Overriding extension getter '@overridingAbstractCategoryMethodAST keyRepresentation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -423,7 +425,7 @@ C_PrologueEpilogue gGetter_overridingAbstractCategoryMethodAST_keyRepresentation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@abstractCategoryGetterAST keyRepresentation'                      *
+//                     Overriding extension getter '@abstractCategoryGetterAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -452,7 +454,7 @@ C_PrologueEpilogue gGetter_abstractCategoryGetterAST_keyRepresentation (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@categoryGetterAST keyRepresentation'                          *
+//                         Overriding extension getter '@categoryGetterAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -481,7 +483,7 @@ C_PrologueEpilogue gGetter_categoryGetterAST_keyRepresentation (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@overridingCategoryGetterAST keyRepresentation'                     *
+//                    Overriding extension getter '@overridingCategoryGetterAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -510,7 +512,7 @@ C_PrologueEpilogue gGetter_overridingCategoryGetterAST_keyRepresentation (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@overridingAbstractCategoryGetterAST keyRepresentation'                 *
+//                Overriding extension getter '@overridingAbstractCategoryGetterAST keyRepresentation'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -539,7 +541,7 @@ C_PrologueEpilogue gGetter_overridingAbstractCategoryGetterAST_keyRepresentation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@predefinedTypeAST keyRepresentation'                          *
+//                         Overriding extension getter '@predefinedTypeAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -568,7 +570,7 @@ C_PrologueEpilogue gGetter_predefinedTypeAST_keyRepresentation (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Overriding category getter '@mapDeclarationAST keyRepresentation'                          *
+//                         Overriding extension getter '@mapDeclarationAST keyRepresentation'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -597,7 +599,7 @@ C_PrologueEpilogue gGetter_mapDeclarationAST_keyRepresentation (defineCategoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category getter '@mapProxyDeclarationAST keyRepresentation'                        *
+//                       Overriding extension getter '@mapProxyDeclarationAST keyRepresentation'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -626,7 +628,7 @@ C_PrologueEpilogue gGetter_mapProxyDeclarationAST_keyRepresentation (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@enumDeclarationAST keyRepresentation'                          *
+//                         Overriding extension getter '@enumDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -655,7 +657,7 @@ C_PrologueEpilogue gGetter_enumDeclarationAST_keyRepresentation (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@sortedListDeclarationAST keyRepresentation'                       *
+//                      Overriding extension getter '@sortedListDeclarationAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -684,7 +686,7 @@ C_PrologueEpilogue gGetter_sortedListDeclarationAST_keyRepresentation (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category getter '@structDeclarationAST keyRepresentation'                         *
+//                        Overriding extension getter '@structDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -713,7 +715,7 @@ C_PrologueEpilogue gGetter_structDeclarationAST_keyRepresentation (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@listDeclarationAST keyRepresentation'                          *
+//                         Overriding extension getter '@listDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -742,7 +744,7 @@ C_PrologueEpilogue gGetter_listDeclarationAST_keyRepresentation (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@classDeclarationAST keyRepresentation'                         *
+//                        Overriding extension getter '@classDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -771,7 +773,7 @@ C_PrologueEpilogue gGetter_classDeclarationAST_keyRepresentation (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@arrayDeclarationAST keyRepresentation'                         *
+//                        Overriding extension getter '@arrayDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -800,7 +802,7 @@ C_PrologueEpilogue gGetter_arrayDeclarationAST_keyRepresentation (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category getter '@listmapDeclarationAST keyRepresentation'                        *
+//                       Overriding extension getter '@listmapDeclarationAST keyRepresentation'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -829,7 +831,7 @@ C_PrologueEpilogue gGetter_listmapDeclarationAST_keyRepresentation (defineCatego
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@filewrapperDeclarationAST keyRepresentation'                      *
+//                     Overriding extension getter '@filewrapperDeclarationAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -858,7 +860,7 @@ C_PrologueEpilogue gGetter_filewrapperDeclarationAST_keyRepresentation (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@optionComponentDeclarationAST keyRepresentation'                    *
+//                   Overriding extension getter '@optionComponentDeclarationAST keyRepresentation'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -887,7 +889,7 @@ C_PrologueEpilogue gGetter_optionComponentDeclarationAST_keyRepresentation (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@graphDeclarationAST keyRepresentation'                         *
+//                        Overriding extension getter '@graphDeclarationAST keyRepresentation'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -916,7 +918,7 @@ C_PrologueEpilogue gGetter_graphDeclarationAST_keyRepresentation (defineCategory
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@externTypeDeclarationAST keyRepresentation'                       *
+//                      Overriding extension getter '@externTypeDeclarationAST keyRepresentation'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -945,7 +947,7 @@ C_PrologueEpilogue gGetter_externTypeDeclarationAST_keyRepresentation (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@onceFunctionDeclarationAST keyRepresentation'                      *
+//                     Overriding extension getter '@onceFunctionDeclarationAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -974,7 +976,7 @@ C_PrologueEpilogue gGetter_onceFunctionDeclarationAST_keyRepresentation (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category getter '@externFunctionDeclarationAST keyRepresentation'                     *
+//                    Overriding extension getter '@externFunctionDeclarationAST keyRepresentation'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1003,7 +1005,7 @@ C_PrologueEpilogue gGetter_externFunctionDeclarationAST_keyRepresentation (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category getter '@externRoutineDeclarationAST keyRepresentation'                     *
+//                    Overriding extension getter '@externRoutineDeclarationAST keyRepresentation'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1032,7 +1034,7 @@ C_PrologueEpilogue gGetter_externRoutineDeclarationAST_keyRepresentation (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryMethodAST enterInSemanticContext'                    *
+//                   Overriding extension method '@abstractCategoryMethodAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1044,6 +1046,7 @@ static void categoryMethod_abstractCategoryMethodAST_enterInSemanticContext (con
                                                                              C_Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryMethodAST_enterInSemanticContext (void) {
@@ -1057,7 +1060,7 @@ C_PrologueEpilogue gMethod_abstractCategoryMethodAST_enterInSemanticContext (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@categoryMethodAST enterInSemanticContext'                        *
+//                       Overriding extension method '@categoryMethodAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1069,6 +1072,7 @@ static void categoryMethod_categoryMethodAST_enterInSemanticContext (const cPtr_
                                                                      C_Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryMethodAST_enterInSemanticContext (void) {
@@ -1082,7 +1086,7 @@ C_PrologueEpilogue gMethod_categoryMethodAST_enterInSemanticContext (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryMethodAST enterInSemanticContext'                   *
+//                  Overriding extension method '@overridingCategoryMethodAST enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1094,6 +1098,7 @@ static void categoryMethod_overridingCategoryMethodAST_enterInSemanticContext (c
                                                                                C_Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryMethodAST_enterInSemanticContext (void) {
@@ -1107,7 +1112,7 @@ C_PrologueEpilogue gMethod_overridingCategoryMethodAST_enterInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryMethodAST enterInSemanticContext'               *
+//              Overriding extension method '@overridingAbstractCategoryMethodAST enterInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1119,6 +1124,7 @@ static void categoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticCo
                                                                                        C_Compiler * /* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext (void) {
@@ -1132,7 +1138,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryMethodAST_enterInSemanticCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@abstractCategoryModifierAST enterInSemanticContext'                   *
+//                  Overriding extension method '@abstractCategoryModifierAST enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1144,6 +1150,7 @@ static void categoryMethod_abstractCategoryModifierAST_enterInSemanticContext (c
                                                                                C_Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryModifierAST_enterInSemanticContext (void) {
@@ -1157,7 +1164,7 @@ C_PrologueEpilogue gMethod_abstractCategoryModifierAST_enterInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@categoryModifierAST enterInSemanticContext'                       *
+//                      Overriding extension method '@categoryModifierAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1169,6 +1176,7 @@ static void categoryMethod_categoryModifierAST_enterInSemanticContext (const cPt
                                                                        C_Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryModifierAST_enterInSemanticContext (void) {
@@ -1182,7 +1190,7 @@ C_PrologueEpilogue gMethod_categoryModifierAST_enterInSemanticContext (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@overridingCategoryModifierAST enterInSemanticContext'                  *
+//                 Overriding extension method '@overridingCategoryModifierAST enterInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1194,6 +1202,7 @@ static void categoryMethod_overridingCategoryModifierAST_enterInSemanticContext 
                                                                                  C_Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryModifierAST_enterInSemanticContext (void) {
@@ -1207,7 +1216,7 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierAST_enterInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@overridingAbstractCategoryModifierAST enterInSemanticContext'              *
+//             Overriding extension method '@overridingAbstractCategoryModifierAST enterInSemanticContext'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1219,6 +1228,7 @@ static void categoryMethod_overridingAbstractCategoryModifierAST_enterInSemantic
                                                                                          C_Compiler * /* inCompiler */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryModifierAST_enterInSemanticContext (void) {
@@ -1232,7 +1242,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryModifierAST_enterInSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryGetterAST enterInSemanticContext'                    *
+//                   Overriding extension method '@abstractCategoryGetterAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1244,6 +1254,7 @@ static void categoryMethod_abstractCategoryGetterAST_enterInSemanticContext (con
                                                                              C_Compiler * /* inCompiler */
                                                                              COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryGetterAST_enterInSemanticContext (void) {
@@ -1257,7 +1268,7 @@ C_PrologueEpilogue gMethod_abstractCategoryGetterAST_enterInSemanticContext (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@categoryGetterAST enterInSemanticContext'                        *
+//                       Overriding extension method '@categoryGetterAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1269,6 +1280,7 @@ static void categoryMethod_categoryGetterAST_enterInSemanticContext (const cPtr_
                                                                      C_Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryGetterAST_enterInSemanticContext (void) {
@@ -1282,7 +1294,7 @@ C_PrologueEpilogue gMethod_categoryGetterAST_enterInSemanticContext (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryGetterAST enterInSemanticContext'                   *
+//                  Overriding extension method '@overridingCategoryGetterAST enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1294,6 +1306,7 @@ static void categoryMethod_overridingCategoryGetterAST_enterInSemanticContext (c
                                                                                C_Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryGetterAST_enterInSemanticContext (void) {
@@ -1307,7 +1320,7 @@ C_PrologueEpilogue gMethod_overridingCategoryGetterAST_enterInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryGetterAST enterInSemanticContext'               *
+//              Overriding extension method '@overridingAbstractCategoryGetterAST enterInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1319,6 +1332,7 @@ static void categoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticCo
                                                                                        C_Compiler * /* inCompiler */
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryGetterAST_enterInSemanticContext (void) {
@@ -1332,7 +1346,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryGetterAST_enterInSemanticCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@predefinedTypeAST enterInSemanticContext'                        *
+//                       Overriding extension method '@predefinedTypeAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1389,6 +1403,7 @@ static void categoryMethod_predefinedTypeAST_enterInSemanticContext (const cPtr_
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (object->mAttribute_mPredefinedTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticContext.galgas", 807))  COMMA_SOURCE_FILE ("semanticContext.galgas", 807)), object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 810)), GALGAS_typeKindEnum::constructor_predefinedType (SOURCE_FILE ("semanticContext.galgas", 811)), GALGAS_bool (kIsEqual, object->mAttribute_mPredefinedTypeName.objectCompare (GALGAS_string ("stringset"))), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 813)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 814)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 815)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, var_classMethodMap, var_enumerationList, var_enumerationVariants, callCategoryGetter_getSupportedOperatorFlags ((const cPtr_predefinedTypeAST *) temp_8.ptr (), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 823)), var_addAssignArgumentList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 825)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 826)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 827)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 828)), GALGAS_bool (false), var_enumeratedTypeProxy, extensionGetter_defaultConstructorName (object->mAttribute_mKind, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 831)), GALGAS_string ("galgas2/predefined-types"), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 833)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 806)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_predefinedTypeAST_enterInSemanticContext (void) {
@@ -1402,7 +1417,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_enterInSemanticContext (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@mapDeclarationAST enterInSemanticContext'                        *
+//                       Overriding extension method '@mapDeclarationAST enterInSemanticContext'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1626,6 +1641,7 @@ static void categoryMethod_mapDeclarationAST_enterInSemanticContext (const cPtr_
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mMapTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1108)), GALGAS_typeKindEnum::constructor_mapType (SOURCE_FILE ("semanticContext.galgas", 1109)), GALGAS_bool (true), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1111)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1112)), var_typedPropertyList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1118)), var_enumerationDescriptor, var_enumerationVariants, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1121)).operator_or (function_plusEqualOperatorWithFieldListNeedsCompilerArg (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1121)) COMMA_SOURCE_FILE ("semanticContext.galgas", 1121)).operator_or (function_supportWithAccessor (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1121)) COMMA_SOURCE_FILE ("semanticContext.galgas", 1121)), var_argumentTypeListForAddAssignWithFieldExpressionList, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1123)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1124)), object->mAttribute_mSearchMethodList, GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1126)), GALGAS_bool (false), var_elementTypeProxy, GALGAS_string ("emptyMap"), GALGAS_string ("map-").add_operation (object->mAttribute_mMapTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 1130)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1130)), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 1131)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1104)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapDeclarationAST_enterInSemanticContext (void) {
@@ -1639,7 +1655,7 @@ C_PrologueEpilogue gMethod_mapDeclarationAST_enterInSemanticContext (defineCateg
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@externTypeDeclarationAST enterInSemanticContext'                    *
+//                   Overriding extension method '@externTypeDeclarationAST enterInSemanticContext'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1740,6 +1756,7 @@ static void categoryMethod_externTypeDeclarationAST_enterInSemanticContext (cons
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mExternTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1239)), GALGAS_typeKindEnum::constructor_externType (SOURCE_FILE ("semanticContext.galgas", 1240)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1242)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1243)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1244)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1249)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1250)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1251)), GALGAS_uint ((uint32_t) 0U), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1253)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1254)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1255)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1256)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1257)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1259)), GALGAS_string ("default"), GALGAS_string ("externtype-").add_operation (object->mAttribute_mExternTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 1261)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1261)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticContext.galgas", 1262)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1235)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externTypeDeclarationAST_enterInSemanticContext (void) {
@@ -1753,7 +1770,7 @@ C_PrologueEpilogue gMethod_externTypeDeclarationAST_enterInSemanticContext (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@graphDeclarationAST enterInSemanticContext'                       *
+//                      Overriding extension method '@graphDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1893,6 +1910,7 @@ static void categoryMethod_graphDeclarationAST_enterInSemanticContext (const cPt
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mGraphTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1580)), GALGAS_typeKindEnum::constructor_graphType (SOURCE_FILE ("semanticContext.galgas", 1581)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1583)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1584)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1585)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1590)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1591)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1592)), function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1593)), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1594)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 1595)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1596)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1597)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 1598)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 1600)), GALGAS_string ("emptyGraph"), GALGAS_string ("graph-").add_operation (object->mAttribute_mGraphTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 1602)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1602)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticContext.galgas", 1603)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1576)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_graphDeclarationAST_enterInSemanticContext (void) {
@@ -1906,7 +1924,7 @@ C_PrologueEpilogue gMethod_graphDeclarationAST_enterInSemanticContext (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@filewrapperDeclarationAST enterInSemanticContext'                    *
+//                   Overriding extension method '@filewrapperDeclarationAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1985,6 +2003,7 @@ static void categoryMethod_filewrapperDeclarationAST_enterInSemanticContext (con
   ioArgument_ioSemanticContext.mAttribute_mFilewrapperMap.setter_insertKey (object->mAttribute_mFilewrapperName, object->mAttribute_mFilewrapperPath, object->mAttribute_mFilewrapperTextFileExtensionList, var_regularRootFileMap, var_wrapperDirectoryMap, var_filewrapperTemplateMap, object->mAttribute_mIsInternal, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1742)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_filewrapperDeclarationAST_enterInSemanticContext (void) {
@@ -1998,7 +2017,7 @@ C_PrologueEpilogue gMethod_filewrapperDeclarationAST_enterInSemanticContext (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@optionComponentDeclarationAST enterInSemanticContext'                  *
+//                 Overriding extension method '@optionComponentDeclarationAST enterInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2088,6 +2107,7 @@ static void categoryMethod_optionComponentDeclarationAST_enterInSemanticContext 
   ioArgument_ioSemanticContext.mAttribute_mOptionComponentMapForSemanticAnalysis.setter_insertKey (object->mAttribute_mOptionComponentName, object->mAttribute_mIsPredefined, var_boolOptionMap, var_uintOptionMap, var_stringOptionMap, var_stringListOptionMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 1819)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_optionComponentDeclarationAST_enterInSemanticContext (void) {
@@ -2101,7 +2121,7 @@ C_PrologueEpilogue gMethod_optionComponentDeclarationAST_enterInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@classDeclarationAST enterInSemanticContext'                       *
+//                      Overriding extension method '@classDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2309,6 +2329,7 @@ static void categoryMethod_classDeclarationAST_enterInSemanticContext (const cPt
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mClassTypeName, object->mAttribute_mIsPredefined, object->mAttribute_mIsAbstract.operator_not (SOURCE_FILE ("semanticContext.galgas", 2029)), var_superClassIndex, GALGAS_typeKindEnum::constructor_classType (SOURCE_FILE ("semanticContext.galgas", 2031)), GALGAS_bool (false), var_allTypedAttributeList, var_attributeMap, var_currentClassTypedAttributeList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2040)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2041)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2042)), GALGAS_uint ((uint32_t) 0U), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2044)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2045)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2046)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2047)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2048)), var_generateHeaderInSeparateFile, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 2050)), var_defaultConstructorName, GALGAS_string ("class-").add_operation (object->mAttribute_mClassTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2052)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2052)), GALGAS_headerKind::constructor_twoHeaders (SOURCE_FILE ("semanticContext.galgas", 2053)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2026)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_classDeclarationAST_enterInSemanticContext (void) {
@@ -2322,7 +2343,7 @@ C_PrologueEpilogue gMethod_classDeclarationAST_enterInSemanticContext (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@externRoutineDeclarationAST enterInSemanticContext'                   *
+//                  Overriding extension method '@externRoutineDeclarationAST enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2349,6 +2370,7 @@ static void categoryMethod_externRoutineDeclarationAST_enterInSemanticContext (c
   ioArgument_ioSemanticContext.mAttribute_mRoutineMap.setter_insertKey (object->mAttribute_mRoutineName, var_routineSignature, object->mAttribute_mIsInternal, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2071)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externRoutineDeclarationAST_enterInSemanticContext (void) {
@@ -2362,7 +2384,7 @@ C_PrologueEpilogue gMethod_externRoutineDeclarationAST_enterInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@routineDeclarationAST enterInSemanticContext'                      *
+//                     Overriding extension method '@routineDeclarationAST enterInSemanticContext'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2390,6 +2412,7 @@ static void categoryMethod_routineDeclarationAST_enterInSemanticContext (const c
   ioArgument_ioSemanticContext.mAttribute_mRoutineMap.setter_insertKey (object->mAttribute_mRoutineName, var_routineSignature, object->mAttribute_mIsInternal, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2094)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_routineDeclarationAST_enterInSemanticContext (void) {
@@ -2403,7 +2426,7 @@ C_PrologueEpilogue gMethod_routineDeclarationAST_enterInSemanticContext (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@externFunctionDeclarationAST enterInSemanticContext'                  *
+//                 Overriding extension method '@externFunctionDeclarationAST enterInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2434,6 +2457,7 @@ static void categoryMethod_externFunctionDeclarationAST_enterInSemanticContext (
   ioArgument_ioSemanticContext.mAttribute_mFunctionMap.setter_insertKey (object->mAttribute_mFunctionName, var_functionSignature, var_resultTypeIndex, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2119)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externFunctionDeclarationAST_enterInSemanticContext (void) {
@@ -2447,7 +2471,7 @@ C_PrologueEpilogue gMethod_externFunctionDeclarationAST_enterInSemanticContext (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@onceFunctionDeclarationAST enterInSemanticContext'                   *
+//                  Overriding extension method '@onceFunctionDeclarationAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2468,6 +2492,7 @@ static void categoryMethod_onceFunctionDeclarationAST_enterInSemanticContext (co
   ioArgument_ioSemanticContext.mAttribute_mFunctionMap.setter_insertKey (object->mAttribute_mFunctionName, GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2137)), var_resultTypeIndex, object->mAttribute_mIsInternal, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2137)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_onceFunctionDeclarationAST_enterInSemanticContext (void) {
@@ -2481,7 +2506,7 @@ C_PrologueEpilogue gMethod_onceFunctionDeclarationAST_enterInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@arrayDeclarationAST enterInSemanticContext'                       *
+//                      Overriding extension method '@arrayDeclarationAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2612,6 +2637,7 @@ static void categoryMethod_arrayDeclarationAST_enterInSemanticContext (const cPt
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mArrayTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 2263)), GALGAS_typeKindEnum::constructor_listMapType (SOURCE_FILE ("semanticContext.galgas", 2264)), GALGAS_bool (false), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2266)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2267)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2268)), var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2273)), GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2274)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2275)), GALGAS_uint ((uint32_t) 0U), GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2277)), GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2278)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2279)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2280)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2281)), GALGAS_bool (false), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 2283)), GALGAS_string::makeEmptyString (), GALGAS_string ("array-").add_operation (object->mAttribute_mArrayTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2285)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2285)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticContext.galgas", 2286)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2259)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_arrayDeclarationAST_enterInSemanticContext (void) {
@@ -2625,7 +2651,7 @@ C_PrologueEpilogue gMethod_arrayDeclarationAST_enterInSemanticContext (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@listmapDeclarationAST enterInSemanticContext'                      *
+//                     Overriding extension method '@listmapDeclarationAST enterInSemanticContext'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2725,6 +2751,7 @@ static void categoryMethod_listmapDeclarationAST_enterInSemanticContext (const c
   ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mListmapTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("semanticContext.galgas", 2394)), GALGAS_typeKindEnum::constructor_arrayType (SOURCE_FILE ("semanticContext.galgas", 2395)), GALGAS_bool (true), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2397)), GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2398)), var_listTypedAttributeList, var_constructorMap, var_getterMap, var_modifierMap, var_instanceMethodMap, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2404)), var_enumeratorDescriptor, var_enumerationVariants, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2407)), var_addAssignOperatorDescription, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("semanticContext.galgas", 2409)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2410)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2411)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 2412)), GALGAS_bool (false), var_listElementTypeIndex, GALGAS_string ("emptyMap"), GALGAS_string ("listmap-").add_operation (object->mAttribute_mListmapTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2416)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2416)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("semanticContext.galgas", 2417)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2390)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listmapDeclarationAST_enterInSemanticContext (void) {
@@ -2738,7 +2765,7 @@ C_PrologueEpilogue gMethod_listmapDeclarationAST_enterInSemanticContext (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@galgas3SyntaxComponentAST enterInSemanticContext'                    *
+//                   Overriding extension method '@galgas3SyntaxComponentAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2755,6 +2782,7 @@ static void categoryMethod_galgas_33_SyntaxComponentAST_enterInSemanticContext (
   ioArgument_ioSemanticContext.mAttribute_mSyntaxComponentMapForSemanticAnalysis.setter_insertKey (object->mAttribute_mSyntaxComponentName, object->mAttribute_mLexiqueName, object->mAttribute_mNonterminalDeclarationList, object->mAttribute_mRuleList, object->mAttribute_mHasTranslateFeature, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2428)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_galgas_33_SyntaxComponentAST_enterInSemanticContext (void) {
@@ -2768,7 +2796,7 @@ C_PrologueEpilogue gMethod_galgas_33_SyntaxComponentAST_enterInSemanticContext (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@galgas3GrammarComponentAST enterInSemanticContext'                   *
+//                  Overriding extension method '@galgas3GrammarComponentAST enterInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2803,6 +2831,7 @@ static void categoryMethod_galgas_33_GrammarComponentAST_enterInSemanticContext 
   ioArgument_ioSemanticContext.mAttribute_mGrammarMap.setter_insertGrammar (object->mAttribute_mGrammarComponentName, var_grammarLabelMap, object->mAttribute_mHasIndexing.mAttribute_bool, object->mAttribute_mHasTranslateFeature, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2463)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_galgas_33_GrammarComponentAST_enterInSemanticContext (void) {
@@ -2816,7 +2845,7 @@ C_PrologueEpilogue gMethod_galgas_33_GrammarComponentAST_enterInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@lexiqueComponentAST enterInSemanticContext'                       *
+//                      Overriding extension method '@lexiqueComponentAST enterInSemanticContext'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2873,6 +2902,7 @@ static void categoryMethod_lexiqueComponentAST_enterInSemanticContext (const cPt
   ioArgument_ioSemanticContext.mAttribute_mLexiqueComponentMapForSemanticAnalysis.setter_insertKey (object->mAttribute_mLexiqueComponentName, var_terminalMap, object->mAttribute_mIndexingListAST, object->mAttribute_mIndexingDirectory, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2510)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexiqueComponentAST_enterInSemanticContext (void) {
@@ -2886,7 +2916,7 @@ C_PrologueEpilogue gMethod_lexiqueComponentAST_enterInSemanticContext (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@predefinedTypeAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@predefinedTypeAST enterDeclarationInGraph'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2906,6 +2936,7 @@ static void categoryMethod_predefinedTypeAST_enterDeclarationInGraph (const cPtr
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key, temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2550)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_predefinedTypeAST_enterDeclarationInGraph (void) {
@@ -2919,7 +2950,7 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_enterDeclarationInGraph (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@galgas3GrammarComponentAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@galgas3GrammarComponentAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2946,6 +2977,7 @@ static void categoryMethod_galgas_33_GrammarComponentAST_enterDeclarationInGraph
     enumerator_103889.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_galgas_33_GrammarComponentAST_enterDeclarationInGraph (void) {
@@ -2959,7 +2991,7 @@ C_PrologueEpilogue gMethod_galgas_33_GrammarComponentAST_enterDeclarationInGraph
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@galgas3SyntaxComponentAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@galgas3SyntaxComponentAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3011,6 +3043,7 @@ static void categoryMethod_galgas_33_SyntaxComponentAST_enterDeclarationInGraph 
     enumerator_104867.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_galgas_33_SyntaxComponentAST_enterDeclarationInGraph (void) {
@@ -3024,7 +3057,7 @@ C_PrologueEpilogue gMethod_galgas_33_SyntaxComponentAST_enterDeclarationInGraph 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@lexiqueComponentAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@lexiqueComponentAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3044,6 +3077,7 @@ static void categoryMethod_lexiqueComponentAST_enterDeclarationInGraph (const cP
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key, temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2600)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lexiqueComponentAST_enterDeclarationInGraph (void) {
@@ -3057,7 +3091,7 @@ C_PrologueEpilogue gMethod_lexiqueComponentAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@classDeclarationAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@classDeclarationAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3090,6 +3124,7 @@ static void categoryMethod_classDeclarationAST_enterDeclarationInGraph (const cP
     enumerator_106873.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_classDeclarationAST_enterDeclarationInGraph (void) {
@@ -3103,7 +3138,7 @@ C_PrologueEpilogue gMethod_classDeclarationAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@arrayDeclarationAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@arrayDeclarationAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3126,6 +3161,7 @@ static void categoryMethod_arrayDeclarationAST_enterDeclarationInGraph (const cP
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key, GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (object->mAttribute_mElementTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2631)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2631)), object->mAttribute_mElementTypeName.getter_location (SOURCE_FILE ("semanticContext.galgas", 2631))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2631)) COMMA_SOURCE_FILE ("semanticContext.galgas", 2631)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_arrayDeclarationAST_enterDeclarationInGraph (void) {
@@ -3139,7 +3175,7 @@ C_PrologueEpilogue gMethod_arrayDeclarationAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@listmapDeclarationAST enterDeclarationInGraph'                     *
+//                    Overriding extension method '@listmapDeclarationAST enterDeclarationInGraph'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3162,6 +3198,7 @@ static void categoryMethod_listmapDeclarationAST_enterDeclarationInGraph (const 
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key, GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (object->mAttribute_mAssociatedListTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2644)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2644)), object->mAttribute_mAssociatedListTypeName.getter_location (SOURCE_FILE ("semanticContext.galgas", 2644))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2644)) COMMA_SOURCE_FILE ("semanticContext.galgas", 2644)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listmapDeclarationAST_enterDeclarationInGraph (void) {
@@ -3175,7 +3212,7 @@ C_PrologueEpilogue gMethod_listmapDeclarationAST_enterDeclarationInGraph (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@mapDeclarationAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@mapDeclarationAST enterDeclarationInGraph'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3202,6 +3239,7 @@ static void categoryMethod_mapDeclarationAST_enterDeclarationInGraph (const cPtr
     enumerator_109424.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapDeclarationAST_enterDeclarationInGraph (void) {
@@ -3215,7 +3253,7 @@ C_PrologueEpilogue gMethod_mapDeclarationAST_enterDeclarationInGraph (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@graphDeclarationAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@graphDeclarationAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3238,6 +3276,7 @@ static void categoryMethod_graphDeclarationAST_enterDeclarationInGraph (const cP
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addEdge (var_key, GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (object->mAttribute_mAssociatedListTypeName.getter_string (SOURCE_FILE ("semanticContext.galgas", 2672)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2672)), object->mAttribute_mAssociatedListTypeName.getter_location (SOURCE_FILE ("semanticContext.galgas", 2672))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2672)) COMMA_SOURCE_FILE ("semanticContext.galgas", 2672)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_graphDeclarationAST_enterDeclarationInGraph (void) {
@@ -3251,7 +3290,7 @@ C_PrologueEpilogue gMethod_graphDeclarationAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@externTypeDeclarationAST enterDeclarationInGraph'                    *
+//                   Overriding extension method '@externTypeDeclarationAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3271,6 +3310,7 @@ static void categoryMethod_externTypeDeclarationAST_enterDeclarationInGraph (con
   ioArgument_ioSemanticTypePrecedenceGraph.setter_addNode (var_key, temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2684)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externTypeDeclarationAST_enterDeclarationInGraph (void) {
@@ -3284,7 +3324,7 @@ C_PrologueEpilogue gMethod_externTypeDeclarationAST_enterDeclarationInGraph (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@externFunctionDeclarationAST enterDeclarationInGraph'                  *
+//                 Overriding extension method '@externFunctionDeclarationAST enterDeclarationInGraph'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3301,6 +3341,7 @@ static void categoryMethod_externFunctionDeclarationAST_enterDeclarationInGraph 
   const GALGAS_externFunctionDeclarationAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2695)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externFunctionDeclarationAST_enterDeclarationInGraph (void) {
@@ -3314,7 +3355,7 @@ C_PrologueEpilogue gMethod_externFunctionDeclarationAST_enterDeclarationInGraph 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@onceFunctionDeclarationAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@onceFunctionDeclarationAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3331,6 +3372,7 @@ static void categoryMethod_onceFunctionDeclarationAST_enterDeclarationInGraph (c
   const GALGAS_onceFunctionDeclarationAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2706)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_onceFunctionDeclarationAST_enterDeclarationInGraph (void) {
@@ -3344,7 +3386,7 @@ C_PrologueEpilogue gMethod_onceFunctionDeclarationAST_enterDeclarationInGraph (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@externRoutineDeclarationAST enterDeclarationInGraph'                  *
+//                 Overriding extension method '@externRoutineDeclarationAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3361,6 +3403,7 @@ static void categoryMethod_externRoutineDeclarationAST_enterDeclarationInGraph (
   const GALGAS_externRoutineDeclarationAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2717)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_externRoutineDeclarationAST_enterDeclarationInGraph (void) {
@@ -3374,7 +3417,7 @@ C_PrologueEpilogue gMethod_externRoutineDeclarationAST_enterDeclarationInGraph (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@filewrapperDeclarationAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@filewrapperDeclarationAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3391,6 +3434,7 @@ static void categoryMethod_filewrapperDeclarationAST_enterDeclarationInGraph (co
   const GALGAS_filewrapperDeclarationAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2728)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_filewrapperDeclarationAST_enterDeclarationInGraph (void) {
@@ -3404,7 +3448,7 @@ C_PrologueEpilogue gMethod_filewrapperDeclarationAST_enterDeclarationInGraph (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@optionComponentDeclarationAST enterDeclarationInGraph'                 *
+//                Overriding extension method '@optionComponentDeclarationAST enterDeclarationInGraph'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3421,6 +3465,7 @@ static void categoryMethod_optionComponentDeclarationAST_enterDeclarationInGraph
   const GALGAS_optionComponentDeclarationAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2739)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_optionComponentDeclarationAST_enterDeclarationInGraph (void) {
@@ -3434,7 +3479,7 @@ C_PrologueEpilogue gMethod_optionComponentDeclarationAST_enterDeclarationInGraph
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryMethodAST enterDeclarationInGraph'                  *
+//                 Overriding extension method '@overridingCategoryMethodAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3451,6 +3496,7 @@ static void categoryMethod_overridingCategoryMethodAST_enterDeclarationInGraph (
   const GALGAS_overridingCategoryMethodAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2750)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryMethodAST_enterDeclarationInGraph (void) {
@@ -3464,7 +3510,7 @@ C_PrologueEpilogue gMethod_overridingCategoryMethodAST_enterDeclarationInGraph (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@overridingCategoryModifierAST enterDeclarationInGraph'                 *
+//                Overriding extension method '@overridingCategoryModifierAST enterDeclarationInGraph'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3481,6 +3527,7 @@ static void categoryMethod_overridingCategoryModifierAST_enterDeclarationInGraph
   const GALGAS_overridingCategoryModifierAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2761)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryModifierAST_enterDeclarationInGraph (void) {
@@ -3494,7 +3541,7 @@ C_PrologueEpilogue gMethod_overridingCategoryModifierAST_enterDeclarationInGraph
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryGetterAST enterDeclarationInGraph'              *
+//             Overriding extension method '@overridingAbstractCategoryGetterAST enterDeclarationInGraph'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3511,6 +3558,7 @@ static void categoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationI
   const GALGAS_overridingAbstractCategoryGetterAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2772)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryGetterAST_enterDeclarationInGraph (void) {
@@ -3524,7 +3572,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryGetterAST_enterDeclarationI
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryMethodAST enterDeclarationInGraph'              *
+//             Overriding extension method '@overridingAbstractCategoryMethodAST enterDeclarationInGraph'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3541,6 +3589,7 @@ static void categoryMethod_overridingAbstractCategoryMethodAST_enterDeclarationI
   const GALGAS_overridingAbstractCategoryMethodAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2783)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryMethodAST_enterDeclarationInGraph (void) {
@@ -3554,7 +3603,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryMethodAST_enterDeclarationI
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@overridingAbstractCategoryModifierAST enterDeclarationInGraph'             *
+//            Overriding extension method '@overridingAbstractCategoryModifierAST enterDeclarationInGraph'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3571,6 +3620,7 @@ static void categoryMethod_overridingAbstractCategoryModifierAST_enterDeclaratio
   const GALGAS_overridingAbstractCategoryModifierAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2794)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingAbstractCategoryModifierAST_enterDeclarationInGraph (void) {
@@ -3584,7 +3634,7 @@ C_PrologueEpilogue gMethod_overridingAbstractCategoryModifierAST_enterDeclaratio
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@categoryGetterAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@categoryGetterAST enterDeclarationInGraph'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3620,6 +3670,7 @@ static void categoryMethod_categoryGetterAST_enterDeclarationInGraph (const cPtr
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryGetterAST_enterDeclarationInGraph (void) {
@@ -3633,7 +3684,7 @@ C_PrologueEpilogue gMethod_categoryGetterAST_enterDeclarationInGraph (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@categoryMethodAST enterDeclarationInGraph'                       *
+//                      Overriding extension method '@categoryMethodAST enterDeclarationInGraph'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3669,6 +3720,7 @@ static void categoryMethod_categoryMethodAST_enterDeclarationInGraph (const cPtr
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryMethodAST_enterDeclarationInGraph (void) {
@@ -3682,7 +3734,7 @@ C_PrologueEpilogue gMethod_categoryMethodAST_enterDeclarationInGraph (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@categoryModifierAST enterDeclarationInGraph'                      *
+//                     Overriding extension method '@categoryModifierAST enterDeclarationInGraph'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3718,6 +3770,7 @@ static void categoryMethod_categoryModifierAST_enterDeclarationInGraph (const cP
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_categoryModifierAST_enterDeclarationInGraph (void) {
@@ -3731,7 +3784,7 @@ C_PrologueEpilogue gMethod_categoryModifierAST_enterDeclarationInGraph (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@overridingCategoryGetterAST enterDeclarationInGraph'                  *
+//                 Overriding extension method '@overridingCategoryGetterAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3748,6 +3801,7 @@ static void categoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph (
   const GALGAS_overridingCategoryGetterAST temp_0 = object ;
   ioArgument_ioCategoryOverrideDefinitionList.addAssign_operation (temp_0  COMMA_SOURCE_FILE ("semanticContext.galgas", 2884)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_overridingCategoryGetterAST_enterDeclarationInGraph (void) {
@@ -3761,7 +3815,7 @@ C_PrologueEpilogue gMethod_overridingCategoryGetterAST_enterDeclarationInGraph (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryGetterAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@abstractCategoryGetterAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3797,6 +3851,7 @@ static void categoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph (co
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryGetterAST_enterDeclarationInGraph (void) {
@@ -3810,7 +3865,7 @@ C_PrologueEpilogue gMethod_abstractCategoryGetterAST_enterDeclarationInGraph (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@abstractCategoryMethodAST enterDeclarationInGraph'                   *
+//                  Overriding extension method '@abstractCategoryMethodAST enterDeclarationInGraph'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3846,6 +3901,7 @@ static void categoryMethod_abstractCategoryMethodAST_enterDeclarationInGraph (co
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryMethodAST_enterDeclarationInGraph (void) {
@@ -3859,7 +3915,7 @@ C_PrologueEpilogue gMethod_abstractCategoryMethodAST_enterDeclarationInGraph (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@abstractCategoryModifierAST enterDeclarationInGraph'                  *
+//                 Overriding extension method '@abstractCategoryModifierAST enterDeclarationInGraph'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3895,6 +3951,7 @@ static void categoryMethod_abstractCategoryModifierAST_enterDeclarationInGraph (
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_abstractCategoryModifierAST_enterDeclarationInGraph (void) {
@@ -3908,7 +3965,7 @@ C_PrologueEpilogue gMethod_abstractCategoryModifierAST_enterDeclarationInGraph (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category method '@mapDeclarationAST addAssociatedElement'                         *
+//                        Overriding extension method '@mapDeclarationAST addAssociatedElement'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3927,6 +3984,7 @@ static void categoryMethod_mapDeclarationAST_addAssociatedElement (const cPtr_se
   }
   ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mMapTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2991)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 2991)), object->mAttribute_mMapTypeName.mAttribute_location  COMMA_SOURCE_FILE ("semanticContext.galgas", 2991)), var_structAttributeList, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("semanticContext.galgas", 2989))  COMMA_SOURCE_FILE ("semanticContext.galgas", 2989)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_mapDeclarationAST_addAssociatedElement (void) {
@@ -3940,7 +3998,7 @@ C_PrologueEpilogue gMethod_mapDeclarationAST_addAssociatedElement (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@listmapDeclarationAST addAssociatedElement'                       *
+//                      Overriding extension method '@listmapDeclarationAST addAssociatedElement'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3955,6 +4013,7 @@ static void categoryMethod_listmapDeclarationAST_addAssociatedElement (const cPt
   var_structAttributeList.addAssign_operation (object->mAttribute_mAssociatedListTypeName, GALGAS_string ("mList").getter_nowhere (SOURCE_FILE ("semanticContext.galgas", 3009)), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("semanticContext.galgas", 3010))  COMMA_SOURCE_FILE ("semanticContext.galgas", 3006)) ;
   ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mListmapTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 3014)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 3014)), object->mAttribute_mListmapTypeName.mAttribute_location  COMMA_SOURCE_FILE ("semanticContext.galgas", 3014)), var_structAttributeList, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("semanticContext.galgas", 3012))  COMMA_SOURCE_FILE ("semanticContext.galgas", 3012)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_listmapDeclarationAST_addAssociatedElement (void) {
@@ -3968,7 +4027,7 @@ C_PrologueEpilogue gMethod_listmapDeclarationAST_addAssociatedElement (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category getter '@semanticTypeForGeneration implementationCppFileName'                  *
+//                 Overriding extension getter '@semanticTypeForGeneration implementationCppFileName'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3997,7 +4056,7 @@ C_PrologueEpilogue gGetter_semanticTypeForGeneration_implementationCppFileName (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category getter '@semanticTypeForGeneration hasCppHeaderFile'                       *
+//                      Overriding extension getter '@semanticTypeForGeneration hasCppHeaderFile'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4024,7 +4083,7 @@ C_PrologueEpilogue gGetter_semanticTypeForGeneration_hasCppHeaderFile (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                        Overriding category getter '@semanticTypeForGeneration isPredefined'                         *
+//                        Overriding extension getter '@semanticTypeForGeneration isPredefined'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4053,7 +4112,7 @@ C_PrologueEpilogue gGetter_semanticTypeForGeneration_isPredefined (defineCategor
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Overriding category getter '@semanticTypeForGeneration headerKind'                          *
+//                         Overriding extension getter '@semanticTypeForGeneration headerKind'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4082,7 +4141,7 @@ C_PrologueEpilogue gGetter_semanticTypeForGeneration_headerKind (defineCategoryG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Overriding category getter '@semanticDeclarationWithHeaderForGeneration implementationCppFileName'          *
+//         Overriding extension getter '@semanticDeclarationWithHeaderForGeneration implementationCppFileName'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4111,7 +4170,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_implementa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category getter '@semanticDeclarationWithHeaderForGeneration hasCppHeaderFile'              *
+//             Overriding extension getter '@semanticDeclarationWithHeaderForGeneration hasCppHeaderFile'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4140,7 +4199,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_hasCppHead
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category getter '@semanticDeclarationWithHeaderForGeneration headerKind'                 *
+//                Overriding extension getter '@semanticDeclarationWithHeaderForGeneration headerKind'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4167,7 +4226,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_headerKind
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category getter '@semanticDeclarationWithHeaderForGeneration isPredefined'                *
+//               Overriding extension getter '@semanticDeclarationWithHeaderForGeneration isPredefined'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4194,7 +4253,7 @@ C_PrologueEpilogue gGetter_semanticDeclarationWithHeaderForGeneration_isPredefin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@selfCopyInExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@selfCopyInExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4203,6 +4262,7 @@ static void categoryMethod_selfCopyInExpressionAST_enterExpressionInSemanticCont
                                                                                      C_Compiler * /* inCompiler */
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfCopyInExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4216,7 +4276,7 @@ C_PrologueEpilogue gMethod_selfCopyInExpressionAST_enterExpressionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@selfCopyInExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@selfCopyInExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4238,6 +4298,7 @@ static void categoryMethod_selfCopyInExpressionAST_analyzeSemanticExpression (co
     outArgument_outExpression = GALGAS_selfCopyInExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mSelfCopyTypeProxy, object->mAttribute_mSelfLocation, var_selfCppName  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 536)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_selfCopyInExpressionAST_analyzeSemanticExpression (void) {
@@ -4251,7 +4312,7 @@ C_PrologueEpilogue gMethod_selfCopyInExpressionAST_analyzeSemanticExpression (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@hereExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@hereExpressionAST enterExpressionInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4260,6 +4321,7 @@ static void categoryMethod_hereExpressionAST_enterExpressionInSemanticContext (c
                                                                                C_Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_hereExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4273,7 +4335,7 @@ C_PrologueEpilogue gMethod_hereExpressionAST_enterExpressionInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@hereExpressionAST analyzeSemanticExpression'                      *
+//                     Overriding extension method '@hereExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4288,6 +4350,7 @@ static void categoryMethod_hereExpressionAST_analyzeSemanticExpression (const cP
   macroValidSharedObject (object, cPtr_hereExpressionAST) ;
   outArgument_outExpression = GALGAS_hereExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mLocationType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 554)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_hereExpressionAST_analyzeSemanticExpression (void) {
@@ -4301,7 +4364,7 @@ C_PrologueEpilogue gMethod_hereExpressionAST_analyzeSemanticExpression (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@trueExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@trueExpressionAST enterExpressionInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4310,6 +4373,7 @@ static void categoryMethod_trueExpressionAST_enterExpressionInSemanticContext (c
                                                                                C_Compiler * /* inCompiler */
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_trueExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4323,7 +4387,7 @@ C_PrologueEpilogue gMethod_trueExpressionAST_enterExpressionInSemanticContext (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@trueExpressionAST analyzeSemanticExpression'                      *
+//                     Overriding extension method '@trueExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4338,6 +4402,7 @@ static void categoryMethod_trueExpressionAST_analyzeSemanticExpression (const cP
   macroValidSharedObject (object, cPtr_trueExpressionAST) ;
   outArgument_outExpression = GALGAS_trueExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 571)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_trueExpressionAST_analyzeSemanticExpression (void) {
@@ -4351,7 +4416,7 @@ C_PrologueEpilogue gMethod_trueExpressionAST_analyzeSemanticExpression (defineCa
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@falseExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@falseExpressionAST enterExpressionInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4360,6 +4425,7 @@ static void categoryMethod_falseExpressionAST_enterExpressionInSemanticContext (
                                                                                 C_Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_falseExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4373,7 +4439,7 @@ C_PrologueEpilogue gMethod_falseExpressionAST_enterExpressionInSemanticContext (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@falseExpressionAST analyzeSemanticExpression'                      *
+//                     Overriding extension method '@falseExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4388,6 +4454,7 @@ static void categoryMethod_falseExpressionAST_analyzeSemanticExpression (const c
   macroValidSharedObject (object, cPtr_falseExpressionAST) ;
   outArgument_outExpression = GALGAS_falseExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mLocation  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 588)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_falseExpressionAST_analyzeSemanticExpression (void) {
@@ -4401,7 +4468,7 @@ C_PrologueEpilogue gMethod_falseExpressionAST_analyzeSemanticExpression (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@literalCharExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@literalCharExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4410,6 +4477,7 @@ static void categoryMethod_literalCharExpressionAST_enterExpressionInSemanticCon
                                                                                       C_Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalCharExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4423,7 +4491,7 @@ C_PrologueEpilogue gMethod_literalCharExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@literalCharExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@literalCharExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4438,6 +4506,7 @@ static void categoryMethod_literalCharExpressionAST_analyzeSemanticExpression (c
   macroValidSharedObject (object, cPtr_literalCharExpressionAST) ;
   outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mCharType, object->mAttribute_mCharacter.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 605)), object->mAttribute_mCharacter.getter_char (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 605))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 605)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalCharExpressionAST_analyzeSemanticExpression (void) {
@@ -4451,7 +4520,7 @@ C_PrologueEpilogue gMethod_literalCharExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalStringExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalStringExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4460,6 +4529,7 @@ static void categoryMethod_literalStringExpressionAST_enterExpressionInSemanticC
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalStringExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4473,7 +4543,7 @@ C_PrologueEpilogue gMethod_literalStringExpressionAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalStringExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalStringExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4494,6 +4564,7 @@ static void categoryMethod_literalStringExpressionAST_analyzeSemanticExpression 
   }
   outArgument_outExpression = GALGAS_literalStringExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mStringType, object->mAttribute_mLocation, var_s  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 626)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalStringExpressionAST_analyzeSemanticExpression (void) {
@@ -4507,7 +4578,7 @@ C_PrologueEpilogue gMethod_literalStringExpressionAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalDoubleExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalDoubleExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4516,6 +4587,7 @@ static void categoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticC
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalDoubleExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4529,7 +4601,7 @@ C_PrologueEpilogue gMethod_literalDoubleExpressionAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalDoubleExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalDoubleExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4544,6 +4616,7 @@ static void categoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression 
   macroValidSharedObject (object, cPtr_literalDoubleExpressionAST) ;
   outArgument_outExpression = GALGAS_literalDoubleExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mDoubleType, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 643)), object->mAttribute_mValue.getter_double (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 643))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 643)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalDoubleExpressionAST_analyzeSemanticExpression (void) {
@@ -4557,7 +4630,7 @@ C_PrologueEpilogue gMethod_literalDoubleExpressionAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@literalUIntExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@literalUIntExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4566,6 +4639,7 @@ static void categoryMethod_literalUIntExpressionAST_enterExpressionInSemanticCon
                                                                                       C_Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalUIntExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4579,7 +4653,7 @@ C_PrologueEpilogue gMethod_literalUIntExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@literalUIntExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@literalUIntExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4594,6 +4668,7 @@ static void categoryMethod_literalUIntExpressionAST_analyzeSemanticExpression (c
   macroValidSharedObject (object, cPtr_literalUIntExpressionAST) ;
   outArgument_outExpression = GALGAS_literalUIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUIntType, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 660)), object->mAttribute_mValue.getter_uint (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 660))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 660)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalUIntExpressionAST_analyzeSemanticExpression (void) {
@@ -4607,7 +4682,7 @@ C_PrologueEpilogue gMethod_literalUIntExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalUInt64ExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalUInt64ExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4616,6 +4691,7 @@ static void categoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSem
                                                                                               C_Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4629,7 +4705,7 @@ C_PrologueEpilogue gMethod_literalUInt_36__34_ExpressionAST_enterExpressionInSem
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalUInt64ExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalUInt64ExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4644,6 +4720,7 @@ static void categoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpre
   macroValidSharedObject (object, cPtr_literalUInt_36__34_ExpressionAST) ;
   outArgument_outExpression = GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUInt_36__34_Type, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 679)), object->mAttribute_mValue.getter_uint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 680))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 677)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpression (void) {
@@ -4657,7 +4734,7 @@ C_PrologueEpilogue gMethod_literalUInt_36__34_ExpressionAST_analyzeSemanticExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@literalSIntExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@literalSIntExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4666,6 +4743,7 @@ static void categoryMethod_literalSIntExpressionAST_enterExpressionInSemanticCon
                                                                                       C_Compiler * /* inCompiler */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalSIntExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4679,7 +4757,7 @@ C_PrologueEpilogue gMethod_literalSIntExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@literalSIntExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@literalSIntExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4694,6 +4772,7 @@ static void categoryMethod_literalSIntExpressionAST_analyzeSemanticExpression (c
   macroValidSharedObject (object, cPtr_literalSIntExpressionAST) ;
   outArgument_outExpression = GALGAS_literalSIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSIntType, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 697)), object->mAttribute_mValue.getter_sint (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 697))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 697)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalSIntExpressionAST_analyzeSemanticExpression (void) {
@@ -4707,7 +4786,7 @@ C_PrologueEpilogue gMethod_literalSIntExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalSInt64ExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalSInt64ExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4716,6 +4795,7 @@ static void categoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSem
                                                                                               C_Compiler * /* inCompiler */
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4729,7 +4809,7 @@ C_PrologueEpilogue gMethod_literalSInt_36__34_ExpressionAST_enterExpressionInSem
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalBigIntExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalBigIntExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4738,6 +4818,7 @@ static void categoryMethod_literalBigIntExpressionAST_enterExpressionInSemanticC
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalBigIntExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4751,7 +4832,7 @@ C_PrologueEpilogue gMethod_literalBigIntExpressionAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalSInt64ExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalSInt64ExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4766,6 +4847,7 @@ static void categoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpre
   macroValidSharedObject (object, cPtr_literalSInt_36__34_ExpressionAST) ;
   outArgument_outExpression = GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mSInt_36__34_Type, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 724)), object->mAttribute_mValue.getter_sint_36__34_ (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 725))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 722)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression (void) {
@@ -4779,7 +4861,7 @@ C_PrologueEpilogue gMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpre
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalBigIntExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalBigIntExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4794,6 +4876,7 @@ static void categoryMethod_literalBigIntExpressionAST_analyzeSemanticExpression 
   macroValidSharedObject (object, cPtr_literalBigIntExpressionAST) ;
   outArgument_outExpression = GALGAS_literalBigIntExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBigIntType, object->mAttribute_mValue.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 739)), object->mAttribute_mValue.getter_bigint (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 740))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 737)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalBigIntExpressionAST_analyzeSemanticExpression (void) {
@@ -4807,7 +4890,7 @@ C_PrologueEpilogue gMethod_literalBigIntExpressionAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@defaultConstructorExpressionAST enterExpressionInSemanticContext'            *
+//           Overriding extension method '@defaultConstructorExpressionAST enterExpressionInSemanticContext'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4825,6 +4908,7 @@ static void categoryMethod_defaultConstructorExpressionAST_enterExpressionInSema
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_defaultConstructorExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4838,7 +4922,7 @@ C_PrologueEpilogue gMethod_defaultConstructorExpressionAST_enterExpressionInSema
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@defaultConstructorExpressionAST analyzeSemanticExpression'               *
+//              Overriding extension method '@defaultConstructorExpressionAST analyzeSemanticExpression'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4876,6 +4960,7 @@ static void categoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpres
     outArgument_outExpression = GALGAS_defaultConstructorExpressionForGeneration::constructor_new (var_type, object->mAttribute_mTypeName.mAttribute_location  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 844)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (void) {
@@ -4889,7 +4974,7 @@ C_PrologueEpilogue gMethod_defaultConstructorExpressionAST_analyzeSemanticExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@constructorExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@constructorExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4908,6 +4993,7 @@ static void categoryMethod_constructorExpressionAST_enterExpressionInSemanticCon
   }
   categoryMethod_enterInSemanticContext (object->mAttribute_mExpressions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 858)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_constructorExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4921,7 +5007,7 @@ C_PrologueEpilogue gMethod_constructorExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@constructorExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@constructorExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4943,6 +5029,7 @@ static void categoryMethod_constructorExpressionAST_analyzeSemanticExpression (c
   }
   outArgument_outExpression = GALGAS_constructorExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mConstructorName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 883)), var_constructorType, object->mAttribute_mConstructorName.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 885)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 881)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_constructorExpressionAST_analyzeSemanticExpression (void) {
@@ -4956,7 +5043,7 @@ C_PrologueEpilogue gMethod_constructorExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@getterCallExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@getterCallExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4969,6 +5056,7 @@ static void categoryMethod_getterCallExpressionAST_enterExpressionInSemanticCont
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mReceiver.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 895)) ;
   categoryMethod_enterInSemanticContext (object->mAttribute_mExpressions, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 896)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_getterCallExpressionAST_enterExpressionInSemanticContext (void) {
@@ -4982,7 +5070,7 @@ C_PrologueEpilogue gMethod_getterCallExpressionAST_enterExpressionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@getterCallExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@getterCallExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5156,6 +5244,7 @@ static void categoryMethod_getterCallExpressionAST_analyzeSemanticExpression (co
     outArgument_outExpression = GALGAS_getterCallExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mGetterName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1016)), var_kind, var_receiverExpression, var_fieldList, object->mAttribute_mGetterName.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1020)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1014)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_getterCallExpressionAST_analyzeSemanticExpression (void) {
@@ -5169,7 +5258,7 @@ C_PrologueEpilogue gMethod_getterCallExpressionAST_analyzeSemanticExpression (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@optionExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@optionExpressionAST enterExpressionInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5178,6 +5267,7 @@ static void categoryMethod_optionExpressionAST_enterExpressionInSemanticContext 
                                                                                  C_Compiler * /* inCompiler */
                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_optionExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5191,7 +5281,7 @@ C_PrologueEpilogue gMethod_optionExpressionAST_enterExpressionInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@optionExpressionAST analyzeSemanticExpression'                     *
+//                    Overriding extension method '@optionExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5277,6 +5367,7 @@ static void categoryMethod_optionExpressionAST_analyzeSemanticExpression (const 
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_optionExpressionAST_analyzeSemanticExpression (void) {
@@ -5290,7 +5381,7 @@ C_PrologueEpilogue gMethod_optionExpressionAST_analyzeSemanticExpression (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@orExpressionAST enterExpressionInSemanticContext'                    *
+//                   Overriding extension method '@orExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5303,6 +5394,7 @@ static void categoryMethod_orExpressionAST_enterExpressionInSemanticContext (con
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1198)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1199)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_orExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5316,7 +5408,7 @@ C_PrologueEpilogue gMethod_orExpressionAST_enterExpressionInSemanticContext (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@orExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@orExpressionAST analyzeSemanticExpression'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5339,6 +5431,7 @@ static void categoryMethod_orExpressionAST_analyzeSemanticExpression (const cPtr
   }
   outArgument_outExpression = GALGAS_orExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1234)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_orExpressionAST_analyzeSemanticExpression (void) {
@@ -5352,7 +5445,7 @@ C_PrologueEpilogue gMethod_orExpressionAST_analyzeSemanticExpression (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@orShortExpressionAST enterExpressionInSemanticContext'                 *
+//                Overriding extension method '@orShortExpressionAST enterExpressionInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5365,6 +5458,7 @@ static void categoryMethod_orShortExpressionAST_enterExpressionInSemanticContext
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1246)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1247)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_orShortExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5378,7 +5472,7 @@ C_PrologueEpilogue gMethod_orShortExpressionAST_enterExpressionInSemanticContext
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@orShortExpressionAST analyzeSemanticExpression'                     *
+//                    Overriding extension method '@orShortExpressionAST analyzeSemanticExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5401,6 +5495,7 @@ static void categoryMethod_orShortExpressionAST_analyzeSemanticExpression (const
   }
   outArgument_outExpression = GALGAS_orShortExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1282)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_orShortExpressionAST_analyzeSemanticExpression (void) {
@@ -5414,7 +5509,7 @@ C_PrologueEpilogue gMethod_orShortExpressionAST_analyzeSemanticExpression (defin
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@andExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@andExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5427,6 +5522,7 @@ static void categoryMethod_andExpressionAST_enterExpressionInSemanticContext (co
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1294)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1295)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_andExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5440,7 +5536,7 @@ C_PrologueEpilogue gMethod_andExpressionAST_enterExpressionInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@andExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@andExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5463,6 +5559,7 @@ static void categoryMethod_andExpressionAST_analyzeSemanticExpression (const cPt
   }
   outArgument_outExpression = GALGAS_andExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1330)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_andExpressionAST_analyzeSemanticExpression (void) {
@@ -5476,7 +5573,7 @@ C_PrologueEpilogue gMethod_andExpressionAST_analyzeSemanticExpression (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@andShortExpressionAST enterExpressionInSemanticContext'                 *
+//                Overriding extension method '@andShortExpressionAST enterExpressionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5489,6 +5586,7 @@ static void categoryMethod_andShortExpressionAST_enterExpressionInSemanticContex
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1342)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1343)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_andShortExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5502,7 +5600,7 @@ C_PrologueEpilogue gMethod_andShortExpressionAST_enterExpressionInSemanticContex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@andShortExpressionAST analyzeSemanticExpression'                    *
+//                   Overriding extension method '@andShortExpressionAST analyzeSemanticExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5525,6 +5623,7 @@ static void categoryMethod_andShortExpressionAST_analyzeSemanticExpression (cons
   }
   outArgument_outExpression = GALGAS_andShortExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1378)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_andShortExpressionAST_analyzeSemanticExpression (void) {
@@ -5538,7 +5637,7 @@ C_PrologueEpilogue gMethod_andShortExpressionAST_analyzeSemanticExpression (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@xorExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5551,6 +5650,7 @@ static void categoryMethod_xorExpressionAST_enterExpressionInSemanticContext (co
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1390)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1391)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_xorExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5564,7 +5664,7 @@ C_PrologueEpilogue gMethod_xorExpressionAST_enterExpressionInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@xorExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@xorExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5587,6 +5687,7 @@ static void categoryMethod_xorExpressionAST_analyzeSemanticExpression (const cPt
   }
   outArgument_outExpression = GALGAS_xorExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1426)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_xorExpressionAST_analyzeSemanticExpression (void) {
@@ -5600,7 +5701,7 @@ C_PrologueEpilogue gMethod_xorExpressionAST_analyzeSemanticExpression (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@closedSliceExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@closedSliceExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5613,6 +5714,7 @@ static void categoryMethod_closedSliceExpressionAST_enterExpressionInSemanticCon
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1439)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1440)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5626,7 +5728,7 @@ C_PrologueEpilogue gMethod_closedSliceExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@closedSliceExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@closedSliceExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5655,6 +5757,7 @@ static void categoryMethod_closedSliceExpressionAST_analyzeSemanticExpression (c
   }
   outArgument_outExpression = GALGAS_closedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1476))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1476)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1476)), object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1475)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_closedSliceExpressionAST_analyzeSemanticExpression (void) {
@@ -5668,7 +5771,7 @@ C_PrologueEpilogue gMethod_closedSliceExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@openedSliceExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@openedSliceExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5681,6 +5784,7 @@ static void categoryMethod_openedSliceExpressionAST_enterExpressionInSemanticCon
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1488)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1489)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5694,7 +5798,7 @@ C_PrologueEpilogue gMethod_openedSliceExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@openedSliceExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@openedSliceExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5723,6 +5827,7 @@ static void categoryMethod_openedSliceExpressionAST_analyzeSemanticExpression (c
   }
   outArgument_outExpression = GALGAS_openedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1525))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1525)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1525)), object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1524)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_openedSliceExpressionAST_analyzeSemanticExpression (void) {
@@ -5736,7 +5841,7 @@ C_PrologueEpilogue gMethod_openedSliceExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@equalExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@equalExpressionAST enterExpressionInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5749,6 +5854,7 @@ static void categoryMethod_equalExpressionAST_enterExpressionInSemanticContext (
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1537)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1538)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_equalExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5762,7 +5868,7 @@ C_PrologueEpilogue gMethod_equalExpressionAST_enterExpressionInSemanticContext (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@equalExpressionAST analyzeSemanticExpression'                      *
+//                     Overriding extension method '@equalExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5789,6 +5895,7 @@ static void categoryMethod_equalExpressionAST_analyzeSemanticExpression (const c
     outArgument_outExpression = GALGAS_equalExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1563)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_equalExpressionAST_analyzeSemanticExpression (void) {
@@ -5802,7 +5909,7 @@ C_PrologueEpilogue gMethod_equalExpressionAST_analyzeSemanticExpression (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@notEqualExpressionAST enterExpressionInSemanticContext'                 *
+//                Overriding extension method '@notEqualExpressionAST enterExpressionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5815,6 +5922,7 @@ static void categoryMethod_notEqualExpressionAST_enterExpressionInSemanticContex
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1577)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1578)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_notEqualExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5828,7 +5936,7 @@ C_PrologueEpilogue gMethod_notEqualExpressionAST_enterExpressionInSemanticContex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@notEqualExpressionAST analyzeSemanticExpression'                    *
+//                   Overriding extension method '@notEqualExpressionAST analyzeSemanticExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5855,6 +5963,7 @@ static void categoryMethod_notEqualExpressionAST_analyzeSemanticExpression (cons
     outArgument_outExpression = GALGAS_notEqualExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1611)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_notEqualExpressionAST_analyzeSemanticExpression (void) {
@@ -5868,7 +5977,7 @@ C_PrologueEpilogue gMethod_notEqualExpressionAST_analyzeSemanticExpression (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@lowerOrEqualExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@lowerOrEqualExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5881,6 +5990,7 @@ static void categoryMethod_lowerOrEqualExpressionAST_enterExpressionInSemanticCo
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1624)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1625)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lowerOrEqualExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5894,7 +6004,7 @@ C_PrologueEpilogue gMethod_lowerOrEqualExpressionAST_enterExpressionInSemanticCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@lowerOrEqualExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@lowerOrEqualExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5927,6 +6037,7 @@ static void categoryMethod_lowerOrEqualExpressionAST_analyzeSemanticExpression (
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_lowerOrEqualExpressionAST_analyzeSemanticExpression (void) {
@@ -5940,7 +6051,7 @@ C_PrologueEpilogue gMethod_lowerOrEqualExpressionAST_analyzeSemanticExpression (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@greaterOrEqualExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@greaterOrEqualExpressionAST enterExpressionInSemanticContext'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5953,6 +6064,7 @@ static void categoryMethod_greaterOrEqualExpressionAST_enterExpressionInSemantic
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1675)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1676)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_greaterOrEqualExpressionAST_enterExpressionInSemanticContext (void) {
@@ -5966,7 +6078,7 @@ C_PrologueEpilogue gMethod_greaterOrEqualExpressionAST_enterExpressionInSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@greaterOrEqualExpressionAST analyzeSemanticExpression'                 *
+//                Overriding extension method '@greaterOrEqualExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5999,6 +6111,7 @@ static void categoryMethod_greaterOrEqualExpressionAST_analyzeSemanticExpression
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_greaterOrEqualExpressionAST_analyzeSemanticExpression (void) {
@@ -6012,7 +6125,7 @@ C_PrologueEpilogue gMethod_greaterOrEqualExpressionAST_analyzeSemanticExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@strictGreaterExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@strictGreaterExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6025,6 +6138,7 @@ static void categoryMethod_strictGreaterExpressionAST_enterExpressionInSemanticC
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1726)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1727)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_strictGreaterExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6038,7 +6152,7 @@ C_PrologueEpilogue gMethod_strictGreaterExpressionAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@strictGreaterExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@strictGreaterExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6071,6 +6185,7 @@ static void categoryMethod_strictGreaterExpressionAST_analyzeSemanticExpression 
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_strictGreaterExpressionAST_analyzeSemanticExpression (void) {
@@ -6084,7 +6199,7 @@ C_PrologueEpilogue gMethod_strictGreaterExpressionAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@strictLowerExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@strictLowerExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6097,6 +6212,7 @@ static void categoryMethod_strictLowerExpressionAST_enterExpressionInSemanticCon
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1777)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1778)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_strictLowerExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6110,7 +6226,7 @@ C_PrologueEpilogue gMethod_strictLowerExpressionAST_enterExpressionInSemanticCon
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@strictLowerExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@strictLowerExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6143,6 +6259,7 @@ static void categoryMethod_strictLowerExpressionAST_analyzeSemanticExpression (c
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_strictLowerExpressionAST_analyzeSemanticExpression (void) {
@@ -6156,7 +6273,7 @@ C_PrologueEpilogue gMethod_strictLowerExpressionAST_analyzeSemanticExpression (d
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@rightShiftExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@rightShiftExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6169,6 +6286,7 @@ static void categoryMethod_rightShiftExpressionAST_enterExpressionInSemanticCont
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1828)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1829)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_rightShiftExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6182,7 +6300,7 @@ C_PrologueEpilogue gMethod_rightShiftExpressionAST_enterExpressionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@rightShiftExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@rightShiftExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6215,6 +6333,7 @@ static void categoryMethod_rightShiftExpressionAST_analyzeSemanticExpression (co
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_rightShiftExpressionAST_analyzeSemanticExpression (void) {
@@ -6228,7 +6347,7 @@ C_PrologueEpilogue gMethod_rightShiftExpressionAST_analyzeSemanticExpression (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@leftShiftExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@leftShiftExpressionAST enterExpressionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6241,6 +6360,7 @@ static void categoryMethod_leftShiftExpressionAST_enterExpressionInSemanticConte
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1879)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1880)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_leftShiftExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6254,7 +6374,7 @@ C_PrologueEpilogue gMethod_leftShiftExpressionAST_enterExpressionInSemanticConte
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@leftShiftExpressionAST analyzeSemanticExpression'                    *
+//                   Overriding extension method '@leftShiftExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6287,6 +6407,7 @@ static void categoryMethod_leftShiftExpressionAST_analyzeSemanticExpression (con
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_leftShiftExpressionAST_analyzeSemanticExpression (void) {
@@ -6300,7 +6421,7 @@ C_PrologueEpilogue gMethod_leftShiftExpressionAST_analyzeSemanticExpression (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@addExpressionNoOverflowAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@addExpressionNoOverflowAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6313,6 +6434,7 @@ static void categoryMethod_addExpressionNoOverflowAST_enterExpressionInSemanticC
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1930)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1931)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_addExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
@@ -6326,7 +6448,7 @@ C_PrologueEpilogue gMethod_addExpressionNoOverflowAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@addExpressionNoOverflowAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@addExpressionNoOverflowAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6349,6 +6471,7 @@ static void categoryMethod_addExpressionNoOverflowAST_analyzeSemanticExpression 
   }
   outArgument_outExpression = GALGAS_addExpressionNoOverflowForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1967)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_addExpressionNoOverflowAST_analyzeSemanticExpression (void) {
@@ -6362,7 +6485,7 @@ C_PrologueEpilogue gMethod_addExpressionNoOverflowAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@addExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@addExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6375,6 +6498,7 @@ static void categoryMethod_addExpressionAST_enterExpressionInSemanticContext (co
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1980)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1981)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_addExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6388,7 +6512,7 @@ C_PrologueEpilogue gMethod_addExpressionAST_enterExpressionInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@addExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@addExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6411,6 +6535,7 @@ static void categoryMethod_addExpressionAST_analyzeSemanticExpression (const cPt
   }
   outArgument_outExpression = GALGAS_addExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2016)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_addExpressionAST_analyzeSemanticExpression (void) {
@@ -6424,7 +6549,7 @@ C_PrologueEpilogue gMethod_addExpressionAST_analyzeSemanticExpression (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@subExpressionNoOverflowAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@subExpressionNoOverflowAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6437,6 +6562,7 @@ static void categoryMethod_subExpressionNoOverflowAST_enterExpressionInSemanticC
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2029)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2030)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_subExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
@@ -6450,7 +6576,7 @@ C_PrologueEpilogue gMethod_subExpressionNoOverflowAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@subExpressionNoOverflowAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@subExpressionNoOverflowAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6473,6 +6599,7 @@ static void categoryMethod_subExpressionNoOverflowAST_analyzeSemanticExpression 
   }
   outArgument_outExpression = GALGAS_subExpressionNoOverflowForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2066)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_subExpressionNoOverflowAST_analyzeSemanticExpression (void) {
@@ -6486,7 +6613,7 @@ C_PrologueEpilogue gMethod_subExpressionNoOverflowAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@subExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@subExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6499,6 +6626,7 @@ static void categoryMethod_subExpressionAST_enterExpressionInSemanticContext (co
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2079)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2080)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_subExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6512,7 +6640,7 @@ C_PrologueEpilogue gMethod_subExpressionAST_enterExpressionInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@subExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@subExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6535,6 +6663,7 @@ static void categoryMethod_subExpressionAST_analyzeSemanticExpression (const cPt
   }
   outArgument_outExpression = GALGAS_subExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2115)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_subExpressionAST_analyzeSemanticExpression (void) {
@@ -6548,7 +6677,7 @@ C_PrologueEpilogue gMethod_subExpressionAST_analyzeSemanticExpression (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Overriding category method '@multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext'         *
+//        Overriding extension method '@multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext'        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6561,6 +6690,7 @@ static void categoryMethod_multiplicationExpressionNoOverflowAST_enterExpression
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2128)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2129)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
@@ -6574,7 +6704,7 @@ C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_enterExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@multiplicationExpressionNoOverflowAST analyzeSemanticExpression'            *
+//           Overriding extension method '@multiplicationExpressionNoOverflowAST analyzeSemanticExpression'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6597,6 +6727,7 @@ static void categoryMethod_multiplicationExpressionNoOverflowAST_analyzeSemantic
   }
   outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2164)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (void) {
@@ -6610,7 +6741,7 @@ C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_analyzeSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Overriding category method '@multiplicationExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@multiplicationExpressionAST enterExpressionInSemanticContext'             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6623,6 +6754,7 @@ static void categoryMethod_multiplicationExpressionAST_enterExpressionInSemantic
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2176)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2177)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6636,7 +6768,7 @@ C_PrologueEpilogue gMethod_multiplicationExpressionAST_enterExpressionInSemantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@multiplicationExpressionAST analyzeSemanticExpression'                 *
+//                Overriding extension method '@multiplicationExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6659,6 +6791,7 @@ static void categoryMethod_multiplicationExpressionAST_analyzeSemanticExpression
   }
   outArgument_outExpression = GALGAS_multiplicationExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2212)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_multiplicationExpressionAST_analyzeSemanticExpression (void) {
@@ -6672,7 +6805,7 @@ C_PrologueEpilogue gMethod_multiplicationExpressionAST_analyzeSemanticExpression
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@divisionExpressionNoOverflowAST enterExpressionInSemanticContext'            *
+//           Overriding extension method '@divisionExpressionNoOverflowAST enterExpressionInSemanticContext'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6685,6 +6818,7 @@ static void categoryMethod_divisionExpressionNoOverflowAST_enterExpressionInSema
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2224)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2225)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
@@ -6698,7 +6832,7 @@ C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_enterExpressionInSema
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@divisionExpressionNoOverflowAST analyzeSemanticExpression'               *
+//              Overriding extension method '@divisionExpressionNoOverflowAST analyzeSemanticExpression'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6721,6 +6855,7 @@ static void categoryMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpres
   }
   outArgument_outExpression = GALGAS_divisionExpressionNoOverflowForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2260)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (void) {
@@ -6734,7 +6869,7 @@ C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@divisionExpressionAST enterExpressionInSemanticContext'                 *
+//                Overriding extension method '@divisionExpressionAST enterExpressionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6747,6 +6882,7 @@ static void categoryMethod_divisionExpressionAST_enterExpressionInSemanticContex
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2273)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2274)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_divisionExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6760,7 +6896,7 @@ C_PrologueEpilogue gMethod_divisionExpressionAST_enterExpressionInSemanticContex
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Overriding category method '@divisionExpressionAST analyzeSemanticExpression'                    *
+//                   Overriding extension method '@divisionExpressionAST analyzeSemanticExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6783,6 +6919,7 @@ static void categoryMethod_divisionExpressionAST_analyzeSemanticExpression (cons
   }
   outArgument_outExpression = GALGAS_divisionExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2309)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_divisionExpressionAST_analyzeSemanticExpression (void) {
@@ -6796,7 +6933,7 @@ C_PrologueEpilogue gMethod_divisionExpressionAST_analyzeSemanticExpression (defi
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@moduloExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@moduloExpressionAST enterExpressionInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6809,6 +6946,7 @@ static void categoryMethod_moduloExpressionAST_enterExpressionInSemanticContext 
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2321)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2322)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_moduloExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6822,7 +6960,7 @@ C_PrologueEpilogue gMethod_moduloExpressionAST_enterExpressionInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@moduloExpressionAST analyzeSemanticExpression'                     *
+//                    Overriding extension method '@moduloExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6845,6 +6983,7 @@ static void categoryMethod_moduloExpressionAST_analyzeSemanticExpression (const 
   }
   outArgument_outExpression = GALGAS_moduloExpressionForGeneration::constructor_new (var_leftType, object->mAttribute_mOperatorLocation, var_leftExpression, var_rightExpression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2357)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_moduloExpressionAST_analyzeSemanticExpression (void) {
@@ -6858,7 +6997,7 @@ C_PrologueEpilogue gMethod_moduloExpressionAST_analyzeSemanticExpression (define
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Overriding category method '@unaryMinusNoOverflowExpressionAST enterExpressionInSemanticContext'           *
+//          Overriding extension method '@unaryMinusNoOverflowExpressionAST enterExpressionInSemanticContext'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6870,6 +7009,7 @@ static void categoryMethod_unaryMinusNoOverflowExpressionAST_enterExpressionInSe
   macroValidSharedObject (object, cPtr_unaryMinusNoOverflowExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2369)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryMinusNoOverflowExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6883,7 +7023,7 @@ C_PrologueEpilogue gMethod_unaryMinusNoOverflowExpressionAST_enterExpressionInSe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@unaryMinusNoOverflowExpressionAST analyzeSemanticExpression'              *
+//             Overriding extension method '@unaryMinusNoOverflowExpressionAST analyzeSemanticExpression'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6907,6 +7047,7 @@ static void categoryMethod_unaryMinusNoOverflowExpressionAST_analyzeSemanticExpr
     outArgument_outExpression = GALGAS_unaryMinusExpressionNoOverflowForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2390)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryMinusNoOverflowExpressionAST_analyzeSemanticExpression (void) {
@@ -6920,7 +7061,7 @@ C_PrologueEpilogue gMethod_unaryMinusNoOverflowExpressionAST_analyzeSemanticExpr
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@unaryMinusExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@unaryMinusExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6932,6 +7073,7 @@ static void categoryMethod_unaryMinusExpressionAST_enterExpressionInSemanticCont
   macroValidSharedObject (object, cPtr_unaryMinusExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2402)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryMinusExpressionAST_enterExpressionInSemanticContext (void) {
@@ -6945,7 +7087,7 @@ C_PrologueEpilogue gMethod_unaryMinusExpressionAST_enterExpressionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@unaryMinusExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@unaryMinusExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6969,6 +7111,7 @@ static void categoryMethod_unaryMinusExpressionAST_analyzeSemanticExpression (co
     outArgument_outExpression = GALGAS_unaryMinusExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2423)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryMinusExpressionAST_analyzeSemanticExpression (void) {
@@ -6982,7 +7125,7 @@ C_PrologueEpilogue gMethod_unaryMinusExpressionAST_analyzeSemanticExpression (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                Overriding category method '@unaryPlusExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@unaryPlusExpressionAST enterExpressionInSemanticContext'                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6994,6 +7137,7 @@ static void categoryMethod_unaryPlusExpressionAST_enterExpressionInSemanticConte
   macroValidSharedObject (object, cPtr_unaryPlusExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2435)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryPlusExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7007,7 +7151,7 @@ C_PrologueEpilogue gMethod_unaryPlusExpressionAST_enterExpressionInSemanticConte
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@unaryPlusExpressionAST analyzeSemanticExpression'                    *
+//                   Overriding extension method '@unaryPlusExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7028,6 +7172,7 @@ static void categoryMethod_unaryPlusExpressionAST_analyzeSemanticExpression (con
     outArgument_outExpression.drop () ; // Release error dropped variable
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_unaryPlusExpressionAST_analyzeSemanticExpression (void) {
@@ -7041,7 +7186,7 @@ C_PrologueEpilogue gMethod_unaryPlusExpressionAST_analyzeSemanticExpression (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@notExpressionAST enterExpressionInSemanticContext'                   *
+//                  Overriding extension method '@notExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7053,6 +7198,7 @@ static void categoryMethod_notExpressionAST_enterExpressionInSemanticContext (co
   macroValidSharedObject (object, cPtr_notExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2461)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_notExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7066,7 +7212,7 @@ C_PrologueEpilogue gMethod_notExpressionAST_enterExpressionInSemanticContext (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Overriding category method '@notExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@notExpressionAST analyzeSemanticExpression'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7090,6 +7236,7 @@ static void categoryMethod_notExpressionAST_analyzeSemanticExpression (const cPt
     outArgument_outExpression = GALGAS_notExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2482)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_notExpressionAST_analyzeSemanticExpression (void) {
@@ -7103,7 +7250,7 @@ C_PrologueEpilogue gMethod_notExpressionAST_analyzeSemanticExpression (defineCat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Overriding category method '@structFieldAccessExpressionAST enterExpressionInSemanticContext'            *
+//           Overriding extension method '@structFieldAccessExpressionAST enterExpressionInSemanticContext'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7112,6 +7259,7 @@ static void categoryMethod_structFieldAccessExpressionAST_enterExpressionInSeman
                                                                                             C_Compiler * /* inCompiler */
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structFieldAccessExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7125,7 +7273,7 @@ C_PrologueEpilogue gMethod_structFieldAccessExpressionAST_enterExpressionInSeman
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@structFieldAccessExpressionAST analyzeSemanticExpression'                *
+//               Overriding extension method '@structFieldAccessExpressionAST analyzeSemanticExpression'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7150,6 +7298,7 @@ static void categoryMethod_structFieldAccessExpressionAST_analyzeSemanticExpress
   var_attributeMap.method_searchKey (object->mAttribute_mStructFieldName, var_type, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2517)) ;
   outArgument_outExpression = GALGAS_structFieldAccessExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression, object->mAttribute_mStructFieldName.mAttribute_string  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2523)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_structFieldAccessExpressionAST_analyzeSemanticExpression (void) {
@@ -7163,7 +7312,7 @@ C_PrologueEpilogue gMethod_structFieldAccessExpressionAST_analyzeSemanticExpress
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@complementExpressionAST enterExpressionInSemanticContext'                *
+//               Overriding extension method '@complementExpressionAST enterExpressionInSemanticContext'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7175,6 +7324,7 @@ static void categoryMethod_complementExpressionAST_enterExpressionInSemanticCont
   macroValidSharedObject (object, cPtr_complementExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2536)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_complementExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7188,7 +7338,7 @@ C_PrologueEpilogue gMethod_complementExpressionAST_enterExpressionInSemanticCont
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@complementExpressionAST analyzeSemanticExpression'                   *
+//                  Overriding extension method '@complementExpressionAST analyzeSemanticExpression'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7212,6 +7362,7 @@ static void categoryMethod_complementExpressionAST_analyzeSemanticExpression (co
     outArgument_outExpression = GALGAS_tildeExpressionForGeneration::constructor_new (var_type, object->mAttribute_mOperatorLocation, var_expression  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2557)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_complementExpressionAST_analyzeSemanticExpression (void) {
@@ -7225,7 +7376,7 @@ C_PrologueEpilogue gMethod_complementExpressionAST_analyzeSemanticExpression (de
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                   Overriding category method '@ifExpressionAST enterExpressionInSemanticContext'                    *
+//                   Overriding extension method '@ifExpressionAST enterExpressionInSemanticContext'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7239,6 +7390,7 @@ static void categoryMethod_ifExpressionAST_enterExpressionInSemanticContext (con
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mThenExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2570)) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mElseExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2571)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_ifExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7252,7 +7404,7 @@ C_PrologueEpilogue gMethod_ifExpressionAST_enterExpressionInSemanticContext (def
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Overriding category method '@ifExpressionAST analyzeSemanticExpression'                       *
+//                      Overriding extension method '@ifExpressionAST analyzeSemanticExpression'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7285,6 +7437,7 @@ static void categoryMethod_ifExpressionAST_analyzeSemanticExpression (const cPtr
     }
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_ifExpressionAST_analyzeSemanticExpression (void) {
@@ -7298,7 +7451,7 @@ C_PrologueEpilogue gMethod_ifExpressionAST_analyzeSemanticExpression (defineCate
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@functionCallExpressionAST enterExpressionInSemanticContext'               *
+//              Overriding extension method '@functionCallExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7314,6 +7467,7 @@ static void categoryMethod_functionCallExpressionAST_enterExpressionInSemanticCo
     enumerator_116560.gotoNextObject () ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_functionCallExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7327,7 +7481,7 @@ C_PrologueEpilogue gMethod_functionCallExpressionAST_enterExpressionInSemanticCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@functionCallExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@functionCallExpressionAST analyzeSemanticExpression'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7387,6 +7541,7 @@ static void categoryMethod_functionCallExpressionAST_analyzeSemanticExpression (
     outArgument_outExpression = GALGAS_functionCallExpressionForGeneration::constructor_new (var_resultType, object->mAttribute_mFunctionName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2666)), object->mAttribute_mFunctionName.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2667)), var_semanticExpressionListForGeneration  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2664)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_functionCallExpressionAST_analyzeSemanticExpression (void) {
@@ -7400,7 +7555,7 @@ C_PrologueEpilogue gMethod_functionCallExpressionAST_analyzeSemanticExpression (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                  Overriding category method '@varInExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@varInExpressionAST enterExpressionInSemanticContext'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7409,6 +7564,7 @@ static void categoryMethod_varInExpressionAST_enterExpressionInSemanticContext (
                                                                                 C_Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_varInExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7422,7 +7578,7 @@ C_PrologueEpilogue gMethod_varInExpressionAST_enterExpressionInSemanticContext (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@varInExpressionAST analyzeSemanticExpression'                      *
+//                     Overriding extension method '@varInExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7443,6 +7599,7 @@ static void categoryMethod_varInExpressionAST_analyzeSemanticExpression (const c
   }
   outArgument_outExpression = GALGAS_varInExpressionForGeneration::constructor_new (var_type, object->mAttribute_mVarName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2694)), var_sourceVariableCppName, var_nameForCheckingFormalParameterUsing  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2692)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_varInExpressionAST_analyzeSemanticExpression (void) {
@@ -7456,7 +7613,7 @@ C_PrologueEpilogue gMethod_varInExpressionAST_analyzeSemanticExpression (defineC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//              Overriding category method '@literalTypeInExpressionAST enterExpressionInSemanticContext'              *
+//             Overriding extension method '@literalTypeInExpressionAST enterExpressionInSemanticContext'              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7465,6 +7622,7 @@ static void categoryMethod_literalTypeInExpressionAST_enterExpressionInSemanticC
                                                                                         C_Compiler * /* inCompiler */
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalTypeInExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7478,7 +7636,7 @@ C_PrologueEpilogue gMethod_literalTypeInExpressionAST_enterExpressionInSemanticC
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@literalTypeInExpressionAST analyzeSemanticExpression'                  *
+//                 Overriding extension method '@literalTypeInExpressionAST analyzeSemanticExpression'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7520,6 +7678,7 @@ static void categoryMethod_literalTypeInExpressionAST_analyzeSemanticExpression 
   constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mLiteralTypeName, joker_120548_26, joker_120548_25, joker_120548_24, joker_120548_23, joker_120548_22, joker_120548_21, joker_120548_20, joker_120548_19, joker_120548_18, joker_120548_17, joker_120548_16, joker_120548_15, joker_120548_14, joker_120548_13, joker_120548_12, joker_120548_11, joker_120548_10, joker_120548_9, joker_120548_8, joker_120548_7, joker_120548_6, joker_120548_5, joker_120548_4, joker_120548_3, joker_120548_2, joker_120548_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2715)) ;
   outArgument_outExpression = GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("type"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2718))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2718)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2718)), object->mAttribute_mLiteralTypeName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2719)), object->mAttribute_mLiteralTypeName.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2720))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2717)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_literalTypeInExpressionAST_analyzeSemanticExpression (void) {
@@ -7533,7 +7692,7 @@ C_PrologueEpilogue gMethod_literalTypeInExpressionAST_analyzeSemanticExpression 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Overriding category method '@testDynamicClassInExpressionAST enterExpressionInSemanticContext'            *
+//           Overriding extension method '@testDynamicClassInExpressionAST enterExpressionInSemanticContext'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7545,6 +7704,7 @@ static void categoryMethod_testDynamicClassInExpressionAST_enterExpressionInSema
   macroValidSharedObject (object, cPtr_testDynamicClassInExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mReceiverExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2728)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_testDynamicClassInExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7558,7 +7718,7 @@ C_PrologueEpilogue gMethod_testDynamicClassInExpressionAST_enterExpressionInSema
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Overriding category method '@testDynamicClassInExpressionAST analyzeSemanticExpression'               *
+//              Overriding extension method '@testDynamicClassInExpressionAST analyzeSemanticExpression'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7607,6 +7767,7 @@ static void categoryMethod_testDynamicClassInExpressionAST_analyzeSemanticExpres
   }
   outArgument_outExpression = GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mBoolType, object->mAttribute_mTypeName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2764)), var_expression, object->mAttribute_mTypeComparisonKind, var_castType  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2762)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_testDynamicClassInExpressionAST_analyzeSemanticExpression (void) {
@@ -7620,7 +7781,7 @@ C_PrologueEpilogue gMethod_testDynamicClassInExpressionAST_analyzeSemanticExpres
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category method '@castInExpressionAST enterExpressionInSemanticContext'                  *
+//                 Overriding extension method '@castInExpressionAST enterExpressionInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7632,6 +7793,7 @@ static void categoryMethod_castInExpressionAST_enterExpressionInSemanticContext 
   macroValidSharedObject (object, cPtr_castInExpressionAST) ;
   callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mAttribute_mReceiverExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2775)) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_castInExpressionAST_enterExpressionInSemanticContext (void) {
@@ -7645,7 +7807,7 @@ C_PrologueEpilogue gMethod_castInExpressionAST_enterExpressionInSemanticContext 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Overriding category method '@castInExpressionAST analyzeSemanticExpression'                     *
+//                    Overriding extension method '@castInExpressionAST analyzeSemanticExpression'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7702,6 +7864,7 @@ static void categoryMethod_castInExpressionAST_analyzeSemanticExpression (const 
     outArgument_outExpression = GALGAS_castInExpressionForGeneration::constructor_new (var_type, object->mAttribute_mTypeName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2830)), var_expression, object->mAttribute_mTypeName.getter_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2832))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 2828)) ;
   }
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_castInExpressionAST_analyzeSemanticExpression (void) {

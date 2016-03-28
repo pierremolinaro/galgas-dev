@@ -34,7 +34,7 @@ void routine_buildGalgas_33_SemanticContext (const class GALGAS_semanticDeclarat
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Category method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
+//                      Extension method '@semanticDeclarationForGeneration appendSpecificFiles'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -128,7 +128,7 @@ void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                       Abstract category getter '@semanticDeclarationForGeneration headerKind'                       *
+//                      Abstract extension getter '@semanticDeclarationForGeneration headerKind'                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -149,7 +149,7 @@ class GALGAS_headerKind callCategoryGetter_headerKind (const class cPtr_semantic
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//               Abstract category getter '@semanticDeclarationForGeneration implementationCppFileName'                *
+//               Abstract extension getter '@semanticDeclarationForGeneration implementationCppFileName'               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -170,7 +170,7 @@ class GALGAS_string callCategoryGetter_implementationCppFileName (const class cP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract category getter '@semanticDeclarationForGeneration isPredefined'                      *
+//                     Abstract extension getter '@semanticDeclarationForGeneration isPredefined'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -214,7 +214,7 @@ class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                    Abstract category getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
+//                   Abstract extension getter '@semanticDeclarationForGeneration hasCppHeaderFile'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1028,7 +1028,7 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_s
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@XcodeProjectDescriptor generateAtPath'                               *
+//                              Extension method '@XcodeProjectDescriptor generateAtPath'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1040,7 +1040,7 @@ void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addAppTarget'                                *
+//                               Extension setter '@XcodeProjectDescriptor addAppTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1059,7 +1059,7 @@ void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Category setter '@XcodeProjectDescriptor addGroup'                                  *
+//                                 Extension setter '@XcodeProjectDescriptor addGroup'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1073,7 +1073,7 @@ void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             Category setter '@XcodeProjectDescriptor addGroupWithFiles'                             *
+//                            Extension setter '@XcodeProjectDescriptor addGroupWithFiles'                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1093,7 +1093,7 @@ void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Category setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
+//                    Extension setter '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1104,7 +1104,7 @@ void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Category setter '@XcodeProjectDescriptor addToolTarget'                               *
+//                              Extension setter '@XcodeProjectDescriptor addToolTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1121,7 +1121,7 @@ void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Category setter '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
+//                          Extension setter '@XcodeProjectDescriptor placeGroupAsMainGroup'                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

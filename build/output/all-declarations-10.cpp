@@ -5550,7 +5550,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5566,26 +5566,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_893_IDX (0) ;
+  GALGAS_uint index_894_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_893 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_893.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_894 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_894.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = enumerator_893.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_0 = enumerator_894.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_893.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_894.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_893_IDX.getter_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
+        result << index_894_IDX.getter_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_893.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
+        result << enumerator_894.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
         result << " inArgument" ;
-        result << index_893_IDX.getter_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
+        result << index_894_IDX.getter_string (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 14)).stringValue () ;
       }
-      index_893_IDX.increment () ;
-      enumerator_893.gotoNextObject () ;
+      index_894_IDX.increment () ;
+      enumerator_894.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -5621,26 +5621,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1946_ (0) ;
+  GALGAS_uint index_1947_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1946 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1946.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_1947 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1947.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_1 = enumerator_1946.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_1 = enumerator_1947.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "const GALGAS_" ;
-        result << enumerator_1946.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1947.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
         result << " & constin_" ;
-        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1947.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 31)).stringValue () ;
       }else if (kBoolFalse == test_1) {
         result << "GALGAS_" ;
-        result << enumerator_1946.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1947.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1946.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1947.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.h.galgasTemplate", 33)).stringValue () ;
       }
-      index_1946_.increment () ;
-      enumerator_1946.gotoNextObject () ;
+      index_1947_.increment () ;
+      enumerator_1947.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -5669,7 +5669,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5747,26 +5747,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 29)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2429_ (0) ;
+  GALGAS_uint index_2430_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_2429 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2429.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_2430 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2430.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = enumerator_2429.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_0 = enumerator_2430.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_2429.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2430.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
         result << " & in_" ;
-        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2430.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 33)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "GALGAS_" ;
-        result << enumerator_2429.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2430.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
         result << " in_" ;
-        result << enumerator_2429.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2430.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 35)).stringValue () ;
       }
-      index_2429_.increment () ;
-      enumerator_2429.gotoNextObject () ;
+      index_2430_.increment () ;
+      enumerator_2430.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -5826,15 +5826,15 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
     "      fatalError (\"FATAL CATEGORY READER CALL ERROR\", __FILE__, __LINE__) ;\n"
     "    }else{\n"
     "      result = f (inObject, " ;
-  GALGAS_uint index_4348_ (0) ;
+  GALGAS_uint index_4349_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_4348 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_4348.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_4349 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4349.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_4348.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 65)).stringValue () ;
+      result << enumerator_4349.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-getter.cpp.galgasTemplate", 65)).stringValue () ;
       result << ", " ;
-      index_4348_.increment () ;
-      enumerator_4348.gotoNextObject () ;
+      index_4349_.increment () ;
+      enumerator_4349.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -5863,7 +5863,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5879,26 +5879,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_884_IDX (0) ;
+  GALGAS_uint index_885_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_884 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_884.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_885 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_885.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = enumerator_884.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_0 = enumerator_885.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_884.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_885.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_884_IDX.getter_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
+        result << index_885_IDX.getter_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_884.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
+        result << enumerator_885.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
         result << " inArgument" ;
-        result << index_884_IDX.getter_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
+        result << index_885_IDX.getter_string (SOURCE_FILE ("category-getter.h.galgasTemplate", 14)).stringValue () ;
       }
-      index_884_IDX.increment () ;
-      enumerator_884.gotoNextObject () ;
+      index_885_IDX.increment () ;
+      enumerator_885.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -5934,26 +5934,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "const cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1925_ (0) ;
+  GALGAS_uint index_1926_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1925 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1925.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_1926 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1926.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_1 = enumerator_1925.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_1 = enumerator_1926.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "const GALGAS_" ;
-        result << enumerator_1925.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1926.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
         result << " & constin_" ;
-        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1926.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 31)).stringValue () ;
       }else if (kBoolFalse == test_1) {
         result << "GALGAS_" ;
-        result << enumerator_1925.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1926.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1925.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1926.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.h.galgasTemplate", 33)).stringValue () ;
       }
-      index_1925_.increment () ;
-      enumerator_1925.gotoNextObject () ;
+      index_1926_.increment () ;
+      enumerator_1926.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -5983,7 +5983,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6030,26 +6030,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "const cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 18)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1696_ (0) ;
+  GALGAS_uint index_1697_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1696 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1696.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_1697 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1697.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = enumerator_1696.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_0 = enumerator_1697.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_1696.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1697.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
         result << " & in_" ;
-        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1697.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 22)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "GALGAS_" ;
-        result << enumerator_1696.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
+        result << enumerator_1697.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1696.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
+        result << enumerator_1697.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 24)).stringValue () ;
       }
-      index_1696_.increment () ;
-      enumerator_1696.gotoNextObject () ;
+      index_1697_.increment () ;
+      enumerator_1697.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6109,15 +6109,15 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
     "      fatalError (\"FATAL CATEGORY READER CALL ERROR\", __FILE__, __LINE__) ;\n"
     "    }else{\n"
     "      result = f (inObject, " ;
-  GALGAS_uint index_3615_ (0) ;
+  GALGAS_uint index_3616_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_3615 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3615.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_3616 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3616.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_3615.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 54)).stringValue () ;
+      result << enumerator_3616.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-getter.cpp.galgasTemplate", 54)).stringValue () ;
       result << ", " ;
-      index_3615_.increment () ;
-      enumerator_3615.gotoNextObject () ;
+      index_3616_.increment () ;
+      enumerator_3616.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -6208,7 +6208,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Overriding category getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Overriding extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6269,7 +6269,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6283,42 +6283,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_843_IDX (0) ;
+  GALGAS_uint index_844_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_843 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_843.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_844 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_844.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 11)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 11)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 12)).stringValue () ;
         result << " constinArgument" ;
-        result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 12)).stringValue () ;
+        result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 13)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 13)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 14)).stringValue () ;
+          result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 14)).stringValue () ;
           result << " & ioArgument" ;
-          result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 14)).stringValue () ;
+          result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 14)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 15)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 15)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 16)).stringValue () ;
+            result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 16)).stringValue () ;
             result << " & outArgument" ;
-            result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 16)).stringValue () ;
+            result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 16)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 18)).stringValue () ;
+            result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 18)).stringValue () ;
             result << " inArgument" ;
-            result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 18)).stringValue () ;
+            result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 18)).stringValue () ;
           }
         }
       }
-      index_843_IDX.increment () ;
-      enumerator_843.gotoNextObject () ;
+      index_844_IDX.increment () ;
+      enumerator_844.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6352,42 +6352,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 31)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2302_ (0) ;
+  GALGAS_uint index_2303_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2302 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2302.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2303 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2303.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2302.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 34)))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2303.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 34)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "const GALGAS_" ;
-        result << enumerator_2302.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2303.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 35)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2302.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2303.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 35)).stringValue () ;
       }else if (kBoolFalse == test_3) {
-        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2302.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 36)))).boolEnum () ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2303.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 36)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           result << "GALGAS_" ;
-          result << enumerator_2302.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2303.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 37)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2302.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2303.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 37)).stringValue () ;
         }else if (kBoolFalse == test_4) {
-          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2302.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 38)))).boolEnum () ;
+          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2303.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 38)))).boolEnum () ;
           if (kBoolTrue == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2302.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2303.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 39)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2302.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2303.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 39)).stringValue () ;
           }else if (kBoolFalse == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2302.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2303.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 41)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2302.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2303.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.h.galgasTemplate", 41)).stringValue () ;
           }
         }
       }
-      index_2302_.increment () ;
-      enumerator_2302.gotoNextObject () ;
+      index_2303_.increment () ;
+      enumerator_2303.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6415,7 +6415,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6491,42 +6491,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 29)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2425_ (0) ;
+  GALGAS_uint index_2426_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2425 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2425.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2426 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2426.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_2425.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 32)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_2426.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 32)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_2425.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2426.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 33)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2425.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2426.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 33)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2425.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 34)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2426.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 34)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "GALGAS_" ;
-          result << enumerator_2425.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 35)).stringValue () ;
+          result << enumerator_2426.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 35)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2425.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 35)).stringValue () ;
+          result << enumerator_2426.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 35)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2425.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 36)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2426.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 36)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_2425.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
+            result << enumerator_2426.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2425.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
+            result << enumerator_2426.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_2425.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2426.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 39)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2425.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2426.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 39)).stringValue () ;
           }
         }
       }
-      index_2425_.increment () ;
-      enumerator_2425.gotoNextObject () ;
+      index_2426_.increment () ;
+      enumerator_2426.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6535,19 +6535,19 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "//--- Drop output arguments\n" ;
-  GALGAS_uint index_3359_ (0) ;
+  GALGAS_uint index_3360_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_3359 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3359.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3359.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 47)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_3360 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3360.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3360.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 47)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "  out_" ;
-        result << enumerator_3359.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 48)).stringValue () ;
+        result << enumerator_3360.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 48)).stringValue () ;
         result << ".drop () ;\n" ;
       }else if (kBoolFalse == test_3) {
       }
-      index_3359_.increment () ;
-      enumerator_3359.gotoNextObject () ;
+      index_3360_.increment () ;
+      enumerator_3360.gotoNextObject () ;
     }
   }
   result << "//--- Find setter\n"
@@ -6596,33 +6596,33 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << ".forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;\n"
     "    }\n"
     "    f (inObject, " ;
-  GALGAS_uint index_4932_ (0) ;
+  GALGAS_uint index_4933_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_4932 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_4932.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4932.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 72)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_4933 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4933.hasCurrentObject ()) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4933.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 72)))).boolEnum () ;
       if (kBoolTrue == test_4) {
         result << "constin_" ;
-        result << enumerator_4932.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 73)).stringValue () ;
+        result << enumerator_4933.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 73)).stringValue () ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4932.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 74)))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4933.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 74)))).boolEnum () ;
         if (kBoolTrue == test_5) {
           result << "io_" ;
-          result << enumerator_4932.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 75)).stringValue () ;
+          result << enumerator_4933.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 75)).stringValue () ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4932.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 76)))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4933.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 76)))).boolEnum () ;
           if (kBoolTrue == test_6) {
             result << "out_" ;
-            result << enumerator_4932.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 77)).stringValue () ;
+            result << enumerator_4933.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 77)).stringValue () ;
           }else if (kBoolFalse == test_6) {
             result << "in_" ;
-            result << enumerator_4932.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 79)).stringValue () ;
+            result << enumerator_4933.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-modifier.cpp.galgasTemplate", 79)).stringValue () ;
           }
         }
       }
       result << ", " ;
-      index_4932_.increment () ;
-      enumerator_4932.gotoNextObject () ;
+      index_4933_.increment () ;
+      enumerator_4933.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -6648,7 +6648,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6662,42 +6662,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_834_IDX (0) ;
+  GALGAS_uint index_835_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_834 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_834.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_835 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_835.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.h.galgasTemplate", 11)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.h.galgasTemplate", 11)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 12)).stringValue () ;
         result << " constinArgument" ;
-        result << index_834_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 12)).stringValue () ;
+        result << index_835_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 13)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 13)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 14)).stringValue () ;
+          result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 14)).stringValue () ;
           result << " & ioArgument" ;
-          result << index_834_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 14)).stringValue () ;
+          result << index_835_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 14)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 15)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 15)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 16)).stringValue () ;
+            result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 16)).stringValue () ;
             result << " & outArgument" ;
-            result << index_834_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 16)).stringValue () ;
+            result << index_835_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 16)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 18)).stringValue () ;
+            result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 18)).stringValue () ;
             result << " inArgument" ;
-            result << index_834_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 18)).stringValue () ;
+            result << index_835_IDX.getter_string (SOURCE_FILE ("category-modifier.h.galgasTemplate", 18)).stringValue () ;
           }
         }
       }
-      index_834_IDX.increment () ;
-      enumerator_834.gotoNextObject () ;
+      index_835_IDX.increment () ;
+      enumerator_835.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6731,42 +6731,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 31)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2306_ (0) ;
+  GALGAS_uint index_2307_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2306 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2306.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2307 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2307.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2306.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.h.galgasTemplate", 34)))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.h.galgasTemplate", 34)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "const GALGAS_" ;
-        result << enumerator_2306.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 35)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2306.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 35)).stringValue () ;
       }else if (kBoolFalse == test_3) {
-        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2306.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 36)))).boolEnum () ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 36)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           result << "GALGAS_" ;
-          result << enumerator_2306.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 37)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2306.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 37)).stringValue () ;
         }else if (kBoolFalse == test_4) {
-          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2306.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 38)))).boolEnum () ;
+          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.h.galgasTemplate", 38)))).boolEnum () ;
           if (kBoolTrue == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2306.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 39)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2306.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 39)).stringValue () ;
           }else if (kBoolFalse == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2306.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.h.galgasTemplate", 41)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2306.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.h.galgasTemplate", 41)).stringValue () ;
           }
         }
       }
-      index_2306_.increment () ;
-      enumerator_2306.gotoNextObject () ;
+      index_2307_.increment () ;
+      enumerator_2307.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6795,7 +6795,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -6840,42 +6840,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 18)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1676_ (0) ;
+  GALGAS_uint index_1677_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_1676 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1676.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_1677 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1677.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1676.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 21)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1677.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 21)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_1676.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1677.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 22)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_1676.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1677.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 22)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1676.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 23)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1677.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 23)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "GALGAS_" ;
-          result << enumerator_1676.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 24)).stringValue () ;
+          result << enumerator_1677.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 24)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_1676.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 24)).stringValue () ;
+          result << enumerator_1677.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 24)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1676.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 25)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1677.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 25)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_1676.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 26)).stringValue () ;
+            result << enumerator_1677.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 26)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_1676.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 26)).stringValue () ;
+            result << enumerator_1677.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 26)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_1676.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 28)).stringValue () ;
+            result << enumerator_1677.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 28)).stringValue () ;
             result << " in_" ;
-            result << enumerator_1676.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 28)).stringValue () ;
+            result << enumerator_1677.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 28)).stringValue () ;
           }
         }
       }
-      index_1676_.increment () ;
-      enumerator_1676.gotoNextObject () ;
+      index_1677_.increment () ;
+      enumerator_1677.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -6884,19 +6884,19 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "//--- Drop output arguments\n" ;
-  GALGAS_uint index_2610_ (0) ;
+  GALGAS_uint index_2611_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2610 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2610.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2610.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 36)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_2611 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2611.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2611.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 36)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "  out_" ;
-        result << enumerator_2610.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
+        result << enumerator_2611.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 37)).stringValue () ;
         result << ".drop () ;\n" ;
       }else if (kBoolFalse == test_3) {
       }
-      index_2610_.increment () ;
-      enumerator_2610.gotoNextObject () ;
+      index_2611_.increment () ;
+      enumerator_2611.gotoNextObject () ;
     }
   }
   result << "//--- Find setter\n"
@@ -6945,33 +6945,33 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << ".forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;\n"
     "    }\n"
     "    f (inObject, " ;
-  GALGAS_uint index_4183_ (0) ;
+  GALGAS_uint index_4184_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_4183 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_4183.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4183.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 61)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_4184 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4184.hasCurrentObject ()) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4184.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 61)))).boolEnum () ;
       if (kBoolTrue == test_4) {
         result << "constin_" ;
-        result << enumerator_4183.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 62)).stringValue () ;
+        result << enumerator_4184.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 62)).stringValue () ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4183.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 63)))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4184.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 63)))).boolEnum () ;
         if (kBoolTrue == test_5) {
           result << "io_" ;
-          result << enumerator_4183.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 64)).stringValue () ;
+          result << enumerator_4184.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 64)).stringValue () ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4183.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 65)))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4184.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 65)))).boolEnum () ;
           if (kBoolTrue == test_6) {
             result << "out_" ;
-            result << enumerator_4183.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 66)).stringValue () ;
+            result << enumerator_4184.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 66)).stringValue () ;
           }else if (kBoolFalse == test_6) {
             result << "in_" ;
-            result << enumerator_4183.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 68)).stringValue () ;
+            result << enumerator_4184.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier.cpp.galgasTemplate", 68)).stringValue () ;
           }
         }
       }
       result << ", " ;
-      index_4183_.increment () ;
-      enumerator_4183.gotoNextObject () ;
+      index_4184_.increment () ;
+      enumerator_4184.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -7059,7 +7059,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Overriding category setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Overriding extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-modifier.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7120,7 +7120,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7134,42 +7134,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_843_IDX (0) ;
+  GALGAS_uint index_844_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_843 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_843.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_844 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_844.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 11)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 11)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 12)).stringValue () ;
         result << " constinArgument" ;
-        result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 12)).stringValue () ;
+        result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 13)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 13)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 14)).stringValue () ;
+          result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 14)).stringValue () ;
           result << " & ioArgument" ;
-          result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 14)).stringValue () ;
+          result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 14)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_843.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 15)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_844.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 15)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 16)).stringValue () ;
+            result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 16)).stringValue () ;
             result << " & outArgument" ;
-            result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 16)).stringValue () ;
+            result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 16)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_843.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 18)).stringValue () ;
+            result << enumerator_844.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 18)).stringValue () ;
             result << " inArgument" ;
-            result << index_843_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 18)).stringValue () ;
+            result << index_844_IDX.getter_string (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 18)).stringValue () ;
           }
         }
       }
-      index_843_IDX.increment () ;
-      enumerator_843.gotoNextObject () ;
+      index_844_IDX.increment () ;
+      enumerator_844.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7203,42 +7203,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 31)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2307_ (0) ;
+  GALGAS_uint index_2308_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2307 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2307.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2308 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2308.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 34)))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2308.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 34)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "const GALGAS_" ;
-        result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2308.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 35)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2308.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 35)).stringValue () ;
       }else if (kBoolFalse == test_3) {
-        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 36)))).boolEnum () ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2308.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 36)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           result << "GALGAS_" ;
-          result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2308.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 37)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2308.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 37)).stringValue () ;
         }else if (kBoolFalse == test_4) {
-          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2307.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 38)))).boolEnum () ;
+          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2308.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 38)))).boolEnum () ;
           if (kBoolTrue == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2308.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 39)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2308.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 39)).stringValue () ;
           }else if (kBoolFalse == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2307.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2308.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 41)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2307.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2308.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.h.galgasTemplate", 41)).stringValue () ;
           }
         }
       }
-      index_2307_.increment () ;
-      enumerator_2307.gotoNextObject () ;
+      index_2308_.increment () ;
+      enumerator_2308.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7266,7 +7266,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Abstract category method '@").add_operation (in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Abstract extension method '@").add_operation (in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7342,42 +7342,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result << "const cPtr_" ;
   result << in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 29)).getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 29)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2475_ (0) ;
+  GALGAS_uint index_2476_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2475 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2475.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2476 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2476.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_2475.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 32)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_2476.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 32)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_2475.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2476.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 33)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2475.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_2476.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 33)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2475.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 34)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_2476.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 34)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "GALGAS_" ;
-          result << enumerator_2475.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 35)).stringValue () ;
+          result << enumerator_2476.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 35)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2475.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 35)).stringValue () ;
+          result << enumerator_2476.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 35)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2475.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 36)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_2476.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 36)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_2475.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 37)).stringValue () ;
+            result << enumerator_2476.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 37)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2475.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 37)).stringValue () ;
+            result << enumerator_2476.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 37)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_2475.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2476.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 39)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2475.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2476.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 39)).stringValue () ;
           }
         }
       }
-      index_2475_.increment () ;
-      enumerator_2475.gotoNextObject () ;
+      index_2476_.increment () ;
+      enumerator_2476.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7386,19 +7386,19 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "//--- Drop output arguments\n" ;
-  GALGAS_uint index_3409_ (0) ;
+  GALGAS_uint index_3410_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_3409 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3409.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3409.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 47)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_3410 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3410.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3410.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 47)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "  out_" ;
-        result << enumerator_3409.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 48)).stringValue () ;
+        result << enumerator_3410.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 48)).stringValue () ;
         result << ".drop () ;\n" ;
       }else if (kBoolFalse == test_3) {
       }
-      index_3409_.increment () ;
-      enumerator_3409.gotoNextObject () ;
+      index_3410_.increment () ;
+      enumerator_3410.gotoNextObject () ;
     }
   }
   result << "//--- Find method\n"
@@ -7450,33 +7450,33 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
     "      fatalError (\"FATAL CATEGORY METHOD CALL ERROR\", __FILE__, __LINE__) ;\n"
     "    }else{\n"
     "      f (inObject, " ;
-  GALGAS_uint index_5133_ (0) ;
+  GALGAS_uint index_5134_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_5133 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_5133.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_5133.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 75)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_5134 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_5134.hasCurrentObject ()) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_5134.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 75)))).boolEnum () ;
       if (kBoolTrue == test_4) {
         result << "constin_" ;
-        result << enumerator_5133.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 76)).stringValue () ;
+        result << enumerator_5134.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 76)).stringValue () ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_5133.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 77)))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_5134.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 77)))).boolEnum () ;
         if (kBoolTrue == test_5) {
           result << "io_" ;
-          result << enumerator_5133.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 78)).stringValue () ;
+          result << enumerator_5134.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 78)).stringValue () ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_5133.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 79)))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_5134.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 79)))).boolEnum () ;
           if (kBoolTrue == test_6) {
             result << "out_" ;
-            result << enumerator_5133.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 80)).stringValue () ;
+            result << enumerator_5134.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 80)).stringValue () ;
           }else if (kBoolFalse == test_6) {
             result << "in_" ;
-            result << enumerator_5133.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 82)).stringValue () ;
+            result << enumerator_5134.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("abstract-category-method.cpp.galgasTemplate", 82)).stringValue () ;
           }
         }
       }
       result << ", " ;
-      index_5133_.increment () ;
-      enumerator_5133.gotoNextObject () ;
+      index_5134_.increment () ;
+      enumerator_5134.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -7503,7 +7503,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7517,42 +7517,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 8)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_834_IDX (0) ;
+  GALGAS_uint index_835_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_834 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_834.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_835 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_835.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.h.galgasTemplate", 11)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.h.galgasTemplate", 11)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 12)).stringValue () ;
+        result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 12)).stringValue () ;
         result << " constinArgument" ;
-        result << index_834_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 12)).stringValue () ;
+        result << index_835_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 12)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.h.galgasTemplate", 13)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.h.galgasTemplate", 13)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 14)).stringValue () ;
+          result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 14)).stringValue () ;
           result << " & ioArgument" ;
-          result << index_834_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 14)).stringValue () ;
+          result << index_835_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 14)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_834.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.h.galgasTemplate", 15)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_835.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.h.galgasTemplate", 15)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 16)).stringValue () ;
+            result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 16)).stringValue () ;
             result << " & outArgument" ;
-            result << index_834_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 16)).stringValue () ;
+            result << index_835_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 16)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_834.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 18)).stringValue () ;
+            result << enumerator_835.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 18)).stringValue () ;
             result << " inArgument" ;
-            result << index_834_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 18)).stringValue () ;
+            result << index_835_IDX.getter_string (SOURCE_FILE ("category-method.h.galgasTemplate", 18)).stringValue () ;
           }
         }
       }
-      index_834_IDX.increment () ;
-      enumerator_834.gotoNextObject () ;
+      index_835_IDX.increment () ;
+      enumerator_835.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7586,42 +7586,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "const class cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 31)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_2298_ (0) ;
+  GALGAS_uint index_2299_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2298 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2298.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_2299 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2299.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2298.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.h.galgasTemplate", 34)))).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2299.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.h.galgasTemplate", 34)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "const GALGAS_" ;
-        result << enumerator_2298.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2299.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 35)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_2298.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 35)).stringValue () ;
+        result << enumerator_2299.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 35)).stringValue () ;
       }else if (kBoolFalse == test_3) {
-        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2298.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.h.galgasTemplate", 36)))).boolEnum () ;
+        const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_2299.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.h.galgasTemplate", 36)))).boolEnum () ;
         if (kBoolTrue == test_4) {
           result << "GALGAS_" ;
-          result << enumerator_2298.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2299.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 37)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_2298.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 37)).stringValue () ;
+          result << enumerator_2299.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 37)).stringValue () ;
         }else if (kBoolFalse == test_4) {
-          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2298.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.h.galgasTemplate", 38)))).boolEnum () ;
+          const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_2299.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.h.galgasTemplate", 38)))).boolEnum () ;
           if (kBoolTrue == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2298.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2299.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 39)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_2298.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 39)).stringValue () ;
+            result << enumerator_2299.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 39)).stringValue () ;
           }else if (kBoolFalse == test_5) {
             result << "GALGAS_" ;
-            result << enumerator_2298.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2299.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.h.galgasTemplate", 41)).stringValue () ;
             result << " in_" ;
-            result << enumerator_2298.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 41)).stringValue () ;
+            result << enumerator_2299.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.h.galgasTemplate", 41)).stringValue () ;
           }
         }
       }
-      index_2298_.increment () ;
-      enumerator_2298.gotoNextObject () ;
+      index_2299_.increment () ;
+      enumerator_2299.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7650,7 +7650,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7695,42 +7695,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "const cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 18)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1652_ (0) ;
+  GALGAS_uint index_1653_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_1652 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1652.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_1653 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1653.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1652.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.cpp.galgasTemplate", 21)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_1653.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.cpp.galgasTemplate", 21)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const GALGAS_" ;
-        result << enumerator_1652.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1653.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 22)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_1652.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 22)).stringValue () ;
+        result << enumerator_1653.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 22)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1652.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 23)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_1653.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 23)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "GALGAS_" ;
-          result << enumerator_1652.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 24)).stringValue () ;
+          result << enumerator_1653.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 24)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_1652.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 24)).stringValue () ;
+          result << enumerator_1653.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 24)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1652.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 25)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_1653.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 25)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_1652.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 26)).stringValue () ;
+            result << enumerator_1653.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 26)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_1652.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 26)).stringValue () ;
+            result << enumerator_1653.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 26)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "GALGAS_" ;
-            result << enumerator_1652.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 28)).stringValue () ;
+            result << enumerator_1653.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method.cpp.galgasTemplate", 28)).stringValue () ;
             result << " in_" ;
-            result << enumerator_1652.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 28)).stringValue () ;
+            result << enumerator_1653.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 28)).stringValue () ;
           }
         }
       }
-      index_1652_.increment () ;
-      enumerator_1652.gotoNextObject () ;
+      index_1653_.increment () ;
+      enumerator_1653.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -7738,19 +7738,19 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "C_Compiler * inCompiler\n" ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n" ;
-  GALGAS_uint index_2558_ (0) ;
+  GALGAS_uint index_2559_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_2558 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2558.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2558.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 35)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_2559 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2559.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2559.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 35)))).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "  out_" ;
-        result << enumerator_2558.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 36)).stringValue () ;
+        result << enumerator_2559.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 36)).stringValue () ;
         result << ".drop () ;\n" ;
       }else if (kBoolFalse == test_3) {
       }
-      index_2558_.increment () ;
-      enumerator_2558.gotoNextObject () ;
+      index_2559_.increment () ;
+      enumerator_2559.gotoNextObject () ;
     }
   }
   result << "  if (NULL != inObject) {\n"
@@ -7801,33 +7801,33 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
     "      fatalError (\"FATAL CATEGORY METHOD CALL ERROR\", __FILE__, __LINE__) ;\n"
     "    }else{\n"
     "      f (inObject, " ;
-  GALGAS_uint index_4201_ (0) ;
+  GALGAS_uint index_4202_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_4201 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_4201.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4201.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.cpp.galgasTemplate", 62)))).boolEnum () ;
+    cEnumerator_formalParameterListForGeneration enumerator_4202 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4202.hasCurrentObject ()) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_4202.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method.cpp.galgasTemplate", 62)))).boolEnum () ;
       if (kBoolTrue == test_4) {
         result << "constin_" ;
-        result << enumerator_4201.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 63)).stringValue () ;
+        result << enumerator_4202.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 63)).stringValue () ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4201.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 64)))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_4202.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 64)))).boolEnum () ;
         if (kBoolTrue == test_5) {
           result << "io_" ;
-          result << enumerator_4201.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 65)).stringValue () ;
+          result << enumerator_4202.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 65)).stringValue () ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4201.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 66)))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_4202.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method.cpp.galgasTemplate", 66)))).boolEnum () ;
           if (kBoolTrue == test_6) {
             result << "out_" ;
-            result << enumerator_4201.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 67)).stringValue () ;
+            result << enumerator_4202.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 67)).stringValue () ;
           }else if (kBoolFalse == test_6) {
             result << "in_" ;
-            result << enumerator_4201.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 69)).stringValue () ;
+            result << enumerator_4202.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method.cpp.galgasTemplate", 69)).stringValue () ;
           }
         }
       }
       result << ", " ;
-      index_4201_.increment () ;
-      enumerator_4201.gotoNextObject () ;
+      index_4202_.increment () ;
+      enumerator_4202.gotoNextObject () ;
     }
   }
   result << "inCompiler COMMA_THERE) ;\n"
@@ -7916,46 +7916,47 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Overriding category method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Overriding extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_METHOD_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
+    "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineCategoryMethod_" ;
-  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 10)).stringValue () ;
+  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 11)).stringValue () ;
   result << "_" ;
-  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 10)).stringValue () ;
+  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 11)).stringValue () ;
   result << " (void) {\n"
     "  enterCategoryMethod_" ;
-  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 11)).stringValue () ;
+  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 12)).stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
   result << "kTypeDescriptor_GALGAS_" ;
-  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 11)).stringValue () ;
+  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 12)).stringValue () ;
   result << ".mSlotID,\n"
     "        " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "categoryMethod_" ;
-  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 13)).stringValue () ;
   result << "_" ;
-  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 12)).stringValue () ;
+  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 13)).stringValue () ;
   result << ") ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gMethod_" ;
-  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 18)).stringValue () ;
   result << "_" ;
-  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 18)).stringValue () ;
   result << " (defineCategoryMethod_" ;
-  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 18)).stringValue () ;
   result << "_" ;
-  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 17)).stringValue () ;
+  result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-category-method.cpp.galgasTemplate", 18)).stringValue () ;
   result << ", NULL) ;\n"
     "\n" ;
   return GALGAS_string (result) ;
@@ -8089,7 +8090,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("' (as function)"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("' (as function)"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8103,26 +8104,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "const class GALGAS_" ;
   result << in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 7)).stringValue () ;
   result << " & inObject" ;
-  GALGAS_uint index_821_IDX (0) ;
+  GALGAS_uint index_822_IDX (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_821 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_821.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_822 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_822.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = enumerator_821.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_0 = enumerator_822.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_821.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_822.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
         result << " & constinArgument" ;
-        result << index_821_IDX.getter_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
+        result << index_822_IDX.getter_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 11)).stringValue () ;
       }else if (kBoolFalse == test_0) {
         result << "class GALGAS_" ;
-        result << enumerator_821.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
+        result << enumerator_822.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
         result << " inArgument" ;
-        result << index_821_IDX.getter_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
+        result << index_822_IDX.getter_string (SOURCE_FILE ("category-getter-as-function-declaration.h.galgasTemplate", 13)).stringValue () ;
       }
-      index_821_IDX.increment () ;
-      enumerator_821.gotoNextObject () ;
+      index_822_IDX.increment () ;
+      enumerator_822.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -8149,7 +8150,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-getter-as-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8177,7 +8178,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8189,42 +8190,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "const class GALGAS_" ;
   result << in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 7)).stringValue () ;
   result << " inObject" ;
-  GALGAS_uint index_760_ (0) ;
+  GALGAS_uint index_761_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_760 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_760.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_761 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_761.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_760.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 10)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_761.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 10)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_760.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_761.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 11)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_760.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_761.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 11)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_760.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 12)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_761.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 12)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_760.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 13)).stringValue () ;
+          result << enumerator_761.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 13)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_760.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 13)).stringValue () ;
+          result << enumerator_761.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 13)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_760.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 14)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_761.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 14)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_760.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 15)).stringValue () ;
+            result << enumerator_761.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 15)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_760.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 15)).stringValue () ;
+            result << enumerator_761.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 15)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_760.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 17)).stringValue () ;
+            result << enumerator_761.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 17)).stringValue () ;
             result << " in_" ;
-            result << enumerator_760.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 17)).stringValue () ;
+            result << enumerator_761.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-method-as-function.h.galgasTemplate", 17)).stringValue () ;
           }
         }
       }
-      index_760_.increment () ;
-      enumerator_760.gotoNextObject () ;
+      index_761_.increment () ;
+      enumerator_761.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -8251,7 +8252,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-method-as-function.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8277,7 +8278,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category setter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension setter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -8289,42 +8290,42 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
   result << "class GALGAS_" ;
   result << in_TYPE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 7)).stringValue () ;
   result << " & ioObject" ;
-  GALGAS_uint index_762_ (0) ;
+  GALGAS_uint index_763_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalParameterListForGeneration enumerator_762 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
-    while (enumerator_762.hasCurrentObject ()) {
+    cEnumerator_formalParameterListForGeneration enumerator_763 (in_FORMAL_5F_ARGUMENT_5F_LIST, kEnumeration_up) ;
+    while (enumerator_763.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_762.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 10)))).boolEnum () ;
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_763.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 10)))).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "const class GALGAS_" ;
-        result << enumerator_762.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_763.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 11)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_762.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 11)).stringValue () ;
+        result << enumerator_763.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 11)).stringValue () ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_762.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 12)))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_763.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 12)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           result << "class GALGAS_" ;
-          result << enumerator_762.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 13)).stringValue () ;
+          result << enumerator_763.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 13)).stringValue () ;
           result << " & io_" ;
-          result << enumerator_762.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 13)).stringValue () ;
+          result << enumerator_763.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 13)).stringValue () ;
         }else if (kBoolFalse == test_1) {
-          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_762.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 14)))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_763.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 14)))).boolEnum () ;
           if (kBoolTrue == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_762.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 15)).stringValue () ;
+            result << enumerator_763.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 15)).stringValue () ;
             result << " & out_" ;
-            result << enumerator_762.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 15)).stringValue () ;
+            result << enumerator_763.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 15)).stringValue () ;
           }else if (kBoolFalse == test_2) {
             result << "class GALGAS_" ;
-            result << enumerator_762.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 17)).stringValue () ;
+            result << enumerator_763.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 17)).stringValue () ;
             result << " in_" ;
-            result << enumerator_762.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 17)).stringValue () ;
+            result << enumerator_763.current_mFormalArgumentName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("category-modifier-as-function.h.galgasTemplate", 17)).stringValue () ;
           }
         }
       }
-      index_762_.increment () ;
-      enumerator_762.gotoNextObject () ;
+      index_763_.increment () ;
+      enumerator_763.gotoNextObject () ;
     }
   }
   result << ",\n" ;
@@ -8351,13 +8352,14 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMm
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
-  result << GALGAS_string ("Category setter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).stringValue () ;
+  result << GALGAS_string ("Extension setter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("category-modifier-as-function.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_MODIFIER_5F_IMPLEMENTATION.stringValue () ;
-  result << "\n" ;
+  result << "\n"
+    "\n" ;
   return GALGAS_string (result) ;
 }
 

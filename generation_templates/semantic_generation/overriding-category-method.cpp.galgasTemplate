@@ -1,10 +1,11 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//%!["Overriding category method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//%!["Overriding extension method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 %!METHOD_IMPLEMENTATION%
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void defineCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
