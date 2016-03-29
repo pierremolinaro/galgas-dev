@@ -7,12 +7,12 @@
 %!GETTER_IMPLEMENTATION%
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
-  enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
+static void defineExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (void) {
+  enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
         %!^%extensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (defineCategoryGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%, NULL) ;
+C_PrologueEpilogue gGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% (defineExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%, NULL) ;
 

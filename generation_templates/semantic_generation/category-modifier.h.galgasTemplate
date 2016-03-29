@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) (%?^
+typedef void (*extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) (%?^
 %class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
@@ -23,12 +23,12 @@ typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) ;
+void enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+               %!^%extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

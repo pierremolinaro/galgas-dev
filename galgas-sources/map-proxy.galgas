@@ -13,10 +13,10 @@ class @mapProxyDeclarationAST : @semanticDeclarationAST {
 
 override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
-  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedMapTypeName ![mAssociatedMapTypeName location]}]
@@ -27,9 +27,9 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST enterInSemanticContext
-  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
-  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a map
   [ioSemanticContext.mTypeMap searchKey
@@ -172,9 +172,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   end
 #--- Add Categories
   addCategories (
-    !inCategoryMethodMapForBuildingContext
-    !inCategoryGetterMapForBuildingContext
-    !inCategoryModifierMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapProxyTypeName
     !?getterMap

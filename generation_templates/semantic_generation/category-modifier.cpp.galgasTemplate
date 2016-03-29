@@ -4,18 +4,18 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%> gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% ;
+static TC_UniqueArray <extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%> gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
-  gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;
+void enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+               %!^%extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
+  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+void callExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -42,19 +42,19 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
     macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
-      f = gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    extensionSetterSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;
+    if (classIndex < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
+      f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
-           f = gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
+           f = gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     f (inObject, %
     for () in FORMAL_ARGUMENT_LIST do
@@ -78,19 +78,19 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
 %!MODIFIER_IMPLEMENTATION%
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
-  enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
-        %!^%categoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
+static void defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
+  enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
+        %!^%extensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
-  gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.free () ;
+static void freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
+  gExtensionModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%defineCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%,
-       %!^%freeCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
+C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%,
+       %!^%freeExtensionModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 

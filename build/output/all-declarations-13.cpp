@@ -12245,10 +12245,10 @@ GALGAS_semanticDeclarationAST GALGAS_semanticDeclarationAST::extractObject (cons
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_abstractCategoryGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_abstractExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_abstractCategoryGetterAST * p = (const cPtr_abstractCategoryGetterAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_abstractCategoryGetterAST) ;
+  const cPtr_abstractExtensionGetterAST * p = (const cPtr_abstractExtensionGetterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_abstractExtensionGetterAST) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
   }
@@ -12256,13 +12256,13 @@ typeComparisonResult cPtr_abstractCategoryGetterAST::dynamicObjectCompare (const
     result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryGetterName.objectCompare (p->mAttribute_mAbstractCategoryGetterName) ;
+    result = mAttribute_mAbstractExtensionGetterName.objectCompare (p->mAttribute_mAbstractExtensionGetterName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryGetterFormalInputParameterList.objectCompare (p->mAttribute_mAbstractCategoryGetterFormalInputParameterList) ;
+    result = mAttribute_mAbstractExtensionGetterFormalInputParameterList.objectCompare (p->mAttribute_mAbstractExtensionGetterFormalInputParameterList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryGetterReturnedTypeName.objectCompare (p->mAttribute_mAbstractCategoryGetterReturnedTypeName) ;
+    result = mAttribute_mAbstractExtensionGetterReturnedTypeName.objectCompare (p->mAttribute_mAbstractExtensionGetterReturnedTypeName) ;
   }
   return result ;
 }
@@ -12270,7 +12270,7 @@ typeComparisonResult cPtr_abstractCategoryGetterAST::dynamicObjectCompare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-typeComparisonResult GALGAS_abstractCategoryGetterAST::objectCompare (const GALGAS_abstractCategoryGetterAST & inOperand) const {
+typeComparisonResult GALGAS_abstractExtensionGetterAST::objectCompare (const GALGAS_abstractExtensionGetterAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -12288,50 +12288,50 @@ typeComparisonResult GALGAS_abstractCategoryGetterAST::objectCompare (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryGetterAST::GALGAS_abstractCategoryGetterAST (void) :
+GALGAS_abstractExtensionGetterAST::GALGAS_abstractExtensionGetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryGetterAST GALGAS_abstractCategoryGetterAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_abstractCategoryGetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE)
-                                                            COMMA_THERE) ;
+GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_abstractExtensionGetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE)
+                                                             COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryGetterAST::GALGAS_abstractCategoryGetterAST (const cPtr_abstractCategoryGetterAST * inSourcePtr) :
+GALGAS_abstractExtensionGetterAST::GALGAS_abstractExtensionGetterAST (const cPtr_abstractExtensionGetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCategoryGetterAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionGetterAST) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryGetterAST GALGAS_abstractCategoryGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                    const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                    const GALGAS_lstring & inAttribute_mAbstractCategoryGetterName,
-                                                                                    const GALGAS_formalInputParameterListAST & inAttribute_mAbstractCategoryGetterFormalInputParameterList,
-                                                                                    const GALGAS_lstring & inAttribute_mAbstractCategoryGetterReturnedTypeName
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryGetterAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractCategoryGetterName.isValid () && inAttribute_mAbstractCategoryGetterFormalInputParameterList.isValid () && inAttribute_mAbstractCategoryGetterReturnedTypeName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryGetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractCategoryGetterName, inAttribute_mAbstractCategoryGetterFormalInputParameterList, inAttribute_mAbstractCategoryGetterReturnedTypeName COMMA_THERE)) ;
+GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                      const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                      const GALGAS_lstring & inAttribute_mAbstractExtensionGetterName,
+                                                                                      const GALGAS_formalInputParameterListAST & inAttribute_mAbstractExtensionGetterFormalInputParameterList,
+                                                                                      const GALGAS_lstring & inAttribute_mAbstractExtensionGetterReturnedTypeName
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionGetterAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractExtensionGetterName.isValid () && inAttribute_mAbstractExtensionGetterFormalInputParameterList.isValid () && inAttribute_mAbstractExtensionGetterReturnedTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionGetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractExtensionGetterName, inAttribute_mAbstractExtensionGetterFormalInputParameterList, inAttribute_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_abstractCategoryGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryGetterAST * p = (const cPtr_abstractCategoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryGetterAST) ;
+    const cPtr_abstractExtensionGetterAST * p = (const cPtr_abstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionGetterAST) ;
     result = p->mAttribute_mTypeName ;
   }
   return result ;
@@ -12339,368 +12339,149 @@ GALGAS_lstring GALGAS_abstractCategoryGetterAST::getter_mTypeName (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_abstractCategoryGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_abstractExtensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_abstractCategoryGetterAST::getter_mAbstractCategoryGetterName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::getter_mAbstractExtensionGetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryGetterAST * p = (const cPtr_abstractCategoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryGetterAST) ;
-    result = p->mAttribute_mAbstractCategoryGetterName ;
+    const cPtr_abstractExtensionGetterAST * p = (const cPtr_abstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionGetterAST) ;
+    result = p->mAttribute_mAbstractExtensionGetterName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_abstractCategoryGetterAST::getter_mAbstractCategoryGetterName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryGetterName ;
+GALGAS_lstring cPtr_abstractExtensionGetterAST::getter_mAbstractExtensionGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionGetterName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST GALGAS_abstractCategoryGetterAST::getter_mAbstractCategoryGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalInputParameterListAST GALGAS_abstractExtensionGetterAST::getter_mAbstractExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalInputParameterListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryGetterAST * p = (const cPtr_abstractCategoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryGetterAST) ;
-    result = p->mAttribute_mAbstractCategoryGetterFormalInputParameterList ;
+    const cPtr_abstractExtensionGetterAST * p = (const cPtr_abstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionGetterAST) ;
+    result = p->mAttribute_mAbstractExtensionGetterFormalInputParameterList ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST cPtr_abstractCategoryGetterAST::getter_mAbstractCategoryGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryGetterFormalInputParameterList ;
+GALGAS_formalInputParameterListAST cPtr_abstractExtensionGetterAST::getter_mAbstractExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionGetterFormalInputParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_abstractCategoryGetterAST::getter_mAbstractCategoryGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionGetterAST::getter_mAbstractExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryGetterAST * p = (const cPtr_abstractCategoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryGetterAST) ;
-    result = p->mAttribute_mAbstractCategoryGetterReturnedTypeName ;
+    const cPtr_abstractExtensionGetterAST * p = (const cPtr_abstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionGetterAST) ;
+    result = p->mAttribute_mAbstractExtensionGetterReturnedTypeName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_abstractCategoryGetterAST::getter_mAbstractCategoryGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryGetterReturnedTypeName ;
+GALGAS_lstring cPtr_abstractExtensionGetterAST::getter_mAbstractExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionGetterReturnedTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                 Pointer class for @abstractCategoryGetterAST class                                  *
+//                                 Pointer class for @abstractExtensionGetterAST class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_abstractCategoryGetterAST::cPtr_abstractCategoryGetterAST (const GALGAS_bool & in_mIsPredefined,
-                                                                const GALGAS_lstring & in_mTypeName,
-                                                                const GALGAS_lstring & in_mAbstractCategoryGetterName,
-                                                                const GALGAS_formalInputParameterListAST & in_mAbstractCategoryGetterFormalInputParameterList,
-                                                                const GALGAS_lstring & in_mAbstractCategoryGetterReturnedTypeName
-                                                                COMMA_LOCATION_ARGS) :
+cPtr_abstractExtensionGetterAST::cPtr_abstractExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                                  const GALGAS_lstring & in_mTypeName,
+                                                                  const GALGAS_lstring & in_mAbstractExtensionGetterName,
+                                                                  const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
+                                                                  const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName
+                                                                  COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
-mAttribute_mAbstractCategoryGetterName (in_mAbstractCategoryGetterName),
-mAttribute_mAbstractCategoryGetterFormalInputParameterList (in_mAbstractCategoryGetterFormalInputParameterList),
-mAttribute_mAbstractCategoryGetterReturnedTypeName (in_mAbstractCategoryGetterReturnedTypeName) {
+mAttribute_mAbstractExtensionGetterName (in_mAbstractExtensionGetterName),
+mAttribute_mAbstractExtensionGetterFormalInputParameterList (in_mAbstractExtensionGetterFormalInputParameterList),
+mAttribute_mAbstractExtensionGetterReturnedTypeName (in_mAbstractExtensionGetterReturnedTypeName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * cPtr_abstractCategoryGetterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryGetterAST ;
+const C_galgas_type_descriptor * cPtr_abstractExtensionGetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
-void cPtr_abstractCategoryGetterAST::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "[@abstractCategoryGetterAST:" ;
+void cPtr_abstractExtensionGetterAST::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@abstractExtensionGetterAST:" ;
   mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractCategoryGetterName.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractCategoryGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractCategoryGetterReturnedTypeName.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-acPtr_class * cPtr_abstractCategoryGetterAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_abstractCategoryGetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryGetterName, mAttribute_mAbstractCategoryGetterFormalInputParameterList, mAttribute_mAbstractCategoryGetterReturnedTypeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionGetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractExtensionGetterName, mAttribute_mAbstractExtensionGetterFormalInputParameterList, mAttribute_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @abstractCategoryGetterAST type                                           *
+//                                          @abstractExtensionGetterAST type                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractCategoryGetterAST ("abstractCategoryGetterAST",
-                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+kTypeDescriptor_GALGAS_abstractExtensionGetterAST ("abstractExtensionGetterAST",
+                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_abstractCategoryGetterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryGetterAST ;
+const C_galgas_type_descriptor * GALGAS_abstractExtensionGetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionGetterAST ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_abstractCategoryGetterAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_abstractExtensionGetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractCategoryGetterAST (*this)) ;
+    macroMyNew (result, GALGAS_abstractExtensionGetterAST (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryGetterAST GALGAS_abstractCategoryGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryGetterAST result ;
-  const GALGAS_abstractCategoryGetterAST * p = (const GALGAS_abstractCategoryGetterAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_abstractCategoryGetterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("abstractCategoryGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_abstractCategoryMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_abstractCategoryMethodAST * p = (const cPtr_abstractCategoryMethodAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_abstractCategoryMethodAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryMethodName.objectCompare (p->mAttribute_mAbstractCategoryMethodName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryMethodFormalParameterList.objectCompare (p->mAttribute_mAbstractCategoryMethodFormalParameterList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_abstractCategoryMethodAST::objectCompare (const GALGAS_abstractCategoryMethodAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCategoryMethodAST::GALGAS_abstractCategoryMethodAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCategoryMethodAST GALGAS_abstractCategoryMethodAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_abstractCategoryMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_lstring::constructor_default (HERE),
-                                                            GALGAS_formalParameterListAST::constructor_emptyList (HERE)
-                                                            COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCategoryMethodAST::GALGAS_abstractCategoryMethodAST (const cPtr_abstractCategoryMethodAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCategoryMethodAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCategoryMethodAST GALGAS_abstractCategoryMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                    const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                    const GALGAS_lstring & inAttribute_mAbstractCategoryMethodName,
-                                                                                    const GALGAS_formalParameterListAST & inAttribute_mAbstractCategoryMethodFormalParameterList
+GALGAS_abstractExtensionGetterAST GALGAS_abstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryMethodAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractCategoryMethodName.isValid () && inAttribute_mAbstractCategoryMethodFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractCategoryMethodName, inAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_abstractCategoryMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryMethodAST * p = (const cPtr_abstractCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryMethodAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_abstractCategoryMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_abstractCategoryMethodAST::getter_mAbstractCategoryMethodName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryMethodAST * p = (const cPtr_abstractCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryMethodAST) ;
-    result = p->mAttribute_mAbstractCategoryMethodName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_abstractCategoryMethodAST::getter_mAbstractCategoryMethodName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryMethodName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST GALGAS_abstractCategoryMethodAST::getter_mAbstractCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryMethodAST * p = (const cPtr_abstractCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryMethodAST) ;
-    result = p->mAttribute_mAbstractCategoryMethodFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST cPtr_abstractCategoryMethodAST::getter_mAbstractCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryMethodFormalParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                 Pointer class for @abstractCategoryMethodAST class                                  *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_abstractCategoryMethodAST::cPtr_abstractCategoryMethodAST (const GALGAS_bool & in_mIsPredefined,
-                                                                const GALGAS_lstring & in_mTypeName,
-                                                                const GALGAS_lstring & in_mAbstractCategoryMethodName,
-                                                                const GALGAS_formalParameterListAST & in_mAbstractCategoryMethodFormalParameterList
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mAbstractCategoryMethodName (in_mAbstractCategoryMethodName),
-mAttribute_mAbstractCategoryMethodFormalParameterList (in_mAbstractCategoryMethodFormalParameterList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_abstractCategoryMethodAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryMethodAST ;
-}
-
-void cPtr_abstractCategoryMethodAST::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "[@abstractCategoryMethodAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAbstractCategoryMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mAbstractCategoryMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_abstractCategoryMethodAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_abstractCategoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryMethodName, mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @abstractCategoryMethodAST type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractCategoryMethodAST ("abstractCategoryMethodAST",
-                                                  & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_abstractCategoryMethodAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryMethodAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_abstractCategoryMethodAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractCategoryMethodAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_abstractCategoryMethodAST GALGAS_abstractCategoryMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryMethodAST result ;
-  const GALGAS_abstractCategoryMethodAST * p = (const GALGAS_abstractCategoryMethodAST *) inObject.embeddedObject () ;
+  GALGAS_abstractExtensionGetterAST result ;
+  const GALGAS_abstractExtensionGetterAST * p = (const GALGAS_abstractExtensionGetterAST *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_abstractCategoryMethodAST *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_abstractExtensionGetterAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("abstractCategoryMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("abstractExtensionGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -12710,10 +12491,10 @@ GALGAS_abstractCategoryMethodAST GALGAS_abstractCategoryMethodAST::extractObject
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_abstractCategoryModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_abstractExtensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_abstractCategoryModifierAST * p = (const cPtr_abstractCategoryModifierAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_abstractCategoryModifierAST) ;
+  const cPtr_abstractExtensionMethodAST * p = (const cPtr_abstractExtensionMethodAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_abstractExtensionMethodAST) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
   }
@@ -12721,10 +12502,10 @@ typeComparisonResult cPtr_abstractCategoryModifierAST::dynamicObjectCompare (con
     result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryModifierName.objectCompare (p->mAttribute_mAbstractCategoryModifierName) ;
+    result = mAttribute_mAbstractExtensionMethodName.objectCompare (p->mAttribute_mAbstractExtensionMethodName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractCategoryModifierFormalParameterList.objectCompare (p->mAttribute_mAbstractCategoryModifierFormalParameterList) ;
+    result = mAttribute_mAbstractExtensionMethodFormalParameterList.objectCompare (p->mAttribute_mAbstractExtensionMethodFormalParameterList) ;
   }
   return result ;
 }
@@ -12732,7 +12513,7 @@ typeComparisonResult cPtr_abstractCategoryModifierAST::dynamicObjectCompare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-typeComparisonResult GALGAS_abstractCategoryModifierAST::objectCompare (const GALGAS_abstractCategoryModifierAST & inOperand) const {
+typeComparisonResult GALGAS_abstractExtensionMethodAST::objectCompare (const GALGAS_abstractExtensionMethodAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -12750,48 +12531,48 @@ typeComparisonResult GALGAS_abstractCategoryModifierAST::objectCompare (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierAST::GALGAS_abstractCategoryModifierAST (void) :
+GALGAS_abstractExtensionMethodAST::GALGAS_abstractExtensionMethodAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierAST GALGAS_abstractCategoryModifierAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_abstractCategoryModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_formalParameterListAST::constructor_emptyList (HERE)
-                                                              COMMA_THERE) ;
+GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_abstractExtensionMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_lstring::constructor_default (HERE),
+                                                             GALGAS_formalParameterListAST::constructor_emptyList (HERE)
+                                                             COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierAST::GALGAS_abstractCategoryModifierAST (const cPtr_abstractCategoryModifierAST * inSourcePtr) :
+GALGAS_abstractExtensionMethodAST::GALGAS_abstractExtensionMethodAST (const cPtr_abstractExtensionMethodAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractCategoryModifierAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionMethodAST) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierAST GALGAS_abstractCategoryModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                        const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                        const GALGAS_lstring & inAttribute_mAbstractCategoryModifierName,
-                                                                                        const GALGAS_formalParameterListAST & inAttribute_mAbstractCategoryModifierFormalParameterList
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryModifierAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractCategoryModifierName.isValid () && inAttribute_mAbstractCategoryModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractCategoryModifierName, inAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                      const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                      const GALGAS_lstring & inAttribute_mAbstractExtensionMethodName,
+                                                                                      const GALGAS_formalParameterListAST & inAttribute_mAbstractExtensionMethodFormalParameterList
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionMethodAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractExtensionMethodName.isValid () && inAttribute_mAbstractExtensionMethodFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractExtensionMethodName, inAttribute_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_abstractCategoryModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryModifierAST * p = (const cPtr_abstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryModifierAST) ;
+    const cPtr_abstractExtensionMethodAST * p = (const cPtr_abstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionMethodAST) ;
     result = p->mAttribute_mTypeName ;
   }
   return result ;
@@ -12799,127 +12580,346 @@ GALGAS_lstring GALGAS_abstractCategoryModifierAST::getter_mTypeName (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_abstractCategoryModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_abstractExtensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_abstractCategoryModifierAST::getter_mAbstractCategoryModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_abstractExtensionMethodAST::getter_mAbstractExtensionMethodName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryModifierAST * p = (const cPtr_abstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryModifierAST) ;
-    result = p->mAttribute_mAbstractCategoryModifierName ;
+    const cPtr_abstractExtensionMethodAST * p = (const cPtr_abstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionMethodAST) ;
+    result = p->mAttribute_mAbstractExtensionMethodName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_abstractCategoryModifierAST::getter_mAbstractCategoryModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryModifierName ;
+GALGAS_lstring cPtr_abstractExtensionMethodAST::getter_mAbstractExtensionMethodName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionMethodName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListAST GALGAS_abstractCategoryModifierAST::getter_mAbstractCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_abstractExtensionMethodAST::getter_mAbstractExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractCategoryModifierAST * p = (const cPtr_abstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryModifierAST) ;
-    result = p->mAttribute_mAbstractCategoryModifierFormalParameterList ;
+    const cPtr_abstractExtensionMethodAST * p = (const cPtr_abstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionMethodAST) ;
+    result = p->mAttribute_mAbstractExtensionMethodFormalParameterList ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListAST cPtr_abstractCategoryModifierAST::getter_mAbstractCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractCategoryModifierFormalParameterList ;
+GALGAS_formalParameterListAST cPtr_abstractExtensionMethodAST::getter_mAbstractExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionMethodFormalParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @abstractCategoryModifierAST class                                 *
+//                                 Pointer class for @abstractExtensionMethodAST class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_abstractCategoryModifierAST::cPtr_abstractCategoryModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                                                    const GALGAS_lstring & in_mTypeName,
-                                                                    const GALGAS_lstring & in_mAbstractCategoryModifierName,
-                                                                    const GALGAS_formalParameterListAST & in_mAbstractCategoryModifierFormalParameterList
-                                                                    COMMA_LOCATION_ARGS) :
+cPtr_abstractExtensionMethodAST::cPtr_abstractExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                                                  const GALGAS_lstring & in_mTypeName,
+                                                                  const GALGAS_lstring & in_mAbstractExtensionMethodName,
+                                                                  const GALGAS_formalParameterListAST & in_mAbstractExtensionMethodFormalParameterList
+                                                                  COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
-mAttribute_mAbstractCategoryModifierName (in_mAbstractCategoryModifierName),
-mAttribute_mAbstractCategoryModifierFormalParameterList (in_mAbstractCategoryModifierFormalParameterList) {
+mAttribute_mAbstractExtensionMethodName (in_mAbstractExtensionMethodName),
+mAttribute_mAbstractExtensionMethodFormalParameterList (in_mAbstractExtensionMethodFormalParameterList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * cPtr_abstractCategoryModifierAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryModifierAST ;
+const C_galgas_type_descriptor * cPtr_abstractExtensionMethodAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
-void cPtr_abstractCategoryModifierAST::description (C_String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString << "[@abstractCategoryModifierAST:" ;
+void cPtr_abstractExtensionMethodAST::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@abstractExtensionMethodAST:" ;
   mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractCategoryModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionMethodName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractCategoryModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-acPtr_class * cPtr_abstractCategoryModifierAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_abstractCategoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryModifierName, mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractExtensionMethodName, mAttribute_mAbstractExtensionMethodFormalParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          @abstractCategoryModifierAST type                                          *
+//                                          @abstractExtensionMethodAST type                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractCategoryModifierAST ("abstractCategoryModifierAST",
-                                                    & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+kTypeDescriptor_GALGAS_abstractExtensionMethodAST ("abstractExtensionMethodAST",
+                                                   & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_abstractCategoryModifierAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractCategoryModifierAST ;
+const C_galgas_type_descriptor * GALGAS_abstractExtensionMethodAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionMethodAST ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_abstractCategoryModifierAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_abstractExtensionMethodAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractCategoryModifierAST (*this)) ;
+    macroMyNew (result, GALGAS_abstractExtensionMethodAST (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierAST GALGAS_abstractCategoryModifierAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_abstractCategoryModifierAST result ;
-  const GALGAS_abstractCategoryModifierAST * p = (const GALGAS_abstractCategoryModifierAST *) inObject.embeddedObject () ;
+GALGAS_abstractExtensionMethodAST GALGAS_abstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionMethodAST result ;
+  const GALGAS_abstractExtensionMethodAST * p = (const GALGAS_abstractExtensionMethodAST *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_abstractCategoryModifierAST *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_abstractExtensionMethodAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("abstractCategoryModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("abstractExtensionMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_abstractExtensionModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_abstractExtensionModifierAST * p = (const cPtr_abstractExtensionModifierAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_abstractExtensionModifierAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mAbstractExtensionModifierName.objectCompare (p->mAttribute_mAbstractExtensionModifierName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mAbstractExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mAbstractExtensionModifierFormalParameterList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_abstractExtensionModifierAST::objectCompare (const GALGAS_abstractExtensionModifierAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractExtensionModifierAST::GALGAS_abstractExtensionModifierAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractExtensionModifierAST GALGAS_abstractExtensionModifierAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_abstractExtensionModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                               GALGAS_lstring::constructor_default (HERE),
+                                                               GALGAS_lstring::constructor_default (HERE),
+                                                               GALGAS_formalParameterListAST::constructor_emptyList (HERE)
+                                                               COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractExtensionModifierAST::GALGAS_abstractExtensionModifierAST (const cPtr_abstractExtensionModifierAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionModifierAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractExtensionModifierAST GALGAS_abstractExtensionModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                          const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                          const GALGAS_lstring & inAttribute_mAbstractExtensionModifierName,
+                                                                                          const GALGAS_formalParameterListAST & inAttribute_mAbstractExtensionModifierFormalParameterList
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionModifierAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractExtensionModifierName.isValid () && inAttribute_mAbstractExtensionModifierFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractExtensionModifierName, inAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_abstractExtensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_abstractExtensionModifierAST * p = (const cPtr_abstractExtensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionModifierAST) ;
+    result = p->mAttribute_mTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_abstractExtensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_abstractExtensionModifierAST::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_abstractExtensionModifierAST * p = (const cPtr_abstractExtensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionModifierAST) ;
+    result = p->mAttribute_mAbstractExtensionModifierName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_abstractExtensionModifierAST::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionModifierName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST GALGAS_abstractExtensionModifierAST::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_abstractExtensionModifierAST * p = (const cPtr_abstractExtensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionModifierAST) ;
+    result = p->mAttribute_mAbstractExtensionModifierFormalParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST cPtr_abstractExtensionModifierAST::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionModifierFormalParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                Pointer class for @abstractExtensionModifierAST class                                *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_abstractExtensionModifierAST::cPtr_abstractExtensionModifierAST (const GALGAS_bool & in_mIsPredefined,
+                                                                      const GALGAS_lstring & in_mTypeName,
+                                                                      const GALGAS_lstring & in_mAbstractExtensionModifierName,
+                                                                      const GALGAS_formalParameterListAST & in_mAbstractExtensionModifierFormalParameterList
+                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mAbstractExtensionModifierName (in_mAbstractExtensionModifierName),
+mAttribute_mAbstractExtensionModifierFormalParameterList (in_mAbstractExtensionModifierFormalParameterList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_abstractExtensionModifierAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionModifierAST ;
+}
+
+void cPtr_abstractExtensionModifierAST::description (C_String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString << "[@abstractExtensionModifierAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mAbstractExtensionModifierName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mAbstractExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractExtensionModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractExtensionModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractExtensionModifierName, mAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @abstractExtensionModifierAST type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_abstractExtensionModifierAST ("abstractExtensionModifierAST",
+                                                     & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_abstractExtensionModifierAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionModifierAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_abstractExtensionModifierAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_abstractExtensionModifierAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractExtensionModifierAST GALGAS_abstractExtensionModifierAST::extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionModifierAST result ;
+  const GALGAS_abstractExtensionModifierAST * p = (const GALGAS_abstractExtensionModifierAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_abstractExtensionModifierAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("abstractExtensionModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -13139,879 +13139,6 @@ GALGAS_arrayDeclarationAST GALGAS_arrayDeclarationAST::extractObject (const GALG
       result = *p ;
     }else{
       inCompiler->castError ("arrayDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_categoryGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterName.objectCompare (p->mAttribute_mCategoryGetterName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterFormalInputParameterList.objectCompare (p->mAttribute_mCategoryGetterFormalInputParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterReturnedTypeName.objectCompare (p->mAttribute_mCategoryGetterReturnedTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterReturnedVariableName.objectCompare (p->mAttribute_mCategoryGetterReturnedVariableName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryGetterInstructionList.objectCompare (p->mAttribute_mCategoryGetterInstructionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfReaderLocation.objectCompare (p->mAttribute_mEndOfReaderLocation) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_categoryGetterAST::objectCompare (const GALGAS_categoryGetterAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryGetterAST::GALGAS_categoryGetterAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryGetterAST GALGAS_categoryGetterAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_categoryGetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                    GALGAS_location::constructor_nowhere (HERE)
-                                                    COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryGetterAST::GALGAS_categoryGetterAST (const cPtr_categoryGetterAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_categoryGetterAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryGetterAST GALGAS_categoryGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                    const GALGAS_lstring & inAttribute_mTypeName,
-                                                                    const GALGAS_lstring & inAttribute_mCategoryGetterName,
-                                                                    const GALGAS_formalInputParameterListAST & inAttribute_mCategoryGetterFormalInputParameterList,
-                                                                    const GALGAS_lstring & inAttribute_mCategoryGetterReturnedTypeName,
-                                                                    const GALGAS_lstring & inAttribute_mCategoryGetterReturnedVariableName,
-                                                                    const GALGAS_semanticInstructionListAST & inAttribute_mCategoryGetterInstructionList,
-                                                                    const GALGAS_location & inAttribute_mEndOfReaderLocation
-                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_categoryGetterAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mCategoryGetterName.isValid () && inAttribute_mCategoryGetterFormalInputParameterList.isValid () && inAttribute_mCategoryGetterReturnedTypeName.isValid () && inAttribute_mCategoryGetterReturnedVariableName.isValid () && inAttribute_mCategoryGetterInstructionList.isValid () && inAttribute_mEndOfReaderLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryGetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mCategoryGetterName, inAttribute_mCategoryGetterFormalInputParameterList, inAttribute_mCategoryGetterReturnedTypeName, inAttribute_mCategoryGetterReturnedVariableName, inAttribute_mCategoryGetterInstructionList, inAttribute_mEndOfReaderLocation COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryGetterAST::getter_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mCategoryGetterName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryGetterAST::getter_mCategoryGetterName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST GALGAS_categoryGetterAST::getter_mCategoryGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalInputParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mCategoryGetterFormalInputParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST cPtr_categoryGetterAST::getter_mCategoryGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterFormalInputParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryGetterAST::getter_mCategoryGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mCategoryGetterReturnedTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryGetterAST::getter_mCategoryGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterReturnedTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryGetterAST::getter_mCategoryGetterReturnedVariableName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mCategoryGetterReturnedVariableName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryGetterAST::getter_mCategoryGetterReturnedVariableName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterReturnedVariableName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_categoryGetterAST::getter_mCategoryGetterInstructionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mCategoryGetterInstructionList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST cPtr_categoryGetterAST::getter_mCategoryGetterInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryGetterInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_categoryGetterAST::getter_mEndOfReaderLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryGetterAST * p = (const cPtr_categoryGetterAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryGetterAST) ;
-    result = p->mAttribute_mEndOfReaderLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_categoryGetterAST::getter_mEndOfReaderLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfReaderLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                     Pointer class for @categoryGetterAST class                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_categoryGetterAST::cPtr_categoryGetterAST (const GALGAS_bool & in_mIsPredefined,
-                                                const GALGAS_lstring & in_mTypeName,
-                                                const GALGAS_lstring & in_mCategoryGetterName,
-                                                const GALGAS_formalInputParameterListAST & in_mCategoryGetterFormalInputParameterList,
-                                                const GALGAS_lstring & in_mCategoryGetterReturnedTypeName,
-                                                const GALGAS_lstring & in_mCategoryGetterReturnedVariableName,
-                                                const GALGAS_semanticInstructionListAST & in_mCategoryGetterInstructionList,
-                                                const GALGAS_location & in_mEndOfReaderLocation
-                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mCategoryGetterName (in_mCategoryGetterName),
-mAttribute_mCategoryGetterFormalInputParameterList (in_mCategoryGetterFormalInputParameterList),
-mAttribute_mCategoryGetterReturnedTypeName (in_mCategoryGetterReturnedTypeName),
-mAttribute_mCategoryGetterReturnedVariableName (in_mCategoryGetterReturnedVariableName),
-mAttribute_mCategoryGetterInstructionList (in_mCategoryGetterInstructionList),
-mAttribute_mEndOfReaderLocation (in_mEndOfReaderLocation) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_categoryGetterAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryGetterAST ;
-}
-
-void cPtr_categoryGetterAST::description (C_String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString << "[@categoryGetterAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterReturnedTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterReturnedVariableName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryGetterInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_categoryGetterAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_categoryGetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryGetterName, mAttribute_mCategoryGetterFormalInputParameterList, mAttribute_mCategoryGetterReturnedTypeName, mAttribute_mCategoryGetterReturnedVariableName, mAttribute_mCategoryGetterInstructionList, mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @categoryGetterAST type                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryGetterAST ("categoryGetterAST",
-                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_categoryGetterAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryGetterAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_categoryGetterAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryGetterAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryGetterAST GALGAS_categoryGetterAST::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_categoryGetterAST result ;
-  const GALGAS_categoryGetterAST * p = (const GALGAS_categoryGetterAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryGetterAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("categoryGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_categoryMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryMethodName.objectCompare (p->mAttribute_mCategoryMethodName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryMethodFormalParameterList.objectCompare (p->mAttribute_mCategoryMethodFormalParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryMethodInstructionList.objectCompare (p->mAttribute_mCategoryMethodInstructionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfMethodLocation.objectCompare (p->mAttribute_mEndOfMethodLocation) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_categoryMethodAST::objectCompare (const GALGAS_categoryMethodAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryMethodAST::GALGAS_categoryMethodAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryMethodAST GALGAS_categoryMethodAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_categoryMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_lstring::constructor_default (HERE),
-                                                    GALGAS_formalParameterListAST::constructor_emptyList (HERE),
-                                                    GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                    GALGAS_location::constructor_nowhere (HERE)
-                                                    COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryMethodAST::GALGAS_categoryMethodAST (const cPtr_categoryMethodAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_categoryMethodAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryMethodAST GALGAS_categoryMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                    const GALGAS_lstring & inAttribute_mTypeName,
-                                                                    const GALGAS_lstring & inAttribute_mCategoryMethodName,
-                                                                    const GALGAS_formalParameterListAST & inAttribute_mCategoryMethodFormalParameterList,
-                                                                    const GALGAS_semanticInstructionListAST & inAttribute_mCategoryMethodInstructionList,
-                                                                    const GALGAS_location & inAttribute_mEndOfMethodLocation
-                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_categoryMethodAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mCategoryMethodName.isValid () && inAttribute_mCategoryMethodFormalParameterList.isValid () && inAttribute_mCategoryMethodInstructionList.isValid () && inAttribute_mEndOfMethodLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mCategoryMethodName, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mCategoryMethodInstructionList, inAttribute_mEndOfMethodLocation COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryMethodAST::getter_mCategoryMethodName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    result = p->mAttribute_mCategoryMethodName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryMethodAST::getter_mCategoryMethodName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryMethodName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST GALGAS_categoryMethodAST::getter_mCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    result = p->mAttribute_mCategoryMethodFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST cPtr_categoryMethodAST::getter_mCategoryMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryMethodFormalParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_categoryMethodAST::getter_mCategoryMethodInstructionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    result = p->mAttribute_mCategoryMethodInstructionList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST cPtr_categoryMethodAST::getter_mCategoryMethodInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryMethodInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_categoryMethodAST::getter_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryMethodAST * p = (const cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    result = p->mAttribute_mEndOfMethodLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_categoryMethodAST::getter_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfMethodLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                     Pointer class for @categoryMethodAST class                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_categoryMethodAST::cPtr_categoryMethodAST (const GALGAS_bool & in_mIsPredefined,
-                                                const GALGAS_lstring & in_mTypeName,
-                                                const GALGAS_lstring & in_mCategoryMethodName,
-                                                const GALGAS_formalParameterListAST & in_mCategoryMethodFormalParameterList,
-                                                const GALGAS_semanticInstructionListAST & in_mCategoryMethodInstructionList,
-                                                const GALGAS_location & in_mEndOfMethodLocation
-                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mCategoryMethodName (in_mCategoryMethodName),
-mAttribute_mCategoryMethodFormalParameterList (in_mCategoryMethodFormalParameterList),
-mAttribute_mCategoryMethodInstructionList (in_mCategoryMethodInstructionList),
-mAttribute_mEndOfMethodLocation (in_mEndOfMethodLocation) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_categoryMethodAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryMethodAST ;
-}
-
-void cPtr_categoryMethodAST::description (C_String & ioString,
-                                          const int32_t inIndentation) const {
-  ioString << "[@categoryMethodAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryMethodName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryMethodFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryMethodInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_categoryMethodAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_categoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryMethodName, mAttribute_mCategoryMethodFormalParameterList, mAttribute_mCategoryMethodInstructionList, mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @categoryMethodAST type                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryMethodAST ("categoryMethodAST",
-                                          & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_categoryMethodAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryMethodAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_categoryMethodAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryMethodAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryMethodAST GALGAS_categoryMethodAST::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_categoryMethodAST result ;
-  const GALGAS_categoryMethodAST * p = (const GALGAS_categoryMethodAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryMethodAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("categoryMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_categoryModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryModifierName.objectCompare (p->mAttribute_mCategoryModifierName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryModifierFormalParameterList.objectCompare (p->mAttribute_mCategoryModifierFormalParameterList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCategoryModifierInstructionList.objectCompare (p->mAttribute_mCategoryModifierInstructionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfModifierLocation.objectCompare (p->mAttribute_mEndOfModifierLocation) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_categoryModifierAST::objectCompare (const GALGAS_categoryModifierAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryModifierAST::GALGAS_categoryModifierAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryModifierAST GALGAS_categoryModifierAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_categoryModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_formalParameterListAST::constructor_emptyList (HERE),
-                                                      GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                      GALGAS_location::constructor_nowhere (HERE)
-                                                      COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryModifierAST::GALGAS_categoryModifierAST (const cPtr_categoryModifierAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_categoryModifierAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryModifierAST GALGAS_categoryModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                        const GALGAS_lstring & inAttribute_mTypeName,
-                                                                        const GALGAS_lstring & inAttribute_mCategoryModifierName,
-                                                                        const GALGAS_formalParameterListAST & inAttribute_mCategoryModifierFormalParameterList,
-                                                                        const GALGAS_semanticInstructionListAST & inAttribute_mCategoryModifierInstructionList,
-                                                                        const GALGAS_location & inAttribute_mEndOfModifierLocation
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_categoryModifierAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mCategoryModifierName.isValid () && inAttribute_mCategoryModifierFormalParameterList.isValid () && inAttribute_mCategoryModifierInstructionList.isValid () && inAttribute_mEndOfModifierLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mCategoryModifierName, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mCategoryModifierInstructionList, inAttribute_mEndOfModifierLocation COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    result = p->mAttribute_mTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_categoryModifierAST::getter_mCategoryModifierName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    result = p->mAttribute_mCategoryModifierName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_categoryModifierAST::getter_mCategoryModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryModifierName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST GALGAS_categoryModifierAST::getter_mCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_formalParameterListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    result = p->mAttribute_mCategoryModifierFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST cPtr_categoryModifierAST::getter_mCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryModifierFormalParameterList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_categoryModifierAST::getter_mCategoryModifierInstructionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    result = p->mAttribute_mCategoryModifierInstructionList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST cPtr_categoryModifierAST::getter_mCategoryModifierInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCategoryModifierInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_categoryModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_categoryModifierAST * p = (const cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    result = p->mAttribute_mEndOfModifierLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_categoryModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfModifierLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                    Pointer class for @categoryModifierAST class                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_categoryModifierAST::cPtr_categoryModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                                    const GALGAS_lstring & in_mTypeName,
-                                                    const GALGAS_lstring & in_mCategoryModifierName,
-                                                    const GALGAS_formalParameterListAST & in_mCategoryModifierFormalParameterList,
-                                                    const GALGAS_semanticInstructionListAST & in_mCategoryModifierInstructionList,
-                                                    const GALGAS_location & in_mEndOfModifierLocation
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName),
-mAttribute_mCategoryModifierName (in_mCategoryModifierName),
-mAttribute_mCategoryModifierFormalParameterList (in_mCategoryModifierFormalParameterList),
-mAttribute_mCategoryModifierInstructionList (in_mCategoryModifierInstructionList),
-mAttribute_mEndOfModifierLocation (in_mEndOfModifierLocation) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_categoryModifierAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryModifierAST ;
-}
-
-void cPtr_categoryModifierAST::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "[@categoryModifierAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryModifierName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryModifierFormalParameterList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCategoryModifierInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfModifierLocation.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_categoryModifierAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_categoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryModifierName, mAttribute_mCategoryModifierFormalParameterList, mAttribute_mCategoryModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              @categoryModifierAST type                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_categoryModifierAST ("categoryModifierAST",
-                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_categoryModifierAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_categoryModifierAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_categoryModifierAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_categoryModifierAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_categoryModifierAST GALGAS_categoryModifierAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_categoryModifierAST result ;
-  const GALGAS_categoryModifierAST * p = (const GALGAS_categoryModifierAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_categoryModifierAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("categoryModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -14387,6 +13514,879 @@ GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::extractObject (const GALGAS
       result = *p ;
     }else{
       inCompiler->castError ("enumDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_extensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionGetterName.objectCompare (p->mAttribute_mExtensionGetterName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionGetterFormalInputParameterList.objectCompare (p->mAttribute_mExtensionGetterFormalInputParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionGetterReturnedTypeName.objectCompare (p->mAttribute_mExtensionGetterReturnedTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionGetterReturnedVariableName.objectCompare (p->mAttribute_mExtensionGetterReturnedVariableName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionGetterInstructionList.objectCompare (p->mAttribute_mExtensionGetterInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfReaderLocation.objectCompare (p->mAttribute_mEndOfReaderLocation) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_extensionGetterAST::objectCompare (const GALGAS_extensionGetterAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionGetterAST::GALGAS_extensionGetterAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionGetterAST GALGAS_extensionGetterAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_extensionGetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                     GALGAS_location::constructor_nowhere (HERE)
+                                                     COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionGetterAST::GALGAS_extensionGetterAST (const cPtr_extensionGetterAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionGetterAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionGetterAST GALGAS_extensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                      const GALGAS_lstring & inAttribute_mTypeName,
+                                                                      const GALGAS_lstring & inAttribute_mExtensionGetterName,
+                                                                      const GALGAS_formalInputParameterListAST & inAttribute_mExtensionGetterFormalInputParameterList,
+                                                                      const GALGAS_lstring & inAttribute_mExtensionGetterReturnedTypeName,
+                                                                      const GALGAS_lstring & inAttribute_mExtensionGetterReturnedVariableName,
+                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mExtensionGetterInstructionList,
+                                                                      const GALGAS_location & inAttribute_mEndOfReaderLocation
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_extensionGetterAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mExtensionGetterName.isValid () && inAttribute_mExtensionGetterFormalInputParameterList.isValid () && inAttribute_mExtensionGetterReturnedTypeName.isValid () && inAttribute_mExtensionGetterReturnedVariableName.isValid () && inAttribute_mExtensionGetterInstructionList.isValid () && inAttribute_mEndOfReaderLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extensionGetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mExtensionGetterName, inAttribute_mExtensionGetterFormalInputParameterList, inAttribute_mExtensionGetterReturnedTypeName, inAttribute_mExtensionGetterReturnedVariableName, inAttribute_mExtensionGetterInstructionList, inAttribute_mEndOfReaderLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionGetterAST::getter_mExtensionGetterName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mExtensionGetterName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionGetterAST::getter_mExtensionGetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionGetterName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST GALGAS_extensionGetterAST::getter_mExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalInputParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mExtensionGetterFormalInputParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST cPtr_extensionGetterAST::getter_mExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionGetterFormalInputParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionGetterAST::getter_mExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mExtensionGetterReturnedTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionGetterAST::getter_mExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionGetterReturnedTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionGetterAST::getter_mExtensionGetterReturnedVariableName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mExtensionGetterReturnedVariableName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionGetterAST::getter_mExtensionGetterReturnedVariableName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionGetterReturnedVariableName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST GALGAS_extensionGetterAST::getter_mExtensionGetterInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mExtensionGetterInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST cPtr_extensionGetterAST::getter_mExtensionGetterInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionGetterInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_extensionGetterAST::getter_mEndOfReaderLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionGetterAST * p = (const cPtr_extensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionGetterAST) ;
+    result = p->mAttribute_mEndOfReaderLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_extensionGetterAST::getter_mEndOfReaderLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfReaderLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                     Pointer class for @extensionGetterAST class                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_extensionGetterAST::cPtr_extensionGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                  const GALGAS_lstring & in_mTypeName,
+                                                  const GALGAS_lstring & in_mExtensionGetterName,
+                                                  const GALGAS_formalInputParameterListAST & in_mExtensionGetterFormalInputParameterList,
+                                                  const GALGAS_lstring & in_mExtensionGetterReturnedTypeName,
+                                                  const GALGAS_lstring & in_mExtensionGetterReturnedVariableName,
+                                                  const GALGAS_semanticInstructionListAST & in_mExtensionGetterInstructionList,
+                                                  const GALGAS_location & in_mEndOfReaderLocation
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mExtensionGetterName (in_mExtensionGetterName),
+mAttribute_mExtensionGetterFormalInputParameterList (in_mExtensionGetterFormalInputParameterList),
+mAttribute_mExtensionGetterReturnedTypeName (in_mExtensionGetterReturnedTypeName),
+mAttribute_mExtensionGetterReturnedVariableName (in_mExtensionGetterReturnedVariableName),
+mAttribute_mExtensionGetterInstructionList (in_mExtensionGetterInstructionList),
+mAttribute_mEndOfReaderLocation (in_mEndOfReaderLocation) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_extensionGetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
+}
+
+void cPtr_extensionGetterAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "[@extensionGetterAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionGetterName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionGetterReturnedVariableName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionGetterInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfReaderLocation.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_extensionGetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_extensionGetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mExtensionGetterName, mAttribute_mExtensionGetterFormalInputParameterList, mAttribute_mExtensionGetterReturnedTypeName, mAttribute_mExtensionGetterReturnedVariableName, mAttribute_mExtensionGetterInstructionList, mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @extensionGetterAST type                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extensionGetterAST ("extensionGetterAST",
+                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_extensionGetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionGetterAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_extensionGetterAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionGetterAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionGetterAST GALGAS_extensionGetterAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_extensionGetterAST result ;
+  const GALGAS_extensionGetterAST * p = (const GALGAS_extensionGetterAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extensionGetterAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_extensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionMethodName.objectCompare (p->mAttribute_mExtensionMethodName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionMethodFormalParameterList.objectCompare (p->mAttribute_mExtensionMethodFormalParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionMethodInstructionList.objectCompare (p->mAttribute_mExtensionMethodInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfMethodLocation.objectCompare (p->mAttribute_mEndOfMethodLocation) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_extensionMethodAST::objectCompare (const GALGAS_extensionMethodAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionMethodAST::GALGAS_extensionMethodAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionMethodAST GALGAS_extensionMethodAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_extensionMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_formalParameterListAST::constructor_emptyList (HERE),
+                                                     GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                     GALGAS_location::constructor_nowhere (HERE)
+                                                     COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionMethodAST::GALGAS_extensionMethodAST (const cPtr_extensionMethodAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionMethodAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionMethodAST GALGAS_extensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                      const GALGAS_lstring & inAttribute_mTypeName,
+                                                                      const GALGAS_lstring & inAttribute_mExtensionMethodName,
+                                                                      const GALGAS_formalParameterListAST & inAttribute_mExtensionMethodFormalParameterList,
+                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mExtensionMethodInstructionList,
+                                                                      const GALGAS_location & inAttribute_mEndOfMethodLocation
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mExtensionMethodName.isValid () && inAttribute_mExtensionMethodFormalParameterList.isValid () && inAttribute_mExtensionMethodInstructionList.isValid () && inAttribute_mEndOfMethodLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extensionMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mExtensionMethodName, inAttribute_mExtensionMethodFormalParameterList, inAttribute_mExtensionMethodInstructionList, inAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+    result = p->mAttribute_mTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionMethodAST::getter_mExtensionMethodName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+    result = p->mAttribute_mExtensionMethodName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionMethodAST::getter_mExtensionMethodName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionMethodName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST GALGAS_extensionMethodAST::getter_mExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+    result = p->mAttribute_mExtensionMethodFormalParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST cPtr_extensionMethodAST::getter_mExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionMethodFormalParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST GALGAS_extensionMethodAST::getter_mExtensionMethodInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+    result = p->mAttribute_mExtensionMethodInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST cPtr_extensionMethodAST::getter_mExtensionMethodInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionMethodInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_extensionMethodAST::getter_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionMethodAST * p = (const cPtr_extensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionMethodAST) ;
+    result = p->mAttribute_mEndOfMethodLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_extensionMethodAST::getter_mEndOfMethodLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfMethodLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                     Pointer class for @extensionMethodAST class                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_extensionMethodAST::cPtr_extensionMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                                  const GALGAS_lstring & in_mTypeName,
+                                                  const GALGAS_lstring & in_mExtensionMethodName,
+                                                  const GALGAS_formalParameterListAST & in_mExtensionMethodFormalParameterList,
+                                                  const GALGAS_semanticInstructionListAST & in_mExtensionMethodInstructionList,
+                                                  const GALGAS_location & in_mEndOfMethodLocation
+                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mExtensionMethodName (in_mExtensionMethodName),
+mAttribute_mExtensionMethodFormalParameterList (in_mExtensionMethodFormalParameterList),
+mAttribute_mExtensionMethodInstructionList (in_mExtensionMethodInstructionList),
+mAttribute_mEndOfMethodLocation (in_mEndOfMethodLocation) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_extensionMethodAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionMethodAST ;
+}
+
+void cPtr_extensionMethodAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "[@extensionMethodAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionMethodName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionMethodInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfMethodLocation.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_extensionMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_extensionMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mExtensionMethodName, mAttribute_mExtensionMethodFormalParameterList, mAttribute_mExtensionMethodInstructionList, mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @extensionMethodAST type                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extensionMethodAST ("extensionMethodAST",
+                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_extensionMethodAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionMethodAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_extensionMethodAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionMethodAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMethodAST result ;
+  const GALGAS_extensionMethodAST * p = (const GALGAS_extensionMethodAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extensionMethodAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_extensionModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionModifierName.objectCompare (p->mAttribute_mExtensionModifierName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mExtensionModifierFormalParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExtensionModifierInstructionList.objectCompare (p->mAttribute_mExtensionModifierInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfModifierLocation.objectCompare (p->mAttribute_mEndOfModifierLocation) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_extensionModifierAST::objectCompare (const GALGAS_extensionModifierAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionModifierAST::GALGAS_extensionModifierAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionModifierAST GALGAS_extensionModifierAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_extensionModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                       GALGAS_lstring::constructor_default (HERE),
+                                                       GALGAS_lstring::constructor_default (HERE),
+                                                       GALGAS_formalParameterListAST::constructor_emptyList (HERE),
+                                                       GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                       GALGAS_location::constructor_nowhere (HERE)
+                                                       COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionModifierAST::GALGAS_extensionModifierAST (const cPtr_extensionModifierAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionModifierAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionModifierAST GALGAS_extensionModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                          const GALGAS_lstring & inAttribute_mTypeName,
+                                                                          const GALGAS_lstring & inAttribute_mExtensionModifierName,
+                                                                          const GALGAS_formalParameterListAST & inAttribute_mExtensionModifierFormalParameterList,
+                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mExtensionModifierInstructionList,
+                                                                          const GALGAS_location & inAttribute_mEndOfModifierLocation
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_extensionModifierAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mExtensionModifierName.isValid () && inAttribute_mExtensionModifierFormalParameterList.isValid () && inAttribute_mExtensionModifierInstructionList.isValid () && inAttribute_mEndOfModifierLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extensionModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mExtensionModifierName, inAttribute_mExtensionModifierFormalParameterList, inAttribute_mExtensionModifierInstructionList, inAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    result = p->mAttribute_mTypeName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_extensionModifierAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    result = p->mAttribute_mExtensionModifierName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_extensionModifierAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionModifierName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST GALGAS_extensionModifierAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    result = p->mAttribute_mExtensionModifierFormalParameterList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST cPtr_extensionModifierAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionModifierFormalParameterList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST GALGAS_extensionModifierAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticInstructionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    result = p->mAttribute_mExtensionModifierInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST cPtr_extensionModifierAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionModifierInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_extensionModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    result = p->mAttribute_mEndOfModifierLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_extensionModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfModifierLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                    Pointer class for @extensionModifierAST class                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_extensionModifierAST::cPtr_extensionModifierAST (const GALGAS_bool & in_mIsPredefined,
+                                                      const GALGAS_lstring & in_mTypeName,
+                                                      const GALGAS_lstring & in_mExtensionModifierName,
+                                                      const GALGAS_formalParameterListAST & in_mExtensionModifierFormalParameterList,
+                                                      const GALGAS_semanticInstructionListAST & in_mExtensionModifierInstructionList,
+                                                      const GALGAS_location & in_mEndOfModifierLocation
+                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mExtensionModifierName (in_mExtensionModifierName),
+mAttribute_mExtensionModifierFormalParameterList (in_mExtensionModifierFormalParameterList),
+mAttribute_mExtensionModifierInstructionList (in_mExtensionModifierInstructionList),
+mAttribute_mEndOfModifierLocation (in_mEndOfModifierLocation) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_extensionModifierAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionModifierAST ;
+}
+
+void cPtr_extensionModifierAST::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString << "[@extensionModifierAST:" ;
+  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionModifierName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExtensionModifierInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfModifierLocation.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_extensionModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_extensionModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mExtensionModifierName, mAttribute_mExtensionModifierFormalParameterList, mAttribute_mExtensionModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @extensionModifierAST type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extensionModifierAST ("extensionModifierAST",
+                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_extensionModifierAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionModifierAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_extensionModifierAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionModifierAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extensionModifierAST GALGAS_extensionModifierAST::extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionModifierAST result ;
+  const GALGAS_extensionModifierAST * p = (const GALGAS_extensionModifierAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extensionModifierAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -28,7 +28,7 @@ proc testsuite_type_categories {
   [!?aList64 prependSquare !5L]
 }
 
-#----------- Category readers
+#----------- Extension readers
 getter @uint64 square -> @uint64 outResult {
   outResult = self * self
 }
@@ -44,7 +44,7 @@ getter @lstring op -> @string outResult {
   outResult = string + " !"
 }
 
-#------------ Category methods
+#------------ Extension methods
 method @uint64 square !@uint64 outResult {
   outResult = self * self
 }
@@ -60,7 +60,7 @@ method @lstring op !@string outResult {
   outResult = string + " !"
 }
 
-#------------ Category modifiers
+#------------ Extension modifiers
 setter @lstring appendInt ?let@uint inValue {
   string += [inValue string]
 }

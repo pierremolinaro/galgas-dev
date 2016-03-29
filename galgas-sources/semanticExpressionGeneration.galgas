@@ -1140,7 +1140,7 @@ override method @getterCallExpressionForGeneration generateExpression
   end
 #--- Generate Reader call
   switch mKind
-  case definedAsCategory :
+  case definedAsExtension :
    [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet]
     @unifiedTypeMap-proxy baseType = [mReceiverExpression mResultType]
     @bool searching = true
@@ -1158,7 +1158,7 @@ override method @getterCallExpressionForGeneration generateExpression
     ioInclusionSet += !"getter-" + [baseType key] + "-" + mGetterName
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[mReceiverExpression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
-      outCppExpression = "callCategoryGetter_" + [mGetterName identifierRepresentation]
+      outCppExpression = "callExtensionGetter_" + [mGetterName identifierRepresentation]
          + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
       [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]

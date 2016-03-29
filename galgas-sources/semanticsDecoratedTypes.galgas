@@ -957,131 +957,131 @@ class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N                                            *
+# A B S T R A C T   E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractCategoryMethodName
-  @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList
+  @string mAbstractExtensionMethodName
+  @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    M E T H O D    D E C L A R A T I O N                                                              *
+# E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mCategoryMethodName
+  @string mExtensionMethodName
   @bool mImplementedAsFunction
-  @formalParameterListForGeneration mCategoryMethodFormalParameterList
+  @formalParameterListForGeneration mExtensionMethodFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C .                                                     *
+# O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C .                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
   @string mBaseTypeName
-  @string mCategoryMethodName
-  @formalParameterListForGeneration mCategoryMethodFormalParameterList
+  @string mExtensionMethodName
+  @formalParameterListForGeneration mExtensionMethodFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                        *
+# A B S T R A C T   E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractExtensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractCategoryModifierName
-  @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList
+  @string mAbstractExtensionModifierName
+  @formalParameterListForGeneration mAbstractExtensionModifierFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                                          *
+# E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @extensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mCategoryModifierName
+  @string mExtensionModifierName
   @bool mImplementedAsFunction
-  @formalParameterListForGeneration mCategoryModifierFormalParameterList
+  @formalParameterListForGeneration mExtensionModifierFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    C A T E G O R Y    M O D I F I E R   D E C .                                                  *
+# O V E R R I D I N G    E X T E N S I O N    M O D I F I E R   D E C .                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @overridingExtensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
   @string mBaseTypeName
-  @string mCategoryModifierName
-  @formalParameterListForGeneration mCategoryModifierFormalParameterList
+  @string mExtensionModifierName
+  @formalParameterListForGeneration mExtensionModifierFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                            *
+# A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractCategoryGetterName
+  @string mAbstractExtensionGetterName
   @unifiedTypeMap-proxy mResultType
-  @formalInputParameterListForGeneration mAbstractCategoryGetterFormalParameterList
+  @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    G E T T E R    D E C L A R A T I O N                                                              *
+# E X T E N S I O N    G E T T E R    D E C L A R A T I O N                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
-  @string mCategoryGetterName
+  @string mExtensionGetterName
   @bool mImplementedAsFunction
-  @unifiedTypeMap-proxy mResultType
-  @string mResultVarCppName
-  @formalInputParameterListForGeneration mCategoryGetterFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# O V E R R I D E    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                           *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overrideCategoryGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mBaseTypeName
-  @string mOverridingCategoryGetterName
   @unifiedTypeMap-proxy mResultType
   @string mResultVarCppName
-  @formalInputParameterListForGeneration mOverridingCategoryGetterFormalParameterList
+  @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
+  @typedPropertyList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+# O V E R R I D E    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                           *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mBaseTypeName
+  @string mOverridingExtensionGetterName
+  @unifiedTypeMap-proxy mResultType
+  @string mResultVarCppName
+  @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
 }

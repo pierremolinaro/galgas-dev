@@ -633,14 +633,14 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   T E M P L A T E    C A T E G O R Y                                                                                 *
+#   T E M P L A T E    E X T E N S I O N                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @templateCategoryTemplateCallAST templateExpressionAnalysis
+override method @templateExtensionTemplateCallAST templateExpressionAnalysis
   ?let @templateAnalysisContext unused inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
   error mTemplateName
-  :"INTERNAL ERROR: @templateCategoryTemplateCallAST templateExpressionAnalysis not implemented yet"
+  :"INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"
   :outExpression
 }
 

@@ -3031,7 +3031,7 @@ class GALGAS_methodKind : public AC_GALGAS_root {
   public : typedef enum {
     kNotBuilt,
     kEnum_definedAsMember,
-    kEnum_definedAsCategory
+    kEnum_definedAsExtension
   } enumeration ;
   
 //--------------------------------- Private data member
@@ -3053,7 +3053,7 @@ class GALGAS_methodKind : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_methodKind constructor_definedAsCategory (LOCATION_ARGS) ;
+  public : static GALGAS_methodKind constructor_definedAsExtension (LOCATION_ARGS) ;
 
   public : static GALGAS_methodKind constructor_definedAsMember (LOCATION_ARGS) ;
 
@@ -3069,7 +3069,7 @@ class GALGAS_methodKind : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsCategory (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsExtension (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDefinedAsMember (LOCATION_ARGS) const ;
 

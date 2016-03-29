@@ -196,7 +196,7 @@ if [type_mGetterMap count] > 0 then
   for () in type_mGetterMap do
     switch mKind
     case definedAsMember :
-    case definedAsCategory : %(extension) %
+    case definedAsExtension : %(extension) %
     end
     switch mQualifier
     case isAbstract : %<b>abstract</b> %
@@ -222,7 +222,7 @@ if [type_mInstanceMethodMap count] > 0 then
   for () in type_mInstanceMethodMap do
     switch mKind
     case definedAsMember :
-    case definedAsCategory : %(extension) %
+    case definedAsExtension : %(extension) %
     end
     switch mQualifier
     case isAbstract : %<b>abstract</b> %
@@ -254,7 +254,7 @@ if [type_mModifierMap count] > 0 then
   for () in type_mModifierMap do
     switch mKind
     case definedAsMember :
-    case definedAsCategory : %(extension) %
+    case definedAsExtension : %(extension) %
     end
     switch mQualifier
     case isAbstract : %<b>abstract</b> %

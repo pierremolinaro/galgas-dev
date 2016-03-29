@@ -7338,9 +7338,9 @@ GALGAS_methodKind GALGAS_methodKind::constructor_definedAsMember (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_methodKind GALGAS_methodKind::constructor_definedAsCategory (UNUSED_LOCATION_ARGS) {
+GALGAS_methodKind GALGAS_methodKind::constructor_definedAsExtension (UNUSED_LOCATION_ARGS) {
   GALGAS_methodKind result ;
-  result.mEnum = kEnum_definedAsCategory ;
+  result.mEnum = kEnum_definedAsExtension ;
   return result ;
 }
 
@@ -7349,7 +7349,7 @@ GALGAS_methodKind GALGAS_methodKind::constructor_definedAsCategory (UNUSED_LOCAT
 static const char * gEnumNameArrayFor_methodKind [3] = {
   "(not built)",
   "definedAsMember",
-  "definedAsCategory"
+  "definedAsExtension"
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7360,8 +7360,8 @@ GALGAS_bool GALGAS_methodKind::getter_isDefinedAsMember (UNUSED_LOCATION_ARGS) c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_methodKind::getter_isDefinedAsCategory (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_bool (kNotBuilt != mEnum, kEnum_definedAsCategory == mEnum) ;
+GALGAS_bool GALGAS_methodKind::getter_isDefinedAsExtension (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_definedAsExtension == mEnum) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

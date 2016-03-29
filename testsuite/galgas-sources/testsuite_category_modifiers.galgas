@@ -2,55 +2,55 @@
 
 proc testsuite_category_modifiers {
   message "*************************************** begin of category modifier test\n"
-  var v = @TestCategoryModifier.new {!1 !"Hello"}
+  var v = @TestExtensionModifier.new {!1 !"Hello"}
   @uint u = 2
   @string s = " World"
   [!?v modifier2 !?u !s]
   log u, v
-  var w = @overridingTestCategoryModifier.new {!1 !"" !"" !2}
+  var w = @overridingTestExtensionModifier.new {!1 !"" !"" !2}
   [!?w m]
 #--- Test type cast in setter call
   typeCastInSetterCall ()
 }
 
-abstract class @abstractTestCategoryModifier {
+abstract class @abstractTestExtensionModifier {
   @uint mInteger
 }
 
-class @TestCategoryModifier : @abstractTestCategoryModifier {
+class @TestExtensionModifier : @abstractTestExtensionModifier {
   @string mString
 }
 
-setter @TestCategoryModifier modifier3 ?let@uint inArg {
+setter @TestExtensionModifier modifier3 ?let@uint inArg {
   [!?mString appendSpacesUntilColumn!inArg]
 }
 
 
-setter @TestCategoryModifier modifier1 ?!@uint ioArg {
+setter @TestExtensionModifier modifier1 ?!@uint ioArg {
   mInteger = mInteger + ioArg
   ioArg ++
 }
 
 
-class @overridingTestCategoryModifier : @abstractOverridingTestCategoryModifier {
+class @overridingTestExtensionModifier : @abstractOverridingTestExtensionModifier {
   @uint mOtherInteger
 }
 
 
-setter @TestCategoryModifier modifier2 ?!@uint ioArg ?let@string inS {
+setter @TestExtensionModifier modifier2 ?!@uint ioArg ?let@string inS {
   [!?self modifier1 !?ioArg]
   mString += inS
 }
 
-abstract setter @abstractTestCategoryModifier m
+abstract setter @abstractTestExtensionModifier m
 
-override setter @TestCategoryModifier m { }
+override setter @TestExtensionModifier m { }
 
-override setter @overridingTestCategoryModifier m { }
+override setter @overridingTestExtensionModifier m { }
 
-override abstract setter @abstractOverridingTestCategoryModifier m
+override abstract setter @abstractOverridingTestExtensionModifier m
 
-abstract class @abstractOverridingTestCategoryModifier : @TestCategoryModifier {
+abstract class @abstractOverridingTestExtensionModifier : @TestExtensionModifier {
   @string mOtherString
 }
 

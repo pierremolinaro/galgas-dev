@@ -1,15 +1,15 @@
 
 
-class @TestCategoryMethod {}
+class @TestExtensionMethod {}
 
-method @TestCategoryMethod method1 {
+method @TestExtensionMethod method1 {
 }
 
-getter @TestCategoryMethod reader1 -> @uint result {
+getter @TestExtensionMethod reader1 -> @uint result {
   result = 2
 }
 
-method @TestCategoryMethod method2 !@uint result {
+method @TestExtensionMethod method2 !@uint result {
   result = [self reader1]
 }
 

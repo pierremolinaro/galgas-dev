@@ -325,7 +325,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   end
 #--- Generate method call
   switch mKind
-  case definedAsCategory :
+  case definedAsExtension :
     ioInclusionSet += !"setter-" + [mMethodBaseType key]+ "-" + mModifierName
     if [mReceiverType mTypeKindEnum] == @typeKindEnum.classType then
       if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
@@ -345,10 +345,10 @@ override method @setterCallInstructionForGeneration generateInstruction
         ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
         ioGeneratedCode += "}\n"
       end
-      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation]
+      ioGeneratedCode += "callExtensionSetter_" + [mModifierName identifierRepresentation]
                       +  " ((cPtr_" + [mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
     else
-      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + receiverCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + [mModifierName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     [mReceiverType addHeaderFileName !?ioInclusionSet]
@@ -399,12 +399,12 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   end
 #--- Generate modifier call
   switch mKind
-  case definedAsCategory :
+  case definedAsExtension :
     ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mModifierName
     if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
-      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+      ioGeneratedCode += "callExtensionSetter_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
     else
-      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
     end
   case definedAsMember :
     if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
