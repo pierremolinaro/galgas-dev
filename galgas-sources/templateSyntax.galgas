@@ -423,7 +423,7 @@ rule <primary>
     $identifier$ ?var  @lstring templateName
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
-    outExpression = @templateCategoryTemplateCallAST.new {
+    outExpression = @templateExtensionTemplateCallAST.new {
       !receiverExpression
       !templateName
       !expressionList}

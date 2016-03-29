@@ -81,10 +81,10 @@ class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   C A T E G O R Y    T E M P L A T E     C A L L                                                                     *
+#   E X T E N S I O N    T E M P L A T E     C A L L                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @templateCategoryTemplateCallAST : @templateExpressionAST {
+class @templateExtensionTemplateCallAST : @templateExpressionAST {
   @templateExpressionAST mExpressionValue
   @lstring mTemplateName
   @templateExpressionListAST mOutExpressionList

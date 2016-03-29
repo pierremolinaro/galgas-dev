@@ -6887,7 +6887,7 @@ void cParser_templateSyntax::rule_templateSyntax_primary_i20_ (GALGAS_templateEx
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken_identifier) COMMA_SOURCE_FILE ("templateSyntax.galgas", 423)) ;
     GALGAS_templateExpressionListAST var_expressionList ;
     nt_output_5F_expression_5F_list_ (var_expressionList, inCompiler) ;
-    outArgument_outExpression = GALGAS_templateCategoryTemplateCallAST::constructor_new (var_receiverExpression, var_templateName, var_expressionList  COMMA_SOURCE_FILE ("templateSyntax.galgas", 426)) ;
+    outArgument_outExpression = GALGAS_templateExtensionTemplateCallAST::constructor_new (var_receiverExpression, var_templateName, var_expressionList  COMMA_SOURCE_FILE ("templateSyntax.galgas", 426)) ;
   } break ;
   case 2: {
     GALGAS_lstring var_typeName = inCompiler->synthetizedAttribute_tokenString () ;

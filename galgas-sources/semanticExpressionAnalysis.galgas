@@ -934,7 +934,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       getterFormalArgumentTypeList = {}
       hasCompilerArgument = true
       returnedType = @unifiedTypeMap-proxy. null
-      kind = @methodKind. definedAsCategory
+      kind = @methodKind. definedAsExtension
       for () in [receiverType mCurrentTypedAttributeList] do
         let attributeType = @unifiedTypeMap-proxy.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap

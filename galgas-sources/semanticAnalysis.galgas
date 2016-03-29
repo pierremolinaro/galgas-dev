@@ -948,7 +948,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodAST semanticAnalysis
+override method @abstractExtensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -957,13 +957,13 @@ override method @abstractCategoryMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in mAbstractCategoryMethodFormalParameterList do
+  for () in mAbstractExtensionMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -973,19 +973,19 @@ override method @abstractCategoryMethodAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"abstract extension method " + mAbstractCategoryMethodName
-    !@abstractCategoryMethodForGeneration.new {
+    !"abstract extension method " + mAbstractExtensionMethodName
+    !@abstractExtensionMethodForGeneration.new {
       !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mAbstractCategoryMethodName
+      !"method-" + [selfType key] + "-" + mAbstractExtensionMethodName
       !selfType
-      ![mAbstractCategoryMethodName string]
+      ![mAbstractExtensionMethodName string]
       !formalParameterListForGeneration}
     !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryMethodAST semanticAnalysis
+override method @extensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1016,7 +1016,7 @@ override method @categoryMethodAST semanticAnalysis
     !@unifiedTypeMap-proxy. null}
   analyzeRoutineBody (
     !analysisContext
-    !mCategoryMethodFormalParameterList
+    !mExtensionMethodFormalParameterList
     !@localConstantList. emptyList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
@@ -1024,19 +1024,19 @@ override method @categoryMethodAST semanticAnalysis
      end
     !@typedPropertyList. emptyList
     !selfObjectAccessor
-    !mCategoryMethodInstructionList
+    !mExtensionMethodInstructionList
     !mEndOfMethodLocation
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension method " + mCategoryMethodName
-    !@categoryMethodForGeneration.new {
+    !"extension method " + mExtensionMethodName
+    !@extensionMethodForGeneration.new {
       !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mCategoryMethodName
+      !"method-" + [selfType key] + "-" + mExtensionMethodName
       !selfType
-      ![mCategoryMethodName string]
+      ![mExtensionMethodName string]
       !implementedAsFunction
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
@@ -1046,7 +1046,7 @@ override method @categoryMethodAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryMethodAST semanticAnalysis
+override method @overridingExtensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1055,7 +1055,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1064,9 +1064,9 @@ override method @overridingCategoryMethodAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
+    if [[superType mInstanceMethodMap] hasKey ![mOverridingExtensionMethodName string]] then
       @methodQualifier qualifier
-      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      [[superType mInstanceMethodMap] searchKey !mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -1074,7 +1074,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryMethodName:"this method is not declared by a super class"
+    error mOverridingExtensionMethodName:"this method is not declared by a super class"
   end
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
@@ -1087,7 +1087,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !@unifiedTypeMap-proxy. null}
   analyzeRoutineBody (
     !analysisContext
-    !mOverridingCategoryMethodFormalParameterList
+    !mOverridingExtensionMethodFormalParameterList
     !@localConstantList. emptyList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
@@ -1095,7 +1095,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
      end
     !@typedPropertyList. emptyList
     !"object->"
-    !mOverridingCategoryMethodInstructionList
+    !mOverridingExtensionMethodInstructionList
     !mEndOfMethodLocation
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
@@ -1104,20 +1104,20 @@ override method @overridingCategoryMethodAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingCategoryMethodName location]
+      ![mOverridingExtensionMethodName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"override extension method " + mOverridingCategoryMethodName
-    !@overridingCategoryMethodForGeneration.new {
+    !"override extension method " + mOverridingExtensionMethodName
+    !@overridingExtensionMethodForGeneration.new {
       !false # Do not generate Cpp header file
-      !"method-" + [selfType key] + "-" + mOverridingCategoryMethodName
+      !"method-" + [selfType key] + "-" + mOverridingExtensionMethodName
       !selfType
       !baseTypeName
-      ![mOverridingCategoryMethodName string]
+      ![mOverridingExtensionMethodName string]
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration}
@@ -1126,7 +1126,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryMethodAST semanticAnalysis
+override method @overridingAbstractExtensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1135,9 +1135,9 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingCategoryMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
+    error mOverridingExtensionMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1146,9 +1146,9 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
+    if [[superType mInstanceMethodMap] hasKey ![mOverridingExtensionMethodName string]] then
       @methodQualifier qualifier
-      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      [[superType mInstanceMethodMap] searchKey !mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -1156,14 +1156,14 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryMethodName:"this getter is not declared by a super class"
+    error mOverridingExtensionMethodName:"this getter is not declared by a super class"
   end
 #--- Analyze formal argument list
   var variableMap =@variableMap.emptyMap{}
   @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
-    !mOverridingCategoryMethodFormalParameterList
+    !mOverridingExtensionMethodFormalParameterList
     !?variableMap
     ?formalParameterListForGeneration
   )
@@ -1171,7 +1171,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingCategoryMethodName location]
+      ![mOverridingExtensionMethodName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
@@ -1180,7 +1180,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryModifierAST semanticAnalysis
+override method @abstractExtensionModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1189,13 +1189,13 @@ override method @abstractCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute setter signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in mAbstractCategoryModifierFormalParameterList do
+  for () in mAbstractExtensionModifierFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -1205,19 +1205,19 @@ override method @abstractCategoryModifierAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !" abstract extension setter " + mAbstractCategoryModifierName
-    !@abstractCategoryModifierForGeneration.new {
+    !" abstract extension setter " + mAbstractExtensionModifierName
+    !@abstractExtensionModifierForGeneration.new {
       !true # Generate Cpp header file
-      !"setter-" + mTypeName + "-" + mAbstractCategoryModifierName
+      !"setter-" + mTypeName + "-" + mAbstractExtensionModifierName
       !selfType
-      ![mAbstractCategoryModifierName string]
+      ![mAbstractExtensionModifierName string]
       !formalParameterListForGeneration}
     !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryModifierAST semanticAnalysis
+override method @extensionModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1248,24 +1248,24 @@ override method @categoryModifierAST semanticAnalysis
     !selfType}
   analyzeRoutineBody (
     !analysisContext
-    !mCategoryModifierFormalParameterList
+    !mExtensionModifierFormalParameterList
     !@localConstantList. emptyList
     !@typedPropertyList. emptyList
     ![selfType mAllTypedAttributeList]
     !selfObjectAccessor
-    !mCategoryModifierInstructionList
+    !mExtensionModifierInstructionList
     !mEndOfModifierLocation
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension setter " + mCategoryModifierName
-    !@categoryModifierForGeneration.new {
+    !"extension setter " + mExtensionModifierName
+    !@extensionModifierForGeneration.new {
       !true # Generate Cpp header file
-      !"setter-" + [selfType key] + "-" + mCategoryModifierName
+      !"setter-" + [selfType key] + "-" + mExtensionModifierName
       !selfType
-      ![mCategoryModifierName string]
+      ![mExtensionModifierName string]
       !implementedAsFunction
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
@@ -1275,7 +1275,7 @@ override method @categoryModifierAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryModifierAST semanticAnalysis
+override method @overridingExtensionModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1284,7 +1284,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1293,9 +1293,9 @@ override method @overridingCategoryModifierAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
+    if [[superType mModifierMap] hasKey ![mOverridingExtensionModifierName string]] then
       @methodQualifier qualifier
-      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
+      [[superType mModifierMap] searchKey !mOverridingExtensionModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -1303,7 +1303,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryModifierName:"this setter is not declared by a super class"
+    error mOverridingExtensionModifierName:"this setter is not declared by a super class"
   end
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
@@ -1316,12 +1316,12 @@ override method @overridingCategoryModifierAST semanticAnalysis
     !selfType}
   analyzeRoutineBody (
     !analysisContext
-    !mOverridingCategoryModifierFormalParameterList
+    !mOverridingExtensionModifierFormalParameterList
     !@localConstantList. emptyList
     !@typedPropertyList. emptyList
     ![selfType mAllTypedAttributeList]
     !"object->"
-    !mOverridingCategoryModifierInstructionList
+    !mOverridingExtensionModifierInstructionList
     !mEndOfModifierLocation
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
@@ -1330,20 +1330,20 @@ override method @overridingCategoryModifierAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingCategoryModifierName location]
+      ![mOverridingExtensionModifierName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !" overriding extension setter " + mOverridingCategoryModifierName
-    !@overridingCategoryModifierForGeneration.new {
+    !" overriding extension setter " + mOverridingExtensionModifierName
+    !@overridingExtensionModifierForGeneration.new {
       !false # Do not generate Cpp header file
-      !"setter-" + mTypeName + "-" + mOverridingCategoryModifierName
+      !"setter-" + mTypeName + "-" + mOverridingExtensionModifierName
       !selfType
       !baseTypeName
-      ![mOverridingCategoryModifierName string]
+      ![mOverridingExtensionModifierName string]
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration}
@@ -1352,7 +1352,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryModifierAST semanticAnalysis
+override method @overridingAbstractExtensionModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1361,9 +1361,9 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingCategoryModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
+    error mOverridingExtensionModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1372,9 +1372,9 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
+    if [[superType mModifierMap] hasKey ![mOverridingExtensionModifierName string]] then
       @methodQualifier qualifier
-      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
+      [[superType mModifierMap] searchKey !mOverridingExtensionModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -1382,14 +1382,14 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryModifierName:"this setter is not declared by a super class"
+    error mOverridingExtensionModifierName:"this setter is not declared by a super class"
   end
 #--- Analyze formal argument list
   var variableMap =@variableMap.emptyMap{}
   @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
-    !mOverridingCategoryModifierFormalParameterList
+    !mOverridingExtensionModifierFormalParameterList
     !?variableMap
     ?formalParameterListForGeneration
   )
@@ -1397,7 +1397,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingCategoryModifierName location]
+      ![mOverridingExtensionModifierName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
@@ -1406,7 +1406,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryGetterAST semanticAnalysis
+override method @abstractExtensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1415,13 +1415,13 @@ override method @abstractCategoryGetterAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mAbstractCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
-  for () in mAbstractCategoryGetterFormalInputParameterList do
+  for () in mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -1431,13 +1431,13 @@ override method @abstractCategoryGetterAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"abstract extension getter " + mAbstractCategoryGetterName
-    !@abstractCategoryGetterForGeneration.new {
+    !"abstract extension getter " + mAbstractExtensionGetterName
+    !@abstractExtensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + mTypeName + "-" + mAbstractCategoryGetterName
+      !"getter-" + mTypeName + "-" + mAbstractExtensionGetterName
       !selfType
-      ![mAbstractCategoryGetterName string]
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryGetterReturnedTypeName}
+      ![mAbstractExtensionGetterName string]
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
       !formalParameterListForGeneration
     }
     !"~"
@@ -1446,7 +1446,7 @@ override method @abstractCategoryGetterAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryGetterAST semanticAnalysis
+override method @extensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1480,15 +1480,15 @@ override method @categoryGetterAST semanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   analyzeFunctionBody (
     !analysisContext
-    !mCategoryGetterFormalInputParameterList
+    !mExtensionGetterFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType) | ([selfType mTypeKindEnum] == @typeKindEnum. mapProxyType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList. emptyList
      end
     !selfObjectAccessor
-    !mCategoryGetterInstructionList
-    !mCategoryGetterReturnedVariableName
-    !mCategoryGetterReturnedTypeName
+    !mExtensionGetterInstructionList
+    !mExtensionGetterReturnedVariableName
+    !mExtensionGetterReturnedTypeName
     !mEndOfReaderLocation
     ?formalParameterListForGeneration
     ?returnType
@@ -1497,12 +1497,12 @@ override method @categoryGetterAST semanticAnalysis
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension getter " + mCategoryGetterName
-    !@categoryGetterForGeneration.new {
+    !"extension getter " + mExtensionGetterName
+    !@extensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [selfType key] + "-" + mCategoryGetterName
+      !"getter-" + [selfType key] + "-" + mExtensionGetterName
       !selfType
-      ![mCategoryGetterName string]
+      ![mExtensionGetterName string]
       !implementedAsFunction
       !returnType
       !returnVariableCppName
@@ -1514,7 +1514,7 @@ override method @categoryGetterAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryGetterAST semanticAnalysis
+override method @overridingExtensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1523,7 +1523,7 @@ override method @overridingCategoryGetterAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1533,9 +1533,9 @@ override method @overridingCategoryGetterAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![mOverridingCategoryGetterName string]] then
+    if [[superType mGetterMap] hasKey ![mOverridingExtensionGetterName string]] then
       [[superType mGetterMap] searchKey
-        !mOverridingCategoryGetterName
+        !mOverridingExtensionGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -1551,7 +1551,7 @@ override method @overridingCategoryGetterAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingCategoryGetterName:"this getter is not declared by a super class"
+    error mOverridingExtensionGetterName:"this getter is not declared by a super class"
   end
 #--- Analyze instruction list
   let analysisContext = @analysisContext.new {
@@ -1562,15 +1562,15 @@ override method @overridingCategoryGetterAST semanticAnalysis
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
     !analysisContext
-    !mOverridingCategoryGetterFormalInputParameterList
+    !mOverridingExtensionGetterFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList. emptyList
      end
     !"object->"
-    !mOverridingCategoryGetterInstructionList
-    !mOverridingCategoryGetterReturnedVariableName
-    !mOverridingCategoryGetterReturnedTypeName
+    !mOverridingExtensionGetterInstructionList
+    !mOverridingExtensionGetterReturnedVariableName
+    !mOverridingExtensionGetterReturnedTypeName
     !mEndOfReaderLocation
     ?let @formalInputParameterListForGeneration formalParameterListForGeneration
     ?let @unifiedTypeMap-proxy returnType
@@ -1582,7 +1582,7 @@ override method @overridingCategoryGetterAST semanticAnalysis
     checkReaderSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![mOverridingCategoryGetterName location]
+      ![mOverridingExtensionGetterName location]
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation
@@ -1590,13 +1590,13 @@ override method @overridingCategoryGetterAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"override extension getter " + mOverridingCategoryGetterName
-    !@overrideCategoryGetterForGeneration.new {
+    !"override extension getter " + mOverridingExtensionGetterName
+    !@overrideExtensionGetterForGeneration.new {
       !false # Do not generate Cpp header file
-      !"getter-" + mTypeName + "-" + mOverridingCategoryGetterName
+      !"getter-" + mTypeName + "-" + mOverridingExtensionGetterName
       !selfType
       !baseTypeName
-      ![mOverridingCategoryGetterName string]
+      ![mOverridingExtensionGetterName string]
       !returnType
       !returnVariableCppName
       !formalParameterListForGeneration
@@ -1607,7 +1607,7 @@ override method @overridingCategoryGetterAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryGetterAST semanticAnalysis
+override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -1615,12 +1615,12 @@ override method @overridingAbstractCategoryGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type
-  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractCategoryGetterReturnedTypeName}
+  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractCategoryGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractCategoryGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1630,10 +1630,10 @@ override method @overridingAbstractCategoryGetterAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![mAbstractCategoryGetterName string]] then
+    if [[superType mGetterMap] hasKey ![mAbstractExtensionGetterName string]] then
       @methodQualifier qualifier
       [[superType mGetterMap] searchKey
-        !mAbstractCategoryGetterName
+        !mAbstractExtensionGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -1649,12 +1649,12 @@ override method @overridingAbstractCategoryGetterAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mAbstractCategoryGetterName:"this getter is not declared by a super class"
+    error mAbstractExtensionGetterName:"this getter is not declared by a super class"
   end
 #--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
-    for () in mAbstractCategoryGetterFormalInputParameterList do
+    for () in mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -1665,7 +1665,7 @@ override method @overridingAbstractCategoryGetterAST semanticAnalysis
     checkReaderSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![mAbstractCategoryGetterName location]
+      ![mAbstractExtensionGetterName location]
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation

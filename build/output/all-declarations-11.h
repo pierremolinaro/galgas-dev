@@ -262,24 +262,24 @@ class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInst
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature) (const class cPtr_semanticInstructionForGeneration * inObject,
-                                                                                                const class GALGAS_string constinArgument0,
-                                                                                                class GALGAS_semanticInstructionListForGeneration & ioArgument1,
-                                                                                                class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature) (const class cPtr_semanticInstructionForGeneration * inObject,
+                                                                                                 const class GALGAS_string constinArgument0,
+                                                                                                 class GALGAS_semanticInstructionListForGeneration & ioArgument1,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSyntaxSignature (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) ;
+void enterExtensionMethod_appendSyntaxSignature (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSyntaxSignature (const class cPtr_semanticInstructionForGeneration * inObject,
-                                               const GALGAS_string constin_inPosfix,
-                                               GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_appendSyntaxSignature (const class cPtr_semanticInstructionForGeneration * inObject,
+                                                const GALGAS_string constin_inPosfix,
+                                                GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -373,22 +373,22 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction) (const class cPtr_semanticInstructionForGeneration * inObject,
-                                                                                                                const class GALGAS_semanticInstructionForGeneration & constinArgument0,
-                                                                                                                C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_bool (*enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) (const class cPtr_semanticInstructionForGeneration * inObject,
+                                                                                                             const class GALGAS_semanticInstructionForGeneration & constinArgument0,
+                                                                                                             C_Compiler * inCompiler
+                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
-                                                   categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) ;
+void enterExtensionGetter_compareSyntaxInstruction (const int32_t inClassIndex,
+                                                    enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
-                                                               const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
-                                                               class C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+class GALGAS_bool callExtensionGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
+                                                                class C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -587,28 +587,28 @@ void routine_transformInstructionList (const class GALGAS_syntaxInstructionList 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_syntaxInstructionAST_transformInstruction) (const class cPtr_syntaxInstructionAST * inObject,
-                                                                                   class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument0,
-                                                                                   const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument1,
-                                                                                   class GALGAS_uint & ioArgument2,
-                                                                                   class GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument3,
-                                                                                   class C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_syntaxInstructionAST_transformInstruction) (const class cPtr_syntaxInstructionAST * inObject,
+                                                                                    class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument0,
+                                                                                    const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument1,
+                                                                                    class GALGAS_uint & ioArgument2,
+                                                                                    class GALGAS_syntaxInstructionListForGrammarAnalysis & ioArgument3,
+                                                                                    class C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_transformInstruction (const int32_t inClassIndex,
-                                               categoryMethodSignature_syntaxInstructionAST_transformInstruction inMethod) ;
+void enterExtensionMethod_transformInstruction (const int32_t inClassIndex,
+                                                extensionMethodSignature_syntaxInstructionAST_transformInstruction inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_transformInstruction (const class cPtr_syntaxInstructionAST * inObject,
-                                              GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                              const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                              GALGAS_uint & io_ioAddedNonTerminalIndex,
-                                              GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_transformInstruction (const class cPtr_syntaxInstructionAST * inObject,
+                                               GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                               const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                               GALGAS_uint & io_ioAddedNonTerminalIndex,
+                                               GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1417,93 +1417,93 @@ class GALGAS_string function_outputDirectory (const class GALGAS_lstring & const
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                  Routine 'checkCategoryModifierDefinitionForClass'                                  *
+//                                 Routine 'checkExtensionModifierDefinitionForClass'                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkCategoryModifierDefinitionForClass (const class GALGAS_string constinArgument0,
-                                                      const class GALGAS_string constinArgument1,
-                                                      const class GALGAS_lstring constinArgument2,
-                                                      const class GALGAS_descendantClassListMap constinArgument3,
-                                                      const class GALGAS_genericCategoryMethodListMap constinArgument4,
-                                                      const class GALGAS_unifiedTypeMap constinArgument5,
-                                                      class C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+void routine_checkExtensionModifierDefinitionForClass (const class GALGAS_string constinArgument0,
+                                                       const class GALGAS_string constinArgument1,
+                                                       const class GALGAS_lstring constinArgument2,
+                                                       const class GALGAS_descendantClassListMap constinArgument3,
+                                                       const class GALGAS_genericExtensionMethodListMap constinArgument4,
+                                                       const class GALGAS_unifiedTypeMap constinArgument5,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Routine 'checkCategoryMethodDefinitionForClass'                                   *
+//                                  Routine 'checkExtensionMethodDefinitionForClass'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkCategoryMethodDefinitionForClass (const class GALGAS_string constinArgument0,
-                                                    const class GALGAS_string constinArgument1,
-                                                    const class GALGAS_lstring constinArgument2,
-                                                    const class GALGAS_descendantClassListMap constinArgument3,
-                                                    const class GALGAS_genericCategoryMethodListMap constinArgument4,
-                                                    const class GALGAS_unifiedTypeMap constinArgument5,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+void routine_checkExtensionMethodDefinitionForClass (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     const class GALGAS_lstring constinArgument2,
+                                                     const class GALGAS_descendantClassListMap constinArgument3,
+                                                     const class GALGAS_genericExtensionMethodListMap constinArgument4,
+                                                     const class GALGAS_unifiedTypeMap constinArgument5,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Routine 'checkCategoryGetterDefinitionForClass'                                   *
+//                                  Routine 'checkExtensionGetterDefinitionForClass'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkCategoryGetterDefinitionForClass (const class GALGAS_string constinArgument0,
-                                                    const class GALGAS_string constinArgument1,
-                                                    const class GALGAS_lstring constinArgument2,
-                                                    const class GALGAS_descendantClassListMap constinArgument3,
-                                                    const class GALGAS_genericCategoryMethodListMap constinArgument4,
-                                                    const class GALGAS_unifiedTypeMap constinArgument5,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
+void routine_checkExtensionGetterDefinitionForClass (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     const class GALGAS_lstring constinArgument2,
+                                                     const class GALGAS_descendantClassListMap constinArgument3,
+                                                     const class GALGAS_genericExtensionMethodListMap constinArgument4,
+                                                     const class GALGAS_unifiedTypeMap constinArgument5,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Extension method '@semanticDeclarationAST buildCategoryListMaps'                           *
+//                          Extension method '@semanticDeclarationAST buildExtensionListMaps'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps) (const class cPtr_semanticDeclarationAST * inObject,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument0,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument1,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument2,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument3,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument4,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument5,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument6,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument7,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument8,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument9,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument10,
-                                                                                      class GALGAS_genericCategoryMethodListMap & ioArgument11,
-                                                                                      class C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticDeclarationAST_buildExtensionListMaps) (const class cPtr_semanticDeclarationAST * inObject,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument0,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument1,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument2,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument3,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument4,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument5,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument6,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument7,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument8,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument9,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument10,
+                                                                                        class GALGAS_genericExtensionMethodListMap & ioArgument11,
+                                                                                        class C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_buildCategoryListMaps (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps inMethod) ;
+void enterExtensionMethod_buildExtensionListMaps (const int32_t inClassIndex,
+                                                  extensionMethodSignature_semanticDeclarationAST_buildExtensionListMaps inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_buildCategoryListMaps (const class cPtr_semanticDeclarationAST * inObject,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryModifierListMapAST,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryMethodListMapAST,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryGetterListMap,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_buildExtensionListMaps (const class cPtr_semanticDeclarationAST * inObject,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionModifierListMapAST,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionGetterListMap,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

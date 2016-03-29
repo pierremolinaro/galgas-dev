@@ -400,7 +400,7 @@ rule <declaration_with_private>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                                            *
+#A B S T R A C T    E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -412,10 +412,10 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $abstract$
   $method$
-  $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryMethod
-  $identifier$ ?var  @lstring mMethodName indexing abstractCategoryMethodDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionMethod
+  $identifier$ ?var  @lstring mMethodName indexing abstractExtensionMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@abstractCategoryMethodAST.new {
+  ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -424,7 +424,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    O V E R R I D E    A B S T R A C T    C A T E G O R Y    M E T H O D   D E C L A R A T I O N                      *
+#    O V E R R I D E    A B S T R A C T    E X T E N S I O N    M E T H O D   D E C L A R A T I O N                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -437,10 +437,10 @@ rule <declaration>
   $override$
   $abstract$
   $method$
-  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryMethod
-  $identifier$ ?var  @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+  $identifier$ ?var  @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryMethodAST.new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -460,14 +460,14 @@ rule <declaration>
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $method$
-  $type_name$ ?var  @lstring className indexing typeReferenceCategoryMethod
+  $type_name$ ?var  @lstring className indexing typeReferenceExtensionMethod
   $identifier$ ?var  @lstring mMethodName indexing categoryMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let endOfMethodLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryMethodAST.new {
+  ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -478,7 +478,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N                                           *
+#O V E R R I D I N G   E X T E N S I O N   M E T H O D   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -490,14 +490,14 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $override$
   $method$
-  $type_name$ ?var  @lstring className indexing typeReferenceOverrideCategoryMethodDefinition
-  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryMethodDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideExtensionMethodDefinition
+  $identifier$ ?var  @lstring mMethodName indexing overrideExtensionMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfMethodLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryMethodAST.new {
+  ioDeclarations.mDeclarationList += !@overridingExtensionMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -508,7 +508,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                            *
+#A B S T R A C T    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -521,13 +521,13 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mGetterName indexing abstractCategoryGetterDefinition
+  $identifier$ ?var  @lstring mGetterName indexing abstractExtensionGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@abstractCategoryGetterAST.new {
+  ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
     !false # Is not predefined
     !className
     !mGetterName
@@ -537,7 +537,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                                           *
+#    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -558,7 +558,7 @@ rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryGetterAST.new {
+  ioDeclarations.mDeclarationList += !@extensionGetterAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -571,7 +571,7 @@ rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   G E T T E R   D E C L A R A T I O N                                           *
+#O V E R R I D I N G   E X T E N S I O N   G E T T E R   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -584,7 +584,7 @@ rule <declaration>
   $override$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryGetterDefinition
+  $identifier$ ?var  @lstring mMethodName indexing overrideExtensionGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -594,7 +594,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryGetterAST.new {
+  ioDeclarations.mDeclarationList += !@overridingExtensionGetterAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -607,7 +607,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                   *
+#   O V E R R I D I N G    A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -621,13 +621,13 @@ rule <declaration>
   $abstract$
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mGetterName indexing overrideAbstractCategoryGetterDefinition
+  $identifier$ ?var  @lstring mGetterName indexing overrideAbstractExtensionGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryGetterAST.new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
     !false # Is not predefined
     !className
     !mGetterName
@@ -637,7 +637,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                    *
+#    A B S T R A C T    E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -649,10 +649,10 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $abstract$
   $setter$
-  $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryModifier
-  $identifier$ ?var  @lstring modifierName indexing abstractCategoryModifierDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionModifier
+  $identifier$ ?var  @lstring modifierName indexing abstractExtensionModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@abstractCategoryModifierAST.new {
+  ioDeclarations.mDeclarationList += !@abstractExtensionModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -661,7 +661,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                 *
+#    O V E R R I D E    A B S T R A C T    E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -674,10 +674,10 @@ rule <declaration>
   $override$
   $abstract$
   $setter$
-  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryModifier
-  $identifier$ ?var  @lstring modifierName indexing overrideAbstractCategoryModifierDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionModifier
+  $identifier$ ?var  @lstring modifierName indexing overrideAbstractExtensionModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryModifierAST.new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractExtensionModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -686,7 +686,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                                       *
+#    E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -697,14 +697,14 @@ rule <declaration>
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $setter$
-  $type_name$ ?var  @lstring className indexing typeReferenceCategoryModifier
+  $type_name$ ?var  @lstring className indexing typeReferenceExtensionModifier
   $identifier$ ?var  @lstring modifierName indexing categoryModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfModifierLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryModifierAST.new {
+  ioDeclarations.mDeclarationList += !@extensionModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -715,7 +715,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N                                    *
+#   O V E R R I D I N G   E X T E N S I O N   M O D I F I E R   D E C L A R A T I O N                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -727,14 +727,14 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $override$
   $setter$
-  $type_name$ ?var  @lstring className indexing typeReferenceOverrideCategoryModifierDefinition
-  $identifier$ ?var  @lstring modifierName indexing overrideCategoryModifierDefinition
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideExtensionModifierDefinition
+  $identifier$ ?var  @lstring modifierName indexing overrideExtensionModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfModifierLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryModifierAST.new {
+  ioDeclarations.mDeclarationList += !@overridingExtensionModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName

@@ -59,10 +59,10 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
-  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in mAttributeList do
@@ -94,9 +94,9 @@ override method @sortedListDeclarationAST addAssociatedElement
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
 
 override method @sortedListDeclarationAST enterInSemanticContext
-  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
-  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
@@ -188,9 +188,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
   enumerationVariants += !"down"
 #--- Add Categories
   addCategories (
-    !inCategoryMethodMapForBuildingContext
-    !inCategoryGetterMapForBuildingContext
-    !inCategoryModifierMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
     !?ioSemanticContext
     !mSortedListTypeName
     !?getterMap

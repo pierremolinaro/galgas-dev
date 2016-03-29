@@ -1096,33 +1096,33 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_templateExpressionAST_templateExpressionAnalysis> gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis ;
+static TC_UniqueArray <extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis> gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateExpressionAnalysis (const int32_t inClassIndex,
-                                                     categoryMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) {
-  gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_templateExpressionAnalysis (const int32_t inClassIndex,
+                                                      extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) {
+  gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_templateExpressionAST_templateExpressionAnalysis (void) {
-  gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis.free () ;
+static void freeExtensionMethod_templateExpressionAST_templateExpressionAnalysis (void) {
+  gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_templateExpressionAST_templateExpressionAnalysis (NULL,
-                                                                             freeCategoryMethod_templateExpressionAST_templateExpressionAnalysis) ;
+                                                                             freeExtensionMethod_templateExpressionAST_templateExpressionAnalysis) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
-                                                    const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                     const GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                     GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outExpression.drop () ;
 //--- Find method
@@ -1130,19 +1130,19 @@ void callCategoryMethod_templateExpressionAnalysis (const cPtr_templateExpressio
     macroValidSharedObject (inObject, cPtr_templateExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_templateExpressionAST_templateExpressionAnalysis f = NULL ;
-    if (classIndex < gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
-      f = gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis (classIndex COMMA_HERE) ;
+    extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis f = NULL ;
+    if (classIndex < gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
+      f = gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
-           f = gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.count ()) {
+           f = gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_templateExpressionAST_templateExpressionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -1158,52 +1158,52 @@ void callCategoryMethod_templateExpressionAnalysis (const cPtr_templateExpressio
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_templateInstructionAST_templateInstructionAnalysis> gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis ;
+static TC_UniqueArray <extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis> gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                      categoryMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) {
-  gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
+                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) {
+  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_templateInstructionAST_templateInstructionAnalysis (void) {
-  gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis.free () ;
+static void freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis (void) {
+  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_templateInstructionAST_templateInstructionAnalysis (NULL,
-                                                                               freeCategoryMethod_templateInstructionAST_templateInstructionAnalysis) ;
+                                                                               freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                     const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                     GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {
+void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
+                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
+                                                      GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_templateInstructionAST_templateInstructionAnalysis f = NULL ;
-    if (classIndex < gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-      f = gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis (classIndex COMMA_HERE) ;
+    extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis f = NULL ;
+    if (classIndex < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
+      f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-           f = gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
+           f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -1219,55 +1219,55 @@ void callCategoryMethod_templateInstructionAnalysis (const cPtr_templateInstruct
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_templateInstructionForGeneration_templateCodeGeneration> gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration ;
+static TC_UniqueArray <extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration> gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateCodeGeneration (const int32_t inClassIndex,
-                                                 categoryMethodSignature_templateInstructionForGeneration_templateCodeGeneration inMethod) {
-  gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_templateCodeGeneration (const int32_t inClassIndex,
+                                                  extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration inMethod) {
+  gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_templateInstructionForGeneration_templateCodeGeneration (void) {
-  gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration.free () ;
+static void freeExtensionMethod_templateInstructionForGeneration_templateCodeGeneration (void) {
+  gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_templateInstructionForGeneration_templateCodeGeneration (NULL,
-                                                                                    freeCategoryMethod_templateInstructionForGeneration_templateCodeGeneration) ;
+                                                                                    freeExtensionMethod_templateInstructionForGeneration_templateCodeGeneration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_templateCodeGeneration (const cPtr_templateInstructionForGeneration * inObject,
-                                                GALGAS_string & io_ioGeneratedCode,
-                                                GALGAS_stringset & io_ioInclusionSet,
-                                                GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                GALGAS_bool & io_ioUseColumnMarker,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void callExtensionMethod_templateCodeGeneration (const cPtr_templateInstructionForGeneration * inObject,
+                                                 GALGAS_string & io_ioGeneratedCode,
+                                                 GALGAS_stringset & io_ioInclusionSet,
+                                                 GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                 GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                 GALGAS_bool & io_ioUseColumnMarker,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_templateInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_templateInstructionForGeneration_templateCodeGeneration f = NULL ;
-    if (classIndex < gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
-      f = gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration (classIndex COMMA_HERE) ;
+    extensionMethodSignature_templateInstructionForGeneration_templateCodeGeneration f = NULL ;
+    if (classIndex < gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
+      f = gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
-           f = gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.count ()) {
+           f = gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_templateInstructionForGeneration_templateCodeGeneration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -1473,51 +1473,51 @@ GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalExpressionAST_generateConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateConditionCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalExpressionAST_generateConditionCode> gExtensionGetterTable_lexicalExpressionAST_generateConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateConditionCode (const int32_t inClassIndex,
-                                                categoryGetterSignature_lexicalExpressionAST_generateConditionCode inGetter) {
-  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateConditionCode (const int32_t inClassIndex,
+                                                 enterExtensionGetter_lexicalExpressionAST_generateConditionCode inGetter) {
+  gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalExpressionAST_generateConditionCode (void) {
-  gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.free () ;
+static void freeExtensionGetter_lexicalExpressionAST_generateConditionCode (void) {
+  gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalExpressionAST_generateConditionCode (NULL,
-                                                                       freeCategoryGetter_lexicalExpressionAST_generateConditionCode) ;
+                                                                       freeExtensionGetter_lexicalExpressionAST_generateConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                        GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
+                                                         GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalExpressionAST_generateConditionCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
-      f = gCategoryGetterTable_lexicalExpressionAST_generateConditionCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalExpressionAST_generateConditionCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
+      f = gExtensionGetterTable_lexicalExpressionAST_generateConditionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
-           f = gCategoryGetterTable_lexicalExpressionAST_generateConditionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.count ()) {
+           f = gExtensionGetterTable_lexicalExpressionAST_generateConditionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1534,50 +1534,50 @@ GALGAS_string callCategoryGetter_generateConditionCode (const cPtr_lexicalExpres
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
+static TC_UniqueArray <enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                            categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inGetter) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
+                                                             enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inGetter) {
+  gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (void) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.free () ;
+static void freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (void) {
+  gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (NULL,
-                                                                                                             freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
+                                                                                                             freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
-      f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
+      f = gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
-           f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.count ()) {
+           f = gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1594,50 +1594,50 @@ GALGAS_string callCategoryGetter_generateRoutineOrFunctionArgument (const cPtr_l
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
+static TC_UniqueArray <enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateRoutineArgument (const int32_t inClassIndex,
-                                                  categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inGetter) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateRoutineArgument (const int32_t inClassIndex,
+                                                   enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inGetter) {
+  gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (void) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.free () ;
+static void freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (void) {
+  gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (NULL,
-                                                                                            freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
+                                                                                            freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument f = NULL ;
-    if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
-      f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (classIndex COMMA_HERE) ;
+    enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument f = NULL ;
+    if (classIndex < gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
+      f = gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
-           f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.count ()) {
+           f = gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1654,51 +1654,51 @@ GALGAS_string callCategoryGetter_generateRoutineArgument (const cPtr_abstractLex
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode> gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateDefaultSendCode (const int32_t inClassIndex,
-                                                  categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode inGetter) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateDefaultSendCode (const int32_t inClassIndex,
+                                                   enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode inGetter) {
+  gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
+static void freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
+  gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
-                                                                                freeCategoryGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
+                                                                                freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                          GALGAS_string in_inScannerClassName,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+                                                           GALGAS_string in_inScannerClassName,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-      f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
+      f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-           f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
+           f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1715,52 +1715,52 @@ GALGAS_string callCategoryGetter_generateDefaultSendCode (const cPtr_lexicalSend
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalInstructionAST_generateInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalInstructionAST_generateInstructionCode> gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateInstructionCode (const int32_t inClassIndex,
-                                                  categoryGetterSignature_lexicalInstructionAST_generateInstructionCode inGetter) {
-  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateInstructionCode (const int32_t inClassIndex,
+                                                   enterExtensionGetter_lexicalInstructionAST_generateInstructionCode inGetter) {
+  gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalInstructionAST_generateInstructionCode (void) {
-  gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.free () ;
+static void freeExtensionGetter_lexicalInstructionAST_generateInstructionCode (void) {
+  gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalInstructionAST_generateInstructionCode (NULL,
-                                                                          freeCategoryGetter_lexicalInstructionAST_generateInstructionCode) ;
+                                                                          freeExtensionGetter_lexicalInstructionAST_generateInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                          GALGAS_string in_inScannerClassName,
-                                                          GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+                                                           GALGAS_string in_inScannerClassName,
+                                                           GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalInstructionAST_generateInstructionCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
-      f = gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalInstructionAST_generateInstructionCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
+      f = gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
-           f = gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.count ()) {
+           f = gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1777,52 +1777,52 @@ GALGAS_string callCategoryGetter_generateInstructionCode (const cPtr_lexicalInst
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_abstractLexicalRuleAST_generateCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCode ;
+static TC_UniqueArray <enterExtensionGetter_abstractLexicalRuleAST_generateCode> gExtensionGetterTable_abstractLexicalRuleAST_generateCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCode (const int32_t inClassIndex,
-                                       categoryGetterSignature_abstractLexicalRuleAST_generateCode inGetter) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCode (const int32_t inClassIndex,
+                                        enterExtensionGetter_abstractLexicalRuleAST_generateCode inGetter) {
+  gExtensionGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_abstractLexicalRuleAST_generateCode (void) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCode.free () ;
+static void freeExtensionGetter_abstractLexicalRuleAST_generateCode (void) {
+  gExtensionGetterTable_abstractLexicalRuleAST_generateCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCode (NULL,
-                                                                freeCategoryGetter_abstractLexicalRuleAST_generateCode) ;
+                                                                freeExtensionGetter_abstractLexicalRuleAST_generateCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
-                                               GALGAS_string in_inScannerClassName,
-                                               GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                GALGAS_string in_inScannerClassName,
+                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRuleAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_abstractLexicalRuleAST_generateCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
-      f = gCategoryGetterTable_abstractLexicalRuleAST_generateCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_abstractLexicalRuleAST_generateCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
+      f = gExtensionGetterTable_abstractLexicalRuleAST_generateCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
-           f = gCategoryGetterTable_abstractLexicalRuleAST_generateCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_abstractLexicalRuleAST_generateCode.count ()) {
+           f = gExtensionGetterTable_abstractLexicalRuleAST_generateCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1839,51 +1839,51 @@ GALGAS_string callCategoryGetter_generateCode (const cPtr_abstractLexicalRuleAST
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode> gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode> gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaConditionCode (const int32_t inClassIndex,
-                                                     categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode inGetter) {
-  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaConditionCode (const int32_t inClassIndex,
+                                                      enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode inGetter) {
+  gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode (void) {
-  gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.free () ;
+static void freeExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode (void) {
+  gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalExpressionAST_generateCocoaConditionCode (NULL,
-                                                                            freeCategoryGetter_lexicalExpressionAST_generateCocoaConditionCode) ;
+                                                                            freeExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                             GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
+                                                              GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalExpressionAST_generateCocoaConditionCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
-      f = gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
+      f = gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
-           f = gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.count ()) {
+           f = gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1900,50 +1900,50 @@ GALGAS_string callCategoryGetter_generateCocoaConditionCode (const cPtr_lexicalE
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
+static TC_UniqueArray <enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
-                                                                 categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inGetter) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
+                                                                  enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inGetter) {
+  gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (void) {
-  gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.free () ;
+static void freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (void) {
+  gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (NULL,
-                                                                                                                  freeCategoryGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
+                                                                                                                  freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
-      f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
+      f = gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
-           f = gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.count ()) {
+           f = gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -1960,51 +1960,51 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineOrFunctionArgument (const c
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
+static TC_UniqueArray <enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
-                                                       categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inGetter) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
+                                                        enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inGetter) {
+  gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (void) {
-  gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.free () ;
+static void freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (void) {
+  gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (NULL,
-                                                                                                 freeCategoryGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
+                                                                                                 freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                               GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument f = NULL ;
-    if (classIndex < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
-      f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (classIndex COMMA_HERE) ;
+    enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument f = NULL ;
+    if (classIndex < gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
+      f = gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
-           f = gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.count ()) {
+           f = gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -2021,51 +2021,51 @@ GALGAS_string callCategoryGetter_generateCocoaRoutineArgument (const cPtr_abstra
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
-                                                       categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inGetter) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
+                                                        enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inGetter) {
+  gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (void) {
-  gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.free () ;
+static void freeExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (void) {
+  gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (NULL,
-                                                                                     freeCategoryGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
+                                                                                     freeExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                               GALGAS_string in_inScannerClassName,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
+                                                                GALGAS_string in_inScannerClassName,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
-      f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
+      f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
-           f = gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.count ()) {
+           f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -2082,52 +2082,52 @@ GALGAS_string callCategoryGetter_generateCocoaDefaultSendCode (const cPtr_lexica
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode> gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
+static TC_UniqueArray <enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode> gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
-                                                       categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode inGetter) {
-  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
+                                                        enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode inGetter) {
+  gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCode (void) {
-  gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.free () ;
+static void freeExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode (void) {
+  gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalInstructionAST_generateCocoaInstructionCode (NULL,
-                                                                               freeCategoryGetter_lexicalInstructionAST_generateCocoaInstructionCode) ;
+                                                                               freeExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                               GALGAS_string in_inScannerClassName,
-                                                               GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
+                                                                GALGAS_string in_inScannerClassName,
+                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_lexicalInstructionAST_generateCocoaInstructionCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
-      f = gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
+      f = gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
-           f = gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.count ()) {
+           f = gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -2144,52 +2144,52 @@ GALGAS_string callCategoryGetter_generateCocoaInstructionCode (const cPtr_lexica
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode> gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
+static TC_UniqueArray <enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode> gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_generateCocoaCode (const int32_t inClassIndex,
-                                            categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode inGetter) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_generateCocoaCode (const int32_t inClassIndex,
+                                             enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode inGetter) {
+  gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode (void) {
-  gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.free () ;
+static void freeExtensionGetter_abstractLexicalRuleAST_generateCocoaCode (void) {
+  gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCocoaCode (NULL,
-                                                                     freeCategoryGetter_abstractLexicalRuleAST_generateCocoaCode) ;
+                                                                     freeExtensionGetter_abstractLexicalRuleAST_generateCocoaCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
-                                                    GALGAS_string in_inScannerClassName,
-                                                    GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
+                                                     GALGAS_string in_inScannerClassName,
+                                                     GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRuleAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_abstractLexicalRuleAST_generateCocoaCode f = NULL ;
-    if (classIndex < gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
-      f = gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode (classIndex COMMA_HERE) ;
+    enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode f = NULL ;
+    if (classIndex < gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
+      f = gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
-           f = gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.count ()) {
+           f = gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -2764,51 +2764,51 @@ GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObjec
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction> gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction ;
+static TC_UniqueArray <extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction> gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalDefaultAction (const int32_t inClassIndex,
-                                                    categoryMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction inMethod) {
-  gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalDefaultAction (const int32_t inClassIndex,
+                                                     extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction inMethod) {
+  gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction (void) {
-  gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.free () ;
+static void freeExtensionMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction (void) {
+  gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction (NULL,
-                                                                                  freeCategoryMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction) ;
+                                                                                  freeExtensionMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                   GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaultActionAST * inObject,
+                                                    GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction f = NULL ;
-    if (classIndex < gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.count ()) {
-      f = gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction f = NULL ;
+    if (classIndex < gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.count ()) {
+      f = gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.count ()) {
-           f = gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.count ()) {
+           f = gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -2824,51 +2824,51 @@ void callCategoryMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefault
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_lexicalExpressionAST_checkLexicalExpression> gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression ;
+static TC_UniqueArray <extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression> gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalExpression (const int32_t inClassIndex,
-                                                 categoryMethodSignature_lexicalExpressionAST_checkLexicalExpression inMethod) {
-  gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalExpression (const int32_t inClassIndex,
+                                                  extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression inMethod) {
+  gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_lexicalExpressionAST_checkLexicalExpression (void) {
-  gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression.free () ;
+static void freeExtensionMethod_lexicalExpressionAST_checkLexicalExpression (void) {
+  gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_lexicalExpressionAST_checkLexicalExpression (NULL,
-                                                                        freeCategoryMethod_lexicalExpressionAST_checkLexicalExpression) ;
+                                                                        freeExtensionMethod_lexicalExpressionAST_checkLexicalExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
-                                                GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
+                                                 GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_lexicalExpressionAST_checkLexicalExpression f = NULL ;
-    if (classIndex < gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression.count ()) {
-      f = gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression (classIndex COMMA_HERE) ;
+    extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression f = NULL ;
+    if (classIndex < gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.count ()) {
+      f = gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression.count ()) {
-           f = gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.count ()) {
+           f = gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_lexicalExpressionAST_checkLexicalExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -2884,52 +2884,52 @@ void callCategoryMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument> gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument ;
+static TC_UniqueArray <extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument> gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalFunctionCallArgument (const int32_t inClassIndex,
-                                                           categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument inMethod) {
-  gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalFunctionCallArgument (const int32_t inClassIndex,
+                                                            extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument inMethod) {
+  gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (void) {
-  gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.free () ;
+static void freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (void) {
+  gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (NULL,
-                                                                                                            freeCategoryMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument) ;
+                                                                                                            freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                          GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                           GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument f = NULL ;
-    if (classIndex < gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.count ()) {
-      f = gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (classIndex COMMA_HERE) ;
+    extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument f = NULL ;
+    if (classIndex < gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.count ()) {
+      f = gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.count ()) {
-           f = gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.count ()) {
+           f = gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -2945,52 +2945,52 @@ void callCategoryMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRout
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument> gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument ;
+static TC_UniqueArray <extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument> gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
-                                                          categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument inMethod) {
-  gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
+                                                           extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument inMethod) {
+  gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (void) {
-  gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.free () ;
+static void freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (void) {
+  gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (NULL,
-                                                                                                           freeCategoryMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument) ;
+                                                                                                           freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
-                                                         GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                         GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
+                                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument f = NULL ;
-    if (classIndex < gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.count ()) {
-      f = gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (classIndex COMMA_HERE) ;
+    extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument f = NULL ;
+    if (classIndex < gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.count ()) {
+      f = gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.count ()) {
-           f = gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.count ()) {
+           f = gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -3006,53 +3006,53 @@ void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRouti
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument> gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument ;
+static TC_UniqueArray <extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument> gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
-                                                          categoryMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument inMethod) {
-  gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
+                                                           extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument inMethod) {
+  gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (void) {
-  gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.free () ;
+static void freeExtensionMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (void) {
+  gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (NULL,
-                                                                                                    freeCategoryMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument) ;
+                                                                                                    freeExtensionMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                         GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                         GALGAS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
-                                                         GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
+                                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                          GALGAS_lexicalArgumentModeAST in_inLexicalRoutineFormalArgumentMode,
+                                                          GALGAS_lexicalTypeEnum in_inLexicalRoutineFormalArgumentType,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRoutineActualArgumentAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.count ()) {
-      f = gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.count ()) {
+      f = gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.count ()) {
-           f = gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.count ()) {
+           f = gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -3068,52 +3068,52 @@ void callCategoryMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexi
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_lexicalInstructionAST_checkLexicalInstruction> gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction ;
+static TC_UniqueArray <extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction> gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalInstruction (const int32_t inClassIndex,
-                                                  categoryMethodSignature_lexicalInstructionAST_checkLexicalInstruction inMethod) {
-  gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalInstruction (const int32_t inClassIndex,
+                                                   extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction inMethod) {
+  gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_lexicalInstructionAST_checkLexicalInstruction (void) {
-  gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction.free () ;
+static void freeExtensionMethod_lexicalInstructionAST_checkLexicalInstruction (void) {
+  gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_lexicalInstructionAST_checkLexicalInstruction (NULL,
-                                                                          freeCategoryMethod_lexicalInstructionAST_checkLexicalInstruction) ;
+                                                                          freeExtensionMethod_lexicalInstructionAST_checkLexicalInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
-                                                 GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                                 GALGAS_lexicalTagMap & io_ioTagMap,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
+                                                  GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                                  GALGAS_lexicalTagMap & io_ioTagMap,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_lexicalInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_lexicalInstructionAST_checkLexicalInstruction f = NULL ;
-    if (classIndex < gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction.count ()) {
-      f = gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction f = NULL ;
+    if (classIndex < gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.count ()) {
+      f = gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction.count ()) {
-           f = gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.count ()) {
+           f = gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_lexicalInstructionAST_checkLexicalInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -3129,51 +3129,51 @@ void callCategoryMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAS
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractLexicalRuleAST_checkLexicalRule> gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule ;
+static TC_UniqueArray <extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule> gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRule (const int32_t inClassIndex,
-                                           categoryMethodSignature_abstractLexicalRuleAST_checkLexicalRule inMethod) {
-  gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkLexicalRule (const int32_t inClassIndex,
+                                            extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule inMethod) {
+  gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractLexicalRuleAST_checkLexicalRule (void) {
-  gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule.free () ;
+static void freeExtensionMethod_abstractLexicalRuleAST_checkLexicalRule (void) {
+  gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractLexicalRuleAST_checkLexicalRule (NULL,
-                                                                    freeCategoryMethod_abstractLexicalRuleAST_checkLexicalRule) ;
+                                                                    freeExtensionMethod_abstractLexicalRuleAST_checkLexicalRule) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkLexicalRule (const cPtr_abstractLexicalRuleAST * inObject,
-                                          GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
-                                          C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkLexicalRule (const cPtr_abstractLexicalRuleAST * inObject,
+                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractLexicalRuleAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractLexicalRuleAST_checkLexicalRule f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule.count ()) {
-      f = gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.count ()) {
+      f = gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule.count ()) {
-           f = gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.count ()) {
+           f = gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractLexicalRuleAST_checkLexicalRule.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4068,40 +4068,40 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getConstructorMap> gCategoryMethodTable_predefinedTypeAST_getConstructorMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getConstructorMap> gExtensionMethodTable_predefinedTypeAST_getConstructorMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getConstructorMap (const int32_t inClassIndex,
-                                            categoryMethodSignature_predefinedTypeAST_getConstructorMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getConstructorMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getConstructorMap (const int32_t inClassIndex,
+                                             extensionMethodSignature_predefinedTypeAST_getConstructorMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getConstructorMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getConstructorMap (const cPtr_predefinedTypeAST * inObject,
-                                           GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                           GALGAS_constructorMap & out_outConstructorMap,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getConstructorMap (const cPtr_predefinedTypeAST * inObject,
+                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            GALGAS_constructorMap & out_outConstructorMap,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
   out_outConstructorMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getConstructorMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getConstructorMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getConstructorMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getConstructorMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getConstructorMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getConstructorMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getConstructorMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getConstructorMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getConstructorMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getConstructorMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getConstructorMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getConstructorMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4113,30 +4113,30 @@ void callCategoryMethod_getConstructorMap (const cPtr_predefinedTypeAST * inObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getConstructorMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                                GALGAS_constructorMap & outArgument_outConstructorMap,
-                                                                C_Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getConstructorMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                 GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                                 GALGAS_constructorMap & outArgument_outConstructorMap,
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 444)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getConstructorMap (void) {
-  enterCategoryMethod_getConstructorMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                         categoryMethod_predefinedTypeAST_getConstructorMap) ;
+static void defineExtensionMethod_predefinedTypeAST_getConstructorMap (void) {
+  enterExtensionMethod_getConstructorMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                          extensionMethod_predefinedTypeAST_getConstructorMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getConstructorMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getConstructorMap.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getConstructorMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getConstructorMap.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getConstructorMap (defineCategoryMethod_predefinedTypeAST_getConstructorMap,
-                                                                freeCategoryMethod_predefinedTypeAST_getConstructorMap) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getConstructorMap (defineExtensionMethod_predefinedTypeAST_getConstructorMap,
+                                                                freeExtensionMethod_predefinedTypeAST_getConstructorMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4144,40 +4144,40 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getConstructorMap (defineCategoryMe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getGetterMap> gCategoryMethodTable_predefinedTypeAST_getGetterMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getGetterMap> gExtensionMethodTable_predefinedTypeAST_getGetterMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getGetterMap (const int32_t inClassIndex,
-                                       categoryMethodSignature_predefinedTypeAST_getGetterMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getGetterMap (const int32_t inClassIndex,
+                                        extensionMethodSignature_predefinedTypeAST_getGetterMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
-                                      GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                      GALGAS_getterMap & out_outGetterMap,
-                                      C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
+                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       GALGAS_getterMap & out_outGetterMap,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
   out_outGetterMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getGetterMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getGetterMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getGetterMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getGetterMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getGetterMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getGetterMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getGetterMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getGetterMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getGetterMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getGetterMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getGetterMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4189,30 +4189,30 @@ void callCategoryMethod_getGetterMap (const cPtr_predefinedTypeAST * inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getGetterMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                           GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                           GALGAS_getterMap & outArgument_outGetterMap,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getGetterMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                            GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                            GALGAS_getterMap & outArgument_outGetterMap,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 452)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getGetterMap (void) {
-  enterCategoryMethod_getGetterMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                    categoryMethod_predefinedTypeAST_getGetterMap) ;
+static void defineExtensionMethod_predefinedTypeAST_getGetterMap (void) {
+  enterExtensionMethod_getGetterMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                     extensionMethod_predefinedTypeAST_getGetterMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getGetterMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getGetterMap.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getGetterMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getGetterMap.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineCategoryMethod_predefinedTypeAST_getGetterMap,
-                                                           freeCategoryMethod_predefinedTypeAST_getGetterMap) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineExtensionMethod_predefinedTypeAST_getGetterMap,
+                                                           freeExtensionMethod_predefinedTypeAST_getGetterMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4220,40 +4220,40 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineCategoryMethod_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getModifierMap> gCategoryMethodTable_predefinedTypeAST_getModifierMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getModifierMap> gExtensionMethodTable_predefinedTypeAST_getModifierMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getModifierMap (const int32_t inClassIndex,
-                                         categoryMethodSignature_predefinedTypeAST_getModifierMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getModifierMap (const int32_t inClassIndex,
+                                          extensionMethodSignature_predefinedTypeAST_getModifierMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
-                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                        GALGAS_setterMap & out_outModifierMap,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
+                                         GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                         GALGAS_setterMap & out_outModifierMap,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
   out_outModifierMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getModifierMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getModifierMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getModifierMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getModifierMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getModifierMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getModifierMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getModifierMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getModifierMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4265,30 +4265,30 @@ void callCategoryMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                             GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                             GALGAS_setterMap & outArgument_outModifierMap,
-                                                             C_Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                              GALGAS_setterMap & outArgument_outModifierMap,
+                                                              C_Compiler * /* inCompiler */
+                                                              COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outModifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 460)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getModifierMap (void) {
-  enterCategoryMethod_getModifierMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                      categoryMethod_predefinedTypeAST_getModifierMap) ;
+static void defineExtensionMethod_predefinedTypeAST_getModifierMap (void) {
+  enterExtensionMethod_getModifierMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                       extensionMethod_predefinedTypeAST_getModifierMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getModifierMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getModifierMap.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getModifierMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getModifierMap.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineCategoryMethod_predefinedTypeAST_getModifierMap,
-                                                             freeCategoryMethod_predefinedTypeAST_getModifierMap) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineExtensionMethod_predefinedTypeAST_getModifierMap,
+                                                             freeExtensionMethod_predefinedTypeAST_getModifierMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4296,40 +4296,40 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineCategoryMetho
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getInstanceMethodMap> gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getInstanceMethodMap> gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getInstanceMethodMap (const int32_t inClassIndex,
-                                               categoryMethodSignature_predefinedTypeAST_getInstanceMethodMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getInstanceMethodMap (const int32_t inClassIndex,
+                                                extensionMethodSignature_predefinedTypeAST_getInstanceMethodMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getInstanceMethodMap (const cPtr_predefinedTypeAST * inObject,
-                                              GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                              GALGAS_instanceMethodMap & out_outInstanceMethodMap,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getInstanceMethodMap (const cPtr_predefinedTypeAST * inObject,
+                                               GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                               GALGAS_instanceMethodMap & out_outInstanceMethodMap,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   out_outInstanceMethodMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getInstanceMethodMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getInstanceMethodMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4341,30 +4341,30 @@ void callCategoryMethod_getInstanceMethodMap (const cPtr_predefinedTypeAST * inO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                   GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                                   GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
-                                                                   C_Compiler * /* inCompiler */
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                    GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                                    GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
+                                                                    C_Compiler * /* inCompiler */
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 468)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getInstanceMethodMap (void) {
-  enterCategoryMethod_getInstanceMethodMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                            categoryMethod_predefinedTypeAST_getInstanceMethodMap) ;
+static void defineExtensionMethod_predefinedTypeAST_getInstanceMethodMap (void) {
+  enterExtensionMethod_getInstanceMethodMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                             extensionMethod_predefinedTypeAST_getInstanceMethodMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getInstanceMethodMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getInstanceMethodMap.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getInstanceMethodMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getInstanceMethodMap.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getInstanceMethodMap (defineCategoryMethod_predefinedTypeAST_getInstanceMethodMap,
-                                                                   freeCategoryMethod_predefinedTypeAST_getInstanceMethodMap) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getInstanceMethodMap (defineExtensionMethod_predefinedTypeAST_getInstanceMethodMap,
+                                                                   freeExtensionMethod_predefinedTypeAST_getInstanceMethodMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4372,40 +4372,40 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getInstanceMethodMap (defineCategor
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getClassMethodMap> gCategoryMethodTable_predefinedTypeAST_getClassMethodMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getClassMethodMap> gExtensionMethodTable_predefinedTypeAST_getClassMethodMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getClassMethodMap (const int32_t inClassIndex,
-                                            categoryMethodSignature_predefinedTypeAST_getClassMethodMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getClassMethodMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getClassMethodMap (const int32_t inClassIndex,
+                                             extensionMethodSignature_predefinedTypeAST_getClassMethodMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getClassMethodMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getClassMethodMap (const cPtr_predefinedTypeAST * inObject,
-                                           GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                           GALGAS_classMethodMap & out_outClassMethodMap,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getClassMethodMap (const cPtr_predefinedTypeAST * inObject,
+                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                            GALGAS_classMethodMap & out_outClassMethodMap,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
   out_outClassMethodMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getClassMethodMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getClassMethodMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getClassMethodMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getClassMethodMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getClassMethodMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getClassMethodMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getClassMethodMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getClassMethodMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getClassMethodMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getClassMethodMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getClassMethodMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getClassMethodMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4417,30 +4417,30 @@ void callCategoryMethod_getClassMethodMap (const cPtr_predefinedTypeAST * inObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getClassMethodMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                                GALGAS_classMethodMap & outArgument_outClassMethodMap,
-                                                                C_Compiler * /* inCompiler */
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getClassMethodMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                 GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                                 GALGAS_classMethodMap & outArgument_outClassMethodMap,
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 476)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getClassMethodMap (void) {
-  enterCategoryMethod_getClassMethodMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                         categoryMethod_predefinedTypeAST_getClassMethodMap) ;
+static void defineExtensionMethod_predefinedTypeAST_getClassMethodMap (void) {
+  enterExtensionMethod_getClassMethodMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                          extensionMethod_predefinedTypeAST_getClassMethodMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getClassMethodMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getClassMethodMap.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getClassMethodMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getClassMethodMap.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineCategoryMethod_predefinedTypeAST_getClassMethodMap,
-                                                                freeCategoryMethod_predefinedTypeAST_getClassMethodMap) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineExtensionMethod_predefinedTypeAST_getClassMethodMap,
+                                                                freeExtensionMethod_predefinedTypeAST_getClassMethodMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4448,39 +4448,39 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getClassMethodMap (defineCategoryMe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags> gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags ;
+static TC_UniqueArray <enterExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags> gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_getSupportedOperatorFlags (const int32_t inClassIndex,
-                                                    categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags inGetter) {
-  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_getSupportedOperatorFlags (const int32_t inClassIndex,
+                                                     enterExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags inGetter) {
+  gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint callCategoryGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+GALGAS_uint callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   GALGAS_uint result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_predefinedTypeAST_getSupportedOperatorFlags f = NULL ;
-    if (classIndex < gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
-      f = gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags (classIndex COMMA_HERE) ;
+    enterExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags f = NULL ;
+    if (classIndex < gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
+      f = gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
-           f = gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags.count ()) {
+           f = gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4505,21 +4505,21 @@ static GALGAS_uint extensionGetter_predefinedTypeAST_getSupportedOperatorFlags (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
-  enterCategoryGetter_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                                 extensionGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
+static void defineExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
+  enterExtensionGetter_getSupportedOperatorFlags (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                                  extensionGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
-  gCategoryGetterTable_predefinedTypeAST_getSupportedOperatorFlags.free () ;
+static void freeExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags (void) {
+  gExtensionGetterTable_predefinedTypeAST_getSupportedOperatorFlags.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_predefinedTypeAST_getSupportedOperatorFlags (defineCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags,
-                                                                        freeCategoryGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
+C_PrologueEpilogue gGetter_predefinedTypeAST_getSupportedOperatorFlags (defineExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags,
+                                                                        freeExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4527,40 +4527,40 @@ C_PrologueEpilogue gGetter_predefinedTypeAST_getSupportedOperatorFlags (defineCa
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getAddAssignArgumentList> gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getAddAssignArgumentList> gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getAddAssignArgumentList (const int32_t inClassIndex,
-                                                   categoryMethodSignature_predefinedTypeAST_getAddAssignArgumentList inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getAddAssignArgumentList (const int32_t inClassIndex,
+                                                    extensionMethodSignature_predefinedTypeAST_getAddAssignArgumentList inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getAddAssignArgumentList (const cPtr_predefinedTypeAST * inObject,
-                                                  GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                                  GALGAS_functionSignature & out_outAddAssignArgumentList,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getAddAssignArgumentList (const cPtr_predefinedTypeAST * inObject,
+                                                   GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                                   GALGAS_functionSignature & out_outAddAssignArgumentList,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
   out_outAddAssignArgumentList.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getAddAssignArgumentList f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getAddAssignArgumentList f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4572,30 +4572,30 @@ void callCategoryMethod_getAddAssignArgumentList (const cPtr_predefinedTypeAST *
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getAddAssignArgumentList (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                       GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                                       GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
-                                                                       C_Compiler * /* inCompiler */
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getAddAssignArgumentList (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                        GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                                        GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
+                                                                        C_Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 491)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getAddAssignArgumentList (void) {
-  enterCategoryMethod_getAddAssignArgumentList (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                                categoryMethod_predefinedTypeAST_getAddAssignArgumentList) ;
+static void defineExtensionMethod_predefinedTypeAST_getAddAssignArgumentList (void) {
+  enterExtensionMethod_getAddAssignArgumentList (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                                 extensionMethod_predefinedTypeAST_getAddAssignArgumentList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getAddAssignArgumentList (void) {
-  gCategoryMethodTable_predefinedTypeAST_getAddAssignArgumentList.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getAddAssignArgumentList (void) {
+  gExtensionMethodTable_predefinedTypeAST_getAddAssignArgumentList.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getAddAssignArgumentList (defineCategoryMethod_predefinedTypeAST_getAddAssignArgumentList,
-                                                                       freeCategoryMethod_predefinedTypeAST_getAddAssignArgumentList) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getAddAssignArgumentList (defineExtensionMethod_predefinedTypeAST_getAddAssignArgumentList,
+                                                                       freeExtensionMethod_predefinedTypeAST_getAddAssignArgumentList) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4603,24 +4603,24 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getAddAssignArgumentList (defineCat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getEnumerationList> gCategoryMethodTable_predefinedTypeAST_getEnumerationList ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getEnumerationList> gExtensionMethodTable_predefinedTypeAST_getEnumerationList ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_getEnumerationList (const int32_t inClassIndex,
-                                             categoryMethodSignature_predefinedTypeAST_getEnumerationList inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getEnumerationList.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getEnumerationList (const int32_t inClassIndex,
+                                              extensionMethodSignature_predefinedTypeAST_getEnumerationList inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getEnumerationList.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_getEnumerationList (const cPtr_predefinedTypeAST * inObject,
-                                            GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                            GALGAS_enumerationDescriptorList & out_outEnumerationList,
-                                            GALGAS_stringlist & out_outEnumerationVariant,
-                                            GALGAS_string & out_outEnumeratedType,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void callExtensionMethod_getEnumerationList (const cPtr_predefinedTypeAST * inObject,
+                                             GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                             GALGAS_enumerationDescriptorList & out_outEnumerationList,
+                                             GALGAS_stringlist & out_outEnumerationVariant,
+                                             GALGAS_string & out_outEnumeratedType,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
   out_outEnumerationList.drop () ;
   out_outEnumerationVariant.drop () ;
   out_outEnumeratedType.drop () ;
@@ -4628,19 +4628,19 @@ void callCategoryMethod_getEnumerationList (const cPtr_predefinedTypeAST * inObj
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getEnumerationList f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getEnumerationList.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getEnumerationList (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getEnumerationList f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getEnumerationList.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getEnumerationList (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getEnumerationList.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getEnumerationList (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getEnumerationList.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getEnumerationList (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_predefinedTypeAST_getEnumerationList.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getEnumerationList.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4652,34 +4652,34 @@ void callCategoryMethod_getEnumerationList (const cPtr_predefinedTypeAST * inObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_predefinedTypeAST_getEnumerationList (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                 GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                                 GALGAS_enumerationDescriptorList & outArgument_outEnumerationList,
-                                                                 GALGAS_stringlist & outArgument_outEnumerationVariant,
-                                                                 GALGAS_string & outArgument_outEnumeratedType,
-                                                                 C_Compiler * /* inCompiler */
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_predefinedTypeAST_getEnumerationList (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                  GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                                  GALGAS_enumerationDescriptorList & outArgument_outEnumerationList,
+                                                                  GALGAS_stringlist & outArgument_outEnumerationVariant,
+                                                                  GALGAS_string & outArgument_outEnumeratedType,
+                                                                  C_Compiler * /* inCompiler */
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 505)) ;
   outArgument_outEnumerationVariant = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 506)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_predefinedTypeAST_getEnumerationList (void) {
-  enterCategoryMethod_getEnumerationList (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                          categoryMethod_predefinedTypeAST_getEnumerationList) ;
+static void defineExtensionMethod_predefinedTypeAST_getEnumerationList (void) {
+  enterExtensionMethod_getEnumerationList (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                           extensionMethod_predefinedTypeAST_getEnumerationList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_predefinedTypeAST_getEnumerationList (void) {
-  gCategoryMethodTable_predefinedTypeAST_getEnumerationList.free () ;
+static void freeExtensionMethod_predefinedTypeAST_getEnumerationList (void) {
+  gExtensionMethodTable_predefinedTypeAST_getEnumerationList.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getEnumerationList (defineCategoryMethod_predefinedTypeAST_getEnumerationList,
-                                                                 freeCategoryMethod_predefinedTypeAST_getEnumerationList) ;
+C_PrologueEpilogue gMethod_predefinedTypeAST_getEnumerationList (defineExtensionMethod_predefinedTypeAST_getEnumerationList,
+                                                                 freeExtensionMethod_predefinedTypeAST_getEnumerationList) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4732,51 +4732,51 @@ GALGAS_string extensionGetter_commaSourceFile (const GALGAS_location & inObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext> gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext> gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterInstructionInSemanticContext (const int32_t inClassIndex,
-                                                            categoryMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext inMethod) {
-  gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterInstructionInSemanticContext (const int32_t inClassIndex,
+                                                             extensionMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext inMethod) {
+  gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticInstructionAST_enterInstructionInSemanticContext (void) {
-  gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.free () ;
+static void freeExtensionMethod_semanticInstructionAST_enterInstructionInSemanticContext (void) {
+  gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticInstructionAST_enterInstructionInSemanticContext (NULL,
-                                                                                     freeCategoryMethod_semanticInstructionAST_enterInstructionInSemanticContext) ;
+                                                                                     freeExtensionMethod_semanticInstructionAST_enterInstructionInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterInstructionInSemanticContext (const cPtr_semanticInstructionAST * inObject,
-                                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterInstructionInSemanticContext (const cPtr_semanticInstructionAST * inObject,
+                                                            GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.count ()) {
-      f = gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticInstructionAST_enterInstructionInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.count ()) {
+      f = gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.count ()) {
-           f = gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.count ()) {
+           f = gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticInstructionAST_enterInstructionInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4792,51 +4792,51 @@ void callCategoryMethod_enterInstructionInSemanticContext (const cPtr_semanticIn
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext> gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext> gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterExpressionInSemanticContext (const int32_t inClassIndex,
-                                                           categoryMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext inMethod) {
-  gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterExpressionInSemanticContext (const int32_t inClassIndex,
+                                                            extensionMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext inMethod) {
+  gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticExpressionAST_enterExpressionInSemanticContext (void) {
-  gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.free () ;
+static void freeExtensionMethod_semanticExpressionAST_enterExpressionInSemanticContext (void) {
+  gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticExpressionAST_enterExpressionInSemanticContext (NULL,
-                                                                                   freeCategoryMethod_semanticExpressionAST_enterExpressionInSemanticContext) ;
+                                                                                   freeExtensionMethod_semanticExpressionAST_enterExpressionInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                          GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                           GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.count ()) {
-      f = gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticExpressionAST_enterExpressionInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.count ()) {
+      f = gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.count ()) {
-           f = gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.count ()) {
+           f = gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticExpressionAST_enterExpressionInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -4852,14 +4852,14 @@ void callCategoryMethod_enterExpressionInSemanticContext (const cPtr_semanticExp
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_enterInstructionListInSemanticContext (const GALGAS_semanticInstructionListAST inObject,
-                                                           GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanticInstructionListAST inObject,
+                                                            GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
   cEnumerator_semanticInstructionListAST enumerator_3573 (temp_0, kEnumeration_up) ;
   while (enumerator_3573.hasCurrentObject ()) {
-    callCategoryMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3573.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
+    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3573.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
     enumerator_3573.gotoNextObject () ;
   }
 }
@@ -4871,14 +4871,14 @@ void categoryMethod_enterInstructionListInSemanticContext (const GALGAS_semantic
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionList inObject,
-                                            GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                            C_Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
+void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionList inObject,
+                                             GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                             C_Compiler * inCompiler
+                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
   cEnumerator_actualOutputExpressionList enumerator_3880 (temp_0, kEnumeration_up) ;
   while (enumerator_3880.hasCurrentObject ()) {
-    callCategoryMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_3880.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 68)) ;
+    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_3880.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 68)) ;
     enumerator_3880.gotoNextObject () ;
   }
 }
@@ -4890,50 +4890,50 @@ void categoryMethod_enterInSemanticContext (const GALGAS_actualOutputExpressionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationAST_keyRepresentation> gCategoryGetterTable_semanticDeclarationAST_keyRepresentation ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationAST_keyRepresentation> gExtensionGetterTable_semanticDeclarationAST_keyRepresentation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_keyRepresentation (const int32_t inClassIndex,
-                                            categoryGetterSignature_semanticDeclarationAST_keyRepresentation inGetter) {
-  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_keyRepresentation (const int32_t inClassIndex,
+                                             enterExtensionGetter_semanticDeclarationAST_keyRepresentation inGetter) {
+  gExtensionGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationAST_keyRepresentation (void) {
-  gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.free () ;
+static void freeExtensionGetter_semanticDeclarationAST_keyRepresentation (void) {
+  gExtensionGetterTable_semanticDeclarationAST_keyRepresentation.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_semanticDeclarationAST_keyRepresentation (NULL,
-                                                                     freeCategoryGetter_semanticDeclarationAST_keyRepresentation) ;
+                                                                     freeExtensionGetter_semanticDeclarationAST_keyRepresentation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationAST_keyRepresentation f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationAST_keyRepresentation (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationAST_keyRepresentation f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationAST_keyRepresentation (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationAST_keyRepresentation (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationAST_keyRepresentation.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationAST_keyRepresentation (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationAST_keyRepresentation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -4950,59 +4950,59 @@ GALGAS_string callCategoryGetter_keyRepresentation (const cPtr_semanticDeclarati
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_enterInSemanticContext> gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationAST_enterInSemanticContext> gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterInSemanticContext (const int32_t inClassIndex,
-                                                 categoryMethodSignature_semanticDeclarationAST_enterInSemanticContext inMethod) {
-  gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
+                                                  extensionMethodSignature_semanticDeclarationAST_enterInSemanticContext inMethod) {
+  gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationAST_enterInSemanticContext (void) {
-  gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext.free () ;
+static void freeExtensionMethod_semanticDeclarationAST_enterInSemanticContext (void) {
+  gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticDeclarationAST_enterInSemanticContext (NULL,
-                                                                          freeCategoryMethod_semanticDeclarationAST_enterInSemanticContext) ;
+                                                                          freeExtensionMethod_semanticDeclarationAST_enterInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
-                                                const GALGAS_categoryMethodMapForBuildingContext constin_inCategoryMethodMapForBuildingContext,
-                                                const GALGAS_categoryGetterMapForBuildingContext constin_inCategoryGetterMapForBuildingContext,
-                                                const GALGAS_categoryModifierMapForBuildingContext constin_inCategoryModifierMapForBuildingContext,
-                                                GALGAS_semanticContext & io_ioSemanticContext,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
+                                                 const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
+                                                 const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
+                                                 const GALGAS_extensionModifierMapForBuildingContext constin_inExtensionModifierMapForBuildingContext,
+                                                 GALGAS_semanticContext & io_ioSemanticContext,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationAST_enterInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationAST_enterInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationAST_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationAST_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inCategoryMethodMapForBuildingContext, constin_inCategoryGetterMapForBuildingContext, constin_inCategoryModifierMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionModifierMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -5102,60 +5102,60 @@ GALGAS_string extensionGetter_defaultConstructorName (const GALGAS_predefinedTyp
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_enterDeclarationInGraph> gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationAST_enterDeclarationInGraph> gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterDeclarationInGraph (const int32_t inClassIndex,
-                                                  categoryMethodSignature_semanticDeclarationAST_enterDeclarationInGraph inMethod) {
-  gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterDeclarationInGraph (const int32_t inClassIndex,
+                                                   extensionMethodSignature_semanticDeclarationAST_enterDeclarationInGraph inMethod) {
+  gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationAST_enterDeclarationInGraph (void) {
-  gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph.free () ;
+static void freeExtensionMethod_semanticDeclarationAST_enterDeclarationInGraph (void) {
+  gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticDeclarationAST_enterDeclarationInGraph (NULL,
-                                                                           freeCategoryMethod_semanticDeclarationAST_enterDeclarationInGraph) ;
+                                                                           freeExtensionMethod_semanticDeclarationAST_enterDeclarationInGraph) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
-                                                 GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
-                                                 GALGAS_categoryMethodMapForBuildingContext & io_ioCategoryMethodMapForBuildingContext,
-                                                 GALGAS_categoryGetterMapForBuildingContext & io_ioCategoryGetterMapForBuildingContext,
-                                                 GALGAS_categoryModifierMapForBuildingContext & io_ioCategoryModifierMapForBuildingContext,
-                                                 GALGAS_semanticDeclarationListAST & io_ioCategoryOverrideDefinitionList,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationAST * inObject,
+                                                  GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
+                                                  GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
+                                                  GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
+                                                  GALGAS_extensionModifierMapForBuildingContext & io_ioExtensionModifierMapForBuildingContext,
+                                                  GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationAST_enterDeclarationInGraph f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationAST_enterDeclarationInGraph f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationAST_enterDeclarationInGraph.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationAST_enterDeclarationInGraph.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioCategoryMethodMapForBuildingContext, io_ioCategoryGetterMapForBuildingContext, io_ioCategoryModifierMapForBuildingContext, io_ioCategoryOverrideDefinitionList, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioExtensionMethodMapForBuildingContext, io_ioExtensionGetterMapForBuildingContext, io_ioExtensionModifierMapForBuildingContext, io_ioExtensionOverrideDefinitionList, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -5166,38 +5166,38 @@ void callCategoryMethod_enterDeclarationInGraph (const cPtr_semanticDeclarationA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_addAssociatedElement> gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationAST_addAssociatedElement> gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_addAssociatedElement (const int32_t inClassIndex,
-                                               categoryMethodSignature_semanticDeclarationAST_addAssociatedElement inMethod) {
-  gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_addAssociatedElement (const int32_t inClassIndex,
+                                                extensionMethodSignature_semanticDeclarationAST_addAssociatedElement inMethod) {
+  gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_addAssociatedElement (const cPtr_semanticDeclarationAST * inObject,
-                                              GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void callExtensionMethod_addAssociatedElement (const cPtr_semanticDeclarationAST * inObject,
+                                               GALGAS_semanticDeclarationListAST & io_ioSemanticDeclarationList,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationAST_addAssociatedElement f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationAST_addAssociatedElement f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5209,28 +5209,28 @@ void callCategoryMethod_addAssociatedElement (const cPtr_semanticDeclarationAST 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationAST_addAssociatedElement (const cPtr_semanticDeclarationAST * /* inObject */,
-                                                                        GALGAS_semanticDeclarationListAST & /* ioArgument_ioSemanticDeclarationList */,
-                                                                        C_Compiler * /* inCompiler */
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationAST_addAssociatedElement (const cPtr_semanticDeclarationAST * /* inObject */,
+                                                                         GALGAS_semanticDeclarationListAST & /* ioArgument_ioSemanticDeclarationList */,
+                                                                         C_Compiler * /* inCompiler */
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationAST_addAssociatedElement (void) {
-  enterCategoryMethod_addAssociatedElement (kTypeDescriptor_GALGAS_semanticDeclarationAST.mSlotID,
-                                            categoryMethod_semanticDeclarationAST_addAssociatedElement) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_semanticDeclarationAST_addAssociatedElement (void) {
-  gCategoryMethodTable_semanticDeclarationAST_addAssociatedElement.free () ;
+static void defineExtensionMethod_semanticDeclarationAST_addAssociatedElement (void) {
+  enterExtensionMethod_addAssociatedElement (kTypeDescriptor_GALGAS_semanticDeclarationAST.mSlotID,
+                                             extensionMethod_semanticDeclarationAST_addAssociatedElement) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationAST_addAssociatedElement (defineCategoryMethod_semanticDeclarationAST_addAssociatedElement,
-                                                                        freeCategoryMethod_semanticDeclarationAST_addAssociatedElement) ;
+static void freeExtensionMethod_semanticDeclarationAST_addAssociatedElement (void) {
+  gExtensionMethodTable_semanticDeclarationAST_addAssociatedElement.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticDeclarationAST_addAssociatedElement (defineExtensionMethod_semanticDeclarationAST_addAssociatedElement,
+                                                                        freeExtensionMethod_semanticDeclarationAST_addAssociatedElement) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5238,55 +5238,55 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_addAssociatedElement (defineCa
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticInstructionForGeneration_generateInstruction> gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction ;
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionForGeneration_generateInstruction> gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateInstruction (const int32_t inClassIndex,
-                                              categoryMethodSignature_semanticInstructionForGeneration_generateInstruction inMethod) {
-  gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_generateInstruction (const int32_t inClassIndex,
+                                               extensionMethodSignature_semanticInstructionForGeneration_generateInstruction inMethod) {
+  gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticInstructionForGeneration_generateInstruction (void) {
-  gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction.free () ;
+static void freeExtensionMethod_semanticInstructionForGeneration_generateInstruction (void) {
+  gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticInstructionForGeneration_generateInstruction (NULL,
-                                                                                 freeCategoryMethod_semanticInstructionForGeneration_generateInstruction) ;
+                                                                                 freeExtensionMethod_semanticInstructionForGeneration_generateInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_generateInstruction (const cPtr_semanticInstructionForGeneration * inObject,
-                                             GALGAS_stringset & io_ioInclusionSet,
-                                             GALGAS_uint & io_ioTemporaryVariableIndex,
-                                             GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                             const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                             GALGAS_string & io_ioGeneratedCode,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void callExtensionMethod_generateInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+                                              GALGAS_stringset & io_ioInclusionSet,
+                                              GALGAS_uint & io_ioTemporaryVariableIndex,
+                                              GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                              const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                              GALGAS_string & io_ioGeneratedCode,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticInstructionForGeneration_generateInstruction f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction.count ()) {
-      f = gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticInstructionForGeneration_generateInstruction f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction.count ()) {
+      f = gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction.count ()) {
-           f = gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction.count ()) {
+           f = gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticInstructionForGeneration_generateInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticInstructionForGeneration_generateInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5302,39 +5302,39 @@ void callCategoryMethod_generateInstruction (const cPtr_semanticInstructionForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration> gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
-                                                         categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
+                                                          enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5359,21 +5359,21 @@ static GALGAS_string extensionGetter_semanticDeclarationForGeneration_appendPrim
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
-  enterCategoryGetter_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                                      extensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
+static void defineExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
+  enterExtensionGetter_appendPrimitiveTypeDeclaration (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                                       extensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
-                                                                                            freeCategoryGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration (defineExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration,
+                                                                                            freeExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5381,50 +5381,50 @@ C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendPrimitiveTypeD
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName> gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName> gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
-                                                    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_implementationCppFileName (const int32_t inClassIndex,
+                                                     enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_implementationCppFileName (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_implementationCppFileName (NULL,
-                                                                                       freeCategoryGetter_semanticDeclarationForGeneration_implementationCppFileName) ;
+                                                                                       freeExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_implementationCppFileName (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_implementationCppFileName.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5441,50 +5441,50 @@ GALGAS_string callCategoryGetter_implementationCppFileName (const cPtr_semanticD
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile> gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile> gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
-                                           categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_hasCppHeaderFile (const int32_t inClassIndex,
+                                            enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_hasCppHeaderFile (NULL,
-                                                                              freeCategoryGetter_semanticDeclarationForGeneration_hasCppHeaderFile) ;
+                                                                              freeExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+GALGAS_bool callExtensionGetter_hasCppHeaderFile (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5501,50 +5501,50 @@ GALGAS_bool callCategoryGetter_hasCppHeaderFile (const cPtr_semanticDeclarationF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_isPredefined> gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_isPredefined> gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
-                                       categoryGetterSignature_semanticDeclarationForGeneration_isPredefined inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_isPredefined (const int32_t inClassIndex,
+                                        enterExtensionGetter_semanticDeclarationForGeneration_isPredefined inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_isPredefined (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_isPredefined (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_isPredefined (NULL,
-                                                                          freeCategoryGetter_semanticDeclarationForGeneration_isPredefined) ;
+                                                                          freeExtensionGetter_semanticDeclarationForGeneration_isPredefined) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+GALGAS_bool callExtensionGetter_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_isPredefined f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_isPredefined f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5561,50 +5561,50 @@ GALGAS_bool callCategoryGetter_isPredefined (const cPtr_semanticDeclarationForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_headerKind> gCategoryGetterTable_semanticDeclarationForGeneration_headerKind ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_headerKind> gExtensionGetterTable_semanticDeclarationForGeneration_headerKind ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_headerKind (const int32_t inClassIndex,
-                                     categoryGetterSignature_semanticDeclarationForGeneration_headerKind inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_headerKind (const int32_t inClassIndex,
+                                      enterExtensionGetter_semanticDeclarationForGeneration_headerKind inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_headerKind (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_headerKind (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_headerKind.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_headerKind (NULL,
-                                                                        freeCategoryGetter_semanticDeclarationForGeneration_headerKind) ;
+                                                                        freeExtensionGetter_semanticDeclarationForGeneration_headerKind) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_headerKind callCategoryGetter_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+GALGAS_headerKind callExtensionGetter_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
   GALGAS_headerKind result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_headerKind f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_headerKind f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_headerKind (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_headerKind.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_headerKind (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5621,40 +5621,40 @@ GALGAS_headerKind callCategoryGetter_headerKind (const cPtr_semanticDeclarationF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_> gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_> gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendDeclaration_31_ (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ inMethod) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_appendDeclaration_31_ (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ inMethod) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * inObject,
-                                               GALGAS_stringset & io_ioInclusionSet,
-                                               GALGAS_string & out_outHeader,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                GALGAS_stringset & io_ioInclusionSet,
+                                                GALGAS_string & out_outHeader,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   out_outHeader.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_ (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5666,30 +5666,30 @@ void callCategoryMethod_appendDeclaration_31_ (const cPtr_semanticDeclarationFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                   GALGAS_stringset & /* ioArgument_ioInclusionSet */,
-                                                                                   GALGAS_string & outArgument_outHeader,
-                                                                                   C_Compiler * /* inCompiler */
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                    GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                                    GALGAS_string & outArgument_outHeader,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outHeader = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (void) {
-  enterCategoryMethod_appendDeclaration_31_ (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                             categoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_) ;
+static void defineExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (void) {
+  enterExtensionMethod_appendDeclaration_31_ (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                              extensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (void) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.free () ;
+static void freeExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (void) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_31_.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (defineCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_,
-                                                                                   freeCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_31_) ;
+C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_31_ (defineExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_,
+                                                                                   freeExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_31_) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5697,41 +5697,41 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_31
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_> gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_> gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendDeclaration_32_ (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ inMethod) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_appendDeclaration_32_ (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ inMethod) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
-                                               const GALGAS_string constin_inOutputDirectory,
-                                               GALGAS_stringset & io_ioInclusionSet,
-                                               GALGAS_string & out_outHeader,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                const GALGAS_string constin_inOutputDirectory,
+                                                GALGAS_stringset & io_ioInclusionSet,
+                                                GALGAS_string & out_outHeader,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   out_outHeader.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_ (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5743,31 +5743,31 @@ void callCategoryMethod_appendDeclaration_32_ (const cPtr_semanticDeclarationFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                   const GALGAS_string /* constinArgument_inOutputDirectory */,
-                                                                                   GALGAS_stringset & /* ioArgument_ioInclusionSet */,
-                                                                                   GALGAS_string & outArgument_outHeader,
-                                                                                   C_Compiler * /* inCompiler */
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                    const GALGAS_string /* constinArgument_inOutputDirectory */,
+                                                                                    GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                                    GALGAS_string & outArgument_outHeader,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outHeader = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (void) {
-  enterCategoryMethod_appendDeclaration_32_ (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                             categoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_) ;
+static void defineExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (void) {
+  enterExtensionMethod_appendDeclaration_32_ (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                              extensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (void) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.free () ;
+static void freeExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (void) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendDeclaration_32_.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (defineCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_,
-                                                                                   freeCategoryMethod_semanticDeclarationForGeneration_appendDeclaration_32_) ;
+C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32_ (defineExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_,
+                                                                                   freeExtensionMethod_semanticDeclarationForGeneration_appendDeclaration_32_) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5775,39 +5775,39 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendDeclaration_32
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation> gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
+static TC_UniqueArray <enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation> gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
-                                                          categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
+                                                           enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
+GALGAS_string callExtensionGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
-      f = gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
+      f = gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
-           f = gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.count ()) {
+           f = gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -5832,21 +5832,21 @@ static GALGAS_string extensionGetter_semanticDeclarationForGeneration_appendType
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
-  enterCategoryGetter_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                                       extensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
+static void defineExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
+  enterExtensionGetter_appendTypeGenericImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                                        extensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
-  gCategoryGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.free () ;
+static void freeExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (void) {
+  gExtensionGetterTable_semanticDeclarationForGeneration_appendTypeGenericImplementation.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation,
-                                                                                             freeCategoryGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
+C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation (defineExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation,
+                                                                                             freeExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5854,41 +5854,41 @@ C_PrologueEpilogue gGetter_semanticDeclarationForGeneration_appendTypeGenericImp
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation> gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation> gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSpecificImplementation (const int32_t inClassIndex,
-                                                       categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation inMethod) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_appendSpecificImplementation (const int32_t inClassIndex,
+                                                        extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation inMethod) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                      const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
-                                                      GALGAS_stringset & io_ioInclusionSet,
-                                                      GALGAS_string & out_outImplementation,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+void callExtensionMethod_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                       const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
+                                                       GALGAS_stringset & io_ioInclusionSet,
+                                                       GALGAS_string & out_outImplementation,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
   out_outImplementation.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5900,31 +5900,31 @@ void callCategoryMethod_appendSpecificImplementation (const cPtr_semanticDeclara
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                          const GALGAS_unifiedTypeMap /* constinArgument_inUnifiedTypeMap */,
-                                                                                          GALGAS_stringset & /* ioArgument_ioInclusionSet */,
-                                                                                          GALGAS_string & outArgument_outImplementation,
-                                                                                          C_Compiler * /* inCompiler */
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                           const GALGAS_unifiedTypeMap /* constinArgument_inUnifiedTypeMap */,
+                                                                                           GALGAS_stringset & /* ioArgument_ioInclusionSet */,
+                                                                                           GALGAS_string & outArgument_outImplementation,
+                                                                                           C_Compiler * /* inCompiler */
+                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outImplementation = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation (void) {
-  enterCategoryMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                                    categoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation) ;
+static void defineExtensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation (void) {
+  enterExtensionMethod_appendSpecificImplementation (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                                     extensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation (void) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.free () ;
+static void freeExtensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation (void) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificImplementation.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificImplementation (defineCategoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation,
-                                                                                          freeCategoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation) ;
+C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificImplementation (defineExtensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation,
+                                                                                          freeExtensionMethod_semanticDeclarationForGeneration_appendSpecificImplementation) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5932,39 +5932,39 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificImplem
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles> gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles> gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSpecificFiles (const int32_t inClassIndex,
-                                              categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_appendSpecificFiles (const int32_t inClassIndex,
+                                               extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * inObject,
-                                             const GALGAS_string constin_inProductDirectory,
-                                             GALGAS_stringset & io_ioAllProductFileSet,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
+void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * inObject,
+                                              const GALGAS_string constin_inProductDirectory,
+                                              GALGAS_stringset & io_ioAllProductFileSet,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -5976,29 +5976,29 @@ void callCategoryMethod_appendSpecificFiles (const cPtr_semanticDeclarationForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationForGeneration_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * /* inObject */,
-                                                                                 const GALGAS_string /* constinArgument_inProductDirectory */,
-                                                                                 GALGAS_stringset & /* ioArgument_ioAllProductFileSet */,
-                                                                                 C_Compiler * /* inCompiler */
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationForGeneration_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                  const GALGAS_string /* constinArgument_inProductDirectory */,
+                                                                                  GALGAS_stringset & /* ioArgument_ioAllProductFileSet */,
+                                                                                  C_Compiler * /* inCompiler */
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationForGeneration_appendSpecificFiles (void) {
-  enterCategoryMethod_appendSpecificFiles (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
-                                           categoryMethod_semanticDeclarationForGeneration_appendSpecificFiles) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_semanticDeclarationForGeneration_appendSpecificFiles (void) {
-  gCategoryMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.free () ;
+static void defineExtensionMethod_semanticDeclarationForGeneration_appendSpecificFiles (void) {
+  enterExtensionMethod_appendSpecificFiles (kTypeDescriptor_GALGAS_semanticDeclarationForGeneration.mSlotID,
+                                            extensionMethod_semanticDeclarationForGeneration_appendSpecificFiles) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificFiles (defineCategoryMethod_semanticDeclarationForGeneration_appendSpecificFiles,
-                                                                                 freeCategoryMethod_semanticDeclarationForGeneration_appendSpecificFiles) ;
+static void freeExtensionMethod_semanticDeclarationForGeneration_appendSpecificFiles (void) {
+  gExtensionMethodTable_semanticDeclarationForGeneration_appendSpecificFiles.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificFiles (defineExtensionMethod_semanticDeclarationForGeneration_appendSpecificFiles,
+                                                                                 freeExtensionMethod_semanticDeclarationForGeneration_appendSpecificFiles) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6006,35 +6006,35 @@ C_PrologueEpilogue gMethod_semanticDeclarationForGeneration_appendSpecificFiles 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression> gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression ;
+static TC_UniqueArray <extensionMethodSignature_semanticExpressionAST_analyzeSemanticExpression> gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSemanticExpression (const int32_t inClassIndex,
-                                                    categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression inMethod) {
-  gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeSemanticExpression (const int32_t inClassIndex,
+                                                     extensionMethodSignature_semanticExpressionAST_analyzeSemanticExpression inMethod) {
+  gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticExpressionAST_analyzeSemanticExpression (void) {
-  gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.free () ;
+static void freeExtensionMethod_semanticExpressionAST_analyzeSemanticExpression (void) {
+  gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticExpressionAST_analyzeSemanticExpression (NULL,
-                                                                            freeCategoryMethod_semanticExpressionAST_analyzeSemanticExpression) ;
+                                                                            freeExtensionMethod_semanticExpressionAST_analyzeSemanticExpression) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                   const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
-                                                   const GALGAS_analysisContext constin_inAnalysisContext,
-                                                   GALGAS_variableMap & io_ioVariableMap,
-                                                   GALGAS_semanticExpressionForGeneration & out_outExpression,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
+                                                    const GALGAS_analysisContext constin_inAnalysisContext,
+                                                    GALGAS_variableMap & io_ioVariableMap,
+                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outExpression.drop () ;
 //--- Find method
@@ -6042,19 +6042,19 @@ void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpression
     macroValidSharedObject (inObject, cPtr_semanticExpressionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
-      f = gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticExpressionAST_analyzeSemanticExpression f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
+      f = gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
-           f = gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
+           f = gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6070,51 +6070,51 @@ void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpression
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractCollectionValueElement_enterInSemanticContext> gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_abstractCollectionValueElement_enterInSemanticContext> gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterInSemanticContext (const int32_t inClassIndex,
-                                                 categoryMethodSignature_abstractCollectionValueElement_enterInSemanticContext inMethod) {
-  gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
+                                                  extensionMethodSignature_abstractCollectionValueElement_enterInSemanticContext inMethod) {
+  gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractCollectionValueElement_enterInSemanticContext (void) {
-  gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext.free () ;
+static void freeExtensionMethod_abstractCollectionValueElement_enterInSemanticContext (void) {
+  gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractCollectionValueElement_enterInSemanticContext (NULL,
-                                                                                  freeCategoryMethod_abstractCollectionValueElement_enterInSemanticContext) ;
+                                                                                  freeExtensionMethod_abstractCollectionValueElement_enterInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterInSemanticContext (const cPtr_abstractCollectionValueElement * inObject,
-                                                GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterInSemanticContext (const cPtr_abstractCollectionValueElement * inObject,
+                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractCollectionValueElement) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractCollectionValueElement_enterInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext.count ()) {
-      f = gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractCollectionValueElement_enterInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext.count ()) {
+      f = gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext.count ()) {
-           f = gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext.count ()) {
+           f = gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractCollectionValueElement_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractCollectionValueElement_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6130,54 +6130,54 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_abstractCollectionVal
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractCollectionValueElement_analyze> gCategoryMethodTable_abstractCollectionValueElement_analyze ;
+static TC_UniqueArray <extensionMethodSignature_abstractCollectionValueElement_analyze> gExtensionMethodTable_abstractCollectionValueElement_analyze ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyze (const int32_t inClassIndex,
-                                  categoryMethodSignature_abstractCollectionValueElement_analyze inMethod) {
-  gCategoryMethodTable_abstractCollectionValueElement_analyze.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyze (const int32_t inClassIndex,
+                                   extensionMethodSignature_abstractCollectionValueElement_analyze inMethod) {
+  gExtensionMethodTable_abstractCollectionValueElement_analyze.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractCollectionValueElement_analyze (void) {
-  gCategoryMethodTable_abstractCollectionValueElement_analyze.free () ;
+static void freeExtensionMethod_abstractCollectionValueElement_analyze (void) {
+  gExtensionMethodTable_abstractCollectionValueElement_analyze.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractCollectionValueElement_analyze (NULL,
-                                                                   freeCategoryMethod_abstractCollectionValueElement_analyze) ;
+                                                                   freeExtensionMethod_abstractCollectionValueElement_analyze) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyze (const cPtr_abstractCollectionValueElement * inObject,
-                                 const GALGAS_analysisContext constin_inAnalysisContext,
-                                 const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
-                                 GALGAS_variableMap & io_ioVariableMap,
-                                 GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
-                                 C_Compiler * inCompiler
-                                 COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyze (const cPtr_abstractCollectionValueElement * inObject,
+                                  const GALGAS_analysisContext constin_inAnalysisContext,
+                                  const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
+                                  GALGAS_variableMap & io_ioVariableMap,
+                                  GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
+                                  C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractCollectionValueElement) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractCollectionValueElement_analyze f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractCollectionValueElement_analyze.count ()) {
-      f = gCategoryMethodTable_abstractCollectionValueElement_analyze (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractCollectionValueElement_analyze f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractCollectionValueElement_analyze.count ()) {
+      f = gExtensionMethodTable_abstractCollectionValueElement_analyze (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractCollectionValueElement_analyze.count ()) {
-           f = gCategoryMethodTable_abstractCollectionValueElement_analyze (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractCollectionValueElement_analyze.count ()) {
+           f = gExtensionMethodTable_abstractCollectionValueElement_analyze (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractCollectionValueElement_analyze.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractCollectionValueElement_analyze.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6193,53 +6193,53 @@ void callCategoryMethod_analyze (const cPtr_abstractCollectionValueElement * inO
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticInstructionAST_analyzeSemanticInstruction> gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction ;
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionAST_analyzeSemanticInstruction> gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSemanticInstruction (const int32_t inClassIndex,
-                                                     categoryMethodSignature_semanticInstructionAST_analyzeSemanticInstruction inMethod) {
-  gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeSemanticInstruction (const int32_t inClassIndex,
+                                                      extensionMethodSignature_semanticInstructionAST_analyzeSemanticInstruction inMethod) {
+  gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticInstructionAST_analyzeSemanticInstruction (void) {
-  gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction.free () ;
+static void freeExtensionMethod_semanticInstructionAST_analyzeSemanticInstruction (void) {
+  gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticInstructionAST_analyzeSemanticInstruction (NULL,
-                                                                              freeCategoryMethod_semanticInstructionAST_analyzeSemanticInstruction) ;
+                                                                              freeExtensionMethod_semanticInstructionAST_analyzeSemanticInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeSemanticInstruction (const cPtr_semanticInstructionAST * inObject,
-                                                    const GALGAS_analysisContext constin_inAnalysisContext,
-                                                    GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                    GALGAS_variableMap & io_ioVariableMap,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeSemanticInstruction (const cPtr_semanticInstructionAST * inObject,
+                                                     const GALGAS_analysisContext constin_inAnalysisContext,
+                                                     GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticInstructionAST_analyzeSemanticInstruction f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction.count ()) {
-      f = gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticInstructionAST_analyzeSemanticInstruction f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction.count ()) {
+      f = gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction.count ()) {
-           f = gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction.count ()) {
+           f = gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticInstructionAST_analyzeSemanticInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticInstructionAST_analyzeSemanticInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6255,58 +6255,58 @@ void callCategoryMethod_analyzeSemanticInstruction (const cPtr_semanticInstructi
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_actualParameterAST_checkAgainstFormalArgument> gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument ;
+static TC_UniqueArray <extensionMethodSignature_actualParameterAST_checkAgainstFormalArgument> gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkAgainstFormalArgument (const int32_t inClassIndex,
-                                                     categoryMethodSignature_actualParameterAST_checkAgainstFormalArgument inMethod) {
-  gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_checkAgainstFormalArgument (const int32_t inClassIndex,
+                                                      extensionMethodSignature_actualParameterAST_checkAgainstFormalArgument inMethod) {
+  gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_actualParameterAST_checkAgainstFormalArgument (void) {
-  gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument.free () ;
+static void freeExtensionMethod_actualParameterAST_checkAgainstFormalArgument (void) {
+  gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_actualParameterAST_checkAgainstFormalArgument (NULL,
-                                                                          freeCategoryMethod_actualParameterAST_checkAgainstFormalArgument) ;
+                                                                          freeExtensionMethod_actualParameterAST_checkAgainstFormalArgument) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_checkAgainstFormalArgument (const cPtr_actualParameterAST * inObject,
-                                                    const GALGAS_analysisContext constin_inAnalysisContext,
-                                                    const GALGAS_lstring constin_inFormalSelector,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inFormalArgumentType,
-                                                    const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
-                                                    GALGAS_variableMap & io_ioVariableMap,
-                                                    GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
-                                                    GALGAS_stringset & io_ioExclusiveVariableSet,
-                                                    GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
+void callExtensionMethod_checkAgainstFormalArgument (const cPtr_actualParameterAST * inObject,
+                                                     const GALGAS_analysisContext constin_inAnalysisContext,
+                                                     const GALGAS_lstring constin_inFormalSelector,
+                                                     const GALGAS_unifiedTypeMap_2D_proxy constin_inFormalArgumentType,
+                                                     const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
+                                                     GALGAS_variableMap & io_ioVariableMap,
+                                                     GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
+                                                     GALGAS_stringset & io_ioExclusiveVariableSet,
+                                                     GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_actualParameterAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_actualParameterAST_checkAgainstFormalArgument f = NULL ;
-    if (classIndex < gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument.count ()) {
-      f = gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument (classIndex COMMA_HERE) ;
+    extensionMethodSignature_actualParameterAST_checkAgainstFormalArgument f = NULL ;
+    if (classIndex < gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument.count ()) {
+      f = gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument.count ()) {
-           f = gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument.count ()) {
+           f = gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_actualParameterAST_checkAgainstFormalArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_actualParameterAST_checkAgainstFormalArgument.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6364,51 +6364,51 @@ GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_actualParameterAST_enterParameterInSemanticContext> gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_actualParameterAST_enterParameterInSemanticContext> gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterParameterInSemanticContext (const int32_t inClassIndex,
-                                                          categoryMethodSignature_actualParameterAST_enterParameterInSemanticContext inMethod) {
-  gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterParameterInSemanticContext (const int32_t inClassIndex,
+                                                           extensionMethodSignature_actualParameterAST_enterParameterInSemanticContext inMethod) {
+  gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_actualParameterAST_enterParameterInSemanticContext (void) {
-  gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext.free () ;
+static void freeExtensionMethod_actualParameterAST_enterParameterInSemanticContext (void) {
+  gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_actualParameterAST_enterParameterInSemanticContext (NULL,
-                                                                               freeCategoryMethod_actualParameterAST_enterParameterInSemanticContext) ;
+                                                                               freeExtensionMethod_actualParameterAST_enterParameterInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterParameterInSemanticContext (const cPtr_actualParameterAST * inObject,
-                                                         GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterParameterInSemanticContext (const cPtr_actualParameterAST * inObject,
+                                                          GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_actualParameterAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_actualParameterAST_enterParameterInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext.count ()) {
-      f = gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_actualParameterAST_enterParameterInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext.count ()) {
+      f = gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext.count ()) {
-           f = gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext.count ()) {
+           f = gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_actualParameterAST_enterParameterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_actualParameterAST_enterParameterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6424,55 +6424,55 @@ void callCategoryMethod_enterParameterInSemanticContext (const cPtr_actualParame
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT> gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT ;
+static TC_UniqueArray <extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT> gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeGrammarInstructionSDT (const int32_t inClassIndex,
-                                                       categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT inMethod) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeGrammarInstructionSDT (const int32_t inClassIndex,
+                                                        extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT inMethod) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (void) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.free () ;
+static void freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (void) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (NULL,
-                                                                                                                   freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT) ;
+                                                                                                                   freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeGrammarInstructionSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                                      const GALGAS_analysisContext constin_inAnalysisContext,
-                                                      const GALGAS_bool constin_inHasTranslateFeature,
-                                                      const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
-                                                      GALGAS_stringlist & io_ioAssignementList,
-                                                      GALGAS_variableMap & io_ioVariableMap,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeGrammarInstructionSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                                       const GALGAS_analysisContext constin_inAnalysisContext,
+                                                       const GALGAS_bool constin_inHasTranslateFeature,
+                                                       const GALGAS_string constin_inSyntaxDirectedTranslationResultVarName,
+                                                       GALGAS_stringlist & io_ioAssignementList,
+                                                       GALGAS_variableMap & io_ioVariableMap,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.count ()) {
-      f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.count ()) {
+      f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.count ()) {
-           f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.count ()) {
+           f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeGrammarInstructionSDT.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6488,54 +6488,54 @@ void callCategoryMethod_analyzeGrammarInstructionSDT (const cPtr_abstractGrammar
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_semanticAnalysis> gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationAST_semanticAnalysis> gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_semanticAnalysis (const int32_t inClassIndex,
-                                           categoryMethodSignature_semanticDeclarationAST_semanticAnalysis inMethod) {
-  gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_semanticAnalysis (const int32_t inClassIndex,
+                                            extensionMethodSignature_semanticDeclarationAST_semanticAnalysis inMethod) {
+  gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_semanticDeclarationAST_semanticAnalysis (void) {
-  gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis.free () ;
+static void freeExtensionMethod_semanticDeclarationAST_semanticAnalysis (void) {
+  gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_semanticDeclarationAST_semanticAnalysis (NULL,
-                                                                    freeCategoryMethod_semanticDeclarationAST_semanticAnalysis) ;
+                                                                    freeExtensionMethod_semanticDeclarationAST_semanticAnalysis) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_semanticAnalysis (const cPtr_semanticDeclarationAST * inObject,
-                                          const GALGAS_string constin_inProductDirectory,
-                                          const GALGAS_semanticContext constin_inSemanticContext,
-                                          const GALGAS_predefinedTypes constin_inPredefinedTypes,
-                                          GALGAS_semanticDeclarationSortedListForGeneration & io_ioSemanticDeclarationListForGeneration,
-                                          C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {
+void callExtensionMethod_semanticAnalysis (const cPtr_semanticDeclarationAST * inObject,
+                                           const GALGAS_string constin_inProductDirectory,
+                                           const GALGAS_semanticContext constin_inSemanticContext,
+                                           const GALGAS_predefinedTypes constin_inPredefinedTypes,
+                                           GALGAS_semanticDeclarationSortedListForGeneration & io_ioSemanticDeclarationListForGeneration,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationAST_semanticAnalysis f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationAST_semanticAnalysis f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationAST_semanticAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationAST_semanticAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6551,60 +6551,60 @@ void callCategoryMethod_semanticAnalysis (const cPtr_semanticDeclarationAST * in
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction> gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction ;
+static TC_UniqueArray <extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction> gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSyntaxInstruction (const int32_t inClassIndex,
-                                                   categoryMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction inMethod) {
-  gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeSyntaxInstruction (const int32_t inClassIndex,
+                                                    extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction inMethod) {
+  gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_syntaxInstructionAST_analyzeSyntaxInstruction (void) {
-  gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.free () ;
+static void freeExtensionMethod_syntaxInstructionAST_analyzeSyntaxInstruction (void) {
+  gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_syntaxInstructionAST_analyzeSyntaxInstruction (NULL,
-                                                                          freeCategoryMethod_syntaxInstructionAST_analyzeSyntaxInstruction) ;
+                                                                          freeExtensionMethod_syntaxInstructionAST_analyzeSyntaxInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAST * inObject,
-                                                  const GALGAS_analysisContext constin_inAnalysisContext,
-                                                  const GALGAS_bool constin_inHasTranslateFeature,
-                                                  const GALGAS_terminalMap constin_inTerminalMap,
-                                                  const GALGAS_string constin_inLexiqueName,
-                                                  const GALGAS_nonterminalMap constin_inNonterminalMap,
-                                                  const GALGAS_string constin_inComponentName,
-                                                  const GALGAS_stringset constin_inIndexNameSet,
-                                                  GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                                  GALGAS_variableMap & io_ioVariableMap,
-                                                  GALGAS_uint & io_ioSelectMethodCount,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAST * inObject,
+                                                   const GALGAS_analysisContext constin_inAnalysisContext,
+                                                   const GALGAS_bool constin_inHasTranslateFeature,
+                                                   const GALGAS_terminalMap constin_inTerminalMap,
+                                                   const GALGAS_string constin_inLexiqueName,
+                                                   const GALGAS_nonterminalMap constin_inNonterminalMap,
+                                                   const GALGAS_string constin_inComponentName,
+                                                   const GALGAS_stringset constin_inIndexNameSet,
+                                                   GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                   GALGAS_variableMap & io_ioVariableMap,
+                                                   GALGAS_uint & io_ioSelectMethodCount,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction f = NULL ;
-    if (classIndex < gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.count ()) {
-      f = gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction f = NULL ;
+    if (classIndex < gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.count ()) {
+      f = gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.count ()) {
-           f = gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.count ()) {
+           f = gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_syntaxInstructionAST_analyzeSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6620,55 +6620,55 @@ void callCategoryMethod_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAS
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractInputParameter_analyzeInputParameter> gCategoryMethodTable_abstractInputParameter_analyzeInputParameter ;
+static TC_UniqueArray <extensionMethodSignature_abstractInputParameter_analyzeInputParameter> gExtensionMethodTable_abstractInputParameter_analyzeInputParameter ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeInputParameter (const int32_t inClassIndex,
-                                                categoryMethodSignature_abstractInputParameter_analyzeInputParameter inMethod) {
-  gCategoryMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeInputParameter (const int32_t inClassIndex,
+                                                 extensionMethodSignature_abstractInputParameter_analyzeInputParameter inMethod) {
+  gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractInputParameter_analyzeInputParameter (void) {
-  gCategoryMethodTable_abstractInputParameter_analyzeInputParameter.free () ;
+static void freeExtensionMethod_abstractInputParameter_analyzeInputParameter (void) {
+  gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractInputParameter_analyzeInputParameter (NULL,
-                                                                         freeCategoryMethod_abstractInputParameter_analyzeInputParameter) ;
+                                                                         freeExtensionMethod_abstractInputParameter_analyzeInputParameter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeInputParameter (const cPtr_abstractInputParameter * inObject,
-                                               const GALGAS_analysisContext constin_inAnalysisContext,
-                                               const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
-                                               const GALGAS_string constin_inLexicalAttributeName,
-                                               GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
-                                               GALGAS_variableMap & io_ioVariableMap,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeInputParameter (const cPtr_abstractInputParameter * inObject,
+                                                const GALGAS_analysisContext constin_inAnalysisContext,
+                                                const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
+                                                const GALGAS_string constin_inLexicalAttributeName,
+                                                GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
+                                                GALGAS_variableMap & io_ioVariableMap,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractInputParameter) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractInputParameter_analyzeInputParameter f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
-      f = gCategoryMethodTable_abstractInputParameter_analyzeInputParameter (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractInputParameter_analyzeInputParameter f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
+      f = gExtensionMethodTable_abstractInputParameter_analyzeInputParameter (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
-           f = gCategoryMethodTable_abstractInputParameter_analyzeInputParameter (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
+           f = gExtensionMethodTable_abstractInputParameter_analyzeInputParameter (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6684,53 +6684,53 @@ void callCategoryMethod_analyzeInputParameter (const cPtr_abstractInputParameter
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT> gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT ;
+static TC_UniqueArray <extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT> gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSDT (const int32_t inClassIndex,
-                                     categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT inMethod) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeSDT (const int32_t inClassIndex,
+                                      extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT inMethod) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (void) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.free () ;
+static void freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (void) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (NULL,
-                                                                                                 freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT) ;
+                                                                                                 freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                    const GALGAS_analysisContext constin_inAnalysisContext,
-                                    const GALGAS_bool constin_inHasTranslateFeature,
-                                    GALGAS_variableMap & io_ioVariableMap,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                     const GALGAS_analysisContext constin_inAnalysisContext,
+                                     const GALGAS_bool constin_inHasTranslateFeature,
+                                     GALGAS_variableMap & io_ioVariableMap,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
-      f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
+      f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
-           f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
+           f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6746,54 +6746,54 @@ void callCategoryMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxD
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode> gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode ;
+static TC_UniqueArray <extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode> gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateCode (const int32_t inClassIndex,
-                                       categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode inMethod) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_generateCode (const int32_t inClassIndex,
+                                        extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode inMethod) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (void) {
-  gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.free () ;
+static void freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (void) {
+  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (NULL,
-                                                                                                   freeCategoryMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode) ;
+                                                                                                   freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_generateCode (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                      const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                      const GALGAS_string constin_inAccessMethodName,
-                                      GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                      GALGAS_string & io_ioGeneratedCode,
-                                      C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
+void callExtensionMethod_generateCode (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
+                                       const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                       const GALGAS_string constin_inAccessMethodName,
+                                       GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                       GALGAS_string & io_ioGeneratedCode,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
-      f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
+      f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
-           f = gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
+           f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6809,56 +6809,56 @@ void callCategoryMethod_generateCode (const cPtr_abstractGrammarInstructionSynta
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode> gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode ;
+static TC_UniqueArray <extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode> gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateCollectionElementCode (const int32_t inClassIndex,
-                                                        categoryMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode inMethod) {
-  gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_generateCollectionElementCode (const int32_t inClassIndex,
+                                                         extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode inMethod) {
+  gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode (void) {
-  gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.free () ;
+static void freeExtensionMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode (void) {
+  gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode (NULL,
-                                                                                                      freeCategoryMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode) ;
+                                                                                                      freeExtensionMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                       const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
-                                                       GALGAS_string & io_ioGeneratedCode,
-                                                       GALGAS_stringset & io_ioInclusionSet,
-                                                       GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                       GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                       const GALGAS_string constin_inCppTargetVar,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+void callExtensionMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
+                                                        const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
+                                                        GALGAS_string & io_ioGeneratedCode,
+                                                        GALGAS_stringset & io_ioInclusionSet,
+                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
+                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                                        const GALGAS_string constin_inCppTargetVar,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractCollectionValueElementForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
-      f = gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
+      f = gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
-           f = gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
+           f = gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6874,51 +6874,51 @@ void callCategoryMethod_generateCollectionElementCode (const cPtr_abstractCollec
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext> gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext ;
+static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext> gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_enterInSemanticContext (const int32_t inClassIndex,
-                                                 categoryMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext inMethod) {
-  gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
+                                                  extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext inMethod) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractEnumeratedCollectionAST_enterInSemanticContext (void) {
-  gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.free () ;
+static void freeExtensionMethod_abstractEnumeratedCollectionAST_enterInSemanticContext (void) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_enterInSemanticContext (NULL,
-                                                                                   freeCategoryMethod_abstractEnumeratedCollectionAST_enterInSemanticContext) ;
+                                                                                   freeExtensionMethod_abstractEnumeratedCollectionAST_enterInSemanticContext) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                GALGAS_unifiedTypeMap & io_ioTypeMap,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
+void callExtensionMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCollectionAST * inObject,
+                                                 GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
-      f = gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractEnumeratedCollectionAST_enterInSemanticContext f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
+      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
-           f = gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.count ()) {
+           f = gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractEnumeratedCollectionAST_enterInSemanticContext.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -6934,36 +6934,36 @@ void callCategoryMethod_enterInSemanticContext (const cPtr_abstractEnumeratedCol
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration> gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration ;
+static TC_UniqueArray <extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration> gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeEnumeration (const int32_t inClassIndex,
-                                             categoryMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) {
-  gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
+                                              extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration inMethod) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (void) {
-  gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.free () ;
+static void freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (void) {
+  gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_abstractEnumeratedCollectionAST_analyzeEnumeration (NULL,
-                                                                               freeCategoryMethod_abstractEnumeratedCollectionAST_analyzeEnumeration) ;
+                                                                               freeExtensionMethod_abstractEnumeratedCollectionAST_analyzeEnumeration) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollectionAST * inObject,
-                                            const GALGAS_analysisContext constin_inAnalysisContext,
-                                            GALGAS_variableMap & io_ioVariableMap,
-                                            GALGAS_localInitializedVariableList & io_ioLocalConstantListForDoBranch,
-                                            GALGAS_string & out_outEnumeratorCppName,
-                                            GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
+void callExtensionMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const GALGAS_analysisContext constin_inAnalysisContext,
+                                             GALGAS_variableMap & io_ioVariableMap,
+                                             GALGAS_localInitializedVariableList & io_ioLocalConstantListForDoBranch,
+                                             GALGAS_string & out_outEnumeratorCppName,
+                                             GALGAS_semanticExpressionForGeneration & out_outEnumerationExpression,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
   out_outEnumeratorCppName.drop () ;
   out_outEnumerationExpression.drop () ;
@@ -6972,19 +6972,19 @@ void callCategoryMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollect
     macroValidSharedObject (inObject, cPtr_abstractEnumeratedCollectionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration f = NULL ;
-    if (classIndex < gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-      f = gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (classIndex COMMA_HERE) ;
+    extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration f = NULL ;
+    if (classIndex < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
+      f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
-           f = gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.count ()) {
+           f = gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_abstractEnumeratedCollectionAST_analyzeEnumeration.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -7000,39 +7000,39 @@ void callCategoryMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollect
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature> gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature ;
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature> gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSyntaxSignature (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) {
-  gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_appendSyntaxSignature (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                               const GALGAS_string constin_inPosfix,
-                                               GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                const GALGAS_string constin_inPosfix,
+                                                GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
-      f = gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+      f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
-           f = gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+           f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -7044,29 +7044,29 @@ void callCategoryMethod_appendSyntaxSignature (const cPtr_semanticInstructionFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticInstructionForGeneration_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
-                                                                                   const GALGAS_string /* constinArgument_inPosfix */,
-                                                                                   GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
-                                                                                   C_Compiler * /* inCompiler */
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                    const GALGAS_string /* constinArgument_inPosfix */,
+                                                                                    GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
-  enterCategoryMethod_appendSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
-                                             categoryMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
-  gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.free () ;
+static void defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  enterExtensionMethod_appendSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                              extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignature (defineCategoryMethod_semanticInstructionForGeneration_appendSyntaxSignature,
-                                                                                   freeCategoryMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
+static void freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignature (defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature,
+                                                                                   freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -7074,40 +7074,40 @@ C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignatur
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction> gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
+static TC_UniqueArray <enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction> gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_compareSyntaxInstruction (const int32_t inClassIndex,
-                                                   categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) {
-  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+void enterExtensionGetter_compareSyntaxInstruction (const int32_t inClassIndex,
+                                                    enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool callCategoryGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
-                                                         const GALGAS_semanticInstructionForGeneration & in_inTestedInstruction,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
+GALGAS_bool callExtensionGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+                                                          const GALGAS_semanticInstructionForGeneration & in_inTestedInstruction,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryGetterSignature_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
-    if (classIndex < gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
-      f = gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;
+    enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
+      f = gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
-           f = gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
+           f = gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
@@ -7133,21 +7133,21 @@ static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareSynta
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
-  enterCategoryGetter_compareSyntaxInstruction (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
-                                                extensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
+static void defineExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
+  enterExtensionGetter_compareSyntaxInstruction (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                                 extensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
-  gCategoryGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.free () ;
+static void freeExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction (void) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareSyntaxInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareSyntaxInstruction (defineCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction,
-                                                                                      freeCategoryGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
+C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareSyntaxInstruction (defineExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction,
+                                                                                      freeExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -7155,54 +7155,54 @@ C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareSyntaxInstruc
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_syntaxInstructionAST_transformInstruction> gCategoryMethodTable_syntaxInstructionAST_transformInstruction ;
+static TC_UniqueArray <extensionMethodSignature_syntaxInstructionAST_transformInstruction> gExtensionMethodTable_syntaxInstructionAST_transformInstruction ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_transformInstruction (const int32_t inClassIndex,
-                                               categoryMethodSignature_syntaxInstructionAST_transformInstruction inMethod) {
-  gCategoryMethodTable_syntaxInstructionAST_transformInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_transformInstruction (const int32_t inClassIndex,
+                                                extensionMethodSignature_syntaxInstructionAST_transformInstruction inMethod) {
+  gExtensionMethodTable_syntaxInstructionAST_transformInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_syntaxInstructionAST_transformInstruction (void) {
-  gCategoryMethodTable_syntaxInstructionAST_transformInstruction.free () ;
+static void freeExtensionMethod_syntaxInstructionAST_transformInstruction (void) {
+  gExtensionMethodTable_syntaxInstructionAST_transformInstruction.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_syntaxInstructionAST_transformInstruction (NULL,
-                                                                      freeCategoryMethod_syntaxInstructionAST_transformInstruction) ;
+                                                                      freeExtensionMethod_syntaxInstructionAST_transformInstruction) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_transformInstruction (const cPtr_syntaxInstructionAST * inObject,
-                                              GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
-                                              const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
-                                              GALGAS_uint & io_ioAddedNonTerminalIndex,
-                                              GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {
+void callExtensionMethod_transformInstruction (const cPtr_syntaxInstructionAST * inObject,
+                                               GALGAS_terminalSymbolsMapForGrammarAnalysis & io_ioActuallyUsedTerminalSymbolMap,
+                                               const GALGAS_nonTerminalSymbolMapForGrammarAnalysis constin_inNonTerminalSymbolMap,
+                                               GALGAS_uint & io_ioAddedNonTerminalIndex,
+                                               GALGAS_syntaxInstructionListForGrammarAnalysis & io_ioSyntaxInstructionList,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 //--- Find method
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_syntaxInstructionAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_syntaxInstructionAST_transformInstruction f = NULL ;
-    if (classIndex < gCategoryMethodTable_syntaxInstructionAST_transformInstruction.count ()) {
-      f = gCategoryMethodTable_syntaxInstructionAST_transformInstruction (classIndex COMMA_HERE) ;
+    extensionMethodSignature_syntaxInstructionAST_transformInstruction f = NULL ;
+    if (classIndex < gExtensionMethodTable_syntaxInstructionAST_transformInstruction.count ()) {
+      f = gExtensionMethodTable_syntaxInstructionAST_transformInstruction (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_syntaxInstructionAST_transformInstruction.count ()) {
-           f = gCategoryMethodTable_syntaxInstructionAST_transformInstruction (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_syntaxInstructionAST_transformInstruction.count ()) {
+           f = gExtensionMethodTable_syntaxInstructionAST_transformInstruction (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_syntaxInstructionAST_transformInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_syntaxInstructionAST_transformInstruction.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
@@ -7214,97 +7214,97 @@ void callCategoryMethod_transformInstruction (const cPtr_syntaxInstructionAST * 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Extension method '@semanticDeclarationAST buildCategoryListMaps'                           *
+//                          Extension method '@semanticDeclarationAST buildExtensionListMaps'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps> gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps ;
+static TC_UniqueArray <extensionMethodSignature_semanticDeclarationAST_buildExtensionListMaps> gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_buildCategoryListMaps (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps inMethod) {
-  gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_buildExtensionListMaps (const int32_t inClassIndex,
+                                                  extensionMethodSignature_semanticDeclarationAST_buildExtensionListMaps inMethod) {
+  gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_buildCategoryListMaps (const cPtr_semanticDeclarationAST * inObject,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryModifierListMapAST,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryModifierListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryMethodListMapAST,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryMethodListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioAbstractCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingCategoryGetterListMap,
-                                               GALGAS_genericCategoryMethodListMap & io_ioOverridingAbstractCategoryGetterListMap,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
+void callExtensionMethod_buildExtensionListMaps (const cPtr_semanticDeclarationAST * inObject,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionModifierListMapAST,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionMethodListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionGetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionGetterListMap,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_semanticDeclarationAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_semanticDeclarationAST_buildCategoryListMaps f = NULL ;
-    if (classIndex < gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.count ()) {
-      f = gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps (classIndex COMMA_HERE) ;
+    extensionMethodSignature_semanticDeclarationAST_buildExtensionListMaps f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps.count ()) {
+      f = gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.count ()) {
-           f = gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps.count ()) {
+           f = gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioAbstractCategoryModifierListMapAST, io_ioCategoryModifierListMap, io_ioOverridingCategoryModifierListMap, io_ioOverridingAbstractCategoryModifierListMap, io_ioAbstractCategoryMethodListMapAST, io_ioCategoryMethodListMap, io_ioOverridingCategoryMethodListMap, io_ioOverridingAbstractCategoryMethodListMap, io_ioAbstractCategoryGetterListMap, io_ioCategoryGetterListMap, io_ioOverridingCategoryGetterListMap, io_ioOverridingAbstractCategoryGetterListMap, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioAbstractExtensionModifierListMapAST, io_ioExtensionModifierListMap, io_ioOverridingExtensionModifierListMap, io_ioOverridingAbstractExtensionModifierListMap, io_ioAbstractExtensionMethodListMapAST, io_ioExtensionMethodListMap, io_ioOverridingExtensionMethodListMap, io_ioOverridingAbstractExtensionMethodListMap, io_ioAbstractExtensionGetterListMap, io_ioExtensionGetterListMap, io_ioOverridingExtensionGetterListMap, io_ioOverridingAbstractExtensionGetterListMap, inCompiler COMMA_THERE) ;
     }
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void categoryMethod_semanticDeclarationAST_buildCategoryListMaps (const cPtr_semanticDeclarationAST * /* inObject */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryModifierListMapAST */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryModifierListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryModifierListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryModifierListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryMethodListMapAST */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryMethodListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryMethodListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryMethodListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioAbstractCategoryGetterListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioCategoryGetterListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingCategoryGetterListMap */,
-                                                                         GALGAS_genericCategoryMethodListMap & /* ioArgument_ioOverridingAbstractCategoryGetterListMap */,
-                                                                         C_Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+static void extensionMethod_semanticDeclarationAST_buildExtensionListMaps (const cPtr_semanticDeclarationAST * /* inObject */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionModifierListMapAST */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionModifierListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionModifierListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionModifierListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionMethodListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionMethodListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionGetterListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionGetterListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionGetterListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionGetterListMap */,
+                                                                           C_Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void defineCategoryMethod_semanticDeclarationAST_buildCategoryListMaps (void) {
-  enterCategoryMethod_buildCategoryListMaps (kTypeDescriptor_GALGAS_semanticDeclarationAST.mSlotID,
-                                             categoryMethod_semanticDeclarationAST_buildCategoryListMaps) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_semanticDeclarationAST_buildCategoryListMaps (void) {
-  gCategoryMethodTable_semanticDeclarationAST_buildCategoryListMaps.free () ;
+static void defineExtensionMethod_semanticDeclarationAST_buildExtensionListMaps (void) {
+  enterExtensionMethod_buildExtensionListMaps (kTypeDescriptor_GALGAS_semanticDeclarationAST.mSlotID,
+                                               extensionMethod_semanticDeclarationAST_buildExtensionListMaps) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_semanticDeclarationAST_buildCategoryListMaps (defineCategoryMethod_semanticDeclarationAST_buildCategoryListMaps,
-                                                                         freeCategoryMethod_semanticDeclarationAST_buildCategoryListMaps) ;
+static void freeExtensionMethod_semanticDeclarationAST_buildExtensionListMaps (void) {
+  gExtensionMethodTable_semanticDeclarationAST_buildExtensionListMaps.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticDeclarationAST_buildExtensionListMaps (defineExtensionMethod_semanticDeclarationAST_buildExtensionListMaps,
+                                                                          freeExtensionMethod_semanticDeclarationAST_buildExtensionListMaps) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

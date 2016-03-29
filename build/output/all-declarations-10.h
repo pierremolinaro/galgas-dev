@@ -29,54 +29,54 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Routine 'generateCategoryModifier'                                          *
+//                                         Routine 'generateExtensionModifier'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryModifier (const class GALGAS_string constinArgument0,
-                                       const class GALGAS_string constinArgument1,
-                                       const class GALGAS_string constinArgument2,
-                                       class GALGAS_stringset & ioArgument3,
-                                       const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                       const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                       class GALGAS_string & outArgument6,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
+void routine_generateExtensionModifier (const class GALGAS_string constinArgument0,
+                                        const class GALGAS_string constinArgument1,
+                                        const class GALGAS_string constinArgument2,
+                                        class GALGAS_stringset & ioArgument3,
+                                        const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                        const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                        class GALGAS_string & outArgument6,
+                                        class C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Routine 'generateCategoryMethod'                                           *
+//                                          Routine 'generateExtensionMethod'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryMethod (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
-                                     const class GALGAS_string constinArgument1,
-                                     class GALGAS_stringset & ioArgument2,
-                                     const class GALGAS_string constinArgument3,
-                                     const class GALGAS_formalParameterListForGeneration constinArgument4,
-                                     const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                     class GALGAS_string & outArgument6,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+void routine_generateExtensionMethod (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                      const class GALGAS_string constinArgument1,
+                                      class GALGAS_stringset & ioArgument2,
+                                      const class GALGAS_string constinArgument3,
+                                      const class GALGAS_formalParameterListForGeneration constinArgument4,
+                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                      class GALGAS_string & outArgument6,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                          Routine 'generateCategoryGetter'                                           *
+//                                          Routine 'generateExtensionGetter'                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryGetter (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
-                                     const class GALGAS_string constinArgument1,
-                                     class GALGAS_stringset & ioArgument2,
-                                     const class GALGAS_string constinArgument3,
-                                     const class GALGAS_formalInputParameterListForGeneration constinArgument4,
-                                     const class GALGAS_semanticInstructionListForGeneration constinArgument5,
-                                     const class GALGAS_string constinArgument6,
-                                     const class GALGAS_string constinArgument7,
-                                     const class GALGAS_string constinArgument8,
-                                     class GALGAS_string & outArgument9,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+void routine_generateExtensionGetter (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                      const class GALGAS_string constinArgument1,
+                                      class GALGAS_stringset & ioArgument2,
+                                      const class GALGAS_string constinArgument3,
+                                      const class GALGAS_formalInputParameterListForGeneration constinArgument4,
+                                      const class GALGAS_semanticInstructionListForGeneration constinArgument5,
+                                      const class GALGAS_string constinArgument6,
+                                      const class GALGAS_string constinArgument7,
+                                      const class GALGAS_string constinArgument8,
+                                      class GALGAS_string & outArgument9,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -337,29 +337,29 @@ extern const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryGetterDeclaration'             *
+//            Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterDeclaration'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterDeclaration (class C_Compiler * inCompiler,
-                                                                                                         const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                         const class GALGAS_string & in_GETTER_5F_NAME,
-                                                                                                         const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
-                                                                                                         COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (class C_Compiler * inCompiler,
+                                                                                                          const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                          const class GALGAS_string & in_GETTER_5F_NAME,
+                                                                                                          const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
+                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryGetterImplementation'           *
+//          Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterImplementation'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryGetterImplementation (class C_Compiler * inCompiler,
-                                                                                                            const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                            const class GALGAS_string & in_GETTER_5F_NAME,
-                                                                                                            const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                            const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
-                                                                                                            COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (class C_Compiler * inCompiler,
+                                                                                                             const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                             const class GALGAS_string & in_GETTER_5F_NAME,
+                                                                                                             const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
+                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
+                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -390,40 +390,40 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Filewrapper template 'semanticComponentGenerationTemplate overridingCategoryGetterImplementation'          *
+//         Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionGetterImplementation'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryGetterImplementation (class C_Compiler * inCompiler,
-                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                              const class GALGAS_string & in_GETTER_5F_NAME,
-                                                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
-                                                                                                              const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
-                                                                                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (class C_Compiler * inCompiler,
+                                                                                                               const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                               const class GALGAS_string & in_GETTER_5F_NAME,
+                                                                                                               const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
+                                                                                                               const class GALGAS_string & in_GETTER_5F_IMPLEMENTATION
+                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryModifierDeclaration'            *
+//           Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionModifierDeclaration'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryModifierDeclaration (class C_Compiler * inCompiler,
-                                                                                                           const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                           const class GALGAS_string & in_MODIFIER_5F_NAME,
-                                                                                                           const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                           COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionModifierDeclaration (class C_Compiler * inCompiler,
+                                                                                                            const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                            const class GALGAS_string & in_MODIFIER_5F_NAME,
+                                                                                                            const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryModifierImplementation'          *
+//         Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionModifierImplementation'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryModifierImplementation (class C_Compiler * inCompiler,
-                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                              const class GALGAS_string & in_MODIFIER_5F_NAME,
-                                                                                                              const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionModifierImplementation (class C_Compiler * inCompiler,
+                                                                                                               const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                               const class GALGAS_string & in_MODIFIER_5F_NAME,
+                                                                                                               const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -452,39 +452,39 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Filewrapper template 'semanticComponentGenerationTemplate overridingCategoryModifierImplementation'         *
+//        Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionModifierImplementation'         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryModifierImplementation (class C_Compiler * inCompiler,
-                                                                                                                const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                                const class GALGAS_string & in_MODIFIER_5F_NAME,
-                                                                                                                const class GALGAS_string & in_MODIFIER_5F_IMPLEMENTATION
-                                                                                                                COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionModifierImplementation (class C_Compiler * inCompiler,
+                                                                                                                 const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                                 const class GALGAS_string & in_MODIFIER_5F_NAME,
+                                                                                                                 const class GALGAS_string & in_MODIFIER_5F_IMPLEMENTATION
+                                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryMethodDeclaration'             *
+//            Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodDeclaration'            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryMethodDeclaration (class C_Compiler * inCompiler,
-                                                                                                         const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                         const class GALGAS_string & in_METHOD_5F_NAME,
-                                                                                                         const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                         COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (class C_Compiler * inCompiler,
+                                                                                                          const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                          const class GALGAS_string & in_METHOD_5F_NAME,
+                                                                                                          const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//           Filewrapper template 'semanticComponentGenerationTemplate abstractCategoryMethodImplementation'           *
+//          Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodImplementation'           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (class C_Compiler * inCompiler,
-                                                                                                            const class GALGAS_unifiedTypeMap_2D_proxy & in_RECEIVER_5F_TYPE,
-                                                                                                            const class GALGAS_string & in_METHOD_5F_NAME,
-                                                                                                            const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
-                                                                                                            COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (class C_Compiler * inCompiler,
+                                                                                                             const class GALGAS_unifiedTypeMap_2D_proxy & in_RECEIVER_5F_TYPE,
+                                                                                                             const class GALGAS_string & in_METHOD_5F_NAME,
+                                                                                                             const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
+                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -513,15 +513,15 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Filewrapper template 'semanticComponentGenerationTemplate overridingCategoryMethodImplementation'          *
+//         Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionMethodImplementation'          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryMethodImplementation (class C_Compiler * inCompiler,
-                                                                                                              const class GALGAS_string & in_CLASS_5F_NAME,
-                                                                                                              const class GALGAS_string & in_METHOD_5F_NAME,
-                                                                                                              const class GALGAS_string & in_METHOD_5F_IMPLEMENTATION
-                                                                                                              COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (class C_Compiler * inCompiler,
+                                                                                                               const class GALGAS_string & in_CLASS_5F_NAME,
+                                                                                                               const class GALGAS_string & in_METHOD_5F_NAME,
+                                                                                                               const class GALGAS_string & in_METHOD_5F_IMPLEMENTATION
+                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -970,20 +970,20 @@ void routine_generatePredefinedTypeFiles (const class GALGAS_string constinArgum
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                                        C_Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                                     C_Compiler * inCompiler
+                                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
-                                                         categoryGetterSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) ;
+void enterExtensionGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
+                                                          enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                       class C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
+class GALGAS_string callExtensionGetter_appendPrimitiveTypeDeclaration (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                        class C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -991,20 +991,20 @@ class GALGAS_string callCategoryGetter_appendPrimitiveTypeDeclaration (const cPt
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                                         C_Compiler * inCompiler
-                                                                                                                         COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
-                                                          categoryGetterSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) ;
+void enterExtensionGetter_appendTypeGenericImplementation (const int32_t inClassIndex,
+                                                           enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
-                                                                        class C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+class GALGAS_string callExtensionGetter_appendTypeGenericImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                                         class C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1012,24 +1012,24 @@ class GALGAS_string callCategoryGetter_appendTypeGenericImplementation (const cP
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                class GALGAS_stringset & ioArgument0,
-                                                                                                class GALGAS_string & outArgument1,
-                                                                                                class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                 class GALGAS_stringset & ioArgument0,
+                                                                                                 class GALGAS_string & outArgument1,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendDeclaration_31_ (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ inMethod) ;
+void enterExtensionMethod_appendDeclaration_31_ (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_31_ inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendDeclaration_31_ (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                               GALGAS_stringset & io_ioInclusionSet,
-                                               GALGAS_string & out_outHeader,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_appendDeclaration_31_ (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                GALGAS_stringset & io_ioInclusionSet,
+                                                GALGAS_string & out_outHeader,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1037,26 +1037,26 @@ void callCategoryMethod_appendDeclaration_31_ (const class cPtr_semanticDeclarat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                const class GALGAS_string constinArgument0,
-                                                                                                class GALGAS_stringset & ioArgument1,
-                                                                                                class GALGAS_string & outArgument2,
-                                                                                                class C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                 const class GALGAS_string constinArgument0,
+                                                                                                 class GALGAS_stringset & ioArgument1,
+                                                                                                 class GALGAS_string & outArgument2,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendDeclaration_32_ (const int32_t inClassIndex,
-                                                categoryMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ inMethod) ;
+void enterExtensionMethod_appendDeclaration_32_ (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticDeclarationForGeneration_appendDeclaration_32_ inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendDeclaration_32_ (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                               const GALGAS_string constin_inOutputDirectory,
-                                               GALGAS_stringset & io_ioInclusionSet,
-                                               GALGAS_string & out_outHeader,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_appendDeclaration_32_ (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                const GALGAS_string constin_inOutputDirectory,
+                                                GALGAS_stringset & io_ioInclusionSet,
+                                                GALGAS_string & out_outHeader,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1064,26 +1064,26 @@ void callCategoryMethod_appendDeclaration_32_ (const class cPtr_semanticDeclarat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                       const class GALGAS_unifiedTypeMap constinArgument0,
-                                                                                                       class GALGAS_stringset & ioArgument1,
-                                                                                                       class GALGAS_string & outArgument2,
-                                                                                                       class C_Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                        const class GALGAS_unifiedTypeMap constinArgument0,
+                                                                                                        class GALGAS_stringset & ioArgument1,
+                                                                                                        class GALGAS_string & outArgument2,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSpecificImplementation (const int32_t inClassIndex,
-                                                       categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation inMethod) ;
+void enterExtensionMethod_appendSpecificImplementation (const int32_t inClassIndex,
+                                                        extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSpecificImplementation (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                      const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
-                                                      GALGAS_stringset & io_ioInclusionSet,
-                                                      GALGAS_string & out_outImplementation,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_appendSpecificImplementation (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                       const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
+                                                       GALGAS_stringset & io_ioInclusionSet,
+                                                       GALGAS_string & out_outImplementation,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

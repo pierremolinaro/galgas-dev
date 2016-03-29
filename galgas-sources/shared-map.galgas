@@ -258,10 +258,10 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @sharedMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
-  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -283,9 +283,9 @@ override getter @sharedMapDeclarationAST keyRepresentation
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @sharedMapDeclarationAST enterInSemanticContext
-  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
-  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
 #--- string type index
@@ -564,9 +564,9 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #--- Add Categories
   addCategories (
-    !inCategoryMethodMapForBuildingContext
-    !inCategoryGetterMapForBuildingContext
-    !inCategoryModifierMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
     !?getterMap

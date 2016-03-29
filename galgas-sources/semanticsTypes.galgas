@@ -70,7 +70,7 @@ enum @methodQualifier {
 
 enum @methodKind {
   case definedAsMember
-  case definedAsCategory
+  case definedAsExtension
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

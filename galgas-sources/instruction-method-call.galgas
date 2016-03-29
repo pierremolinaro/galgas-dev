@@ -150,13 +150,13 @@ override method @methodCallInstructionForGeneration generateInstruction
   end
 #--- Generate method call
   switch mKind
-  case definedAsCategory :
+  case definedAsExtension :
     ioInclusionSet += !"method-" + [mMethodBaseType key] + "-" + mMethodName
     if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
-      ioGeneratedCode += "callCategoryMethod_" + [mMethodName identifierRepresentation]
+      ioGeneratedCode += "callExtensionMethod_" + [mMethodName identifierRepresentation]
                       + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
-      ioGeneratedCode += "categoryMethod_" + [mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
+      ioGeneratedCode += "extensionMethod_" + [mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     ioGeneratedCode += receiverCppName + ".method_" + [mMethodName identifierRepresentation] + " ("

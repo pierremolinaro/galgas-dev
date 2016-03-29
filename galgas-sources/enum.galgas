@@ -68,10 +68,10 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryGetterMapForBuildingContext unused ioCategoryGetterMapForBuildingContext
-  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mEnumTypeName ![mEnumTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 #--- There is a circular reference if all constant names current type in associated values
@@ -104,9 +104,9 @@ override method @enumDeclarationAST enterDeclarationInGraph
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumDeclarationAST enterInSemanticContext
-  ?let @categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
-  ?let @categoryGetterMapForBuildingContext inCategoryGetterMapForBuildingContext
-  ?let @categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
   @constructorMap constructorMap = {}
@@ -170,9 +170,9 @@ override method @enumDeclarationAST enterInSemanticContext
   end
 #--- Add Categories
   addCategories (
-    !inCategoryMethodMapForBuildingContext
-    !inCategoryGetterMapForBuildingContext
-    !inCategoryModifierMapForBuildingContext
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
     !?ioSemanticContext
     !mEnumTypeName
     !?getterMap

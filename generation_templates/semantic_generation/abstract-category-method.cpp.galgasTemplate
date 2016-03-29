@@ -4,29 +4,29 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
+static TC_UniqueArray <extensionMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
-  gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+               %!^%extensionMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
+  gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
-  gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
+static void freeExtensionMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
+  gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
-       %!^%freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
+       %!^%freeExtensionMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]% * inObject%
+void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -53,19 +53,19 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
     macroValidSharedObject (inObject, cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-      f = gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    extensionMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
+    if (classIndex < gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
+      f = gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-           f = gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
+           f = gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;

@@ -614,164 +614,164 @@ class @selfAssignmentInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y  M E T H O D    D E C L A R A T I O N                                              *
+# A B S T R A C T   E X T E N S I O N  M E T H O D    D E C L A R A T I O N                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryMethodAST : @semanticDeclarationAST {
+class @abstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryMethodName
-  @formalParameterListAST mAbstractCategoryMethodFormalParameterList
+  @lstring mAbstractExtensionMethodName
+  @formalParameterListAST mAbstractExtensionMethodFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N                                                       *
+#        E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryMethodAST : @semanticDeclarationAST {
+class @extensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mCategoryMethodName
-  @formalParameterListAST mCategoryMethodFormalParameterList
-  @semanticInstructionListAST mCategoryMethodInstructionList
+  @lstring mExtensionMethodName
+  @formalParameterListAST mExtensionMethodFormalParameterList
+  @semanticInstructionListAST mExtensionMethodInstructionList
   @location mEndOfMethodLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C L .                                                  *
+#  O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C L .                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryMethodAST : @semanticDeclarationAST {
+class @overridingExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryMethodName
-  @formalParameterListAST mOverridingCategoryMethodFormalParameterList
-  @semanticInstructionListAST mOverridingCategoryMethodInstructionList
+  @lstring mOverridingExtensionMethodName
+  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+  @semanticInstructionListAST mOverridingExtensionMethodInstructionList
   @location mEndOfMethodLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M E T H O D                                            *
+#  O V E R R I D I N G    A B S T R A C T    E X T E N S I O N    M E T H O D                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingAbstractCategoryMethodAST : @semanticDeclarationAST {
+class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryMethodName
-  @formalParameterListAST mOverridingCategoryMethodFormalParameterList
+  @lstring mOverridingExtensionMethodName
+  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y  M O D I F I E R    D E C L A R A T I O N                                          *
+# A B S T R A C T   E X T E N S I O N  M O D I F I E R    D E C L A R A T I O N                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryModifierAST : @semanticDeclarationAST {
+class @abstractExtensionModifierAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryModifierName
-  @formalParameterListAST mAbstractCategoryModifierFormalParameterList
+  @lstring mAbstractExtensionModifierName
+  @formalParameterListAST mAbstractExtensionModifierFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                                   *
+#        E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryModifierAST : @semanticDeclarationAST {
+class @extensionModifierAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mCategoryModifierName
-  @formalParameterListAST mCategoryModifierFormalParameterList
-  @semanticInstructionListAST mCategoryModifierInstructionList
+  @lstring mExtensionModifierName
+  @formalParameterListAST mExtensionModifierFormalParameterList
+  @semanticInstructionListAST mExtensionModifierInstructionList
   @location mEndOfModifierLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O V E R R I D I N G    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                  *
+#  O V E R R I D I N G    E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryModifierAST : @semanticDeclarationAST {
+class @overridingExtensionModifierAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryModifierName
-  @formalParameterListAST mOverridingCategoryModifierFormalParameterList
-  @semanticInstructionListAST mOverridingCategoryModifierInstructionList
+  @lstring mOverridingExtensionModifierName
+  @formalParameterListAST mOverridingExtensionModifierFormalParameterList
+  @semanticInstructionListAST mOverridingExtensionModifierInstructionList
   @location mEndOfModifierLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M O D I F I E R                                        *
+#  O V E R R I D I N G    A B S T R A C T    E X T E N S I O N    M O D I F I E R                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingAbstractCategoryModifierAST : @semanticDeclarationAST {
+class @overridingAbstractExtensionModifierAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryModifierName
-  @formalParameterListAST mOverridingCategoryModifierFormalParameterList
+  @lstring mOverridingExtensionModifierName
+  @formalParameterListAST mOverridingExtensionModifierFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                            *
+# A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @abstractCategoryGetterAST : @semanticDeclarationAST {
+class @abstractExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryGetterName
-  @formalInputParameterListAST mAbstractCategoryGetterFormalInputParameterList
-  @lstring mAbstractCategoryGetterReturnedTypeName
+  @lstring mAbstractExtensionGetterName
+  @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
+  @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        C A T E G O R Y    G E T T E R    D E C L A R A T I O N                                                       *
+#        E X T E N S I O N    G E T T E R    D E C L A R A T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @categoryGetterAST : @semanticDeclarationAST {
+class @extensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mCategoryGetterName
-  @formalInputParameterListAST mCategoryGetterFormalInputParameterList
-  @lstring mCategoryGetterReturnedTypeName
-  @lstring mCategoryGetterReturnedVariableName
-  @semanticInstructionListAST mCategoryGetterInstructionList
+  @lstring mExtensionGetterName
+  @formalInputParameterListAST mExtensionGetterFormalInputParameterList
+  @lstring mExtensionGetterReturnedTypeName
+  @lstring mExtensionGetterReturnedVariableName
+  @semanticInstructionListAST mExtensionGetterInstructionList
   @location mEndOfReaderLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N                                           *
+#O V E R R I D I N G   E X T E N S I O N   R E A D E R   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingCategoryGetterAST : @semanticDeclarationAST {
+class @overridingExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mOverridingCategoryGetterName
-  @formalInputParameterListAST mOverridingCategoryGetterFormalInputParameterList
-  @lstring mOverridingCategoryGetterReturnedTypeName
-  @lstring mOverridingCategoryGetterReturnedVariableName
-  @semanticInstructionListAST mOverridingCategoryGetterInstructionList
+  @lstring mOverridingExtensionGetterName
+  @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
+  @lstring mOverridingExtensionGetterReturnedTypeName
+  @lstring mOverridingExtensionGetterReturnedVariableName
+  @semanticInstructionListAST mOverridingExtensionGetterInstructionList
   @location mEndOfReaderLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                     *
+# O V E R R I D I N G    A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @overridingAbstractCategoryGetterAST : @semanticDeclarationAST {
+class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
-  @lstring mAbstractCategoryGetterName
-  @formalInputParameterListAST mAbstractCategoryGetterFormalInputParameterList
-  @lstring mAbstractCategoryGetterReturnedTypeName
+  @lstring mAbstractExtensionGetterName
+  @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
+  @lstring mAbstractExtensionGetterReturnedTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

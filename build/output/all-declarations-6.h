@@ -3150,13 +3150,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                       @genericCategoryMethodListMap list map                                        *
+//                                       @genericExtensionMethodListMap list map                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_genericCategoryMethodListMap : public AC_GALGAS_listmap {
+class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 //--------------------------------- Default constructor
-  public : GALGAS_genericCategoryMethodListMap (void) ;
+  public : GALGAS_genericExtensionMethodListMap (void) ;
 
 //-- Start of generic part --*
 
@@ -3164,12 +3164,12 @@ class GALGAS_genericCategoryMethodListMap : public AC_GALGAS_listmap {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_genericCategoryMethodListMap extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_genericExtensionMethodListMap extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_genericCategoryMethodListMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_genericExtensionMethodListMap constructor_emptyMap (LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
@@ -3190,36 +3190,36 @@ class GALGAS_genericCategoryMethodListMap : public AC_GALGAS_listmap {
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
 
-  friend class cEnumerator_genericCategoryMethodListMap ;
+  friend class cEnumerator_genericExtensionMethodListMap ;
  
-} ; // End of GALGAS_genericCategoryMethodListMap class
+} ; // End of GALGAS_genericExtensionMethodListMap class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_genericCategoryMethodListMap : public cGenericAbstractEnumerator {
-  public : cEnumerator_genericCategoryMethodListMap (const GALGAS_genericCategoryMethodListMap & inEnumeratedObject,
-                                                     const typeEnumerationOrder inOrder) ;
+class cEnumerator_genericExtensionMethodListMap : public cGenericAbstractEnumerator {
+  public : cEnumerator_genericExtensionMethodListMap (const GALGAS_genericExtensionMethodListMap & inEnumeratedObject,
+                                                      const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_string current_key (LOCATION_ARGS) const ;
   public : class GALGAS_lstringlist current_mList (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_genericCategoryMethodListMap_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_genericExtensionMethodListMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericCategoryMethodListMap ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   @genericCategoryMethodListMap_2D_element struct                                   *
+//                                  @genericExtensionMethodListMap_2D_element struct                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_genericCategoryMethodListMap_2D_element : public AC_GALGAS_root {
+class GALGAS_genericExtensionMethodListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_string mAttribute_key ;
   public : GALGAS_lstringlist mAttribute_mList ;
@@ -3230,17 +3230,17 @@ class GALGAS_genericCategoryMethodListMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_genericCategoryMethodListMap_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_genericExtensionMethodListMap_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_genericCategoryMethodListMap_2D_element (void) ;
+  public : GALGAS_genericExtensionMethodListMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_genericCategoryMethodListMap_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_genericExtensionMethodListMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_genericCategoryMethodListMap_2D_element (const GALGAS_string & in_key,
-                                                           const GALGAS_lstringlist & in_mList) ;
+  public : GALGAS_genericExtensionMethodListMap_2D_element (const GALGAS_string & in_key,
+                                                            const GALGAS_lstringlist & in_mList) ;
 
 //-- Start of generic part --*
 
@@ -3248,20 +3248,20 @@ class GALGAS_genericCategoryMethodListMap_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_genericCategoryMethodListMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_genericExtensionMethodListMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_genericCategoryMethodListMap_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                                  const class GALGAS_lstringlist & inOperand1
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_genericExtensionMethodListMap_2D_element constructor_new (const class GALGAS_string & inOperand0,
+                                                                                   const class GALGAS_lstringlist & inOperand1
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_genericCategoryMethodListMap_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_genericExtensionMethodListMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3277,12 +3277,12 @@ class GALGAS_genericCategoryMethodListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_genericCategoryMethodListMap_2D_element class
+} ; // End of GALGAS_genericExtensionMethodListMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericCategoryMethodListMap_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMethodListMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3422,21 +3422,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryMethodMapForGlobalCheckings map                                       *
+//                                      @extensionMethodMapForGlobalCheckings map                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryMethodMapForGlobalCheckings ;
+class cMapElement_extensionMethodMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryMethodMapForGlobalCheckings : public AC_GALGAS_map {
+class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryMethodMapForGlobalCheckings (void) ;
+  public : GALGAS_extensionMethodMapForGlobalCheckings (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryMethodMapForGlobalCheckings (const GALGAS_categoryMethodMapForGlobalCheckings & inSource) ;
-  public : GALGAS_categoryMethodMapForGlobalCheckings & operator = (const GALGAS_categoryMethodMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionMethodMapForGlobalCheckings (const GALGAS_extensionMethodMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionMethodMapForGlobalCheckings & operator = (const GALGAS_extensionMethodMapForGlobalCheckings & inSource) ;
 
 //-- Start of generic part --*
 
@@ -3444,15 +3444,15 @@ class GALGAS_categoryMethodMapForGlobalCheckings : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryMethodMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryMethodMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryMethodMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_categoryMethodMapForGlobalCheckings & inOperand0
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_extensionMethodMapForGlobalCheckings & inOperand0
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3469,52 +3469,52 @@ class GALGAS_categoryMethodMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryMethodMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_extensionMethodMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryMethodMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                                 const GALGAS_string & inKey
-                                                                                                                 COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG cMapElement_extensionMethodMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                                  const GALGAS_string & inKey
+                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryMethodMapForGlobalCheckings ;
+  friend class cEnumerator_extensionMethodMapForGlobalCheckings ;
  
-} ; // End of GALGAS_categoryMethodMapForGlobalCheckings class
+} ; // End of GALGAS_extensionMethodMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryMethodMapForGlobalCheckings : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryMethodMapForGlobalCheckings (const GALGAS_categoryMethodMapForGlobalCheckings & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+class cEnumerator_extensionMethodMapForGlobalCheckings : public cGenericAbstractEnumerator {
+  public : cEnumerator_extensionMethodMapForGlobalCheckings (const GALGAS_extensionMethodMapForGlobalCheckings & inEnumeratedObject,
+                                                             const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryMethodMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionMethodMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryMethodMapForGlobalCheckings ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Class for element of '@categoryMethodMapForGlobalCheckings' map                           *
+//                          Class for element of '@extensionMethodMapForGlobalCheckings' map                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryMethodMapForGlobalCheckings : public cMapElement {
+class cMapElement_extensionMethodMapForGlobalCheckings : public cMapElement {
 //--- Map attributes
 
 //--- Constructor
-  public : cMapElement_categoryMethodMapForGlobalCheckings (const GALGAS_lstring & inKey
-                                                            COMMA_LOCATION_ARGS) ;
+  public : cMapElement_extensionMethodMapForGlobalCheckings (const GALGAS_lstring & inKey
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3531,11 +3531,11 @@ class cMapElement_categoryMethodMapForGlobalCheckings : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               @categoryMethodMapForGlobalCheckings_2D_element struct                                *
+//                               @extensionMethodMapForGlobalCheckings_2D_element struct                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
+class GALGAS_extensionMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
 
@@ -3545,16 +3545,16 @@ class GALGAS_categoryMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryMethodMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryMethodMapForGlobalCheckings_2D_element (void) ;
+  public : GALGAS_extensionMethodMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryMethodMapForGlobalCheckings_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionMethodMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryMethodMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
+  public : GALGAS_extensionMethodMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
 
 //-- Start of generic part --*
 
@@ -3562,19 +3562,19 @@ class GALGAS_categoryMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryMethodMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryMethodMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionMethodMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryMethodMapForGlobalCheckings_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_extensionMethodMapForGlobalCheckings_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3588,30 +3588,30 @@ class GALGAS_categoryMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_r
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryMethodMapForGlobalCheckings_2D_element class
+} ; // End of GALGAS_extensionMethodMapForGlobalCheckings_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryMethodMapForGlobalCheckings_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapForGlobalCheckings_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     @categoryModifierMapForGlobalCheckings map                                      *
+//                                     @extensionModifierMapForGlobalCheckings map                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryModifierMapForGlobalCheckings ;
+class cMapElement_extensionModifierMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryModifierMapForGlobalCheckings : public AC_GALGAS_map {
+class GALGAS_extensionModifierMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryModifierMapForGlobalCheckings (void) ;
+  public : GALGAS_extensionModifierMapForGlobalCheckings (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryModifierMapForGlobalCheckings (const GALGAS_categoryModifierMapForGlobalCheckings & inSource) ;
-  public : GALGAS_categoryModifierMapForGlobalCheckings & operator = (const GALGAS_categoryModifierMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionModifierMapForGlobalCheckings (const GALGAS_extensionModifierMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionModifierMapForGlobalCheckings & operator = (const GALGAS_extensionModifierMapForGlobalCheckings & inSource) ;
 
 //-- Start of generic part --*
 
@@ -3619,15 +3619,15 @@ class GALGAS_categoryModifierMapForGlobalCheckings : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryModifierMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryModifierMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryModifierMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_categoryModifierMapForGlobalCheckings & inOperand0
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_extensionModifierMapForGlobalCheckings & inOperand0
+                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3644,52 +3644,52 @@ class GALGAS_categoryModifierMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryModifierMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_extensionModifierMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryModifierMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                                   const GALGAS_string & inKey
-                                                                                                                   COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG cMapElement_extensionModifierMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                                    const GALGAS_string & inKey
+                                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryModifierMapForGlobalCheckings ;
+  friend class cEnumerator_extensionModifierMapForGlobalCheckings ;
  
-} ; // End of GALGAS_categoryModifierMapForGlobalCheckings class
+} ; // End of GALGAS_extensionModifierMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryModifierMapForGlobalCheckings : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryModifierMapForGlobalCheckings (const GALGAS_categoryModifierMapForGlobalCheckings & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) ;
+class cEnumerator_extensionModifierMapForGlobalCheckings : public cGenericAbstractEnumerator {
+  public : cEnumerator_extensionModifierMapForGlobalCheckings (const GALGAS_extensionModifierMapForGlobalCheckings & inEnumeratedObject,
+                                                               const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryModifierMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionModifierMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryModifierMapForGlobalCheckings ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                          Class for element of '@categoryModifierMapForGlobalCheckings' map                          *
+//                         Class for element of '@extensionModifierMapForGlobalCheckings' map                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryModifierMapForGlobalCheckings : public cMapElement {
+class cMapElement_extensionModifierMapForGlobalCheckings : public cMapElement {
 //--- Map attributes
 
 //--- Constructor
-  public : cMapElement_categoryModifierMapForGlobalCheckings (const GALGAS_lstring & inKey
-                                                              COMMA_LOCATION_ARGS) ;
+  public : cMapElement_extensionModifierMapForGlobalCheckings (const GALGAS_lstring & inKey
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3706,11 +3706,11 @@ class cMapElement_categoryModifierMapForGlobalCheckings : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              @categoryModifierMapForGlobalCheckings_2D_element struct                               *
+//                              @extensionModifierMapForGlobalCheckings_2D_element struct                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryModifierMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
+class GALGAS_extensionModifierMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
 
@@ -3720,16 +3720,16 @@ class GALGAS_categoryModifierMapForGlobalCheckings_2D_element : public AC_GALGAS
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryModifierMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryModifierMapForGlobalCheckings_2D_element (void) ;
+  public : GALGAS_extensionModifierMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryModifierMapForGlobalCheckings_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionModifierMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryModifierMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
+  public : GALGAS_extensionModifierMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
 
 //-- Start of generic part --*
 
@@ -3737,19 +3737,19 @@ class GALGAS_categoryModifierMapForGlobalCheckings_2D_element : public AC_GALGAS
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryModifierMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryModifierMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
-                                                                                           COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionModifierMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryModifierMapForGlobalCheckings_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_extensionModifierMapForGlobalCheckings_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3763,30 +3763,30 @@ class GALGAS_categoryModifierMapForGlobalCheckings_2D_element : public AC_GALGAS
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryModifierMapForGlobalCheckings_2D_element class
+} ; // End of GALGAS_extensionModifierMapForGlobalCheckings_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryModifierMapForGlobalCheckings_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      @categoryGetterMapForGlobalCheckings map                                       *
+//                                      @extensionGetterMapForGlobalCheckings map                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryGetterMapForGlobalCheckings ;
+class cMapElement_extensionGetterMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryGetterMapForGlobalCheckings : public AC_GALGAS_map {
+class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Default constructor
-  public : GALGAS_categoryGetterMapForGlobalCheckings (void) ;
+  public : GALGAS_extensionGetterMapForGlobalCheckings (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) ;
-  public : GALGAS_categoryGetterMapForGlobalCheckings & operator = (const GALGAS_categoryGetterMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionGetterMapForGlobalCheckings (const GALGAS_extensionGetterMapForGlobalCheckings & inSource) ;
+  public : GALGAS_extensionGetterMapForGlobalCheckings & operator = (const GALGAS_extensionGetterMapForGlobalCheckings & inSource) ;
 
 //-- Start of generic part --*
 
@@ -3794,15 +3794,15 @@ class GALGAS_categoryGetterMapForGlobalCheckings : public AC_GALGAS_map {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryGetterMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryGetterMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_categoryGetterMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_categoryGetterMapForGlobalCheckings & inOperand0
-                                                                                               COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings constructor_mapWithMapToOverride (const class GALGAS_extensionGetterMapForGlobalCheckings & inOperand0
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -3819,52 +3819,52 @@ class GALGAS_categoryGetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_categoryGetterMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_extensionGetterMapForGlobalCheckings getter_overriddenMap (C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_categoryGetterMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                                 const GALGAS_string & inKey
-                                                                                                                 COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG cMapElement_extensionGetterMapForGlobalCheckings * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                                  const GALGAS_string & inKey
+                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Friend
 
-  friend class cEnumerator_categoryGetterMapForGlobalCheckings ;
+  friend class cEnumerator_extensionGetterMapForGlobalCheckings ;
  
-} ; // End of GALGAS_categoryGetterMapForGlobalCheckings class
+} ; // End of GALGAS_extensionGetterMapForGlobalCheckings class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_categoryGetterMapForGlobalCheckings : public cGenericAbstractEnumerator {
-  public : cEnumerator_categoryGetterMapForGlobalCheckings (const GALGAS_categoryGetterMapForGlobalCheckings & inEnumeratedObject,
-                                                            const typeEnumerationOrder inOrder) ;
+class cEnumerator_extensionGetterMapForGlobalCheckings : public cGenericAbstractEnumerator {
+  public : cEnumerator_extensionGetterMapForGlobalCheckings (const GALGAS_extensionGetterMapForGlobalCheckings & inEnumeratedObject,
+                                                             const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_categoryGetterMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionGetterMapForGlobalCheckings_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                           Class for element of '@categoryGetterMapForGlobalCheckings' map                           *
+//                          Class for element of '@extensionGetterMapForGlobalCheckings' map                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_categoryGetterMapForGlobalCheckings : public cMapElement {
+class cMapElement_extensionGetterMapForGlobalCheckings : public cMapElement {
 //--- Map attributes
 
 //--- Constructor
-  public : cMapElement_categoryGetterMapForGlobalCheckings (const GALGAS_lstring & inKey
-                                                            COMMA_LOCATION_ARGS) ;
+  public : cMapElement_extensionGetterMapForGlobalCheckings (const GALGAS_lstring & inKey
+                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3881,11 +3881,11 @@ class cMapElement_categoryGetterMapForGlobalCheckings : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               @categoryGetterMapForGlobalCheckings_2D_element struct                                *
+//                               @extensionGetterMapForGlobalCheckings_2D_element struct                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_categoryGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
+class GALGAS_extensionGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
 
@@ -3895,16 +3895,16 @@ class GALGAS_categoryGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) ;
+  public : GALGAS_extensionGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_categoryGetterMapForGlobalCheckings_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_categoryGetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
+  public : GALGAS_extensionGetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
 
 //-- Start of generic part --*
 
@@ -3912,19 +3912,19 @@ class GALGAS_categoryGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_r
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_categoryGetterMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
-                                                                                         COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_extensionGetterMapForGlobalCheckings_2D_element constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_categoryGetterMapForGlobalCheckings_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_extensionGetterMapForGlobalCheckings_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -3938,12 +3938,12 @@ class GALGAS_categoryGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_r
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_categoryGetterMapForGlobalCheckings_2D_element class
+} ; // End of GALGAS_extensionGetterMapForGlobalCheckings_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_categoryGetterMapForGlobalCheckings_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapForGlobalCheckings_2D_element ;
 
 
 #ifndef galgas_33_Scanner_CLASS_DEFINED
@@ -4226,26 +4226,26 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
     kIndexing_terminalReference,
     kIndexing_ruleDefinition,
     kIndexing_ruleReference,
-    kIndexing_abstractCategoryModifierDefinition,
-    kIndexing_typeReferenceAbstractCategoryModifier,
-    kIndexing_overrideAbstractCategoryModifierDefinition,
+    kIndexing_abstractExtensionModifierDefinition,
+    kIndexing_typeReferenceAbstractExtensionModifier,
+    kIndexing_overrideAbstractExtensionModifierDefinition,
     kIndexing_categoryModifierDefinition,
-    kIndexing_typeReferenceCategoryModifier,
-    kIndexing_overrideCategoryModifierDefinition,
-    kIndexing_typeReferenceOverrideCategoryModifierDefinition,
-    kIndexing_typeReferenceOverrideAbstractCategoryModifier,
-    kIndexing_abstractCategoryMethodDefinition,
-    kIndexing_typeReferenceAbstractCategoryMethod,
-    kIndexing_overrideAbstractCategoryMethodDefinition,
+    kIndexing_typeReferenceExtensionModifier,
+    kIndexing_overrideExtensionModifierDefinition,
+    kIndexing_typeReferenceOverrideExtensionModifierDefinition,
+    kIndexing_typeReferenceOverrideAbstractExtensionModifier,
+    kIndexing_abstractExtensionMethodDefinition,
+    kIndexing_typeReferenceAbstractExtensionMethod,
+    kIndexing_overrideAbstractExtensionMethodDefinition,
     kIndexing_categoryMethodDefinition,
-    kIndexing_typeReferenceCategoryMethod,
-    kIndexing_overrideCategoryMethodDefinition,
-    kIndexing_typeReferenceOverrideCategoryMethodDefinition,
-    kIndexing_typeReferenceOverrideAbstractCategoryMethod,
-    kIndexing_abstractCategoryGetterDefinition,
-    kIndexing_overrideAbstractCategoryGetterDefinition,
+    kIndexing_typeReferenceExtensionMethod,
+    kIndexing_overrideExtensionMethodDefinition,
+    kIndexing_typeReferenceOverrideExtensionMethodDefinition,
+    kIndexing_typeReferenceOverrideAbstractExtensionMethod,
+    kIndexing_abstractExtensionGetterDefinition,
+    kIndexing_overrideAbstractExtensionGetterDefinition,
     kIndexing_categoryGetterDefinition,
-    kIndexing_overrideCategoryGetterDefinition,
+    kIndexing_overrideExtensionGetterDefinition,
     kIndexing_optionComponentDefinition,
     kIndexing_optionComponentReference,
     kIndexing_grammarComponentDefinition,

@@ -435,11 +435,11 @@ proc generateFunction
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    M O D I F I E R    I M P L E M E N A T I O N           *
+# E X T E N S I O N    M O D I F I E R    I M P L E M E N A T I O N           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generateCategoryModifier
+proc generateExtensionModifier
   ?let @string inClassName
   ?let @string inBaseClassName
   ?let @string inMethodName
@@ -469,7 +469,7 @@ proc generateCategoryModifier
   end
   [!?routineBody decIndentation !2]
 #--- Generate header
-  outGeneratedCode = "static void categoryModifier_" + [inClassName identifierRepresentation] + "_" + [inMethodName identifierRepresentation] + " ("
+  outGeneratedCode = "static void extensionSetter_" + [inClassName identifierRepresentation] + "_" + [inMethodName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
   if inBaseClassName == "" then
     outGeneratedCode += "cPtr_" + [inClassName identifierRepresentation] + " * "
@@ -531,11 +531,11 @@ proc generateCategoryModifier
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
+# E X T E N S I O N    M E T H O D    I M P L E M E N A T I O N               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generateCategoryMethod
+proc generateExtensionMethod
   ?let @unifiedTypeMap-proxy inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
@@ -585,7 +585,7 @@ proc generateCategoryMethod
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
-  outGeneratedCode = "static void categoryMethod_" + [className identifierRepresentation] + "_" + [inMethodName identifierRepresentation] + " ("
+  outGeneratedCode = "static void extensionMethod_" + [className identifierRepresentation] + "_" + [inMethodName identifierRepresentation] + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
   if inBaseClassName == "" then
     outGeneratedCode += "const cPtr_" + [className identifierRepresentation] + " * "
@@ -647,11 +647,11 @@ proc generateCategoryMethod
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# C A T E G O R Y    R E A D E R    I M P L E M E N T A T I O N                                                        *
+# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generateCategoryGetter
+proc generateExtensionGetter
   ?let @unifiedTypeMap-proxy inReceiverType
   ?let @string inBaseClassName
   ?!@stringset ioInclusionSet
@@ -912,14 +912,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
 }{
-#------------ Category getter
-  template abstractCategoryGetterDeclaration "abstract-category-getter.h.galgasTemplate"
+#------------ Extension getter
+  template abstractExtensionGetterDeclaration "abstract-category-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template abstractCategoryGetterImplementation "abstract-category-getter.cpp.galgasTemplate"
+  template abstractExtensionGetterImplementation "abstract-category-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -938,19 +938,19 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
-  template overridingCategoryGetterImplementation "overriding-category-getter.cpp.galgasTemplate"
+  template overridingExtensionGetterImplementation "overriding-category-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
-#------------ Category modifier
-  template abstractCategoryModifierDeclaration "abstract-category-modifier.h.galgasTemplate"
+#------------ Extension modifier
+  template abstractExtensionModifierDeclaration "abstract-category-modifier.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractCategoryModifierImplementation "abstract-category-modifier.cpp.galgasTemplate"
+  template abstractExtensionModifierImplementation "abstract-category-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -966,19 +966,19 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string MODIFIER_IMPLEMENTATION
 
-  template overridingCategoryModifierImplementation "overriding-category-modifier.cpp.galgasTemplate"
+  template overridingExtensionModifierImplementation "overriding-category-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
   
 
-#------------ Category method
-  template abstractCategoryMethodDeclaration "abstract-category-method.h.galgasTemplate"
+#------------ Extension method
+  template abstractExtensionMethodDeclaration "abstract-category-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractCategoryMethodImplementation "abstract-category-method.cpp.galgasTemplate"
+  template abstractExtensionMethodImplementation "abstract-category-method.cpp.galgasTemplate"
     ?@unifiedTypeMap-proxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -994,7 +994,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
   
-  template overridingCategoryMethodImplementation "overriding-category-method.cpp.galgasTemplate"
+  template overridingExtensionMethodImplementation "overriding-category-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
@@ -1010,7 +1010,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
   
-#--- Category getter implemented as function
+#--- Extension getter implemented as function
   template categoryGetterAsFunctionDeclaration "category-getter-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
@@ -1022,7 +1022,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
-#--- Category method implemented as function
+#--- Extension method implemented as function
   template categoryMethodAsFunctionDeclaration "category-method-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
@@ -1034,7 +1034,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string METHOD_IMPLEMENTATION
   
 
-#--- Category modifier implemented as function
+#--- Extension modifier implemented as function
   template categoryModifierAsFunctionDeclaration "category-modifier-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
@@ -1602,74 +1602,74 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodForGeneration appendDeclaration1
+override method @abstractExtensionMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
+  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
     ![mReceiverType key]
-    !mAbstractCategoryMethodName
-    !mAbstractCategoryMethodFormalParameterList
+    !mAbstractExtensionMethodName
+    !mAbstractExtensionMethodFormalParameterList
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractCategoryMethodForGeneration headerKind ->@headerKind outResult {
+override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodForGeneration appendSpecificImplementation
+override method @abstractExtensionMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mAbstractCategoryMethodName
+  ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mAbstractExtensionMethodName
   [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractCategoryMethodFormalParameterList do
+  for () in mAbstractExtensionMethodFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
     !mReceiverType
-    !mAbstractCategoryMethodName
-    !mAbstractCategoryMethodFormalParameterList
+    !mAbstractExtensionMethodName
+    !mAbstractExtensionMethodFormalParameterList
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @categoryMethodForGeneration headerKind ->@headerKind outResult {
+override getter @extensionMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryMethodForGeneration appendDeclaration1
+override method @extensionMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
       ![mReceiverType key]
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
+      !mExtensionMethodName
+      !mExtensionMethodFormalParameterList
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
       ![mReceiverType key]
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
+      !mExtensionMethodName
+      !mExtensionMethodFormalParameterList
     ] 
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryMethodForGeneration appendSpecificImplementation
+override method @extensionMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalParameterListForGeneration categoryMethodFormalParameterList = mCategoryMethodFormalParameterList
+    @formalParameterListForGeneration categoryMethodFormalParameterList = mExtensionMethodFormalParameterList
     [!?categoryMethodFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
@@ -1678,10 +1678,10 @@ override method @categoryMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ]
-    ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mCategoryMethodName
+    ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mExtensionMethodName
     generateProcedure (
       !static:false
-      !"categoryMethod_" + [mCategoryMethodName identifierRepresentation]
+      !"extensionMethod_" + [mExtensionMethodName identifierRepresentation]
       !?ioInclusionSet
       !categoryMethodFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -1694,19 +1694,19 @@ override method @categoryMethodForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
       ![mReceiverType key]
-      !mCategoryMethodName
+      !mExtensionMethodName
       !code
     ] 
   else
     [mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in mCategoryMethodFormalParameterList do
+    for () in mExtensionMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     @unifiedTypeMap-proxy baseType = mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mCategoryMethodName] then
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mExtensionMethodName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -1715,20 +1715,20 @@ override method @categoryMethodForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"method-" + [baseType key]+ "-" + mCategoryMethodName
-    generateCategoryMethod (
+    ioInclusionSet += !"method-" + [baseType key]+ "-" + mExtensionMethodName
+    generateExtensionMethod (
       !mReceiverType
       !""
       !?ioInclusionSet
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
+      !mExtensionMethodName
+      !mExtensionMethodFormalParameterList
       !mSemanticInstructionListForGeneration
       ?let @string methodImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
       ![mReceiverType key]
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
+      !mExtensionMethodName
+      !mExtensionMethodFormalParameterList
       !methodImplementation
     ]
   end
@@ -1736,28 +1736,28 @@ override method @categoryMethodForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overridingCategoryMethodForGeneration headerKind ->@headerKind outResult {
+override getter @overridingExtensionMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryMethodForGeneration appendSpecificImplementation
+override method @overridingExtensionMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  generateCategoryMethod (
+  generateExtensionMethod (
     !mReceiverType
     !mBaseTypeName
     !?ioInclusionSet
-    !mCategoryMethodName
-    !mCategoryMethodFormalParameterList
+    !mExtensionMethodName
+    !mExtensionMethodFormalParameterList
     !mSemanticInstructionListForGeneration
     ?let @string methodImplementation
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionMethodImplementation
     ![mReceiverType key]
-    !mCategoryMethodName
+    !mExtensionMethodName
     !methodImplementation
   ] 
 }
@@ -1768,71 +1768,71 @@ override method @overridingCategoryMethodForGeneration appendSpecificImplementat
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractCategoryModifierForGeneration headerKind ->@headerKind outResult {
+override getter @abstractExtensionModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryModifierForGeneration appendDeclaration1
+override method @abstractExtensionModifierForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierDeclaration
+  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionModifierDeclaration
     ![mReceiverType key]
-    !mAbstractCategoryModifierName
-    !mAbstractCategoryModifierFormalParameterList
+    !mAbstractExtensionModifierName
+    !mAbstractExtensionModifierFormalParameterList
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryModifierForGeneration appendSpecificImplementation
+override method @abstractExtensionModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mAbstractCategoryModifierName
+  ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mAbstractExtensionModifierName
   [mReceiverType addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionModifierImplementation
     ![mReceiverType key]
-    !mAbstractCategoryModifierName
-    !mAbstractCategoryModifierFormalParameterList
+    !mAbstractExtensionModifierName
+    !mAbstractExtensionModifierFormalParameterList
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @categoryModifierForGeneration headerKind ->@headerKind outResult {
+override getter @extensionModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryModifierForGeneration appendDeclaration1
+override method @extensionModifierForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
       ![mReceiverType key]
-      !mCategoryModifierName
-      !mCategoryModifierFormalParameterList
+      !mExtensionModifierName
+      !mExtensionModifierFormalParameterList
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
       ![mReceiverType key]
-      !mCategoryModifierName
-      !mCategoryModifierFormalParameterList
+      !mExtensionModifierName
+      !mExtensionModifierFormalParameterList
     ]
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryModifierForGeneration appendSpecificImplementation
+override method @extensionModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalParameterListForGeneration categoryModifierFormalParameterList = mCategoryModifierFormalParameterList
+    @formalParameterListForGeneration categoryModifierFormalParameterList = mExtensionModifierFormalParameterList
     [!?categoryModifierFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentInOut
@@ -1841,10 +1841,10 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       !"ioObject"
       !0
     ]
-    ioInclusionSet += !"setter-" + [mReceiverType key] + "-" + mCategoryModifierName
+    ioInclusionSet += !"setter-" + [mReceiverType key] + "-" + mExtensionModifierName
     generateProcedure (
       !static:false
-      !"categoryModifier_" + [mCategoryModifierName identifierRepresentation]
+      !"extensionSetter_" + [mExtensionModifierName identifierRepresentation]
       !?ioInclusionSet
       !categoryModifierFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -1857,7 +1857,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
       ![mReceiverType key]
-      !mCategoryModifierName
+      !mExtensionModifierName
       !code
     ] 
   else
@@ -1865,7 +1865,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mModifierMap] hasKey !mCategoryModifierName] then
+        if [[[baseType mSuperType] mModifierMap] hasKey !mExtensionModifierName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -1874,21 +1874,21 @@ override method @categoryModifierForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"setter-" + [baseType key]+ "-" + mCategoryModifierName
+    ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionModifierName
     [baseType addHeaderFileName !?ioInclusionSet]
-    generateCategoryModifier (
+    generateExtensionModifier (
       ![mReceiverType key]
       !""
-      !mCategoryModifierName
+      !mExtensionModifierName
       !?ioInclusionSet
-      !mCategoryModifierFormalParameterList
+      !mExtensionModifierFormalParameterList
       !mSemanticInstructionListForGeneration
       ?let @string modifierImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
       ![mReceiverType key]
-      !mCategoryModifierName
-      !mCategoryModifierFormalParameterList
+      !mExtensionModifierName
+      !mExtensionModifierFormalParameterList
       !modifierImplementation
     ]
   end
@@ -1896,22 +1896,22 @@ override method @categoryModifierForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overridingCategoryModifierForGeneration headerKind ->@headerKind outResult {
+override getter @overridingExtensionModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryModifierForGeneration appendSpecificImplementation
+override method @overridingExtensionModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  generateCategoryModifier (
+  generateExtensionModifier (
     ![mReceiverType key]
     !mBaseTypeName
-    !mCategoryModifierName
+    !mExtensionModifierName
     !?ioInclusionSet
-    !mCategoryModifierFormalParameterList
+    !mExtensionModifierFormalParameterList
     !mSemanticInstructionListForGeneration
     ?let @string methodImplementation
   )
@@ -1919,7 +1919,7 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
   @bool searching = true
   loop( @uint. max) while searching do
     if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mModifierMap] hasKey !mCategoryModifierName] then
+      if [[[baseType mSuperType] mModifierMap] hasKey !mExtensionModifierName] then
         baseType = [baseType mSuperType]
       else
         searching = false
@@ -1928,11 +1928,11 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
       searching = false
     end  
   end
-  ioInclusionSet += !"setter-" + [baseType key]+ "-" + mCategoryModifierName
+  ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionModifierName
   [mReceiverType addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryModifierImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionModifierImplementation
     ![mReceiverType key]
-    !mCategoryModifierName
+    !mExtensionModifierName
     !methodImplementation
   ] 
 }
@@ -1943,68 +1943,68 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractCategoryGetterForGeneration headerKind ->@headerKind outResult {
+override getter @abstractExtensionGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryGetterForGeneration appendDeclaration1
+override method @abstractExtensionGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterDeclaration
+  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
     ![mReceiverType key]
-    !mAbstractCategoryGetterName
-    !mAbstractCategoryGetterFormalParameterList
+    !mAbstractExtensionGetterName
+    !mAbstractExtensionGetterFormalParameterList
     !mResultType
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryGetterForGeneration appendSpecificImplementation
+override method @abstractExtensionGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractCategoryGetterName
+  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractExtensionGetterName
   [mResultType addHeaderFileName !?ioInclusionSet]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractCategoryGetterFormalParameterList do
+  for () in mAbstractExtensionGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractCategoryGetterImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
     ![mReceiverType key]
-    !mAbstractCategoryGetterName
-    !mAbstractCategoryGetterFormalParameterList
+    !mAbstractExtensionGetterName
+    !mAbstractExtensionGetterFormalParameterList
     !mResultType
   ] 
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @categoryGetterForGeneration headerKind ->@headerKind outResult {
+override getter @extensionGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryGetterForGeneration appendDeclaration1
+override method @extensionGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionDeclaration
       ![mReceiverType key]
-      !mCategoryGetterName
-      !mCategoryGetterFormalParameterList
+      !mExtensionGetterName
+      !mExtensionGetterFormalParameterList
       ![mResultType identifierRepresentation]
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterDeclaration
       ![mReceiverType key]
-      !mCategoryGetterName
-      !mCategoryGetterFormalParameterList
+      !mExtensionGetterName
+      !mExtensionGetterFormalParameterList
       !mResultType
     ]
   end 
@@ -2012,12 +2012,12 @@ override method @categoryGetterForGeneration appendDeclaration1
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryGetterForGeneration appendSpecificImplementation
+override method @extensionGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalInputParameterListForGeneration categoryReaderFormalParameterList = mCategoryGetterFormalParameterList
+    @formalInputParameterListForGeneration categoryReaderFormalParameterList = mExtensionGetterFormalParameterList
     [!?categoryReaderFormalParameterList insertAtIndex
       !["" nowhere]
       !mReceiverType
@@ -2026,9 +2026,9 @@ override method @categoryGetterForGeneration appendSpecificImplementation
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mCategoryGetterName
+    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mExtensionGetterName
     generateFunction (
-      !"extensionGetter_" + [mCategoryGetterName identifierRepresentation]
+      !"extensionGetter_" + [mExtensionGetterName identifierRepresentation]
       !?ioInclusionSet
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2040,20 +2040,20 @@ override method @categoryGetterForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionImplementation
       ![mReceiverType key]
-      !mCategoryGetterName
+      !mExtensionGetterName
       !code
     ] 
   else
     [mResultType addHeaderFileName !?ioInclusionSet] 
     [mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in mCategoryGetterFormalParameterList do
+    for () in mExtensionGetterFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     end
     @unifiedTypeMap-proxy baseType = mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !mCategoryGetterName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !mExtensionGetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -2062,13 +2062,13 @@ override method @categoryGetterForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [baseType key]+ "-" + mCategoryGetterName
-    generateCategoryGetter (
+    ioInclusionSet += !"getter-" + [baseType key]+ "-" + mExtensionGetterName
+    generateExtensionGetter (
       !mReceiverType
       !""
       !?ioInclusionSet
-      !mCategoryGetterName
-      !mCategoryGetterFormalParameterList
+      !mExtensionGetterName
+      !mExtensionGetterFormalParameterList
       !mSemanticInstructionListForGeneration
       !"C_Compiler"
       ![mResultType key]
@@ -2077,8 +2077,8 @@ override method @categoryGetterForGeneration appendSpecificImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterImplementation
       ![mReceiverType key]
-      !mCategoryGetterName
-      !mCategoryGetterFormalParameterList
+      !mExtensionGetterName
+      !mExtensionGetterFormalParameterList
       !mResultType
       !categoryReaderCode
     ]
@@ -2087,31 +2087,31 @@ override method @categoryGetterForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overrideCategoryGetterForGeneration headerKind ->@headerKind outResult {
+override getter @overrideExtensionGetterForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overrideCategoryGetterForGeneration appendSpecificImplementation
+override method @overrideExtensionGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  generateCategoryGetter (
+  generateExtensionGetter (
     !mReceiverType
     !mBaseTypeName
     !?ioInclusionSet
-    !mOverridingCategoryGetterName
-    !mOverridingCategoryGetterFormalParameterList
+    !mOverridingExtensionGetterName
+    !mOverridingExtensionGetterFormalParameterList
     !mSemanticInstructionListForGeneration
     !"C_Compiler"
     ![mResultType key]
     !mResultVarCppName
     ?let @string categoryReaderCode
   )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingCategoryGetterImplementation
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionGetterImplementation
     ![mReceiverType key]
-    !mOverridingCategoryGetterName
+    !mOverridingExtensionGetterName
     !mResultType
     !categoryReaderCode
   ] 

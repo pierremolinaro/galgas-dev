@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryGetterSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) (%?^
+typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) (%?^
 %const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
@@ -19,12 +19,12 @@ typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryGetterS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryGetterSignature_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inGetter) ;
+void enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
+               %!^%enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inGetter) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then

@@ -19,7 +19,7 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-listmap @genericCategoryMethodListMap (@lstringlist)
+listmap @genericExtensionMethodListMap (@lstringlist)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
@@ -27,259 +27,259 @@ listmap @genericCategoryMethodListMap (@lstringlist)
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-method @semanticDeclarationAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
+method @semanticDeclarationAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryModifierAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioAbstractCategoryModifierListMapAST +=
+override method @abstractExtensionModifierAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioAbstractExtensionModifierListMapAST +=
     ![mTypeName string]
-    !mAbstractCategoryModifierName
+    !mAbstractExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryModifierAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioCategoryModifierListMap +=
+override method @extensionModifierAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioExtensionModifierListMap +=
     ![mTypeName string]
-    !mCategoryModifierName
+    !mExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryModifierAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingCategoryModifierListMap +=
+override method @overridingExtensionModifierAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingExtensionModifierListMap +=
     ![mTypeName string]
-    !mOverridingCategoryModifierName
+    !mOverridingExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryModifierAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingAbstractCategoryModifierListMap +=
+override method @overridingAbstractExtensionModifierAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingAbstractExtensionModifierListMap +=
     ![mTypeName string]
-    !mOverridingCategoryModifierName
+    !mOverridingExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioAbstractCategoryMethodListMapAST +=
+override method @abstractExtensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioAbstractExtensionMethodListMapAST +=
     ![mTypeName string]
-    !mAbstractCategoryMethodName
+    !mAbstractExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryMethodAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioCategoryMethodListMap +=
+override method @extensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioExtensionMethodListMap +=
     ![mTypeName string]
-    !mCategoryMethodName
+    !mExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryMethodAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingCategoryMethodListMap +=
+override method @overridingExtensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingExtensionMethodListMap +=
     ![mTypeName string]
-    !mOverridingCategoryMethodName
+    !mOverridingExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryMethodAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingAbstractCategoryMethodListMap +=
+override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingAbstractExtensionMethodListMap +=
     ![mTypeName string]
-    !mOverridingCategoryMethodName
+    !mOverridingExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractCategoryGetterAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioAbstractCategoryGetterListMap +=
+override method @abstractExtensionGetterAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioAbstractExtensionGetterListMap +=
     ![mTypeName string]
-    !mAbstractCategoryGetterName
+    !mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @categoryGetterAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioCategoryGetterListMap +=
+override method @extensionGetterAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioExtensionGetterListMap +=
     ![mTypeName string]
-    !mCategoryGetterName
+    !mExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingCategoryGetterAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingCategoryGetterListMap +=
+override method @overridingExtensionGetterAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingExtensionGetterListMap +=
     ![mTypeName string]
-    !mOverridingCategoryGetterName
+    !mOverridingExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryGetterAST buildCategoryListMaps
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
-  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
-  ?!@genericCategoryMethodListMap unused ioAbstractCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioCategoryGetterListMap
-  ?!@genericCategoryMethodListMap unused ioOverridingCategoryGetterListMap
-  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryGetterListMap {
-  ioOverridingAbstractCategoryGetterListMap +=
+override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingAbstractExtensionGetterListMap +=
     ![mTypeName string]
-    !mAbstractCategoryGetterName
+    !mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -292,34 +292,34 @@ listmap @descendantClassListMap (@unifiedTypeMapProxyList)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    M E T H O D    M A P                                                                             *
+#  E X T E N S I O N    M E T H O D    M A P                                                                             *
 #                                                                                                                      *
 # Used for checking a category-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryMethodMapForGlobalCheckings {
+map @extensionMethodMapForGlobalCheckings {
   insert insertKey error message "the '%K' category method is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    M O D I F I E R    M A P                                                                         *
+#  E X T E N S I O N    M O D I F I E R    M A P                                                                         *
 #                                                                                                                      *
 # Used for checking a category-setter is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryModifierMapForGlobalCheckings {
+map @extensionModifierMapForGlobalCheckings {
   insert insertKey error message "the '%K' category setter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  C A T E G O R Y    G E T T E R    M A P                                                                             *
+#  E X T E N S I O N    G E T T E R    M A P                                                                             *
 #                                                                                                                      *
 # Used for checking a category-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @categoryGetterMapForGlobalCheckings {
+map @extensionGetterMapForGlobalCheckings {
   insert insertKey error message "the '%K' category getter is already declared in %L"
 }
 
@@ -336,33 +336,33 @@ func outputDirectory ?let @lstring inSourceFile ->  @string outOuputDirectory {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkCategoryModifierDefinitionForClass
+proc checkExtensionModifierDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
-  ?let @lstring inAbstractCategoryModifierName
+  ?let @lstring inAbstractExtensionModifierName
   ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
+  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
-    @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
+    @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey ![descendantClassName string]]
     @bool found = false
     for () in overridingMethods while not found do
-      found = [inAbstractCategoryModifierName string] == [mValue string]
+      found = [inAbstractExtensionModifierName string] == [mValue string]
     end
     if not found then
       if not [mType mIsConcrete] then
-        checkCategoryModifierDefinitionForClass (
+        checkExtensionModifierDefinitionForClass (
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryModifierName
+          !inAbstractExtensionModifierName
           !inDescendantClassListMap
-          !inOverridingCategoryMethodListMap
+          !inOverridingExtensionMethodListMap
           !inUnifiedTypeMap
         )
       else
-        error inAbstractCategoryModifierName: "an abstract category method '" + inAbstractCategoryModifierName + "' is defined for abstract class '@"
+        error inAbstractExtensionModifierName: "an abstract category method '" + inAbstractExtensionModifierName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
       end
@@ -372,34 +372,34 @@ proc checkCategoryModifierDefinitionForClass
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkCategoryMethodDefinitionForClass
+proc checkExtensionMethodDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
-  ?let @lstring inAbstractCategoryMethodName
+  ?let @lstring inAbstractExtensionMethodName
   ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
+  ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
   ?let @unifiedTypeMap inUnifiedTypeMap
 {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
-    @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
+    @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey ![descendantClassName string]]
     @bool found = false
     for () in overridingMethods while not found do
-      found = [inAbstractCategoryMethodName string] == [mValue string]
+      found = [inAbstractExtensionMethodName string] == [mValue string]
     end
     if not found then
       if not [mType mIsConcrete] then
-        checkCategoryMethodDefinitionForClass (
+        checkExtensionMethodDefinitionForClass (
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryMethodName
+          !inAbstractExtensionMethodName
           !inDescendantClassListMap
-          !inOverridingCategoryMethodListMap
+          !inOverridingExtensionMethodListMap
           !inUnifiedTypeMap
         )
       else
-        error inAbstractCategoryMethodName: "an abstract category method '" + inAbstractCategoryMethodName + "' is defined for abstract class '@"
+        error inAbstractExtensionMethodName: "an abstract category method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
       end
@@ -409,34 +409,34 @@ proc checkCategoryMethodDefinitionForClass
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkCategoryGetterDefinitionForClass
+proc checkExtensionGetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
-  ?let @lstring inAbstractCategoryGetterName
+  ?let @lstring inAbstractExtensionGetterName
   ?let @descendantClassListMap inDescendantClassListMap
-  ?let @genericCategoryMethodListMap inOverridingCategoryGetterListMap
+  ?let @genericExtensionMethodListMap inOverridingExtensionGetterListMap
   ?let @unifiedTypeMap inUnifiedTypeMap
 {
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     @lstring descendantClassName = [mType lkey]
-    @lstringlist overridingReaders = [inOverridingCategoryGetterListMap listForKey ![descendantClassName string]]
+    @lstringlist overridingReaders = [inOverridingExtensionGetterListMap listForKey ![descendantClassName string]]
     @bool found = false
     for () in overridingReaders while not found do
-      found = [inAbstractCategoryGetterName string] == [mValue string]
+      found = [inAbstractExtensionGetterName string] == [mValue string]
     end
     if not found then
       if not [mType mIsConcrete] then
-        checkCategoryGetterDefinitionForClass (
+        checkExtensionGetterDefinitionForClass (
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractCategoryGetterName
+          !inAbstractExtensionGetterName
           !inDescendantClassListMap
-          !inOverridingCategoryGetterListMap
+          !inOverridingExtensionGetterListMap
           !inUnifiedTypeMap
         )
       else
-        error inAbstractCategoryGetterName: "an abstract category getter '" + inAbstractCategoryGetterName + "' is defined for abstract class '@"
+        error inAbstractExtensionGetterName: "an abstract category getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter" 
       end
@@ -463,191 +463,191 @@ proc performGalgas3ProjectGlobalCheckings
          !@unifiedTypeMap-proxy. searchKey {!inSemanticContext.mTypeMap !lkey}
      end
   end
-#--- Build Category method listmaps
-  var abstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
-  var categoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingAbstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
-  var abstractCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
-  var categoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingAbstractCategoryGetterListMap =@genericCategoryMethodListMap.emptyMap{}
-  var abstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
-  var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
-  var overridingAbstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+#--- Build Extension method listmaps
+  var abstractExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
+  var categoryMethodListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingAbstractExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
+  var abstractExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var categoryReaderListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingAbstractExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var abstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
+  var categoryModifierListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingAbstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
   for () in inSemanticDeclarationList do
-    [mSemanticDeclaration buildCategoryListMaps
-      !?abstractCategoryModifierListMap
+    [mSemanticDeclaration buildExtensionListMaps
+      !?abstractExtensionModifierListMap
       !?categoryModifierListMap
-      !?overridingCategoryModifierListMap
-      !?overridingAbstractCategoryModifierListMap
-      !?abstractCategoryMethodListMap
+      !?overridingExtensionModifierListMap
+      !?overridingAbstractExtensionModifierListMap
+      !?abstractExtensionMethodListMap
       !?categoryMethodListMap
-      !?overridingCategoryMethodListMap
-      !?overridingAbstractCategoryMethodListMap
-      !?abstractCategoryGetterListMap
+      !?overridingExtensionMethodListMap
+      !?overridingAbstractExtensionMethodListMap
+      !?abstractExtensionGetterListMap
       !?categoryReaderListMap
-      !?overridingCategoryGetterListMap
-      !?overridingAbstractCategoryGetterListMap
+      !?overridingExtensionGetterListMap
+      !?overridingAbstractExtensionGetterListMap
     ]
   end
-#------ Check Category
+#------ Check Extension
   if @uint.errorCount == 0 then
   #--- A given abstract category modifier is defined only once for a class
-    for () in abstractCategoryModifierListMap do
-      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+    for () in abstractExtensionModifierListMap do
+      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given base category modifier is defined only once for a class
     for () in categoryModifierListMap do
-      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding category modifier is defined only once for a class
-    for () in overridingCategoryModifierListMap do
-      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+    for () in overridingExtensionModifierListMap do
+      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category modifier is defined only once for a class
-    for () in overridingAbstractCategoryMethodListMap do
-      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+    for () in overridingAbstractExtensionMethodListMap do
+      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryModifierMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in abstractCategoryModifierListMap do
+    for () in abstractExtensionModifierListMap do
       for () in mList do
-        checkCategoryModifierDefinitionForClass (
+        checkExtensionModifierDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryModifierListMap
+          !overridingExtensionModifierListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
   #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
-    for () in overridingAbstractCategoryModifierListMap do
+    for () in overridingAbstractExtensionModifierListMap do
       for () in mList do
-        checkCategoryModifierDefinitionForClass (
+        checkExtensionModifierDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryModifierListMap
+          !overridingExtensionModifierListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
   #--- A given abstract category method is defined only once for a class
-    for () in abstractCategoryMethodListMap do
-      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+    for () in abstractExtensionMethodListMap do
+      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given base category method is defined only once for a class
     for () in categoryMethodListMap do
-      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding category method is defined only once for a class
-    for () in overridingCategoryMethodListMap do
-      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+    for () in overridingExtensionMethodListMap do
+      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #--- A given overriding abstract category method is defined only once for a class
-    for () in overridingAbstractCategoryMethodListMap do
-      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+    for () in overridingAbstractExtensionMethodListMap do
+      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?categoryMethodMap insertKey !mValue]
       end
     end  
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in abstractCategoryMethodListMap do
+    for () in abstractExtensionMethodListMap do
       for () in mList do
-        checkCategoryMethodDefinitionForClass (
+        checkExtensionMethodDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryMethodListMap
+          !overridingExtensionMethodListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
   #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
-    for () in overridingAbstractCategoryMethodListMap do
+    for () in overridingAbstractExtensionMethodListMap do
       for () in mList do
-        checkCategoryMethodDefinitionForClass (
+        checkExtensionMethodDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryMethodListMap
+          !overridingExtensionMethodListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
-  #------ Check Category getters
+  #------ Check Extension getters
 ##--- Check that for every abstract category getter, an overridden category getter
 ##    defined in an concrete subclass
   #--- A given abstract category getter is defined only once for a class
-    for () in abstractCategoryGetterListMap do
-      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+    for () in abstractExtensionGetterListMap do
+      var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryGetterMap insertKey !mValue]
+        [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
   #--- A given base category getter is defined only once for a class
     for () in categoryReaderListMap do
-      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+      var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryGetterMap insertKey !mValue]
+        [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
   #--- A given overriding category getter is defined only once for a class
-    for () in overridingCategoryGetterListMap do
-      var CategoryGetterMap =@categoryGetterMapForGlobalCheckings.emptyMap{}
+    for () in overridingExtensionGetterListMap do
+      var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?CategoryGetterMap insertKey !mValue]
+        [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
   #--- Check every abstract category getter is implemented by every inherited concrete type
-    for () in abstractCategoryGetterListMap do
+    for () in abstractExtensionGetterListMap do
       for () in mList do
-        checkCategoryGetterDefinitionForClass (
+        checkExtensionGetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryGetterListMap
+          !overridingExtensionGetterListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
   #--- Check every abstract category getter is implemented by every inherited concrete type
-    for () in overridingAbstractCategoryGetterListMap do
+    for () in overridingAbstractExtensionGetterListMap do
       for () in mList do
-        checkCategoryGetterDefinitionForClass (
+        checkExtensionGetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingCategoryGetterListMap
+          !overridingExtensionGetterListMap
           !inSemanticContext.mTypeMap
         )
       end

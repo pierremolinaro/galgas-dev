@@ -38,24 +38,24 @@ void routine_buildGalgas_33_SemanticContext (const class GALGAS_semanticDeclarat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                              const class GALGAS_string constinArgument0,
-                                                                                              class GALGAS_stringset & ioArgument1,
-                                                                                              class C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                               const class GALGAS_string constinArgument0,
+                                                                                               class GALGAS_stringset & ioArgument1,
+                                                                                               class C_Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSpecificFiles (const int32_t inClassIndex,
-                                              categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) ;
+void enterExtensionMethod_appendSpecificFiles (const int32_t inClassIndex,
+                                               extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                             const GALGAS_string constin_inProductDirectory,
-                                             GALGAS_stringset & io_ioAllProductFileSet,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                              const GALGAS_string constin_inProductDirectory,
+                                              GALGAS_stringset & io_ioAllProductFileSet,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -132,20 +132,20 @@ void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_headerKind (*categoryGetterSignature_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                        class C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_headerKind (*enterExtensionGetter_semanticDeclarationForGeneration_headerKind) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                     class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_headerKind (const int32_t inClassIndex,
-                                     categoryGetterSignature_semanticDeclarationForGeneration_headerKind inMethod) ;
+void enterExtensionGetter_headerKind (const int32_t inClassIndex,
+                                      enterExtensionGetter_semanticDeclarationForGeneration_headerKind inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_headerKind callCategoryGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -153,20 +153,20 @@ class GALGAS_headerKind callCategoryGetter_headerKind (const class cPtr_semantic
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_string (*categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                                   class C_Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                                class C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_implementationCppFileName (const int32_t inClassIndex,
-                                                    categoryGetterSignature_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
+void enterExtensionGetter_implementationCppFileName (const int32_t inClassIndex,
+                                                     enterExtensionGetter_semanticDeclarationForGeneration_implementationCppFileName inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string callCategoryGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
+class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -174,20 +174,20 @@ class GALGAS_string callCategoryGetter_implementationCppFileName (const class cP
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryGetterSignature_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                    class C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                 class C_Compiler * inCompiler
+                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_isPredefined (const int32_t inClassIndex,
-                                       categoryGetterSignature_semanticDeclarationForGeneration_isPredefined inMethod) ;
+void enterExtensionGetter_isPredefined (const int32_t inClassIndex,
+                                        enterExtensionGetter_semanticDeclarationForGeneration_isPredefined inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
+class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -218,20 +218,20 @@ class GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef class GALGAS_bool (*categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                        class C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile) (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                                                                     class C_Compiler * inCompiler
+                                                                                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryGetter_hasCppHeaderFile (const int32_t inClassIndex,
-                                           categoryGetterSignature_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
+void enterExtensionGetter_hasCppHeaderFile (const int32_t inClassIndex,
+                                            enterExtensionGetter_semanticDeclarationForGeneration_hasCppHeaderFile inMethod) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bool callCategoryGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+class GALGAS_bool callExtensionGetter_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1032,11 +1032,11 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_s
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
-                                    const class GALGAS_string constin_inPath,
-                                    const class GALGAS_string constin_inCacheFilePath,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+void extensionMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
+                                     const class GALGAS_string constin_inPath,
+                                     const class GALGAS_string constin_inCacheFilePath,
+                                     class C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1044,18 +1044,18 @@ void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor in
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                    const class GALGAS_string constin_inTargetName,
-                                    const class GALGAS_string constin_inProductFileName,
-                                    const class GALGAS_stringlist constin_inSourceList,
-                                    const class GALGAS_stringlist constin_inFrameworksFileRefList,
-                                    const class GALGAS_stringlist constin_inResourceFileBuildRefs,
-                                    const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
-                                    const class GALGAS_stringlist constin_inDependentTargetRefList,
-                                    const class GALGAS__32_stringlist constin_inProductCopyList,
-                                    class GALGAS_string & out_outProductFileRef,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
+void extensionSetter_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                   const class GALGAS_string constin_inTargetName,
+                                   const class GALGAS_string constin_inProductFileName,
+                                   const class GALGAS_stringlist constin_inSourceList,
+                                   const class GALGAS_stringlist constin_inFrameworksFileRefList,
+                                   const class GALGAS_stringlist constin_inResourceFileBuildRefs,
+                                   const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                   const class GALGAS_stringlist constin_inDependentTargetRefList,
+                                   const class GALGAS__32_stringlist constin_inProductCopyList,
+                                   class GALGAS_string & out_outProductFileRef,
+                                   class C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1063,13 +1063,13 @@ void categoryModifier_addAppTarget (class GALGAS_XcodeProjectDescriptor & ioObje
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                const class GALGAS_string constin_inGroupName,
-                                const class GALGAS_string constin_inGroupPath,
-                                const class GALGAS_stringlist constin_inChildrenRefs,
-                                class GALGAS_string & out_outGroupRef,
-                                class C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) ;
+void extensionSetter_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                               const class GALGAS_string constin_inGroupName,
+                               const class GALGAS_string constin_inGroupPath,
+                               const class GALGAS_stringlist constin_inChildrenRefs,
+                               class GALGAS_string & out_outGroupRef,
+                               class C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1077,19 +1077,19 @@ void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                         const class GALGAS_string constin_inGroupName,
-                                         const class GALGAS_string constin_inGroupPath,
-                                         const class GALGAS_stringset constin_inFileNames,
-                                         class GALGAS_stringlist & io_ioCFileBuildRefs,
-                                         class GALGAS_stringlist & io_ioCppFileBuildRefs,
-                                         class GALGAS_stringlist & io_ioMFileBuildRefs,
-                                         class GALGAS_stringlist & io_ioMMFileBuildRefs,
-                                         class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
-                                         class GALGAS_stringlist & io_ioResourceFileBuildRefs,
-                                         class GALGAS_string & out_outGroupRef,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+void extensionSetter_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                        const class GALGAS_string constin_inGroupName,
+                                        const class GALGAS_string constin_inGroupPath,
+                                        const class GALGAS_stringset constin_inFileNames,
+                                        class GALGAS_stringlist & io_ioCFileBuildRefs,
+                                        class GALGAS_stringlist & io_ioCppFileBuildRefs,
+                                        class GALGAS_stringlist & io_ioMFileBuildRefs,
+                                        class GALGAS_stringlist & io_ioMMFileBuildRefs,
+                                        class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
+                                        class GALGAS_stringlist & io_ioResourceFileBuildRefs,
+                                        class GALGAS_string & out_outGroupRef,
+                                        class C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1097,10 +1097,10 @@ void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & i
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                                         const class GALGAS_stringlist constin_inSettingList,
-                                                         class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
+void extensionSetter_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                                        const class GALGAS_stringlist constin_inSettingList,
+                                                        class C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1108,16 +1108,16 @@ void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProje
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                     const class GALGAS_string constin_inTargetName,
-                                     const class GALGAS_string constin_inProductFileName,
-                                     const class GALGAS_stringlist constin_inSourceList,
-                                     const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
-                                     const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
-                                     class GALGAS_string & out_outTargetRef,
-                                     class GALGAS_string & out_outProductFileRef,
-                                     class C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) ;
+void extensionSetter_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                    const class GALGAS_string constin_inTargetName,
+                                    const class GALGAS_string constin_inProductFileName,
+                                    const class GALGAS_stringlist constin_inSourceList,
+                                    const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
+                                    const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                    class GALGAS_string & out_outTargetRef,
+                                    class GALGAS_string & out_outProductFileRef,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1125,10 +1125,10 @@ void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObj
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                             const class GALGAS_string constin_inGroupRef,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
+void extensionSetter_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                            const class GALGAS_string constin_inGroupRef,
+                                            class C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
