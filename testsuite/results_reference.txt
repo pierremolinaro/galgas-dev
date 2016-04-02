@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (85 types)
+--- Type list (89 types)
   @1charArray
   @2lstringlist
   @2lstringlist-element
@@ -321,18 +321,20 @@ LOGGING r: <@uint:5>
   @B
   @B_B
   @C_C
-  @TestCategoryMethod
-  @TestCategoryModifier
+  @TestExtensionMethod
+  @TestExtensionModifier
   @aList
   @aList-element
   @aMap
   @aMap-element
-  @abstractOverridingTestCategoryModifier
-  @abstractTestCategoryModifier
+  @abstractOverridingTestExtensionModifier
+  @abstractTestExtensionModifier
   @adjMat
   @application
   @baseClassForTypeCastInSetterCall
   @bigint
+  @bigintlist
+  @bigintlist-element
   @binaryset
   @bool
   @char
@@ -346,6 +348,8 @@ LOGGING r: <@uint:5>
   @functionlist-element
   @inheritedClassForTypeCastInSetterCall
   @lbigint
+  @lbigintlist
+  @lbigintlist-element
   @lbool
   @lchar
   @ldouble
@@ -371,7 +375,7 @@ LOGGING r: <@uint:5>
   @object
   @objectlist
   @objectlist-element
-  @overridingTestCategoryModifier
+  @overridingTestExtensionModifier
   @range
   @sint
   @sint64
@@ -408,13 +412,13 @@ LOGGING result:
 LOGGING [table count]: <@uint:0>
 LOGGING Proxy: : <@maTable-proxy regular (key "abc", unsolved)>
 LOGGING [table unsolvedProxyCount]: <@uint:1>
-*************************************** begin of category reader test
+*************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
-*************************************** begin of category modifier test
+*************************************** begin of extension modifier test
 LOGGING u: <@uint:3>
-LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>
+LOGGING v: <@TestExtensionModifier:[@TestExtensionModifier:<@uint:3>, <@string:"Hello World">]>
 Appel @inheritedClassForTypeCastInSetterCall unSetter
-*************************************** begin of type category test
+*************************************** begin of type extension test
 LOGGING Square of 7: <@uint64:49>
 LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
 LOGGING Hello !: <@string:"Hello !">
