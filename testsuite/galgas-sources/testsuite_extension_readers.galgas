@@ -20,8 +20,8 @@ abstract class @C_C : @B_B {}
 
 override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string outResult
 
-proc testsuite_category_readers {
-  message "*************************************** begin of category reader test\n"
+proc testsuite_extension_readers {
+  message "*************************************** begin of extension reader test\n"
   @B_B b = .new
   @string s = [b otherReader !2 !"-"]
   log s
