@@ -1,7 +1,7 @@
 
 
-proc testsuite_category_modifiers {
-  message "*************************************** begin of category modifier test\n"
+proc testsuite_extension_modifiers {
+  message "*************************************** begin of extension modifier test\n"
   var v = @TestExtensionModifier.new {!1 !"Hello"}
   @uint u = 2
   @string s = " World"
