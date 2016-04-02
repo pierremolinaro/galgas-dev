@@ -5882,7 +5882,7 @@ void GALGAS_extensionMethodMapForGlobalCheckings::setter_insertKey (GALGAS_lstri
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' category method is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension method is already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
@@ -6070,7 +6070,7 @@ void GALGAS_extensionModifierMapForGlobalCheckings::setter_insertKey (GALGAS_lst
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' category setter is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension setter is already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
@@ -6258,7 +6258,7 @@ void GALGAS_extensionGetterMapForGlobalCheckings::setter_insertKey (GALGAS_lstri
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' category getter is already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' extension getter is already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }

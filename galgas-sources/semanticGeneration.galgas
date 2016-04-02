@@ -913,88 +913,88 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 }{
 }{
 #------------ Extension getter
-  template abstractExtensionGetterDeclaration "abstract-category-getter.h.galgasTemplate"
+  template abstractExtensionGetterDeclaration "abstract-extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template abstractExtensionGetterImplementation "abstract-category-getter.cpp.galgasTemplate"
+  template abstractExtensionGetterImplementation "abstract-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template categoryGetterDeclaration "category-getter.h.galgasTemplate"
+  template extensionGetterDeclaration "extension-getter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
 
-  template categoryGetterImplementation "category-getter.cpp.galgasTemplate"
+  template extensionGetterImplementation "extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
-  template overridingExtensionGetterImplementation "overriding-category-getter.cpp.galgasTemplate"
+  template overridingExtensionGetterImplementation "overriding-extension-getter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string GETTER_NAME
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
 #------------ Extension modifier
-  template abstractExtensionModifierDeclaration "abstract-category-modifier.h.galgasTemplate"
+  template abstractExtensionModifierDeclaration "abstract-extension-modifier.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractExtensionModifierImplementation "abstract-category-modifier.cpp.galgasTemplate"
+  template abstractExtensionModifierImplementation "abstract-extension-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template categoryModifierDeclaration "category-modifier.h.galgasTemplate"
+  template extensionModifierDeclaration "extension-modifier.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryModifierImplementation "category-modifier.cpp.galgasTemplate"
+  template extensionModifierImplementation "extension-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string MODIFIER_IMPLEMENTATION
 
-  template overridingExtensionModifierImplementation "overriding-category-modifier.cpp.galgasTemplate"
+  template overridingExtensionModifierImplementation "overriding-extension-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
   
 
 #------------ Extension method
-  template abstractExtensionMethodDeclaration "abstract-category-method.h.galgasTemplate"
+  template abstractExtensionMethodDeclaration "abstract-extension-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractExtensionMethodImplementation "abstract-category-method.cpp.galgasTemplate"
+  template abstractExtensionMethodImplementation "abstract-extension-method.cpp.galgasTemplate"
     ?@unifiedTypeMap-proxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template categoryMethodDeclaration "category-method.h.galgasTemplate"
+  template extensionMethodDeclaration "extension-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMethodImplementation "category-method.cpp.galgasTemplate"
+  template extensionMethodImplementation "extension-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
   
-  template overridingExtensionMethodImplementation "overriding-category-method.cpp.galgasTemplate"
+  template overridingExtensionMethodImplementation "overriding-extension-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
@@ -1011,36 +1011,36 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string FILEWRAPPER_IMPLEMENTATION
   
 #--- Extension getter implemented as function
-  template categoryGetterAsFunctionDeclaration "category-getter-as-function-declaration.h.galgasTemplate"
+  template extensionGetterAsFunctionDeclaration "extension-getter-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template categoryGetterAsFunctionImplementation "category-getter-as-function-implementation.cpp.galgasTemplate"
+  template extensionGetterAsFunctionImplementation "extension-getter-as-function-implementation.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string GETTER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
 #--- Extension method implemented as function
-  template categoryMethodAsFunctionDeclaration "category-method-as-function.h.galgasTemplate"
+  template extensionMethodAsFunctionDeclaration "extension-method-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMethodAsFunctionImplementation "category-method-as-function.cpp.galgasTemplate"
+  template extensionMethodAsFunctionImplementation "extension-method-as-function.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
   
 
 #--- Extension modifier implemented as function
-  template categoryModifierAsFunctionDeclaration "category-modifier-as-function.h.galgasTemplate"
+  template extensionModifierAsFunctionDeclaration "extension-modifier-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMmodifierAsFunctionImplementation "category-modifier-as-function.cpp.galgasTemplate"
+  template extensionMmodifierAsFunctionImplementation "extension-modifier-as-function.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
@@ -1648,13 +1648,13 @@ override method @extensionMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
       ![mReceiverType key]
       !mExtensionMethodName
       !mExtensionMethodFormalParameterList
     ] 
   else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
       ![mReceiverType key]
       !mExtensionMethodName
       !mExtensionMethodFormalParameterList
@@ -1669,8 +1669,8 @@ override method @extensionMethodForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalParameterListForGeneration categoryMethodFormalParameterList = mExtensionMethodFormalParameterList
-    [!?categoryMethodFormalParameterList insertAtIndex
+    @formalParameterListForGeneration extensionMethodFormalParameterList = mExtensionMethodFormalParameterList
+    [!?extensionMethodFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
       !mReceiverType
@@ -1683,7 +1683,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !static:false
       !"extensionMethod_" + [mExtensionMethodName identifierRepresentation]
       !?ioInclusionSet
-      !categoryMethodFormalParameterList
+      !extensionMethodFormalParameterList
       !mSemanticInstructionListForGeneration
       !false # is not const
       !"C_Compiler"
@@ -1692,7 +1692,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !false # Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
       ![mReceiverType key]
       !mExtensionMethodName
       !code
@@ -1725,7 +1725,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !mSemanticInstructionListForGeneration
       ?let @string methodImplementation
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodImplementation
       ![mReceiverType key]
       !mExtensionMethodName
       !mExtensionMethodFormalParameterList
@@ -1811,13 +1811,13 @@ override method @extensionModifierForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionModifierAsFunctionDeclaration
       ![mReceiverType key]
       !mExtensionModifierName
       !mExtensionModifierFormalParameterList
     ] 
   else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionModifierDeclaration
       ![mReceiverType key]
       !mExtensionModifierName
       !mExtensionModifierFormalParameterList
@@ -1832,8 +1832,8 @@ override method @extensionModifierForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalParameterListForGeneration categoryModifierFormalParameterList = mExtensionModifierFormalParameterList
-    [!?categoryModifierFormalParameterList insertAtIndex
+    @formalParameterListForGeneration extensionModifierFormalParameterList = mExtensionModifierFormalParameterList
+    [!?extensionModifierFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentInOut
       !mReceiverType
@@ -1846,7 +1846,7 @@ override method @extensionModifierForGeneration appendSpecificImplementation
       !static:false
       !"extensionSetter_" + [mExtensionModifierName identifierRepresentation]
       !?ioInclusionSet
-      !categoryModifierFormalParameterList
+      !extensionModifierFormalParameterList
       !mSemanticInstructionListForGeneration
       !false # is not const
       !"C_Compiler"
@@ -1855,7 +1855,7 @@ override method @extensionModifierForGeneration appendSpecificImplementation
       !false # Do not generate syntaxDirectedTranslationString argument
       ?let @string code
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
       ![mReceiverType key]
       !mExtensionModifierName
       !code
@@ -1885,7 +1885,7 @@ override method @extensionModifierForGeneration appendSpecificImplementation
       !mSemanticInstructionListForGeneration
       ?let @string modifierImplementation
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionModifierImplementation
       ![mReceiverType key]
       !mExtensionModifierName
       !mExtensionModifierFormalParameterList
@@ -1994,14 +1994,14 @@ override method @extensionGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration
       ![mReceiverType key]
       !mExtensionGetterName
       !mExtensionGetterFormalParameterList
       ![mResultType identifierRepresentation]
     ] 
   else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.categoryGetterDeclaration
+    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterDeclaration
       ![mReceiverType key]
       !mExtensionGetterName
       !mExtensionGetterFormalParameterList
@@ -2017,8 +2017,8 @@ override method @extensionGetterForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   if mImplementedAsFunction then
-    @formalInputParameterListForGeneration categoryReaderFormalParameterList = mExtensionGetterFormalParameterList
-    [!?categoryReaderFormalParameterList insertAtIndex
+    @formalInputParameterListForGeneration extensionReaderFormalParameterList = mExtensionGetterFormalParameterList
+    [!?extensionReaderFormalParameterList insertAtIndex
       !["" nowhere]
       !mReceiverType
       !"inObject"
@@ -2030,7 +2030,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
     generateFunction (
       !"extensionGetter_" + [mExtensionGetterName identifierRepresentation]
       !?ioInclusionSet
-      !categoryReaderFormalParameterList
+      !extensionReaderFormalParameterList
       !mSemanticInstructionListForGeneration
       !"C_Compiler"
       !mResultType
@@ -2038,7 +2038,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !false # is not static
       ?let @string code
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterAsFunctionImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation
       ![mReceiverType key]
       !mExtensionGetterName
       !code
@@ -2073,14 +2073,14 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !"C_Compiler"
       ![mResultType key]
       !mResultVarCppName
-      ?let @string categoryReaderCode
+      ?let @string extensionReaderCode
     )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.categoryGetterImplementation
+    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterImplementation
       ![mReceiverType key]
       !mExtensionGetterName
       !mExtensionGetterFormalParameterList
       !mResultType
-      !categoryReaderCode
+      !extensionReaderCode
     ]
   end
 }
@@ -2107,13 +2107,13 @@ override method @overrideExtensionGetterForGeneration appendSpecificImplementati
     !"C_Compiler"
     ![mResultType key]
     !mResultVarCppName
-    ?let @string categoryReaderCode
+    ?let @string extensionReaderCode
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionGetterImplementation
     ![mReceiverType key]
     !mOverridingExtensionGetterName
     !mResultType
-    !categoryReaderCode
+    !extensionReaderCode
   ] 
 }
 
