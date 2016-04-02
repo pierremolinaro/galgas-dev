@@ -330,84 +330,84 @@ override getter @lexiqueComponentAST keyRepresentation
 
 override getter @abstractExtensionModifierAST keyRepresentation
   ->@string outString {
-  outString = "abstract category setter @" + mTypeName + " " + mAbstractExtensionModifierName
+  outString = "abstract extension setter @" + mTypeName + " " + mAbstractExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @extensionModifierAST keyRepresentation
   ->@string outString {
-  outString = "category setter @" + mTypeName + " " + mExtensionModifierName
+  outString = "extension setter @" + mTypeName + " " + mExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingExtensionModifierAST keyRepresentation
   ->@string outString {
-  outString = "overriding category setter @" + mTypeName + " " + mOverridingExtensionModifierName
+  outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingAbstractExtensionModifierAST keyRepresentation
   ->@string outString {
-  outString = "overriding category setter @" + mTypeName + " " + mOverridingExtensionModifierName
+  outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionModifierName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractExtensionMethodAST keyRepresentation
   ->@string outString {
-  outString = "abstract category method @" + mTypeName + " " + mAbstractExtensionMethodName
+  outString = "abstract extension method @" + mTypeName + " " + mAbstractExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @extensionMethodAST keyRepresentation
   ->@string outString {
-  outString = "category method @" + mTypeName + " " + mExtensionMethodName
+  outString = "extension method @" + mTypeName + " " + mExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingExtensionMethodAST keyRepresentation
   ->@string outString {
-  outString = "overriding category method @" + mTypeName + " " + mOverridingExtensionMethodName
+  outString = "overriding extension method @" + mTypeName + " " + mOverridingExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingAbstractExtensionMethodAST keyRepresentation
   ->@string outString {
-  outString = "overriding category method @" + mTypeName + " " + mOverridingExtensionMethodName
+  outString = "overriding extension method @" + mTypeName + " " + mOverridingExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractExtensionGetterAST keyRepresentation
   ->@string outString {
-  outString = "abstract category getter @" + mTypeName + " " + mAbstractExtensionGetterName
+  outString = "abstract extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @extensionGetterAST keyRepresentation
   ->@string outString {
-  outString = "category getter @" + mTypeName + " " + mExtensionGetterName
+  outString = "extension getter @" + mTypeName + " " + mExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingExtensionGetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding category getter @" + mTypeName + " " + mOverridingExtensionGetterName
+  outString = "overriding extension getter @" + mTypeName + " " + mOverridingExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding category getter @" + mTypeName + " " + mAbstractExtensionGetterName
+  outString = "overriding extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -546,9 +546,9 @@ proc addCategories
   ?!@instanceMethodMap ioInstanceMethodMap {
 #------------------------  Extension methods
   if [inExtensionMethodMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionMethodMapForType categoryMethodMapForType
-    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?categoryMethodMapForType]
-    for () in categoryMethodMapForType do
+    @extensionMethodMapForType extensionMethodMapForType
+    [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
+    for () in extensionMethodMapForType do
       var formalArgumentList =@formalParameterSignature.emptyList{}
       for () in mFormalParameterList do
         [@unifiedTypeMap-proxy makeProxy
@@ -571,9 +571,9 @@ proc addCategories
   end
 #------------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionGetterMapForType categoryGetterMapForType
-    [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?categoryGetterMapForType]
-    for () in categoryGetterMapForType do
+    @extensionGetterMapForType extensionGetterMapForType
+    [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?extensionGetterMapForType]
+    for () in extensionGetterMapForType do
       var formalArgumentList =@functionSignature.emptyList{}
       for () in mInputFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
@@ -596,9 +596,9 @@ proc addCategories
   end
 #------------------------  Extension modifiers
   if [inExtensionModifierMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionModifierMapForType categoryModifierMapForType
-    [inExtensionModifierMapForBuildingContext searchKey !inTypeName ?categoryModifierMapForType]
-    for () in categoryModifierMapForType do
+    @extensionModifierMapForType extensionModifierMapForType
+    [inExtensionModifierMapForBuildingContext searchKey !inTypeName ?extensionModifierMapForType]
+    for () in extensionModifierMapForType do
       var formalArgumentList =@formalParameterSignature.emptyList{}
       for () in mFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
@@ -2802,7 +2802,7 @@ override method @extensionGetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category getter @" + mTypeName + " " + mExtensionGetterName ![mExtensionGetterName location]}
+  let key = @lstring.new {!"extension getter @" + mTypeName + " " + mExtensionGetterName ![mExtensionGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2829,7 +2829,7 @@ override method @extensionMethodAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category method @" + mTypeName + " " + mExtensionMethodName ![mExtensionMethodName location]}
+  let key = @lstring.new {!"extension method @" + mTypeName + " " + mExtensionMethodName ![mExtensionMethodName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2855,7 +2855,7 @@ override method @extensionModifierAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category setter @" + mTypeName + " " + mExtensionModifierName ![mExtensionModifierName location]}
+  let key = @lstring.new {!"extension setter @" + mTypeName + " " + mExtensionModifierName ![mExtensionModifierName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2892,7 +2892,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category getter @" + mTypeName + " " + mAbstractExtensionGetterName ![mAbstractExtensionGetterName location]}
+  let key = @lstring.new {!"extension getter @" + mTypeName + " " + mAbstractExtensionGetterName ![mAbstractExtensionGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2919,7 +2919,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category method @" + mTypeName + " " + mAbstractExtensionMethodName ![mAbstractExtensionMethodName location]}
+  let key = @lstring.new {!"extension method @" + mTypeName + " " + mAbstractExtensionMethodName ![mAbstractExtensionMethodName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -2945,7 +2945,7 @@ override method @abstractExtensionModifierAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionModifierMapForBuildingContext ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"category setter @" + mTypeName + " " + mAbstractExtensionModifierName ![mAbstractExtensionModifierName location]}
+  let key = @lstring.new {!"extension setter @" + mTypeName + " " + mAbstractExtensionModifierName ![mAbstractExtensionModifierName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
@@ -3037,17 +3037,17 @@ proc buildSemanticContext
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
-  var categoryMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
-  var categoryGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
-  var categoryModifierMapForBuildingContext = @extensionModifierMapForBuildingContext.emptyMap{}
-  var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
+  var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
+  var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
+  var extensionModifierMapForBuildingContext = @extensionModifierMapForBuildingContext.emptyMap{}
+  var extensionOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
-      !?categoryMethodMapForBuildingContext
-      !?categoryGetterMapForBuildingContext
-      !?categoryModifierMapForBuildingContext
-      !?categoryOverrideDefinitionList
+      !?extensionMethodMapForBuildingContext
+      !?extensionGetterMapForBuildingContext
+      !?extensionModifierMapForBuildingContext
+      !?extensionOverrideDefinitionList
     ]  
   end
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
@@ -3069,16 +3069,16 @@ proc buildSemanticContext
       end
       error ["" nowhere] : s : outSemanticContext
     else
-    #--- Add category override
-      sortedSemanticDeclarationListAST += categoryOverrideDefinitionList
+    #--- Add extension override
+      sortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
       outSemanticContext = @semanticContext.default
     #--- Loop throught all declarations
       for () in sortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
-          !categoryMethodMapForBuildingContext
-          !categoryGetterMapForBuildingContext
-          !categoryModifierMapForBuildingContext
+          !extensionMethodMapForBuildingContext
+          !extensionGetterMapForBuildingContext
+          !extensionModifierMapForBuildingContext
           !?outSemanticContext
         ]
       end

@@ -957,9 +957,9 @@ override method @abstractExtensionMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
@@ -1055,7 +1055,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1135,9 +1135,9 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingExtensionMethodName: "cannot declare a category method: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingExtensionMethodName: "cannot declare an abstract category method: '@" + [selfType key] + "' is not an abstract class"
+    error mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1189,9 +1189,9 @@ override method @abstractExtensionModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionModifierName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute setter signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
@@ -1284,7 +1284,7 @@ override method @overridingExtensionModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mOverridingExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1361,9 +1361,9 @@ override method @overridingAbstractExtensionModifierAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingExtensionModifierName: "cannot declare a category setter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingExtensionModifierName: "cannot declare an abstract category setter: '@" + [selfType key] + "' is not an abstract class"
+    error mOverridingExtensionModifierName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1415,9 +1415,9 @@ override method @abstractExtensionGetterAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mAbstractExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
@@ -1523,7 +1523,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mOverridingExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -1618,9 +1618,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractExtensionGetterName: "cannot declare a category getter: '@" + [selfType key] + "' is not a class"
+    error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionGetterName: "cannot declare an abstract category getter: '@" + [selfType key] + "' is not an abstract class"
+    error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""

@@ -292,35 +292,35 @@ listmap @descendantClassListMap (@unifiedTypeMapProxyList)
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  E X T E N S I O N    M E T H O D    M A P                                                                             *
+#  E X T E N S I O N    M E T H O D    M A P                                                                           *
 #                                                                                                                      *
-# Used for checking a category-method is defined once for a type                                                       *
+# Used for checking a extension-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionMethodMapForGlobalCheckings {
-  insert insertKey error message "the '%K' category method is already declared in %L"
+  insert insertKey error message "the '%K' extension method is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  E X T E N S I O N    M O D I F I E R    M A P                                                                         *
+#  E X T E N S I O N    M O D I F I E R    M A P                                                                       *
 #                                                                                                                      *
-# Used for checking a category-setter is defined once for a type                                                       *
+# Used for checking a extension-setter is defined once for a type                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionModifierMapForGlobalCheckings {
-  insert insertKey error message "the '%K' category setter is already declared in %L"
+  insert insertKey error message "the '%K' extension setter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #  E X T E N S I O N    G E T T E R    M A P                                                                             *
 #                                                                                                                      *
-# Used for checking a category-method is defined once for a type                                                       *
+# Used for checking a extension-method is defined once for a type                                                       *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionGetterMapForGlobalCheckings {
-  insert insertKey error message "the '%K' category getter is already declared in %L"
+  insert insertKey error message "the '%K' extension getter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -362,7 +362,7 @@ proc checkExtensionModifierDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionModifierName: "an abstract category method '" + inAbstractExtensionModifierName + "' is defined for abstract class '@"
+        error inAbstractExtensionModifierName: "an abstract extension method '" + inAbstractExtensionModifierName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
       end
@@ -399,7 +399,7 @@ proc checkExtensionMethodDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionMethodName: "an abstract category method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
+        error inAbstractExtensionMethodName: "an abstract extension method '" + inAbstractExtensionMethodName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
       end
@@ -436,7 +436,7 @@ proc checkExtensionGetterDefinitionForClass
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionGetterName: "an abstract category getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
+        error inAbstractExtensionGetterName: "an abstract extension getter '" + inAbstractExtensionGetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this getter" 
       end
@@ -465,64 +465,64 @@ proc performGalgas3ProjectGlobalCheckings
   end
 #--- Build Extension method listmaps
   var abstractExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
-  var categoryMethodListMap =@genericExtensionMethodListMap.emptyMap{}
+  var extensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingAbstractExtensionMethodListMap =@genericExtensionMethodListMap.emptyMap{}
   var abstractExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
-  var categoryReaderListMap =@genericExtensionMethodListMap.emptyMap{}
+  var extensionReaderListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingAbstractExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
   var abstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
-  var categoryModifierListMap =@genericExtensionMethodListMap.emptyMap{}
+  var extensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingAbstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
   for () in inSemanticDeclarationList do
     [mSemanticDeclaration buildExtensionListMaps
       !?abstractExtensionModifierListMap
-      !?categoryModifierListMap
+      !?extensionModifierListMap
       !?overridingExtensionModifierListMap
       !?overridingAbstractExtensionModifierListMap
       !?abstractExtensionMethodListMap
-      !?categoryMethodListMap
+      !?extensionMethodListMap
       !?overridingExtensionMethodListMap
       !?overridingAbstractExtensionMethodListMap
       !?abstractExtensionGetterListMap
-      !?categoryReaderListMap
+      !?extensionReaderListMap
       !?overridingExtensionGetterListMap
       !?overridingAbstractExtensionGetterListMap
     ]
   end
 #------ Check Extension
   if @uint.errorCount == 0 then
-  #--- A given abstract category modifier is defined only once for a class
+  #--- A given abstract extension modifier is defined only once for a class
     for () in abstractExtensionModifierListMap do
-      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryModifierMap insertKey !mValue]
+        [!?extensionModifierMap insertKey !mValue]
       end
     end  
-  #--- A given base category modifier is defined only once for a class
-    for () in categoryModifierListMap do
-      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+  #--- A given base extension modifier is defined only once for a class
+    for () in extensionModifierListMap do
+      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryModifierMap insertKey !mValue]
+        [!?extensionModifierMap insertKey !mValue]
       end
     end  
-  #--- A given overriding category modifier is defined only once for a class
+  #--- A given overriding extension modifier is defined only once for a class
     for () in overridingExtensionModifierListMap do
-      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryModifierMap insertKey !mValue]
+        [!?extensionModifierMap insertKey !mValue]
       end
     end  
-  #--- A given overriding abstract category modifier is defined only once for a class
+  #--- A given overriding abstract extension modifier is defined only once for a class
     for () in overridingAbstractExtensionMethodListMap do
-      var categoryModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryModifierMap insertKey !mValue]
+        [!?extensionModifierMap insertKey !mValue]
       end
     end  
-  #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
+  #------ Check that for every abstract extension modifier, an overridden extension modifier defined in an concrete subclass
     for () in abstractExtensionModifierListMap do
       for () in mList do
         checkExtensionModifierDefinitionForClass (
@@ -535,7 +535,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
+  #------ Check that for every overriding abstract extension modifier, an overridden extension modifier defined in an concrete subclass
     for () in overridingAbstractExtensionModifierListMap do
       for () in mList do
         checkExtensionModifierDefinitionForClass (
@@ -548,35 +548,35 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #--- A given abstract category method is defined only once for a class
+  #--- A given abstract extension method is defined only once for a class
     for () in abstractExtensionMethodListMap do
-      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
+      var extensionMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryMethodMap insertKey !mValue]
+        [!?extensionMethodMap insertKey !mValue]
       end
     end  
-  #--- A given base category method is defined only once for a class
-    for () in categoryMethodListMap do
-      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
+  #--- A given base extension method is defined only once for a class
+    for () in extensionMethodListMap do
+      var extensionMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryMethodMap insertKey !mValue]
+        [!?extensionMethodMap insertKey !mValue]
       end
     end  
-  #--- A given overriding category method is defined only once for a class
+  #--- A given overriding extension method is defined only once for a class
     for () in overridingExtensionMethodListMap do
-      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
+      var extensionMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryMethodMap insertKey !mValue]
+        [!?extensionMethodMap insertKey !mValue]
       end
     end  
-  #--- A given overriding abstract category method is defined only once for a class
+  #--- A given overriding abstract extension method is defined only once for a class
     for () in overridingAbstractExtensionMethodListMap do
-      var categoryMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
+      var extensionMethodMap =@extensionMethodMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?categoryMethodMap insertKey !mValue]
+        [!?extensionMethodMap insertKey !mValue]
       end
     end  
-  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+  #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
     for () in abstractExtensionMethodListMap do
       for () in mList do
         checkExtensionMethodDefinitionForClass (
@@ -589,7 +589,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+  #------ Check that for every abstract extension method, an overridden extension method defined in an concrete subclass
     for () in overridingAbstractExtensionMethodListMap do
       for () in mList do
         checkExtensionMethodDefinitionForClass (
@@ -603,30 +603,29 @@ proc performGalgas3ProjectGlobalCheckings
       end
     end
   #------ Check Extension getters
-##--- Check that for every abstract category getter, an overridden category getter
-##    defined in an concrete subclass
-  #--- A given abstract category getter is defined only once for a class
+##--- Check that for every abstract extension getter, an overridden extension getter defined in an concrete subclass
+  #--- A given abstract extension getter is defined only once for a class
     for () in abstractExtensionGetterListMap do
       var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
-  #--- A given base category getter is defined only once for a class
-    for () in categoryReaderListMap do
+  #--- A given base extension getter is defined only once for a class
+    for () in extensionReaderListMap do
       var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
-  #--- A given overriding category getter is defined only once for a class
+  #--- A given overriding extension getter is defined only once for a class
     for () in overridingExtensionGetterListMap do
       var ExtensionGetterMap =@extensionGetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
         [!?ExtensionGetterMap insertKey !mValue]
       end
     end  
-  #--- Check every abstract category getter is implemented by every inherited concrete type
+  #--- Check every abstract extension getter is implemented by every inherited concrete type
     for () in abstractExtensionGetterListMap do
       for () in mList do
         checkExtensionGetterDefinitionForClass (
@@ -639,7 +638,7 @@ proc performGalgas3ProjectGlobalCheckings
         )
       end
     end
-  #--- Check every abstract category getter is implemented by every inherited concrete type
+  #--- Check every abstract extension getter is implemented by every inherited concrete type
     for () in overridingAbstractExtensionGetterListMap do
       for () in mList do
         checkExtensionGetterDefinitionForClass (

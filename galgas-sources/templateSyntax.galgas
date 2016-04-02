@@ -408,7 +408,7 @@ rule <primary>
 #   constructor call     :   [@class constructor !... ]                                                                *
 #   option value         :   [option option_component_name.option_name]                                                *
 #   filewrapper template :   [filewrapper fw.template_name !...]                                                       *
-#   category template    :   [template expression template_name !...]                                                  *
+#   extension template   :   [template expression template_name !...]                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

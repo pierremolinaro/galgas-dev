@@ -495,9 +495,9 @@ struct @predefinedTypes {
 struct @analysisContext {
   @semanticContext mSemanticContext
   @predefinedTypes mPredefinedTypes
-  @unifiedTypeMap-proxy mSelfCopyTypeProxy # isNull if outside a category
+  @unifiedTypeMap-proxy mSelfCopyTypeProxy # isNull if outside a extension
   @string mSelfObjectCppName
-  @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a modifier category
+  @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a modifier extension
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

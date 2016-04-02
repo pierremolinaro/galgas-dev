@@ -1,7 +1,7 @@
 
 
 proc testsuite_type_categories {
-  message "*************************************** begin of type category test\n"
+  message "*************************************** begin of type extension test\n"
   log "Square of 7" : [7L square]
   var aList = @uintlist {}
   aList += !1

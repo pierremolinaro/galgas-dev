@@ -222,7 +222,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -252,7 +252,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy

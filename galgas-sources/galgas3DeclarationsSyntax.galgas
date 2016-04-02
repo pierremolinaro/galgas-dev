@@ -461,7 +461,7 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $method$
   $type_name$ ?var  @lstring className indexing typeReferenceExtensionMethod
-  $identifier$ ?var  @lstring mMethodName indexing categoryMethodDefinition
+  $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
@@ -473,7 +473,8 @@ rule <declaration>
     !mMethodName
     !formalParameterList
     !routineInstructionList
-    !endOfMethodLocation}
+    !endOfMethodLocation
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -537,7 +538,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                                           *
+#    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                                         *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -548,7 +549,7 @@ rule <declaration>
 rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $getter$
   $type_name$ ?var  @lstring className
-  $identifier$ ?var  @lstring mMethodName indexing categoryGetterDefinition
+  $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
   @formalInputParameterListAST mFormalInputParameterList
   <formal_input_parameter_list> ? mFormalInputParameterList
   $->$
@@ -698,7 +699,7 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $setter$
   $type_name$ ?var  @lstring className indexing typeReferenceExtensionModifier
-  $identifier$ ?var  @lstring modifierName indexing categoryModifierDefinition
+  $identifier$ ?var  @lstring modifierName indexing extensionModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   ${$
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList

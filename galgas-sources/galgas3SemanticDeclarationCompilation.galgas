@@ -115,17 +115,17 @@ proc buildGalgas3SemanticContext
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
   var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
-  var categoryMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
-  var categoryGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
-  var categoryModifierMapForBuildingContext = @extensionModifierMapForBuildingContext.emptyMap{}
-  var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
+  var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
+  var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
+  var extensionModifierMapForBuildingContext = @extensionModifierMapForBuildingContext.emptyMap{}
+  var extensionOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
-      !?categoryMethodMapForBuildingContext
-      !?categoryGetterMapForBuildingContext
-      !?categoryModifierMapForBuildingContext
-      !?categoryOverrideDefinitionList
+      !?extensionMethodMapForBuildingContext
+      !?extensionGetterMapForBuildingContext
+      !?extensionModifierMapForBuildingContext
+      !?extensionOverrideDefinitionList
     ]  
   end
 #--- Add optional declarations
@@ -156,16 +156,16 @@ proc buildGalgas3SemanticContext
       end
       error inEndOfProjectSourceFile : s : outSemanticContext
     else
-    #--- Add category override
-      outSortedSemanticDeclarationListAST += categoryOverrideDefinitionList
+    #--- Add extension override
+      outSortedSemanticDeclarationListAST += extensionOverrideDefinitionList
     #--- Build initial semantic context
       outSemanticContext = @semanticContext.default
     #--- Loop throught all declarations
       for () in outSortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
-          !categoryMethodMapForBuildingContext
-          !categoryGetterMapForBuildingContext
-          !categoryModifierMapForBuildingContext
+          !extensionMethodMapForBuildingContext
+          !extensionGetterMapForBuildingContext
+          !extensionModifierMapForBuildingContext
           !?outSemanticContext
         ]
       end

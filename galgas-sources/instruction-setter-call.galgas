@@ -210,7 +210,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mModifierName: "'self' can be used only in category setters" : selfObjectCppName, selfTypeProxy
+    error mModifierName: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
