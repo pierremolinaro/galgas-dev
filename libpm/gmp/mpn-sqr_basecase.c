@@ -39,7 +39,7 @@ see https://www.gnu.org/licenses/.  */
 #include "longlong.h"
 
 
-#if HAVE_NATIVE_mpn_sqr_diagonal
+#ifdef HAVE_NATIVE_mpn_sqr_diagonal
 #define MPN_SQR_DIAGONAL(rp, up, n)					\
   mpn_sqr_diagonal (rp, up, n)
 #else
@@ -56,11 +56,11 @@ see https://www.gnu.org/licenses/.  */
   } while (0)
 #endif
 
-#if HAVE_NATIVE_mpn_sqr_diag_addlsh1
+#ifdef HAVE_NATIVE_mpn_sqr_diag_addlsh1
 #define MPN_SQR_DIAG_ADDLSH1(rp, tp, up, n)				\
   mpn_sqr_diag_addlsh1 (rp, tp, up, n)
 #else
-#if HAVE_NATIVE_mpn_addlsh1_n
+#ifdef HAVE_NATIVE_mpn_addlsh1_n
 #define MPN_SQR_DIAG_ADDLSH1(rp, tp, up, n)				\
   do {									\
     mp_limb_t cy;							\
@@ -84,7 +84,7 @@ see https://www.gnu.org/licenses/.  */
 #undef READY_WITH_mpn_sqr_basecase
 
 
-#if ! defined (READY_WITH_mpn_sqr_basecase) && HAVE_NATIVE_mpn_addmul_2s
+#if ! defined (READY_WITH_mpn_sqr_basecase) && defined (HAVE_NATIVE_mpn_addmul_2s)
 void
 mpn_sqr_basecase (mp_ptr rp, mp_srcptr up, mp_size_t n)
 {
@@ -146,7 +146,7 @@ mpn_sqr_basecase (mp_ptr rp, mp_srcptr up, mp_size_t n)
 #endif
 
 
-#if ! defined (READY_WITH_mpn_sqr_basecase) && HAVE_NATIVE_mpn_addmul_2
+#if ! defined (READY_WITH_mpn_sqr_basecase) && defined (HAVE_NATIVE_mpn_addmul_2)
 
 /* mpn_sqr_basecase using plain mpn_addmul_2.
 
