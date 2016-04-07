@@ -34,10 +34,10 @@ see https://www.gnu.org/licenses/.  */
 #include "longlong.h"
 
 
-#if HAVE_LIMB_BIG_ENDIAN
+#ifdef HAVE_LIMB_BIG_ENDIAN
 #define HOST_ENDIAN     1
 #endif
-#if HAVE_LIMB_LITTLE_ENDIAN
+#ifdef HAVE_LIMB_LITTLE_ENDIAN
 #define HOST_ENDIAN     (-1)
 #endif
 #ifndef HOST_ENDIAN

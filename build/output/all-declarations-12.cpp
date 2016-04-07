@@ -10519,11 +10519,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-Winit-self\" />\n"
     "     <Add option=\"-Wredundant-decls\" />\n"
     "     <Add option=\"-Wundef\" />\n"
-    "     <Add option=\"-Wunreachable-code\" />\n"
-    "     <Add option=\"-Wmissing-declarations\" />\n"
     "     <Add option=\"-Wmissing-include-dirs\" />\n"
     "     <Add option=\"-Weffc++\" />\n"
-    "     <Add option=\"-Wmain\" />\n"
     "     <Add option=\"-std=c++98\" />\n"
     "     <Add option=\"-Wall\" />\n"
     "     <Add option=\"-W\" />\n"
@@ -10560,11 +10557,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "     <Add option=\"-Wredundant-decls\" />\n"
     "     <Add option=\"-Wundef\" />\n"
     "     <Add option=\"-Winline\" />\n"
-    "     <Add option=\"-Wunreachable-code\" />\n"
-    "     <Add option=\"-Wmissing-declarations\" />\n"
     "     <Add option=\"-Wmissing-include-dirs\" />\n"
     "     <Add option=\"-Weffc++\" />\n"
-    "     <Add option=\"-Wmain\" />\n"
     "     <Add option=\"-std=c++98\" />\n"
     "     <Add option=\"-Wall\" />\n"
     "     <Add option=\"-W\" />\n" ;
@@ -10585,15 +10579,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   result << "\" />\n"
     "   <Add directory=\"../build/user-headers\" />\n"
     "   <Add directory=\"../build/output\" />\n" ;
-  GALGAS_uint index_2514_ (0) ;
+  GALGAS_uint index_2284_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2514 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
-    while (enumerator_2514.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_2284 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
+    while (enumerator_2284.hasCurrentObject ()) {
       result << "  <Add directory=\"" ;
-      result << enumerator_2514.current_key (HERE).stringValue () ;
+      result << enumerator_2284.current_key (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_2514_.increment () ;
-      enumerator_2514.gotoNextObject () ;
+      index_2284_.increment () ;
+      enumerator_2284.gotoNextObject () ;
     }
   }
   result << "  </Compiler>\n"
@@ -10621,26 +10615,26 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     result << in_LIBPM_5F_PATH.stringValue () ;
     result << "/galgas2/C_galgas_quiet_option.cpp\" />\n" ;
   }
-  GALGAS_uint index_3016_ (0) ;
+  GALGAS_uint index_2786_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3016 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3016.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2786 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2786.hasCurrentObject ()) {
       result << "  <Unit filename=\"../build/output/" ;
-      result << enumerator_3016.current_mValue (HERE).stringValue () ;
+      result << enumerator_2786.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_3016_.increment () ;
-      enumerator_3016.gotoNextObject () ;
+      index_2786_.increment () ;
+      enumerator_2786.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_3118_ (0) ;
+  GALGAS_uint index_2888_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3118 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3118.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_2888 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2888.hasCurrentObject ()) {
       result << "  <Unit filename=\"../" ;
-      result << enumerator_3118.current_mValue (HERE).stringValue () ;
+      result << enumerator_2888.current_mValue (HERE).stringValue () ;
       result << "\" />\n" ;
-      index_3118_.increment () ;
-      enumerator_3118.gotoNextObject () ;
+      index_2888_.increment () ;
+      enumerator_2888.gotoNextObject () ;
     }
   }
   result << "\n"
