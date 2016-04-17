@@ -142,8 +142,6 @@ runCommand (["tar", "-cf", "galgas-sources-crlf.tar", "galgas"])
 runCommand (["bzip2", "-9", "galgas-sources-crlf.tar"])
 #-------------------- Copier changeLog
 runCommand (["mv", DIR + "/galgas/changeLog.html", DIR + "/changeLog.html"])
-#-------------------- Vérifier GMP
-runCommand ([DIR + "/galgas", "--check-gmp"])
 #-------------------- Vérifier les programmes d'exemple
 runCommand ([DIR + "/galgas/sample_code/-build-all-macosx.command"])
 runCommand (["rm", "-fr", DIR + "/galgas/sample_code"])
@@ -152,6 +150,13 @@ runCommand ([DIR + "/galgas/testsuite/_run_testsuite.command"])
 runCommand (["rm", "-fr", DIR + "/galgas/testsuite"])
 #-------------------- Vérifier la création de projet
 runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
+#-------------------- Recompiler le projet Xcode
+os.chdir (DIR + "/galgas/project-xcode-galgas")
+runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-alltargets", "-configuration", "Default"])
+os.chdir (DIR)
+#-------------------- Vérifier GMP
+runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas", "--check-gmp"])
+runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas-debug-32", "--check-gmp"])
 #-------------------- Construire la documentation Latex
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-documentation-latex-sources"):
   for filename in files:
@@ -191,10 +196,6 @@ runCommand (["mv", DIR + "/galgas/makefile-x86linux64-on-macosx/galgas.zip", "ga
 runCommand (["mv", DIR + "/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip", "galgas-debug-x86-linux64.zip"])
 runCommand (["rm", "-fr", "galgas/makefile-x86linux64-on-macosx"])
 runCommand (["rm", "-fr", "galgas/build/cli-objects"])
-#-------------------- Recompiler le projet Xcode
-os.chdir (DIR + "/galgas/project-xcode-galgas")
-runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-target", "GALGAS Cocoa", "-configuration", "Default"])
-os.chdir (DIR)
 #-------------------- Creer l'archive BZ2 de cocoa galgas
 runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR])
 runCommand (["tar", "-cf", "cocoaGalgas.app.tar", "cocoaGalgas.app"])
