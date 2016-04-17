@@ -909,7 +909,7 @@
 		CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF27F1DE1279FE7A0068C230 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
 		CF2A85F114E5BDB100C52116 /* C_FileManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_FileManager.cpp; sourceTree = "<group>"; };
-		CF2C86141CC3B0890008D960 /* tool debug 32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "tool debug 32"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF2C86141CC3B0890008D960 /* galgas-developer-debug-32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "galgas-developer-debug-32"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_graph.cpp; sourceTree = "<group>"; };
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
 		CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_class.cpp; sourceTree = "<group>"; };
@@ -1370,7 +1370,7 @@
 				CF6DF18F09E3F23700506859 /* galgas-developer */,
 				CF6DF20509E3F30400506859 /* galgas-developer-debug */,
 				CF6DF25509E3F3A700506859 /* cocoaGalgasDeveloper.app */,
-				CF2C86141CC3B0890008D960 /* tool debug 32 */,
+				CF2C86141CC3B0890008D960 /* galgas-developer-debug-32 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2088,7 +2088,7 @@
 			);
 			name = "tool debug 32";
 			productName = galgasDebug;
-			productReference = CF2C86141CC3B0890008D960 /* tool debug 32 */;
+			productReference = CF2C86141CC3B0890008D960 /* galgas-developer-debug-32 */;
 			productType = "com.apple.product-type.tool";
 		};
 		CF6DF12309E3F23700506859 /* GALGAS tool */ = {
@@ -3165,13 +3165,14 @@
 		CF2C86131CC3B0890008D960 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				LD_OPENMP_FLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "galgas-developer-debug-32";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALID_ARCHS = i386;
 			};
