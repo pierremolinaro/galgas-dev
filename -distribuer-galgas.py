@@ -142,6 +142,8 @@ runCommand (["tar", "-cf", "galgas-sources-crlf.tar", "galgas"])
 runCommand (["bzip2", "-9", "galgas-sources-crlf.tar"])
 #-------------------- Copier changeLog
 runCommand (["mv", DIR + "/galgas/changeLog.html", DIR + "/changeLog.html"])
+#-------------------- Vérifier GMP
+runCommand ([DIR + "/galgas", "--check-gmp"])
 #-------------------- Vérifier les programmes d'exemple
 runCommand ([DIR + "/galgas/sample_code/-build-all-macosx.command"])
 runCommand (["rm", "-fr", DIR + "/galgas/sample_code"])
