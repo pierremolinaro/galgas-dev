@@ -94,13 +94,14 @@ override method @procCallInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
   ioInclusionSet += !"proc-" + mRoutineName
   ioGeneratedCode += "{\n"
 #--- Parameters
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
+  @stringlist parameterCppNameList = {}
+  @stringlist jokerParametersToReleaseList = {}
+  @stringlist inputVariableList = {}
   for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet

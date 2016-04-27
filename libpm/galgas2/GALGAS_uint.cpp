@@ -43,9 +43,6 @@ GALGAS_uint GALGAS_uint::constructor_default (UNUSED_LOCATION_ARGS) {
 GALGAS_uint::GALGAS_uint (const uint32_t inValue) :
 mIsValid (true),
 mUIntValue (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("uint", true, cStringWithUnsigned (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -53,9 +50,6 @@ mUIntValue (inValue) {
 GALGAS_uint::GALGAS_uint (const bool inValid, const uint32_t inValue) :
 mIsValid (inValid),
 mUIntValue (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("uint", inValid, cStringWithUnsigned (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

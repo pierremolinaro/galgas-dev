@@ -49,9 +49,6 @@ GALGAS_double GALGAS_double::constructor_default (UNUSED_LOCATION_ARGS) {
 GALGAS_double::GALGAS_double (const double inValue) :
 mIsValid (true),
 mDoubleValue (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("double", true, cStringWithDouble (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

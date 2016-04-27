@@ -48,9 +48,6 @@ GALGAS_char::GALGAS_char (const utf32 inValue) :
 AC_GALGAS_root (),
 mIsValid (true),
 mCharValue (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("char", true, cStringWithUnicodeCharacter (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

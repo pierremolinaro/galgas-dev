@@ -38,14 +38,6 @@ C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_outputConcreteSynta
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_trace ("galgas_builtin_options",
-                                                                    "trace",
-                                                                    0,
-                                                                    "trace",
-                                                                    "Outputs a trace file") ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 C_BoolCommandLineOption
 gOption_galgas_5F_builtin_5F_options_log_5F_file_5F_read ("galgas_cli_options",
                                                       "log_file_read",

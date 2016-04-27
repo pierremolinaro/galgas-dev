@@ -46,9 +46,6 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::constructor_default (UNUSED_LOCATION_AR
 GALGAS_sint_36__34_::GALGAS_sint_36__34_ (const int64_t inValue) :
 mIsValid (true),
 mSInt64Value (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("sint64", true, cStringWithSigned (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

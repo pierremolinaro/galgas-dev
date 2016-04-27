@@ -75,9 +75,6 @@ mString () {
 GALGAS_string::GALGAS_string (const C_String & inString) :
 mIsValid (true),
 mString (inString) {
-  if (traceIsEnabled ()) {
-    appendTrace ("string", true, C_String ("'") + inString + "'") ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
