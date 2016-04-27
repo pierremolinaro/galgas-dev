@@ -41,9 +41,6 @@ GALGAS_sint GALGAS_sint::constructor_default (UNUSED_LOCATION_ARGS) {
 GALGAS_sint::GALGAS_sint (const int32_t inValue) :
 mIsValid (true),
 mSIntValue (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("sint", true, cStringWithSigned (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

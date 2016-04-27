@@ -973,9 +973,6 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       cLexiqueIntrospection::handleGetKeywordListOption (commonLexique) ;
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
-        if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
-          enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
-        }
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonLexique->here () ;
@@ -1042,7 +1039,6 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         if (r != 0) {
           returnCode = r ;
         }
-        closeTrace () ;
       }
     //--- Error or warnings ?
       if (totalErrorCount () > 0) {

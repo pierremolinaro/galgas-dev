@@ -34,9 +34,6 @@
 GALGAS_uint_36__34_::GALGAS_uint_36__34_ (const uint64_t inValue) :
 mIsValid (true),
 mUInt64Value (inValue) {
-  if (traceIsEnabled ()) {
-    appendTrace ("uint64", true, cStringWithUnsigned (inValue)) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

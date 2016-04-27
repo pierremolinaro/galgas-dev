@@ -428,53 +428,6 @@ GALGAS_location C_Compiler::here (void) const {
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//   T R A C E                                                                                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static C_TextFileWrite * gTraceFile = NULL ;
-static uint32_t gTraceIndex ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enableTraceWithPath (const C_String & inFilePath) {
-  gTraceIndex = 0 ;
-  const C_String path = inFilePath + ".trace.txt" ;
-  macroMyNew (gTraceFile, C_TextFileWrite (path)) ;
-  if (! gTraceFile->isOpened ()) {
-    printf ("**** Error: cannot create trace file at path: '%s'.\n", path.cString (HERE)) ;
-    macroMyDelete (gTraceFile) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool traceIsEnabled (void) {
-  return NULL != gTraceFile ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void appendTrace (const char * inType,
-                  const bool inIsBuilt,
-                  const C_String & inStringValue) {
-  if (NULL != gTraceFile) {
-    gTraceIndex ++ ;
-    (*gTraceFile) << cStringWithUnsigned (gTraceIndex)
-                  << ":@" << inType
-                  << " [" << (inIsBuilt ? "built" : "not built")
-                  << ", " << inStringValue << "]\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void closeTrace (void) {
-  macroMyDelete (gTraceFile) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Check And Generate File

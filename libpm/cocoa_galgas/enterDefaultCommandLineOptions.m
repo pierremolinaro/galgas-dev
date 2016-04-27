@@ -94,17 +94,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"trace"
-    commandChar:'\0'
-    commandString:@"trace"
-    comment:@"Outputs a trace file"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  
-
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"max_errors"
     commandChar:'\0'
     commandString:@"max-errors"
