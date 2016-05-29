@@ -43,7 +43,7 @@ rule <start_symbol>
   end
   $?>$
 #--- Element list
-  outRootNodes = @xmlNodeList. emptyList
+  outRootNodes = @xmlNodeList.emptyList
   <element_list>
     !?outRootNodes
     !inIncludeComments
@@ -91,7 +91,7 @@ rule <element>
       !@xmlNodeType. comment
       ![commentString string]
       !@xmlAttributeMap. emptyMap
-      !@xmlNodeList. emptyList
+      !@xmlNodeList.emptyList
     }
     ioNodes += !node
   end
@@ -207,7 +207,7 @@ proc addText
       !@xmlNodeType. text
       !ls
       !@xmlAttributeMap. emptyMap
-      !@xmlNodeList. emptyList
+      !@xmlNodeList.emptyList
     }
     ioNodes += !node
     if inPrintDuringParsing then

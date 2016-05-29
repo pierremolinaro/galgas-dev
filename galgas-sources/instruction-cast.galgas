@@ -57,7 +57,7 @@ syntax extension galgas3InstructionsSyntax {
   #····················································································································*
   
   rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
-    outElseOrDefault = @semanticInstructionListAST. emptyList
+    outElseOrDefault = @semanticInstructionListAST.emptyList
   }
   
   #····················································································································*
@@ -74,14 +74,14 @@ syntax extension galgas3InstructionsSyntax {
     let instructionLocation = @location.here
     $error$
     <expression> ?let @semanticExpressionAST errorLocationExpression
-    outElseOrDefault = @semanticInstructionListAST. emptyList
+    outElseOrDefault = @semanticInstructionListAST.emptyList
     outElseOrDefault += !@errorInstructionAST.new {
       !instructionLocation
       !errorLocationExpression
       !@literalStringExpressionAST.new {
         !instructionLocation
         !@stringlist. listWithValue {!"cast instruction run-time error"}}
-      !@lstringlist. emptyList}
+      !@lstringlist.emptyList}
   }
   
   #····················································································································*
@@ -185,7 +185,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     analyzeSemanticInstructionList (
       !inAnalysisContext
       !localConstantList
-      !@localInitializedVariableList. emptyList
+      !@localInitializedVariableList.emptyList
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
@@ -197,8 +197,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mElseInstructionList
     !mEndOfCastInstruction
     !?ioVariableMap

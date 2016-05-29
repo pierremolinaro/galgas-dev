@@ -46,14 +46,14 @@ proc compileBeforeClauseGalgas3
   ?let @prologueEpilogueList inPrologueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration {
 #--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
+  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inPrologueList do
     analyzeRoutineBody (
       !inAnalysisContext
-      !@formalParameterListAST. emptyList # Routine signature : no argument
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@formalParameterListAST.emptyList # Routine signature : no argument
+      !@localConstantList.emptyList # No local constant
+      !@typedPropertyList.emptyList # No attribute (not a method)
+      !@typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -100,9 +100,9 @@ private proc compileProgramRulesGalgas3
     analyzeRoutineBody (
       !inAnalysisContext
       !argumentList
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@localConstantList.emptyList # No local constant
+      !@typedPropertyList.emptyList # No attribute (not a method)
+      !@typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -132,14 +132,14 @@ proc compileAfterClauseGalgas3
   ?let @prologueEpilogueList inEpilogueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration {
 #--- Compile 'before' routines
-  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
+  var semanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inEpilogueList do
     analyzeRoutineBody (
       !inAnalysisContext
-      !@formalParameterListAST. emptyList # Routine signature : no argument
-      !@localConstantList. emptyList # No local constant
-      !@typedPropertyList. emptyList # No attribute (not a method)
-      !@typedPropertyList. emptyList # No attribute (not a method)
+      !@formalParameterListAST.emptyList # Routine signature : no argument
+      !@localConstantList.emptyList # No local constant
+      !@typedPropertyList.emptyList # No attribute (not a method)
+      !@typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -155,7 +155,7 @@ proc compileAfterClauseGalgas3
       !false # Has no header
       !"proc-after"
       !"after"
-      !@formalParameterListForGeneration. emptyList
+      !@formalParameterListForGeneration.emptyList
       !true # Generate static
       !semanticInstructionListForGeneration}
 }

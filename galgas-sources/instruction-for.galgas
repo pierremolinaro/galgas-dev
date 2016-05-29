@@ -209,7 +209,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_while_expression = @location.here
     @semanticInstructionListAST mBeforeInstructionList
     select
-      mBeforeInstructionList = @semanticInstructionListAST. emptyList
+      mBeforeInstructionList = @semanticInstructionListAST.emptyList
     or
       $before$
       <semantic_instruction_list> ? mBeforeInstructionList
@@ -229,7 +229,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_do_branch = @location.here
     @semanticInstructionListAST mBetweenInstructionList
     select
-      mBetweenInstructionList = @semanticInstructionListAST. emptyList
+      mBetweenInstructionList = @semanticInstructionListAST.emptyList
     or
       $between$
       <semantic_instruction_list> ? mBetweenInstructionList
@@ -237,7 +237,7 @@ syntax extension galgas3InstructionsSyntax {
     let endof_between_branch = @location.here
     @semanticInstructionListAST mAfterInstructionList
     select
-      mAfterInstructionList = @semanticInstructionListAST. emptyList
+      mAfterInstructionList = @semanticInstructionListAST.emptyList
     or
       $after$
       <semantic_instruction_list> ? mAfterInstructionList
@@ -467,8 +467,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration before_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mBeforeInstructionList
     !mEndOf_before_branch
     !?ioVariableMap
@@ -492,8 +492,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mAfterInstructionList
     !mEndOf_after_branch
     !?ioVariableMap

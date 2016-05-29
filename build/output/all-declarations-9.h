@@ -2717,35 +2717,6 @@ void routine_checkReaderSignatures (const class GALGAS_formalInputParameterListF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         Routine 'check_K_escapeCharacters'                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_check_5F_K_5F_escapeCharacters (class GALGAS_lstring inArgument0,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'check_K_L_escapeCharacters'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_check_5F_K_5F_L_5F_escapeCharacters (class GALGAS_lstring inArgument0,
-                                                  class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           Function 'forbiddenKeysForMap'                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_stringset function_forbiddenKeysForMap (class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                     Routine 'buildLocalVariableMapAndSignature'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3062,5 +3033,23 @@ void extensionMethod_addHeaderFileName (const class GALGAS_unifiedTypeMap_2D_pro
                                         class GALGAS_stringset & io_ioInclusions,
                                         class C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             Routine 'generateFunction'                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateFunction (const class GALGAS_string constinArgument0,
+                               class GALGAS_stringset & ioArgument1,
+                               const class GALGAS_formalInputParameterListForGeneration constinArgument2,
+                               const class GALGAS_semanticInstructionListForGeneration constinArgument3,
+                               const class GALGAS_string constinArgument4,
+                               const class GALGAS_unifiedTypeMap_2D_proxy constinArgument5,
+                               const class GALGAS_string constinArgument6,
+                               const class GALGAS_bool constinArgument7,
+                               class GALGAS_string & outArgument8,
+                               class C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) ;
 
 #endif

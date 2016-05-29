@@ -787,7 +787,7 @@ proc analyzeConstructorInvocation
       + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
-    outConstructorEffectiveParameterList = @semanticExpressionListForGeneration. emptyList
+    outConstructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
     for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp
       [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp]
@@ -1163,9 +1163,9 @@ proc checkDiadicOperator
           !inErrorLocation
           !kind
           !ioRightExpression
-          !@stringlist. emptyList
+          !@stringlist.emptyList
           ![inLeftType key]
-          !@semanticExpressionListForGeneration. emptyList
+          !@semanticExpressionListForGeneration.emptyList
           !hasCompilerArgument}
         ioRightExpression = conversionExpression
       end
@@ -2901,7 +2901,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     + [[mExpressions length] string] + " parameter(s)" 
     : effectiveParameterList
   else
-    effectiveParameterList = @semanticExpressionListForGeneration. emptyList
+    effectiveParameterList = @semanticExpressionListForGeneration.emptyList
     for () in mExpressions, () in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
@@ -2978,7 +2978,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
       ]
     else
       error mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + mFilewrapperName + "' filewrapper" : filewrapperFileMap 
-      directoryList = @stringlist. emptyList # For exiting loop
+      directoryList = @stringlist.emptyList # For exiting loop
     end
   end
   @uint fileIndex

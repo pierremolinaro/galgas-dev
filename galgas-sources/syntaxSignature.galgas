@@ -30,7 +30,7 @@ func syntaxSignatureOfInstructionList
   ?let @semanticInstructionListForGeneration inInstructionList
   ->@semanticInstructionListForGeneration outResult
  {
-  outResult = @semanticInstructionListForGeneration. emptyList
+  outResult = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
     [mInstruction appendSyntaxSignature !inPosfix !?outResult]
   end
@@ -46,7 +46,7 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
     !mInstructionLocation
     !mNonterminalName
     !inPosfix
-    !@actualParameterListForGeneration. emptyList
+    !@actualParameterListForGeneration.emptyList
     !@grammarInstructionSyntaxDirectedTranslationResultNone. new
   }
 }
@@ -61,7 +61,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
     !mInstructionLocation
     !mTerminalName
     !mLexiqueIdentifier
-    !@terminalCheckAssignementList. emptyList
+    !@terminalCheckAssignementList.emptyList
     !mIndexingKeyList
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new

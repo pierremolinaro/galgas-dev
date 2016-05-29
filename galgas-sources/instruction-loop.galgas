@@ -121,8 +121,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration first_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mFirstInstructions
     !mEndOfFirstInstructions
     !?ioVariableMap
@@ -132,8 +132,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration second_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mSecondInstructions
     !mEndOfSecondInstructions
     !?ioVariableMap

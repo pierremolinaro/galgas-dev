@@ -489,7 +489,7 @@ proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
     !false # Is not extern
   ]
 #--- toUpper
-  lexicalTypeList = @lexicalFunctionFormalArgumentList. emptyList
+  lexicalTypeList = @lexicalFunctionFormalArgumentList.emptyList
   lexicalTypeList += !.lexicalType_char !"inCharacter"
   [!?outLexicalFunctionMap insertKey
     !@lstring.new {!"toUpper" !@location.here}

@@ -129,7 +129,7 @@ proc enterModifierWithoutArgument
   [!?ioModifierMap insertOrReplace
     !@lstring.new {!inModifierName !@location.here}
     !@methodKind. definedAsMember
-    !@formalParameterSignature. emptyList
+    !@formalParameterSignature.emptyList
     !inHasCompilerArgument
     !@methodQualifier. isBasic
     !""

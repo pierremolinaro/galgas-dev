@@ -850,23 +850,6 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M A P    D E C L A R A T I O N                                                                                    *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @mapTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mElementTypeProxy
-  @lstring mMapTypeName
-  @typedPropertyList mTypedAttributeList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapRemoveMethodListAST mRemoveMethodList
-  @bool mHasInsertOrReplaceModifier
-#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    A R R A Y    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -906,18 +889,6 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    L I S T M A P    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @listmapTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mAssociatedListTypeIndex
-  @typedPropertyList mAssociatedListTypedAttributeList
-  @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

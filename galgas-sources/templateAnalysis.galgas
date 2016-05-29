@@ -201,7 +201,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     + [[mExpressionList length] string] + " parameter(s)" 
     : constructorEffectiveParameterList
   else
-    constructorEffectiveParameterList = @semanticExpressionListForGeneration. emptyList
+    constructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
     for () in mExpressionList, () in constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp
       [mExpression templateExpressionAnalysis !inAnalysisContext ?exp]

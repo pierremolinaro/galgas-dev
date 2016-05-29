@@ -810,9 +810,9 @@ override method @predefinedTypeAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. predefinedType
     !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
     !modifierMap
@@ -824,8 +824,8 @@ override method @predefinedTypeAST enterInSemanticContext
     !addAssignArgumentList
     !{}
     !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
     !enumeratedTypeProxy
     ![mKind defaultConstructorName]
@@ -836,300 +836,8 @@ override method @predefinedTypeAST enterInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func %once elementTypeNameSuffix ->@string outResult {
+func %once elementTypeNameSuffix -> @string outResult {
   outResult = "-element"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapDeclarationAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
-#--- bool type index
-  @unifiedTypeMap-proxy boolTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ? boolTypeIndex]
-#--- string type index
-  @unifiedTypeMap-proxy stringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?stringTypeIndex]
-#--- location type index
-  @unifiedTypeMap-proxy locationTypeProxy
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeProxy]
-#--- lstring type index
-  @unifiedTypeMap-proxy lstringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?lstringTypeIndex]
-#--- current map type index
-  @unifiedTypeMap-proxy currentMapTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
-#--- Enumeration description
-  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
-  var enumerationVariants =@stringlist.emptyList{}
-  enumerationVariants += !"up"
-  enumerationVariants += !"down"
-#--- Attributes
-  @bool usesSelectorsInInsertAndSearch = false
-  for (s) in mAttributeList do
-    if s.string == "selectors" then
-      if usesSelectorsInInsertAndSearch then
-        error s : "duplicated attribute"
-      end
-      usesSelectorsInInsertAndSearch = true
-    else
-      error s : "unknown attribute"
-    end
-  end
-#---
-  var constructorMap =@constructorMap.emptyMap{}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
-    !?ioSemanticContext.mTypeMap
-    !name:"emptyMap"
-    !resultTypeName:[mMapTypeName string]
-    !hasLexiqueAndLocationArgs:false
-  )
-  enterConstructorWithArgument (
-    !?constructorMap
-    !?ioSemanticContext.mTypeMap
-    !name:"mapWithMapToOverride"
-    !argTypeName:[mMapTypeName string]
-    !argName:"inMap"
-    !resultTypeName:[mMapTypeName string]
-    !hasLexiqueAndLocationArgs:false
-  )
-#--- Getters
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"levels"
-    !returnedTypeName:"uint"
-    !false
-  )
-  enterInheritedGetterWith2Arguments (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !"hasKeyAtLevel"
-    !"string"
-    !"inKey"
-    !"uint"
-    !"inLevel"
-    !returnedTypeName:"bool"
-    !false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"keySet"
-    !returnedTypeName:"stringset"
-    !false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"keyList"
-    !returnedTypeName:"lstringlist"
-    !false
-  )
-  enterInheritedGetterWithArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"hasKey"
-    !argumentTypeName:"string"
-    !argumentName:"inKey"
-    !returnedTypeName:"bool"
-    !false
-  )
-  enterInheritedGetterWithArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap 
-    !getterName:"locationForKey"
-    !argumentTypeName:"string"
-    !argumentName:"inKey" 
-    !returnedTypeName:"location"
-    !true
-  )
-  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"count"
-    !returnedTypeName:"uint"
-    !false
-  )
-#--- Handle properties
-  var insertMethodFormalArgumentList = @formalParameterSignature.emptyList{}
-  var typedPropertyList = @typedPropertyList.emptyList{}
-  @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
-  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !lstringTypeIndex !"lkey"
-  insertMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
-    !lstringTypeIndex
-    !@formalArgumentPassingModeAST.argumentConstantIn
-    !"inLKey"
-  var removeMethodFormalArgumentList =@formalParameterSignature.emptyList{}
-  removeMethodFormalArgumentList +=
-    ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
-    !lstringTypeIndex
-    !@formalArgumentPassingModeAST.argumentConstantIn
-    !"inLKey"
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList. emptyList
-  for () in mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
-    @bool hasGetter = true
-    @bool hasSetter = true
-    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
-    typesToIncludeInHeaderCompilation += !attributeTypeIndex
-    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
-    insertMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
-      !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentConstantIn
-      !mPropertyName.string
-    removeMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
-      !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentOut
-      !mPropertyName.string
-  end
-#--- Handle insert modifiers
-  for () in mInsertMethodList do
-    if [modifierMap hasKey ![mInsertMethodName string]] then
-      error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
-    else
-      [!?modifierMap insertOrReplace
-        !mInsertMethodName
-        !@methodKind.definedAsMember
-        !insertMethodFormalArgumentList
-        !true
-        !@methodQualifier.isBasic
-        !""
-      ]
-    end
-  end
-#--- Handle remove modifiers
-  for () in mRemoveMethodList do
-    if [modifierMap hasKey ![mMethodName string]] then
-      error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
-    else
-      [!?modifierMap insertOrReplace
-        !mMethodName
-        !@methodKind.definedAsMember
-        !removeMethodFormalArgumentList
-        !true
-        !@methodQualifier.isBasic
-        !""
-      ]
-    end
-  end
-#--- Handle search methods (methods if no state, modifiers if states)
-  for () in mSearchMethodList do
-    [!?instanceMethodMap insertKey
-      !mSearchMethodName
-      !@methodKind.definedAsMember
-      !removeMethodFormalArgumentList
-      ![mSearchMethodName location]
-      !true
-      !@methodQualifier.isBasic
-      !"" # No error message
-    ]
-  end
-#--- Enter "attributeForKey" getters
-  for () in mPropertyList do
-    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
-    @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
-    [!?getterMap insertOrReplace
-      !accessorName
-      !@methodKind.definedAsMember
-      !@functionSignature {!["" nowhere] !stringTypeIndex !"inKey"}
-      !@location.here
-      !true
-      !attributeTypeIndex
-      !@methodQualifier.isBasic
-      !"" # No Error message
-    ]
-  end
-#---------- Handle "insertOrReplace" setter
-  if [mInsertOrReplaceDeclarationListAST length] >= 1 then
-    @location insertOrReplaceLocation
-    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
-    [!?modifierMap insertOrReplace
-      !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
-      !@methodKind.definedAsMember
-      !insertMethodFormalArgumentList
-      !false
-      !@methodQualifier.isBasic
-      !"" # No error message
-    ]
-  end
-#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor
-  for () in mPropertyList do
-    let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
-    var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
-    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
-    accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
-    [!?modifierMap insertOrReplace
-      !accessorName
-      !@methodKind.definedAsMember
-      !accessorFormalArgumentList
-      !true
-      !@methodQualifier.isBasic
-      !"" # No error message
-    ]
-  end
-#--- Add Categories
-  addCategories (
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
-    !?ioSemanticContext
-    !mMapTypeName
-    !?getterMap
-    !?modifierMap
-    !?instanceMethodMap
-  )
-#--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
-    !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
-    ?let @unifiedTypeMap-proxy elementTypeProxy
-  ]
-#--- Enter in type map
-  [!?ioSemanticContext.mTypeMap insertKey
-    !mMapTypeName
-    !mIsPredefined
-    !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
-    !@typeKindEnum. mapType
-    !true # Support collection value
-    !@typedPropertyList. emptyList
-    !@attributeMap. emptyMap
-    !typedPropertyList
-    !constructorMap
-    !getterMap
-    !modifierMap
-    !instanceMethodMap
-    !@classMethodMap. emptyMap
-    !enumerationDescriptor
-    !enumerationVariants
-    !doNotGenererateObjectCompare () | plusEqualOperatorWithFieldListNeedsCompilerArg () | supportWithAccessor ()
-    !argumentTypeListForAddAssignWithFieldExpressionList
-    !{}
-    !{}
-    !mSearchMethodList
-    !@mapSearchMethodListAST. emptyList
-    !false # Do not generate header in separate file
-    !elementTypeProxy # Type for enumerated element for "for" instruction
-    !"emptyMap"
-    !"map-" + mMapTypeName
-    !@headerKind. twoHeaders
-  ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1239,22 +947,22 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. externType
     !false # Does not support collection value
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
-    !@enumerationDescriptorList. emptyList
-    !@stringlist. emptyList
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
     !0
-    !@functionSignature. emptyList
+    !@functionSignature.emptyList
     !{}
     !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"default" # Default constructor
@@ -1486,7 +1194,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
     !@lstring.new {!"emptyGraph" !@location.here}
-    !@functionSignature. emptyList
+    !@functionSignature.emptyList
     !false # No compiler argument
     !graphTypeProxy
   ]
@@ -1519,13 +1227,13 @@ override method @graphDeclarationAST enterInSemanticContext
   [!?modifierMap insertKey
     !@lstring.new {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
-    !@formalParameterSignature. emptyList
+    !@formalParameterSignature.emptyList
     !false # No compiler argument
     !@methodQualifier. isInherited
     !"" # No error message
   ]
 #--- setter 'removeEdgesToNode'
-  formalParameterList = @formalParameterSignature. emptyList
+  formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
   [!?modifierMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
@@ -1537,7 +1245,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- setter 'addEdge'
-  formalParameterList = @formalParameterSignature. emptyList
+  formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
   [!?modifierMap insertKey
@@ -1550,7 +1258,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- setter 'noteNode'
-  formalParameterList = @formalParameterSignature. emptyList
+  formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
   [!?modifierMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
@@ -1580,22 +1288,22 @@ override method @graphDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. graphType
     !false # Does not support collection value
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
-    !@enumerationDescriptorList. emptyList
-    !@stringlist. emptyList
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
     !doNotGenererateObjectCompare ()
-    !@functionSignature. emptyList
+    !@functionSignature.emptyList
     !{}
     !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
@@ -1849,7 +1557,7 @@ override method @classDeclarationAST enterInSemanticContext
     commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
     modifierMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
-    inheritedTypedAttributeList = @typedPropertyList. emptyList
+    inheritedTypedAttributeList = @typedPropertyList.emptyList
     attributeMap = @attributeMap. emptyMap
     generateHeaderInSeparateFile = false
     for () in mClassFeatureList do
@@ -2038,14 +1746,14 @@ override method @classDeclarationAST enterInSemanticContext
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
-    !@enumerationDescriptorList. emptyList
-    !@stringlist. emptyList
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
     !0
-    !@functionSignature. emptyList
+    !@functionSignature.emptyList
     !{}
     !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
     !generateHeaderInSeparateFile
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
@@ -2134,7 +1842,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 #--- Result type
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let @unifiedTypeMap-proxy resultTypeIndex]
 #--- Enter function in routine map
-  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !@functionSignature. emptyList !resultTypeIndex !mIsInternal]
+  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !@functionSignature.emptyList !resultTypeIndex !mIsInternal]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2244,7 +1952,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasicFinal
     !""
   ]
-  modifierFormalArgumentList = @formalParameterSignature. emptyList
+  modifierFormalArgumentList = @formalParameterSignature.emptyList
   modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
   modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
   [!?modifierMap insertKey
@@ -2263,157 +1971,26 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
-    !@typedPropertyList. emptyList
+    !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
     !modifierMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
-    !@enumerationDescriptorList. emptyList
-    !@stringlist. emptyList
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
     !0
-    !@functionSignature. emptyList # addAssignOperatorDescription
+    !@functionSignature.emptyList # addAssignOperatorDescription
     !{}
     !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" + mArrayTypeName
-    !@headerKind. oneHeader
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listmapDeclarationAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
-#--- Check associated map is really a list
-  [ioSemanticContext.mTypeMap searchKey
-    !mAssociatedListTypeName
-    ?3*
-    ?var @typeKindEnum typeKindEnum
-    ?*
-    ?var @typedPropertyList listTypedAttributeList
-    ?20*
-  ]
-  if typeKindEnum != @typeKindEnum. listType then
-    error mAssociatedListTypeName : "the '@" + mAssociatedListTypeName + "' type should be a list type"
-    listTypedAttributeList = @typedPropertyList. emptyList
-  end
-#---
-  var constructorMap =@constructorMap.emptyMap{}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
-#--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
-#--- currentType type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
-#--- Getters
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap 
-    !getterName:"count"
-    !returnedTypeName:"uint"
-    !false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"allKeys"
-    !returnedTypeName:"stringset"
-    !false
-  )
-  enterInheritedGetterWithoutArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !getterName:"keyList"
-    !returnedTypeName:"stringlist"
-    !false
-  )
-  enterBaseGetterWithArgument (
-    !?getterMap
-    !?ioSemanticContext.mTypeMap
-    !"listForKey"
-    !"string"
-    !"inKey"
-    !returnedTypeName:[mAssociatedListTypeName string]
-    !false
-  )
-#--- Constructors
-  enterConstructorWithoutArgument (
-    !?constructorMap
-    !?ioSemanticContext.mTypeMap
-    !name:"emptyMap"
-    !resultTypeName:[mListmapTypeName string]
-    !hasLexiqueAndLocationArgs:false
-  )
-#--- Enumerator description
-  var enumeratorDescriptor =@enumerationDescriptorList.emptyList{}
-  enumeratorDescriptor += !stringTypeIndex !"key"
-  enumeratorDescriptor += !associatedListTypeIndex !"mList"
-#--- Add assign operator description
-  var addAssignOperatorDescription =@functionSignature.emptyList{}
-  addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
-  for () in listTypedAttributeList do
-    addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
-  end
-#--- Enumeration variants
-  var enumerationVariants =@stringlist.emptyList{}
-  enumerationVariants += !"up"
-  enumerationVariants += !"down"
-#--- Add Categories
-  addCategories (
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
-    !?ioSemanticContext
-    !mListmapTypeName
-    !?getterMap
-    !?modifierMap
-    !?instanceMethodMap
-  )
-#--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
-    !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
-    ?let @unifiedTypeMap-proxy listElementTypeIndex
-  ]
-#--- Enter type in type map
-  [!?ioSemanticContext.mTypeMap insertKey
-    !mListmapTypeName
-    !mIsPredefined
-    !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
-    !@typeKindEnum. arrayType
-    !true # Support collection value
-    !@typedPropertyList. emptyList
-    !@attributeMap. emptyMap
-    !listTypedAttributeList
-    !constructorMap
-    !getterMap
-    !modifierMap
-    !instanceMethodMap
-    !@classMethodMap. emptyMap
-    !enumeratorDescriptor
-    !enumerationVariants
-    !doNotGenererateObjectCompare ()
-    !addAssignOperatorDescription
-    !{}
-    !{}
-    !@mapSearchMethodListAST. emptyList
-    !@mapSearchMethodListAST. emptyList
-    !false # Do not generate header in separate file
-    !listElementTypeIndex # Type for enumerated element for "for" instruction
-    !"emptyMap" # Default constructor
-    !"listmap-" + mListmapTypeName
     !@headerKind. oneHeader
   ]
 }
@@ -2629,34 +2206,6 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mElementTypeName ![mElementTypeName location]}]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listmapDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mPropertyList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
-  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2967,54 +2516,6 @@ override method @abstractExtensionModifierAST enterDeclarationInGraph
 
 method @semanticDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST unused ioSemanticDeclarationList {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST.emptyList{}
-  structAttributeList +=
-#    !false # Is not private
-    !["lstring" nowhere]
-    !["lkey" nowhere]
-    !@lstringlist. emptyList
-  for () in mPropertyList do
-    structAttributeList +=
-#      !mIsPrivate
-      !mPropertyTypeName
-      !mPropertyName
-      !@lstringlist. emptyList
-  end
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
-    !structAttributeList
-    !""}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listmapDeclarationAST addAssociatedElement
-  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST.emptyList{}
-  structAttributeList +=
-#    !false # Is not private
-    !["string" nowhere]
-    !["key" nowhere]
-    !@lstringlist. emptyList
-  structAttributeList +=
-#    !false # Is not private
-    !mAssociatedListTypeName
-    !["mList" nowhere]
-    !@lstringlist. emptyList
-#---
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
-    !structAttributeList
-    !""
-  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

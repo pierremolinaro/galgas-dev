@@ -26,7 +26,7 @@ syntax extension galgas3InstructionsSyntax {
     let endOf_then_branchLocation = @location.here
     @semanticInstructionListAST else_instructionList
     select
-      else_instructionList = @semanticInstructionListAST. emptyList
+      else_instructionList = @semanticInstructionListAST.emptyList
     or
       $else$
       <semantic_instruction_list> ? else_instructionList
@@ -100,8 +100,8 @@ syntax extension galgas3InstructionsSyntax {
   #--- Then branch
     analyzeSemanticInstructionList (
       !inAnalysisContext
-      !@localConstantList. emptyList
-      !@localInitializedVariableList. emptyList
+      !@localConstantList.emptyList
+      !@localInitializedVariableList.emptyList
       !m_then_instructionList
       !mEndOf_then_branch
       !?ioVariableMap
@@ -110,8 +110,8 @@ syntax extension galgas3InstructionsSyntax {
   #--- else branch
     analyzeSemanticInstructionList (
       !inAnalysisContext
-      !@localConstantList. emptyList
-      !@localInitializedVariableList. emptyList
+      !@localConstantList.emptyList
+      !@localInitializedVariableList.emptyList
       !m_else_instructionList
       !mEndOf_if_instruction
       !?ioVariableMap

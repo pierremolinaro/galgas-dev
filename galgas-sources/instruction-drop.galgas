@@ -48,7 +48,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #  var cppNameDropList =@stringlist.emptyList{}
-#  var dropTypeList = @unifiedTypeMapProxyList. emptyList
+#  var dropTypeList = @unifiedTypeMapProxyList.emptyList
   for () in mDropList do
     [!?ioVariableMap searchForDropAccess !mValue ?3*]
 #    [!?ioVariableMap searchForDropAccess

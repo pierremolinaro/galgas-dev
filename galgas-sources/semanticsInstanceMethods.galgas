@@ -23,7 +23,7 @@ private proc enterInstanceMethodWithoutArgument
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
     !@methodKind.definedAsMember
-    !@formalParameterSignature. emptyList
+    !@formalParameterSignature.emptyList
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic

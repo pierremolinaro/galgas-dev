@@ -348,7 +348,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     !inAnalysisContext.mSelfTypeProxy
     !inAnalysisContext.mSelfObjectCppName
     !inAnalysisContext.mSelfObjectCppName
-    !@lstringlist. emptyList
+    !@lstringlist.emptyList
     !expression}
 }
 
@@ -818,7 +818,7 @@ proc analyzeRoutineArguments
     + [[inActualParameterList length] string] + " argument(s)"
     : outActualParameterListForGeneration
   else
-    outActualParameterListForGeneration = @actualParameterListForGeneration. emptyList
+    outActualParameterListForGeneration = @actualParameterListForGeneration.emptyList
     var exclusiveVariableSet =@stringset.emptySet{}
     for () in inRoutineSignature, () in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
@@ -910,7 +910,7 @@ proc checkExpressionIsBoolean
           !inExpression
           !{}
           !"bool"
-          !@semanticExpressionListForGeneration. emptyList
+          !@semanticExpressionListForGeneration.emptyList
           !mHasCompilerArgument}
       end
     else

@@ -116,7 +116,7 @@ syntax extension galgas3InstructionsSyntax {
       let endOf_do_instructions = @location.here
       @semanticInstructionListAST mElseBranchInstructions
       select
-        mElseBranchInstructions = @semanticInstructionListAST. emptyList
+        mElseBranchInstructions = @semanticInstructionListAST.emptyList
       or
         $else$
         if searchMethodNameForErrorSignaling.string != "" then
@@ -235,7 +235,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList (
     !inAnalysisContext
     !localConstantList
-    !@localInitializedVariableList. emptyList
+    !@localInitializedVariableList.emptyList
     !mDoBranchInstructions
     !mEndOf_do_instructions
     !?ioVariableMap
@@ -244,8 +244,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- else branch
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mElseBranchInstructions
     !mEndOf_else_instructions
     !?ioVariableMap
@@ -347,8 +347,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !m_else_Instructions
     !mEndOf_else_instructions
     !?ioVariableMap
