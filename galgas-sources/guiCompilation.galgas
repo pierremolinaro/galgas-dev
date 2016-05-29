@@ -129,8 +129,8 @@ private proc compileGuiComponentGalgas3
     if [mKey string] != "nibAndMainClass" then
       warning mKey:"the '" + mKey + "' key is invalid and has no effect"
     else
-      for () in [mValue.string componentsSeparatedByString !"."] do
-        context.mNibAndClassList += !mValue
+      for component in [mValue.string componentsSeparatedByString !"."] do
+        context.mNibAndClassList += !component.mValue
       end
     end
   end

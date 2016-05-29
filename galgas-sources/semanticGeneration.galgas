@@ -42,8 +42,8 @@ override method @grammarForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation {
   ioInclusionSet += !"grammar-" + mGrammarName
-  for () in mNonTerminalMapForGrammarAnalysis do
-    for () in mNonterminalSymbolParametersMap do
+  for nonTerminal in mNonTerminalMapForGrammarAnalysis do
+    for () in nonTerminal.mNonterminalSymbolParametersMap do
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentConstantIn, argumentIn :
@@ -180,27 +180,26 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       outImplementation += code
     end
   #--- Generate "parse" label
-    @semanticInstructionListForGeneration instructionList
-    [mLabelImplementationList first ?* ?* ?* ?* ?instructionList]
-    let @string ruleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
+    [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
+    let @string parseRuleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
     + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
     + [mNonterminalName identifierRepresentation]
     + "_i" + [mRuleIndex string] + "_parse"
     outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
     generateProcedure (
       !static:false
-      !ruleName
+      !parseRuleName
       !?ioInclusionSet
       !@formalParameterListForGeneration. emptyList
-      !syntaxSignatureOfInstructionList (!"parse" !instructionList)
+      !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
       !false
       !lexiqueCppName
       !false # Do not generate location Argument
       !true # Generate 'resetTemplateString'
       !mHasTranslateFeature
-      ?let @string code
+      ?let @string parseCode
     )
-    outImplementation += code
+    outImplementation += parseCode
   #--- Generate indexing code
     if mHasIndexing then
       @semanticInstructionListForGeneration instructionList
@@ -230,7 +229,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# P R O C E D U R E    I M P L E M E N A T I O N                            *
+# P R O C E D U R E    I M P L E M E N T A T I O N                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

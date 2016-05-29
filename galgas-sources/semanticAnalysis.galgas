@@ -247,8 +247,8 @@ map @searchMethodMap {
 
 proc check_K_escapeCharacters ?@lstring inString {
 #--- Check escape sequences : only %K or %%
-  for () in [[inString string] componentsSeparatedByString !"%%"] do
-    @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+  for components in [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for () in explodedArray do
       if [mValue length] > 0 then
@@ -265,8 +265,8 @@ proc check_K_escapeCharacters ?@lstring inString {
 
 proc check_K_L_escapeCharacters ?@lstring inString {
 #--- Check escape sequences : only %K, %L or %%
-  for () in [[inString string] componentsSeparatedByString !"%%"] do
-    @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+  for components in [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
     for () in explodedArray do
       if [mValue length] > 0 then
@@ -1824,8 +1824,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.
   var implementationFileHeader = @stringset. emptySet
-  for () in nonTerminalMapForGrammarAnalysis do
-    for () in mNonterminalSymbolParametersMap do
+  for nonTerminal in nonTerminalMapForGrammarAnalysis do
+    for () in nonTerminal.mNonterminalSymbolParametersMap do
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         case argumentIn, argumentConstantIn :
@@ -2351,14 +2351,14 @@ proc enterNonterminalNonTerminalInMapAndCheck
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
     end
     if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
-      for () in mLabelMap, () new_ in inNonterminalLabelMap do
-        var newSignature =@formalParameterSignature.emptyList{}
+      for aLabel in mLabelMap, () new_ in inNonterminalLabelMap do
+        @formalParameterSignature newSignature = {}
         for () in new_mSignature do
           newSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName
         end
         checkMethodSignatures (
-          !mSignatureForGeneration
-          !mEndOfArgumentLocation
+          !aLabel.mSignatureForGeneration
+          !aLabel.mEndOfArgumentLocation
           !newSignature
           !new_mEndOfArgumentLocation
         )
