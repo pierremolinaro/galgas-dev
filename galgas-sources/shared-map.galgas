@@ -818,18 +818,18 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Compute needed associations
   @stringset neededAssociations = {}
   @stringset accessibilityGraph = {}
-  for () in mapAutomatonStateMap do
+  for mapAutomatonState in mapAutomatonStateMap do
     @stringset reachableStates = {}
-    reachableStates += ![lkey string]
-    @bool progress = true
-    loop( [mapAutomatonStateMap count] + 1) while progress do
+    reachableStates += ![mapAutomatonState.lkey string]
+    progress = true
+    loop ([mapAutomatonStateMap count] + 1) while progress do
       progress = false
       for () in mMapStateList do
         if [reachableStates hasKey ![mStateName string]] then
           for () in mTransitionList do
             if not [reachableStates hasKey ![mTargetStateName string]] then
               reachableStates += ![mTargetStateName string]
-              accessibilityGraph += ![lkey string] + ":" + [mTargetStateName string]
+              accessibilityGraph += ![mapAutomatonState.lkey string] + ":" + [mTargetStateName string]
               progress = true
             end
           end
@@ -837,8 +837,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
     end
     for () in reachableStates do
-      if [lkey string] != key then
-        neededAssociations += ![lkey string] + ":" + key
+      if [mapAutomatonState.lkey string] != key then
+        neededAssociations += ![mapAutomatonState.lkey string] + ":" + key
       end
     end
   end
@@ -964,30 +964,30 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Enter insert modifiers
   @insertMethodMap insertMethodMap = {}
-  for () in mInsertMethodList do
-    [!?insertMethodMap insertKey !mInsertMethodName]
+  for insertMethod in mInsertMethodList do
+    [!?insertMethodMap insertKey !insertMethod.mInsertMethodName]
   #--- Check error message escape sequences : only %K, %L or %%
-    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+    for messageComponent in [[insertMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [messageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
       for () in explodedArray do
         if [mValue length] > 0 then
           let @char c = [mValue characterAtIndex !0]
           if (c != 'K') & (c != 'L') then
-            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message"
+            error insertMethod.mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message"
           end
         end
       end
     end
   #--- Check shadow error message escape sequences : only %K, %L or %%
-    for () in [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+    for shadowMessageComponent in [[insertMethod.mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [shadowMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
-      for () in explodedArray do
-        if [mValue length] > 0 then
-          let @char c = [mValue characterAtIndex !0]
+      for component in explodedArray do
+        if [component.mValue length] > 0 then
+          let @char c = [component.mValue characterAtIndex !0]
           if (c != 'K') & (c != 'L') then
-            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message"
+            error insertMethod.mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message"
           end
         end
       end
@@ -995,21 +995,21 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Enter search methods
   @searchMethodMap searchMethodMap = {}
-  for () in mSearchMethodList do
-    if [mMapStateList length] == 0 then # §
-      [!?searchMethodMap insertKey !mSearchMethodName]
+  for searchMethod in mSearchMethodList do
+    if [mMapStateList length] == 0 then
+      [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
     else
-      [!?searchMethodMap insertKey !mSearchMethodName]
+      [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
     end
   #--- Check error message escape sequences : only %K or %%
-    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
+    for errorMessageComponent in [[searchMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray = [errorMessageComponent.mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
-      for () in explodedArray do
-        if [mValue length] > 0 then
-          let @char c = [mValue characterAtIndex !0]
+      for component in explodedArray do
+        if [component.mValue length] > 0 then
+          let @char c = [component.mValue characterAtIndex !0]
           if c != 'K' then
-            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message"
+            error searchMethod.mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message"
           end
         end
       end

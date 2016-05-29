@@ -24,6 +24,8 @@ sharedmap @variableMap {
   @string mCppName
   @string mNameForCheckingFormalParameterUsing
 
+#  warning %shadow "declaration of '%K' variable shadows a variable declared in %L"
+
 #--- Used local constant (no warning if not read)
   state readLocalConstant {
     neutralAccess   -> readLocalConstant
@@ -3091,12 +3093,12 @@ override method @expressionListCollectionValue analyze
     + [mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for () in mExpressionList, () in formalParameterTypeList do
-      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
-      if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+    for expression in mExpressionList, () in formalParameterTypeList do
+      [expression.mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      if mFormalSelector.string != expression.mActualSelector.string then
+        error expression.mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      checkAssignmentTypes (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       semanticExpressionListForGeneration += !exp
     end
     ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {
