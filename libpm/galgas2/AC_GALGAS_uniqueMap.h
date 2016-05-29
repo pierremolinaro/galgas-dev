@@ -184,7 +184,6 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const AC_GALGAS_uniqueMapProxy & inOperand) const ;
-
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -195,7 +194,8 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
 
 class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Constructor
-  protected : AC_GALGAS_uniqueMap (void) ;
+  protected : AC_GALGAS_uniqueMap (const mapAutomatonIssueEnum inShadowBehaviour,
+                                   const C_String & inShadowMessage) ;
 
 //--------------------------------- Virtual destructor
   public : virtual ~ AC_GALGAS_uniqueMap (void) ;
@@ -228,13 +228,12 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Insert
-  protected : VIRTUAL_IN_DEBUG void performInsert (capCollectionElement & inAttributes,
-                                                   C_Compiler * inCompiler,
-                                                   const uint32_t inInitialState,
-                                                   const char * inInitialStateName,
-                                                   const char * inInsertErrorMessage,
-                                                   const char * inShadowErrorMessage
-                                                   COMMA_LOCATION_ARGS) ;
+  protected : VIRTUAL_IN_DEBUG void insertInSharedMap (capCollectionElement & inAttributes,
+                                                       C_Compiler * inCompiler,
+                                                       const uint32_t inInitialState,
+                                                       const char * inInitialStateName,
+                                                       const char * inInsertErrorMessage
+                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search for 'with' read only instruction
   public : VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GALGAS_string & inKey) const ;
@@ -350,7 +349,11 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Attributes
   private : cSharedUniqueMapRoot * mSharedMap ;
   
-//--------------------------------- Attributes
+//--------------------------------- Handle shadow
+  protected : mapAutomatonIssueEnum mShadowBehaviour ;
+  protected : C_String mShadowMessage ;
+
+//--------------------------------- Friend
   friend class AC_GALGAS_uniqueMapProxy ;
 } ;
 

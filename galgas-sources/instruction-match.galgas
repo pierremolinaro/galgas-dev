@@ -89,9 +89,8 @@ syntax extension galgas3InstructionsSyntax {
     matchedExpressionNameList += !receiverExpression !@location.here
     $,$
     repeat
-      @semanticExpressionAST receiverExpression
-      <expression> ? receiverExpression
-      matchedExpressionNameList += !receiverExpression !@location.here
+      <expression> ?let @semanticExpressionAST expression
+      matchedExpressionNameList += !expression !@location.here
     while
       $,$
     end

@@ -12404,7 +12404,7 @@ typeComparisonResult cMapElement_unifiedTypeMap::compare (const cCollectionEleme
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMap::GALGAS_unifiedTypeMap (void) :
-AC_GALGAS_uniqueMap () {
+AC_GALGAS_uniqueMap (kMapAutomatonNoIssue, "") {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12495,14 +12495,12 @@ void GALGAS_unifiedTypeMap::setter_insertKey (GALGAS_lstring inKey,
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
   const char * kInsertErrorMessage = "the '@%K' type has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes,
-                        inCompiler,
-                        0,
-                        NULL,
-                        kInsertErrorMessage,
-                        kShadowErrorMessage
-                        COMMA_THERE) ;
+  insertInSharedMap (attributes,
+                     inCompiler,
+                     0,
+                     NULL,
+                     kInsertErrorMessage
+                     COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

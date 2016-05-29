@@ -23,7 +23,7 @@ enum @mapAutomatonMessageKind {
   case errorMessage
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @mapStateTransitionList {
   @lstring mActionName %nogetter
@@ -32,7 +32,7 @@ list @mapStateTransitionList {
   @lstring mTransitionMessage %nogetter
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @mapStateList {
   @lstring mStateName %nogetter
@@ -41,7 +41,7 @@ list @mapStateList {
   @mapStateTransitionList mTransitionList %nogetter
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @mapOverrideBlockDescriptorAST {
   @lstring mLeftState %nogetter
@@ -51,7 +51,7 @@ list @mapOverrideBlockDescriptorAST {
   @lstring mTransitionMessage %nogetter
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @mapOverrideBlockListAST {
   @lstring mOverrideBlockName %nogetter
@@ -59,7 +59,15 @@ list @mapOverrideBlockListAST {
   @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST %nogetter
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
+
+list @sharedMapAttributeListAST {
+  @lstring mAttributeName
+  @bool mIsError # false;: warning
+  @lstring mMessage
+}
+
+#·······················································································································
 
 class @sharedMapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
@@ -69,6 +77,7 @@ class @sharedMapDeclarationAST : @semanticDeclarationAST {
   @mapSearchMethodListAST mSearchMethodList
   @mapStateList mMapStateList
   @mapOverrideBlockListAST mMapOverrideBlockListAST
+  @sharedMapAttributeListAST mSharedMapAttributeListAST
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -93,11 +102,12 @@ syntax extension galgas3DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST.emptyList{}
-    var mInsertMethodList =@insertMethodListAST.emptyList{}
-    var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
-    var mapStateList =@mapStateList.emptyList{}
-    var mapOverrideBlockListAST =@mapOverrideBlockListAST.emptyList{}
+    @propertyInCollectionListAST propertyList = {}
+    @insertMethodListAST mInsertMethodList = {}
+    @mapSearchMethodListAST mSearchMethodList = {}
+    @mapStateList mapStateList = {}
+    @mapOverrideBlockListAST mapOverrideBlockListAST = {}
+    @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
     repeat
     while
       $state$
@@ -105,16 +115,16 @@ syntax extension galgas3DeclarationsSyntax {
       @mapAutomatonMessageKind stateMessageKind
       @lstring stateMessage
       select
-        stateMessageKind = @mapAutomatonMessageKind. noMessage
+        stateMessageKind = @mapAutomatonMessageKind.noMessage
         stateMessage = @lstring.new {!"" !@location.here}
       or
         $warning$
         $literal_string$ ? stateMessage
-        stateMessageKind = @mapAutomatonMessageKind. warningMessage
+        stateMessageKind = @mapAutomatonMessageKind.warningMessage
       or
         $error$
         $literal_string$ ? stateMessage
-        stateMessageKind = @mapAutomatonMessageKind. errorMessage
+        stateMessageKind = @mapAutomatonMessageKind.errorMessage
       end
       ${$
       var transitionList =@mapStateTransitionList.emptyList{}
@@ -126,16 +136,16 @@ syntax extension galgas3DeclarationsSyntax {
         @mapAutomatonMessageKind transitionMessageKind
         @lstring transitionMessage
         select
-          transitionMessageKind = @mapAutomatonMessageKind. noMessage
+          transitionMessageKind = @mapAutomatonMessageKind.noMessage
           transitionMessage = @lstring.new {!"" !@location.here}
         or
           $warning$
           $literal_string$ ? transitionMessage
-          transitionMessageKind = @mapAutomatonMessageKind. warningMessage
+          transitionMessageKind = @mapAutomatonMessageKind.warningMessage
         or
           $error$
           $literal_string$ ? transitionMessage
-          transitionMessageKind = @mapAutomatonMessageKind. errorMessage
+          transitionMessageKind = @mapAutomatonMessageKind.errorMessage
         end
         transitionList +=
           !actionName
@@ -149,6 +159,18 @@ syntax extension galgas3DeclarationsSyntax {
         !stateMessage
         !transitionList
       $}$
+    while
+      @bool isError
+      select
+        $error$
+        isError = true
+      or
+        $warning$
+        isError = false
+      end
+      $attribute$ ?let attributeName
+      $literal_string$ ?let messageText
+      sharedMapAttributeListAST += !attributeName !isError !messageText
     while
       <attribute_declaration> !? propertyList
     while
@@ -186,15 +208,15 @@ syntax extension galgas3DeclarationsSyntax {
         @mapAutomatonMessageKind messageKind
         @lstring messageText
         select
-          messageKind = @mapAutomatonMessageKind. noMessage
+          messageKind = @mapAutomatonMessageKind.noMessage
           messageText = @lstring.new {!"" !@location.here}
         or
           $warning$
-          messageKind = @mapAutomatonMessageKind. warningMessage
+          messageKind = @mapAutomatonMessageKind.warningMessage
           $literal_string$ ? messageText
         or
           $error$
-          messageKind = @mapAutomatonMessageKind. errorMessage
+          messageKind = @mapAutomatonMessageKind.errorMessage
           $literal_string$ ? messageText
         end
         mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
@@ -212,15 +234,15 @@ syntax extension galgas3DeclarationsSyntax {
         @mapAutomatonMessageKind messageKind
         @lstring messageText
         select
-          messageKind = @mapAutomatonMessageKind. noMessage
+          messageKind = @mapAutomatonMessageKind.noMessage
           messageText = @lstring.new {!"" !@location.here}
         or
           $warning$
-          messageKind = @mapAutomatonMessageKind. warningMessage
+          messageKind = @mapAutomatonMessageKind.warningMessage
           $literal_string$ ? messageText
         or
           $error$
-          messageKind = @mapAutomatonMessageKind. errorMessage
+          messageKind = @mapAutomatonMessageKind.errorMessage
           $literal_string$ ? messageText
         end
         mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
@@ -241,6 +263,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mSearchMethodList
       !mapStateList
       !mapOverrideBlockListAST
+      !sharedMapAttributeListAST
     }
   #--- Declare map proxy
     ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST.new {
@@ -270,11 +293,9 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
   end
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
-override getter @sharedMapDeclarationAST keyRepresentation
-  ->@string outString
-{
+override getter @sharedMapDeclarationAST keyRepresentation -> @string outString {
   outString = "shared map @" + mMapTypeName
 }
 
@@ -620,7 +641,7 @@ sortedlist @mapStateTransitionSortedList {
   mActionIndex <
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 sortedlist @mapStateSortedList {
   @uint mStateIndex
@@ -632,7 +653,7 @@ sortedlist @mapStateSortedList {
   mStateIndex <
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 map @mapAutomatonStateMap {
   @uint mStateIndex
@@ -641,7 +662,7 @@ map @mapAutomatonStateMap {
   search searchKey error message "undefined '%K' map automaton state"
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 map @mapAutomatonActionMap {
   @uint mActionIndex
@@ -649,7 +670,7 @@ map @mapAutomatonActionMap {
   search searchKey error message "undefined '%K' map automaton action"
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 sortedlist @branchBehaviourSortedListForMapOverride {
   @uint mStartStateIndex
@@ -664,7 +685,7 @@ sortedlist @branchBehaviourSortedListForMapOverride {
   mStartStateIndex <, mCurrentStateIndex <
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @mapOverrideList {
   @string mOverrideName
@@ -672,7 +693,7 @@ list @mapOverrideList {
   @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sharedMapDeclarationAST semanticAnalysis
   ?let @string inProductDirectory
@@ -680,6 +701,20 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#---
+  @mapAutomatonMessageKind shadowBehaviour = .noMessage
+  var shadowMessage = ""
+  for (attributeName isError messageText) in mSharedMapAttributeListAST do
+    if attributeName.string != "shadow" then
+      error attributeName : "only %shadow attribute is allowed here"
+    elsif shadowBehaviour != .noMessage then
+      error attributeName : "duplicated attribute"
+    else
+      shadowBehaviour = if isError then .errorMessage else .warningMessage end
+      check_K_L_escapeCharacters (!messageText)
+      shadowMessage = messageText.string
+    end
+  end
 #--- Compute initial state set
   var initialStateSet = @stringset.emptySet{}
   for () in mInsertMethodList do
@@ -700,10 +735,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       if [mActionName string] == "" then
         error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
       elsif not [mapAutomatonActionMap hasKey ![mActionName string]] then
-#        actionIndex := [mapAutomatonActionMap count] ;
         [!?mapAutomatonActionMap insertKey !mActionName ![mapAutomatonActionMap count]]
-#      else
-#        [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
       end
     elsif [mActionName string] != "" then
       error mSearchMethodName: "the '" + mSearchMethodName + "' search method should not name an automaton action"
@@ -837,7 +869,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
           : "the '" + mResultingState + "' state is not reachable from '" + mLeftState + "' state"
         end
       end
-      check_K_escapeCharacters ( !mTransitionMessage )
+      check_K_escapeCharacters (!mTransitionMessage )
       branchBehaviourSortedListForMapOverride1 +=
         !startStateNameIndex
         ![mLeftState string]
@@ -879,7 +911,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
         :"the '" + mResultingState + "' state cannot be reached from the '" + mResultingState + "' state"
       end
       check_K_escapeCharacters ( !mTransitionMessage )
-      if mMessageKind == @mapAutomatonMessageKind. noMessage then
+      if mMessageKind == @mapAutomatonMessageKind.noMessage then
         definedCombinaisons += ![mRightState string] + ":" + [mLeftState string]
         branchBehaviourSortedListForMapOverride2 +=
           !rightStateIndex
@@ -996,6 +1028,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !mapAutomatonActionMap
       !mapStateSortedList
       !mapOverrideList
+      !shadowBehaviour
+      !shadowMessage
     }
     !""
 #--- Build graph for graphviz 
@@ -1051,9 +1085,12 @@ class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
   @mapAutomatonActionMap mMapAutomatonActionMap
   @mapStateSortedList mMapStateSortedList
   @mapOverrideList mMapOverrideList
+#---
+  @mapAutomatonMessageKind mShadowBehaviour
+  @string mShadowMessage
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 filewrapper sharedMapGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -1080,9 +1117,11 @@ filewrapper sharedMapGenerationTemplate in "../generation_templates/type_generat
     ?@mapStateSortedList MAP_AUTOMATON_DEFINITION_SORTEDLIST
     ?@mapOverrideList MAP_OVERRIDE_LIST
     ?@keySortedList MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
+    ?@mapAutomatonMessageKind SHADOW_BEHAVIOUR
+    ?@string SHADOW_MESSAGE
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sharedMapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1114,7 +1153,7 @@ override method @sharedMapTypeForGeneration appendDeclaration1
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sharedMapTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -1128,7 +1167,7 @@ override method @sharedMapTypeForGeneration appendDeclaration2
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sharedMapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1149,6 +1188,8 @@ override method @sharedMapTypeForGeneration appendSpecificImplementation
     !mMapStateSortedList
     !mMapOverrideList
     !keySortedList
+    !mShadowBehaviour
+    !mShadowMessage
   ]
  }
 

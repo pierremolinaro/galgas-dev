@@ -112,7 +112,8 @@ class cSharedUniqueMapRoot : public C_SharedObject {
                                                                C_Compiler * inCompiler,
                                                                const uint32_t inInitialState,
                                                                const char * inInsertErrorMessage,
-                                                               const char * inShadowErrorMessage
+                                                               const mapAutomatonIssueEnum inShadowBehaviour,
+                                                               const C_String & inShadowErrorMessage
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
@@ -372,16 +373,21 @@ cUniqueMapNode::~cUniqueMapNode (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_uniqueMap::AC_GALGAS_uniqueMap (void) :
+AC_GALGAS_uniqueMap::AC_GALGAS_uniqueMap (const mapAutomatonIssueEnum inShadowBehaviour,
+                                          const C_String & inShadowMessage) :
 AC_GALGAS_root (),
-mSharedMap (NULL) {
+mSharedMap (NULL),
+mShadowBehaviour (inShadowBehaviour),
+mShadowMessage (inShadowMessage) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 AC_GALGAS_uniqueMap::AC_GALGAS_uniqueMap (const AC_GALGAS_uniqueMap & inSource) :
 AC_GALGAS_root (),
-mSharedMap (NULL) {
+mSharedMap (NULL),
+mShadowBehaviour (inSource.mShadowBehaviour),
+mShadowMessage (inSource.mShadowMessage) {
   macroAssignSharedObject (mSharedMap, inSource.mSharedMap) ;
 }
 
@@ -649,7 +655,8 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
                                                       C_Compiler * inCompiler,
                                                       const uint32_t inInitialState,
                                                       const char * inInsertErrorMessage,
-                                                      const char * inShadowErrorMessage
+                                                      const mapAutomatonIssueEnum inShadowBehaviour,
+                                                      const C_String & inShadowMessage
                                                       COMMA_LOCATION_ARGS) {
   cUniqueMapNode * result = NULL ;
 //--- If all attributes are built, perform insertion
@@ -665,9 +672,10 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
       result = matchingEntry ;
       matchingEntry->mDefinitionLocation = p->mAttribute_lkey.mAttribute_location ;
       mNodeCount ++ ;
-      const C_String shadowErrorMessage (inShadowErrorMessage) ;
-      const int32_t shadowErrorMessageLength = shadowErrorMessage.length () ;
-      if (shadowErrorMessageLength > 0) {
+      switch (inShadowBehaviour) {
+      case kMapAutomatonNoIssue :
+        break ;
+      case kMapAutomatonIssueWarning :
         matchingEntry = findEntryInMap (key, mOverridenMap) ;
         if (NULL != matchingEntry) {
         //--- Existing key
@@ -675,8 +683,20 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
           macroValidSharedObject (me, cMapElement) ;
           const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
         //--- Emit error message
-          inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+          inCompiler->semanticWarningWith_K_L_message (p->mAttribute_lkey, inShadowMessage.cString (HERE), lstring_existingKey_location COMMA_THERE) ;
         }
+        break ;
+      case kMapAutomatonIssueError :
+        matchingEntry = findEntryInMap (key, mOverridenMap) ;
+        if (NULL != matchingEntry) {
+        //--- Existing key
+          cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
+          macroValidSharedObject (me, cMapElement) ;
+          const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
+        //--- Emit error message
+          inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inShadowMessage.cString (HERE), lstring_existingKey_location COMMA_THERE) ;
+        }
+        break ;
       }
     }else{ // Error, entry already exists
     //--- Existing key
@@ -696,16 +716,21 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMap::performInsert (capCollectionElement & inAttributes,
-                                         C_Compiler * inCompiler,
-                                         const uint32_t inInitialState,
-                                         const char * /* inInitialStateName */,
-                                         const char * inInsertErrorMessage,
-                                         const char * inShadowErrorMessage
-                                         COMMA_LOCATION_ARGS) {
+void AC_GALGAS_uniqueMap::insertInSharedMap (capCollectionElement & inAttributes,
+                                             C_Compiler * inCompiler,
+                                             const uint32_t inInitialState,
+                                             const char * /* inInitialStateName */,
+                                             const char * inInsertErrorMessage
+                                             COMMA_LOCATION_ARGS) {
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
-    /* cUniqueMapNode * node = */ mSharedMap->performInsert (inAttributes, inCompiler, inInitialState, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    /* cUniqueMapNode * node = */ mSharedMap->performInsert (inAttributes,
+                                                             inCompiler,
+                                                             inInitialState,
+                                                             inInsertErrorMessage,
+                                                             mShadowBehaviour,
+                                                             mShadowMessage
+                                                             COMMA_THERE) ;
   }
 }
 

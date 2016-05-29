@@ -362,6 +362,38 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
+                                                  const char * in_K_L_ErrorMessage,
+                                                  const GALGAS_location & inExistingKeyLocation
+                                                  COMMA_LOCATION_ARGS) {
+  const C_String key = inKey.mAttribute_string.stringValue () ;
+//--- Build error message
+  C_String message ;
+  bool perCentFound = false ;
+  const C_String searchErrorMessage (in_K_L_ErrorMessage) ;
+  const int32_t errorMessageLength = searchErrorMessage.length () ;
+  for (int32_t i=0 ; i<errorMessageLength ; i++) {
+    const utf32 c = searchErrorMessage (i COMMA_HERE) ;
+    if (perCentFound) {
+      if (UNICODE_VALUE (c) == 'K') {
+        message << key ;
+      }else if (UNICODE_VALUE (c) == 'L') {
+        message << inExistingKeyLocation.getter_locationString (this COMMA_THERE) ; // §§
+      }
+      perCentFound = false ;
+    }else if (UNICODE_VALUE (c) == '%') {
+      perCentFound = true ;
+    }else{
+      message.appendUnicodeCharacter (c COMMA_HERE) ;
+    }
+  }
+//--- Emit error message
+  const GALGAS_location key_location = inKey.mAttribute_location ;
+  semanticWarningAtLocation (key_location, message COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark GALGAS 2 Warnings
 #endif

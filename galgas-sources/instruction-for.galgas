@@ -480,8 +480,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration between_instructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mBetweenInstructionList
     !mEndOf_between_branch
     !?ioVariableMap
@@ -582,7 +582,8 @@ override method @forInstructionAST analyzeSemanticInstruction
     !before_instructionList
     !between_instructionList
     !do_instructionList
-    !after_instructionList}
+    !after_instructionList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

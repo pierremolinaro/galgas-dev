@@ -245,8 +245,7 @@ map @searchMethodMap {
 #         M A P                                                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc check_K_escapeCharacters
- ?@lstring inString {
+proc check_K_escapeCharacters ?@lstring inString {
 #--- Check escape sequences : only %K or %%
   for () in [[inString string] componentsSeparatedByString !"%%"] do
     @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
@@ -264,8 +263,7 @@ proc check_K_escapeCharacters
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc check_K_L_escapeCharacters
- ?@lstring inString {
+proc check_K_L_escapeCharacters ?@lstring inString {
 #--- Check escape sequences : only %K, %L or %%
   for () in [[inString string] componentsSeparatedByString !"%%"] do
     @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]

@@ -195,7 +195,7 @@ Par exemple :
 %getter @T allKeyList -> @lstringlist ;
 %\end{galgas}
 %
-%Le \emph{getter} \ggs+allKeyList+ retourne la liste construite avec toutes les clés du receveur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est :
+%Le \emph{getter} \ggs+allKeyList+ retourne la liste construite avec toutes les clés du récepteur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est :
 %\begin{itemize}
 %  \item d'abord les clés de la table de premier niveau, puis celles des tables surchargées, dans l'ordre de la surcharge ;
 %  \itel pour chaque table, les clés apparaissent dans l'ordre alphabétique croissant.
@@ -208,7 +208,7 @@ getter count -> @uint
 \end{galgas}
 
 
-Le \emph{getter} \ggs+count+ retourne un \ggs+@uint+ qui contient le nombre d'entrées de la table de premier niveau du receveur.
+Le \emph{getter} \ggs+count+ retourne un \ggs+@uint+ qui contient le nombre d'entrées de la table de premier niveau du récepteur.
 
 
 
@@ -219,7 +219,7 @@ getter hasKey ?@string inKey -> @bool
 \end{galgas}
 
 
-Le \emph{getter} \ggs+hasKey+ retourne un \ggs+@bool+ qui est \ggs+true+ si la clé \ggs+inKey+ est dans la table de premier niveau du receveur, \ggs+false+ dans le cas contraire.
+Le \emph{getter} \ggs+hasKey+ retourne un \ggs+@bool+ qui est \ggs+true+ si la clé \ggs+inKey+ est dans la table de premier niveau du récepteur, \ggs+false+ dans le cas contraire.
 
 
 
@@ -230,7 +230,7 @@ getter keyList -> @lstringlist
 \end{galgas}
 
 
-Le \emph{getter} \ggs+keyList+ retourne la liste construite avec toutes les clés de la table de premier niveau du receveur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
+Le \emph{getter} \ggs+keyList+ retourne la liste construite avec toutes les clés de la table de premier niveau du récepteur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
 
 
 
@@ -241,7 +241,7 @@ getter keySet -> @stringset
 \end{galgas}
 
 
-Le \emph{getter} \ggs+keySet+ retourne l'ensemble de toutes les clés de la table de premier niveau du receveur.
+Le \emph{getter} \ggs+keySet+ retourne l'ensemble de toutes les clés de la table de premier niveau du récepteur.
 
 
 
@@ -254,7 +254,7 @@ getter locationForKey ?@string inKey -> @location
 \end{galgas}
 
 
-Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l'information de position de la clé \ggs+inKey+ dans la table de premier niveau du receveur. Une erreur d'exécution est déclenchée si cette clé n'existe pas.
+Le \emph{getter} \ggs+locationForKey+ retourne un \ggs+@location+ qui contient l'information de position de la clé \ggs+inKey+ dans la table de premier niveau du récepteur. Une erreur d'exécution est déclenchée si cette clé n'existe pas.
 
 
 
@@ -270,7 +270,7 @@ getter overriddenMap -> @T
 \end{galgas}
 
 
-Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du receveur la table de premier niveau. Si le receveur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
+Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du récepteur la table de premier niveau. Si le récepteur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
 
 
 
