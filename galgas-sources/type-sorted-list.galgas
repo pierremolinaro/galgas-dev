@@ -21,6 +21,8 @@ class @sortedListDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
+  #·····················································································································
+
   rule <declaration>
     ?!@galgas3DeclarationAST ioDeclarations
   {
@@ -30,7 +32,7 @@ syntax extension galgas3DeclarationsSyntax {
     @propertyInCollectionListAST attributeList = {}
     repeat
     while
-      <attribute_declaration> !? attributeList
+      <property_declaration> !? attributeList
     while
       $;$
     end
@@ -51,6 +53,22 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
 
+  #·····················································································································
+
+  rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+    $identifier$ ?var  @lstring mSortedAttributeName
+    @bool mAscending
+    select
+      $<$
+      mAscending = true
+    or
+      $>$
+      mAscending = false
+    end
+    ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+  }
+
+  #·····················································································································
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

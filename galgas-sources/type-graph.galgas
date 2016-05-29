@@ -1,0 +1,503 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @graphInsertModifierList {
+  @lstring mInsertModifierName %nogetter
+  @lstring mInsertErrorMessage %nogetter
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @graphDeclarationAST : @semanticDeclarationAST {
+  @lstring mGraphTypeName
+  @lstring mAssociatedListTypeName
+  @graphInsertModifierList mInsertModifierList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+   ?!@galgas3DeclarationAST ioDeclarations {
+    $graph$
+    $type_name$ ?var  @lstring graphTypeName indexing graphDefinition
+    $($
+    $type_name$ ?var  @lstring associatedListTypeName
+    $)$
+    ${$
+    var graphInsertModifierList =@graphInsertModifierList.emptyList{}
+    repeat
+    while
+      $insert$
+      $identifier$ ?var  @lstring insertName
+      $error$
+      $message$
+      $literal_string$ ?var  @lstring errorMessage
+      graphInsertModifierList += !insertName !errorMessage
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@graphDeclarationAST.new {
+      !false # Is not predefined
+      !graphTypeName
+      !associatedListTypeName
+      !graphInsertModifierList
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @graphDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {!"@" + mGraphTypeName ![mGraphTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @graphDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- string type proxy
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"string"
+    ?let @unifiedTypeMap-proxy stringTypeProxy
+  ]
+#--- lstring type proxy
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"lstring"
+    ?let @unifiedTypeMap-proxy lstringTypeProxy
+  ]
+#--- Graph type proxy
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !mGraphTypeName
+    ?let @unifiedTypeMap-proxy graphTypeProxy
+  ]
+#--- Associated list type proxy
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !mAssociatedListTypeName
+    ?let @unifiedTypeMap-proxy associatedListTypeProxy
+  ]
+#--- @lstringlist type proxy
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !"lstringlist"
+    ?let @unifiedTypeMap-proxy lstringListTypeProxy
+  ]
+#---
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var constructorMap =@constructorMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  var classMethodMap =@classMethodMap.emptyMap{}
+#--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
+  var formalParameterList = @formalParameterSignature {}
+  formalParameterList += 
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outSortedInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outSortedLKeyList"
+  formalParameterList +=
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outUnsortedInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut 
+    !"outUnsortedLKeyList"
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"topologicalSort" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !true # Has Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"depthFirstTopologicalSort" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !true # Has Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  drop formalParameterList
+#--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
+  formalParameterList = {}
+  formalParameterList +=
+    !["" nowhere]
+    !associatedListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outInformationList"
+  formalParameterList +=
+    !["" nowhere]
+    !lstringListTypeProxy
+    !@formalArgumentPassingModeAST.argumentOut
+    !"outLKeyList"
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"circularities" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !false # No Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"nodesWithNoSuccessor" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !false # No Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  [!?instanceMethodMap insertKey
+    !@lstring.new {!"nodesWithNoPredecessor" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !@location.here
+    !false # No Compiler Argument
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+  drop formalParameterList
+#--- Getter 'reversedGraph'
+  enterBaseFinalGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"reversedGraph"
+    !returnedTypeName:mGraphTypeName.string
+    !false # No compiler argument
+  )
+#--- Getter 'undefinedNodeCount'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"undefinedNodeCount"
+    !returnedTypeName:"uint"
+    !false # No compiler argument
+  )
+#--- Getter 'undefinedNodeKeyList'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"undefinedNodeKeyList"
+    !returnedTypeName:"stringlist"
+    !false # No compiler argument
+  )
+#--- Getter 'undefinedNodeReferenceList'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"undefinedNodeReferenceList"
+    !returnedTypeName:"lstringlist"
+    !false # No compiler argument
+  )
+#--- Getter 'graphviz'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"graphviz"
+    !returnedTypeName:"string"
+    !false # No compiler argument
+  )
+#--- Getter 'isNodeDefined'
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"isNodeDefined"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !false # No compiler argument
+  )
+#--- Getter 'keyList'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"keyList"
+    !returnedTypeName:"stringlist"
+    !false # No compiler argument
+  )
+#--- Getter 'lkeyList'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"lkeyList"
+    !returnedTypeName:"lstringlist"
+    !false # No compiler argument
+  )
+#--- Getter 'egdes'
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"edges"
+    !returnedTypeName:"2stringlist"
+    !false # No compiler argument
+  )
+#--- Getter 'subgraphFromNodes'
+  enterBaseGetterWith2Arguments (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"subgraphFromNodes"
+    !"lstringlist"
+    !"inStartNodeLStringList"
+    !"stringset"
+    !"inNodesToExclude"
+    !returnedTypeName:mGraphTypeName.string
+    !true # has compiler argument
+  )
+#--- Getter 'accessibleNodesFromNodes'
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"accessibleNodesFromNodes"
+    !"lstringlist"
+    !"inStartNodeStringList"
+    !returnedTypeName:"lstringlist"
+    !true # has compiler argument
+  )
+#--- Constructor 'emptyGraph'
+  [!?constructorMap insertKey
+    !@lstring.new {!"emptyGraph" !@location.here}
+    !@functionSignature.emptyList
+    !false # No compiler argument
+    !graphTypeProxy
+  ]
+#--- setter 'enterNode'
+  formalParameterList = {}
+  formalParameterList +=
+    !["" nowhere]
+    !lstringTypeProxy
+    !@formalArgumentPassingModeAST.argumentIn
+    !"inLKey"
+  for () in [associatedListTypeProxy mAddAssignOperatorArguments] do
+    formalParameterList +=
+      !["" nowhere]
+      !mFormalArgumentType
+      !@formalArgumentPassingModeAST.argumentIn
+      !mFormalArgumentName
+  end
+  for () in mInsertModifierList do
+    [!?modifierMap insertOrReplace
+      !mInsertModifierName
+      !@methodKind.definedAsMember
+      !formalParameterList
+      !true # has compiler argument
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  end
+  drop formalParameterList
+#--- setter 'removeEdgeToDominators'
+  [!?modifierMap insertKey
+    !@lstring.new {!"removeEdgesToDominators" !@location.here}
+    !@methodKind.definedAsMember
+    !@formalParameterSignature.emptyList
+    !false # No compiler argument
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+#--- setter 'removeEdgesToNode'
+  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
+  [!?modifierMap insertKey
+    !@lstring.new {!"removeEdgesToNode" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !true # Compiler argument
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+  drop formalParameterList
+#--- setter 'addEdge'
+  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
+  [!?modifierMap insertKey
+    !@lstring.new {!"addEdge" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !false # No compiler argument
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+  drop formalParameterList
+#--- setter 'noteNode'
+  formalParameterList = @formalParameterSignature.emptyList
+  formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
+  [!?modifierMap insertKey
+    !@lstring.new {!"noteNode" !@location.here}
+    !@methodKind.definedAsMember
+    !formalParameterList
+    !false # No compiler argument
+    !@methodQualifier. isInherited
+    !"" # No error message
+  ]
+  drop formalParameterList
+#--- Add Categories
+  addCategories (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mGraphTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mGraphTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. graphType
+    !false # Does not support collection value
+    !@typedPropertyList.emptyList
+    !@attributeMap. emptyMap
+    !@typedPropertyList.emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
+    !doNotGenererateObjectCompare ()
+    !@functionSignature.emptyList
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !"emptyGraph" # Default constructor
+    !"graph-" + mGraphTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @graphDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
+  let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
+  let associatedListElementTypeProxy = @unifiedTypeMap-proxy.searchKey { 
+    !inSemanticContext.mTypeMap
+    !@lstring.new {!mAssociatedListTypeName.string +elementTypeNameSuffix () !mAssociatedListTypeName.location}}
+  if [associatedListTypeProxy mTypeKindEnum] != @typeKindEnum. listType then
+    error mAssociatedListTypeName: "the '@" + mAssociatedListTypeName + "' type should be a list"
+  end
+#--- Analyze insert methods
+  var reservedModifierNames =@stringset.emptySet{}
+  reservedModifierNames += !"noteNode"
+  reservedModifierNames += !"addArc"
+  for () in mInsertModifierList do
+    if [reservedModifierNames hasKey ![mInsertModifierName string]] then
+      error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"
+    end
+    check_K_L_escapeCharacters ( !mInsertErrorMessage )
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"graph " + mGraphTypeName
+    !@graphDeclarationForGeneration.new {
+      !graphTypeProxy
+      !associatedListTypeProxy
+      !associatedListElementTypeProxy
+      !mInsertModifierList}
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @graphDeclarationForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedListTypeProxy
+  @unifiedTypeMap-proxy mAssociatedListElementTypeProxy
+  @graphInsertModifierList mInsertModifierList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @graphDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @graphDeclarationForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mAssociatedListTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mAssociatedListElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
+    !mTypeProxy
+    ![mTypeProxy identifierRepresentation]
+    !mAssociatedListTypeProxy
+    !mInsertModifierList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

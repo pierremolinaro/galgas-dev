@@ -1,0 +1,283 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @arrayDeclarationAST : @semanticDeclarationAST {
+  @lstring mArrayTypeName
+  @lstring mElementTypeName
+  @luint mDimension
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $array$
+  #--- Map type name
+    $type_name$ ?var  @lstring arrayTypeName indexing arrayTypeDefinition
+    $:$
+    $type_name$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+    $[$
+    $unsigned_literal_integer$ ?var  @luint dimension
+    $]$
+    ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
+      !false # Is not predefined
+      !arrayTypeName
+      !elementListTypeName
+      !dimension
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @arrayDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mElementTypeName ![mElementTypeName location]}]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @arrayDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#---
+  if [mDimension uint] == 0 then
+    error mDimension: "the dimension of an array should be > 0"
+  end
+#--- array type
+  @unifiedTypeMap-proxy arrayTypeIndex
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mArrayTypeName ?arrayTypeIndex]
+#--- element type
+  @unifiedTypeMap-proxy elementTypeIndex
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?elementTypeIndex]
+#---
+  var constructorMap =@constructorMap.emptyMap{}
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+#--- 
+  @unifiedTypeMap-proxy boolType
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ?boolType]
+#--- 
+  @unifiedTypeMap-proxy uintType
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
+#---
+  var uintArgs =@functionSignature.emptyList{}
+  @uint idx = 0
+  loop( [mDimension uint]) while idx < [mDimension uint] do
+    uintArgs += !["" nowhere] !uintType !"inSize" + idx
+    idx ++
+  end
+#--- Constructor
+  [!?constructorMap insertKey
+    !@lstring.new {!"new" !@location.here}
+    !uintArgs
+    !false
+    !arrayTypeIndex
+  ]
+#--- Getters
+  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
+  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
+  [!?getterMap insertOrReplace
+    !@lstring.new {!"isValueValidAtIndex" !@location.here}
+    !@methodKind.definedAsMember
+    !uintArgs
+    !@location.here
+    !true
+    !boolType
+    !@methodQualifier.isBasicFinal
+    !"" # No Error message
+  ]
+  [!?getterMap insertOrReplace
+    !@lstring.new {!"valueAtIndex" !@location.here}
+    !@methodKind.definedAsMember
+    !uintArgs
+    !@location.here
+    !true
+    !elementTypeIndex
+    !@methodQualifier.isBasicFinal
+    !"" # No Error message
+  ]
+#--- Modifiers
+  var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
+  modifierFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
+  idx = 0
+  loop( [mDimension uint]) while idx < [mDimension uint] do
+    modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
+    idx ++
+  end
+  [!?modifierMap insertKey
+    !["setValueAtIndex" nowhere]
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasicFinal
+    !""
+  ]
+  [!?modifierMap insertKey
+    !["forceValueAtIndex" nowhere]
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasicFinal
+    !""
+  ]
+  [!?modifierFormalArgumentList popFirst ?4*]
+  [!?modifierMap insertKey
+    !["invalidateValueAtIndex" nowhere]
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasicFinal
+    !""
+  ]
+  [!?modifierMap insertKey
+    !["setSize" nowhere]
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasicFinal
+    !""
+  ]
+  modifierFormalArgumentList = @formalParameterSignature.emptyList
+  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
+  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
+  [!?modifierMap insertKey
+    !["setSizeForAxis" nowhere]
+    !@methodKind.definedAsMember
+    !modifierFormalArgumentList
+    !true
+    !@methodQualifier.isBasicFinal
+    !""
+  ]
+#--- Enter in semantic context
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mArrayTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. listMapType
+    !false # Does not support collection value
+    !@typedPropertyList.emptyList
+    !@attributeMap. emptyMap
+    !@typedPropertyList.emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
+    !0
+    !@functionSignature.emptyList # addAssignOperatorDescription
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !"" # No default constructor
+    !"array-" + mArrayTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @arrayDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"array " + mArrayTypeName
+    !@arrayTypeForGeneration.new {
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mArrayTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mElementTypeName}
+      ![mDimension uint]}
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @arrayTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mElementTypeProxy
+  @uint mDimension
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @arrayTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper typeGenerationTemplate.arrayTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mElementTypeProxy identifierRepresentation]
+    !mDimension
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @arrayTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
+
+  var suffixList =@stringlist.emptyList{}
+  @uint idx = 0
+  loop( mDimension) while idx < mDimension do
+    suffixList += ![idx string]
+    idx ++
+  end
+  outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mElementTypeProxy identifierRepresentation]
+    !mDimension
+    !suffixList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

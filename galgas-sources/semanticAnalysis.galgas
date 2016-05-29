@@ -123,78 +123,6 @@ map @attributeIndexMap {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-override method @graphDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
-  let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
-  let associatedListElementTypeProxy = @unifiedTypeMap-proxy.searchKey { 
-    !inSemanticContext.mTypeMap
-    !@lstring.new {!mAssociatedListTypeName.string +elementTypeNameSuffix () !mAssociatedListTypeName.location}}
-  if [associatedListTypeProxy mTypeKindEnum] != @typeKindEnum. listType then
-    error mAssociatedListTypeName: "the '@" + mAssociatedListTypeName + "' type should be a list"
-  end
-#--- Analyze insert methods
-  var reservedModifierNames =@stringset.emptySet{}
-  reservedModifierNames += !"noteNode"
-  reservedModifierNames += !"addArc"
-  for () in mInsertModifierList do
-    if [reservedModifierNames hasKey ![mInsertModifierName string]] then
-      error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"
-    end
-    check_K_L_escapeCharacters ( !mInsertErrorMessage )
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"graph " + mGraphTypeName
-    !@graphDeclarationForGeneration.new {
-      !graphTypeProxy
-      !associatedListTypeProxy
-      !associatedListElementTypeProxy
-      !mInsertModifierList}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @externTypeDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  let externTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"extern type " + mExternTypeName
-    !@externTypeDeclarationForGeneration.new {
-      !externTypeProxy
-      !mExternTypeName.string
-      !mCppPreDeclarationCode
-      !mCppClassCode}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @arrayDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"array " + mArrayTypeName
-    !@arrayTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mArrayTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mElementTypeName}
-      ![mDimension uint]}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #         M A P                                                                                                        *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -356,7 +284,8 @@ override method @routineDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
 #--- Instruction list
   var formalArgumentList =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration instructionList
@@ -387,103 +316,9 @@ override method @routineDeclarationAST semanticAnalysis
       ![mRoutineName string]
       !formalArgumentList
       !false # Do not generate static
-      !instructionList}
+      !instructionList
+    }
     !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @classDeclarationAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#------ Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
-#------ Super type, and class features
-# A class that has a super may not have any feature
-# A class without a super class admits the 'generatedInSeparateFile' feature
-  @unifiedTypeMap-proxy superClassProxy
-  @typedPropertyList allAttributeList
-  if [mSuperClassName string] == "" then
-    superClassProxy = @unifiedTypeMap-proxy. null
-    allAttributeList = @typedPropertyList.emptyList
-    @bool generatedInSeparateFileFeature = false
-    if [mClassFeatureList length] > 0 then
-      for () in mClassFeatureList do
-        if [mValue string] == "generatedInSeparateFile" then
-          if generatedInSeparateFileFeature then
-            error mValue:"the 'generatedInSeparateFile' is already named"
-          end
-          generatedInSeparateFileFeature = true
-        else
-          error mValue:"only the 'generatedInSeparateFile' feature is allowed here"
-        end
-      end
-    end
-  else
-    superClassProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSuperClassName}
-    allAttributeList = [superClassProxy mAllTypedAttributeList]
-    if [mClassFeatureList length] > 0 then
-      for () in mClassFeatureList do
-        error mValue:"a class that has a super class does not accept any feature"
-      end
-    end
-  end
-#------ Enter attributes
-  var typedAttributeList =@typedPropertyList.emptyList{}
-  var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    @bool hasSetter = false
-    @bool hasGetter = true
-    for () in mFeatureList do
-      if [mValue string] == "setter" then
-        if hasSetter then
-          error mValue : "the 'setter' feature is already named"
-        end
-        hasSetter = true
-      elsif [mValue string] == "nogetter" then
-        if not hasGetter then
-          error mValue : "the 'nogetter' feature is already named"
-        end
-        hasGetter = false
-      else
-        error mValue : "only the 'setter' or 'nogetter' are allowed here"
-      end
-    end
-    typedAttributeList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasGetter
-    allAttributeList +=
-      !t
-      !mPropertyName
-      !hasSetter
-      !hasGetter
-    [!?attributeMap insertKey !mPropertyName !t]
-  end
-#------ Compute sort string (used for sorting generated code)
-  @string sortString = [selfType key]
-  @unifiedTypeMap-proxy t = [selfType mSuperType]
-  loop( [inSemanticContext.mTypeMap count] + 1)
-  while not [t isNull] do
-    sortString = [t key] + "." + sortString
-    t = [t mSuperType]
-  end
-#------
-  ioSemanticDeclarationListForGeneration +=
-    !"class " + mClassTypeName
-    !@classTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
-      !mIsAbstract
-      !mClassTypeName
-      !superClassProxy
-      !allAttributeList
-      !typedAttributeList
-      ![selfType mGenerateHeaderInSeparateFile]}
-    !sortString
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

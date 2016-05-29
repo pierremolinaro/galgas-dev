@@ -3,16 +3,16 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-12.h"
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             Routine 'updateLIBPMatPath'                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
                                 C_Compiler * inCompiler
@@ -66,11 +66,11 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Routine 'compileSemanticDeclarationsGalgas3'                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_compileSemanticDeclarationsGalgas_33_ (const GALGAS_string constinArgument_inProductDirectory,
                                                     const GALGAS_location constinArgument_inEndOfProjectSourceFile,
@@ -133,11 +133,11 @@ void routine_compileSemanticDeclarationsGalgas_33_ (const GALGAS_string constinA
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        Routine 'buildGalgas3SemanticContext'                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationListAST constinArgument_inSemanticDeclarationList,
                                              const GALGAS_location constinArgument_inEndOfProjectSourceFile,
@@ -211,11 +211,11 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Routine 'generateSemanticDeclarationsGalgas3'                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                      const GALGAS_string constinArgument_inProductDirectory,
@@ -279,11 +279,11 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                            Routine 'generateManyHeaders'                                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductDirectory,
                                   const GALGAS_semanticDeclarationSortedListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
@@ -376,15 +376,15 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12772.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)).add_operation (GALGAS_string ("_1_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 328)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#define ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12772.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)).add_operation (GALGAS_string ("_1_DEFINED\n"
           "\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 329)) ;
-        var_headerString.plusAssign_operation(GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
+        var_headerString.plusAssign_operation(GALGAS_string ("//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 330)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#include \"galgas2/predefined-types.h\"\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 331)) ;
-        var_headerString.plusAssign_operation(GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
+        var_headerString.plusAssign_operation(GALGAS_string ("//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 332)) ;
         var_headerString.plusAssign_operation(var_headerIncludes_31_, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 333)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 334)) ;
-        var_headerString.plusAssign_operation(GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
+        var_headerString.plusAssign_operation(GALGAS_string ("//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 335)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#endif\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 336)) ;
@@ -408,15 +408,15 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
         GALGAS_string var_headerString = GALGAS_string ("#ifndef ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12772.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)).add_operation (GALGAS_string ("_DEFINED\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 349)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#define ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12772.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)).getter_identifierRepresentation (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)).add_operation (GALGAS_string ("_DEFINED\n"
           "\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 350)) ;
-        var_headerString.plusAssign_operation(GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
+        var_headerString.plusAssign_operation(GALGAS_string ("//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 351)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#include \"").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_12772.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 352)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 352)).add_operation (GALGAS_string ("-1.h\"\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 352)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 352)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("\n"
-          "//---------------------------------------------------------------------------------------------------------------------*\n"
+          "//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 353)) ;
         var_headerString.plusAssign_operation(var_headerIncludes_32_, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 354)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 355)) ;
-        var_headerString.plusAssign_operation(GALGAS_string ("//---------------------------------------------------------------------------------------------------------------------*\n"
+        var_headerString.plusAssign_operation(GALGAS_string ("//----------------------------------------------------------------------------------------------------------------------\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 356)) ;
         var_headerString.plusAssign_operation(GALGAS_string ("#endif\n"
           "\n"), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 357)) ;
@@ -439,11 +439,11 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           Routine 'generateOneBigHeader'                                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateOneBigHeader (const GALGAS_string constinArgument_inProductDirectory,
                                    const GALGAS_semanticDeclarationSortedListForGeneration constinArgument_inSemanticDeclarationSortedListForGeneration,
@@ -482,11 +482,11 @@ void routine_generateOneBigHeader (const GALGAS_string constinArgument_inProduct
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                Routine 'buildHeader'                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHeaderCompositionMap,
                           const GALGAS_string constinArgument_inHeaderFileName,
@@ -520,11 +520,11 @@ void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHe
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        Once function 'definitionGroupAmount'                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_uint onceFunction_definitionGroupAmount (C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
@@ -536,14 +536,14 @@ static GALGAS_uint onceFunction_definitionGroupAmount (C_Compiler * /* inCompile
 
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //  Function implementation                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 static bool gOnceFunctionResultAvailable_definitionGroupAmount = false ;
 static GALGAS_uint gOnceFunctionResult_definitionGroupAmount ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
@@ -554,26 +554,26 @@ GALGAS_uint function_definitionGroupAmount (class C_Compiler * inCompiler
   return gOnceFunctionResult_definitionGroupAmount ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void releaseOnceFunctionResult_definitionGroupAmount (void) {
   gOnceFunctionResult_definitionGroupAmount.drop () ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gEpilogueForOnceFunction_definitionGroupAmount (NULL,
                                                                    releaseOnceFunctionResult_definitionGroupAmount) ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //  Function introspection                                                                                             *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 static const C_galgas_type_descriptor * functionArgs_definitionGroupAmount [1] = {
   NULL
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 static GALGAS_object functionWithGenericHeader_definitionGroupAmount (C_Compiler * inCompiler,
                                                                       const cObjectArray & /* inEffectiveParameterArray */,
@@ -582,7 +582,7 @@ static GALGAS_object functionWithGenericHeader_definitionGroupAmount (C_Compiler
   return function_definitionGroupAmount (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_galgas_function_descriptor functionDescriptor_definitionGroupAmount ("definitionGroupAmount",
                                                                        functionWithGenericHeader_definitionGroupAmount,
@@ -590,11 +590,11 @@ C_galgas_function_descriptor functionDescriptor_definitionGroupAmount ("definiti
                                                                        0,
                                                                        functionArgs_definitionGroupAmount) ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      Routine 'generateFewImplementationFiles'                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                              const GALGAS_string constinArgument_inProductDirectory,
@@ -667,11 +667,11 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                               Routine 'generateFewImplementationFilesWithFewHeaders'                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                                            const GALGAS_string constinArgument_inProductDirectory,
@@ -847,11 +847,11 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      Routine 'generateManyImplementationFiles'                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap constinArgument_inUnifiedTypeMap,
                                               const GALGAS_string constinArgument_inProductDirectory,
@@ -889,11 +889,11 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Filewrapper 'xcodeProjectGenerationFilewrapper'                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of 'English.lproj' directory
 
@@ -941,11 +941,11 @@ const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper (
 ) ;
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                         Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C_Compiler * /* inCompiler */,
                                                                                const GALGAS_string & in_PROJECT_5F_REF,
@@ -1814,11 +1814,11 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                 Filewrapper 'updaterGalgas3ApplicationFileWrapper'                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
 
@@ -1843,11 +1843,11 @@ const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ApplicationFileWrap
 ) ;
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper credits'                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (C_Compiler * /* inCompiler */
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -1884,11 +1884,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credit
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist_strings'                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -1898,11 +1898,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                      Filewrapper template 'updaterGalgas3ApplicationFileWrapper main_menu_xib'                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (C_Compiler * /* inCompiler */,
                                                                                                const GALGAS_string & in_TARGET_5F_NAME
@@ -5059,11 +5059,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //               Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_header'               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (C_Compiler * /* inCompiler */
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
@@ -5075,11 +5075,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "//  Created by Pierre Molinaro on 30/07/12.\n"
     "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import <Cocoa/Cocoa.h>\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@interface PMUpdaterAppDelegate : NSObject <NSApplicationDelegate> {\n"
     "  @private NSString * mCocoaApplicationPath ;\n"
@@ -5089,16 +5089,16 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //           Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_implementation'           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (C_Compiler * /* inCompiler */,
                                                                                                                      const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
@@ -5111,21 +5111,21 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "//  Created by Pierre Molinaro on 30/07/12.\n"
     "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import \"PMUpdaterAppDelegate.h\"\n"
     "#import \"PMUpdaterServerProtocol.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import <SystemConfiguration/SystemConfiguration.h>\n"
     "#import <ServiceManagement/ServiceManagement.h>\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "//#define DEBUG_UPDATER\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#if __has_feature(objc_arc)\n"
     "  #define macroBridgeInARC __bridge\n"
@@ -5133,7 +5133,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  #define macroBridgeInARC\n"
     "#endif\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToolIdentifier) {\n"
     "  #ifdef EASY_BINDINGS_DEBUG\n"
@@ -5221,11 +5221,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  return connection ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@implementation PMUpdaterAppDelegate\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) installAndTerminates {\n"
     "//--- Dismiss waiting alert\n"
@@ -5298,7 +5298,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  }\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (BOOL) applicationIsStillRunning {\n"
     "  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;\n"
@@ -5320,7 +5320,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  return stillRunning ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) waitForApplicationTermination: (NSTimer *) inTimer {\n"
     "  mWaitingTimeInSeconds ++ ;\n"
@@ -5365,7 +5365,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  }\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) terminateApplicationWitoutInstalling: (id) inUnusedSender {\n"
     "//--- Dismiss waiting alert\n"
@@ -5375,7 +5375,7 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  [NSApp terminate:nil] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) applicationDidFinishLaunching: (NSNotification *) aNotification {\n"
     "//--- Get application current path : the temporary directory\n"
@@ -5401,19 +5401,19 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_applic
     "  }\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                       Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist'                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (C_Compiler * /* inCompiler */,
                                                                                          const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
@@ -5477,11 +5477,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                          Filewrapper template 'updaterGalgas3ApplicationFileWrapper main'                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (C_Compiler * /* inCompiler */
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -5503,11 +5503,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper prefix'                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (C_Compiler * /* inCompiler */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
@@ -5522,11 +5522,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     Filewrapper 'updaterGalgas3ToolFileWrapper'                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
 
@@ -5551,11 +5551,11 @@ const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ToolFileWrapper (
 ) ;
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_protocol'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
@@ -5566,11 +5566,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "//  Created by Pierre Molinaro on 29/07/12.\n"
     "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import <Foundation/Foundation.h>\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@protocol PMUpdaterServerProtocol <NSObject>\n"
     "\n"
@@ -5578,15 +5578,15 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "              temporaryFilePath: (NSString *) inTemporaryFilePath ;\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                     Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_header'                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (C_Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -5597,15 +5597,15 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "//  Created by Pierre Molinaro on 29/07/12.\n"
     "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import \"PMUpdaterServerProtocol.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "//#define DEBUG_WITH_SYSLOG\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@interface PMUpdaterServerObject : NSObject <PMUpdaterServerProtocol> {\n"
     "  @protected BOOL mTerminateHelperTool ;\n"
@@ -5618,15 +5618,15 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                 Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_implementation'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (C_Compiler * /* inCompiler */
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -5637,11 +5637,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "//  Created by Pierre Molinaro on 29/07/12.\n"
     "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import \"PMUpdaterServerObject.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#ifdef DEBUG_WITH_SYSLOG\n"
     "  #import <syslog.h>\n"
@@ -5649,11 +5649,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "\n"
     "#import <CommonCrypto/CommonDigest.h>\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@implementation PMUpdaterServerObject\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath\n"
     "              temporaryFilePath: (NSString *) inTemporaryFilePath {\n"
@@ -5685,25 +5685,25 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "  return ok \? nil : error ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (BOOL) shouldExit {\n"
     "  return mTerminateHelperTool ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                      Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_main'                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (C_Compiler * /* inCompiler */,
                                                                                               const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
@@ -5717,21 +5717,21 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "//  Created by Pierre Molinaro on 27/06/12.\n"
     "//  Copyright (c) 2012 ECN / IRCCyN. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import \"PMUpdaterServerObject.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import <launch.h>\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#ifdef DEBUG_WITH_SYSLOG\n"
     "  #import <syslog.h>\n"
     "#endif\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "int main (int argc, const char * argv[]) {\n"
     "  @autoreleasepool {\n"
@@ -5823,15 +5823,15 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_ob
     "  return 0 ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_info_plist'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (C_Compiler * /* inCompiler */,
                                                                                                      const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
@@ -5872,11 +5872,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_to
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_launchd_plist'                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (C_Compiler * /* inCompiler */,
                                                                                                         const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
@@ -5911,11 +5911,11 @@ GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_to
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  Filewrapper 'applicationGalgas3UpdateFileWrapper'                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of '' directory
 
@@ -5940,11 +5940,11 @@ const cDirectoryWrapper gWrapperDirectory_0_applicationGalgas_33_UpdateFileWrapp
 ) ;
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_header'                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (C_Compiler * /* inCompiler */
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -5956,17 +5956,17 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "//  Created by Pierre MOLINARO on 02/10/06.\n"
     "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import \"PMDownloadFile.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@class WebView ;\n"
     "@class PMDownloadData ;\n"
     "@class PMDownloadFile ;\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@interface PMApplicationUpdate : NSObject <PMDownloadDidEndProtocol> {\n"
     "//--- In New Available Panel\n"
@@ -6000,15 +6000,15 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //            Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_implementation'             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (C_Compiler * /* inCompiler */,
                                                                                                                   const GALGAS_string & in_PROJECT_5F_NAME,
@@ -6074,7 +6074,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
     "\n"
     "#pragma mark Pathes & URLs\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) applicationArchiveName {\n"
     "  return @\"Cocoa" ;
@@ -6082,7 +6082,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
   result << ".app.tar.bz2\" ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) serverHTTPPath {\n"
     "  return @\"" ;
@@ -6090,19 +6090,19 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
   result << "\" ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) lastReleaseHTTPPath {\n"
     "  return [self.serverHTTPPath stringByAppendingString:@\"/lastRelease.php\"] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) HTTPPathForVersion: (NSString *) inVersionString {\n"
     "  return [NSString stringWithFormat:@\"%@/%@/%@\", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) temporaryDir {\n"
     "  return @\"/tmp/TEMPORARY_DIR_FOR_" ;
@@ -6110,13 +6110,13 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
   result << "\" ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) temporaryPathForApplicationArchive {\n"
     "  return [NSString stringWithFormat:@\"%@/%@\", self.temporaryDir, self.applicationArchiveName] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSComparisonResult) compareVersionString: (NSString *) inVersionString\n"
     "                       withVersionString: (NSString *) inOtherVersionString {\n"
@@ -6547,11 +6547,11 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                  Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_nib'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (C_Compiler * /* inCompiler */,
                                                                                                        const GALGAS_string & in_PROJECT_5F_NAME
@@ -8527,11 +8527,11 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_applica
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_header'                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (C_Compiler * /* inCompiler */
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -8572,11 +8572,11 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_implementation'               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (C_Compiler * /* inCompiler */
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
@@ -8594,7 +8594,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "\n"
     "@implementation PMDownloadData\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) notifyDelegate {\n"
     "  [[NSRunLoop currentRunLoop]\n"
@@ -8606,7 +8606,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  ] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (id) initDownloadWithURLString: (NSString *) inURLString\n"
     "       delegate: (id) inDelegate\n"
@@ -8635,7 +8635,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  return self ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "//- (void)URL:(NSURL *)sender resourceDataDidBecomeAvailable:(NSData *) inNewBytes {\n"
     "- (void)connection: (NSURLConnection *) connection didReceiveData:(NSData *) inNewBytes {\n"
@@ -8643,7 +8643,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [mDownloadedData appendData:inNewBytes] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *) inError {\n"
     "//- (void)URL:(NSURL *)sender resourceDidFailLoadingWithReason:(NSString *) inReason {\n"
@@ -8652,13 +8652,13 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [self notifyDelegate] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) cancelDownloader {\n"
     "  [mDownloadConnection cancel] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void)connectionDidFinishLoading:(NSURLConnection *)connection {\n"
     "//- (void) URLResourceDidFinishLoading:(NSURL *)sender {\n"
@@ -8666,41 +8666,41 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [self notifyDelegate] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSError *) downloadError {\n"
     "  return mDownloadError ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSData *) downloadedData {\n"
     "  return mDownloadedData ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (id) userInfo {\n"
     "  return mUserInfo ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) urlString {\n"
     "  return [mURL absoluteString] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@end\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_header'                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (C_Compiler * /* inCompiler */
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -8712,22 +8712,22 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "//  Created by Pierre Molinaro on 19/08/06.\n"
     "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
     "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#import <Cocoa/Cocoa.h>\n"
     "#import \"PMSnowLeopardLionCompatibility.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@class PMDownloadFile ;\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@protocol PMDownloadDidEndProtocol\n"
     "  - (void) downloadDidEnd: (PMDownloadFile *) inDownloader ;\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@interface PMDownloadFile : NSObject <NSURLDownloadDelegate> {\n"
     "  @protected NSURL * mURL ;\n"
@@ -8771,15 +8771,15 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "\n"
     "@end\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_implementation'               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (C_Compiler * /* inCompiler */
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
@@ -8794,11 +8794,11 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "\n"
     "#import \"PMDownloadFile.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@implementation PMDownloadFile\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (id) initWithURLString: (NSString *) inURLString\n"
     "       postDictionary: (NSDictionary *) inPOSTDictionary\n"
@@ -8854,7 +8854,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  return self ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (id) initWithURLString: (NSString *) inURLString\n"
     "       destinationFileName: (NSString *) inDestinationFileName\n"
@@ -8894,7 +8894,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  return self ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response {\n"
     "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
@@ -8907,7 +8907,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [mProgressIndicator setIndeterminate:NO] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void)download: (NSURLDownload *) inDownload didReceiveDataOfLength:(NSUInteger) inLength {\n"
     "  // NSLog (@\"%s: received %lu bytes\", __PRETTY_FUNCTION__, inLength) ;\n"
@@ -8923,7 +8923,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [mSubTitle setStringValue:subtitle] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) downloadingProcessDidEnd {\n"
     "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
@@ -8933,7 +8933,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [mDelegate downloadDidEnd:self] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) cancelAction: (id) inSender {\n"
     "  [mDownload cancel] ;\n"
@@ -8941,7 +8941,7 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [self downloadingProcessDidEnd] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) download:(NSURLDownload *)download didFailWithError:(NSError *) inError {\n"
     "  // NSLog (@\"Download failed\") ;\n"
@@ -8949,55 +8949,55 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_downloa
     "  [self downloadingProcessDidEnd] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (void) downloadDidFinish:(NSURLDownload *)download {\n"
     "  // NSLog (@\"Download completed\") ;\n"
     "  [self downloadingProcessDidEnd] ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSError *) downloadError {\n"
     "  return mDownloadError ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (NSString *) destinationFileName {\n"
     "  return mDestinationFileName ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (id) userInfo {\n"
     "  return mUserInfo ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "- (BOOL) downloadHasBeenCancelled {\n"
     "  return mDownloadHasBeenCancelled ;\n"
     "}\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "@end\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'applicationGalgas3UpdateFileWrapper compatibility_header'                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "// #import \"PMSnowLeopardLionCompatibility.h\"\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "#ifndef  MAC_OS_X_VERSION_10_7\n"
     "  @protocol NSURLDownloadDelegate <NSObject>\n"
@@ -9019,15 +9019,15 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compati
     "  @end\n"
     "#endif\n"
     "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
+    "//----------------------------------------------------------------------------------------------------------------------\n" ;
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  Filewrapper 'targetGalgas3GenerationFileWrapper'                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 //--- All files of 'makefile-macosx' directory
 
@@ -9349,11 +9349,11 @@ const cDirectoryWrapper gWrapperDirectory_0_targetGalgas_33_GenerationFileWrappe
 ) ;
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                       Filewrapper template 'targetGalgas3GenerationFileWrapper build_macosx'                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (C_Compiler * /* inCompiler */,
                                                                                          const GALGAS_string & in_PROJECT_5F_NAME
@@ -9396,11 +9396,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_macosx'                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -9436,11 +9436,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_macosx'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
@@ -9476,11 +9476,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_macosx'                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -9516,11 +9516,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                      Filewrapper template 'targetGalgas3GenerationFileWrapper install_macosx'                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (C_Compiler * /* inCompiler */
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
@@ -9556,11 +9556,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                       Filewrapper template 'targetGalgas3GenerationFileWrapper clean_macosx'                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (C_Compiler * /* inCompiler */,
                                                                                          const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -9597,11 +9597,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                        Filewrapper template 'targetGalgas3GenerationFileWrapper clean_unix'                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (C_Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -9638,11 +9638,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                        Filewrapper template 'targetGalgas3GenerationFileWrapper build_unix'                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (C_Compiler * /* inCompiler */,
                                                                                        const GALGAS_string & in_PROJECT_5F_NAME
@@ -9685,11 +9685,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_unix'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
@@ -9725,11 +9725,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                     Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_unix'                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (C_Compiler * /* inCompiler */
                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9765,11 +9765,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_unix'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (C_Compiler * /* inCompiler */
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
@@ -9805,11 +9805,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                       Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (C_Compiler * /* inCompiler */
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -9845,11 +9845,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux32_on_mac'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -9886,11 +9886,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux32_on_mac'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
@@ -9933,11 +9933,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux32_on_mac'              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
@@ -9973,11 +9973,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux32_on_mac'               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
@@ -10013,11 +10013,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux32_on_mac'              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
@@ -10053,11 +10053,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -10094,11 +10094,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_x86linux64_on_mac'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
@@ -10141,11 +10141,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //              Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_x86linux64_on_mac'              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
@@ -10181,11 +10181,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //               Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_x86linux64_on_mac'               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
@@ -10221,11 +10221,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //              Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_x86linux64_on_mac'              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
@@ -10261,11 +10261,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                            const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -10302,11 +10302,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper build_win32_on_mac'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */,
                                                                                                            const GALGAS_string & in_PROJECT_5F_NAME
@@ -10349,11 +10349,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                Filewrapper template 'targetGalgas3GenerationFileWrapper build_verbose_win32_on_mac'                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -10389,11 +10389,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                 Filewrapper template 'targetGalgas3GenerationFileWrapper build_debug_win32_on_mac'                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -10429,11 +10429,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                Filewrapper template 'targetGalgas3GenerationFileWrapper build_release_win32_on_mac'                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (C_Compiler * /* inCompiler */
                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -10469,11 +10469,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper codeblocks_project'                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (C_Compiler * /* inCompiler */,
                                                                                                const GALGAS_string & in_PROJECT_5F_NAME,
@@ -10988,11 +10988,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist'                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (C_Compiler * /* inCompiler */,
                                                                                                    const GALGAS_string & in_PROJECT_5F_NAME,
@@ -11078,11 +11078,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                   Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_build_xcode'                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (C_Compiler * /* inCompiler */
                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
@@ -11092,11 +11092,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                Filewrapper template 'targetGalgas3GenerationFileWrapper makefile_info_plist_strings'                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (C_Compiler * /* inCompiler */,
                                                                                                               const GALGAS_string & /* in_PROJECT_5F_NAME */
@@ -11107,11 +11107,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                      Filewrapper template 'targetGalgas3GenerationFileWrapper json_file_list'                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (C_Compiler * /* inCompiler */,
                                                                                               const GALGAS_stringset & in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET,
@@ -11303,11 +11303,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                      Filewrapper template 'targetGalgas3GenerationFileWrapper project_header'                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (C_Compiler * /* inCompiler */,
                                                                                            const GALGAS_string & in_VERSION_5F_STRING
@@ -11335,11 +11335,11 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_
   return GALGAS_string (result) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Routine 'generateGalgasCodeBlocksWindowsTarget'                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgasCodeBlocksWindowsTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                     const GALGAS_string constinArgument_inProjectName,
@@ -11358,11 +11358,11 @@ void routine_generateGalgasCodeBlocksWindowsTarget (const GALGAS_string constinA
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     Routine 'generateGalgasCodeBlocksMacTarget'                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgasCodeBlocksMacTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                 const GALGAS_string constinArgument_inProjectName,
@@ -11381,11 +11381,11 @@ void routine_generateGalgasCodeBlocksMacTarget (const GALGAS_string constinArgum
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  Routine 'generateGalgasCodeBlocksLinuxI686Target'                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const GALGAS_string constinArgument_inProjectDirectory,
                                                                const GALGAS_string constinArgument_inProjectName,
@@ -11404,11 +11404,11 @@ void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const GALGAS_stri
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                 Routine 'generateGalgasCodeBlocksLinuxX86_64Target'                                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const GALGAS_string constinArgument_inProjectDirectory,
                                                                        const GALGAS_string constinArgument_inProjectName,
@@ -11427,11 +11427,11 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const GAL
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Routine 'generateGalgas3MinGWOnMacOSXTarget'                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgas_33_MinGWOnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                     const GALGAS_string constinArgument_inProjectName,
@@ -11455,11 +11455,11 @@ void routine_generateGalgas_33_MinGWOnMacOSXTarget (const GALGAS_string constinA
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Routine 'generateGalgas3MakefileMacOSXTarget'                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgas_33_MakefileMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                      const GALGAS_string constinArgument_inProjectName,
@@ -11485,11 +11485,11 @@ void routine_generateGalgas_33_MakefileMacOSXTarget (const GALGAS_string constin
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     Routine 'generateGalgas3MakefileUnixTarget'                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgas_33_MakefileUnixTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                    const GALGAS_string constinArgument_inProjectName,
@@ -11515,11 +11515,11 @@ void routine_generateGalgas_33_MakefileUnixTarget (const GALGAS_string constinAr
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Routine 'generateGalgas3Linux32OnMacOSXTarget'                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                             const GALGAS_string constinArgument_inProjectName,
@@ -11543,11 +11543,11 @@ void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const GALGAS_string 
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Routine 'generateGalgas3Linux64OnMacOSXTarget'                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const GALGAS_string constinArgument_inProjectDirectory,
                                                             const GALGAS_string constinArgument_inProjectName,
@@ -11571,11 +11571,11 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const GALGAS_string 
 }
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           Routine 'updateGalgas3Targets'                                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProjectSourceFilePath,
                                       const GALGAS_string constinArgument_inTargetName,

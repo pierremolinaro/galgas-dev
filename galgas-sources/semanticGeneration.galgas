@@ -163,7 +163,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
         + [mNonterminalName identifierRepresentation]
         + "_i" + [mRuleIndex string] + "_" + [mLabelName identifierRepresentation]
-      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+      outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
       generateProcedure (
         !static:false
         !ruleName
@@ -185,7 +185,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
     + [mNonterminalName identifierRepresentation]
     + "_i" + [mRuleIndex string] + "_parse"
-    outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+    outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
     generateProcedure (
       !static:false
       !parseRuleName
@@ -208,7 +208,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
       + [mNonterminalName identifierRepresentation]
       + "_i" + [mRuleIndex string] + "_indexing"
-      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+      outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
       generateProcedure (
         !static:false
         !ruleName
@@ -1145,35 +1145,6 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#! Extern type
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @externTypeDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mCppPreDeclarationCode
-    !mCppClassCode
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
 #! Semantic Type
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1183,217 +1154,6 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeProxy identifierRepresentation]
     ![mTypeProxy mSuperType]
     ![mTypeProxy mHandledOperatorFlags]
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Array
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @arrayTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper typeGenerationTemplate.arrayTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mElementTypeProxy identifierRepresentation]
-    !mDimension
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @arrayTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
-
-  var suffixList =@stringlist.emptyList{}
-  @uint idx = 0
-  loop( mDimension) while idx < mDimension do
-    suffixList += ![idx string]
-    idx ++
-  end
-  outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mElementTypeProxy identifierRepresentation]
-    !mDimension
-    !suffixList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Graph
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @graphDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper typeGenerationTemplate.graphTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @graphDeclarationForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedListTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedListElementTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
-    !mTypeProxy
-    ![mTypeProxy identifierRepresentation]
-    !mAssociatedListTypeProxy
-    !mInsertModifierList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Class
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @classTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-  if not [mSuperClass isNull] then
-    [mSuperClass addHeaderFileName !?ioInclusionSet]
-  end
-
-  outHeader = [filewrapper typeGenerationTemplate.classTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mAllTypedAttributeList
-    !mIsAbstract
-    ![mTypeProxy mDefaultConstructorName] != ""
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @classTypeForGeneration appendDeclaration2
-  ?let @string inOutputDirectory
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName !?ioInclusionSet]
-  end
-
-  if mGenerateHeaderInSeparateFile then
-    let part1 = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ]
-    let part2 = [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ]
-    let headerFileName = "separateHeaderFor_" + [mTypeProxy identifierRepresentation] + ".h"
-    [@string generateFileWithPattern
-      !startPath:inOutputDirectory + "/../user-headers"
-      !fileName:headerFileName
-      !lineComment:"//"
-      !header:"" # Header
-      !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:part1
-      !defaultUserZone2:"\n\n" # Defaut user zone2
-      !generatedZone3:part2
-      !makeExecutable:false
-    ]
-    outHeader = "#include \"" + headerFileName + "\"\n\n"
-  else
-    outHeader = [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ]
-    outHeader += [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ]
-  end
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @classTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mTypedAttributeList
-    !mAllTypedAttributeList
-    ![mAllTypedAttributeList subListWithRange !@range.new {!0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]}]
-    !mIsAbstract
-    ![mTypeProxy mDefaultConstructorName] != ""
   ]
 }
 

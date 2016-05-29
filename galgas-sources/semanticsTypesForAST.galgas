@@ -781,36 +781,9 @@ class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @propertyInCollectionListAST {
-#  @bool mIsPrivate ;
   @lstring mPropertyTypeName
   @lstring mPropertyName
   @lstringlist mFeatureList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    A R R A Y    D E C L A R A T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @arrayDeclarationAST : @semanticDeclarationAST {
-  @lstring mArrayTypeName
-  @lstring mElementTypeName
-  @luint mDimension
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    C L A S S    D E C L A R A T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @classDeclarationAST : @semanticDeclarationAST {
-  @bool mIsAbstract %nogetter
-  @lstring mClassTypeName %nogetter
-  @lstring mSuperClassName %nogetter # Empty if no super class
-  @lstringlist mClassFeatureList %nogetter
-  @propertyInCollectionListAST mAttributeList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -847,86 +820,12 @@ class @filewrapperDeclarationAST : @semanticDeclarationAST {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#     G R A P H                                                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @graphInsertModifierList {
-  @lstring mInsertModifierName %nogetter
-  @lstring mInsertErrorMessage %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @graphDeclarationAST : @semanticDeclarationAST {
-  @lstring mGraphTypeName
-  @lstring mAssociatedListTypeName
-  @graphInsertModifierList mInsertModifierList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 
 class @semanticsComponentAST {
   @lstring mSemanticsComponentName
   @lstringlist mImportedComponentFileNameList
   @semanticDeclarationListAST mSemanticDeclarationList
   @location mEndOfSourceFile
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#     E X T E R N     T Y P E                                                                                          *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @externTypeDeclarationAST : @semanticDeclarationAST {
-  @lstring mExternTypeName
-  @string mCppPreDeclarationCode
-  @string mCppClassCode
-  @externTypeConstructorList mExternTypeConstructorList
-  @externTypeGetterList mExternTypeGetterList
-  @externTypeModifierList mExternTypeModifierList
-  @externTypeMethodList mExternTypeMethodList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @typeNameFormalParameterNameList {
-  @lstring mFormalSelector
-  @lstring mFormalParameterTypeName
-  @lstring mFormalParameterName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @externTypeConstructorList {
-  @lstring mConstructorName
-  @lstring mResultTypeName
-  @typeNameFormalParameterNameList mParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @externTypeGetterList {
-  @lstring mGetterName
-  @lstring mResultTypeName
-  @typeNameFormalParameterNameList mParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @externTypeModifierList {
-  @lstring mModifierName
-  @formalParameterListAST mFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @externTypeMethodList {
-  @lstring mMethodName
-  @formalParameterListAST mFormalParameterList
-  @location mDeclarationLocation
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

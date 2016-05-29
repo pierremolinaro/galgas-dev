@@ -1,0 +1,548 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @classDeclarationAST : @semanticDeclarationAST {
+  @bool mIsAbstract %nogetter
+  @lstring mClassTypeName %nogetter
+  @lstring mSuperClassName %nogetter # Empty if no super class
+  @lstringlist mClassFeatureList %nogetter
+  @propertyInCollectionListAST mAttributeList %nogetter
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+
+  rule <declaration>
+   ?!@galgas3DeclarationAST ioDeclarations {
+    @bool mIsAbstract
+    select
+      mIsAbstract = false
+    or
+      $abstract$
+      mIsAbstract = true
+    end
+    $class$
+    var classNameList =@lstringlist.emptyList{}
+    repeat
+      $type_name$ ?var @lstring className indexing classDefinition
+      classNameList += !className
+    while
+      $,$
+    end
+    @lstring mSuperClassName # Empty if no super class
+    select
+      mSuperClassName = ["" nowhere]
+    or
+      $:$
+      $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass
+    end
+    var classFeatureList =@lstringlist.emptyList{}
+    repeat
+    while
+      $attribute$ ?var  @lstring classFeatureName
+      classFeatureList += !classFeatureName
+    end
+    ${$
+    @string mClassMessage = ""
+  #--- Class properties
+    var mAttributeList =@propertyInCollectionListAST.emptyList{}
+    repeat
+    while
+      <property_declaration> !? mAttributeList
+    while
+      $;$
+    end
+    $}$
+    for () in classNameList do
+      ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
+        !false # Is not predefined
+        !mIsAbstract
+        !mValue
+        !mSuperClassName # Empty if no super class
+        !classFeatureList
+        !mAttributeList
+      }
+    end
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mClassTypeName ![mClassTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  if mSuperClassName.string != "" then
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mSuperClassName !mSuperClassName.location}]
+  end
+  for () in mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !mSuperClassName.location}]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+  @unifiedTypeMap-proxy uintType
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
+#---
+  @getterMap getterMap
+  @setterMap modifierMap
+  @instanceMethodMap instanceMethodMap
+  @typedPropertyList inheritedTypedAttributeList
+  var attributeMap =@attributeMap.emptyMap{}
+#--- Handle super class
+  @unifiedTypeMap-proxy superClassIndex
+  @bool generateHeaderInSeparateFile
+  if [mSuperClassName string] == "" then
+    superClassIndex = @unifiedTypeMap-proxy. null
+    commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+    modifierMap = @setterMap. emptyMap
+    instanceMethodMap = @instanceMethodMap. emptyMap
+    inheritedTypedAttributeList = @typedPropertyList.emptyList
+    attributeMap = @attributeMap. emptyMap
+    generateHeaderInSeparateFile = false
+    for () in mClassFeatureList do
+      if [mValue string] == "generatedInSeparateFile" then
+        generateHeaderInSeparateFile = true
+      end
+    end
+  else
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSuperClassName ?superClassIndex]
+    @typeKindEnum typeKindEnum
+    @getterMap inheritedGetterMap
+    @setterMap inheritedModifierMap
+    @instanceMethodMap inheritedMethodMap
+    [ioSemanticContext.mTypeMap searchKey
+      !mSuperClassName
+      ?3*
+      ?typeKindEnum
+      ?*
+      ?inheritedTypedAttributeList
+      ?attributeMap
+      ?2*
+      ?inheritedGetterMap
+      ?inheritedModifierMap
+      ?inheritedMethodMap
+      ?9*
+      ?generateHeaderInSeparateFile
+      ?4*
+    ]
+  #---
+    if typeKindEnum != @typeKindEnum. classType then
+      error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
+    end
+  #--- Mark all modifiers as inherited
+    modifierMap = @setterMap. emptyMap
+    for () in inheritedModifierMap do
+      [!?modifierMap insertKey
+        !lkey
+        !mKind
+        !mParameterList
+        !mHasCompilerArgument
+        !@methodQualifier. isInherited
+        !"" # No error message
+      ] 
+    end
+  #--- Mark all getters as inherited
+    getterMap = @getterMap. emptyMap
+    for () in inheritedGetterMap do
+      [!?getterMap insertKey
+        !lkey
+        !mKind
+        !mArgumentTypeList
+        !mDeclarationLocation
+        !mHasCompilerArgument
+        !mReturnedType
+        !@methodQualifier. isInherited
+        !mErrorMessage
+      ] 
+    end
+  #--- Mark all methods as inherited
+    instanceMethodMap = @instanceMethodMap. emptyMap
+    for () in inheritedMethodMap do
+      [!?instanceMethodMap insertKey
+        !lkey
+        !mKind
+        !mParameterList
+        !mDeclarationLocation
+        !mHasCompilerArgument
+        !@methodQualifier. isInherited
+        !mErrorMessage
+      ] 
+    end
+  end
+#--- Build attribute Map and constructor argument list
+  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  for () in inheritedTypedAttributeList do
+    constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
+  end
+  for () in mAttributeList do
+    @unifiedTypeMap-proxy attributeTypeIndex
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    [!?attributeMap insertKey
+      !mPropertyName
+#      !mIsPrivate
+      !attributeTypeIndex
+    ]
+    if [getterMap hasKey ![mPropertyName string]] then
+      error mPropertyName: "'" + mPropertyName + "' is the name of a prefefined or a user defined getter"
+    end
+  end
+#--- Current class Index
+  [@unifiedTypeMap-proxy makeProxy
+     !?ioSemanticContext.mTypeMap
+     !mClassTypeName
+     ?var @unifiedTypeMap-proxy classIndex
+  ]
+#--- Constructor
+  var constructorMap =@constructorMap.emptyMap{}
+  if not mIsAbstract then
+    [!?constructorMap insertKey
+      !@lstring.new {!"new" !@location.here}
+      !constructorAttributeTypeList
+      !false
+      !classIndex
+    ]
+  end
+#--- Typed attribute list
+  var currentClassTypedAttributeList =@typedPropertyList.emptyList{}
+  @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
+  for () in mAttributeList do
+    @unifiedTypeMap-proxy attributeTypeIndex
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    @bool hasSetter = false
+    @bool hasGetter = true
+    for () in mFeatureList do
+      if [mValue string] == "setter" then
+        hasSetter = true
+      elsif [mValue string] == "nogetter" then
+        hasGetter = false
+      end
+    end
+    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    if hasGetter then
+      [!?getterMap insertKey
+        !mPropertyName
+        !@methodKind.definedAsMember
+        !@functionSignature {} # No argument
+        !@location.here
+        !false # No Compiler argument
+        !attributeTypeIndex # Returned type
+        !@methodQualifier.isBasic
+        !"" # No Error message
+      ]
+    end
+  end
+#--- set...attribute setter
+  for () in currentClassTypedAttributeList do
+    if mHasSetter then
+      [!?modifierMap insertKey
+        !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
+        !@methodKind.definedAsMember
+        !{!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
+        !false # No compiler argument
+        !@methodQualifier.isBasicFinal
+        !"" # No error message
+      ]
+    end
+  end
+#--- Add Categories
+  addCategories (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mClassTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Generate a "default" constructor ?
+  @string defaultConstructorName
+  if [superClassIndex isNull] then
+    defaultConstructorName = "default"
+  else
+    defaultConstructorName = [superClassIndex mDefaultConstructorName]
+  end
+  for () in currentClassTypedAttributeList while defaultConstructorName != "" do
+    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+      defaultConstructorName = ""
+    end
+  end
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mClassTypeName
+    !mIsPredefined
+    !not mIsAbstract # Concrete Type
+    !superClassIndex
+    !@typeKindEnum. classType
+    !false # Does not support collection value
+    !allTypedAttributeList
+    !attributeMap
+    !currentClassTypedAttributeList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
+    !0
+    !@functionSignature.emptyList
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !generateHeaderInSeparateFile
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !defaultConstructorName # Default constructor
+    !"class-" + mClassTypeName
+    !@headerKind.twoHeaders
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#------ Self type
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
+#------ Super type, and class features
+# A class that has a super may not have any feature
+# A class without a super class admits the 'generatedInSeparateFile' feature
+  @unifiedTypeMap-proxy superClassProxy
+  @typedPropertyList allAttributeList
+  if [mSuperClassName string] == "" then
+    superClassProxy = @unifiedTypeMap-proxy. null
+    allAttributeList = @typedPropertyList.emptyList
+    @bool generatedInSeparateFileFeature = false
+    if [mClassFeatureList length] > 0 then
+      for () in mClassFeatureList do
+        if [mValue string] == "generatedInSeparateFile" then
+          if generatedInSeparateFileFeature then
+            error mValue:"the 'generatedInSeparateFile' is already named"
+          end
+          generatedInSeparateFileFeature = true
+        else
+          error mValue:"only the 'generatedInSeparateFile' feature is allowed here"
+        end
+      end
+    end
+  else
+    superClassProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSuperClassName}
+    allAttributeList = [superClassProxy mAllTypedAttributeList]
+    if [mClassFeatureList length] > 0 then
+      for () in mClassFeatureList do
+        error mValue:"a class that has a super class does not accept any feature"
+      end
+    end
+  end
+#------ Enter attributes
+  var typedAttributeList =@typedPropertyList.emptyList{}
+  var attributeMap =@attributeIndexMap.emptyMap{}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    @bool hasSetter = false
+    @bool hasGetter = true
+    for () in mFeatureList do
+      if [mValue string] == "setter" then
+        if hasSetter then
+          error mValue : "the 'setter' feature is already named"
+        end
+        hasSetter = true
+      elsif [mValue string] == "nogetter" then
+        if not hasGetter then
+          error mValue : "the 'nogetter' feature is already named"
+        end
+        hasGetter = false
+      else
+        error mValue : "only the 'setter' or 'nogetter' are allowed here"
+      end
+    end
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    allAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#------ Compute sort string (used for sorting generated code)
+  @string sortString = [selfType key]
+  @unifiedTypeMap-proxy t = [selfType mSuperType]
+  loop( [inSemanticContext.mTypeMap count] + 1)
+  while not [t isNull] do
+    sortString = [t key] + "." + sortString
+    t = [t mSuperType]
+  end
+#------
+  ioSemanticDeclarationListForGeneration +=
+    !"class " + mClassTypeName
+    !@classTypeForGeneration.new {
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
+      !mIsAbstract
+      !mClassTypeName
+      !superClassProxy
+      !allAttributeList
+      !typedAttributeList
+      ![selfType mGenerateHeaderInSeparateFile]}
+    !sortString
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @classTypeForGeneration : @semanticTypeForGeneration {
+  @bool mIsAbstract
+  @lstring mClassTypeName
+  @unifiedTypeMap-proxy mSuperClass # Null if no super class
+  @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
+  @typedPropertyList mTypedAttributeList
+  @bool mGenerateHeaderInSeparateFile # Significant only for classes
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader {
+  if not [mSuperClass isNull] then
+    [mSuperClass addHeaderFileName !?ioInclusionSet]
+  end
+
+  outHeader = [filewrapper typeGenerationTemplate.classTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+    !mAllTypedAttributeList
+    !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classTypeForGeneration appendDeclaration2
+  ?let @string inOutputDirectory
+  ?!@stringset ioInclusionSet
+  !@string outHeader {
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+
+  if mGenerateHeaderInSeparateFile then
+    let part1 = [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ]
+    let part2 = [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ]
+    let headerFileName = "separateHeaderFor_" + [mTypeProxy identifierRepresentation] + ".h"
+    [@string generateFileWithPattern
+      !startPath:inOutputDirectory + "/../user-headers"
+      !fileName:headerFileName
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:part1
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:part2
+      !makeExecutable:false
+    ]
+    outHeader = "#include \"" + headerFileName + "\"\n\n"
+  else
+    outHeader = [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ]
+    outHeader += [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ]
+  end
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @classTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+    !mTypedAttributeList
+    !mAllTypedAttributeList
+    ![mAllTypedAttributeList subListWithRange !@range.new {!0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]}]
+    !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
