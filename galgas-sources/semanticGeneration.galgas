@@ -190,7 +190,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       !static:false
       !parseRuleName
       !?ioInclusionSet
-      !@formalParameterListForGeneration. emptyList
+      !@formalParameterListForGeneration.emptyList
       !syntaxSignatureOfInstructionList (!"parse" !parseInstructionList)
       !false
       !lexiqueCppName
@@ -213,7 +213,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         !static:false
         !ruleName
         !?ioInclusionSet
-        !@formalParameterListForGeneration. emptyList
+        !@formalParameterListForGeneration.emptyList
         !syntaxSignatureOfInstructionList (!"indexing" !instructionList)
         !false
         !lexiqueCppName
@@ -1139,7 +1139,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !mFunctionName
-    !@formalInputParameterListForGeneration. emptyList
+    !@formalInputParameterListForGeneration.emptyList
     ![mReturnType identifierRepresentation]
   ] 
 }
@@ -1236,122 +1236,6 @@ override method @arrayTypeForGeneration appendSpecificImplementation
     ![mElementTypeProxy identifierRepresentation]
     !mDimension
     !suffixList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! List map
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listmapTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
-  for (t ...) in mAssociatedListTypedAttributeList do
-    [t addHeaderFileName1 !?ioInclusionSet]
-  end
-
-  outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @listmapTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    ![mAssociatedListTypeIndex identifierRepresentation]
-    !mAssociatedListTypedAttributeList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-#! Map
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
-#  for (t ...) in mTypedAttributeList do
-#    [t addHeaderFileName1 !?ioInclusionSet] ;
-#  end for ;
-
-  outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mSearchMethodList
-  ]
-  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapTypeForGeneration appendDeclaration2
-  ?let @string unused inOutputDirectory
-  ?!@stringset ioInclusionSet
-  !@string outHeader {
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName1 !?ioInclusionSet]
-  end
-
-  outHeader = [filewrapper typeGenerationTemplate.mapTypeHeader2
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-  ]
- }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @mapTypeForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mInsertMethodList
-    !mSearchMethodList
-    !mRemoveMethodList
-    !mHasInsertOrReplaceModifier
   ]
  }
 
@@ -1579,7 +1463,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   generateFunction (
     !"onceFunction_" + [mFunctionName identifierRepresentation]
     !?ioInclusionSet
-    !@formalInputParameterListForGeneration. emptyList
+    !@formalInputParameterListForGeneration.emptyList
     !mFunctionInstructionList
     !"C_Compiler"
     !mReturnType
@@ -1590,7 +1474,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   outImplementation = [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !code
-    !@formalInputParameterListForGeneration. emptyList
+    !@formalInputParameterListForGeneration.emptyList
     ![mReturnType identifierRepresentation]
   ] 
 }

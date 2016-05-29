@@ -108,7 +108,7 @@ private proc compileGuiComponentGalgas3
   end
 #--- 
   @guiAnalysisContext context = .new {
-    !@stringlist. emptyList
+    !@stringlist.emptyList
     !@guiCommandLineOptionList.emptyList # Bool options
     !@guiCommandLineOptionList.emptyList # UInt options
     !@guiCommandLineOptionList.emptyList # string options

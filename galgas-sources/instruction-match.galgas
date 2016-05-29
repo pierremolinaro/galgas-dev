@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     @semanticInstructionListAST elseInstructionList
     select
-      elseInstructionList = @semanticInstructionListAST. emptyList
+      elseInstructionList = @semanticInstructionListAST.emptyList
     or
       $else$
       <semantic_instruction_list> ? elseInstructionList
@@ -222,7 +222,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     analyzeSemanticInstructionList (
       !inAnalysisContext
       !localConstantList
-      !@localInitializedVariableList. emptyList
+      !@localInitializedVariableList.emptyList
       !mMatchBranchInstructionList
       !mEndOf_instructionList
       !?ioVariableMap
@@ -235,8 +235,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration elseInstructionList
   analyzeSemanticInstructionList (
     !inAnalysisContext
-    !@localConstantList. emptyList
-    !@localInitializedVariableList. emptyList
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
     !mElseInstructionList
     !mEndOf_match_instruction
     !?ioVariableMap

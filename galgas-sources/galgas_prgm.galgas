@@ -216,9 +216,9 @@ proc compileProject
     end
   end
 #---------------------------------- Hand coded source files
-  var handCodedLinkAppFileList = @stringlist. emptyList
-  var handCodedSourceAppFileList = @stringlist. emptyList
-  var handCodedSourceToolFileList = @stringlist. emptyList
+  var handCodedLinkAppFileList = @stringlist.emptyList
+  var handCodedSourceAppFileList = @stringlist.emptyList
+  var handCodedSourceToolFileList = @stringlist.emptyList
   @stringlist frameworkToolFileList = {}
   var handCodedSourceDirectorySet = @stringset. emptySet
   for () in inProjectComponentAST.mQualifiedFeatureList do
@@ -269,7 +269,7 @@ proc compileProject
 #---------------------------------- Compile semantic declarations
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
-  var appProductFileList = @stringlist. emptyList
+  var appProductFileList = @stringlist.emptyList
   var semanticContext = @semanticContext.default
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
@@ -411,8 +411,8 @@ proc projectGeneration
   end
 #---------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
-  var toolCppFileList = @stringlist. emptyList
-  var toolHeaderFileList = @stringlist. emptyList
+  var toolCppFileList = @stringlist.emptyList
+  var toolHeaderFileList = @stringlist.emptyList
   generateSemanticDeclarationsGalgas3 (
     !inTypeMap
     !productDirectory

@@ -237,7 +237,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
-    !@lstringlist. emptyList
+    !@lstringlist.emptyList
     !mKind
    }
 }
@@ -267,7 +267,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
-    !@lstringlist. emptyList
+    !@lstringlist.emptyList
     !mKind
    }
 }

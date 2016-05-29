@@ -801,67 +801,6 @@ class @arrayDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L I S T M A P    D E C L A R A T I O N                                                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @listmapDeclarationAST : @semanticDeclarationAST {
-  @lstring mListmapTypeName
-  @lstring mAssociatedListTypeName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    M A P    A U T O M A T O N                                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    M A P    D E C L A R A T I O N                                                                                    *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @insertMethodListAST {
-  @lstring mInsertMethodName %nogetter
-  @lstring mErrorMessage %nogetter
-  @lstring mShadowErrorMessage %nogetter
-  @lstring mInitialStateName %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapSearchMethodListAST {
-  @lstring mSearchMethodName %nogetter
-  @lstring mErrorMessage %nogetter
-  @lstring mActionName %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @mapRemoveMethodListAST {
-  @lstring mMethodName %nogetter
-  @lstring mErrorMessage %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @insertOrReplaceDeclarationListAST {
-  @location mInsertOrReplaceDeclarationLocation %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @mapDeclarationAST : @semanticDeclarationAST {
-  @lstring mMapTypeName
-  @lstringlist mAttributeList
-  @propertyInCollectionListAST mPropertyList
-  @insertMethodListAST mInsertMethodList
-  @mapSearchMethodListAST mSearchMethodList
-  @mapRemoveMethodListAST mRemoveMethodList
-  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    C L A S S    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

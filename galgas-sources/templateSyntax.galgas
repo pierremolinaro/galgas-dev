@@ -495,7 +495,7 @@ rule <primary>
 
 rule <output_expression_list>
   !@templateExpressionListAST outExpressionList {
-  outExpressionList = @templateExpressionListAST. emptyList
+  outExpressionList = @templateExpressionListAST.emptyList
   repeat
   while
     $!$ ?let selector
@@ -735,7 +735,7 @@ rule <template_instruction>
 
 rule <template_parser_start_symbol>
   !@templateInstructionListAST outResultingInstructionList {
-  outResultingInstructionList = @templateInstructionListAST. emptyList
+  outResultingInstructionList = @templateInstructionListAST.emptyList
   enterTemplateString ( !?outResultingInstructionList )
   repeat
   while

@@ -1,0 +1,295 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @listmapDeclarationAST : @semanticDeclarationAST {
+  @lstring mListmapTypeName
+  @lstring mAssociatedListTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+   ?!@galgas3DeclarationAST ioDeclarations {
+    $listmap$
+    $type_name$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+    $($
+    $type_name$ ?var  @lstring mAssociatedListTypeName
+    $)$
+    ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
+      !false # Is not predefined
+      !mListmapTypeName
+      !mAssociatedListTypeName}
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ASSOCIATED ELEMENT                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  structAttributeList +=
+#    !false # Is not private
+    !["string" nowhere]
+    !["key" nowhere]
+    !@lstringlist.emptyList
+  structAttributeList +=
+#    !false # Is not private
+    !mAssociatedListTypeName
+    !["mList" nowhere]
+    !@lstringlist.emptyList
+#---
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
+    !mIsPredefined
+    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    !structAttributeList
+    !""
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Check associated map is really a list
+  [ioSemanticContext.mTypeMap searchKey
+    !mAssociatedListTypeName
+    ?3*
+    ?var @typeKindEnum typeKindEnum
+    ?*
+    ?var @typedPropertyList listTypedAttributeList
+    ?20*
+  ]
+  if typeKindEnum != @typeKindEnum. listType then
+    error mAssociatedListTypeName : "the '@" + mAssociatedListTypeName + "' type should be a list type"
+    listTypedAttributeList = @typedPropertyList.emptyList
+  end
+#---
+  var constructorMap =@constructorMap.emptyMap{}
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var modifierMap =@setterMap.emptyMap{}
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+#--- Associated map type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
+#--- currentType type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
+#--- Getters
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap 
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"allKeys"
+    !returnedTypeName:"stringset"
+    !false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"keyList"
+    !returnedTypeName:"stringlist"
+    !false
+  )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"listForKey"
+    !"string"
+    !"inKey"
+    !returnedTypeName:[mAssociatedListTypeName string]
+    !false
+  )
+#--- Constructors
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptyMap"
+    !resultTypeName:[mListmapTypeName string]
+    !hasLexiqueAndLocationArgs:false
+  )
+#--- Enumerator description
+  var enumeratorDescriptor =@enumerationDescriptorList.emptyList{}
+  enumeratorDescriptor += !stringTypeIndex !"key"
+  enumeratorDescriptor += !associatedListTypeIndex !"mList"
+#--- Add assign operator description
+  var addAssignOperatorDescription =@functionSignature.emptyList{}
+  addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
+  for () in listTypedAttributeList do
+    addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
+  end
+#--- Enumeration variants
+  var enumerationVariants =@stringlist.emptyList{}
+  enumerationVariants += !"up"
+  enumerationVariants += !"down"
+#--- Add Categories
+  addCategories (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionModifierMapForBuildingContext
+    !?ioSemanticContext
+    !mListmapTypeName
+    !?getterMap
+    !?modifierMap
+    !?instanceMethodMap
+  )
+#--- Element type index
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    ?let @unifiedTypeMap-proxy listElementTypeIndex
+  ]
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mListmapTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. arrayType
+    !true # Support collection value
+    !@typedPropertyList.emptyList
+    !@attributeMap. emptyMap
+    !listTypedAttributeList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !enumeratorDescriptor
+    !enumerationVariants
+    !doNotGenererateObjectCompare ()
+    !addAssignOperatorDescription
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !false # Do not generate header in separate file
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
+    !"emptyMap" # Default constructor
+    !"listmap-" + mListmapTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Check associated list is actually a list
+  [inSemanticContext.mTypeMap searchKey
+    !mAssociatedListTypeName
+    ?3*
+    ?let @typeKindEnum typeKindEnum
+    ?*
+    ?let @typedPropertyList listTypeAttributeList
+    ?20*
+  ]
+#---
+  if typeKindEnum != @typeKindEnum. listType then
+    error mAssociatedListTypeName : "associated type should be a list type"
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"list map " + mListmapTypeName
+    !@listmapTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mListmapTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
+      !listTypeAttributeList
+      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @listmapTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedListTypeIndex
+  @typedPropertyList mAssociatedListTypedAttributeList
+  @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader {
+#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
+  for (t ...) in mAssociatedListTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet]
+  end
+
+  outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @listmapTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
+    ![mTypeProxy identifierRepresentation]
+    ![mAssociatedListTypeIndex identifierRepresentation]
+    !mAssociatedListTypedAttributeList
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+

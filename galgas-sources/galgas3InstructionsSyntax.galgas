@@ -34,7 +34,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
-  outInstructionsList = @semanticInstructionListAST. emptyList
+  outInstructionsList = @semanticInstructionListAST.emptyList
   repeat
   while
     $;$
@@ -422,7 +422,7 @@ rule <actual_input_parameter>
 
 rule <actual_input_parameter_list>
   !@actualInputParameterListAST outActualInputParameterList {
-  outActualInputParameterList = @actualInputParameterListAST. emptyList
+  outActualInputParameterList = @actualInputParameterListAST.emptyList
   repeat
   while
     <actual_input_parameter> ?let actualSelector ?let @abstractInputParameter actualInputParameter

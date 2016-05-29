@@ -25,7 +25,7 @@ syntax galgas3ExpressionSyntax (galgas3Scanner) {
 
 rule <output_expression_list>
   !@actualOutputExpressionList outExpressionList {
-  outExpressionList = @actualOutputExpressionList. emptyList
+  outExpressionList = @actualOutputExpressionList.emptyList
   repeat
   while
     $!$ ?let selector

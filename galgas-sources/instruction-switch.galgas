@@ -195,8 +195,8 @@ override method @switchInstructionAST analyzeSemanticInstruction
     end
     analyzeSemanticInstructionList (
       !inAnalysisContext
-      !@localConstantList. emptyList
-      !@localInitializedVariableList. emptyList
+      !@localConstantList.emptyList
+      !@localInitializedVariableList.emptyList
       !mInstructions
       !mEndOfBranch
       !?ioVariableMap

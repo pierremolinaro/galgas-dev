@@ -275,8 +275,8 @@ private proc generateManyHeaders
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList {
 #--- Header files
-  var headerInclusionList1 = @stringlist. emptyList
-  var headerInclusionList2 = @stringlist. emptyList
+  var headerInclusionList1 = @stringlist.emptyList
+  var headerInclusionList2 = @stringlist.emptyList
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       var inclusionSet1 = @stringset. emptySet
@@ -389,7 +389,7 @@ private proc generateOneBigHeader
   ?!@stringlist ioToolHeaderFileList {
   var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
-    !@stringlist. emptyList
+    !@stringlist.emptyList
   ]
 #--- Declaration 1
   for () in inSemanticDeclarationSortedListForGeneration do

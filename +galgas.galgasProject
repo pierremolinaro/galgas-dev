@@ -110,12 +110,14 @@ project (3:1:8) -> "galgas" {
   "galgas-sources/instruction-with.galgas"
 
 #--- Type declaration
-  "galgas-sources/enum.galgas"
-  "galgas-sources/shared-map.galgas"
-  "galgas-sources/map-proxy.galgas"
-  "galgas-sources/list.galgas"
-  "galgas-sources/struct.galgas"
-  "galgas-sources/sorted-list.galgas"
+  "galgas-sources/type-enum.galgas"
+  "galgas-sources/type-list.galgas"
+  "galgas-sources/type-listmap.galgas"
+  "galgas-sources/type-map.galgas"
+  "galgas-sources/type-map-proxy.galgas"
+  "galgas-sources/type-shared-map.galgas"
+  "galgas-sources/type-sorted-list.galgas"
+  "galgas-sources/type-struct.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxSignature.galgas"

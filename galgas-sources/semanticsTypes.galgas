@@ -502,8 +502,8 @@ method @predefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@stringlist outEnumerationVariant
   !@string outEnumeratedType {
-  outEnumerationList = @enumerationDescriptorList. emptyList # Enumeration is not supported
-  outEnumerationVariant = @stringlist. emptyList # Enumeration is not supported
+  outEnumerationList = @enumerationDescriptorList.emptyList # Enumeration is not supported
+  outEnumerationVariant = @stringlist.emptyList # Enumeration is not supported
   outEnumeratedType = "" # Enumeration is not supported
 }
 
