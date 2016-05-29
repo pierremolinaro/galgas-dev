@@ -1,0 +1,360 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @externTypeDeclarationAST : @semanticDeclarationAST {
+  @lstring mExternTypeName
+  @string mCppPreDeclarationCode
+  @string mCppClassCode
+  @externTypeConstructorList mExternTypeConstructorList
+  @externTypeGetterList mExternTypeGetterList
+  @externTypeModifierList mExternTypeModifierList
+  @externTypeMethodList mExternTypeMethodList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @typeNameFormalParameterNameList {
+  @lstring mFormalSelector
+  @lstring mFormalParameterTypeName
+  @lstring mFormalParameterName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @externTypeConstructorList {
+  @lstring mConstructorName
+  @lstring mResultTypeName
+  @typeNameFormalParameterNameList mParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @externTypeGetterList {
+  @lstring mGetterName
+  @lstring mResultTypeName
+  @typeNameFormalParameterNameList mParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @externTypeModifierList {
+  @lstring mModifierName
+  @formalParameterListAST mFormalParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @externTypeMethodList {
+  @lstring mMethodName
+  @formalParameterListAST mFormalParameterList
+  @location mDeclarationLocation
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration>
+   ?!@galgas3DeclarationAST ioDeclarations {
+    $extern$
+    $type_name$ ?var  @lstring externTypeName indexing externTypeDefinition
+    ${$
+      @string cppPredeclarationCode = ""
+      repeat
+      while
+        $literal_string$ ?var  @lstring cppPredeclarationCodeElement
+        cppPredeclarationCode += cppPredeclarationCodeElement.string
+      end
+    $}$
+    ${$
+      @string cppClassCode = ""
+      repeat
+      while
+        $literal_string$ ?var  @lstring cppClassCodeElement
+        cppClassCode += cppClassCodeElement.string
+      end
+    $}$
+    ${$
+    var externTypeConstructorList =@externTypeConstructorList.emptyList{}
+    @externTypeGetterList externTypeGetterList = {}
+    var externTypeModifierList =@externTypeModifierList.emptyList{}
+    var externTypeMethodList =@externTypeMethodList.emptyList{}
+    repeat
+    while
+      $constructor$
+      $identifier$ ?var  @lstring constructorName
+      var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+      repeat
+      while
+        $?$ ?let selector
+        $type_name$ ?var  @lstring argumentTypeName
+        $identifier$ ?var  @lstring argumentName
+        argumentTypeList += !selector !argumentTypeName !argumentName
+      end
+      $->$
+      $type_name$ ?var  @lstring resultTypeName
+      externTypeConstructorList +=
+        !constructorName
+        !resultTypeName
+        !argumentTypeList
+    while
+      $getter$
+      $identifier$ ?var  @lstring getterName
+      var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+      repeat
+      while
+        $?$ ?let selector
+        $type_name$ ?var  @lstring argumentTypeName
+        $identifier$ ?var  @lstring argumentName
+        argumentTypeList += !selector !argumentTypeName !argumentName
+      end
+      $->$
+      $type_name$ ?var  @lstring resultTypeName
+      externTypeGetterList +=
+        !getterName
+        !resultTypeName
+        !argumentTypeList
+    while
+      $setter$
+      $identifier$ ?var  @lstring modifierName
+      <formal_parameter_list> ?var @formalParameterListAST formalParameterList
+      externTypeModifierList +=
+        !modifierName
+        !formalParameterList
+    while
+      $method$
+      $identifier$ ?var  @lstring methodName
+      <formal_parameter_list> ?var @formalParameterListAST formalParameterList
+      externTypeMethodList +=
+        !methodName
+        !formalParameterList
+        !@location.here
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
+      !false # Is not predefined
+      !externTypeName
+      !cppPredeclarationCode
+      !cppClassCode
+      !externTypeConstructorList
+      !externTypeGetterList
+      !externTypeModifierList
+      !externTypeMethodList
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @externTypeDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  let key = @lstring.new {!"@" + mExternTypeName ![mExternTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @externTypeDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#---
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  var constructorMap =@constructorMap.emptyMap{}
+  var modifierMap =@setterMap.emptyMap{}
+  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  var classMethodMap =@classMethodMap.emptyMap{}
+#--- Constructors
+  for () in mExternTypeConstructorList do
+    @unifiedTypeMap-proxy returnedTypeProxy
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
+  #---
+    var arguments =@functionSignature.emptyList{}
+    for () in mParameterList do
+      @unifiedTypeMap-proxy argumentTypeProxy
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
+      arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
+    end
+  #---
+    [!?constructorMap insertKey
+      !mConstructorName
+      !arguments
+      !true #inHasLexiqueAndLocationArguments
+      !returnedTypeProxy
+    ]
+  end
+#--- Getters
+  for () in mExternTypeGetterList do
+    @unifiedTypeMap-proxy returnedTypeProxy
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
+  #---
+    @functionSignature arguments = {}
+    for () in mParameterList do
+      @unifiedTypeMap-proxy argumentTypeProxy
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
+      arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
+    end
+  #---
+    [!?getterMap insertKey
+      !mGetterName
+      !@methodKind.definedAsMember
+      !arguments
+      !@location.here
+      !true #inHasLexiqueAndLocationArguments
+      !returnedTypeProxy
+      !@methodQualifier.isBasicFinal
+      !"" # No Error message
+    ]
+  end
+#--- Modifiers
+  for () in mExternTypeModifierList do
+    var routineSignature =@formalParameterSignature.emptyList{}
+    for () in mFormalParameterList do
+      [@unifiedTypeMap-proxy makeProxy
+        !?ioSemanticContext.mTypeMap
+        !mFormalArgumentTypeName
+        ?let @unifiedTypeMap-proxy parameterTypeIndex
+      ]
+      routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+    end
+  #---
+    [!?modifierMap insertKey
+      !mModifierName
+      !@methodKind.definedAsMember
+      !routineSignature
+      !true #inHasLexiqueAndLocationArguments
+      !@methodQualifier.isBasicFinal
+      !"" # No Error message
+    ]
+  end
+#--- Methods
+  for () in mExternTypeMethodList do
+    var routineSignature =@formalParameterSignature.emptyList{}
+    for () in mFormalParameterList do
+      @unifiedTypeMap-proxy parameterTypeIndex
+      [@unifiedTypeMap-proxy makeProxy
+        !?ioSemanticContext.mTypeMap
+        !mFormalArgumentTypeName
+        ?parameterTypeIndex
+      ]
+      routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+    end
+  #---
+    [!?instanceMethodMap insertKey
+      !mMethodName
+      !@methodKind.definedAsMember
+      !routineSignature
+      !mDeclarationLocation
+      !true #inHasLexiqueAndLocationArguments
+      !@methodQualifier.isBasicFinal
+      !"" # No Error message
+    ]
+  end
+#--- Enter type in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mExternTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. externType
+    !false # Does not support collection value
+    !@typedPropertyList.emptyList
+    !@attributeMap. emptyMap
+    !@typedPropertyList.emptyList
+    !constructorMap
+    !getterMap
+    !modifierMap
+    !instanceMethodMap
+    !@classMethodMap. emptyMap
+    !@enumerationDescriptorList.emptyList
+    !@stringlist.emptyList
+    !0
+    !@functionSignature.emptyList
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !false # Do not generate header in separate file
+    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !"default" # Default constructor
+    !"externtype-" + mExternTypeName
+    !@headerKind. oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @externTypeDeclarationAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+  let externTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"extern type " + mExternTypeName
+    !@externTypeDeclarationForGeneration.new {
+      !externTypeProxy
+      !mExternTypeName.string
+      !mCppPreDeclarationCode
+      !mCppClassCode
+    }
+    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+  @string mExternTypeName
+  @string mCppPreDeclarationCode
+  @string mCppClassCode
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @externTypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mCppPreDeclarationCode
+    !mCppClassCode
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+

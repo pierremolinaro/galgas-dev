@@ -22,7 +22,7 @@ syntax extension galgas3DeclarationsSyntax {
     var mAttributeList =@propertyInCollectionListAST.emptyList{}
     repeat
     while
-      <attribute_declaration> !? mAttributeList
+      <property_declaration> !? mAttributeList
     while
       $;$
     end

@@ -1,19 +1,19 @@
 #ifndef all_2D_declarations_2D__31__33__ENTITIES_DEFINED
 #define all_2D_declarations_2D__31__33__ENTITIES_DEFINED
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/predefined-types.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-12.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    @expressionCollectionValueForGeneration class                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
 //--- Constructor
@@ -58,15 +58,15 @@ class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractColl
 } ; // End of GALGAS_expressionCollectionValueForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                           Pointer class for @expressionCollectionValueForGeneration class                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
@@ -92,11 +92,11 @@ class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollecti
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    @expressionListCollectionForGeneration class                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
 //--- Constructor
@@ -144,15 +144,15 @@ class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractColle
 } ; // End of GALGAS_expressionListCollectionForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListCollectionForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                           Pointer class for @expressionListCollectionForGeneration class                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
@@ -178,11 +178,11 @@ class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectio
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @nonTerminalInstructionForGrammarAnalysis class                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
 //--- Constructor
@@ -233,17 +233,17 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
 } ; // End of GALGAS_nonTerminalInstructionForGrammarAnalysis class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalInstructionForGrammarAnalysis ;
 
 #include "separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     @repeatInstructionForGrammarAnalysis class                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
 //--- Constructor
@@ -294,17 +294,17 @@ class GALGAS_repeatInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 } ; // End of GALGAS_repeatInstructionForGrammarAnalysis class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGrammarAnalysis ;
 
 #include "separateHeaderFor_repeatInstructionForGrammarAnalysis.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     @selectInstructionForGrammarAnalysis class                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
 //--- Constructor
@@ -355,17 +355,17 @@ class GALGAS_selectInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxI
 } ; // End of GALGAS_selectInstructionForGrammarAnalysis class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGrammarAnalysis ;
 
 #include "separateHeaderFor_selectInstructionForGrammarAnalysis.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    @terminalInstructionForGrammarAnalysis class                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSyntaxInstructionForGrammarAnalysis {
 //--- Constructor
@@ -416,17 +416,17 @@ class GALGAS_terminalInstructionForGrammarAnalysis : public GALGAS_abstractSynta
 } ; // End of GALGAS_terminalInstructionForGrammarAnalysis class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstructionForGrammarAnalysis ;
 
 #include "separateHeaderFor_terminalInstructionForGrammarAnalysis.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      @inputActualParameterForGeneration class                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
 //--- Constructor
@@ -474,15 +474,15 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
 } ; // End of GALGAS_inputActualParameterForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParameterForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                             Pointer class for @inputActualParameterForGeneration class                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
 //--- Attributes
@@ -508,11 +508,11 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @inputJokerParameterForGeneration class                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterForGeneration {
 //--- Constructor
@@ -560,15 +560,15 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
 } ; // End of GALGAS_inputJokerParameterForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameterForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                              Pointer class for @inputJokerParameterForGeneration class                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGeneration {
 //--- Attributes
@@ -594,11 +594,11 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      @outputActualParameterForGeneration class                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
 //--- Constructor
@@ -643,15 +643,15 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
 } ; // End of GALGAS_outputActualParameterForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParameterForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                             Pointer class for @outputActualParameterForGeneration class                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
 //--- Attributes
@@ -677,11 +677,11 @@ class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGe
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @outputInputActualParameterForGeneration class                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParameterForGeneration {
 //--- Constructor
@@ -735,15 +735,15 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
 } ; // End of GALGAS_outputInputActualParameterForGeneration class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualParameterForGeneration ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                          Pointer class for @outputInputActualParameterForGeneration class                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
 //--- Attributes
@@ -775,11 +775,11 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                              @optionComponentAST class                                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionComponentAST : public AC_GALGAS_class {
 //--- Constructor
@@ -829,15 +829,15 @@ class GALGAS_optionComponentAST : public AC_GALGAS_class {
 } ; // End of GALGAS_optionComponentAST class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     Pointer class for @optionComponentAST class                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionComponentAST : public acPtr_class {
 //--- Attributes

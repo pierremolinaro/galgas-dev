@@ -65,6 +65,20 @@ project (3:1:8) -> "galgas" {
 #--- All AST types
   "galgas-sources/allASTTypes.galgas"
 
+#--- Type declaration
+  "galgas-sources/type-array.galgas"
+  "galgas-sources/type-class.galgas"
+  "galgas-sources/type-enum.galgas"
+  "galgas-sources/type-extern.galgas"
+  "galgas-sources/type-graph.galgas"
+  "galgas-sources/type-list.galgas"
+  "galgas-sources/type-listmap.galgas"
+  "galgas-sources/type-map.galgas"
+  "galgas-sources/type-map-proxy.galgas"
+  "galgas-sources/type-shared-map.galgas"
+  "galgas-sources/type-sorted-list.galgas"
+  "galgas-sources/type-struct.galgas"
+
 #--- Semantics Component
   "galgas-sources/semanticsTypesForAST.galgas"
   "galgas-sources/semanticsTypes.galgas"
@@ -108,16 +122,6 @@ project (3:1:8) -> "galgas" {
   "galgas-sources/instruction-type-method-call.galgas"
   "galgas-sources/instruction-warning.galgas"
   "galgas-sources/instruction-with.galgas"
-
-#--- Type declaration
-  "galgas-sources/type-enum.galgas"
-  "galgas-sources/type-list.galgas"
-  "galgas-sources/type-listmap.galgas"
-  "galgas-sources/type-map.galgas"
-  "galgas-sources/type-map-proxy.galgas"
-  "galgas-sources/type-shared-map.galgas"
-  "galgas-sources/type-sorted-list.galgas"
-  "galgas-sources/type-struct.galgas"
 
 #--- Syntax Component
   "galgas-sources/syntaxSignature.galgas"

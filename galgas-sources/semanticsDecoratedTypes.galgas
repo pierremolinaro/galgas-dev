@@ -850,17 +850,6 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A R R A Y    D E C L A R A T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @arrayTypeForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mElementTypeProxy
-  @uint mDimension
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    C L A S S    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -881,17 +870,6 @@ list @methodDefinitionListForGeneration {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-class @classTypeForGeneration : @semanticTypeForGeneration {
-  @bool mIsAbstract
-  @lstring mClassTypeName
-  @unifiedTypeMap-proxy mSuperClass # Null if no super class
-  @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
-  @typedPropertyList mTypedAttributeList
-  @bool mGenerateHeaderInSeparateFile # Significant only for classes
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #    P R I M I T I V E    T Y P E                                                                                      *
 #                                                                                                                      *
@@ -900,30 +878,6 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
 class @primitiveTypeForGeneration : @semanticTypeForGeneration {
   @string mPredefinedTypeName
   @predefinedTypeKindEnum mKind
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    G R A P H    D E C L A R A T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @graphDeclarationForGeneration : @semanticTypeForGeneration {
-  @unifiedTypeMap-proxy mAssociatedListTypeProxy
-  @unifiedTypeMap-proxy mAssociatedListElementTypeProxy
-  @graphInsertModifierList mInsertModifierList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    E X T E R N    T Y P E    D E C L A R A T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
-  @string mExternTypeName
-  @string mCppPreDeclarationCode
-  @string mCppClassCode
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

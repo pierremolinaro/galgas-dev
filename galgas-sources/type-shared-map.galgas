@@ -172,7 +172,7 @@ syntax extension galgas3DeclarationsSyntax {
       $literal_string$ ?let messageText
       sharedMapAttributeListAST += !attributeName !isError !messageText
     while
-      <attribute_declaration> !? propertyList
+      <property_declaration> !? propertyList
     while
       $insert$
       <insert_method_declaration> !? mInsertMethodList

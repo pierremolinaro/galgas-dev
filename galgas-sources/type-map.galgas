@@ -70,7 +70,7 @@ syntax extension galgas3DeclarationsSyntax {
     var insertOrReplaceDeclarationListAST =@insertOrReplaceDeclarationListAST.emptyList{}
     repeat
     while
-      <attribute_declaration> !? propertyList
+      <property_declaration> !? propertyList
     while
       $insert$
       <insert_method_declaration> !? mInsertMethodList
@@ -114,6 +114,34 @@ syntax extension galgas3DeclarationsSyntax {
     }
   }
   
+  #·····················································································································
+
+  rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
+    $identifier$ ?var  @lstring mMethodName
+    @lstring stateName
+    select
+      stateName = @lstring.new {!"" !@location.here}
+    or
+      $state$
+      $identifier$ ? stateName
+    end
+    $error$
+    $message$
+    $literal_string$ ?var  @lstring mErrorMessage
+    @lstring mShadowErrorMessage
+    select
+      mShadowErrorMessage = @lstring.new {!"" !@location.here}
+    or
+      $,$
+      $literal_string$ ? mShadowErrorMessage
+    end
+    ioMapMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !mShadowErrorMessage
+      !stateName
+  }
+
   #·····················································································································
 
 }

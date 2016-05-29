@@ -1,19 +1,19 @@
 #ifndef all_2D_declarations_2D__31__ENTITIES_DEFINED
 #define all_2D_declarations_2D__31__ENTITIES_DEFINED
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/predefined-types.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-0.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    @lexicalRoutineCallActualArgumentListAST list                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -110,9 +110,9 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalRoutineCallActualArgumentListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalRoutineCallActualArgumentListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalRoutineCallActualArgumentListAST (const GALGAS_lexicalRoutineCallActualArgumentListAST & inEnumeratedObject,
@@ -124,15 +124,15 @@ class cEnumerator_lexicalRoutineCallActualArgumentListAST : public cGenericAbstr
   public : class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @abstractLexicalRoutineActualArgumentAST class                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_class {
 //--- Constructor
@@ -172,15 +172,15 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_class {
 } ; // End of GALGAS_abstractLexicalRoutineActualArgumentAST class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRoutineActualArgumentAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                          Pointer class for @abstractLexicalRoutineActualArgumentAST class                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
 //--- Attributes
@@ -202,11 +202,11 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                             @lexicalRoutineCallActualArgumentListAST_2D_element struct                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -261,15 +261,15 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALG
 } ; // End of GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @lexicalFunctionCallActualArgumentListAST list                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -366,9 +366,9 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalFunctionCallActualArgumentListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalFunctionCallActualArgumentListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalFunctionCallActualArgumentListAST (const GALGAS_lexicalFunctionCallActualArgumentListAST & inEnumeratedObject,
@@ -380,15 +380,15 @@ class cEnumerator_lexicalFunctionCallActualArgumentListAST : public cGenericAbst
   public : class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                @lexicalRoutineOrFunctionFormalInputArgumentAST class                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_class {
 //--- Constructor
@@ -426,15 +426,15 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_c
 } ; // End of GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                       Pointer class for @lexicalRoutineOrFunctionFormalInputArgumentAST class                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acPtr_class {
 //--- Attributes
@@ -453,11 +453,11 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acPtr_class {
 
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                             @lexicalFunctionCallActualArgumentListAST_2D_element struct                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -512,15 +512,15 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GAL
 } ; // End of GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                            @lexicalArgumentModeAST enum                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -579,15 +579,15 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalArgumentModeAST class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalArgumentModeAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @lexicalExternRoutineFormalArgumentListAST list                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExternRoutineFormalArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -702,9 +702,9 @@ class GALGAS_lexicalExternRoutineFormalArgumentListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalExternRoutineFormalArgumentListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalExternRoutineFormalArgumentListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalExternRoutineFormalArgumentListAST (const GALGAS_lexicalExternRoutineFormalArgumentListAST & inEnumeratedObject,
@@ -718,15 +718,15 @@ class cEnumerator_lexicalExternRoutineFormalArgumentListAST : public cGenericAbs
   public : class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternRoutineFormalArgumentListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                            @lexicalExternRoutineFormalArgumentListAST_2D_element struct                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -791,15 +791,15 @@ class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element : public AC_GA
 } ; // End of GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @externRoutineListAST list                                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externRoutineListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -914,9 +914,9 @@ class GALGAS_externRoutineListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_externRoutineListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_externRoutineListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_externRoutineListAST (const GALGAS_externRoutineListAST & inEnumeratedObject,
@@ -930,15 +930,15 @@ class cEnumerator_externRoutineListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_externRoutineListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @externRoutineListAST_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externRoutineListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -1006,15 +1006,15 @@ class GALGAS_externRoutineListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_externRoutineListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  @lexicalExternFunctionFormalArgumentListAST list                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExternFunctionFormalArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1120,9 +1120,9 @@ class GALGAS_lexicalExternFunctionFormalArgumentListAST : public AC_GALGAS_list 
  
 } ; // End of GALGAS_lexicalExternFunctionFormalArgumentListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalExternFunctionFormalArgumentListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lexicalExternFunctionFormalArgumentListAST & inEnumeratedObject,
@@ -1135,15 +1135,15 @@ class cEnumerator_lexicalExternFunctionFormalArgumentListAST : public cGenericAb
   public : class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternFunctionFormalArgumentListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                            @lexicalExternFunctionFormalArgumentListAST_2D_element struct                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -1206,15 +1206,15 @@ class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element : public AC_G
 } ; // End of GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @externFunctionListAST list                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externFunctionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1329,9 +1329,9 @@ class GALGAS_externFunctionListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_externFunctionListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_externFunctionListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_externFunctionListAST (const GALGAS_externFunctionListAST & inEnumeratedObject,
@@ -1345,15 +1345,15 @@ class cEnumerator_externFunctionListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_externFunctionListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      @externFunctionListAST_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_externFunctionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -1421,15 +1421,15 @@ class GALGAS_externFunctionListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_externFunctionListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                @indexingListAST list                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_indexingListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1535,9 +1535,9 @@ class GALGAS_indexingListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_indexingListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_indexingListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_indexingListAST (const GALGAS_indexingListAST & inEnumeratedObject,
@@ -1550,15 +1550,15 @@ class cEnumerator_indexingListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_indexingListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                         @indexingListAST_2D_element struct                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -1621,15 +1621,15 @@ class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_indexingListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @galgas3LexiqueComponentListAST list                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_galgas_33_LexiqueComponentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -1899,9 +1899,9 @@ class GALGAS_galgas_33_LexiqueComponentListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_galgas_33_LexiqueComponentListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_galgas_33_LexiqueComponentListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_galgas_33_LexiqueComponentListAST (const GALGAS_galgas_33_LexiqueComponentListAST & inEnumeratedObject,
@@ -1926,15 +1926,15 @@ class cEnumerator_galgas_33_LexiqueComponentListAST : public cGenericAbstractEnu
   public : class GALGAS_galgas_33_LexiqueComponentListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_LexiqueComponentListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                @galgas_33_LexiqueComponentListAST_2D_element struct                                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_galgas_33_LexiqueComponentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -2057,15 +2057,15 @@ class GALGAS_galgas_33_LexiqueComponentListAST_2D_element : public AC_GALGAS_roo
 } ; // End of GALGAS_galgas_33_LexiqueComponentListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_LexiqueComponentListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                @lexicalTypeEnum enum                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -2154,15 +2154,15 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalTypeEnum class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeEnum ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @lexicalSentValueList list                                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalSentValueList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -2289,9 +2289,9 @@ class GALGAS_lexicalSentValueList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalSentValueList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalSentValueList : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalSentValueList (const GALGAS_lexicalSentValueList & inEnumeratedObject,
@@ -2305,15 +2305,15 @@ class cEnumerator_lexicalSentValueList : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalSentValueList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @lexicalSentValueList_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -2378,23 +2378,23 @@ class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalSentValueList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                  @terminalMap map                                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_terminalMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_terminalMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -2467,9 +2467,9 @@ class GALGAS_terminalMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_terminalMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_terminalMap : public cGenericAbstractEnumerator {
   public : cEnumerator_terminalMap (const GALGAS_terminalMap & inEnumeratedObject,
@@ -2482,15 +2482,15 @@ class cEnumerator_terminalMap : public cGenericAbstractEnumerator {
   public : class GALGAS_terminalMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       Class for element of '@terminalMap' map                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_terminalMap : public cMapElement {
 //--- Map attributes
@@ -2514,11 +2514,11 @@ class cMapElement_terminalMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           @terminalMap_2D_element struct                                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -2581,23 +2581,23 @@ class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_terminalMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                 @lexicalTypeMap map                                                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTypeMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalTypeMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTypeMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -2670,9 +2670,9 @@ class GALGAS_lexicalTypeMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalTypeMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalTypeMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalTypeMap (const GALGAS_lexicalTypeMap & inEnumeratedObject,
@@ -2685,15 +2685,15 @@ class cEnumerator_lexicalTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalTypeMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     Class for element of '@lexicalTypeMap' map                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTypeMap : public cMapElement {
 //--- Map attributes
@@ -2717,11 +2717,11 @@ class cMapElement_lexicalTypeMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                          @lexicalTypeMap_2D_element struct                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -2781,23 +2781,23 @@ class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalTypeMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                              @lexicalAttributeMap map                                               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalAttributeMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalAttributeMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalAttributeMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -2870,9 +2870,9 @@ class GALGAS_lexicalAttributeMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalAttributeMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalAttributeMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalAttributeMap (const GALGAS_lexicalAttributeMap & inEnumeratedObject,
@@ -2885,15 +2885,15 @@ class cEnumerator_lexicalAttributeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalAttributeMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Class for element of '@lexicalAttributeMap' map                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalAttributeMap : public cMapElement {
 //--- Map attributes
@@ -2917,11 +2917,11 @@ class cMapElement_lexicalAttributeMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @lexicalAttributeMap_2D_element struct                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -2981,15 +2981,15 @@ class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalAttributeMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                @lexicalTypeList list                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTypeList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -3090,9 +3090,9 @@ class GALGAS_lexicalTypeList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalTypeList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalTypeList : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalTypeList (const GALGAS_lexicalTypeList & inEnumeratedObject,
@@ -3104,15 +3104,15 @@ class cEnumerator_lexicalTypeList : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalTypeList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                         @lexicalTypeList_2D_element struct                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTypeList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -3167,15 +3167,15 @@ class GALGAS_lexicalTypeList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalTypeList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                 @terminalList list                                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -3341,9 +3341,9 @@ class GALGAS_terminalList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_terminalList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_terminalList : public cGenericAbstractEnumerator {
   public : cEnumerator_terminalList (const GALGAS_terminalList & inEnumeratedObject,
@@ -3360,15 +3360,15 @@ class cEnumerator_terminalList : public cGenericAbstractEnumerator {
   public : class GALGAS_terminalList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           @terminalList_2D_element struct                                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -3451,23 +3451,23 @@ class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_terminalList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                          @lexicalExplicitTokenListMap map                                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -3552,9 +3552,9 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalExplicitTokenListMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalExplicitTokenListMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inEnumeratedObject,
@@ -3568,15 +3568,15 @@ class cEnumerator_lexicalExplicitTokenListMap : public cGenericAbstractEnumerato
   public : class GALGAS_lexicalExplicitTokenListMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                               Class for element of '@lexicalExplicitTokenListMap' map                               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
 //--- Map attributes
@@ -3602,11 +3602,11 @@ class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @lexicalExplicitTokenListMap_2D_element struct                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -3674,15 +3674,15 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalExplicitTokenListMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                            @tokenSortedlist sorted list                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
 //--------------------------------- Default constructor
@@ -3756,9 +3756,9 @@ class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
  
 } ; // End of GALGAS_tokenSortedlist class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_tokenSortedlist : public cGenericAbstractEnumerator {
   public : cEnumerator_tokenSortedlist (const GALGAS_tokenSortedlist & inEnumeratedObject,
@@ -3772,15 +3772,15 @@ class cEnumerator_tokenSortedlist : public cGenericAbstractEnumerator {
   public : class GALGAS_tokenSortedlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                         @tokenSortedlist_2D_element struct                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -3848,23 +3848,23 @@ class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_tokenSortedlist_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                         @lexicalExplicitTokenListMapMap map                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMapMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -3961,9 +3961,9 @@ class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalExplicitTokenListMapMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalExplicitTokenListMapMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inEnumeratedObject,
@@ -3978,15 +3978,15 @@ class cEnumerator_lexicalExplicitTokenListMapMap : public cGenericAbstractEnumer
   public : class GALGAS_lexicalExplicitTokenListMapMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                             Class for element of '@lexicalExplicitTokenListMapMap' map                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
 //--- Map attributes
@@ -4014,11 +4014,11 @@ class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  @lexicalExplicitTokenListMapMap_2D_element struct                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -4091,23 +4091,23 @@ class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalExplicitTokenListMapMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                               @lexicalMessageMap map                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalMessageMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalMessageMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -4192,9 +4192,9 @@ class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalMessageMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalMessageMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalMessageMap (const GALGAS_lexicalMessageMap & inEnumeratedObject,
@@ -4208,15 +4208,15 @@ class cEnumerator_lexicalMessageMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalMessageMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Class for element of '@lexicalMessageMap' map                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalMessageMap : public cMapElement {
 //--- Map attributes
@@ -4242,11 +4242,11 @@ class cMapElement_lexicalMessageMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @lexicalMessageMap_2D_element struct                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -4314,15 +4314,15 @@ class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalMessageMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @lexicalRoutineFormalArgumentList list                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4449,9 +4449,9 @@ class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalRoutineFormalArgumentList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalRoutineFormalArgumentList : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList & inEnumeratedObject,
@@ -4465,15 +4465,15 @@ class cEnumerator_lexicalRoutineFormalArgumentList : public cGenericAbstractEnum
   public : class GALGAS_lexicalRoutineFormalArgumentList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                 @lexicalRoutineFormalArgumentList_2D_element struct                                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -4538,23 +4538,23 @@ class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root
 } ; // End of GALGAS_lexicalRoutineFormalArgumentList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                               @lexicalRoutineMap map                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalRoutineMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalRoutineMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -4651,9 +4651,9 @@ class GALGAS_lexicalRoutineMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalRoutineMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalRoutineMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalRoutineMap (const GALGAS_lexicalRoutineMap & inEnumeratedObject,
@@ -4668,15 +4668,15 @@ class cEnumerator_lexicalRoutineMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalRoutineMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    Class for element of '@lexicalRoutineMap' map                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalRoutineMap : public cMapElement {
 //--- Map attributes
@@ -4704,11 +4704,11 @@ class cMapElement_lexicalRoutineMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @lexicalRoutineMap_2D_element struct                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalRoutineMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -4781,15 +4781,15 @@ class GALGAS_lexicalRoutineMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalRoutineMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @lexicalFunctionFormalArgumentList list                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4903,9 +4903,9 @@ class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexicalFunctionFormalArgumentList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalFunctionFormalArgumentList : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList & inEnumeratedObject,
@@ -4918,15 +4918,15 @@ class cEnumerator_lexicalFunctionFormalArgumentList : public cGenericAbstractEnu
   public : class GALGAS_lexicalFunctionFormalArgumentList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                @lexicalFunctionFormalArgumentList_2D_element struct                                 *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionFormalArgumentList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -4986,23 +4986,23 @@ class GALGAS_lexicalFunctionFormalArgumentList_2D_element : public AC_GALGAS_roo
 } ; // End of GALGAS_lexicalFunctionFormalArgumentList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                               @lexicalFunctionMap map                                               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalFunctionMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalFunctionMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -5111,9 +5111,9 @@ class GALGAS_lexicalFunctionMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalFunctionMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalFunctionMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalFunctionMap (const GALGAS_lexicalFunctionMap & inEnumeratedObject,
@@ -5129,15 +5129,15 @@ class cEnumerator_lexicalFunctionMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalFunctionMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   Class for element of '@lexicalFunctionMap' map                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalFunctionMap : public cMapElement {
 //--- Map attributes
@@ -5167,11 +5167,11 @@ class cMapElement_lexicalFunctionMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @lexicalFunctionMap_2D_element struct                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalFunctionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -5246,15 +5246,15 @@ class GALGAS_lexicalFunctionMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalFunctionMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @templateDelimitorList list                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateDelimitorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -5381,9 +5381,9 @@ class GALGAS_templateDelimitorList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_templateDelimitorList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_templateDelimitorList : public cGenericAbstractEnumerator {
   public : cEnumerator_templateDelimitorList (const GALGAS_templateDelimitorList & inEnumeratedObject,
@@ -5397,15 +5397,15 @@ class cEnumerator_templateDelimitorList : public cGenericAbstractEnumerator {
   public : class GALGAS_templateDelimitorList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      @templateDelimitorList_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_templateDelimitorList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -5473,23 +5473,23 @@ class GALGAS_templateDelimitorList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_templateDelimitorList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                    @styleMap map                                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_styleMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_styleMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_styleMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -5574,9 +5574,9 @@ class GALGAS_styleMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_styleMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_styleMap : public cGenericAbstractEnumerator {
   public : cEnumerator_styleMap (const GALGAS_styleMap & inEnumeratedObject,
@@ -5590,15 +5590,15 @@ class cEnumerator_styleMap : public cGenericAbstractEnumerator {
   public : class GALGAS_styleMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        Class for element of '@styleMap' map                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_styleMap : public cMapElement {
 //--- Map attributes
@@ -5624,11 +5624,11 @@ class cMapElement_styleMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @styleMap_2D_element struct                                             *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_styleMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -5696,23 +5696,23 @@ class GALGAS_styleMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_styleMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_styleMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                 @lexicalTagMap map                                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTagMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_lexicalTagMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTagMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -5773,9 +5773,9 @@ class GALGAS_lexicalTagMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_lexicalTagMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexicalTagMap : public cGenericAbstractEnumerator {
   public : cEnumerator_lexicalTagMap (const GALGAS_lexicalTagMap & inEnumeratedObject,
@@ -5787,15 +5787,15 @@ class cEnumerator_lexicalTagMap : public cGenericAbstractEnumerator {
   public : class GALGAS_lexicalTagMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                      Class for element of '@lexicalTagMap' map                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_lexicalTagMap : public cMapElement {
 //--- Map attributes
@@ -5817,11 +5817,11 @@ class cMapElement_lexicalTagMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                          @lexicalTagMap_2D_element struct                                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexicalTagMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -5879,15 +5879,15 @@ class GALGAS_lexicalTagMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexicalTagMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @lexiqueComponentGenerationList list                                         *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexiqueComponentGenerationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -6040,9 +6040,9 @@ class GALGAS_lexiqueComponentGenerationList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_lexiqueComponentGenerationList class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_lexiqueComponentGenerationList : public cGenericAbstractEnumerator {
   public : cEnumerator_lexiqueComponentGenerationList (const GALGAS_lexiqueComponentGenerationList & inEnumeratedObject,
@@ -6058,15 +6058,15 @@ class cEnumerator_lexiqueComponentGenerationList : public cGenericAbstractEnumer
   public : class GALGAS_lexiqueComponentGenerationList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentGenerationList ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  @lexiqueComponentGenerationList_2D_element struct                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexiqueComponentGenerationList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -6144,15 +6144,15 @@ class GALGAS_lexiqueComponentGenerationList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_lexiqueComponentGenerationList_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentGenerationList_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           @optionDefaultValueEnumAST enum                                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 //--------------------------------- Default constructor
@@ -6216,15 +6216,15 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 } ; // End of GALGAS_optionDefaultValueEnumAST class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           @commandLineOptionListAST list                                            *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_commandLineOptionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -6403,9 +6403,9 @@ class GALGAS_commandLineOptionListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_commandLineOptionListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_commandLineOptionListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_commandLineOptionListAST (const GALGAS_commandLineOptionListAST & inEnumeratedObject,
@@ -6423,15 +6423,15 @@ class cEnumerator_commandLineOptionListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_commandLineOptionListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                     @commandLineOptionListAST_2D_element struct                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_commandLineOptionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -6516,23 +6516,23 @@ class GALGAS_commandLineOptionListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_commandLineOptionListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                              @commandLineOptionMap map                                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_commandLineOptionMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const char * kSearchErrorMessage_commandLineOptionMap_searchKey ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_commandLineOptionMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -6641,9 +6641,9 @@ class GALGAS_commandLineOptionMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_commandLineOptionMap class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_commandLineOptionMap : public cGenericAbstractEnumerator {
   public : cEnumerator_commandLineOptionMap (const GALGAS_commandLineOptionMap & inEnumeratedObject,
@@ -6659,15 +6659,15 @@ class cEnumerator_commandLineOptionMap : public cGenericAbstractEnumerator {
   public : class GALGAS_commandLineOptionMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                  Class for element of '@commandLineOptionMap' map                                   *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_commandLineOptionMap : public cMapElement {
 //--- Map attributes
@@ -6697,11 +6697,11 @@ class cMapElement_commandLineOptionMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @commandLineOptionMap_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_commandLineOptionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -6779,15 +6779,15 @@ class GALGAS_commandLineOptionMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_commandLineOptionMap_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMap_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                           @guiSimpleAttributeListAST list                                           *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -6901,9 +6901,9 @@ class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_guiSimpleAttributeListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_guiSimpleAttributeListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_guiSimpleAttributeListAST (const GALGAS_guiSimpleAttributeListAST & inEnumeratedObject,
@@ -6916,15 +6916,15 @@ class cEnumerator_guiSimpleAttributeListAST : public cGenericAbstractEnumerator 
   public : class GALGAS_guiSimpleAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                    @guiSimpleAttributeListAST_2D_element struct                                     *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiSimpleAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -6987,15 +6987,15 @@ class GALGAS_guiSimpleAttributeListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_guiSimpleAttributeListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                          @guiCompoundAttributeListAST list                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -7122,9 +7122,9 @@ class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_guiCompoundAttributeListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_guiCompoundAttributeListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_guiCompoundAttributeListAST (const GALGAS_guiCompoundAttributeListAST & inEnumeratedObject,
@@ -7138,15 +7138,15 @@ class cEnumerator_guiCompoundAttributeListAST : public cGenericAbstractEnumerato
   public : class GALGAS_guiCompoundAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                   @guiCompoundAttributeListAST_2D_element struct                                    *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiCompoundAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -7214,15 +7214,15 @@ class GALGAS_guiCompoundAttributeListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_guiCompoundAttributeListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttributeListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                             @terminalLabelListAST list                                              *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -7336,9 +7336,9 @@ class GALGAS_terminalLabelListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_terminalLabelListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_terminalLabelListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_terminalLabelListAST (const GALGAS_terminalLabelListAST & inEnumeratedObject,
@@ -7351,15 +7351,15 @@ class cEnumerator_terminalLabelListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_terminalLabelListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                       @terminalLabelListAST_2D_element struct                                       *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_terminalLabelListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -7422,15 +7422,15 @@ class GALGAS_terminalLabelListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_terminalLabelListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                                @guiLabelListAST list                                                *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -7557,9 +7557,9 @@ class GALGAS_guiLabelListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_guiLabelListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_guiLabelListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_guiLabelListAST (const GALGAS_guiLabelListAST & inEnumeratedObject,
@@ -7573,15 +7573,15 @@ class cEnumerator_guiLabelListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_guiLabelListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                         @guiLabelListAST_2D_element struct                                          *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_guiLabelListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -7649,15 +7649,15 @@ class GALGAS_guiLabelListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_guiLabelListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2D_element ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                              @withLexiqueListAST list                                               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_withLexiqueListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -7797,9 +7797,9 @@ class GALGAS_withLexiqueListAST : public AC_GALGAS_list {
  
 } ; // End of GALGAS_withLexiqueListAST class
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //   Enumerator declaration                                                                                            *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_withLexiqueListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_withLexiqueListAST (const GALGAS_withLexiqueListAST & inEnumeratedObject,
@@ -7814,15 +7814,15 @@ class cEnumerator_withLexiqueListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_withLexiqueListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
 //                                        @withLexiqueListAST_2D_element struct                                        *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_withLexiqueListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
@@ -7895,7 +7895,7 @@ class GALGAS_withLexiqueListAST_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_withLexiqueListAST_2D_element class
 
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST_2D_element ;
 

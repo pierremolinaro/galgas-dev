@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
     @propertyInCollectionListAST attributeList = {}
     repeat
     while
-      <attribute_declaration> !?attributeList
+      <property_declaration> !?attributeList
     while
       $;$
     end
