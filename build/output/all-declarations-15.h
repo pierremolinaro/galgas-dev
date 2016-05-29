@@ -1082,9 +1082,6 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //--- Constructor
   public : GALGAS_sharedMapTypeForGeneration (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_sharedMapTypeForGeneration constructor_default (LOCATION_ARGS) ;
-
 //---
   public : inline const class cPtr_sharedMapTypeForGeneration * ptr (void) const { return (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ; }
 
@@ -1110,7 +1107,9 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                      const class GALGAS_mapAutomatonStateMap & inOperand5,
                                                                      const class GALGAS_mapAutomatonActionMap & inOperand6,
                                                                      const class GALGAS_mapStateSortedList & inOperand7,
-                                                                     const class GALGAS_mapOverrideList & inOperand8
+                                                                     const class GALGAS_mapOverrideList & inOperand8,
+                                                                     const class GALGAS_mapAutomatonMessageKind & inOperand9,
+                                                                     const class GALGAS_string & inOperand10
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1135,6 +1134,10 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mMapTypeName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_mapSearchMethodListAST getter_mSearchMethodList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_mapAutomatonMessageKind getter_mShadowBehaviour (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mShadowMessage (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mTypedAttributeList (LOCATION_ARGS) const ;
 
@@ -1165,6 +1168,8 @@ class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public : GALGAS_mapAutomatonActionMap mAttribute_mMapAutomatonActionMap ;
   public : GALGAS_mapStateSortedList mAttribute_mMapStateSortedList ;
   public : GALGAS_mapOverrideList mAttribute_mMapOverrideList ;
+  public : GALGAS_mapAutomatonMessageKind mAttribute_mShadowBehaviour ;
+  public : GALGAS_string mAttribute_mShadowMessage ;
 
 //--- Constructor
   public : cPtr_sharedMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1175,7 +1180,9 @@ class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                             const GALGAS_mapAutomatonStateMap & in_mMapAutomatonStateMap,
                                             const GALGAS_mapAutomatonActionMap & in_mMapAutomatonActionMap,
                                             const GALGAS_mapStateSortedList & in_mMapStateSortedList,
-                                            const GALGAS_mapOverrideList & in_mMapOverrideList
+                                            const GALGAS_mapOverrideList & in_mMapOverrideList,
+                                            const GALGAS_mapAutomatonMessageKind & in_mShadowBehaviour,
+                                            const GALGAS_string & in_mShadowMessage
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1190,6 +1197,8 @@ class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public : VIRTUAL_IN_DEBUG GALGAS_mapAutomatonActionMap getter_mMapAutomatonActionMap (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapStateSortedList getter_mMapStateSortedList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapOverrideList getter_mMapOverrideList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_mapAutomatonMessageKind getter_mShadowBehaviour (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mShadowMessage (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

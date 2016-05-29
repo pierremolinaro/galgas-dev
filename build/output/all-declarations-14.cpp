@@ -8541,6 +8541,9 @@ typeComparisonResult cPtr_sharedMapDeclarationAST::dynamicObjectCompare (const a
   if (kOperandEqual == result) {
     result = mAttribute_mMapOverrideBlockListAST.objectCompare (p->mAttribute_mMapOverrideBlockListAST) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSharedMapAttributeListAST.objectCompare (p->mAttribute_mSharedMapAttributeListAST) ;
+  }
   return result ;
 }
 
@@ -8579,7 +8582,8 @@ GALGAS_sharedMapDeclarationAST GALGAS_sharedMapDeclarationAST::constructor_defau
                                                           GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                           GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                           GALGAS_mapStateList::constructor_emptyList (HERE),
-                                                          GALGAS_mapOverrideBlockListAST::constructor_emptyList (HERE)
+                                                          GALGAS_mapOverrideBlockListAST::constructor_emptyList (HERE),
+                                                          GALGAS_sharedMapAttributeListAST::constructor_emptyList (HERE)
                                                           COMMA_THERE) ;
 }
 
@@ -8599,11 +8603,12 @@ GALGAS_sharedMapDeclarationAST GALGAS_sharedMapDeclarationAST::constructor_new (
                                                                                 const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                                 const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                                 const GALGAS_mapStateList & inAttribute_mMapStateList,
-                                                                                const GALGAS_mapOverrideBlockListAST & inAttribute_mMapOverrideBlockListAST
+                                                                                const GALGAS_mapOverrideBlockListAST & inAttribute_mMapOverrideBlockListAST,
+                                                                                const GALGAS_sharedMapAttributeListAST & inAttribute_mSharedMapAttributeListAST
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_sharedMapDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_sharedMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid () && inAttribute_mSharedMapAttributeListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_sharedMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST, inAttribute_mSharedMapAttributeListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8735,6 +8740,24 @@ GALGAS_mapOverrideBlockListAST cPtr_sharedMapDeclarationAST::getter_mMapOverride
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapAttributeListAST GALGAS_sharedMapDeclarationAST::getter_mSharedMapAttributeListAST (UNUSED_LOCATION_ARGS) const {
+  GALGAS_sharedMapAttributeListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapDeclarationAST * p = (const cPtr_sharedMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapDeclarationAST) ;
+    result = p->mAttribute_mSharedMapAttributeListAST ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapAttributeListAST cPtr_sharedMapDeclarationAST::getter_mSharedMapAttributeListAST (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSharedMapAttributeListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @sharedMapDeclarationAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8745,7 +8768,8 @@ cPtr_sharedMapDeclarationAST::cPtr_sharedMapDeclarationAST (const GALGAS_bool & 
                                                             const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                             const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                             const GALGAS_mapStateList & in_mMapStateList,
-                                                            const GALGAS_mapOverrideBlockListAST & in_mMapOverrideBlockListAST
+                                                            const GALGAS_mapOverrideBlockListAST & in_mMapOverrideBlockListAST,
+                                                            const GALGAS_sharedMapAttributeListAST & in_mSharedMapAttributeListAST
                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mMapTypeName (in_mMapTypeName),
@@ -8754,7 +8778,8 @@ mAttribute_mPropertyList (in_mPropertyList),
 mAttribute_mInsertMethodList (in_mInsertMethodList),
 mAttribute_mSearchMethodList (in_mSearchMethodList),
 mAttribute_mMapStateList (in_mMapStateList),
-mAttribute_mMapOverrideBlockListAST (in_mMapOverrideBlockListAST) {
+mAttribute_mMapOverrideBlockListAST (in_mMapOverrideBlockListAST),
+mAttribute_mSharedMapAttributeListAST (in_mSharedMapAttributeListAST) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8781,6 +8806,8 @@ void cPtr_sharedMapDeclarationAST::description (C_String & ioString,
   mAttribute_mMapStateList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mMapOverrideBlockListAST.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSharedMapAttributeListAST.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8788,7 +8815,7 @@ void cPtr_sharedMapDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_sharedMapDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_sharedMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sharedMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST, mAttribute_mSharedMapAttributeListAST COMMA_THERE)) ;
   return ptr ;
 }
 

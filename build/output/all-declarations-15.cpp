@@ -3001,6 +3001,12 @@ typeComparisonResult cPtr_sharedMapTypeForGeneration::dynamicObjectCompare (cons
   if (kOperandEqual == result) {
     result = mAttribute_mMapOverrideList.objectCompare (p->mAttribute_mMapOverrideList) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mShadowBehaviour.objectCompare (p->mAttribute_mShadowBehaviour) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mShadowMessage.objectCompare (p->mAttribute_mShadowMessage) ;
+  }
   return result ;
 }
 
@@ -3031,21 +3037,6 @@ GALGAS_semanticTypeForGeneration () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_sharedMapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                             GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_typedPropertyList::constructor_emptyList (HERE),
-                                                             GALGAS_insertMethodListAST::constructor_emptyList (HERE),
-                                                             GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
-                                                             GALGAS_mapAutomatonStateMap::constructor_emptyMap (HERE),
-                                                             GALGAS_mapAutomatonActionMap::constructor_emptyMap (HERE),
-                                                             GALGAS_mapStateSortedList::constructor_emptySortedList (HERE),
-                                                             GALGAS_mapOverrideList::constructor_emptyList (HERE)
-                                                             COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_sharedMapTypeForGeneration::GALGAS_sharedMapTypeForGeneration (const cPtr_sharedMapTypeForGeneration * inSourcePtr) :
 GALGAS_semanticTypeForGeneration (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_sharedMapTypeForGeneration) ;
@@ -3061,11 +3052,13 @@ GALGAS_sharedMapTypeForGeneration GALGAS_sharedMapTypeForGeneration::constructor
                                                                                       const GALGAS_mapAutomatonStateMap & inAttribute_mMapAutomatonStateMap,
                                                                                       const GALGAS_mapAutomatonActionMap & inAttribute_mMapAutomatonActionMap,
                                                                                       const GALGAS_mapStateSortedList & inAttribute_mMapStateSortedList,
-                                                                                      const GALGAS_mapOverrideList & inAttribute_mMapOverrideList
+                                                                                      const GALGAS_mapOverrideList & inAttribute_mMapOverrideList,
+                                                                                      const GALGAS_mapAutomatonMessageKind & inAttribute_mShadowBehaviour,
+                                                                                      const GALGAS_string & inAttribute_mShadowMessage
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_sharedMapTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapAutomatonStateMap.isValid () && inAttribute_mMapAutomatonActionMap.isValid () && inAttribute_mMapStateSortedList.isValid () && inAttribute_mMapOverrideList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_sharedMapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapAutomatonStateMap, inAttribute_mMapAutomatonActionMap, inAttribute_mMapStateSortedList, inAttribute_mMapOverrideList COMMA_THERE)) ;
+  if (inAttribute_mTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapAutomatonStateMap.isValid () && inAttribute_mMapAutomatonActionMap.isValid () && inAttribute_mMapStateSortedList.isValid () && inAttribute_mMapOverrideList.isValid () && inAttribute_mShadowBehaviour.isValid () && inAttribute_mShadowMessage.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_sharedMapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapAutomatonStateMap, inAttribute_mMapAutomatonActionMap, inAttribute_mMapStateSortedList, inAttribute_mMapOverrideList, inAttribute_mShadowBehaviour, inAttribute_mShadowMessage COMMA_THERE)) ;
   }
   return result ;
 }
@@ -3215,6 +3208,42 @@ GALGAS_mapOverrideList cPtr_sharedMapTypeForGeneration::getter_mMapOverrideList 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonMessageKind GALGAS_sharedMapTypeForGeneration::getter_mShadowBehaviour (UNUSED_LOCATION_ARGS) const {
+  GALGAS_mapAutomatonMessageKind result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mShadowBehaviour ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapAutomatonMessageKind cPtr_sharedMapTypeForGeneration::getter_mShadowBehaviour (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mShadowBehaviour ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_sharedMapTypeForGeneration::getter_mShadowMessage (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_sharedMapTypeForGeneration * p = (const cPtr_sharedMapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_sharedMapTypeForGeneration) ;
+    result = p->mAttribute_mShadowMessage ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_sharedMapTypeForGeneration::getter_mShadowMessage (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mShadowMessage ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                 Pointer class for @sharedMapTypeForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3226,7 +3255,9 @@ cPtr_sharedMapTypeForGeneration::cPtr_sharedMapTypeForGeneration (const GALGAS_u
                                                                   const GALGAS_mapAutomatonStateMap & in_mMapAutomatonStateMap,
                                                                   const GALGAS_mapAutomatonActionMap & in_mMapAutomatonActionMap,
                                                                   const GALGAS_mapStateSortedList & in_mMapStateSortedList,
-                                                                  const GALGAS_mapOverrideList & in_mMapOverrideList
+                                                                  const GALGAS_mapOverrideList & in_mMapOverrideList,
+                                                                  const GALGAS_mapAutomatonMessageKind & in_mShadowBehaviour,
+                                                                  const GALGAS_string & in_mShadowMessage
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
 mAttribute_mMapTypeName (in_mMapTypeName),
@@ -3236,7 +3267,9 @@ mAttribute_mSearchMethodList (in_mSearchMethodList),
 mAttribute_mMapAutomatonStateMap (in_mMapAutomatonStateMap),
 mAttribute_mMapAutomatonActionMap (in_mMapAutomatonActionMap),
 mAttribute_mMapStateSortedList (in_mMapStateSortedList),
-mAttribute_mMapOverrideList (in_mMapOverrideList) {
+mAttribute_mMapOverrideList (in_mMapOverrideList),
+mAttribute_mShadowBehaviour (in_mShadowBehaviour),
+mAttribute_mShadowMessage (in_mShadowMessage) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3265,6 +3298,10 @@ void cPtr_sharedMapTypeForGeneration::description (C_String & ioString,
   mAttribute_mMapStateSortedList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mMapOverrideList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mShadowBehaviour.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mShadowMessage.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -3272,7 +3309,7 @@ void cPtr_sharedMapTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_sharedMapTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_sharedMapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapAutomatonStateMap, mAttribute_mMapAutomatonActionMap, mAttribute_mMapStateSortedList, mAttribute_mMapOverrideList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sharedMapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapAutomatonStateMap, mAttribute_mMapAutomatonActionMap, mAttribute_mMapStateSortedList, mAttribute_mMapOverrideList, mAttribute_mShadowBehaviour, mAttribute_mShadowMessage COMMA_THERE)) ;
   return ptr ;
 }
 
