@@ -52,7 +52,7 @@ mpz_export (void *data, size_t *countp, int order,
   mp_size_t      zsize;
   mp_srcptr      zp;
   size_t         count, dummy;
-  unsigned long  numb;
+  unsigned long  numbx;
   unsigned       align;
 
   ASSERT (order == 1 || order == -1);
@@ -72,8 +72,8 @@ mpz_export (void *data, size_t *countp, int order,
 
   zsize = ABS (zsize);
   zp = PTR(z);
-  numb = 8*size - nail;
-  MPN_SIZEINBASE_2EXP (count, zp, zsize, numb);
+  numbx = 8*size - nail;
+  MPN_SIZEINBASE_2EXP (count, zp, zsize, numbx);
   *countp = count;
 
   if (data == NULL)

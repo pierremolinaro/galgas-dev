@@ -301,25 +301,22 @@ mpn_sqr_basecase (mp_ptr rp, mp_srcptr up, mp_size_t n)
     umul_ppmm (rp[1], lpl, ul, ul << GMP_NAIL_BITS);
     rp[0] = lpl >> GMP_NAIL_BITS;
   }
-  if (n > 1)
-    {
-      mp_limb_t tarr[2 * SQR_TOOM2_THRESHOLD];
-      mp_ptr tp = tarr;
-      mp_limb_t cy;
+  if (n > 1) {
+    mp_limb_t tarr[2 * SQR_TOOM2_THRESHOLD];
+    mp_ptr tp = tarr;
+    mp_limb_t ccy;
 
       /* must fit 2*n limbs in tarr */
-      ASSERT (n <= SQR_TOOM2_THRESHOLD);
+    ASSERT (n <= SQR_TOOM2_THRESHOLD);
 
-      cy = mpn_mul_1 (tp, up + 1, n - 1, up[0]);
-      tp[n - 1] = cy;
-      for (i = 2; i < n; i++)
-	{
-	  mp_limb_t cy;
-	  cy = mpn_addmul_1 (tp + 2 * i - 2, up + i, n - i, up[i - 1]);
-	  tp[n + i - 2] = cy;
-	}
+    ccy = mpn_mul_1 (tp, up + 1, n - 1, up[0]);
+    tp[n - 1] = ccy;
+    for (i = 2; i < n; i++) {
+	    const mp_limb_t cy = mpn_addmul_1 (tp + 2 * i - 2, up + i, n - i, up[i - 1]);
+	    tp[n + i - 2] = cy;
+	  }
 
-      MPN_SQR_DIAG_ADDLSH1 (rp, tp, up, n);
-    }
+    MPN_SQR_DIAG_ADDLSH1 (rp, tp, up, n);
+  }
 }
 #endif
