@@ -91,7 +91,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     ioHTMLFileContents.outputRawData ("</p>") ;
   }
   
-  C_Relation t (inFOLLOWsets.configuration(), false) ;
+//  C_Relation tr (inFOLLOWsets.configuration(), false) ;
   
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
@@ -138,8 +138,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           if (ioHTMLFileContents.registeringIsEnabled ()) {
             TC_UniqueArray <uint64_t> array ;
             p.derivationFirst ().getValueArray (array) ;
-            for (int32_t i=0 ; i < array.count () ; i++) {
-              const uint64_t symbol = array (i COMMA_HERE) ;
+            for (int32_t k=0 ; k < array.count () ; k++) {
+              const uint64_t symbol = array (k COMMA_HERE) ;
               inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
               ioHTMLFileContents << " " ;
             }

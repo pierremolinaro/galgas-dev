@@ -645,10 +645,10 @@ void C_DirectedGraph::example (void) {
   printf ("Remove nodes\n") ;
   bool loop = true ;
   while (loop) {
-    TC_UniqueArray <uint32_t> nodes ; g.getNodeValueArray (nodes) ;
-    loop = nodes.count () > 0 ;
+    TC_UniqueArray <uint32_t> theNodes ; g.getNodeValueArray (theNodes) ;
+    loop = theNodes.count () > 0 ;
     if (loop) {
-      g.removeNode (nodes (nodes.count () / 2 COMMA_HERE)) ;
+      g.removeNode (theNodes (theNodes.count () / 2 COMMA_HERE)) ;
     }
   }
 }

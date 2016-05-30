@@ -87,7 +87,7 @@ class GenericGalgasMakefile :
     make = makefile.Make (self.mGoal, self.mMaxParallelJobs == 1) # Display command utility tool path if sequential build
   #--------------------------------------------------------------------------- Add Compile rule for sources
   #--- Object file directory
-    objectDirectory = unicode (os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-objects"))
+    objectDirectory = os.path.normpath (os.getcwd () + "/../build/cli-objects/makefile-" + self.mTargetName + "-objects")
   #---
     objectFileList = []
     for source in SOURCES:
@@ -192,7 +192,7 @@ class GenericGalgasMakefile :
       make.addGoal ("install-release", [INSTALL_EXECUTABLE], "Build and install " + INSTALL_EXECUTABLE)
       make.addGoal ("install-debug", [INSTALL_EXECUTABLE_DEBUG], "Build and install " + INSTALL_EXECUTABLE_DEBUG)
   #--------------------------------------------------------------------------- Run jobs
-#    make.printGoals ()
+    # make.printGoals ()
     make.runGoal (self.mMaxParallelJobs, self.mDisplayCommands)
   #--------------------------------------------------------------------------- Ok ?
     make.printErrorCountAndExitOnError ()
