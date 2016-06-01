@@ -1,0 +1,77 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @selfAssignmentInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $self$
+    let instructionLocation = @location.here
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @selfAssignmentInstructionAST.new {
+      !instructionLocation
+      !sourceExpression
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @selfAssignmentInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Analyze "self", as receiver expression
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in extension setters"
+  elsif [inAnalysisContext.mSelfTypeProxy mTypeKindEnum] == @typeKindEnum. classType then
+    error mInstructionLocation: "'self' assignment is not allowed for class instances"
+  end
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext.mSelfObjectCppName
+    !inAnalysisContext.mSelfObjectCppName
+    !{}
+    !expression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

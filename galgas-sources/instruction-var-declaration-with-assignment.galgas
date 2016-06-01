@@ -1,0 +1,88 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $var$
+    $identifier$ ?let variableName
+    $=$
+    <expression> ?let @semanticExpressionAST sourceExpression
+    outInstruction = @localVariableDeclarationWithAssignmentAST.new {
+      ![variableName location]
+      !variableName
+      !sourceExpression
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Check target variable
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
+  [!?ioVariableMap insertDefinedLocalVariable
+    !mVariableName
+    ![expression mResultType]
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+    ![expression mResultType]
+    !false
+    !targetVariableCppName
+    !expression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+
+#······················································································································*
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+
+#----------------------------------------------------------------------------------------------------------------------*
