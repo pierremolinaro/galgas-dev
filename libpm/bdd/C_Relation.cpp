@@ -40,10 +40,10 @@ mBDD () {
 
 C_Relation::C_Relation (const C_String & inVariableName,
                         const C_RelationSingleType & inVariableType,
-                        const bool isFull) :
+                        const bool inIsFull) :
 mConfiguration (),
 mBDD () {
-  if (isFull) {
+  if (inIsFull) {
     mBDD.setToTrue () ;
   }
   mConfiguration.addVariable (inVariableName, inVariableType) ;
@@ -254,8 +254,8 @@ C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
   const C_BDD result = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap021 (THERE) ;
-  return C_Relation (configuration, result) ;
+  const C_RelationConfiguration config = mConfiguration.swap021 (THERE) ;
+  return C_Relation (config, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -270,8 +270,8 @@ C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
   const C_BDD result = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap102 (THERE) ;
-  return C_Relation (configuration, result) ;
+  const C_RelationConfiguration config = mConfiguration.swap102 (THERE) ;
+  return C_Relation (config, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -286,8 +286,8 @@ C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
   const C_BDD result = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap120 (THERE) ;
-  return C_Relation (configuration, result) ;
+  const C_RelationConfiguration config = mConfiguration.swap120 (THERE) ;
+  return C_Relation (config, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -302,8 +302,8 @@ C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
   const C_BDD result = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap201 (THERE) ;
-  return C_Relation (configuration, result) ;
+  const C_RelationConfiguration config = mConfiguration.swap201 (THERE) ;
+  return C_Relation (config, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -318,8 +318,8 @@ C_Relation C_Relation::swap210 (LOCATION_ARGS) const {
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
   const C_BDD result = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap210 (THERE) ;
-  return C_Relation (configuration, result) ;
+  const C_RelationConfiguration config = mConfiguration.swap210 (THERE) ;
+  return C_Relation (config, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -328,8 +328,8 @@ C_Relation C_Relation::exitsOnVariable (const int32_t inVariableIndex
                                         COMMA_LOCATION_ARGS) const {
   C_Relation result = *this ;
   const uint32_t bitIndex = mConfiguration.bddStartBitIndexForVariable (inVariableIndex COMMA_THERE) ;
-  const uint32_t bitCount = mConfiguration.bddBitCountForVariable (inVariableIndex COMMA_THERE) ;
-  result.mBDD = result.mBDD.existsOnBitRange (bitIndex, bitCount) ;
+  const uint32_t bit_count = mConfiguration.bddBitCountForVariable (inVariableIndex COMMA_THERE) ;
+  result.mBDD = result.mBDD.existsOnBitRange (bitIndex, bit_count) ;
   return result ;
 }
 
