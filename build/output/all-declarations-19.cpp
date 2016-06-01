@@ -826,9 +826,9 @@ const char * projectVersionString (void) {
 static void routine_before (C_Compiler * inCompiler
                             COMMA_UNUSED_LOCATION_ARGS) {
   {
-    GALGAS_string var_creationProjectName = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.getter_value ()) ;
+    GALGAS_string var_creationProjectName_4368 = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.getter_value ()) ;
     {
-    routine_projectCreation (var_creationProjectName, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 75)) ;
+    routine_projectCreation (var_creationProjectName_4368, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 75)) ;
     }
   }
   {
@@ -883,30 +883,30 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_parentDirectory = constinArgument_inSourceFile.mAttribute_string.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 122)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 122)) ;
+  GALGAS_string var_parentDirectory_6396 = constinArgument_inSourceFile.mAttribute_string.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 122)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 122)) ;
   GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 123)) ;
   temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 123)) ;
-  GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 123)) ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 124)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_stringlist var_candidateProjectFiles_6518 = var_parentDirectory_6396.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 123)) ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_6518.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 124)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     GALGAS_location location_2 (constinArgument_inSourceFile.getter_location (HERE)) ; // Implicit use of 'location' getter
     inCompiler->emitSemanticError (location_2, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 125)) ;
   }else if (kBoolFalse == test_1) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 126)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_6518.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 126)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_3) {
-      GALGAS_string var_s = GALGAS_string ("several project files in source file parent directory:") ;
-      cEnumerator_stringlist enumerator_6869 (var_candidateProjectFiles, kEnumeration_up) ;
+      GALGAS_string var_s_6774 = GALGAS_string ("several project files in source file parent directory:") ;
+      cEnumerator_stringlist enumerator_6869 (var_candidateProjectFiles_6518, kEnumeration_up) ;
       while (enumerator_6869.hasCurrentObject ()) {
-        var_s.plusAssign_operation(GALGAS_string ("\n"
+        var_s_6774.plusAssign_operation(GALGAS_string ("\n"
           "  - ").add_operation (enumerator_6869.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 129)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 129)) ;
         enumerator_6869.gotoNextObject () ;
       }
       GALGAS_location location_4 (constinArgument_inSourceFile.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 131)) ;
+      inCompiler->emitSemanticError (location_4, var_s_6774  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 131)) ;
     }else if (kBoolFalse == test_3) {
-      GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)).add_operation (var_candidateProjectFiles.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)) ;
+      GALGAS_string var_projectFilePath_6967 = var_parentDirectory_6396.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)).add_operation (var_candidateProjectFiles_6518.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 133)) ;
       {
-      routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 134)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 134)) ;
+      routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath_6967, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 134)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 134)) ;
       }
     }
   }

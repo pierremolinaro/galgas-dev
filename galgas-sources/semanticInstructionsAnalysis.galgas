@@ -104,7 +104,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
     error mTypeName: "this class does not support the default constructor"
   end
 #--- Declare variable (or constant)
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
@@ -155,7 +155,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     :"this constructor returns an '@" + [returnedType key] +"' object, you should use a constructor that return an '@" + mOptionalTypeName + "' object"
   end
 #--- Declare variable (or constant)
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
@@ -170,186 +170,6 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     ![mConstructorName string]
     !constructorEffectiveParameterList
     !hasCompilerArgument}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
-    !inAnalysisContext
-    !?ioVariableMap
-    ?var @semanticExpressionForGeneration expression
-  ]
-#--- Check target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
-  [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
-#--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
-    ![expression mResultType]
-    !false
-    !targetVariableCppName
-    !expression
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @localVariableDeclarationAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @localVariableDeclarationAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Check target variable
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
-  if mIsUndefinedConstant then
-    [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
-  else
-    [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
-    !targetType
-    !targetVariableCppName
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @assignmentInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @assignmentInstructionAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
-{
-#--- Get target variable type
-  @unifiedTypeMap-proxy targetType
-  if [mStructAttributeList length] == 0 then
-    [!?ioVariableMap neutralAccess
-      !mTargetVariableName
-      ?targetType
-      ?*
-      ?*
-    ]
-  else
-    [!?ioVariableMap neutralAccess
-      !mTargetVariableName
-      ?targetType
-      ?*
-      ?*
-    ]
-    for () in mStructAttributeList do
-      let attributeMap = [targetType mAttributeMap]
-      [attributeMap searchKey 
-        !mValue
-#        ??@bool isPrivate
-        ?targetType
-      ]
-#      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#        error mValue : "this field is private" ;
-#      end if ;
-    end
-  end
-#--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
-    !targetType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
-  ]
-#--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
-#--- Get target variable
-  @string targetVariableCppName
-  @string nameForCheckingFormalParameterUsing
-  if [mStructAttributeList length] == 0 then
-    [!?ioVariableMap searchForWriteAccess
-      !mTargetVariableName
-      ?*
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  else
-    [!?ioVariableMap searchForReadWriteAccess
-      !mTargetVariableName
-      ?*
-      ?targetVariableCppName
-      ?nameForCheckingFormalParameterUsing
-    ]
-  end
-#--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
-    !targetType
-    !targetVariableCppName
-    !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
-    !expression
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @selfAssignmentInstructionAST analyzeSemanticInstruction
-  ?let @analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
-    !inAnalysisContext.mSelfTypeProxy
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
-  ]
-#--- Analyze "self", as receiver expression
-  if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters"
-  elsif [inAnalysisContext.mSelfTypeProxy mTypeKindEnum] == @typeKindEnum. classType then
-    error mInstructionLocation: "'self' assignment is not allowed for class instances"
-  end
-#--- Check assignment type compatibility
-  checkAssignmentTypes ( !inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation )
-#--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
-    !inAnalysisContext.mSelfTypeProxy
-    !inAnalysisContext.mSelfObjectCppName
-    !inAnalysisContext.mSelfObjectCppName
-    !@lstringlist.emptyList
-    !expression}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -610,7 +430,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     end
   end
 #--- Declare local variable
-  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation] + "_" + [mInputActualParameterName.location locationIndex]
   [!?ioVariableMap insertDefinedLocalVariable
     !mInputActualParameterName
     !inFormalArgumentType
@@ -665,7 +485,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     end
   end
 #--- Declare local constant
-  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation] + "_" + [mInputActualParameterName.location locationIndex]
   if mMarkedAsUnused then
     [!?ioVariableMap insertUsedLocalConstant
       !mInputActualParameterName
@@ -1001,7 +821,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
@@ -1024,7 +844,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType

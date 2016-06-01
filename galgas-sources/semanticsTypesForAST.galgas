@@ -559,14 +559,6 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @localVariableDeclarationAST : @semanticInstructionAST {
-  @lstring mTypeName
-  @lstring mVariableName
-  @bool mIsUndefinedConstant
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @localVariableOrConstantDeclarationWithConstructorCallAST : @semanticInstructionAST {
   @bool mIsConstant
   @lstring mOptionalTypeName
@@ -581,35 +573,6 @@ class @localVariableOrConstantDeclarationWithDefaultConstructorAST : @semanticIn
   @bool mIsConstant
   @lstring mTypeName
   @lstring mVariableName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
-  @lstring mVariableName
-  @semanticExpressionAST mSourceExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  A S S I G N M E N T    I N S T R U C T I O N                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @assignmentInstructionAST : @semanticInstructionAST {
-  @lstring mTargetVariableName
-  @lstringlist mStructAttributeList
-  @semanticExpressionAST mSourceExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  S E L F    A S S I G N M E N T    I N S T R U C T I O N                                                             *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @selfAssignmentInstructionAST : @semanticInstructionAST {
-  @semanticExpressionAST mSourceExpression
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

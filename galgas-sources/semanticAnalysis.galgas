@@ -2266,7 +2266,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
     end
   end
 #--- Create local variable
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !expectedType !cppName !cppName]
   ioTerminalCheckAssignementList +=
     ![expectedType key]
@@ -2304,7 +2304,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
     end
   end
 #--- Create local constant
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   [!?ioVariableMap insertLocalConstant !mActualParameterName !expectedType !cppName !cppName]
 #---
   ioTerminalCheckAssignementList +=
@@ -2366,7 +2366,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
@@ -2386,7 +2386,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
   end
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName]
   let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
@@ -2434,7 +2434,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   ioGeneratedCode += cppName + " = GALGAS_string (" + inAccessMethodName + ") ;\n" 
 }
 
@@ -2445,7 +2445,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   ioGeneratedCode += "GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n" 
 }
 
@@ -2456,7 +2456,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?let @string inAccessMethodName
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode {
-  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let cppName = "var_" + [mActualParameterName identifierRepresentation] + "_" + [mActualParameterName.location locationIndex]
   ioGeneratedCode += "const GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n" 
 }
 
