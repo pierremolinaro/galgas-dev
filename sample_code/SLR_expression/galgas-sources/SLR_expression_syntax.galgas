@@ -29,7 +29,7 @@ rule <Constant>
   !@uint outValue {
   @luint cst
   $number$ ? cst
-  outExpressionTree = @cConst. new { !cst}
+  outExpressionTree = @cConst.new { !cst}
   outValue = [cst uint]
 }
 
@@ -44,7 +44,7 @@ rule <Expression>
     @cExpression rightOperand
     @uint v
     <Terme> ?rightOperand ?v
-    outExpressionTree = @cAdd. new { ! outExpressionTree !rightOperand}
+    outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue + v
   end
 }
@@ -60,7 +60,7 @@ rule <Terme>
     @cExpression rightOperand
     @uint v
     <Facteur> ?rightOperand ?v
-    outExpressionTree = @cAdd. new { ! outExpressionTree !rightOperand}
+    outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue * v
   end
 }

@@ -9,11 +9,11 @@ rule <start_symbol> !@declarationListAST outDeclarationListAST {
     $class$
     $identifier$ ?var  @lstring className indexing classDefinition
     select
-      outDeclarationListAST += !@classWithoutSuperClassAST. new { !className}
+      outDeclarationListAST += !@classWithoutSuperClassAST.new { !className}
     or
       $:$
       $identifier$ ?var  @lstring superClassName indexing superClassReference
-      outDeclarationListAST += !@classWithSuperClassAST. new { !className !superClassName}
+      outDeclarationListAST += !@classWithSuperClassAST.new { !className !superClassName}
     end
     $;$
   end

@@ -2405,26 +2405,26 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                    Extension getter '@semanticInstructionForGeneration compareSyntaxInstruction'                    *
+//               Extension getter '@semanticInstructionForGeneration compareInstructionSyntaxSignature'                *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef class GALGAS_bool (*enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction) (const class cPtr_semanticInstructionForGeneration * inObject,
-                                                                                                             const class GALGAS_semanticInstructionForGeneration & constinArgument0,
-                                                                                                             C_Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_bool (*enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) (const class cPtr_semanticInstructionForGeneration * inObject,
+                                                                                                                      const class GALGAS_semanticInstructionForGeneration & constinArgument0,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void enterExtensionGetter_compareSyntaxInstruction (const int32_t inClassIndex,
-                                                    enterExtensionGetter_semanticInstructionForGeneration_compareSyntaxInstruction inGetter) ;
+void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inClassIndex,
+                                                             enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature inGetter) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_bool callExtensionGetter_compareSyntaxInstruction (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                         const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
+                                                                         class C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *

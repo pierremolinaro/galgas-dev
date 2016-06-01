@@ -1,0 +1,229 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @selectInstruction : @syntaxInstructionAST {
+  @listOfSyntaxInstructionList mSelectBranchList
+  @location mEndOf_select_instruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  #····················································································································*
+
+  rule <syntax_instruction>
+    !@syntaxInstructionAST outInstruction {
+    $select$
+    let mSelectInstructionLocation = @location.here
+    var mSelectBranchList =@listOfSyntaxInstructionList.emptyList{}
+    <syntax_instruction_list> ?let @syntaxInstructionList il
+    mSelectBranchList += !il !@location.here
+    repeat
+      $or$
+      <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+      mSelectBranchList += !instructionList !@location.here
+    while
+    end
+    $end$
+    let endOf_select_instruction = @location.here
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "select" then
+        error terminator : "the terminator attribute should be '%select'"
+      end
+    end
+    outInstruction = @selectInstruction.new {
+      !mSelectInstructionLocation
+      !mSelectBranchList
+      !endOf_select_instruction
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! TRANSFORM
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selectInstruction transformInstruction
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+  let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
+  ioAddedNonTerminalIndex ++
+
+  var selectBranchList =@branchListForGrammarAnalysis.emptyList{}
+  for () in mSelectBranchList do
+    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
+    transformInstructionList (
+      !mSyntaxInstructionList
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+      !nonTerminalSymbolMap:inNonTerminalSymbolMap
+      !?addedTerminalIndex:ioAddedNonTerminalIndex
+      !?syntaxInstructionList
+    )
+    selectBranchList += !syntaxInstructionList
+  end
+
+  ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis.new {
+    !mInstructionLocation
+    !selectBranchList
+    !addedNonTerminalIndex
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @selectInstruction analyzeSyntaxInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @terminalMap inTerminalMap
+  ?let @string inLexiqueName
+  ?let @nonterminalMap inNonterminalMap
+  ?let @string  inComponentName
+  ?let @stringset inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount {
+  let @uint choiceIndex = ioSelectMethodCount
+  ioSelectMethodCount ++
+#--- Begin block
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- 'or' blocks
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  for () in mSelectBranchList do
+    @semanticInstructionListForGeneration instructionList
+    analyzeSyntaxInstructionList (
+      !inAnalysisContext
+      !inHasTranslateFeature
+      !inTerminalMap
+      !inLexiqueName
+      !inNonterminalMap
+      !inComponentName
+      !mSyntaxInstructionList
+      !mEndOf_instructions
+      !inIndexNameSet
+      !?ioVariableMap
+      !?ioSelectMethodCount
+      ?instructionList
+    )
+    listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
+  end
+#--- End block
+  [!?ioVariableMap closeOverride !mEndOf_select_instruction]
+  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
+    !mInstructionLocation
+    !inComponentName
+    !choiceIndex
+    !listOfSemanticInstructionListForGeneration
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
+  @string mSyntaxComponentName
+  @uint mChoiceIndex
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selectInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  for () in mListOfSemanticInstructionListForGeneration do
+    listOfSemanticInstructionListForGeneration +=
+      !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+      !mEndOfInstructionList
+  end
+  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
+    !mInstructionLocation
+    !mSyntaxComponentName
+    !mChoiceIndex
+    !listOfSemanticInstructionListForGeneration
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! COMPARE SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @selectInstructionForGeneration compareInstructionSyntaxSignature
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk
+{
+  cast inTestedInstruction
+  case >= @selectInstructionForGeneration si :
+    outOk = true
+    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+      error [si mInstructionLocation]
+        :"syntax signature error; the reference 'select' instruction has "
+        + [[mListOfSemanticInstructionListForGeneration length] string]
+        + " 'while' branche(s), but this instruction has "
+        + [[[si mListOfSemanticInstructionListForGeneration] length] string]
+      outOk = false
+    end
+    for () ref_ in mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
+      outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selectInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += "switch (select_" + [mSyntaxComponentName identifierRepresentation] + "_" + [mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+  for () in mListOfSemanticInstructionListForGeneration do(IDX)
+    ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    ioGeneratedCode += "} break ;\n"
+  end
+  ioGeneratedCode += "default:\n"
+  ioGeneratedCode += "  break ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

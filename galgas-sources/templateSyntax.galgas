@@ -526,7 +526,7 @@ rule <template_instruction>
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
   $?^$
-  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST. new
+  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -534,7 +534,7 @@ rule <template_instruction>
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
   $!^$
-  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST. new
+  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

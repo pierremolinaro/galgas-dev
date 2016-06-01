@@ -1198,7 +1198,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
 override method @templateInstructionGetColumnLocationAST templateInstructionAnalysis
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList {
-  ioInstructionList += !@templateInstructionGetColumnLocationForGeneration. new
+  ioInstructionList += !@templateInstructionGetColumnLocationForGeneration.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1206,7 +1206,7 @@ override method @templateInstructionGetColumnLocationAST templateInstructionAnal
 override method @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList {
-  ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration. new
+  ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

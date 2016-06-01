@@ -1,0 +1,239 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @parseWhenInstruction : @syntaxInstructionAST {
+  @semanticExpressionAST mWhenExpression
+  @location mEndOfWhenExpression
+  @syntaxInstructionList mWhenInstructionList
+  @location mEndOfWhenInstructionList
+  @syntaxInstructionList mElseInstructionList
+  @location mEndOfElseInstructionList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  #····················································································································*
+  
+  rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+    $else$
+    <syntax_instruction_list> ? outElseInstructionList
+  }
+  
+  #····················································································································*
+  
+  rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+    $case$
+    let instructionLocation = @location.here
+    @semanticExpressionAST whenExpression
+    <expression> ? whenExpression
+    let endOfWhenExpression = @location.here
+    $:$
+    @syntaxInstructionList whenInstructionList
+    <syntax_instruction_list> ? whenInstructionList
+    let endOfWhenInstructions = @location.here
+  #--- Else part
+    @syntaxInstructionList elseInstructionList
+    <branchOfParseWhenInstruction> ? elseInstructionList
+    let endOfElseInstructions = @location.here
+    outElseInstructionList = @syntaxInstructionList.emptyList
+    outElseInstructionList += !@parseWhenInstruction.new {
+      !instructionLocation
+      !whenExpression
+      !endOfWhenExpression
+      !whenInstructionList
+      !endOfWhenInstructions
+      !elseInstructionList
+      !endOfElseInstructions}
+  }
+  
+  #····················································································································*
+  
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    $parse$
+    let instructionLocation = @location.here
+    $with$
+    <expression> ?var @semanticExpressionAST whenExpression
+    let endOfWhenExpression = @location.here
+    $:$
+    <syntax_instruction_list> ?let @syntaxInstructionList whenInstructionList
+    let endOfWhenInstructions = @location.here
+  #--- Else part
+    <branchOfParseWhenInstruction> ?let @syntaxInstructionList elseInstructionList
+    let endOfElseInstructions = @location.here
+    $end$
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "parse" then
+        error terminator : "the terminator attribute should be '%parse'"
+      end
+    end
+    outInstruction = @parseWhenInstruction.new {
+      !instructionLocation
+      !whenExpression
+      !endOfWhenExpression
+      !whenInstructionList
+      !endOfWhenInstructions
+      !elseInstructionList
+      !endOfElseInstructions}
+  }
+  
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! TRANSFORM
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseWhenInstruction transformInstruction
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+{
+  transformInstructionList (
+    !mElseInstructionList
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @parseWhenInstruction analyzeSyntaxInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @terminalMap inTerminalMap
+  ?let @string inLexiqueName
+  ?let @nonterminalMap inNonterminalMap
+  ?let @string inComponentName
+  ?let @stringset inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount {
+#--- When expression
+  @semanticExpressionForGeneration when_expression
+  [mWhenExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?when_expression
+  ]
+#--- Begin block
+  [!?ioVariableMap openOverrideForRepeatBlock]
+#--- 'when' branch
+  @uint localSelectMethodCount = ioSelectMethodCount
+  @semanticInstructionListForGeneration when_instructionListForGeneration
+  analyzeSyntaxInstructionList (
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !inTerminalMap
+    !inLexiqueName
+    !inNonterminalMap
+    !inComponentName
+    !mWhenInstructionList
+    !mEndOfWhenInstructionList
+    !inIndexNameSet
+    !?ioVariableMap
+    !?localSelectMethodCount
+    ?when_instructionListForGeneration
+  )
+#--- 'else' branch
+  @semanticInstructionListForGeneration else_instructionListForGeneration
+  analyzeSyntaxInstructionList (
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !inTerminalMap
+    !inLexiqueName
+    !inNonterminalMap
+    !inComponentName
+    !mElseInstructionList
+    !mEndOfElseInstructionList
+    !inIndexNameSet
+    !?ioVariableMap
+    !?ioSelectMethodCount
+    ?else_instructionListForGeneration
+  )
+#--- End block
+  [!?ioVariableMap closeOverride !mEndOfElseInstructionList]
+#--- Check syntax signature
+  let @bool ok = compareSyntaxSignature (
+    !syntaxSignatureOfInstructionList (!"parse" !when_instructionListForGeneration)
+    !syntaxSignatureOfInstructionList (!"parse" !else_instructionListForGeneration)
+    !mEndOfElseInstructionList
+  )
+#--- Generate instruction
+  if ok then
+    ioInstructionListForGeneration += !@parseWhenInstructionForGeneration.new {
+      !mInstructionLocation
+      !when_expression
+      !when_instructionListForGeneration
+      !else_instructionListForGeneration}
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mWhenExpression
+  @semanticInstructionListForGeneration mInstructionList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseWhenInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseWhenInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  @string sourceVar
+  [mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
+  ioGeneratedCode += "if (" + sourceVar + ".isValidAndTrue ()) {\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}else{\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

@@ -693,34 +693,6 @@ class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForG
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    V A R I A B L E    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @unifiedTypeMap-proxy mTargetType
-  @bool mIsConstant
-  @string mTargetVariableCppName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localVariableOrConstantDeclarationWithConstructorCallForGeneration : @semanticInstructionForGeneration {
-  @location mInstructionLocation
-  @unifiedTypeMap-proxy mTargetType
-  @bool mIsConstant
-  @string mTargetVariableCppName
-  @string mConstructorName
-  @semanticExpressionListForGeneration mConstructorArguments
-  @bool mHasCompilerArgument
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #  T E R M I N A L    C H E C K    I N S T R U C T I O N                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -735,99 +707,6 @@ list @terminalCheckAssignementList {
 
 abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
-  @lstring mTerminalName
-  @string mLexiqueIdentifier
-  @terminalCheckAssignementList mTerminalCheckAssignementList
-  @2lstringlist mIndexingKeyList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  N O N    T E R M I N A L    I N S T R U C T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
-  @string mNonterminalName
-  @string mLabelName
-  @actualParameterListForGeneration mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  R E P E A T    I N S T R U C T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
-  @string mSyntaxComponentName
-  @uint mChoiceIndex
-  @semanticInstructionListForGeneration m_repeated_instructionList
-  @location mEndOfRepeatedInstructions
-  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  S E L E C T    I N S T R U C T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
-  @string mSyntaxComponentName
-  @uint mChoiceIndex
-  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  P A R S E    R E W I N D    I N S T R U C T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
-  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  P A R S E    L O O P    I N S T R U C T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mVariantExpression
-  @semanticExpressionForGeneration mWhileExpression
-  @semanticInstructionListForGeneration mInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  P A R S E    W H E N    I N S T R U C T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mWhenExpression
-  @semanticInstructionListForGeneration mInstructionList
-  @semanticInstructionListForGeneration mElseInstructionList
-}
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  P A R S E    W H E N    I N S T R U C T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
-  @semanticExpressionForGeneration mExpression
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

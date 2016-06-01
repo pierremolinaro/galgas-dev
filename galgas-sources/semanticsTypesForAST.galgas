@@ -555,29 +555,7 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    V A R I A B L E    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localVariableOrConstantDeclarationWithConstructorCallAST : @semanticInstructionAST {
-  @bool mIsConstant
-  @lstring mOptionalTypeName
-  @lstring mVariableName
-  @lstring mConstructorName
-  @actualOutputExpressionList mConstructorExpressions
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @localVariableOrConstantDeclarationWithDefaultConstructorAST : @semanticInstructionAST {
-  @bool mIsConstant
-  @lstring mTypeName
-  @lstring mVariableName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# A B S T R A C T   E X T E N S I O N  M E T H O D    D E C L A R A T I O N                                              *
+# A B S T R A C T   E X T E N S I O N  M E T H O D    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -589,7 +567,7 @@ class @abstractExtensionMethodAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                       *
+#        E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -831,33 +809,6 @@ list @syntaxRuleListAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N                                                          *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @nonterminalCallInstruction : @syntaxInstructionAST {
-  @lstring mNonterminalName
-  @lstring mLabelName # No label : empty string
-  @actualParameterListAST mActualParameterList
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#   T E R M I N A L    C H E C K    I N S T R U C T I O N                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @terminalCheckInstruction : @syntaxInstructionAST {
-  @lstring mTerminalName
-  @actualInputParameterListAST mActualInputParameterList
-  @2lstringlist mIndexingKeyList # Empty list if no index
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #   R E P E A T    I N S T R U C T I O N                                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -865,73 +816,6 @@ class @terminalCheckInstruction : @syntaxInstructionAST {
 list @listOfSyntaxInstructionList {
   @syntaxInstructionList mSyntaxInstructionList %nogetter
   @location mEndOf_instructions %nogetter
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @repeatInstruction : @syntaxInstructionAST {
-  @syntaxInstructionList mRepeatedInstructionList
-  @location mEndOf_repeated_instructions_branch
-  @listOfSyntaxInstructionList mRepeatBranchList
-  @location mEndOf_repeat_instruction
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#   S E L E C T    I N S T R U C T I O N                                                                               *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @selectInstruction : @syntaxInstructionAST {
-  @listOfSyntaxInstructionList mSelectBranchList
-  @location mEndOf_select_instruction
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @syntaxSendInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#   P A R S E   R E W I N D    I N S T R U C T I O N                                                                   *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseRewindInstruction : @syntaxInstructionAST {
-  @listOfSyntaxInstructionList mParseRewindBranchList
-  @location mEndOfParseDoInstruction
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#   P A R S E   L O O P    I N S T R U C T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseLoopInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mVariantExpression
-  @location mEndOfVariantExpression
-  @semanticExpressionAST mWhileExpression
-  @location mEndOfWhileExpression
-  @syntaxInstructionList mDoInstructionList
-  @location mEndOfInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#   P A R S E   W H E N    I N S T R U C T I O N                                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @parseWhenInstruction : @syntaxInstructionAST {
-  @semanticExpressionAST mWhenExpression
-  @location mEndOfWhenExpression
-  @syntaxInstructionList mWhenInstructionList
-  @location mEndOfWhenInstructionList
-  @syntaxInstructionList mElseInstructionList
-  @location mEndOfElseInstructionList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

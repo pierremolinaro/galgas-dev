@@ -1,0 +1,105 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @syntaxSendInstruction : @syntaxInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  #····················································································································*
+  
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    $send$
+    let instructionLocation = @location.here
+    <expression> ?let @semanticExpressionAST sentExpression
+    outInstruction = @syntaxSendInstruction.new {
+      !instructionLocation
+      !sentExpression
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! TRANSFORM
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @syntaxSendInstruction transformInstruction
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @syntaxSendInstruction analyzeSyntaxInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @terminalMap unused inTerminalMap
+  ?let @string unused inLexiqueName
+  ?let @nonterminalMap unused inNonterminalMap
+  ?let @string unused inComponentName
+  ?let @stringset unused inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount {
+  if not inHasTranslateFeature then
+    error mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check expression type
+  if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType  then
+    error mInstructionLocation: "'send' expresion should be an @string expression"
+  end
+#---
+  ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration.new {
+    !mInstructionLocation
+    !expression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @syntaxSendInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string sourceVar]
+#---
+  [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
+  ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"
+                   + "  " + syntaxDirectedTranslationResultVarName () + " << " + sourceVar + ".stringValue () ;\n"
+                   + "}\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

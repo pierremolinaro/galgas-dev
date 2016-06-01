@@ -9,7 +9,7 @@ rule <expression> !@expressionAST outExpressionAST {
     $+$
     @expressionAST rightExpression
     <expression_term> ?rightExpression
-    outExpressionAST = @additionAST. new {
+    outExpressionAST = @additionAST.new {
       !outExpressionAST
       !rightExpression}
   end
@@ -24,7 +24,7 @@ rule <expression_term> !@expressionAST outExpressionAST {
     $*$
     @expressionAST rightExpression
     <expression_factor> ?rightExpression
-    outExpressionAST = @multiplicationAST. new {
+    outExpressionAST = @multiplicationAST.new {
       !outExpressionAST
       !rightExpression}
   end
@@ -39,10 +39,10 @@ rule <expression_factor> !@expressionAST outExpressionAST {
     $)$
   or
     $identifier$ ?var  @lstring varName
-    outExpressionAST = @varInExpressionAST. new { !varName}
+    outExpressionAST = @varInExpressionAST.new { !varName}
   or
     $unsigned_literal_integer$ ?var  @luint constant
-    outExpressionAST = @cstInExpressionAST. new { !constant}
+    outExpressionAST = @cstInExpressionAST.new { !constant}
   end
 }
 
@@ -51,7 +51,7 @@ rule <instruction> ?!@instructionListAST ioInstructionList {
   $int$
   $identifier$ ?var  @lstring varName
   $;$
-  ioInstructionList += !@varDeclarationAST. new { !varName}
+  ioInstructionList += !@varDeclarationAST.new { !varName}
 }
 
 rule <instruction> ?!@instructionListAST ioInstructionList {
@@ -60,14 +60,14 @@ rule <instruction> ?!@instructionListAST ioInstructionList {
   @expressionAST expression
   <expression> ? expression
   $;$
-  ioInstructionList += !@assignmentAST. new { !targetVarName !expression}
+  ioInstructionList += !@assignmentAST.new { !targetVarName !expression}
 }
 
 rule <instruction> ?!@instructionListAST ioInstructionList {
   $print$
   $identifier$ ?var  @lstring targetVarName
   $;$
-  ioInstructionList += !@printVariableAST. new { !targetVarName}
+  ioInstructionList += !@printVariableAST.new { !targetVarName}
 }
 
 rule <start_symbol> !@programAST programAST {
@@ -77,7 +77,7 @@ rule <start_symbol> !@programAST programAST {
     <instruction> !?programInstructionList
   end
   $end$
-  programAST = @programAST. new { !programInstructionList !@location.here}
+  programAST = @programAST.new { !programInstructionList !@location.here}
 }
 
 }

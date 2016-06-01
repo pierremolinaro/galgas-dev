@@ -127,6 +127,16 @@ project (3:1:8) -> "galgas" {
   "galgas-sources/instruction-warning.galgas"
   "galgas-sources/instruction-with.galgas"
 
+#--- Syntax instructions
+  "galgas-sources/instruction-non-terminal.galgas"
+  "galgas-sources/instruction-repeat.galgas"
+  "galgas-sources/instruction-select.galgas"
+  "galgas-sources/instruction-terminal.galgas"
+  "galgas-sources/instruction-parse-loop.galgas"
+  "galgas-sources/instruction-parse-rewind.galgas"
+  "galgas-sources/instruction-parse-when.galgas"
+  "galgas-sources/instruction-syntax-send.galgas"
+
 #--- Syntax Component
   "galgas-sources/syntaxSignature.galgas"
   "galgas-sources/syntaxCompilation.galgas"
