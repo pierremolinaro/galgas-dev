@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2005, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2005, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -471,9 +471,9 @@ cSharedStringsetRoot::~cSharedStringsetRoot (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cSharedStringsetRoot::checkStringset (LOCATION_ARGS) const {
-    uint32_t count = 0 ;
-    countStringSetNodes (mRoot, count) ;
-    MF_AssertThere (count == mEntryCount, "count %lld != mEntryCount %lld", count, mEntryCount) ;
+    uint32_t n = 0 ;
+    countStringSetNodes (mRoot, n) ;
+    MF_AssertThere (n == mEntryCount, "count %lld != mEntryCount %lld", n, mEntryCount) ;
   }
 #endif
 
