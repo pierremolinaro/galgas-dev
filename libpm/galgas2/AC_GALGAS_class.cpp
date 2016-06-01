@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -96,9 +96,9 @@ void AC_GALGAS_class::description (C_String & ioString,
 
 void AC_GALGAS_class::insulate (LOCATION_ARGS) {
   if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    acPtr_class * ptr = mObjectPtr->duplicate (THERE) ;
-    macroAssignSharedObject (mObjectPtr, ptr) ;
-    macroDetachSharedObject (ptr) ;
+    acPtr_class * p = mObjectPtr->duplicate (THERE) ;
+    macroAssignSharedObject (mObjectPtr, p) ;
+    macroDetachSharedObject (p) ;
   }
 }
 

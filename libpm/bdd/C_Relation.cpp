@@ -28,10 +28,10 @@ mBDD (inBDD) {
 //----------------------------------------------------------------------------------------------------------------------
 
 C_Relation::C_Relation (const C_RelationConfiguration & inConfiguration,
-                        const bool isFull) :
+                        const bool inIsFull) :
 mConfiguration (inConfiguration),
 mBDD () {
-  if (isFull) {
+  if (inIsFull) {
     mBDD.setToTrue () ;
   }
 }
@@ -253,9 +253,9 @@ C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
+  const C_BDD result = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration configuration = mConfiguration.swap021 (THERE) ;
-  return C_Relation (configuration, bdd) ;
+  return C_Relation (configuration, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -269,9 +269,9 @@ C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
+  const C_BDD result = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration configuration = mConfiguration.swap102 (THERE) ;
-  return C_Relation (configuration, bdd) ;
+  return C_Relation (configuration, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -285,9 +285,9 @@ C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
+  const C_BDD result = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration configuration = mConfiguration.swap120 (THERE) ;
-  return C_Relation (configuration, bdd) ;
+  return C_Relation (configuration, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -301,9 +301,9 @@ C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
+  const C_BDD result = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration configuration = mConfiguration.swap201 (THERE) ;
-  return C_Relation (configuration, bdd) ;
+  return C_Relation (configuration, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -317,9 +317,9 @@ C_Relation C_Relation::swap210 (LOCATION_ARGS) const {
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
+  const C_BDD result = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
   const C_RelationConfiguration configuration = mConfiguration.swap210 (THERE) ;
-  return C_Relation (configuration, bdd) ;
+  return C_Relation (configuration, result) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

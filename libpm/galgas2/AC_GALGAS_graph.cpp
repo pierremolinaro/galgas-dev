@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -495,9 +495,9 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     enumerator2.gotoNextObject () ;
   }
 //--- Build sub graph
-  const C_DirectedGraph subGraph = mDirectedGraph.subGraphFromNodes (startNodeSet, nodesToExcludeSet) ;
+  const C_DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (startNodeSet, nodesToExcludeSet) ;
 //--- Enter nodes
-  TC_UniqueArray <uint32_t> nodeArray ; subGraph.getNodeValueArray (nodeArray) ;
+  TC_UniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
@@ -511,7 +511,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
                                        COMMA_THERE) ;
   }
 //--- Enter edges
-  TC_UniqueArray <cEdge> edgeArray ; subGraph.getEdges (edgeArray) ;
+  TC_UniqueArray <cEdge> edgeArray ; theSubGraph.getEdges (edgeArray) ;
   for (int32_t i=0 ; i<edgeArray.count () ; i++) {
     const uint32_t sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
     const cGraphNode * sourceNodePtr = mNodeArray ((int32_t) sourceNodeIndex COMMA_THERE) ;

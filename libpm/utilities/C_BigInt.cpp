@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2015, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -243,8 +243,8 @@ C_String C_BigInt::decimalString (void) const {
 C_String C_BigInt::spacedDecimalString (const uint32_t inSeparation) const {
   C_String result = decimalString () ;
   if (inSeparation > 0) {
-    const bool isNegative = sign () < 0 ;
-    const int32_t lowBound = isNegative ? 1 : 0 ;
+    const bool valueIsNegative = sign () < 0 ;
+    const int32_t lowBound = valueIsNegative ? 1 : 0 ;
     for (int32_t i = result.length () - (int32_t) inSeparation ; i > lowBound ; i -= (int32_t) inSeparation) {
       result.insertCharacterAtIndex (' ', i COMMA_HERE) ;
     }
