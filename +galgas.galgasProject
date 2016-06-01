@@ -100,6 +100,7 @@ project (3:1:8) -> "galgas" {
   "galgas-sources/predefinedTypes.galgas"
 
 #--- Instructions
+  "galgas-sources/instruction-assignment.galgas"
   "galgas-sources/instruction-cast.galgas"
   "galgas-sources/instruction-concat.galgas"
   "galgas-sources/instruction-drop.galgas"
@@ -116,10 +117,13 @@ project (3:1:8) -> "galgas" {
   "galgas-sources/instruction-method-call.galgas"
 #  "galgas-sources/instruction-poison.galgas"
   "galgas-sources/instruction-proc-call.galgas"
+  "galgas-sources/instruction-self-assignment.galgas"
   "galgas-sources/instruction-self-concat.galgas"
   "galgas-sources/instruction-setter-call.galgas"
   "galgas-sources/instruction-switch.galgas"
   "galgas-sources/instruction-type-method-call.galgas"
+  "galgas-sources/instruction-var-declaration.galgas"
+  "galgas-sources/instruction-var-declaration-with-assignment.galgas"
   "galgas-sources/instruction-warning.galgas"
   "galgas-sources/instruction-with.galgas"
 

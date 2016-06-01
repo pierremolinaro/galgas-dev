@@ -101,21 +101,6 @@ override method @semanticBlockInstructionForGeneration generateInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @localVariableDeclarationForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  [mVariableType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GALGAS_" + [mVariableType identifierRepresentation] + " " + mCppVariableName + " ;\n"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
@@ -172,24 +157,3 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-override method @assignmentInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  @string sourceVar
-  [mSourceExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
-#---
-  @string receiverCppName = mTargetCppName
-  for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
-  end
-  ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-

@@ -114,7 +114,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
   let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mConstantTypeName}
-  let targetVariableCppName = "var_" + [mConstantName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mConstantName identifierRepresentation] + "_" + [mConstantName.location locationIndex]
   [!?ioVariableMap insertUndefinedLocalConstant
     !mConstantName
     !targetType
@@ -142,7 +142,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     ?var @semanticExpressionForGeneration expression
   ]
 #--- Enter target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
   [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
@@ -168,7 +168,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     ?var @semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else

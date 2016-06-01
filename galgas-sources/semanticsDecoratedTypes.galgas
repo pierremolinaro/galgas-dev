@@ -697,10 +697,6 @@ class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForG
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mVariableType
-  @string mCppVariableName
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -721,20 +717,6 @@ class @localVariableOrConstantDeclarationWithConstructorCallForGeneration : @sem
   @string mConstructorName
   @semanticExpressionListForGeneration mConstructorArguments
   @bool mHasCompilerArgument
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  A S S I G N M E N T    I N S T R U C T I O N                                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
-  @unifiedTypeMap-proxy mTargetType
-  @string mTargetCppName
-  @string mNameForCheckingFormalParameterUsing
-  @lstringlist mStructAttributeList
-  @semanticExpressionForGeneration mSourceExpression
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

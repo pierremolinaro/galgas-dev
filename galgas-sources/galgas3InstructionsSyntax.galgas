@@ -204,20 +204,6 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-  $var$
-  $type_name$ ?let typeName
-  $identifier$ ?let variableName
-  outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-  $type_name$ ?let typeName
-  $identifier$ ?let variableName
-  outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -239,20 +225,6 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-  $var$
-  $identifier$ ?let variableName
-  $=$
-  <expression> ?let @semanticExpressionAST sourceExpression
-  outInstruction = @localVariableDeclarationWithAssignmentAST.new {
-    ![variableName location]
-    !variableName
-    !sourceExpression
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $type_name$ ?let typeName
   $identifier$ ?let variableName
   $=$
@@ -264,73 +236,6 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     !variableName
     !sourceExpression
   }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  L O C A L    C O N S T A N T    D E C L A R A T I O N                                                               *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! const declaration instruction
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  L O C A L    C O N S T A N T    D E C L A R A T I O N                                                               *
-#  with implicit target type                                                                                           *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    A S S I G N M E N T    I N S T R U C T I O N                                                                      *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! assignment instruction
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $identifier$ ?let mTargetVariableName
-  var mStructAttributeList =@lstringlist.emptyList{}
-  repeat
-  while
-    $.$
-    $identifier$ ?let attributeName
-    mStructAttributeList += !attributeName
-  end
-  $=$
-  <expression> ?let @semanticExpressionAST mSourceExpression
-  outInstruction = @assignmentInstructionAST.new {
-    ![mTargetVariableName location]
-    !mTargetVariableName
-    !mStructAttributeList
-    !mSourceExpression}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    S E L F    A S S I G N M E N T    I N S T R U C T I O N                                                           *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! self assignment instruction
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
-  $self$
-  let instructionLocation = @location.here
-  $=$
-  <expression> ?let @semanticExpressionAST mSourceExpression
-  outInstruction = @selfAssignmentInstructionAST.new {
-    !instructionLocation
-    !mSourceExpression}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

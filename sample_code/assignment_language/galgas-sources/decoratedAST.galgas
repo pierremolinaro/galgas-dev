@@ -85,7 +85,7 @@ abstract method @instructionAST semanticAnalysis
 override method @varDeclarationAST semanticAnalysis
   ?!@variableMap ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
-  let @string cppName = "var_" + [mVarName identifierRepresentation]
+  let @string cppName = "var_" + [mVarName identifierRepresentation] + "_" + [mVarName.location locationIndex]
   [!?ioVariableMap declareVariable !mVarName !cppName]
   ioInstructionListForGeneration += !@varDeclarationForGeneration. new { !cppName}
 }
