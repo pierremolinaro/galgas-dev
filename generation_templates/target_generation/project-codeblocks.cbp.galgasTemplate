@@ -23,6 +23,7 @@
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
      <Add option="-std=c++98" />
+     <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
@@ -47,6 +48,7 @@
      <Add option="-Wmissing-include-dirs" />
      <Add option="-Weffc++" />
      <Add option="-std=c++98" />
+     <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
 % if GENERATE_FOR_WINDOWS then !"<Add option=\"-D_WIN32_WINNT=0x501\" />" else end

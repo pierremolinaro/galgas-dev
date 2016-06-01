@@ -10,7 +10,7 @@ rule <Constant>
   !@uint outValue {
   $number$ ?let @luint cst
   send " "
-  outExpressionTree = @cConst. new { !cst}
+  outExpressionTree = @cConst.new { !cst}
   outValue = [cst uint]
 }
   
@@ -24,7 +24,7 @@ rule <Expression>
     send sep
     <Terme> ?let @cExpression rightOperand ?let @uint v
     send token
-    outExpressionTree = @cAdd. new { ! outExpressionTree !rightOperand}
+    outExpressionTree = @cAdd.new { ! outExpressionTree !rightOperand}
     outValue = outValue + v
   end
 }
@@ -39,7 +39,7 @@ rule <Terme>
     send sep
     <Facteur> ?let @cExpression rightOperand ?let @uint v
     send token
-    outExpressionTree = @cMult. new { ! outExpressionTree !rightOperand}
+    outExpressionTree = @cMult.new { ! outExpressionTree !rightOperand}
     outValue = outValue * v
   end
 }

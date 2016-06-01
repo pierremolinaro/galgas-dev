@@ -87,7 +87,7 @@ override method @varDeclarationAST semanticAnalysis
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   let @string cppName = "var_" + [mVarName identifierRepresentation] + "_" + [mVarName.location locationIndex]
   [!?ioVariableMap declareVariable !mVarName !cppName]
-  ioInstructionListForGeneration += !@varDeclarationForGeneration. new { !cppName}
+  ioInstructionListForGeneration += !@varDeclarationForGeneration.new { !cppName}
 }
 
 #---------------------------------------------------------------------------*
@@ -97,7 +97,7 @@ override method @printVariableAST semanticAnalysis
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   @string cppName
   [!?ioVariableMap searchForReadAccess !mVarName ?cppName]
-  ioInstructionListForGeneration += !@printVariableForGeneration. new { ![mVarName string] !cppName}
+  ioInstructionListForGeneration += !@printVariableForGeneration.new { ![mVarName string] !cppName}
 }
 
 #---------------------------------------------------------------------------*
@@ -112,7 +112,7 @@ override method @assignmentAST semanticAnalysis
   @string cppName
   [!?ioVariableMap searchForWriteAccess !mTargetVarName ?cppName]
 #---
-  ioInstructionListForGeneration += !@assignmentForGeneration. new { !cppName !expression}
+  ioInstructionListForGeneration += !@assignmentForGeneration.new { !cppName !expression}
 }
 
 #---------------------------------------------------------------------------*
@@ -128,7 +128,7 @@ override method @varInExpressionAST expSemanticAnalysis
   !@expressionForGeneration outExpression {
   @string cppName
   [!?ioVariableMap searchForReadAccess !mVarName ?cppName]
-  outExpression = @varInExpressionForGeneration. new { !cppName}
+  outExpression = @varInExpressionForGeneration.new { !cppName}
 }
 
 #---------------------------------------------------------------------------*
@@ -136,7 +136,7 @@ override method @varInExpressionAST expSemanticAnalysis
 override method @cstInExpressionAST expSemanticAnalysis
   ?!@variableMap unused ioVariableMap
   !@expressionForGeneration outExpression {
-  outExpression = @cstInExpressionForGeneration. new { ![mConstant uint]}
+  outExpression = @cstInExpressionForGeneration.new { ![mConstant uint]}
 }
 
 #---------------------------------------------------------------------------*
@@ -151,7 +151,7 @@ override method @additionAST expSemanticAnalysis
   @expressionForGeneration rightExpression
   [mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
 #---
-  outExpression = @diadicForGeneration. new {
+  outExpression = @diadicForGeneration.new {
     !leftExpression
     !@diadicOperation. addition
     !rightExpression}
@@ -169,7 +169,7 @@ override method @multiplicationAST expSemanticAnalysis
   @expressionForGeneration rightExpression
   [mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
 #---
-  outExpression = @diadicForGeneration. new {
+  outExpression = @diadicForGeneration.new {
     !leftExpression
     !@diadicOperation. multiplication
     !rightExpression}

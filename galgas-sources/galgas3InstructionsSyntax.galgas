@@ -293,7 +293,7 @@ rule <actual_input_parameter>
   select
     $?$ ?outSelector
     $*$
-    outActualInputParameter = @inputParameterAnonymousVariable. new
+    outActualInputParameter = @inputParameterAnonymousVariable.new
   or
     $?$ ?outSelector
     $var$

@@ -447,7 +447,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $log$
-  ioInstructionList += !@lexicalLogInstructionAST. new
+  ioInstructionList += !@lexicalLogInstructionAST.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

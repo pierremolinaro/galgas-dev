@@ -1,0 +1,179 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @parseRewindInstruction : @syntaxInstructionAST {
+  @listOfSyntaxInstructionList mParseRewindBranchList
+  @location mEndOfParseDoInstruction
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  #····················································································································*
+
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    $parse$
+    let instructionLocation = @location.here
+    $do$
+    var mParseDoBranchList =@listOfSyntaxInstructionList.emptyList{}
+    <syntax_instruction_list> ?let @syntaxInstructionList il
+    mParseDoBranchList += !il !@location.here
+    repeat
+      $rewind$
+      <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+      mParseDoBranchList += !instructionList !@location.here
+    while
+    end
+    $end$
+    let endOfInstruction = @location.here
+    select
+    or
+      $attribute$ ?let @lstring terminator
+      if terminator.string != "parse" then
+        error terminator : "the terminator attribute should be '%parse'"
+      end
+    end
+    outInstruction = @parseRewindInstruction.new {
+      !instructionLocation
+      !mParseDoBranchList
+      !endOfInstruction
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! TRANSFORM
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseRewindInstruction transformInstruction
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
+{
+  [mParseRewindBranchList first ?let syntaxInstructionList ?*]
+
+  transformInstructionList (
+    !syntaxInstructionList
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
+    !?ioSyntaxInstructionList
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @parseRewindInstruction analyzeSyntaxInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @terminalMap  inTerminalMap
+  ?let @string inLexiqueName
+  ?let @nonterminalMap inNonterminalMap
+  ?let @string inComponentName
+  ?let @stringset inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint ioSelectMethodCount
+{
+#--- 'Rewind' blocks
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  let @uint referenceSelectMethodCount = ioSelectMethodCount
+  for () in mParseRewindBranchList do
+    ioSelectMethodCount = referenceSelectMethodCount
+    var instructionList =@semanticInstructionListForGeneration.emptyList{}
+    for () in mSyntaxInstructionList do
+      [mInstruction analyzeSyntaxInstruction
+        !inAnalysisContext
+        !inHasTranslateFeature
+        !inTerminalMap
+        !inLexiqueName
+        !inNonterminalMap
+        !inComponentName
+        !inIndexNameSet
+        !?instructionList
+        !?ioVariableMap
+        !?ioSelectMethodCount
+      ]
+    end
+    listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
+  end
+#--- Check syntax signature of branches
+  @listOfSemanticInstructionListForGeneration tempListOfBranches = listOfSemanticInstructionListForGeneration
+  @semanticInstructionListForGeneration instructionList
+  [!?tempListOfBranches popFirst ?instructionList ?*]
+  let @semanticInstructionListForGeneration referenceSignature = syntaxSignatureOfInstructionList (!"parse" !instructionList)
+  @bool ok = true
+  for () in tempListOfBranches while ok do
+    ok = compareSyntaxSignature (
+      !referenceSignature
+      !syntaxSignatureOfInstructionList (!"parse" !mInstructionList)
+      !mEndOfInstructionList
+    )
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@parseRewindInstructionForGeneration.new {
+    !mInstructionLocation
+    !listOfSemanticInstructionListForGeneration
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseRewindInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+{
+  [mListOfSemanticInstructionListForGeneration first ?let instructionList ?*]
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !instructionList)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @parseRewindInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  let @string parsingContextVar = "parsingContext_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  ioGeneratedCode += "const C_parsingContext " + parsingContextVar + " = " + compilerCppName () + "->parsingContext () ;\n"
+  for () in mListOfSemanticInstructionListForGeneration
+  do
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  between 
+    ioGeneratedCode += compilerCppName () + "->setParsingContext (" + parsingContextVar + ") ; // rewind\n"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

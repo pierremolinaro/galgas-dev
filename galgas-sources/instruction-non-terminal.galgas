@@ -1,0 +1,231 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @nonterminalCallInstruction : @syntaxInstructionAST {
+  @lstring mNonterminalName
+  @lstring mLabelName # No label : empty string
+  @actualParameterListAST mActualParameterList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3SyntaxComponentSyntax {
+
+  #····················································································································*
+
+  rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
+    @lstring mLabelName # No label : empty string
+    select
+      mLabelName = @lstring.new {!"" !@location.here}
+    or
+      $parse$
+      mLabelName = @lstring.new {!"parse" !@location.here}
+    or
+      $parse$
+      $identifier$ ? mLabelName
+    end
+    $non_terminal_symbol$ ?let @lstring mNonterminalName indexing ruleReference
+    <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
+  #--- Get syntax directed translation result string
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    select
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+    or
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+    end
+    outInstruction = @nonterminalCallInstruction.new {
+      ![mNonterminalName location]
+      !mNonterminalName
+      !mLabelName
+      !mActualParameterList
+      !grammarInstructionSyntaxDirectedTranslationResult
+    }
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! TRANSFORM
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @nonterminalCallInstruction transformInstruction
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ?nonTerminalSymbolMap:let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
+  @uint nonTerminalSymbolIndex
+  [inNonTerminalSymbolMap searchKey !mNonterminalName ?nonTerminalSymbolIndex ?*]
+  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
+    !mInstructionLocation
+    !mNonterminalName
+    !nonTerminalSymbolIndex
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @nonterminalCallInstruction analyzeSyntaxInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @terminalMap unused inTerminalMap
+  ?let @string unused inLexiqueName
+  ?let @nonterminalMap inNonterminalMap
+  ?let @string unused inComponentName
+  ?let @stringset unused inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount {
+  @nonterminalLabelMap labelMap
+  [inNonterminalMap searchKey !mNonterminalName ?labelMap]
+  @formalParameterSignature signature
+  if [mLabelName string] == "parse" then
+    signature = @formalParameterSignature.emptyList
+  else
+    [labelMap searchKey !mLabelName ?* ?signature ?*]
+  end
+#--- call arguments
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mNonterminalName
+    !"'<" + mNonterminalName + ">' nonterminal declaration"
+    !signature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Check syntax directed translation destination variable
+  [mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !?ioVariableMap
+  ]
+#--- Generate instructions
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
+    !mInstructionLocation
+    ![mNonterminalName string]
+    ![mLabelName string]
+    !actualParameterListForGeneration
+    !mGrammarInstructionSyntaxDirectedTranslationResult
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
+  @string mNonterminalName
+  @string mLabelName
+  @actualParameterListForGeneration mActualParameterList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @nonterminalInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+{
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
+    !mInstructionLocation
+    !mNonterminalName
+    !inPosfix
+    !@actualParameterListForGeneration.emptyList
+    !@grammarInstructionSyntaxDirectedTranslationResultNone.new
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! COMPARE SYNTAX SIGNATURE
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSignature
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk {
+  cast inTestedInstruction
+  case >= @nonterminalInstructionForGeneration si :
+    outOk = mNonterminalName == [si mNonterminalName]
+    if not outOk then
+      error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @nonterminalInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [mInstructionLocation locationIndex]
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
+  end
+  ioGeneratedCode += "nt_" + [mNonterminalName identifierRepresentation] + "_" + [mLabelName identifierRepresentation] + " ("
+  for () in parameterCppNameList do
+    ioGeneratedCode += mValue + ", "
+  end
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode += sdtResultVarName + ", "
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode +=  compilerCppName () + ") ;\n"
+  [mGrammarInstructionSyntaxDirectedTranslationResult generateCode
+    !inGenerateSyntaxDirectedTranslationString
+    !sdtResultVarName
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ]
+#--- Release temporary variables
+  for () in jokerParametersToReleaseList do
+    ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

@@ -34,7 +34,7 @@ rule <start_symbol> !@programAST outProgramAST {
     $;$
     boxTypeListAST += !boxTypeName !portNameList
   end
-  outProgramAST = @programAST. new {
+  outProgramAST = @programAST.new {
     !boxTypeListAST
     !boxInstanceListAST
     !@location.here}
