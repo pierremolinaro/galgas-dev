@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -826,7 +826,7 @@ void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSort
   for (int32_t i=1 ; i<array.count () ; i++) {
     array (i-1 COMMA_HERE).mExplorationLink = i ;
   }
-  int32_t root = (mNodeCount > 0) ? 0 : -1 ;
+  int32_t theRoot = (mNodeCount > 0) ? 0 : -1 ;
 //--- Display
  /*  printf ("*** Working array:\n") ;
     for (int32_t i=0 ; i<array.count () ; i++) {
@@ -842,8 +842,8 @@ void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSort
   bool loop = true ;
   while (loop) {
     loop = false ;
-    int32_t p = root ;
-    root = -1 ;
+    int32_t p = theRoot ;
+    theRoot = -1 ;
     while (p >= 0) {
       cTopologicalSortElement & entry = array (p COMMA_HERE) ;
       const int32_t next = entry.mExplorationLink ;
@@ -854,15 +854,15 @@ void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSort
         }
         outSortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
       }else{
-        entry.mExplorationLink = root ;
-        root = p ;
+        entry.mExplorationLink = theRoot ;
+        theRoot = p ;
       }
       p = next ;
     }
   }
 //--- Add unsorted nodes
   outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  int32_t p = root ;
+  int32_t p = theRoot ;
   while (p >= 0) {
     cTopologicalSortElement & entry = array (p COMMA_HERE) ;
     outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;

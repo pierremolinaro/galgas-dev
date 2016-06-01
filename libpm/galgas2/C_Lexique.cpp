@@ -5,7 +5,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
@@ -1545,9 +1545,9 @@ void C_Lexique::enableIndexing (void) {
 
 void C_Lexique::generateIndexFile (void) {
   if (NULL != mIndexingDictionary) {
-    const C_String sourceFilePath = sourceText ()->sourceFilePath () ;
-    C_String indexFilePath = C_FileManager::absolutePathFromPath (indexingDirectory (), sourceFilePath.stringByDeletingLastPathComponent ()) ;
-    indexFilePath << "/" << sourceFilePath.lastPathComponent () << ".plist" ;
+    const C_String source_file_path = sourceText ()->sourceFilePath () ;
+    C_String indexFilePath = C_FileManager::absolutePathFromPath (indexingDirectory (), source_file_path.stringByDeletingLastPathComponent ()) ;
+    indexFilePath << "/" << source_file_path.lastPathComponent () << ".plist" ;
     mIndexingDictionary->generateIndexFile (indexFilePath) ;
   }
 }
