@@ -1,0 +1,162 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#! AST
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @assignmentInstructionAST : @semanticInstructionAST {
+  @lstring mTargetVariableName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SYNTAX
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <semantic_instruction>
+    !@semanticInstructionAST outInstruction {
+    $identifier$ ?let mTargetVariableName
+    var mStructAttributeList =@lstringlist.emptyList{}
+    repeat
+    while
+      $.$
+      $identifier$ ?let attributeName
+      mStructAttributeList += !attributeName
+    end
+    $=$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    outInstruction = @assignmentInstructionAST.new {
+      ![mTargetVariableName location]
+      !mTargetVariableName
+      !mStructAttributeList
+      !mSourceExpression}
+  }
+
+  #····················································································································*
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CONTEXT
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @assignmentInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! SEMANTICS
+#----------------------------------------------------------------------------------------------------------------------*
+  
+override method @assignmentInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+#--- Get target variable type
+  @unifiedTypeMap-proxy targetType
+  if [mStructAttributeList length] == 0 then
+    [!?ioVariableMap neutralAccess
+      !mTargetVariableName
+      ?targetType
+      ?*
+      ?*
+    ]
+  else
+    [!?ioVariableMap neutralAccess
+      !mTargetVariableName
+      ?targetType
+      ?*
+      ?*
+    ]
+    for () in mStructAttributeList do
+      let attributeMap = [targetType mAttributeMap]
+      [attributeMap searchKey 
+        !mValue
+        ?targetType
+      ]
+    end
+  end
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+#--- Get target variable
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  if [mStructAttributeList length] == 0 then
+    [!?ioVariableMap searchForWriteAccess
+      !mTargetVariableName
+      ?*
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !mTargetVariableName
+      ?*
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! GENERATION TYPES
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mTargetType
+  @string mTargetCppName
+  @string mNameForCheckingFormalParameterUsing
+  @lstringlist mStructAttributeList
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! CODE GENERATION
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @assignmentInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [mSourceExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let sourceVar
+  ]
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+#---
+  @string receiverCppName = mTargetCppName
+  for () in mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+  ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

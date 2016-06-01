@@ -1,0 +1,92 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @localVariableDeclarationAST : @semanticInstructionAST {
+  @lstring mTypeName
+  @lstring mVariableName
+  @bool mIsUndefinedConstant
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $var$
+    $type_name$ ?let typeName
+    $identifier$ ?let variableName
+    outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $type_name$ ?let typeName
+    $identifier$ ?let variableName
+    outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
+  }
+
+  #·····················································································································
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @localVariableDeclarationAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @localVariableDeclarationAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
+  if mIsUndefinedConstant then
+    [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
+    !targetType
+    !targetVariableCppName
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mVariableType
+  @string mCppVariableName
+}
+
+#·······················································································································
+
+override method @localVariableDeclarationForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+{
+  [mVariableType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [mVariableType identifierRepresentation] + " " + mCppVariableName + " ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
