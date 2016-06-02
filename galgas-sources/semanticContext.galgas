@@ -335,30 +335,9 @@ override getter @abstractExtensionModifierAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @extensionModifierAST keyRepresentation
-  ->@string outString {
-  outString = "extension setter @" + mTypeName + " " + mExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @overridingExtensionModifierAST keyRepresentation
-  ->@string outString {
-  outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @overridingAbstractExtensionModifierAST keyRepresentation
   ->@string outString {
   outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @abstractExtensionMethodAST keyRepresentation
-  ->@string outString {
-  outString = "abstract extension method @" + mTypeName + " " + mAbstractExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -380,13 +359,6 @@ override getter @overridingExtensionMethodAST keyRepresentation
 override getter @overridingAbstractExtensionMethodAST keyRepresentation
   ->@string outString {
   outString = "overriding extension method @" + mTypeName + " " + mOverridingExtensionMethodName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @abstractExtensionGetterAST keyRepresentation
-  ->@string outString {
-  outString = "abstract extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -631,15 +603,6 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractExtensionMethodAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @extensionMethodAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
@@ -676,34 +639,7 @@ override method @abstractExtensionModifierAST enterInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @extensionModifierAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @overridingExtensionModifierAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingAbstractExtensionModifierAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
@@ -1395,17 +1331,6 @@ override method @overridingExtensionMethodAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @overridingExtensionModifierAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
-  ioExtensionOverrideDefinitionList += !self
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingAbstractExtensionGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
@@ -1492,32 +1417,6 @@ override method @extensionMethodAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @extensionModifierAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension setter @" + mTypeName + " " + mExtensionModifierName ![mExtensionModifierName location]}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
-#---
-  if not [ioExtensionModifierMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioExtensionModifierMapForBuildingContext insertKey
-      !mTypeName
-      !@extensionModifierMapForType. emptyMap
-    ]
-  end
-  with mTypeName in !?ioExtensionModifierMapForBuildingContext error message searchKey  do
-    [!?mExtensionModifierMapForType insertKey
-      !mExtensionModifierName
-      !mExtensionModifierFormalParameterList
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingExtensionGetterAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
@@ -1525,59 +1424,6 @@ override method @overridingExtensionGetterAST enterDeclarationInGraph
   ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
   ioExtensionOverrideDefinitionList += !self
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension getter @" + mTypeName + " " + mAbstractExtensionGetterName ![mAbstractExtensionGetterName location]}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
-#---
-  if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioExtensionGetterMapForBuildingContext insertKey
-      !mTypeName
-      !@extensionGetterMapForType. emptyMap
-    ]
-  end
-  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-    [!?mExtensionGetterMapForType insertKey
-      !mAbstractExtensionGetterName
-      !mAbstractExtensionGetterReturnedTypeName
-      !mAbstractExtensionGetterFormalInputParameterList
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension method @" + mTypeName + " " + mAbstractExtensionMethodName ![mAbstractExtensionMethodName location]}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
-#---
-  if not [ioExtensionMethodMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioExtensionMethodMapForBuildingContext insertKey
-      !mTypeName
-      !@extensionMethodMapForType. emptyMap
-    ]
-  end
-  with mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
-    [!?mExtensionMethodMapForType insertKey
-      !mAbstractExtensionMethodName
-      !mAbstractExtensionMethodFormalParameterList
-    ]
-  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

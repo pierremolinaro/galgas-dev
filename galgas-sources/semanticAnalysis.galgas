@@ -600,43 +600,6 @@ override method @optionComponentDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractExtensionMethodAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-#--- Check self type is an abstract class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
-  elsif [selfType mIsConcrete] then
-    error mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
-  end
-#--- Compute method signature
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in mAbstractExtensionMethodFormalParameterList do
-    formalParameterListForGeneration +=
-      !mFormalSelector
-      !mFormalArgumentPassingMode
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-      !mFormalArgumentName
-      ![mFormalArgumentName string]
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"abstract extension method " + mAbstractExtensionMethodName
-    !@abstractExtensionMethodForGeneration.new {
-      !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mAbstractExtensionMethodName
-      !selfType
-      ![mAbstractExtensionMethodName string]
-      !formalParameterListForGeneration}
-    !"~"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @extensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -869,141 +832,6 @@ override method @abstractExtensionModifierAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @extensionModifierAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-  @string selfObjectName
-  @string selfObjectAccessor
-  @bool implementedAsFunction
-#--- Check self type is a class
-  if [selfType mTypeKindEnum] == @typeKindEnum. classType then
-    selfObjectName = "object"
-    selfObjectAccessor = "object->"
-    implementedAsFunction = false
-  else
-    selfObjectName = "ioObject"
-    selfObjectAccessor = "ioObject."
-    implementedAsFunction = true
-  end
-#--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext.new {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfType
-    !selfObjectName
-    !selfType}
-  analyzeRoutineBody (
-    !analysisContext
-    !mExtensionModifierFormalParameterList
-    !@localConstantList.emptyList
-    !@typedPropertyList.emptyList
-    ![selfType mAllTypedAttributeList]
-    !selfObjectAccessor
-    !mExtensionModifierInstructionList
-    !mEndOfModifierLocation
-    ?semanticInstructionListForGeneration
-    ?formalParameterListForGeneration
-  )
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"extension setter " + mExtensionModifierName
-    !@extensionModifierForGeneration.new {
-      !true # Generate Cpp header file
-      !"setter-" + [selfType key] + "-" + mExtensionModifierName
-      !selfType
-      ![mExtensionModifierName string]
-      !implementedAsFunction
-      !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
-      !semanticInstructionListForGeneration}
-    !"~"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @overridingExtensionModifierAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-#--- Check self type is a class
-  if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mOverridingExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
-  end
-#--- Find base type name
-  @string baseTypeName = ""
-  @unifiedTypeMap-proxy superType = [selfType mSuperType]
-  var inheritedSignature =@formalParameterSignature.emptyList{}
-  @location inheritedDeclarationLocation = @location.here
-  loop( [inSemanticContext.mTypeMap count] + 1)
-  while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mModifierMap] hasKey ![mOverridingExtensionModifierName string]] then
-      @methodQualifier qualifier
-      [[superType mModifierMap] searchKey !mOverridingExtensionModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
-      if qualifier <= @methodQualifier. isBasicFinal then
-        baseTypeName = [superType key]
-      end
-    end
-    superType = [superType mSuperType]
-  end
-  if baseTypeName == "" then
-    error mOverridingExtensionModifierName:"this setter is not declared by a super class"
-  end
-#--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext.new {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfType
-    !"object"
-    !selfType}
-  analyzeRoutineBody (
-    !analysisContext
-    !mOverridingExtensionModifierFormalParameterList
-    !@localConstantList.emptyList
-    !@typedPropertyList.emptyList
-    ![selfType mAllTypedAttributeList]
-    !"object->"
-    !mOverridingExtensionModifierInstructionList
-    !mEndOfModifierLocation
-    ?semanticInstructionListForGeneration
-    ?formalParameterListForGeneration
-  )
-#--- Check Signature
-  if baseTypeName != "" then
-    checkMethodSignatures (
-      !formalParameterListForGeneration
-      ![mOverridingExtensionModifierName location]
-      !inheritedSignature
-      !inheritedDeclarationLocation
-    )
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !" overriding extension setter " + mOverridingExtensionModifierName
-    !@overridingExtensionModifierForGeneration.new {
-      !false # Do not generate Cpp header file
-      !"setter-" + mTypeName + "-" + mOverridingExtensionModifierName
-      !selfType
-      !baseTypeName
-      ![mOverridingExtensionModifierName string]
-      !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
-      !semanticInstructionListForGeneration}
-    !"~"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingAbstractExtensionModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -1055,46 +883,6 @@ override method @overridingAbstractExtensionModifierAST semanticAnalysis
     )
   end
 }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-#--- Check self type is an abstract class
-  if [selfType mTypeKindEnum] != @typeKindEnum.classType then
-    error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
-  elsif [selfType mIsConcrete] then
-    error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
-  end
-#--- Compute method signature
-  var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
-  for () in mAbstractExtensionGetterFormalInputParameterList do
-    formalParameterListForGeneration +=
-      !mFormalSelector
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-      ![mFormalArgumentName string]
-      !mFormalArgumentName
-      !mIsConstant
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"abstract extension getter " + mAbstractExtensionGetterName
-    !@abstractExtensionGetterForGeneration.new {
-      !true # Generate Cpp header file
-      !"getter-" + mTypeName + "-" + mAbstractExtensionGetterName
-      !selfType
-      ![mAbstractExtensionGetterName string]
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
-      !formalParameterListForGeneration
-    }
-    !"~"
-}
-
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2084,10 +1872,6 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
     !?ioVariableMap
   ]
 }
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! Terminal instruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 

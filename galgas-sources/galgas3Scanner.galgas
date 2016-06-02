@@ -62,9 +62,13 @@ indexing typeReferenceOverrideExtensionMethodDefinition : "Override Extension Me
 indexing typeReferenceOverrideAbstractExtensionMethod : "Override Abstract Extension Method Definition"
 
 indexing abstractExtensionGetterDefinition : "Abstract Extension Getter Definition"
+indexing typeReferenceAbstractExtensionGetter : "Abstract Extension Getter Definition"
 indexing overrideAbstractExtensionGetterDefinition : "Override Abstract Extension Getter Definition"
+indexing typeReferenceOverrideAbstractExtensionGetter : "Override Abstract Extension Getter Definition"
 indexing extensionGetterDefinition : "Extension Getter Definition"
+indexing typeReferenceExtensionGetter : "Extension Getter Definition"
 indexing overrideExtensionGetterDefinition : "Override Extension Getter Definition"
+indexing typeReferenceOverrideExtensionGetter : "Override Extension Getter Definition"
 
 indexing optionComponentDefinition : "Option Component Definition"
 indexing optionComponentReference : "Option Component Reference"

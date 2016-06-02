@@ -1245,42 +1245,6 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @abstractExtensionMethodForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
-    ![mReceiverType key]
-    !mAbstractExtensionMethodName
-    !mAbstractExtensionMethodFormalParameterList
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mAbstractExtensionMethodName
-  [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractExtensionMethodFormalParameterList do
-    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
-    !mReceiverType
-    !mAbstractExtensionMethodName
-    !mAbstractExtensionMethodFormalParameterList
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @extensionMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
@@ -1429,6 +1393,8 @@ override method @abstractExtensionModifierForGeneration appendDeclaration1
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#·······················································································································
+
 override method @abstractExtensionModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
@@ -1442,143 +1408,6 @@ override method @abstractExtensionModifierForGeneration appendSpecificImplementa
   ] 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @extensionModifierForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @extensionModifierForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionModifierAsFunctionDeclaration
-      ![mReceiverType key]
-      !mExtensionModifierName
-      !mExtensionModifierFormalParameterList
-    ] 
-  else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionModifierDeclaration
-      ![mReceiverType key]
-      !mExtensionModifierName
-      !mExtensionModifierFormalParameterList
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @extensionModifierForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  if mImplementedAsFunction then
-    @formalParameterListForGeneration extensionModifierFormalParameterList = mExtensionModifierFormalParameterList
-    [!?extensionModifierFormalParameterList insertAtIndex
-      !["" nowhere]
-      !@formalArgumentPassingModeAST. argumentInOut
-      !mReceiverType
-      !@lstring.new {!"self" !@location.here}
-      !"ioObject"
-      !0
-    ]
-    ioInclusionSet += !"setter-" + [mReceiverType key] + "-" + mExtensionModifierName
-    generateProcedure (
-      !static:false
-      !"extensionSetter_" + [mExtensionModifierName identifierRepresentation]
-      !?ioInclusionSet
-      !extensionModifierFormalParameterList
-      !mSemanticInstructionListForGeneration
-      !false # is not const
-      !"C_Compiler"
-      !true # Generate location Argument
-      !false # Do not generate 'resetTemplateString'
-      !false # Do not generate syntaxDirectedTranslationString argument
-      ?let @string code
-    )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![mReceiverType key]
-      !mExtensionModifierName
-      !code
-    ] 
-  else
-    @unifiedTypeMap-proxy baseType = mReceiverType
-    @bool searching = true
-    loop( @uint. max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mModifierMap] hasKey !mExtensionModifierName] then
-          baseType = [baseType mSuperType]
-        else
-          searching = false
-        end
-      else
-        searching = false
-      end  
-    end
-    ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionModifierName
-    [baseType addHeaderFileName !?ioInclusionSet]
-    generateExtensionModifier (
-      ![mReceiverType key]
-      !""
-      !mExtensionModifierName
-      !?ioInclusionSet
-      !mExtensionModifierFormalParameterList
-      !mSemanticInstructionListForGeneration
-      ?let @string modifierImplementation
-    )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionModifierImplementation
-      ![mReceiverType key]
-      !mExtensionModifierName
-      !mExtensionModifierFormalParameterList
-      !modifierImplementation
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @overridingExtensionModifierForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. noHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @overridingExtensionModifierForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  generateExtensionModifier (
-    ![mReceiverType key]
-    !mBaseTypeName
-    !mExtensionModifierName
-    !?ioInclusionSet
-    !mExtensionModifierFormalParameterList
-    !mSemanticInstructionListForGeneration
-    ?let @string methodImplementation
-  )
-  @unifiedTypeMap-proxy baseType = mReceiverType
-  @bool searching = true
-  loop( @uint. max) while searching do
-    if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mModifierMap] hasKey !mExtensionModifierName] then
-        baseType = [baseType mSuperType]
-      else
-        searching = false
-      end
-    else
-      searching = false
-    end  
-  end
-  ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionModifierName
-  [mReceiverType addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionModifierImplementation
-    ![mReceiverType key]
-    !mExtensionModifierName
-    !methodImplementation
-  ] 
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1586,44 +1415,6 @@ override method @overridingExtensionModifierForGeneration appendSpecificImplemen
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @abstractExtensionGetterForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-{
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
-    ![mReceiverType key]
-    !mAbstractExtensionGetterName
-    !mAbstractExtensionGetterFormalParameterList
-    !mResultType
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
-  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractExtensionGetterName
-  [mResultType addHeaderFileName !?ioInclusionSet]
-  [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractExtensionGetterFormalParameterList do
-    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  end
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
-    ![mReceiverType key]
-    !mAbstractExtensionGetterName
-    !mAbstractExtensionGetterFormalParameterList
-    !mResultType
-  ] 
-}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

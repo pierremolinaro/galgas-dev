@@ -1,0 +1,240 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @overridingExtensionSetterAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingExtensionModifierName
+  @formalParameterListAST mOverridingExtensionModifierFormalParameterList
+  @semanticInstructionListAST mOverridingExtensionModifierInstructionList
+  @location mEndOfModifierLocation
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $override$
+    $setter$
+    $type_name$ ?var  @lstring className indexing typeReferenceOverrideExtensionModifierDefinition
+    $identifier$ ?var  @lstring modifierName indexing overrideExtensionModifierDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ${$
+    <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+    let @location endOfModifierLocation = @location.here
+    $}$
+    ioDeclarations.mDeclarationList += !@overridingExtensionSetterAST.new {
+      !false # Is not predefined
+      !className
+      !modifierName
+      !formalParameterList
+      !routineInstructionList
+      !endOfModifierLocation
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingExtensionSetterAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+{
+  ioExtensionOverrideDefinitionList += !self
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   KEY REPRESENTATION                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @overridingExtensionSetterAST keyRepresentation -> @string outString {
+  outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionModifierName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingExtensionSetterAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingExtensionSetterAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Self type
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != @typeKindEnum.classType then
+    error mOverridingExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
+  end
+#--- Find base type name
+  @string baseTypeName = ""
+  @unifiedTypeMap-proxy superType = [selfType mSuperType]
+  var inheritedSignature =@formalParameterSignature.emptyList{}
+  @location inheritedDeclarationLocation = @location.here
+  loop( [inSemanticContext.mTypeMap count] + 1)
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mModifierMap] hasKey ![mOverridingExtensionModifierName string]] then
+      @methodQualifier qualifier
+      [[superType mModifierMap] searchKey !mOverridingExtensionModifierName ?* ?inheritedSignature ?* ?qualifier ?*]
+      if qualifier <= @methodQualifier. isBasicFinal then
+        baseTypeName = [superType key]
+      end
+    end
+    superType = [superType mSuperType]
+  end
+  if baseTypeName == "" then
+    error mOverridingExtensionModifierName:"this setter is not declared by a super class"
+  end
+#--- Analyze instruction list
+  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration
+  let analysisContext = @analysisContext.new {
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"object"
+    !selfType
+  }
+  analyzeRoutineBody (
+    !analysisContext
+    !mOverridingExtensionModifierFormalParameterList
+    !@localConstantList.emptyList
+    !@typedPropertyList.emptyList
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mOverridingExtensionModifierInstructionList
+    !mEndOfModifierLocation
+    ?semanticInstructionListForGeneration
+    ?formalParameterListForGeneration
+  )
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures (
+      !formalParameterListForGeneration
+      ![mOverridingExtensionModifierName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    )
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !" overriding extension setter " + mOverridingExtensionModifierName
+    !@overridingExtensionSetterForGeneration.new {
+      !false # Do not generate Cpp header file
+      !"setter-" + mTypeName + "-" + mOverridingExtensionModifierName
+      !selfType
+      !baseTypeName
+      ![mOverridingExtensionModifierName string]
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    }
+    !"~"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   EXTENSION LIST MAP                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingExtensionSetterAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
+{
+  ioOverridingExtensionModifierListMap +=
+    ![mTypeName string]
+    !mOverridingExtensionModifierName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mBaseTypeName
+  @string mExtensionModifierName
+  @formalParameterListForGeneration mExtensionModifierFormalParameterList
+  @typedPropertyList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#·······················································································································
+
+override getter @overridingExtensionSetterForGeneration headerKind ->@headerKind outResult {
+  outResult = @headerKind. noHeader
+}
+
+#·······················································································································
+
+override method @overridingExtensionSetterForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  generateExtensionModifier (
+    ![mReceiverType key]
+    !mBaseTypeName
+    !mExtensionModifierName
+    !?ioInclusionSet
+    !mExtensionModifierFormalParameterList
+    !mSemanticInstructionListForGeneration
+    ?let @string methodImplementation
+  )
+  @unifiedTypeMap-proxy baseType = mReceiverType
+  @bool searching = true
+  loop( @uint. max) while searching do
+    if not [[baseType mSuperType] isNull] then
+      if [[[baseType mSuperType] mModifierMap] hasKey !mExtensionModifierName] then
+        baseType = [baseType mSuperType]
+      else
+        searching = false
+      end
+    else
+      searching = false
+    end  
+  end
+  ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionModifierName
+  [mReceiverType addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionModifierImplementation
+    ![mReceiverType key]
+    !mExtensionModifierName
+    !methodImplementation
+  ] 
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
