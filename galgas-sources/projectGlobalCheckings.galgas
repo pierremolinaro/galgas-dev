@@ -64,46 +64,6 @@ override method @abstractExtensionModifierAST buildExtensionListMaps
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @extensionModifierAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioExtensionModifierListMap +=
-    ![mTypeName string]
-    !mExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @overridingExtensionModifierAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioOverridingExtensionModifierListMap +=
-    ![mTypeName string]
-    !mOverridingExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingAbstractExtensionModifierAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
   ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
@@ -120,26 +80,6 @@ override method @overridingAbstractExtensionModifierAST buildExtensionListMaps
   ioOverridingAbstractExtensionModifierListMap +=
     ![mTypeName string]
     !mOverridingExtensionModifierName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionMethodAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
-  ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioAbstractExtensionMethodListMapAST +=
-    ![mTypeName string]
-    !mAbstractExtensionMethodName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -200,26 +140,6 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ioOverridingAbstractExtensionMethodListMap +=
     ![mTypeName string]
     !mOverridingExtensionMethodName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionGetterAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
-  ?!@genericExtensionMethodListMap ioAbstractExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
-  ioAbstractExtensionGetterListMap +=
-    ![mTypeName string]
-    !mAbstractExtensionGetterName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

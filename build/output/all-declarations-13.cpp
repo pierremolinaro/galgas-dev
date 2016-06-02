@@ -14123,10 +14123,10 @@ GALGAS_extensionMethodAST GALGAS_extensionMethodAST::extractObject (const GALGAS
 //   Object comparison                                                                                                 *
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cPtr_extensionModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_extensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+  const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extensionSetterAST) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
   }
@@ -14151,7 +14151,7 @@ typeComparisonResult cPtr_extensionModifierAST::dynamicObjectCompare (const acPt
 //----------------------------------------------------------------------------------------------------------------------
 
 
-typeComparisonResult GALGAS_extensionModifierAST::objectCompare (const GALGAS_extensionModifierAST & inOperand) const {
+typeComparisonResult GALGAS_extensionSetterAST::objectCompare (const GALGAS_extensionSetterAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -14169,52 +14169,52 @@ typeComparisonResult GALGAS_extensionModifierAST::objectCompare (const GALGAS_ex
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierAST::GALGAS_extensionModifierAST (void) :
+GALGAS_extensionSetterAST::GALGAS_extensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierAST GALGAS_extensionModifierAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_extensionModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                       GALGAS_lstring::constructor_default (HERE),
-                                                       GALGAS_lstring::constructor_default (HERE),
-                                                       GALGAS_formalParameterListAST::constructor_emptyList (HERE),
-                                                       GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                       GALGAS_location::constructor_nowhere (HERE)
-                                                       COMMA_THERE) ;
+GALGAS_extensionSetterAST GALGAS_extensionSetterAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_extensionSetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_formalParameterListAST::constructor_emptyList (HERE),
+                                                     GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                     GALGAS_location::constructor_nowhere (HERE)
+                                                     COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierAST::GALGAS_extensionModifierAST (const cPtr_extensionModifierAST * inSourcePtr) :
+GALGAS_extensionSetterAST::GALGAS_extensionSetterAST (const cPtr_extensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionModifierAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extensionSetterAST) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierAST GALGAS_extensionModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                          const GALGAS_lstring & inAttribute_mTypeName,
-                                                                          const GALGAS_lstring & inAttribute_mExtensionModifierName,
-                                                                          const GALGAS_formalParameterListAST & inAttribute_mExtensionModifierFormalParameterList,
-                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mExtensionModifierInstructionList,
-                                                                          const GALGAS_location & inAttribute_mEndOfModifierLocation
-                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierAST result ;
+GALGAS_extensionSetterAST GALGAS_extensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                      const GALGAS_lstring & inAttribute_mTypeName,
+                                                                      const GALGAS_lstring & inAttribute_mExtensionModifierName,
+                                                                      const GALGAS_formalParameterListAST & inAttribute_mExtensionModifierFormalParameterList,
+                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mExtensionModifierInstructionList,
+                                                                      const GALGAS_location & inAttribute_mEndOfModifierLocation
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mExtensionModifierName.isValid () && inAttribute_mExtensionModifierFormalParameterList.isValid () && inAttribute_mExtensionModifierInstructionList.isValid () && inAttribute_mEndOfModifierLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_extensionModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mExtensionModifierName, inAttribute_mExtensionModifierFormalParameterList, inAttribute_mExtensionModifierInstructionList, inAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+    macroMyNew (result.mObjectPtr, cPtr_extensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mExtensionModifierName, inAttribute_mExtensionModifierFormalParameterList, inAttribute_mExtensionModifierInstructionList, inAttribute_mEndOfModifierLocation COMMA_THERE)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
     result = p->mAttribute_mTypeName ;
   }
   return result ;
@@ -14222,17 +14222,17 @@ GALGAS_lstring GALGAS_extensionModifierAST::getter_mTypeName (UNUSED_LOCATION_AR
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_extensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_extensionSetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionModifierAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
     result = p->mAttribute_mExtensionModifierName ;
   }
   return result ;
@@ -14240,17 +14240,17 @@ GALGAS_lstring GALGAS_extensionModifierAST::getter_mExtensionModifierName (UNUSE
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_extensionModifierAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_extensionSetterAST::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExtensionModifierName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_extensionModifierAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_extensionSetterAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
     result = p->mAttribute_mExtensionModifierFormalParameterList ;
   }
   return result ;
@@ -14258,17 +14258,17 @@ GALGAS_formalParameterListAST GALGAS_extensionModifierAST::getter_mExtensionModi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST cPtr_extensionModifierAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST cPtr_extensionSetterAST::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExtensionModifierFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_extensionModifierAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_extensionSetterAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
     result = p->mAttribute_mExtensionModifierInstructionList ;
   }
   return result ;
@@ -14276,17 +14276,17 @@ GALGAS_semanticInstructionListAST GALGAS_extensionModifierAST::getter_mExtension
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST cPtr_extensionModifierAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST cPtr_extensionSetterAST::getter_mExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mExtensionModifierInstructionList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_extensionModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_extensionSetterAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
-    const cPtr_extensionModifierAST * p = (const cPtr_extensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_extensionModifierAST) ;
+    const cPtr_extensionSetterAST * p = (const cPtr_extensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extensionSetterAST) ;
     result = p->mAttribute_mEndOfModifierLocation ;
   }
   return result ;
@@ -14294,21 +14294,21 @@ GALGAS_location GALGAS_extensionModifierAST::getter_mEndOfModifierLocation (UNUS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location cPtr_extensionModifierAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_extensionSetterAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfModifierLocation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                                    Pointer class for @extensionModifierAST class                                    *
+//                                     Pointer class for @extensionSetterAST class                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_extensionModifierAST::cPtr_extensionModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                                      const GALGAS_lstring & in_mTypeName,
-                                                      const GALGAS_lstring & in_mExtensionModifierName,
-                                                      const GALGAS_formalParameterListAST & in_mExtensionModifierFormalParameterList,
-                                                      const GALGAS_semanticInstructionListAST & in_mExtensionModifierInstructionList,
-                                                      const GALGAS_location & in_mEndOfModifierLocation
-                                                      COMMA_LOCATION_ARGS) :
+cPtr_extensionSetterAST::cPtr_extensionSetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                  const GALGAS_lstring & in_mTypeName,
+                                                  const GALGAS_lstring & in_mExtensionModifierName,
+                                                  const GALGAS_formalParameterListAST & in_mExtensionModifierFormalParameterList,
+                                                  const GALGAS_semanticInstructionListAST & in_mExtensionModifierInstructionList,
+                                                  const GALGAS_location & in_mEndOfModifierLocation
+                                                  COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
 mAttribute_mExtensionModifierName (in_mExtensionModifierName),
@@ -14319,13 +14319,13 @@ mAttribute_mEndOfModifierLocation (in_mEndOfModifierLocation) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_extensionModifierAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierAST ;
+const C_galgas_type_descriptor * cPtr_extensionSetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
-void cPtr_extensionModifierAST::description (C_String & ioString,
-                                             const int32_t inIndentation) const {
-  ioString << "[@extensionModifierAST:" ;
+void cPtr_extensionSetterAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "[@extensionSetterAST:" ;
   mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
@@ -14342,51 +14342,51 @@ void cPtr_extensionModifierAST::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_extensionModifierAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_extensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_extensionModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mExtensionModifierName, mAttribute_mExtensionModifierFormalParameterList, mAttribute_mExtensionModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mExtensionModifierName, mAttribute_mExtensionModifierFormalParameterList, mAttribute_mExtensionModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                             @extensionModifierAST type                                              *
+//                                              @extensionSetterAST type                                               *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionModifierAST ("extensionModifierAST",
-                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+kTypeDescriptor_GALGAS_extensionSetterAST ("extensionSetterAST",
+                                           & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extensionModifierAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierAST ;
+const C_galgas_type_descriptor * GALGAS_extensionSetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterAST ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extensionModifierAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionModifierAST (*this)) ;
+    macroMyNew (result, GALGAS_extensionSetterAST (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierAST GALGAS_extensionModifierAST::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierAST result ;
-  const GALGAS_extensionModifierAST * p = (const GALGAS_extensionModifierAST *) inObject.embeddedObject () ;
+GALGAS_extensionSetterAST GALGAS_extensionSetterAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterAST result ;
+  const GALGAS_extensionSetterAST * p = (const GALGAS_extensionSetterAST *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionModifierAST *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extensionModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extensionSetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

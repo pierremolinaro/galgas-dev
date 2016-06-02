@@ -743,18 +743,6 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# A B S T R A C T   E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractExtensionMethodName
-  @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 # E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -793,49 +781,6 @@ class @abstractExtensionModifierForGeneration : @semanticDeclarationWithHeaderFo
   @unifiedTypeMap-proxy mReceiverType
   @string mAbstractExtensionModifierName
   @formalParameterListForGeneration mAbstractExtensionModifierFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                                          *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @extensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mExtensionModifierName
-  @bool mImplementedAsFunction
-  @formalParameterListForGeneration mExtensionModifierFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# O V E R R I D I N G    E X T E N S I O N    M O D I F I E R   D E C .                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingExtensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mBaseTypeName
-  @string mExtensionModifierName
-  @formalParameterListForGeneration mExtensionModifierFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @abstractExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractExtensionGetterName
-  @unifiedTypeMap-proxy mResultType
-  @formalInputParameterListForGeneration mAbstractExtensionGetterFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

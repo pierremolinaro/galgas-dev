@@ -1,0 +1,194 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @abstractExtensionMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mAbstractExtensionMethodName
+  @formalParameterListAST mAbstractExtensionMethodFormalParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $abstract$
+    $method$
+    $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionMethod
+    $identifier$ ?var  @lstring mMethodName indexing abstractExtensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@abstractExtensionMethodAST.new {
+      !false # Is not predefined
+      !className
+      !mMethodName
+      !formalParameterList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @abstractExtensionMethodAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {!"extension method @" + mTypeName + " " + mAbstractExtensionMethodName ![mAbstractExtensionMethodName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
+#---
+  if not [ioExtensionMethodMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioExtensionMethodMapForBuildingContext insertKey
+      !mTypeName
+      !{}
+    ]
+  end
+  with mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
+    [!?mExtensionMethodMapForType insertKey
+      !mAbstractExtensionMethodName
+      !mAbstractExtensionMethodFormalParameterList
+    ]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   KEY REPRESENTATION                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @abstractExtensionMethodAST keyRepresentation
+  ->@string outString {
+  outString = "abstract extension method @" + mTypeName + " " + mAbstractExtensionMethodName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @abstractExtensionMethodAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @abstractExtensionMethodAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Self type
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+#--- Check self type is an abstract class
+  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+    error mAbstractExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
+  elsif [selfType mIsConcrete] then
+    error mAbstractExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
+  end
+#--- Compute method signature
+  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
+  for () in mAbstractExtensionMethodFormalParameterList do
+    formalParameterListForGeneration +=
+      !mFormalSelector
+      !mFormalArgumentPassingMode
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !mFormalArgumentName
+      ![mFormalArgumentName string]
+  end
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"abstract extension method " + mAbstractExtensionMethodName
+    !@abstractExtensionMethodForGeneration.new {
+      !true # Generate Cpp header file
+      !"method-" + [selfType key] + "-" + mAbstractExtensionMethodName
+      !selfType
+      ![mAbstractExtensionMethodName string]
+      !formalParameterListForGeneration}
+    !"~"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   EXTENSION LIST MAPS                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @abstractExtensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioAbstractExtensionMethodListMapAST +=
+    ![mTypeName string]
+    !mAbstractExtensionMethodName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @abstractExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mAbstractExtensionMethodName
+  @formalParameterListForGeneration mAbstractExtensionMethodFormalParameterList
+}
+
+#·······················································································································
+
+override method @abstractExtensionMethodForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodDeclaration
+    ![mReceiverType key]
+    !mAbstractExtensionMethodName
+    !mAbstractExtensionMethodFormalParameterList
+  ] 
+}
+
+#·······················································································································
+
+override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind outResult {
+  outResult = @headerKind.oneHeader
+}
+
+#·······················································································································
+
+override method @abstractExtensionMethodForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mAbstractExtensionMethodName
+  [mReceiverType addHeaderFileName !?ioInclusionSet]
+  for () in mAbstractExtensionMethodFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  end
+  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionMethodImplementation
+    !mReceiverType
+    !mAbstractExtensionMethodName
+    !mAbstractExtensionMethodFormalParameterList
+  ] 
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
