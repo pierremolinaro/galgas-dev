@@ -600,67 +600,6 @@ override method @optionComponentDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @extensionMethodAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-  @string selfObjectName
-  @string selfObjectAccessor
-  @bool implementedAsFunction
-#--- Check self type is a class
-  if [selfType mTypeKindEnum] == @typeKindEnum. classType then
-    selfObjectName = "object"
-    selfObjectAccessor = "object->"
-    implementedAsFunction = false
-  else
-    selfObjectName = "inObject"
-    selfObjectAccessor = "inObject."
-    implementedAsFunction = true
-  end
-#--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext.new {
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfType
-    !selfObjectName
-    !@unifiedTypeMap-proxy. null}
-  analyzeRoutineBody (
-    !analysisContext
-    !mExtensionMethodFormalParameterList
-    !@localConstantList.emptyList
-    !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
-       then [selfType mAllTypedAttributeList]
-       else @typedPropertyList.emptyList
-     end
-    !@typedPropertyList.emptyList
-    !selfObjectAccessor
-    !mExtensionMethodInstructionList
-    !mEndOfMethodLocation
-    ?semanticInstructionListForGeneration
-    ?formalParameterListForGeneration
-  )
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"extension method " + mExtensionMethodName
-    !@extensionMethodForGeneration.new {
-      !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mExtensionMethodName
-      !selfType
-      ![mExtensionMethodName string]
-      !implementedAsFunction
-      !formalParameterListForGeneration
-      ![selfType mAllTypedAttributeList]
-      !semanticInstructionListForGeneration}
-    !"~"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @overridingExtensionMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -791,43 +730,6 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
       !inheritedDeclarationLocation
     )
   end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionModifierAST semanticAnalysis
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-#--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
-#--- Check self type is an abstract class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
-    error mAbstractExtensionModifierName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
-  elsif [selfType mIsConcrete] then
-    error mAbstractExtensionModifierName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
-  end
-#--- Compute setter signature
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in mAbstractExtensionModifierFormalParameterList do
-    formalParameterListForGeneration +=
-      !mFormalSelector
-      !mFormalArgumentPassingMode
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-      !mFormalArgumentName
-      ![mFormalArgumentName string]
-  end
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !" abstract extension setter " + mAbstractExtensionModifierName
-    !@abstractExtensionModifierForGeneration.new {
-      !true # Generate Cpp header file
-      !"setter-" + mTypeName + "-" + mAbstractExtensionModifierName
-      !selfType
-      ![mAbstractExtensionModifierName string]
-      !formalParameterListForGeneration}
-    !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

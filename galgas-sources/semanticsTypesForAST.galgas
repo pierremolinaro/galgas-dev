@@ -555,20 +555,6 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                     *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @extensionMethodAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mExtensionMethodName
-  @formalParameterListAST mExtensionMethodFormalParameterList
-  @semanticInstructionListAST mExtensionMethodInstructionList
-  @location mEndOfMethodLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #  O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C L .                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -591,18 +577,6 @@ class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionMethodName
   @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# A B S T R A C T   E X T E N S I O N  M O D I F I E R    D E C L A R A T I O N                                          *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @abstractExtensionModifierAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mAbstractExtensionModifierName
-  @formalParameterListAST mAbstractExtensionModifierFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

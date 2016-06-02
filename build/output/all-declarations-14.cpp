@@ -10000,10 +10000,10 @@ GALGAS_abstractExtensionMethodForGeneration GALGAS_abstractExtensionMethodForGen
 //   Object comparison                                                                                                 *
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cPtr_abstractExtensionModifierForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_abstractExtensionSetterForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_abstractExtensionModifierForGeneration * p = (const cPtr_abstractExtensionModifierForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_abstractExtensionModifierForGeneration) ;
+  const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
   if (kOperandEqual == result) {
     result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
@@ -10025,7 +10025,7 @@ typeComparisonResult cPtr_abstractExtensionModifierForGeneration::dynamicObjectC
 //----------------------------------------------------------------------------------------------------------------------
 
 
-typeComparisonResult GALGAS_abstractExtensionModifierForGeneration::objectCompare (const GALGAS_abstractExtensionModifierForGeneration & inOperand) const {
+typeComparisonResult GALGAS_abstractExtensionSetterForGeneration::objectCompare (const GALGAS_abstractExtensionSetterForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -10043,50 +10043,50 @@ typeComparisonResult GALGAS_abstractExtensionModifierForGeneration::objectCompar
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionModifierForGeneration::GALGAS_abstractExtensionModifierForGeneration (void) :
+GALGAS_abstractExtensionSetterForGeneration::GALGAS_abstractExtensionSetterForGeneration (void) :
 GALGAS_semanticDeclarationWithHeaderForGeneration () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionModifierForGeneration GALGAS_abstractExtensionModifierForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_abstractExtensionModifierForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                                         GALGAS_string::constructor_default (HERE),
-                                                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                         GALGAS_string::constructor_default (HERE),
-                                                                         GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE)
-                                                                         COMMA_THERE) ;
+GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_abstractExtensionSetterForGeneration::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                                       GALGAS_string::constructor_default (HERE),
+                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                                                       GALGAS_string::constructor_default (HERE),
+                                                                       GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE)
+                                                                       COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionModifierForGeneration::GALGAS_abstractExtensionModifierForGeneration (const cPtr_abstractExtensionModifierForGeneration * inSourcePtr) :
+GALGAS_abstractExtensionSetterForGeneration::GALGAS_abstractExtensionSetterForGeneration (const cPtr_abstractExtensionSetterForGeneration * inSourcePtr) :
 GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionModifierForGeneration) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractExtensionSetterForGeneration) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionModifierForGeneration GALGAS_abstractExtensionModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
-                                                                                                              const GALGAS_string & inAttribute_mImplementationCppFileName,
-                                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                                              const GALGAS_string & inAttribute_mAbstractExtensionModifierName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractExtensionModifierFormalParameterList
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_abstractExtensionModifierForGeneration result ;
+GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
+                                                                                                          const GALGAS_string & inAttribute_mImplementationCppFileName,
+                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
+                                                                                                          const GALGAS_string & inAttribute_mAbstractExtensionModifierName,
+                                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractExtensionModifierFormalParameterList
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionSetterForGeneration result ;
   if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractExtensionModifierName.isValid () && inAttribute_mAbstractExtensionModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractExtensionModifierName, inAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractExtensionModifierName, inAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_abstractExtensionModifierForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_abstractExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractExtensionModifierForGeneration * p = (const cPtr_abstractExtensionModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractExtensionModifierForGeneration) ;
+    const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
     result = p->mAttribute_mReceiverType ;
   }
   return result ;
@@ -10094,17 +10094,17 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_abstractExtensionModifierForGeneration::ge
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_unifiedTypeMap_2D_proxy cPtr_abstractExtensionModifierForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_abstractExtensionSetterForGeneration::getter_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_abstractExtensionModifierForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractExtensionModifierForGeneration * p = (const cPtr_abstractExtensionModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractExtensionModifierForGeneration) ;
+    const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
     result = p->mAttribute_mAbstractExtensionModifierName ;
   }
   return result ;
@@ -10112,17 +10112,17 @@ GALGAS_string GALGAS_abstractExtensionModifierForGeneration::getter_mAbstractExt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_abstractExtensionModifierForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAbstractExtensionModifierName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionModifierForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != mObjectPtr) {
-    const cPtr_abstractExtensionModifierForGeneration * p = (const cPtr_abstractExtensionModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractExtensionModifierForGeneration) ;
+    const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
     result = p->mAttribute_mAbstractExtensionModifierFormalParameterList ;
   }
   return result ;
@@ -10130,20 +10130,20 @@ GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionModifierForGener
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration cPtr_abstractExtensionModifierForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAbstractExtensionModifierFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                           Pointer class for @abstractExtensionModifierForGeneration class                           *
+//                            Pointer class for @abstractExtensionSetterForGeneration class                            *
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_abstractExtensionModifierForGeneration::cPtr_abstractExtensionModifierForGeneration (const GALGAS_bool & in_mHasHeader,
-                                                                                          const GALGAS_string & in_mImplementationCppFileName,
-                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                                          const GALGAS_string & in_mAbstractExtensionModifierName,
-                                                                                          const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionModifierFormalParameterList
-                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
+                                                                                      const GALGAS_string & in_mImplementationCppFileName,
+                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                                                      const GALGAS_string & in_mAbstractExtensionModifierName,
+                                                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionModifierFormalParameterList
+                                                                                      COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mAbstractExtensionModifierName (in_mAbstractExtensionModifierName),
@@ -10152,13 +10152,13 @@ mAttribute_mAbstractExtensionModifierFormalParameterList (in_mAbstractExtensionM
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_abstractExtensionModifierForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractExtensionModifierForGeneration ;
+const C_galgas_type_descriptor * cPtr_abstractExtensionSetterForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
-void cPtr_abstractExtensionModifierForGeneration::description (C_String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString << "[@abstractExtensionModifierForGeneration:" ;
+void cPtr_abstractExtensionSetterForGeneration::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "[@abstractExtensionSetterForGeneration:" ;
   mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
@@ -10173,51 +10173,51 @@ void cPtr_abstractExtensionModifierForGeneration::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_abstractExtensionModifierForGeneration::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_abstractExtensionModifierForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractExtensionModifierName, mAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractExtensionModifierName, mAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                    @abstractExtensionModifierForGeneration type                                     *
+//                                     @abstractExtensionSetterForGeneration type                                      *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_abstractExtensionModifierForGeneration ("abstractExtensionModifierForGeneration",
-                                                               & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
+kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ("abstractExtensionSetterForGeneration",
+                                                             & kTypeDescriptor_GALGAS_semanticDeclarationWithHeaderForGeneration) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_abstractExtensionModifierForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_abstractExtensionModifierForGeneration ;
+const C_galgas_type_descriptor * GALGAS_abstractExtensionSetterForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractExtensionSetterForGeneration ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_abstractExtensionModifierForGeneration::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_abstractExtensionSetterForGeneration::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_abstractExtensionModifierForGeneration (*this)) ;
+    macroMyNew (result, GALGAS_abstractExtensionSetterForGeneration (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_abstractExtensionModifierForGeneration GALGAS_abstractExtensionModifierForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_abstractExtensionModifierForGeneration result ;
-  const GALGAS_abstractExtensionModifierForGeneration * p = (const GALGAS_abstractExtensionModifierForGeneration *) inObject.embeddedObject () ;
+GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_abstractExtensionSetterForGeneration result ;
+  const GALGAS_abstractExtensionSetterForGeneration * p = (const GALGAS_abstractExtensionSetterForGeneration *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_abstractExtensionModifierForGeneration *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_abstractExtensionSetterForGeneration *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("abstractExtensionModifierForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("abstractExtensionSetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

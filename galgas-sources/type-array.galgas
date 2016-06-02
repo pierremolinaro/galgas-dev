@@ -196,7 +196,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" + mArrayTypeName
-    !@headerKind. oneHeader
+    !@headerKind.oneHeader
   ]
 }
 

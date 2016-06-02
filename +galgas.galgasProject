@@ -82,10 +82,12 @@ project (3:1:9) -> "galgas" {
 #--- Type declaration
   "galgas-sources/extension-abstract-getter.galgas"
   "galgas-sources/extension-abstract-method.galgas"
+  "galgas-sources/extension-abstract-setter.galgas"
   "galgas-sources/extension-getter.galgas"
+  "galgas-sources/extension-method.galgas"
+  "galgas-sources/extension-setter.galgas"
   "galgas-sources/extension-overriding-getter.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
-  "galgas-sources/extension-setter.galgas"
 
 #--- Semantics Component
   "galgas-sources/semanticsTypesForAST.galgas"

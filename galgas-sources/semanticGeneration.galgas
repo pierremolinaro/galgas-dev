@@ -85,7 +85,7 @@ override getter @grammarForGeneration hasCppHeaderFile -> @bool outHasHeader {
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind. oneHeader
+  outHeaderKind = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -111,7 +111,7 @@ override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool outHas
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind. oneHeader
+  outHeaderKind = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1092,7 +1092,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @routinePrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1111,7 +1111,7 @@ override method @routinePrototypeDeclarationForGeneration appendDeclaration1
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1129,7 +1129,7 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1148,7 +1148,7 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 #! Semantic Type
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation {
+override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string outImplementation {
   outImplementation = [filewrapper typeGenerationTemplate.genericTypeImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1164,7 +1164,8 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation ->@st
 override method @routineImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   if mHasHeader then
     ioInclusionSet += !"proc-" + mRoutineName
   end
@@ -1218,7 +1219,8 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   ioInclusionSet += !"func-" + mFunctionName
   generateFunction (
     !"onceFunction_" + [mFunctionName identifierRepresentation]
@@ -1241,110 +1243,8 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#! Method
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @extensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @extensionMethodForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  if mImplementedAsFunction then
-    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionDeclaration
-      ![mReceiverType key]
-      !mExtensionMethodName
-      !mExtensionMethodFormalParameterList
-    ] 
-  else
-    outHeader = [filewrapper semanticComponentGenerationTemplate.extensionMethodDeclaration
-      ![mReceiverType key]
-      !mExtensionMethodName
-      !mExtensionMethodFormalParameterList
-    ] 
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @extensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  if mImplementedAsFunction then
-    @formalParameterListForGeneration extensionMethodFormalParameterList = mExtensionMethodFormalParameterList
-    [!?extensionMethodFormalParameterList insertAtIndex
-      !["" nowhere]
-      !@formalArgumentPassingModeAST. argumentConstantIn
-      !mReceiverType
-      !@lstring.new {!"self" !@location.here}
-      !"inObject"
-      !0
-    ]
-    ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mExtensionMethodName
-    generateProcedure (
-      !static:false
-      !"extensionMethod_" + [mExtensionMethodName identifierRepresentation]
-      !?ioInclusionSet
-      !extensionMethodFormalParameterList
-      !mSemanticInstructionListForGeneration
-      !false # is not const
-      !"C_Compiler"
-      !true # Generate location Argument
-      !false # Do not generate 'resetTemplateString'
-      !false # Do not generate syntaxDirectedTranslationString argument
-      ?let @string code
-    )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![mReceiverType key]
-      !mExtensionMethodName
-      !code
-    ] 
-  else
-    [mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in mExtensionMethodFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-    end
-    @unifiedTypeMap-proxy baseType = mReceiverType
-    @bool searching = true
-    loop( @uint. max) while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mExtensionMethodName] then
-          baseType = [baseType mSuperType]
-        else
-          searching = false
-        end
-      else
-        searching = false
-      end  
-    end
-    ioInclusionSet += !"method-" + [baseType key]+ "-" + mExtensionMethodName
-    generateExtensionMethod (
-      !mReceiverType
-      !""
-      !?ioInclusionSet
-      !mExtensionMethodName
-      !mExtensionMethodFormalParameterList
-      !mSemanticInstructionListForGeneration
-      ?let @string methodImplementation
-    )
-    outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodImplementation
-      ![mReceiverType key]
-      !mExtensionMethodName
-      !mExtensionMethodFormalParameterList
-      !methodImplementation
-    ]
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @overridingExtensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. noHeader
+  outResult = @headerKind.noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1371,45 +1271,6 @@ override method @overridingExtensionMethodForGeneration appendSpecificImplementa
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#! Setter
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @abstractExtensionModifierForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @abstractExtensionModifierForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader {
-  outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionModifierDeclaration
-    ![mReceiverType key]
-    !mAbstractExtensionModifierName
-    !mAbstractExtensionModifierFormalParameterList
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#·······················································································································
-
-override method @abstractExtensionModifierForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mAbstractExtensionModifierName
-  [mReceiverType addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionModifierImplementation
-    ![mReceiverType key]
-    !mAbstractExtensionModifierName
-    !mAbstractExtensionModifierFormalParameterList
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 #! Option component
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1420,8 +1281,8 @@ override getter @optionComponentForGeneration isPredefined -> @bool outResult {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @optionComponentForGeneration headerKind ->@headerKind outResult {
-  outResult = if mIsPredefined then @headerKind. noHeader else @headerKind. oneHeader end
+override getter @optionComponentForGeneration headerKind -> @headerKind outResult {
+  outResult = if mIsPredefined then .noHeader else .oneHeader end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1513,7 +1374,7 @@ override method @optionComponentForGeneration appendSpecificFiles
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1573,7 +1434,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @programComponentForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. noHeader
+  outResult = @headerKind.noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1593,7 +1454,7 @@ override method @programComponentForGeneration appendSpecificImplementation
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind. oneHeader
+  outResult = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

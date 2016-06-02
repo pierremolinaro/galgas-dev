@@ -324,7 +324,7 @@ private proc generateManyHeaders
         end
       end
     #--- Header 1
-      if [mDeclaration headerKind] != @headerKind. noHeader then
+      if [mDeclaration headerKind] != @headerKind.noHeader then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
         headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
@@ -334,7 +334,7 @@ private proc generateManyHeaders
         headerString += "\n"
         headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
         headerString += "#endif\n\n"
-        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind. twoHeaders then "-1" else "" end
+        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
         ioAllProductFileSet += !headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"
@@ -345,7 +345,7 @@ private proc generateManyHeaders
         ]
       end
     #--- Header 2
-      if [mDeclaration headerKind] == @headerKind. twoHeaders then
+      if [mDeclaration headerKind] == @headerKind.twoHeaders then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
         headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"

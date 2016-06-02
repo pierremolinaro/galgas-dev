@@ -6594,12 +6594,12 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i15_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
-                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i15_ (GALGAS_insertMethodListAST & ioArgument0,
+                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i16_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -6608,19 +6608,19 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i17_ (GALGAS_insertMethodListAST & ioArgument0,
-                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i17_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_DeclarationsSyntax_insert_5F_method_5F_declaration_i17_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i18_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i17_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i17_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i17_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i18_ (GALGAS_sortedListSortDescriptorListAST & ioArgument0,
+                                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i19_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -6629,12 +6629,12 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i19_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i20_ (GALGAS_sortedListSortDescriptorListAST & ioArgument0,
-                                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i20_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
+                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_sortedlist_5F_sort_5F_descriptor_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_DeclarationsSyntax_declaration_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_DeclarationsSyntax_declaration_i21_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -6997,22 +6997,22 @@ class cPtr_abstractExtensionMethodAST : public cPtr_semanticDeclarationAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                         @abstractExtensionModifierAST class                                         *
+//                                          @abstractExtensionSetterAST class                                          *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_abstractExtensionModifierAST : public GALGAS_semanticDeclarationAST {
+class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--- Constructor
-  public : GALGAS_abstractExtensionModifierAST (void) ;
+  public : GALGAS_abstractExtensionSetterAST (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_abstractExtensionModifierAST constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_abstractExtensionSetterAST constructor_default (LOCATION_ARGS) ;
 
 //---
-  public : inline const class cPtr_abstractExtensionModifierAST * ptr (void) const { return (const cPtr_abstractExtensionModifierAST *) mObjectPtr ; }
+  public : inline const class cPtr_abstractExtensionSetterAST * ptr (void) const { return (const cPtr_abstractExtensionSetterAST *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
-  public : GALGAS_abstractExtensionModifierAST (const cPtr_abstractExtensionModifierAST * inSourcePtr) ;
+  public : GALGAS_abstractExtensionSetterAST (const cPtr_abstractExtensionSetterAST * inSourcePtr) ;
 
 //-- Start of generic part --*
 
@@ -7020,19 +7020,19 @@ class GALGAS_abstractExtensionModifierAST : public GALGAS_semanticDeclarationAST
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_abstractExtensionModifierAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_abstractExtensionSetterAST extractObject (const GALGAS_object & inObject,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_abstractExtensionModifierAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_formalParameterListAST & inOperand3
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_abstractExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     const class GALGAS_lstring & inOperand2,
+                                                                     const class GALGAS_formalParameterListAST & inOperand3
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_abstractExtensionModifierAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_abstractExtensionSetterAST & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -7050,31 +7050,31 @@ class GALGAS_abstractExtensionModifierAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_abstractExtensionModifierAST class
+} ; // End of GALGAS_abstractExtensionSetterAST class
 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionModifierAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSetterAST ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                Pointer class for @abstractExtensionModifierAST class                                *
+//                                 Pointer class for @abstractExtensionSetterAST class                                 *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-class cPtr_abstractExtensionModifierAST : public cPtr_semanticDeclarationAST {
+class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
   public : GALGAS_lstring mAttribute_mAbstractExtensionModifierName ;
   public : GALGAS_formalParameterListAST mAttribute_mAbstractExtensionModifierFormalParameterList ;
 
 //--- Constructor
-  public : cPtr_abstractExtensionModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                              const GALGAS_lstring & in_mTypeName,
-                                              const GALGAS_lstring & in_mAbstractExtensionModifierName,
-                                              const GALGAS_formalParameterListAST & in_mAbstractExtensionModifierFormalParameterList
-                                              COMMA_LOCATION_ARGS) ;
+  public : cPtr_abstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
+                                            const GALGAS_lstring & in_mTypeName,
+                                            const GALGAS_lstring & in_mAbstractExtensionModifierName,
+                                            const GALGAS_formalParameterListAST & in_mAbstractExtensionModifierFormalParameterList
+                                            COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
