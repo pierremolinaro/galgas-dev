@@ -13,15 +13,15 @@ import makefile, default_build_options
 def displayDurationFromStartTime (startTime) :
   totalDurationInSeconds = int (time.time () - startTime)
   durationInSecondes = totalDurationInSeconds % 60
-  durationInMinutes = (totalDurationInSeconds / 60) % 60
-  durationInHours = totalDurationInSeconds / 3600
+  durationInMinutes = (totalDurationInSeconds // 60) % 60
+  durationInHours = totalDurationInSeconds // 3600
   s = ""
   if durationInHours > 0:
     s += str (durationInHours) + "h"
   if durationInMinutes > 0:
     s += str (durationInMinutes) + "min"
   s += str (durationInSecondes) + "s"
-  print "Done at +" + s
+  print ("Done at +" + s)
 
 #----------------------------------------------------------------------------------------------------------------------*
 
