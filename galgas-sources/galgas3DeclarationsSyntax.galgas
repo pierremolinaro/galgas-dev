@@ -177,36 +177,6 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X T E N S I O N     M E T H O D    D E C L A R A T I O N                                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! Method declaration
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
-  $method$
-  $type_name$ ?var  @lstring className indexing typeReferenceExtensionMethod
-  $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
-  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ${$
-  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
-  let endOfMethodLocation = @location.here
-  $}$
-  ioDeclarations.mDeclarationList += !@extensionMethodAST.new {
-    !false # Is not predefined
-    !className
-    !mMethodName
-    !formalParameterList
-    !routineInstructionList
-    !endOfMethodLocation
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #O V E R R I D I N G   E X T E N S I O N   M E T H O D   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -263,30 +233,6 @@ rule <declaration>
     !mGetterName
     !mFormalInputParameterList
     !mReturnedTypeName}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    A B S T R A C T    E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                    *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-#! Abstract setter
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
-  $abstract$
-  $setter$
-  $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionModifier
-  $identifier$ ?var  @lstring modifierName indexing abstractExtensionModifierDefinition
-  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@abstractExtensionModifierAST.new {
-    !false # Is not predefined
-    !className
-    !modifierName
-    !formalParameterList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

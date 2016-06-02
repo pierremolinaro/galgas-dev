@@ -280,7 +280,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyList" # Default constructor
     !"list-" + mListTypeName
-    !@headerKind. oneHeader
+    !@headerKind.oneHeader
   ]
 }
 

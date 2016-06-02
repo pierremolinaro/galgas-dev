@@ -545,7 +545,7 @@ override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = @headerKind. twoHeaders
+  outHeaderKind = @headerKind.twoHeaders
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -743,21 +743,6 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# E X T E N S I O N    M E T H O D    D E C L A R A T I O N                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mExtensionMethodName
-  @bool mImplementedAsFunction
-  @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 # O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C .                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -769,18 +754,6 @@ class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderFo
   @formalParameterListForGeneration mExtensionMethodFormalParameterList
   @typedPropertyList mTypedAttributeList
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# A B S T R A C T   E X T E N S I O N    M O D I F I E R    D E C L A R A T I O N                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @abstractExtensionModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mAbstractExtensionModifierName
-  @formalParameterListForGeneration mAbstractExtensionModifierFormalParameterList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

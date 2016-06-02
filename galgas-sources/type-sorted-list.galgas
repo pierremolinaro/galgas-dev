@@ -245,7 +245,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
     !"sortedlist-" + mSortedListTypeName
-    !@headerKind. oneHeader
+    !@headerKind.oneHeader
   ]
 }
 

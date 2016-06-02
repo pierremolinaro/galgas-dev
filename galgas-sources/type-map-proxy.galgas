@@ -209,7 +209,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapproxy-" + mMapProxyTypeName
-    !@headerKind. oneHeader
+    !@headerKind.oneHeader
   ]
 }
 

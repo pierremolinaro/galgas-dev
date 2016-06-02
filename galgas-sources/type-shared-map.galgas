@@ -622,7 +622,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"uniquemap-" + mMapTypeName
-    !@headerKind. twoHeaders
+    !@headerKind.twoHeaders
   ]
 }
 

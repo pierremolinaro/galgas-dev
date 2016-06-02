@@ -207,7 +207,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
     !"enum-" + mEnumTypeName
-    !if hasAssociatedValues then @headerKind. twoHeaders else @headerKind. oneHeader end
+    !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   ]
 }
 

@@ -164,7 +164,7 @@ override method @structDeclarationAST enterInSemanticContext
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"struct-" + mStructTypeName
-    !@headerKind. oneHeader
+    !@headerKind.oneHeader
   ]
 }
 
