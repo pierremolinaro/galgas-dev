@@ -785,40 +785,6 @@ class @abstractExtensionModifierForGeneration : @semanticDeclarationWithHeaderFo
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# E X T E N S I O N    G E T T E R    D E C L A R A T I O N                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mExtensionGetterName
-  @bool mImplementedAsFunction
-  @unifiedTypeMap-proxy mResultType
-  @string mResultVarCppName
-  @formalInputParameterListForGeneration mExtensionGetterFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# O V E R R I D E    E X T E N S I O N    R E A D E R    D E C L A R A T I O N                                           *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mBaseTypeName
-  @string mOverridingExtensionGetterName
-  @unifiedTypeMap-proxy mResultType
-  @string mResultVarCppName
-  @formalInputParameterListForGeneration mOverridingExtensionGetterFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

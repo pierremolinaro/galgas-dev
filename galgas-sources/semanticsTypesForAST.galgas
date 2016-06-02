@@ -619,38 +619,6 @@ class @overridingAbstractExtensionModifierAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#        E X T E N S I O N    G E T T E R    D E C L A R A T I O N                                                       *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @extensionGetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mExtensionGetterName
-  @formalInputParameterListAST mExtensionGetterFormalInputParameterList
-  @lstring mExtensionGetterReturnedTypeName
-  @lstring mExtensionGetterReturnedVariableName
-  @semanticInstructionListAST mExtensionGetterInstructionList
-  @location mEndOfReaderLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#O V E R R I D I N G   E X T E N S I O N   R E A D E R   D E C L A R A T I O N                                           *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingExtensionGetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionGetterName
-  @formalInputParameterListAST mOverridingExtensionGetterFormalInputParameterList
-  @lstring mOverridingExtensionGetterReturnedTypeName
-  @lstring mOverridingExtensionGetterReturnedVariableName
-  @semanticInstructionListAST mOverridingExtensionGetterInstructionList
-  @location mEndOfReaderLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 # O V E R R I D I N G    A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
