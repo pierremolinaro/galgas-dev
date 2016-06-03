@@ -2359,19 +2359,19 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 359)).isValid ()) {
-    uint32_t variant_19344 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 359)).uintValue () ;
-    bool loop_19344 = true ;
-    while (loop_19344) {
-      loop_19344 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 359)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 359)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 359)).isValid () ;
-      if (loop_19344) {
-        loop_19344 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 359)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 359)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 359)).boolValue () ;
+    uint32_t variant_19342 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 359)).uintValue () ;
+    bool loop_19342 = true ;
+    while (loop_19342) {
+      loop_19342 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 359)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 359)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 359)).isValid () ;
+      if (loop_19342) {
+        loop_19342 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 359)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 359)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 359)).boolValue () ;
       }
-      if (loop_19344 && (0 == variant_19344)) {
-        loop_19344 = false ;
+      if (loop_19342 && (0 == variant_19342)) {
+        loop_19342 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 359)) ;
       }
-      if (loop_19344) {
-        variant_19344 -- ;
+      if (loop_19342) {
+        variant_19342 -- ;
         result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 360)) ;
       }
     }
@@ -11706,7 +11706,7 @@ GALGAS_externTypeGetterList_2D_element GALGAS_externTypeGetterList_2D_element::e
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externTypeModifierList_2D_element::GALGAS_externTypeModifierList_2D_element (void) :
-mAttribute_mModifierName (),
+mAttribute_mSetterName (),
 mAttribute_mFormalParameterList () {
 }
 
@@ -11719,7 +11719,7 @@ GALGAS_externTypeModifierList_2D_element::~ GALGAS_externTypeModifierList_2D_ele
 
 GALGAS_externTypeModifierList_2D_element::GALGAS_externTypeModifierList_2D_element (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_formalParameterListAST & inOperand1) :
-mAttribute_mModifierName (inOperand0),
+mAttribute_mSetterName (inOperand0),
 mAttribute_mFormalParameterList (inOperand1) {
 }
 
@@ -11747,7 +11747,7 @@ GALGAS_externTypeModifierList_2D_element GALGAS_externTypeModifierList_2D_elemen
 typeComparisonResult GALGAS_externTypeModifierList_2D_element::objectCompare (const GALGAS_externTypeModifierList_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mModifierName.objectCompare (inOperand.mAttribute_mModifierName) ;
+    result = mAttribute_mSetterName.objectCompare (inOperand.mAttribute_mSetterName) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mFormalParameterList.objectCompare (inOperand.mAttribute_mFormalParameterList) ;
@@ -11758,13 +11758,13 @@ typeComparisonResult GALGAS_externTypeModifierList_2D_element::objectCompare (co
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_externTypeModifierList_2D_element::isValid (void) const {
-  return mAttribute_mModifierName.isValid () && mAttribute_mFormalParameterList.isValid () ;
+  return mAttribute_mSetterName.isValid () && mAttribute_mFormalParameterList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externTypeModifierList_2D_element::drop (void) {
-  mAttribute_mModifierName.drop () ;
+  mAttribute_mSetterName.drop () ;
   mAttribute_mFormalParameterList.drop () ;
 }
 
@@ -11776,7 +11776,7 @@ void GALGAS_externTypeModifierList_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mModifierName.description (ioString, inIndentation+1) ;
+    mAttribute_mSetterName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mFormalParameterList.description (ioString, inIndentation+1) ;
   }
@@ -11785,8 +11785,8 @@ void GALGAS_externTypeModifierList_2D_element::description (C_String & ioString,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externTypeModifierList_2D_element::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mModifierName ;
+GALGAS_lstring GALGAS_externTypeModifierList_2D_element::getter_mSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

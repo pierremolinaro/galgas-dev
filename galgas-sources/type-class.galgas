@@ -80,7 +80,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mClassTypeName ![mClassTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -99,13 +99,13 @@ override method @classDeclarationAST enterDeclarationInGraph
 override method @classDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
   @unifiedTypeMap-proxy uintType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
 #---
   @getterMap getterMap
-  @setterMap modifierMap
+  @setterMap setterMap
   @instanceMethodMap instanceMethodMap
   @typedPropertyList inheritedTypedAttributeList
   var attributeMap =@attributeMap.emptyMap{}
@@ -115,7 +115,7 @@ override method @classDeclarationAST enterInSemanticContext
   if [mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-proxy. null
     commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
-    modifierMap = @setterMap. emptyMap
+    setterMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
     inheritedTypedAttributeList = @typedPropertyList.emptyList
     attributeMap = @attributeMap. emptyMap
@@ -129,7 +129,7 @@ override method @classDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSuperClassName ?superClassIndex]
     @typeKindEnum typeKindEnum
     @getterMap inheritedGetterMap
-    @setterMap inheritedModifierMap
+    @setterMap inheritedSetterMap
     @instanceMethodMap inheritedMethodMap
     [ioSemanticContext.mTypeMap searchKey
       !mSuperClassName
@@ -140,7 +140,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?attributeMap
       ?2*
       ?inheritedGetterMap
-      ?inheritedModifierMap
+      ?inheritedSetterMap
       ?inheritedMethodMap
       ?9*
       ?generateHeaderInSeparateFile
@@ -150,10 +150,10 @@ override method @classDeclarationAST enterInSemanticContext
     if typeKindEnum != @typeKindEnum. classType then
       error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
     end
-  #--- Mark all modifiers as inherited
-    modifierMap = @setterMap. emptyMap
-    for () in inheritedModifierMap do
-      [!?modifierMap insertKey
+  #--- Mark all setters as inherited
+    setterMap = @setterMap. emptyMap
+    for () in inheritedSetterMap do
+      [!?setterMap insertKey
         !lkey
         !mKind
         !mParameterList
@@ -257,7 +257,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- set...attribute setter
   for () in currentClassTypedAttributeList do
     if mHasSetter then
-      [!?modifierMap insertKey
+      [!?setterMap insertKey
         !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
         !{!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
@@ -268,14 +268,14 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mClassTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Generate a "default" constructor ?
@@ -303,7 +303,7 @@ override method @classDeclarationAST enterInSemanticContext
     !currentClassTypedAttributeList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
@@ -455,7 +455,7 @@ override method @classTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

@@ -470,28 +470,28 @@ void callExtensionMethod_getGetterMap (const class cPtr_predefinedTypeAST * inOb
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                Extension method '@predefinedTypeAST getModifierMap'                                 *
+//                                 Extension method '@predefinedTypeAST getSetterMap'                                  *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-typedef void (*extensionMethodSignature_predefinedTypeAST_getModifierMap) (const class cPtr_predefinedTypeAST * inObject,
-                                                                           class GALGAS_unifiedTypeMap & ioArgument0,
-                                                                           class GALGAS_setterMap & outArgument1,
-                                                                           class C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
+typedef void (*extensionMethodSignature_predefinedTypeAST_getSetterMap) (const class cPtr_predefinedTypeAST * inObject,
+                                                                         class GALGAS_unifiedTypeMap & ioArgument0,
+                                                                         class GALGAS_setterMap & outArgument1,
+                                                                         class C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void enterExtensionMethod_getModifierMap (const int32_t inClassIndex,
-                                          extensionMethodSignature_predefinedTypeAST_getModifierMap inMethod) ;
+void enterExtensionMethod_getSetterMap (const int32_t inClassIndex,
+                                        extensionMethodSignature_predefinedTypeAST_getSetterMap inMethod) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getModifierMap (const class cPtr_predefinedTypeAST * inObject,
-                                         GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                         GALGAS_setterMap & out_outModifierMap,
-                                         C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
+void callExtensionMethod_getSetterMap (const class cPtr_predefinedTypeAST * inObject,
+                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       GALGAS_setterMap & out_outSetterMap,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *

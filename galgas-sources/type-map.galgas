@@ -180,7 +180,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -196,7 +196,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
 override method @mapDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- bool type index
   @unifiedTypeMap-proxy boolTypeIndex
@@ -233,7 +233,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Constructors
   enterConstructorWithoutArgument (
@@ -347,12 +347,12 @@ override method @mapDeclarationAST enterInSemanticContext
       !@formalArgumentPassingModeAST.argumentOut
       !mPropertyName.string
   end
-#--- Handle insert modifiers
+#--- Handle insert setters
   for () in mInsertMethodList do
-    if [modifierMap hasKey ![mInsertMethodName string]] then
+    if [setterMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
-      [!?modifierMap insertOrReplace
+      [!?setterMap insertOrReplace
         !mInsertMethodName
         !@methodKind.definedAsMember
         !insertMethodFormalArgumentList
@@ -362,12 +362,12 @@ override method @mapDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--- Handle remove modifiers
+#--- Handle remove setters
   for () in mRemoveMethodList do
-    if [modifierMap hasKey ![mMethodName string]] then
+    if [setterMap hasKey ![mMethodName string]] then
       error mMethodName:"the '" + mMethodName + "' method is already declared as an insert setter or a remove setter"
     else
-      [!?modifierMap insertOrReplace
+      [!?setterMap insertOrReplace
         !mMethodName
         !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
@@ -377,7 +377,7 @@ override method @mapDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--- Handle search methods (methods if no state, modifiers if states)
+#--- Handle search methods (methods if no state, setters if states)
   for () in mSearchMethodList do
     [!?instanceMethodMap insertKey
       !mSearchMethodName
@@ -409,7 +409,7 @@ override method @mapDeclarationAST enterInSemanticContext
   if [mInsertOrReplaceDeclarationListAST length] >= 1 then
     @location insertOrReplaceLocation
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
-    [!?modifierMap insertOrReplace
+    [!?setterMap insertOrReplace
       !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
       !@methodKind.definedAsMember
       !insertMethodFormalArgumentList
@@ -418,7 +418,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
   end
-#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor
+#---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
   for () in mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
@@ -432,7 +432,7 @@ override method @mapDeclarationAST enterInSemanticContext
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
-    [!?modifierMap insertOrReplace
+    [!?setterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
       !accessorFormalArgumentList
@@ -442,14 +442,14 @@ override method @mapDeclarationAST enterInSemanticContext
     ]
   end
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Element type index
@@ -471,7 +471,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !typedPropertyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
@@ -611,7 +611,7 @@ override method @mapDeclarationAST semanticAnalysis
   if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
     @location insertOrReplaceDeclarationLocation
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation]
-    error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert modifier or a remove modifier has been declared with this name"
+    error insertOrReplaceDeclarationLocation : "the insertOrReplace' setter cannot be declared : an insert setter or a remove setter has been declared with this name"
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
@@ -660,7 +660,7 @@ override method @mapTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

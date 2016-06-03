@@ -9279,13 +9279,13 @@ GALGAS_getterMap GALGAS_unifiedTypeMap_2D_proxy::getter_mGetterMap (C_Compiler *
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_setterMap GALGAS_unifiedTypeMap_2D_proxy::getter_mModifierMap (C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
+GALGAS_setterMap GALGAS_unifiedTypeMap_2D_proxy::getter_mSetterMap (C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const {
   GALGAS_setterMap result ;
-  const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mModifierMap" COMMA_THERE) ;
+  const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mSetterMap" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mModifierMap;
+    result = p->mAttribute_mSetterMap;
   }
   return result ;
 }

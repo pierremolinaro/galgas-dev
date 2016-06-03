@@ -2272,14 +2272,14 @@ void routine_analyzeErrorOrWarningInstruction (const class GALGAS_analysisContex
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                Function 'checkModifierImplementationInSuperClasses'                                 *
+//                                 Function 'checksetterImplementationInSuperClasses'                                  *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-class GALGAS_string function_checkModifierImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
-                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
-                                                                        class C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) ;
+class GALGAS_string function_checksetterImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
+                                                                      const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
+                                                                      class C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
@@ -3453,18 +3453,18 @@ class GALGAS_string function_outputDirectory (const class GALGAS_lstring & const
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                 Routine 'checkExtensionModifierDefinitionForClass'                                  *
+//                                  Routine 'checkextensionSetterDefinitionForClass'                                   *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-void routine_checkExtensionModifierDefinitionForClass (const class GALGAS_string constinArgument0,
-                                                       const class GALGAS_string constinArgument1,
-                                                       const class GALGAS_lstring constinArgument2,
-                                                       const class GALGAS_descendantClassListMap constinArgument3,
-                                                       const class GALGAS_genericExtensionMethodListMap constinArgument4,
-                                                       const class GALGAS_unifiedTypeMap constinArgument5,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+void routine_checkextensionSetterDefinitionForClass (const class GALGAS_string constinArgument0,
+                                                     const class GALGAS_string constinArgument1,
+                                                     const class GALGAS_lstring constinArgument2,
+                                                     const class GALGAS_descendantClassListMap constinArgument3,
+                                                     const class GALGAS_genericExtensionMethodListMap constinArgument4,
+                                                     const class GALGAS_unifiedTypeMap constinArgument5,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
@@ -3526,10 +3526,10 @@ void enterExtensionMethod_buildExtensionListMaps (const int32_t inClassIndex,
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_buildExtensionListMaps (const class cPtr_semanticDeclarationAST * inObject,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionModifierListMapAST,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionModifierListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionModifierListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
                                                  GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,

@@ -41,7 +41,7 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -55,7 +55,7 @@ override method @arrayDeclarationAST enterDeclarationInGraph
 override method @arrayDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
   if [mDimension uint] == 0 then
@@ -70,7 +70,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- 
   @unifiedTypeMap-proxy boolType
@@ -117,53 +117,53 @@ override method @arrayDeclarationAST enterInSemanticContext
     !"" # No Error message
   ]
 #--- Modifiers
-  var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
-  modifierFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
+  var setterFormalArgumentList =@formalParameterSignature.emptyList{}
+  setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
   loop( [mDimension uint]) while idx < [mDimension uint] do
-    modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
+    setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
     idx ++
   end
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !["setValueAtIndex" nowhere]
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
   ]
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !["forceValueAtIndex" nowhere]
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
   ]
-  [!?modifierFormalArgumentList popFirst ?4*]
-  [!?modifierMap insertKey
+  [!?setterFormalArgumentList popFirst ?4*]
+  [!?setterMap insertKey
     !["invalidateValueAtIndex" nowhere]
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
   ]
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !["setSize" nowhere]
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
   ]
-  modifierFormalArgumentList = @formalParameterSignature.emptyList
-  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
-  modifierFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
-  [!?modifierMap insertKey
+  setterFormalArgumentList = @formalParameterSignature.emptyList
+  setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inSize"
+  setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inAxisIndex"
+  [!?setterMap insertKey
     !["setSizeForAxis" nowhere]
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasicFinal
     !""
@@ -181,7 +181,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
@@ -245,7 +245,7 @@ override method @arrayTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

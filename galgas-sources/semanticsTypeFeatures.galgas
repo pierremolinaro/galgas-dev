@@ -57,14 +57,14 @@ override method @dataPredefinedTypeAST getEnumerationList
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @stringsetPredefinedTypeAST getModifierMap
+override method @stringsetPredefinedTypeAST getSetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@setterMap outModifierMap
+  !@setterMap outSetterMap
 {
   @unifiedTypeMap-proxy stringType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
-  outModifierMap = @setterMap. emptyMap
-  [!?outModifierMap insertKey
+  outSetterMap = @setterMap. emptyMap
+  [!?outSetterMap insertKey
     !@lstring.new {!"removeKey" !@location.here}
     !@methodKind. definedAsMember
     !@formalParameterSignature. listWithValue {!["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentIn !"inKey"}

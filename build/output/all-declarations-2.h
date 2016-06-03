@@ -5997,7 +5997,7 @@ class GALGAS_externTypeModifierList : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_lstring & in_mModifierName,
+                                                  const class GALGAS_lstring & in_mSetterName,
                                                   const class GALGAS_formalParameterListAST & in_mFormalParameterList
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -6075,9 +6075,9 @@ class GALGAS_externTypeModifierList : public AC_GALGAS_list {
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_externTypeModifierList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
                                                                                          C_Compiler * inCompiler
@@ -6109,7 +6109,7 @@ class cEnumerator_externTypeModifierList : public cGenericAbstractEnumerator {
                                                const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
-  public : class GALGAS_lstring current_mModifierName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mSetterName (LOCATION_ARGS) const ;
   public : class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_externTypeModifierList_2D_element current (LOCATION_ARGS) const ;
@@ -6290,7 +6290,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 
 class GALGAS_externTypeModifierList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_lstring mAttribute_mSetterName ;
   public : GALGAS_formalParameterListAST mAttribute_mFormalParameterList ;
 
 
@@ -6308,7 +6308,7 @@ class GALGAS_externTypeModifierList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeModifierList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_externTypeModifierList_2D_element (const GALGAS_lstring & in_mModifierName,
+  public : GALGAS_externTypeModifierList_2D_element (const GALGAS_lstring & in_mSetterName,
                                                      const GALGAS_formalParameterListAST & in_mFormalParameterList) ;
 
 //-- Start of generic part --*
@@ -6340,7 +6340,7 @@ class GALGAS_externTypeModifierList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

@@ -438,7 +438,7 @@ proc generateFunction
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generateExtensionModifier
+proc generateExtensionSetter
   ?let @string inClassName
   ?let @string inBaseClassName
   ?let @string inMethodName
@@ -943,29 +943,29 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string GETTER_IMPLEMENTATION
   
-#------------ Extension modifier
-  template abstractExtensionModifierDeclaration "abstract-extension-modifier.h.galgasTemplate"
+#------------ Extension setter
+  template abstractExtensionSetterDeclaration "abstract-extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractExtensionModifierImplementation "abstract-extension-modifier.cpp.galgasTemplate"
+  template abstractExtensionSetterImplementation "abstract-extension-setter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template extensionModifierDeclaration "extension-modifier.h.galgasTemplate"
+  template extensionSetterDeclaration "extension-setter.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template extensionModifierImplementation "extension-modifier.cpp.galgasTemplate"
+  template extensionsetterImplementation "extension-setter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string MODIFIER_IMPLEMENTATION
 
-  template overridingExtensionModifierImplementation "overriding-extension-modifier.cpp.galgasTemplate"
+  template overridingExtensionSetterImplementation "overriding-extension-setter.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
@@ -1033,17 +1033,11 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string METHOD_IMPLEMENTATION
   
 
-#--- Extension modifier implemented as function
-  template extensionModifierAsFunctionDeclaration "extension-modifier-as-function.h.galgasTemplate"
+#--- Extension setter implemented as function
+  template extensionSetterAsFunctionDeclaration "extension-setter-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-
-  template extensionMmodifierAsFunctionImplementation "extension-modifier-as-function.cpp.galgasTemplate"
-    ?@string TYPE_NAME
-    ?@string MODIFIER_NAME
-    ?@string MODIFIER_IMPLEMENTATION
-  
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST  
 
 #--- Function
   template functionDeclaration "function-declaration.h.galgasTemplate"
@@ -1735,7 +1729,7 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

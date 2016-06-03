@@ -1223,11 +1223,11 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 
   public : VIRTUAL_IN_DEBUG class GALGAS_methodKind getter_mKind (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mSelfCppName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -1250,7 +1250,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Attributes
   public : GALGAS_string mAttribute_mSelfCppName ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_lstring mAttribute_mSetterName ;
   public : GALGAS_methodKind mAttribute_mKind ;
   public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
@@ -1258,7 +1258,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Constructor
   public : cPtr_selfSetterCallInstructionForGeneration (const GALGAS_string & in_mSelfCppName,
                                                         const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                        const GALGAS_lstring & in_mModifierName,
+                                                        const GALGAS_lstring & in_mSetterName,
                                                         const GALGAS_methodKind & in_mKind,
                                                         const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                         const GALGAS_bool & in_mHasCompilerArgument
@@ -1270,7 +1270,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_string getter_mSelfCppName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_methodKind getter_mKind (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration getter_mActualParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mHasCompilerArgument (LOCATION_ARGS) const ;
@@ -1345,8 +1345,6 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mMethodBaseType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mReceiverBaseName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mReceiverCppName (LOCATION_ARGS) const ;
@@ -1354,6 +1352,8 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mReceiverStructAttributes (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -1380,7 +1380,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_lstring mAttribute_mSetterName ;
   public : GALGAS_methodKind mAttribute_mKind ;
   public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
@@ -1393,7 +1393,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
                                                     const GALGAS_lstringlist & in_mReceiverStructAttributes,
                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType,
                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                    const GALGAS_lstring & in_mModifierName,
+                                                    const GALGAS_lstring & in_mSetterName,
                                                     const GALGAS_methodKind & in_mKind,
                                                     const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                     const GALGAS_bool & in_mHasCompilerArgument,
@@ -1410,7 +1410,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mReceiverStructAttributes (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mCastType (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_methodKind getter_mKind (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration getter_mActualParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mHasCompilerArgument (LOCATION_ARGS) const ;

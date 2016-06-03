@@ -7699,7 +7699,7 @@ class cCollectionElement_externTypeModifierList : public cCollectionElement {
   public : GALGAS_externTypeModifierList_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_externTypeModifierList (const GALGAS_lstring & in_mModifierName,
+  public : cCollectionElement_externTypeModifierList (const GALGAS_lstring & in_mSetterName,
                                                       const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                       COMMA_LOCATION_ARGS) ;
 
@@ -7718,11 +7718,11 @@ class cCollectionElement_externTypeModifierList : public cCollectionElement {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cCollectionElement_externTypeModifierList::cCollectionElement_externTypeModifierList (const GALGAS_lstring & in_mModifierName,
+cCollectionElement_externTypeModifierList::cCollectionElement_externTypeModifierList (const GALGAS_lstring & in_mSetterName,
                                                                                       const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                                                       COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mModifierName, in_mFormalParameterList) {
+mObject (in_mSetterName, in_mFormalParameterList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -7735,7 +7735,7 @@ bool cCollectionElement_externTypeModifierList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_externTypeModifierList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_externTypeModifierList (mObject.mAttribute_mModifierName, mObject.mAttribute_mFormalParameterList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_externTypeModifierList (mObject.mAttribute_mSetterName, mObject.mAttribute_mFormalParameterList COMMA_HERE)) ;
   return result ;
 }
 
@@ -7744,8 +7744,8 @@ cCollectionElement * cCollectionElement_externTypeModifierList::copy (void) {
 void cCollectionElement_externTypeModifierList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mModifierName" ":" ;
-  mObject.mAttribute_mModifierName.description (ioString, inIndentation) ;
+  ioString << "mSetterName" ":" ;
+  mObject.mAttribute_mSetterName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalParameterList" ":" ;
@@ -7801,11 +7801,11 @@ GALGAS_externTypeModifierList GALGAS_externTypeModifierList::constructor_listWit
 //----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externTypeModifierList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                               const GALGAS_lstring & in_mModifierName,
+                                                               const GALGAS_lstring & in_mSetterName,
                                                                const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_externTypeModifierList * p = NULL ;
-  macroMyNew (p, cCollectionElement_externTypeModifierList (in_mModifierName,
+  macroMyNew (p, cCollectionElement_externTypeModifierList (in_mSetterName,
                                                             in_mFormalParameterList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -7859,7 +7859,7 @@ void GALGAS_externTypeModifierList::setter_removeAtIndex (GALGAS_lstring & outOp
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-      outOperand0 = p->mObject.mAttribute_mModifierName ;
+      outOperand0 = p->mObject.mAttribute_mSetterName ;
       outOperand1 = p->mObject.mAttribute_mFormalParameterList ;
     }
   }
@@ -7879,7 +7879,7 @@ void GALGAS_externTypeModifierList::setter_popFirst (GALGAS_lstring & outOperand
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-    outOperand0 = p->mObject.mAttribute_mModifierName ;
+    outOperand0 = p->mObject.mAttribute_mSetterName ;
     outOperand1 = p->mObject.mAttribute_mFormalParameterList ;
   }
 }
@@ -7898,7 +7898,7 @@ void GALGAS_externTypeModifierList::setter_popLast (GALGAS_lstring & outOperand0
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-    outOperand0 = p->mObject.mAttribute_mModifierName ;
+    outOperand0 = p->mObject.mAttribute_mSetterName ;
     outOperand1 = p->mObject.mAttribute_mFormalParameterList ;
   }
 }
@@ -7917,7 +7917,7 @@ void GALGAS_externTypeModifierList::method_first (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-    outOperand0 = p->mObject.mAttribute_mModifierName ;
+    outOperand0 = p->mObject.mAttribute_mSetterName ;
     outOperand1 = p->mObject.mAttribute_mFormalParameterList ;
   }
 }
@@ -7936,7 +7936,7 @@ void GALGAS_externTypeModifierList::method_last (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-    outOperand0 = p->mObject.mAttribute_mModifierName ;
+    outOperand0 = p->mObject.mAttribute_mSetterName ;
     outOperand1 = p->mObject.mAttribute_mFormalParameterList ;
   }
 }
@@ -7994,15 +7994,15 @@ void GALGAS_externTypeModifierList::plusAssign_operation (const GALGAS_externTyp
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_externTypeModifierList::getter_mModifierNameAtIndex (const GALGAS_uint & inIndex,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_externTypeModifierList::getter_mSetterNameAtIndex (const GALGAS_uint & inIndex,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_externTypeModifierList * p = (cCollectionElement_externTypeModifierList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-    result = p->mObject.mAttribute_mModifierName ;
+    result = p->mObject.mAttribute_mSetterName ;
   }
   return result ;
 }
@@ -8043,10 +8043,10 @@ GALGAS_externTypeModifierList_2D_element cEnumerator_externTypeModifierList::cur
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_externTypeModifierList::current_mModifierName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_externTypeModifierList::current_mSetterName (LOCATION_ARGS) const {
   const cCollectionElement_externTypeModifierList * p = (const cCollectionElement_externTypeModifierList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_externTypeModifierList) ;
-  return p->mObject.mAttribute_mModifierName ;
+  return p->mObject.mAttribute_mSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

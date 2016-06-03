@@ -283,7 +283,7 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
   let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
@@ -306,7 +306,7 @@ override getter @sharedMapDeclarationAST keyRepresentation -> @string outString 
 override method @sharedMapDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
 #--- string type index
@@ -335,7 +335,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #---
   @constructorMap constructorMap = {}
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  @setterMap modifierMap = {}
+  @setterMap setterMap = {}
   @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
   enterConstructorWithoutArgument (
@@ -440,10 +440,10 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #-------------------------- Insert Modifiers
   for () in mInsertMethodList do
-    if [modifierMap hasKey ![mInsertMethodName string]] then
+    if [setterMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
-      [!?modifierMap insertOrReplace
+      [!?setterMap insertOrReplace
         !mInsertMethodName
         !@methodKind.definedAsMember
         !insertMethodFormalArgumentList
@@ -457,7 +457,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   var enterEdgeFormalArgumentList =@formalParameterSignature.emptyList{}
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
-  [!?modifierMap insertOrReplace
+  [!?setterMap insertOrReplace
     !["enterEdge" nowhere]
     !@methodKind.definedAsMember
     !enterEdgeFormalArgumentList
@@ -478,7 +478,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !@methodQualifier. isInherited
     !"" # No error message
   ]
-#--- Handle search methods (methods if no state, modifiers if states)
+#--- Handle search methods (methods if no state, setters if states)
   if [mMapStateList length] == 0 then
     for () in mSearchMethodList do
       [!?instanceMethodMap insertKey
@@ -493,7 +493,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   else
     for () in mSearchMethodList do
-      [!?modifierMap insertKey
+      [!?setterMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember
         !removeMethodFormalArgumentList
@@ -503,11 +503,11 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--- Enter "enterBranch" and "exitBranch" modifiers (only if there are states)
+#--- Enter "enterBranch" and "exitBranch" setters (only if there are states)
   if [mMapStateList length] > 0 then
     @unifiedTypeMap-proxy locationTypeIndex
     [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeIndex]
-    [!?modifierMap insertKey
+    [!?setterMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
       !@methodKind.definedAsMember
       !@formalParameterSignature.emptyList
@@ -515,7 +515,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !@methodQualifier. isInherited
       !"" # No error message
     ]
-    [!?modifierMap insertKey
+    [!?setterMap insertKey
       !@lstring.new {!"closeBranch" !@location.here}
       !@methodKind.definedAsMember
       !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
@@ -523,7 +523,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !@methodQualifier.isBasic
       !"" # No error message
     ]
-    [!?modifierMap insertKey
+    [!?setterMap insertKey
       !@lstring.new {!"closeOverride" !@location.here}
       !@methodKind.definedAsMember
       !@formalParameterSignature. listWithValue {!["" nowhere] !locationTypeIndex !.argumentIn !"inErrorLocation"}
@@ -541,7 +541,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
     for () in mMapOverrideBlockListAST do
-      [!?modifierMap insertKey
+      [!?setterMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
         !@formalParameterSignature.emptyList
@@ -567,14 +567,14 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !"" # No Error message
     ]
   end
-#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor parameter
+#---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
   for () in mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
-    [!?modifierMap insertOrReplace
+    [!?setterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
       !accessorFormalArgumentList
@@ -584,14 +584,14 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     ]
   end
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mMapTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Enter in type map
@@ -607,7 +607,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !typedAttributeList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
@@ -962,7 +962,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !hasGetter
     [!?attributeMap insertKey !mPropertyName !t]
   end
-#--- Enter insert modifiers
+#--- Enter insert setters
   @insertMethodMap insertMethodMap = {}
   for insertMethod in mInsertMethodList do
     [!?insertMethodMap insertKey !insertMethod.mInsertMethodName]
@@ -1143,7 +1143,7 @@ override method @sharedMapTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
