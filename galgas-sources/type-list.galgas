@@ -43,7 +43,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -59,7 +59,7 @@ override method @listDeclarationAST enterDeclarationInGraph
 override method @listDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Handle attributes
   var typedAttributeList =@typedPropertyList.emptyList{}
@@ -89,13 +89,13 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Property description
   var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
   var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var modifierOutputFormalArgumentList =@formalParameterSignature.emptyList{}
-  var modifierInputFormalArgumentList =@formalParameterSignature.emptyList{}
+  var setterOutputFormalArgumentList =@formalParameterSignature.emptyList{}
+  var setterInputFormalArgumentList =@formalParameterSignature.emptyList{}
   for () in typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
-    modifierOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentOut !mAttributeName.string
-    modifierInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+    setterOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentOut !mAttributeName.string
+    setterInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
@@ -168,7 +168,7 @@ override method @listDeclarationAST enterInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"first" !@location.here}
     !@methodKind.definedAsMember
-    !modifierOutputFormalArgumentList
+    !setterOutputFormalArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic
@@ -177,46 +177,46 @@ override method @listDeclarationAST enterInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"last" !@location.here}
     !@methodKind.definedAsMember
-    !modifierOutputFormalArgumentList
+    !setterOutputFormalArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic
     !""
   ]
 #----------------------------------------- Modifiers
-  var modifierMap =@setterMap.emptyMap{}
-  [!?modifierMap insertOrReplace
+  var setterMap =@setterMap.emptyMap{}
+  [!?setterMap insertOrReplace
     !@lstring.new {!"popFirst" !@location.here}
     !@methodKind.definedAsMember
-    !modifierOutputFormalArgumentList
+    !setterOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !""
   ]
-  [!?modifierMap insertOrReplace
+  [!?setterMap insertOrReplace
     !@lstring.new {!"popLast" !@location.here}
     !@methodKind.definedAsMember
-    !modifierOutputFormalArgumentList
+    !setterOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !""
   ]
-  modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex"
-  [!?modifierMap insertOrReplace
+  setterOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex"
+  [!?setterMap insertOrReplace
     !@lstring.new {!"removeAtIndex" !@location.here}
     !@methodKind.definedAsMember
-    !modifierOutputFormalArgumentList
+    !setterOutputFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !""
   ]
-  drop modifierOutputFormalArgumentList
+  drop setterOutputFormalArgumentList
   for () in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature.emptyList{}
       setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
-      [!?modifierMap insertOrReplace
+      [!?setterMap insertOrReplace
         !@lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
         !@methodKind.definedAsMember
         !setterFormalArgumentList
@@ -227,29 +227,29 @@ override method @listDeclarationAST enterInSemanticContext
     end
   end
 #--- setter 'insertAtIndex'
-  modifierInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
-  [!?modifierMap insertOrReplace
+  setterInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inInsertionIndex"
+  [!?setterMap insertOrReplace
     !@lstring.new {!"insertAtIndex" !@location.here}
     !@methodKind.definedAsMember
-    !modifierInputFormalArgumentList
+    !setterInputFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-  drop modifierInputFormalArgumentList
+  drop setterInputFormalArgumentList
 #--- Enumeration variants
   var enumerationVariants =@stringlist.emptyList{}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mListTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Enter in type map
@@ -265,7 +265,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
@@ -394,7 +394,7 @@ override method @listTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

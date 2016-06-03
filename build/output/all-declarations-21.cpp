@@ -6320,46 +6320,46 @@ GALGAS_extensionMethodMapForBuildingContext_2D_element GALGAS_extensionMethodMap
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element::GALGAS_extensionModifierMapForType_2D_element (void) :
+GALGAS_extensionSetterMapForType_2D_element::GALGAS_extensionSetterMapForType_2D_element (void) :
 mAttribute_lkey (),
 mAttribute_mFormalParameterList () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element::~ GALGAS_extensionModifierMapForType_2D_element (void) {
+GALGAS_extensionSetterMapForType_2D_element::~ GALGAS_extensionSetterMapForType_2D_element (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element::GALGAS_extensionModifierMapForType_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_formalParameterListAST & inOperand1) :
+GALGAS_extensionSetterMapForType_2D_element::GALGAS_extensionSetterMapForType_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                          const GALGAS_formalParameterListAST & inOperand1) :
 mAttribute_lkey (inOperand0),
 mAttribute_mFormalParameterList (inOperand1) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element GALGAS_extensionModifierMapForType_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extensionModifierMapForType_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_formalParameterListAST::constructor_emptyList (HERE)) ;
+GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_extensionSetterMapForType_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                      GALGAS_formalParameterListAST::constructor_emptyList (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element GALGAS_extensionModifierMapForType_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                              const GALGAS_formalParameterListAST & inOperand1 
-                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForType_2D_element result ;
+GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                          const GALGAS_formalParameterListAST & inOperand1 
+                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_extensionModifierMapForType_2D_element (inOperand0, inOperand1) ;
+    result = GALGAS_extensionSetterMapForType_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_extensionModifierMapForType_2D_element::objectCompare (const GALGAS_extensionModifierMapForType_2D_element & inOperand) const {
+typeComparisonResult GALGAS_extensionSetterMapForType_2D_element::objectCompare (const GALGAS_extensionSetterMapForType_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
@@ -6372,22 +6372,22 @@ typeComparisonResult GALGAS_extensionModifierMapForType_2D_element::objectCompar
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_extensionModifierMapForType_2D_element::isValid (void) const {
+bool GALGAS_extensionSetterMapForType_2D_element::isValid (void) const {
   return mAttribute_lkey.isValid () && mAttribute_mFormalParameterList.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForType_2D_element::drop (void) {
+void GALGAS_extensionSetterMapForType_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
   mAttribute_mFormalParameterList.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForType_2D_element::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<struct @extensionModifierMapForType-element:" ;
+void GALGAS_extensionSetterMapForType_2D_element::description (C_String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString << "<struct @extensionSetterMapForType-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -6400,13 +6400,13 @@ void GALGAS_extensionModifierMapForType_2D_element::description (C_String & ioSt
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionModifierMapForType_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterMapForType_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_extensionModifierMapForType_2D_element::getter_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_extensionSetterMapForType_2D_element::getter_mFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalParameterList ;
 }
 
@@ -6414,42 +6414,42 @@ GALGAS_formalParameterListAST GALGAS_extensionModifierMapForType_2D_element::get
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                      @extensionModifierMapForType-element type                                      *
+//                                       @extensionSetterMapForType-element type                                       *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionModifierMapForType_2D_element ("extensionModifierMapForType-element",
-                                                               NULL) ;
+kTypeDescriptor_GALGAS_extensionSetterMapForType_2D_element ("extensionSetterMapForType-element",
+                                                             NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extensionModifierMapForType_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierMapForType_2D_element ;
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForType_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForType_2D_element ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extensionModifierMapForType_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extensionSetterMapForType_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionModifierMapForType_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_extensionSetterMapForType_2D_element (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType_2D_element GALGAS_extensionModifierMapForType_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForType_2D_element result ;
-  const GALGAS_extensionModifierMapForType_2D_element * p = (const GALGAS_extensionModifierMapForType_2D_element *) inObject.embeddedObject () ;
+GALGAS_extensionSetterMapForType_2D_element GALGAS_extensionSetterMapForType_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForType_2D_element result ;
+  const GALGAS_extensionSetterMapForType_2D_element * p = (const GALGAS_extensionSetterMapForType_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionModifierMapForType_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForType_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extensionModifierMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extensionSetterMapForType-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -6457,136 +6457,136 @@ GALGAS_extensionModifierMapForType_2D_element GALGAS_extensionModifierMapForType
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element::GALGAS_extensionModifierMapForBuildingContext_2D_element (void) :
+GALGAS_extensionSetterMapForBuildingContext_2D_element::GALGAS_extensionSetterMapForBuildingContext_2D_element (void) :
 mAttribute_lkey (),
-mAttribute_mExtensionModifierMapForType () {
+mAttribute_mExtensionSetterMapForType () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element::~ GALGAS_extensionModifierMapForBuildingContext_2D_element (void) {
+GALGAS_extensionSetterMapForBuildingContext_2D_element::~ GALGAS_extensionSetterMapForBuildingContext_2D_element (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element::GALGAS_extensionModifierMapForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                                    const GALGAS_extensionModifierMapForType & inOperand1) :
+GALGAS_extensionSetterMapForBuildingContext_2D_element::GALGAS_extensionSetterMapForBuildingContext_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                                const GALGAS_extensionSetterMapForType & inOperand1) :
 mAttribute_lkey (inOperand0),
-mAttribute_mExtensionModifierMapForType (inOperand1) {
+mAttribute_mExtensionSetterMapForType (inOperand1) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element GALGAS_extensionModifierMapForBuildingContext_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extensionModifierMapForBuildingContext_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                                   GALGAS_extensionModifierMapForType::constructor_emptyMap (HERE)) ;
+GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMapForBuildingContext_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_extensionSetterMapForBuildingContext_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                                 GALGAS_extensionSetterMapForType::constructor_emptyMap (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element GALGAS_extensionModifierMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                                    const GALGAS_extensionModifierMapForType & inOperand1 
-                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForBuildingContext_2D_element result ;
+GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMapForBuildingContext_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                                                const GALGAS_extensionSetterMapForType & inOperand1 
+                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_extensionModifierMapForBuildingContext_2D_element (inOperand0, inOperand1) ;
+    result = GALGAS_extensionSetterMapForBuildingContext_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_extensionModifierMapForBuildingContext_2D_element::objectCompare (const GALGAS_extensionModifierMapForBuildingContext_2D_element & inOperand) const {
+typeComparisonResult GALGAS_extensionSetterMapForBuildingContext_2D_element::objectCompare (const GALGAS_extensionSetterMapForBuildingContext_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mExtensionModifierMapForType.objectCompare (inOperand.mAttribute_mExtensionModifierMapForType) ;
+    result = mAttribute_mExtensionSetterMapForType.objectCompare (inOperand.mAttribute_mExtensionSetterMapForType) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_extensionModifierMapForBuildingContext_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mExtensionModifierMapForType.isValid () ;
+bool GALGAS_extensionSetterMapForBuildingContext_2D_element::isValid (void) const {
+  return mAttribute_lkey.isValid () && mAttribute_mExtensionSetterMapForType.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForBuildingContext_2D_element::drop (void) {
+void GALGAS_extensionSetterMapForBuildingContext_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
-  mAttribute_mExtensionModifierMapForType.drop () ;
+  mAttribute_mExtensionSetterMapForType.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForBuildingContext_2D_element::description (C_String & ioString,
-                                                                            const int32_t inIndentation) const {
-  ioString << "<struct @extensionModifierMapForBuildingContext-element:" ;
+void GALGAS_extensionSetterMapForBuildingContext_2D_element::description (C_String & ioString,
+                                                                          const int32_t inIndentation) const {
+  ioString << "<struct @extensionSetterMapForBuildingContext-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
     mAttribute_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mExtensionModifierMapForType.description (ioString, inIndentation+1) ;
+    mAttribute_mExtensionSetterMapForType.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionModifierMapForBuildingContext_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterMapForBuildingContext_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForType GALGAS_extensionModifierMapForBuildingContext_2D_element::getter_mExtensionModifierMapForType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExtensionModifierMapForType ;
+GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForBuildingContext_2D_element::getter_mExtensionSetterMapForType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionSetterMapForType ;
 }
 
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                @extensionModifierMapForBuildingContext-element type                                 *
+//                                 @extensionSetterMapForBuildingContext-element type                                  *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionModifierMapForBuildingContext_2D_element ("extensionModifierMapForBuildingContext-element",
-                                                                          NULL) ;
+kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2D_element ("extensionSetterMapForBuildingContext-element",
+                                                                        NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extensionModifierMapForBuildingContext_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierMapForBuildingContext_2D_element ;
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForBuildingContext_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForBuildingContext_2D_element ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extensionModifierMapForBuildingContext_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extensionSetterMapForBuildingContext_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionModifierMapForBuildingContext_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_extensionSetterMapForBuildingContext_2D_element (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForBuildingContext_2D_element GALGAS_extensionModifierMapForBuildingContext_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  C_Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForBuildingContext_2D_element result ;
-  const GALGAS_extensionModifierMapForBuildingContext_2D_element * p = (const GALGAS_extensionModifierMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
+GALGAS_extensionSetterMapForBuildingContext_2D_element GALGAS_extensionSetterMapForBuildingContext_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForBuildingContext_2D_element result ;
+  const GALGAS_extensionSetterMapForBuildingContext_2D_element * p = (const GALGAS_extensionSetterMapForBuildingContext_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionModifierMapForBuildingContext_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForBuildingContext_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extensionModifierMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extensionSetterMapForBuildingContext-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -11268,41 +11268,41 @@ GALGAS_extensionMethodMapForGlobalCheckings_2D_element GALGAS_extensionMethodMap
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element::GALGAS_extensionModifierMapForGlobalCheckings_2D_element (void) :
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element::GALGAS_extensionSetterMapForGlobalCheckings_2D_element (void) :
 mAttribute_lkey () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element::~ GALGAS_extensionModifierMapForGlobalCheckings_2D_element (void) {
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element::~ GALGAS_extensionSetterMapForGlobalCheckings_2D_element (void) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element::GALGAS_extensionModifierMapForGlobalCheckings_2D_element (const GALGAS_lstring & inOperand0) :
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element::GALGAS_extensionSetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & inOperand0) :
 mAttribute_lkey (inOperand0) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element GALGAS_extensionModifierMapForGlobalCheckings_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extensionModifierMapForGlobalCheckings_2D_element (GALGAS_lstring::constructor_default (HERE)) ;
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element GALGAS_extensionSetterMapForGlobalCheckings_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_extensionSetterMapForGlobalCheckings_2D_element (GALGAS_lstring::constructor_default (HERE)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element GALGAS_extensionModifierMapForGlobalCheckings_2D_element::constructor_new (const GALGAS_lstring & inOperand0 
-                                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForGlobalCheckings_2D_element result ;
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element GALGAS_extensionSetterMapForGlobalCheckings_2D_element::constructor_new (const GALGAS_lstring & inOperand0 
+                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForGlobalCheckings_2D_element result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_extensionModifierMapForGlobalCheckings_2D_element (inOperand0) ;
+    result = GALGAS_extensionSetterMapForGlobalCheckings_2D_element (inOperand0) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult GALGAS_extensionModifierMapForGlobalCheckings_2D_element::objectCompare (const GALGAS_extensionModifierMapForGlobalCheckings_2D_element & inOperand) const {
+typeComparisonResult GALGAS_extensionSetterMapForGlobalCheckings_2D_element::objectCompare (const GALGAS_extensionSetterMapForGlobalCheckings_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
@@ -11312,21 +11312,21 @@ typeComparisonResult GALGAS_extensionModifierMapForGlobalCheckings_2D_element::o
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool GALGAS_extensionModifierMapForGlobalCheckings_2D_element::isValid (void) const {
+bool GALGAS_extensionSetterMapForGlobalCheckings_2D_element::isValid (void) const {
   return mAttribute_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForGlobalCheckings_2D_element::drop (void) {
+void GALGAS_extensionSetterMapForGlobalCheckings_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForGlobalCheckings_2D_element::description (C_String & ioString,
-                                                                            const int32_t inIndentation) const {
-  ioString << "<struct @extensionModifierMapForGlobalCheckings-element:" ;
+void GALGAS_extensionSetterMapForGlobalCheckings_2D_element::description (C_String & ioString,
+                                                                          const int32_t inIndentation) const {
+  ioString << "<struct @extensionSetterMapForGlobalCheckings-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -11337,7 +11337,7 @@ void GALGAS_extensionModifierMapForGlobalCheckings_2D_element::description (C_St
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_extensionModifierMapForGlobalCheckings_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_extensionSetterMapForGlobalCheckings_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
@@ -11345,42 +11345,42 @@ GALGAS_lstring GALGAS_extensionModifierMapForGlobalCheckings_2D_element::getter_
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                @extensionModifierMapForGlobalCheckings-element type                                 *
+//                                 @extensionSetterMapForGlobalCheckings-element type                                  *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings_2D_element ("extensionModifierMapForGlobalCheckings-element",
-                                                                          NULL) ;
+kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings_2D_element ("extensionSetterMapForGlobalCheckings-element",
+                                                                        NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extensionModifierMapForGlobalCheckings_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings_2D_element ;
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForGlobalCheckings_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings_2D_element ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extensionModifierMapForGlobalCheckings_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extensionSetterMapForGlobalCheckings_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionModifierMapForGlobalCheckings_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_extensionSetterMapForGlobalCheckings_2D_element (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element GALGAS_extensionModifierMapForGlobalCheckings_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                                  C_Compiler * inCompiler
-                                                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForGlobalCheckings_2D_element result ;
-  const GALGAS_extensionModifierMapForGlobalCheckings_2D_element * p = (const GALGAS_extensionModifierMapForGlobalCheckings_2D_element *) inObject.embeddedObject () ;
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element GALGAS_extensionSetterMapForGlobalCheckings_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForGlobalCheckings_2D_element result ;
+  const GALGAS_extensionSetterMapForGlobalCheckings_2D_element * p = (const GALGAS_extensionSetterMapForGlobalCheckings_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionModifierMapForGlobalCheckings_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForGlobalCheckings_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extensionModifierMapForGlobalCheckings-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extensionSetterMapForGlobalCheckings-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

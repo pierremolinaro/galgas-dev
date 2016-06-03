@@ -2947,79 +2947,79 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getGetterMap (defineExtensionMethod
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                Extension method '@predefinedTypeAST getModifierMap'                                 *
+//                                 Extension method '@predefinedTypeAST getSetterMap'                                  *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getModifierMap> gExtensionMethodTable_predefinedTypeAST_getModifierMap ;
+static TC_UniqueArray <extensionMethodSignature_predefinedTypeAST_getSetterMap> gExtensionMethodTable_predefinedTypeAST_getSetterMap ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void enterExtensionMethod_getModifierMap (const int32_t inClassIndex,
-                                          extensionMethodSignature_predefinedTypeAST_getModifierMap inMethod) {
-  gExtensionMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+void enterExtensionMethod_getSetterMap (const int32_t inClassIndex,
+                                        extensionMethodSignature_predefinedTypeAST_getSetterMap inMethod) {
+  gExtensionMethodTable_predefinedTypeAST_getSetterMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void callExtensionMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
-                                         GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                         GALGAS_setterMap & out_outModifierMap,
-                                         C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {
-  out_outModifierMap.drop () ;
+void callExtensionMethod_getSetterMap (const cPtr_predefinedTypeAST * inObject,
+                                       GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
+                                       GALGAS_setterMap & out_outSetterMap,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  out_outSetterMap.drop () ;
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_predefinedTypeAST_getModifierMap f = NULL ;
-    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-      f = gExtensionMethodTable_predefinedTypeAST_getModifierMap (classIndex COMMA_HERE) ;
+    extensionMethodSignature_predefinedTypeAST_getSetterMap f = NULL ;
+    if (classIndex < gExtensionMethodTable_predefinedTypeAST_getSetterMap.count ()) {
+      f = gExtensionMethodTable_predefinedTypeAST_getSetterMap (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-           f = gExtensionMethodTable_predefinedTypeAST_getModifierMap (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gExtensionMethodTable_predefinedTypeAST_getSetterMap.count ()) {
+           f = gExtensionMethodTable_predefinedTypeAST_getSetterMap (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gExtensionMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gExtensionMethodTable_predefinedTypeAST_getSetterMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioUnifiedTypeMap, out_outModifierMap, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioUnifiedTypeMap, out_outSetterMap, inCompiler COMMA_THERE) ;
     }
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-static void extensionMethod_predefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                              GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                              GALGAS_setterMap & outArgument_outModifierMap,
-                                                              C_Compiler * /* inCompiler */
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outModifierMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 460)) ;
+static void extensionMethod_predefinedTypeAST_getSetterMap (const cPtr_predefinedTypeAST * /* inObject */,
+                                                            GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
+                                                            GALGAS_setterMap & outArgument_outSetterMap,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 460)) ;
 }
 //----------------------------------------------------------------------------------------------------------------------
 
-static void defineExtensionMethod_predefinedTypeAST_getModifierMap (void) {
-  enterExtensionMethod_getModifierMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                       extensionMethod_predefinedTypeAST_getModifierMap) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void freeExtensionMethod_predefinedTypeAST_getModifierMap (void) {
-  gExtensionMethodTable_predefinedTypeAST_getModifierMap.free () ;
+static void defineExtensionMethod_predefinedTypeAST_getSetterMap (void) {
+  enterExtensionMethod_getSetterMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
+                                     extensionMethod_predefinedTypeAST_getSetterMap) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineExtensionMethod_predefinedTypeAST_getModifierMap,
-                                                             freeExtensionMethod_predefinedTypeAST_getModifierMap) ;
+static void freeExtensionMethod_predefinedTypeAST_getSetterMap (void) {
+  gExtensionMethodTable_predefinedTypeAST_getSetterMap.free () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+C_PrologueEpilogue gMethod_predefinedTypeAST_getSetterMap (defineExtensionMethod_predefinedTypeAST_getSetterMap,
+                                                           freeExtensionMethod_predefinedTypeAST_getSetterMap) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
@@ -3706,7 +3706,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_enterInSemanticContext (NULL,
 void callExtensionMethod_enterInSemanticContext (const cPtr_semanticDeclarationAST * inObject,
                                                  const GALGAS_extensionMethodMapForBuildingContext constin_inExtensionMethodMapForBuildingContext,
                                                  const GALGAS_extensionGetterMapForBuildingContext constin_inExtensionGetterMapForBuildingContext,
-                                                 const GALGAS_extensionModifierMapForBuildingContext constin_inExtensionModifierMapForBuildingContext,
+                                                 const GALGAS_extensionSetterMapForBuildingContext constin_inExtensionSetterMapForBuildingContext,
                                                  GALGAS_semanticContext & io_ioSemanticContext,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
@@ -3733,7 +3733,7 @@ void callExtensionMethod_enterInSemanticContext (const cPtr_semanticDeclarationA
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionModifierMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inExtensionMethodMapForBuildingContext, constin_inExtensionGetterMapForBuildingContext, constin_inExtensionSetterMapForBuildingContext, io_ioSemanticContext, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -3859,7 +3859,7 @@ void callExtensionMethod_enterDeclarationInGraph (const cPtr_semanticDeclaration
                                                   GALGAS_semanticTypePrecedenceGraph & io_ioSemanticTypePrecedenceGraph,
                                                   GALGAS_extensionMethodMapForBuildingContext & io_ioExtensionMethodMapForBuildingContext,
                                                   GALGAS_extensionGetterMapForBuildingContext & io_ioExtensionGetterMapForBuildingContext,
-                                                  GALGAS_extensionModifierMapForBuildingContext & io_ioExtensionModifierMapForBuildingContext,
+                                                  GALGAS_extensionSetterMapForBuildingContext & io_ioExtensionSetterMapForBuildingContext,
                                                   GALGAS_semanticDeclarationListAST & io_ioExtensionOverrideDefinitionList,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
@@ -3886,7 +3886,7 @@ void callExtensionMethod_enterDeclarationInGraph (const cPtr_semanticDeclaration
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioExtensionMethodMapForBuildingContext, io_ioExtensionGetterMapForBuildingContext, io_ioExtensionModifierMapForBuildingContext, io_ioExtensionOverrideDefinitionList, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioSemanticTypePrecedenceGraph, io_ioExtensionMethodMapForBuildingContext, io_ioExtensionGetterMapForBuildingContext, io_ioExtensionSetterMapForBuildingContext, io_ioExtensionOverrideDefinitionList, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -5897,10 +5897,10 @@ void enterExtensionMethod_buildExtensionListMaps (const int32_t inClassIndex,
 //----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_buildExtensionListMaps (const cPtr_semanticDeclarationAST * inObject,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionModifierListMapAST,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionModifierListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionModifierListMap,
-                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionModifierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionSetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioExtensionSettierListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionSetterListMap,
+                                                 GALGAS_genericExtensionMethodListMap & io_ioOverridingAbstractExtensionSetterListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioAbstractExtensionMethodListMapAST,
                                                  GALGAS_genericExtensionMethodListMap & io_ioExtensionMethodListMap,
                                                  GALGAS_genericExtensionMethodListMap & io_ioOverridingExtensionMethodListMap,
@@ -5932,7 +5932,7 @@ void callExtensionMethod_buildExtensionListMaps (const cPtr_semanticDeclarationA
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioAbstractExtensionModifierListMapAST, io_ioExtensionModifierListMap, io_ioOverridingExtensionModifierListMap, io_ioOverridingAbstractExtensionModifierListMap, io_ioAbstractExtensionMethodListMapAST, io_ioExtensionMethodListMap, io_ioOverridingExtensionMethodListMap, io_ioOverridingAbstractExtensionMethodListMap, io_ioAbstractExtensionGetterListMap, io_ioExtensionGetterListMap, io_ioOverridingExtensionGetterListMap, io_ioOverridingAbstractExtensionGetterListMap, inCompiler COMMA_THERE) ;
+      f (inObject, io_ioAbstractExtensionSetterListMap, io_ioExtensionSettierListMap, io_ioOverridingExtensionSetterListMap, io_ioOverridingAbstractExtensionSetterListMap, io_ioAbstractExtensionMethodListMapAST, io_ioExtensionMethodListMap, io_ioOverridingExtensionMethodListMap, io_ioOverridingAbstractExtensionMethodListMap, io_ioAbstractExtensionGetterListMap, io_ioExtensionGetterListMap, io_ioOverridingExtensionGetterListMap, io_ioOverridingAbstractExtensionGetterListMap, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -5940,10 +5940,10 @@ void callExtensionMethod_buildExtensionListMaps (const cPtr_semanticDeclarationA
 //----------------------------------------------------------------------------------------------------------------------
 
 static void extensionMethod_semanticDeclarationAST_buildExtensionListMaps (const cPtr_semanticDeclarationAST * /* inObject */,
-                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionModifierListMapAST */,
-                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionModifierListMap */,
-                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionModifierListMap */,
-                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionModifierListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionSetterListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionSettierListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionSetterListMap */,
+                                                                           GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingAbstractExtensionSetterListMap */,
                                                                            GALGAS_genericExtensionMethodListMap & /* ioArgument_ioAbstractExtensionMethodListMapAST */,
                                                                            GALGAS_genericExtensionMethodListMap & /* ioArgument_ioExtensionMethodListMap */,
                                                                            GALGAS_genericExtensionMethodListMap & /* ioArgument_ioOverridingExtensionMethodListMap */,

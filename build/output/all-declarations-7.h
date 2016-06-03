@@ -5671,7 +5671,7 @@ class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_mActualParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -5692,12 +5692,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 
 class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_lstring mAttribute_mSetterName ;
   public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_selfSetterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                              const GALGAS_lstring & in_mModifierName,
+                                              const GALGAS_lstring & in_mSetterName,
                                               const GALGAS_actualParameterListAST & in_mActualParameterList
                                               COMMA_LOCATION_ARGS) ;
 
@@ -5705,7 +5705,7 @@ class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST getter_mActualParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -5766,11 +5766,11 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_mActualParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mReceiverStructAttributes (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeNameForCasting (LOCATION_ARGS) const ;
 
@@ -5796,7 +5796,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public : GALGAS_lstring mAttribute_mReceiverName ;
   public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
   public : GALGAS_lstring mAttribute_mTypeNameForCasting ;
-  public : GALGAS_lstring mAttribute_mModifierName ;
+  public : GALGAS_lstring mAttribute_mSetterName ;
   public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
 
 //--- Constructor
@@ -5804,7 +5804,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
                                           const GALGAS_lstring & in_mReceiverName,
                                           const GALGAS_lstringlist & in_mReceiverStructAttributes,
                                           const GALGAS_lstring & in_mTypeNameForCasting,
-                                          const GALGAS_lstring & in_mModifierName,
+                                          const GALGAS_lstring & in_mSetterName,
                                           const GALGAS_actualParameterListAST & in_mActualParameterList
                                           COMMA_LOCATION_ARGS) ;
 
@@ -5815,7 +5815,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mReceiverStructAttributes (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTypeNameForCasting (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST getter_mActualParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -7040,9 +7040,9 @@ class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mAbstractExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mAbstractExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAbstractExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAbstractExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
 
@@ -7066,14 +7066,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSe
 class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mAbstractExtensionModifierName ;
-  public : GALGAS_formalParameterListAST mAttribute_mAbstractExtensionModifierFormalParameterList ;
+  public : GALGAS_lstring mAttribute_mAbstractExtensionSetterName ;
+  public : GALGAS_formalParameterListAST mAttribute_mAbstractExtensionSetterFormalParameterList ;
 
 //--- Constructor
   public : cPtr_abstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                             const GALGAS_lstring & in_mTypeName,
-                                            const GALGAS_lstring & in_mAbstractExtensionModifierName,
-                                            const GALGAS_formalParameterListAST & in_mAbstractExtensionModifierFormalParameterList
+                                            const GALGAS_lstring & in_mAbstractExtensionSetterName,
+                                            const GALGAS_formalParameterListAST & in_mAbstractExtensionSetterFormalParameterList
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -7081,8 +7081,8 @@ class cPtr_abstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mAbstractExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mAbstractExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mAbstractExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mAbstractExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -7657,13 +7657,13 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfModifierLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfSetterDeclarationLocation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mExtensionModifierInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mExtensionSetterInstructionList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
 
@@ -7687,18 +7687,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterAST 
 class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mExtensionModifierName ;
-  public : GALGAS_formalParameterListAST mAttribute_mExtensionModifierFormalParameterList ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mExtensionModifierInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfModifierLocation ;
+  public : GALGAS_lstring mAttribute_mExtensionSetterName ;
+  public : GALGAS_formalParameterListAST mAttribute_mExtensionSetterFormalParameterList ;
+  public : GALGAS_semanticInstructionListAST mAttribute_mExtensionSetterInstructionList ;
+  public : GALGAS_location mAttribute_mEndOfSetterDeclarationLocation ;
 
 //--- Constructor
   public : cPtr_extensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_lstring & in_mTypeName,
-                                    const GALGAS_lstring & in_mExtensionModifierName,
-                                    const GALGAS_formalParameterListAST & in_mExtensionModifierFormalParameterList,
-                                    const GALGAS_semanticInstructionListAST & in_mExtensionModifierInstructionList,
-                                    const GALGAS_location & in_mEndOfModifierLocation
+                                    const GALGAS_lstring & in_mExtensionSetterName,
+                                    const GALGAS_formalParameterListAST & in_mExtensionSetterFormalParameterList,
+                                    const GALGAS_semanticInstructionListAST & in_mExtensionSetterInstructionList,
+                                    const GALGAS_location & in_mEndOfSetterDeclarationLocation
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -7706,10 +7706,10 @@ class cPtr_extensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mExtensionModifierInstructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfModifierLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mExtensionSetterInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfSetterDeclarationLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -8799,9 +8799,9 @@ class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclar
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mOverridingExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mOverridingExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOverridingExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOverridingExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
 
@@ -8825,14 +8825,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingAbstractE
 class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mOverridingExtensionModifierName ;
-  public : GALGAS_formalParameterListAST mAttribute_mOverridingExtensionModifierFormalParameterList ;
+  public : GALGAS_lstring mAttribute_mOverridingExtensionSetterName ;
+  public : GALGAS_formalParameterListAST mAttribute_mOverridingExtensionSetterFormalParameterList ;
 
 //--- Constructor
   public : cPtr_overridingAbstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                       const GALGAS_lstring & in_mTypeName,
-                                                      const GALGAS_lstring & in_mOverridingExtensionModifierName,
-                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList
+                                                      const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -8840,8 +8840,8 @@ class cPtr_overridingAbstractExtensionSetterAST : public cPtr_semanticDeclaratio
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mOverridingExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mOverridingExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mOverridingExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mOverridingExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -9131,13 +9131,13 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfModifierLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfSetterDeclarationLocation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mOverridingExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListAST getter_mOverridingExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mOverridingExtensionModifierInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mOverridingExtensionSetterInstructionList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOverridingExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mOverridingExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
 
@@ -9161,18 +9161,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mOverridingExtensionModifierName ;
-  public : GALGAS_formalParameterListAST mAttribute_mOverridingExtensionModifierFormalParameterList ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mOverridingExtensionModifierInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfModifierLocation ;
+  public : GALGAS_lstring mAttribute_mOverridingExtensionSetterName ;
+  public : GALGAS_formalParameterListAST mAttribute_mOverridingExtensionSetterFormalParameterList ;
+  public : GALGAS_semanticInstructionListAST mAttribute_mOverridingExtensionSetterInstructionList ;
+  public : GALGAS_location mAttribute_mEndOfSetterDeclarationLocation ;
 
 //--- Constructor
   public : cPtr_overridingExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                               const GALGAS_lstring & in_mTypeName,
-                                              const GALGAS_lstring & in_mOverridingExtensionModifierName,
-                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList,
-                                              const GALGAS_semanticInstructionListAST & in_mOverridingExtensionModifierInstructionList,
-                                              const GALGAS_location & in_mEndOfModifierLocation
+                                              const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                              const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                              const GALGAS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
+                                              const GALGAS_location & in_mEndOfSetterDeclarationLocation
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -9180,10 +9180,10 @@ class cPtr_overridingExtensionSetterAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mOverridingExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mOverridingExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mOverridingExtensionModifierInstructionList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfModifierLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mOverridingExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST getter_mOverridingExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mOverridingExtensionSetterInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfSetterDeclarationLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

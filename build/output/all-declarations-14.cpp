@@ -4549,10 +4549,10 @@ typeComparisonResult cPtr_overridingAbstractExtensionSetterAST::dynamicObjectCom
     result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOverridingExtensionModifierName.objectCompare (p->mAttribute_mOverridingExtensionModifierName) ;
+    result = mAttribute_mOverridingExtensionSetterName.objectCompare (p->mAttribute_mOverridingExtensionSetterName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOverridingExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mOverridingExtensionModifierFormalParameterList) ;
+    result = mAttribute_mOverridingExtensionSetterFormalParameterList.objectCompare (p->mAttribute_mOverridingExtensionSetterFormalParameterList) ;
   }
   return result ;
 }
@@ -4603,12 +4603,12 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                                           const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionModifierName,
-                                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionModifierFormalParameterList
+                                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionSetterName,
+                                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionSetterFormalParameterList
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_overridingAbstractExtensionSetterAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionModifierName.isValid () && inAttribute_mOverridingExtensionModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionModifierName, inAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionSetterName.isValid () && inAttribute_mOverridingExtensionSetterFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionSetterName, inAttribute_mOverridingExtensionSetterFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -4633,38 +4633,38 @@ GALGAS_lstring cPtr_overridingAbstractExtensionSetterAST::getter_mTypeName (UNUS
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
-    result = p->mAttribute_mOverridingExtensionModifierName ;
+    result = p->mAttribute_mOverridingExtensionSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingExtensionModifierName ;
+GALGAS_lstring cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingExtensionSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
-    result = p->mAttribute_mOverridingExtensionModifierFormalParameterList ;
+    result = p->mAttribute_mOverridingExtensionSetterFormalParameterList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingExtensionModifierFormalParameterList ;
+GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingExtensionSetterFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4673,13 +4673,13 @@ GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionSetterAST::getter_
 
 cPtr_overridingAbstractExtensionSetterAST::cPtr_overridingAbstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                                       const GALGAS_lstring & in_mTypeName,
-                                                                                      const GALGAS_lstring & in_mOverridingExtensionModifierName,
-                                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList
+                                                                                      const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
-mAttribute_mOverridingExtensionModifierName (in_mOverridingExtensionModifierName),
-mAttribute_mOverridingExtensionModifierFormalParameterList (in_mOverridingExtensionModifierFormalParameterList) {
+mAttribute_mOverridingExtensionSetterName (in_mOverridingExtensionSetterName),
+mAttribute_mOverridingExtensionSetterFormalParameterList (in_mOverridingExtensionSetterFormalParameterList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -4695,9 +4695,9 @@ void cPtr_overridingAbstractExtensionSetterAST::description (C_String & ioString
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOverridingExtensionModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOverridingExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -4705,7 +4705,7 @@ void cPtr_overridingAbstractExtensionSetterAST::description (C_String & ioString
 
 acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingAbstractExtensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionModifierName, mAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingAbstractExtensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionSetterName, mAttribute_mOverridingExtensionSetterFormalParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5368,16 +5368,16 @@ typeComparisonResult cPtr_overridingExtensionSetterAST::dynamicObjectCompare (co
     result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOverridingExtensionModifierName.objectCompare (p->mAttribute_mOverridingExtensionModifierName) ;
+    result = mAttribute_mOverridingExtensionSetterName.objectCompare (p->mAttribute_mOverridingExtensionSetterName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOverridingExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mOverridingExtensionModifierFormalParameterList) ;
+    result = mAttribute_mOverridingExtensionSetterFormalParameterList.objectCompare (p->mAttribute_mOverridingExtensionSetterFormalParameterList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mOverridingExtensionModifierInstructionList.objectCompare (p->mAttribute_mOverridingExtensionModifierInstructionList) ;
+    result = mAttribute_mOverridingExtensionSetterInstructionList.objectCompare (p->mAttribute_mOverridingExtensionSetterInstructionList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEndOfModifierLocation.objectCompare (p->mAttribute_mEndOfModifierLocation) ;
+    result = mAttribute_mEndOfSetterDeclarationLocation.objectCompare (p->mAttribute_mEndOfSetterDeclarationLocation) ;
   }
   return result ;
 }
@@ -5430,14 +5430,14 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_overridingExtensionSetterAST GALGAS_overridingExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionModifierName,
-                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionModifierFormalParameterList,
-                                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mOverridingExtensionModifierInstructionList,
-                                                                                          const GALGAS_location & inAttribute_mEndOfModifierLocation
+                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionSetterName,
+                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionSetterFormalParameterList,
+                                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mOverridingExtensionSetterInstructionList,
+                                                                                          const GALGAS_location & inAttribute_mEndOfSetterDeclarationLocation
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionModifierName.isValid () && inAttribute_mOverridingExtensionModifierFormalParameterList.isValid () && inAttribute_mOverridingExtensionModifierInstructionList.isValid () && inAttribute_mEndOfModifierLocation.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionModifierName, inAttribute_mOverridingExtensionModifierFormalParameterList, inAttribute_mOverridingExtensionModifierInstructionList, inAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionSetterName.isValid () && inAttribute_mOverridingExtensionSetterFormalParameterList.isValid () && inAttribute_mOverridingExtensionSetterInstructionList.isValid () && inAttribute_mEndOfSetterDeclarationLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionSetterName, inAttribute_mOverridingExtensionSetterFormalParameterList, inAttribute_mOverridingExtensionSetterInstructionList, inAttribute_mEndOfSetterDeclarationLocation COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5462,74 +5462,74 @@ GALGAS_lstring cPtr_overridingExtensionSetterAST::getter_mTypeName (UNUSED_LOCAT
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterAST * p = (const cPtr_overridingExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterAST) ;
-    result = p->mAttribute_mOverridingExtensionModifierName ;
+    result = p->mAttribute_mOverridingExtensionSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingExtensionModifierName ;
+GALGAS_lstring cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingExtensionSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterAST * p = (const cPtr_overridingExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterAST) ;
-    result = p->mAttribute_mOverridingExtensionModifierFormalParameterList ;
+    result = p->mAttribute_mOverridingExtensionSetterFormalParameterList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingExtensionModifierFormalParameterList ;
+GALGAS_formalParameterListAST cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingExtensionSetterFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_overridingExtensionSetterAST::getter_mOverridingExtensionSetterInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterAST * p = (const cPtr_overridingExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterAST) ;
-    result = p->mAttribute_mOverridingExtensionModifierInstructionList ;
+    result = p->mAttribute_mOverridingExtensionSetterInstructionList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_semanticInstructionListAST cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionModifierInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOverridingExtensionModifierInstructionList ;
+GALGAS_semanticInstructionListAST cPtr_overridingExtensionSetterAST::getter_mOverridingExtensionSetterInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverridingExtensionSetterInstructionList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location GALGAS_overridingExtensionSetterAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_overridingExtensionSetterAST::getter_mEndOfSetterDeclarationLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterAST * p = (const cPtr_overridingExtensionSetterAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterAST) ;
-    result = p->mAttribute_mEndOfModifierLocation ;
+    result = p->mAttribute_mEndOfSetterDeclarationLocation ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_location cPtr_overridingExtensionSetterAST::getter_mEndOfModifierLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfModifierLocation ;
+GALGAS_location cPtr_overridingExtensionSetterAST::getter_mEndOfSetterDeclarationLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfSetterDeclarationLocation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5538,17 +5538,17 @@ GALGAS_location cPtr_overridingExtensionSetterAST::getter_mEndOfModifierLocation
 
 cPtr_overridingExtensionSetterAST::cPtr_overridingExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_lstring & in_mTypeName,
-                                                                      const GALGAS_lstring & in_mOverridingExtensionModifierName,
-                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList,
-                                                                      const GALGAS_semanticInstructionListAST & in_mOverridingExtensionModifierInstructionList,
-                                                                      const GALGAS_location & in_mEndOfModifierLocation
+                                                                      const GALGAS_lstring & in_mOverridingExtensionSetterName,
+                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionSetterFormalParameterList,
+                                                                      const GALGAS_semanticInstructionListAST & in_mOverridingExtensionSetterInstructionList,
+                                                                      const GALGAS_location & in_mEndOfSetterDeclarationLocation
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
-mAttribute_mOverridingExtensionModifierName (in_mOverridingExtensionModifierName),
-mAttribute_mOverridingExtensionModifierFormalParameterList (in_mOverridingExtensionModifierFormalParameterList),
-mAttribute_mOverridingExtensionModifierInstructionList (in_mOverridingExtensionModifierInstructionList),
-mAttribute_mEndOfModifierLocation (in_mEndOfModifierLocation) {
+mAttribute_mOverridingExtensionSetterName (in_mOverridingExtensionSetterName),
+mAttribute_mOverridingExtensionSetterFormalParameterList (in_mOverridingExtensionSetterFormalParameterList),
+mAttribute_mOverridingExtensionSetterInstructionList (in_mOverridingExtensionSetterInstructionList),
+mAttribute_mEndOfSetterDeclarationLocation (in_mEndOfSetterDeclarationLocation) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5564,13 +5564,13 @@ void cPtr_overridingExtensionSetterAST::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOverridingExtensionModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mOverridingExtensionSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOverridingExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mOverridingExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mOverridingExtensionModifierInstructionList.description (ioString, inIndentation+1) ;
+  mAttribute_mOverridingExtensionSetterInstructionList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mEndOfModifierLocation.description (ioString, inIndentation+1) ;
+  mAttribute_mEndOfSetterDeclarationLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5578,7 +5578,7 @@ void cPtr_overridingExtensionSetterAST::description (C_String & ioString,
 
 acPtr_class * cPtr_overridingExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingExtensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionModifierName, mAttribute_mOverridingExtensionModifierFormalParameterList, mAttribute_mOverridingExtensionModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingExtensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionSetterName, mAttribute_mOverridingExtensionSetterFormalParameterList, mAttribute_mOverridingExtensionSetterInstructionList, mAttribute_mEndOfSetterDeclarationLocation COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -10014,10 +10014,10 @@ typeComparisonResult cPtr_abstractExtensionSetterForGeneration::dynamicObjectCom
     result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractExtensionModifierName.objectCompare (p->mAttribute_mAbstractExtensionModifierName) ;
+    result = mAttribute_mAbstractExtensionSetterName.objectCompare (p->mAttribute_mAbstractExtensionSetterName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAbstractExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mAbstractExtensionModifierFormalParameterList) ;
+    result = mAttribute_mAbstractExtensionSetterFormalParameterList.objectCompare (p->mAttribute_mAbstractExtensionSetterFormalParameterList) ;
   }
   return result ;
 }
@@ -10070,12 +10070,12 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 GALGAS_abstractExtensionSetterForGeneration GALGAS_abstractExtensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                           const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                                          const GALGAS_string & inAttribute_mAbstractExtensionModifierName,
-                                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractExtensionModifierFormalParameterList
+                                                                                                          const GALGAS_string & inAttribute_mAbstractExtensionSetterName,
+                                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractExtensionSetterFormalParameterList
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_abstractExtensionSetterForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractExtensionModifierName.isValid () && inAttribute_mAbstractExtensionModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractExtensionModifierName, inAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractExtensionSetterName.isValid () && inAttribute_mAbstractExtensionSetterFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractExtensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractExtensionSetterName, inAttribute_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -10100,38 +10100,38 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_abstractExtensionSetterForGeneration::getter
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
-    result = p->mAttribute_mAbstractExtensionModifierName ;
+    result = p->mAttribute_mAbstractExtensionSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractExtensionModifierName ;
+GALGAS_string cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_abstractExtensionSetterForGeneration::getter_mAbstractExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_abstractExtensionSetterForGeneration * p = (const cPtr_abstractExtensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractExtensionSetterForGeneration) ;
-    result = p->mAttribute_mAbstractExtensionModifierFormalParameterList ;
+    result = p->mAttribute_mAbstractExtensionSetterFormalParameterList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAbstractExtensionModifierFormalParameterList ;
+GALGAS_formalParameterListForGeneration cPtr_abstractExtensionSetterForGeneration::getter_mAbstractExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAbstractExtensionSetterFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10141,13 +10141,13 @@ GALGAS_formalParameterListForGeneration cPtr_abstractExtensionSetterForGeneratio
 cPtr_abstractExtensionSetterForGeneration::cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                                      const GALGAS_string & in_mAbstractExtensionModifierName,
-                                                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionModifierFormalParameterList
+                                                                                      const GALGAS_string & in_mAbstractExtensionSetterName,
+                                                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
-mAttribute_mAbstractExtensionModifierName (in_mAbstractExtensionModifierName),
-mAttribute_mAbstractExtensionModifierFormalParameterList (in_mAbstractExtensionModifierFormalParameterList) {
+mAttribute_mAbstractExtensionSetterName (in_mAbstractExtensionSetterName),
+mAttribute_mAbstractExtensionSetterFormalParameterList (in_mAbstractExtensionSetterFormalParameterList) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -10165,9 +10165,9 @@ void cPtr_abstractExtensionSetterForGeneration::description (C_String & ioString
   ioString << ", " ;
   mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractExtensionModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mAbstractExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mAbstractExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10175,7 +10175,7 @@ void cPtr_abstractExtensionSetterForGeneration::description (C_String & ioString
 
 acPtr_class * cPtr_abstractExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractExtensionModifierName, mAttribute_mAbstractExtensionModifierFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_abstractExtensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractExtensionSetterName, mAttribute_mAbstractExtensionSetterFormalParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -10911,13 +10911,13 @@ typeComparisonResult cPtr_extensionSetterForGeneration::dynamicObjectCompare (co
     result = mAttribute_mReceiverType.objectCompare (p->mAttribute_mReceiverType) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionModifierName.objectCompare (p->mAttribute_mExtensionModifierName) ;
+    result = mAttribute_mExtensionSetterName.objectCompare (p->mAttribute_mExtensionSetterName) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementedAsFunction.objectCompare (p->mAttribute_mImplementedAsFunction) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mExtensionModifierFormalParameterList) ;
+    result = mAttribute_mExtensionSetterFormalParameterList.objectCompare (p->mAttribute_mExtensionSetterFormalParameterList) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
@@ -10979,15 +10979,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                           const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
-                                                                                          const GALGAS_string & inAttribute_mExtensionModifierName,
+                                                                                          const GALGAS_string & inAttribute_mExtensionSetterName,
                                                                                           const GALGAS_bool & inAttribute_mImplementedAsFunction,
-                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionModifierFormalParameterList,
+                                                                                          const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
                                                                                           const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                           const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_extensionSetterForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mExtensionModifierName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mExtensionModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_extensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mExtensionModifierName, inAttribute_mImplementedAsFunction, inAttribute_mExtensionModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mExtensionSetterName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mExtensionSetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mExtensionSetterName, inAttribute_mImplementedAsFunction, inAttribute_mExtensionSetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -11012,20 +11012,20 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_extensionSetterForGeneration::getter_mReceiv
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_extensionSetterForGeneration::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_extensionSetterForGeneration::getter_mExtensionSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_extensionSetterForGeneration * p = (const cPtr_extensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    result = p->mAttribute_mExtensionModifierName ;
+    result = p->mAttribute_mExtensionSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_extensionSetterForGeneration::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExtensionModifierName ;
+GALGAS_string cPtr_extensionSetterForGeneration::getter_mExtensionSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11048,20 +11048,20 @@ GALGAS_bool cPtr_extensionSetterForGeneration::getter_mImplementedAsFunction (UN
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_extensionSetterForGeneration::getter_mExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_extensionSetterForGeneration * p = (const cPtr_extensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_extensionSetterForGeneration) ;
-    result = p->mAttribute_mExtensionModifierFormalParameterList ;
+    result = p->mAttribute_mExtensionSetterFormalParameterList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration cPtr_extensionSetterForGeneration::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExtensionModifierFormalParameterList ;
+GALGAS_formalParameterListForGeneration cPtr_extensionSetterForGeneration::getter_mExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionSetterFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -11107,17 +11107,17 @@ GALGAS_semanticInstructionListForGeneration cPtr_extensionSetterForGeneration::g
 cPtr_extensionSetterForGeneration::cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                                      const GALGAS_string & in_mExtensionModifierName,
+                                                                      const GALGAS_string & in_mExtensionSetterName,
                                                                       const GALGAS_bool & in_mImplementedAsFunction,
-                                                                      const GALGAS_formalParameterListForGeneration & in_mExtensionModifierFormalParameterList,
+                                                                      const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                                                       const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                       const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
-mAttribute_mExtensionModifierName (in_mExtensionModifierName),
+mAttribute_mExtensionSetterName (in_mExtensionSetterName),
 mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
-mAttribute_mExtensionModifierFormalParameterList (in_mExtensionModifierFormalParameterList),
+mAttribute_mExtensionSetterFormalParameterList (in_mExtensionSetterFormalParameterList),
 mAttribute_mTypedAttributeList (in_mTypedAttributeList),
 mAttribute_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
@@ -11137,11 +11137,11 @@ void cPtr_extensionSetterForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mReceiverType.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExtensionModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mExtensionSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementedAsFunction.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11153,7 +11153,7 @@ void cPtr_extensionSetterForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_extensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mExtensionModifierName, mAttribute_mImplementedAsFunction, mAttribute_mExtensionModifierFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_extensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mExtensionSetterName, mAttribute_mImplementedAsFunction, mAttribute_mExtensionSetterFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13856,10 +13856,10 @@ typeComparisonResult cPtr_overridingExtensionSetterForGeneration::dynamicObjectC
     result = mAttribute_mBaseTypeName.objectCompare (p->mAttribute_mBaseTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionModifierName.objectCompare (p->mAttribute_mExtensionModifierName) ;
+    result = mAttribute_mExtensionSetterName.objectCompare (p->mAttribute_mExtensionSetterName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionModifierFormalParameterList.objectCompare (p->mAttribute_mExtensionModifierFormalParameterList) ;
+    result = mAttribute_mExtensionSetterFormalParameterList.objectCompare (p->mAttribute_mExtensionSetterFormalParameterList) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mTypedAttributeList.objectCompare (p->mAttribute_mTypedAttributeList) ;
@@ -13922,14 +13922,14 @@ GALGAS_overridingExtensionSetterForGeneration GALGAS_overridingExtensionSetterFo
                                                                                                               const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                               const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                               const GALGAS_string & inAttribute_mBaseTypeName,
-                                                                                                              const GALGAS_string & inAttribute_mExtensionModifierName,
-                                                                                                              const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionModifierFormalParameterList,
+                                                                                                              const GALGAS_string & inAttribute_mExtensionSetterName,
+                                                                                                              const GALGAS_formalParameterListForGeneration & inAttribute_mExtensionSetterFormalParameterList,
                                                                                                               const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                                               const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_overridingExtensionSetterForGeneration result ;
-  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mExtensionModifierName.isValid () && inAttribute_mExtensionModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mExtensionModifierName, inAttribute_mExtensionModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mExtensionSetterName.isValid () && inAttribute_mExtensionSetterFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingExtensionSetterForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mExtensionSetterName, inAttribute_mExtensionSetterFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -13972,38 +13972,38 @@ GALGAS_string cPtr_overridingExtensionSetterForGeneration::getter_mBaseTypeName 
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string GALGAS_overridingExtensionSetterForGeneration::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_overridingExtensionSetterForGeneration::getter_mExtensionSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterForGeneration * p = (const cPtr_overridingExtensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterForGeneration) ;
-    result = p->mAttribute_mExtensionModifierName ;
+    result = p->mAttribute_mExtensionSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_string cPtr_overridingExtensionSetterForGeneration::getter_mExtensionModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExtensionModifierName ;
+GALGAS_string cPtr_overridingExtensionSetterForGeneration::getter_mExtensionSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGeneration::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListForGeneration GALGAS_overridingExtensionSetterForGeneration::getter_mExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingExtensionSetterForGeneration * p = (const cPtr_overridingExtensionSetterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingExtensionSetterForGeneration) ;
-    result = p->mAttribute_mExtensionModifierFormalParameterList ;
+    result = p->mAttribute_mExtensionSetterFormalParameterList ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListForGeneration cPtr_overridingExtensionSetterForGeneration::getter_mExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExtensionModifierFormalParameterList ;
+GALGAS_formalParameterListForGeneration cPtr_overridingExtensionSetterForGeneration::getter_mExtensionSetterFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtensionSetterFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -14050,16 +14050,16 @@ cPtr_overridingExtensionSetterForGeneration::cPtr_overridingExtensionSetterForGe
                                                                                           const GALGAS_string & in_mImplementationCppFileName,
                                                                                           const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                           const GALGAS_string & in_mBaseTypeName,
-                                                                                          const GALGAS_string & in_mExtensionModifierName,
-                                                                                          const GALGAS_formalParameterListForGeneration & in_mExtensionModifierFormalParameterList,
+                                                                                          const GALGAS_string & in_mExtensionSetterName,
+                                                                                          const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                                           const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mBaseTypeName (in_mBaseTypeName),
-mAttribute_mExtensionModifierName (in_mExtensionModifierName),
-mAttribute_mExtensionModifierFormalParameterList (in_mExtensionModifierFormalParameterList),
+mAttribute_mExtensionSetterName (in_mExtensionSetterName),
+mAttribute_mExtensionSetterFormalParameterList (in_mExtensionSetterFormalParameterList),
 mAttribute_mTypedAttributeList (in_mTypedAttributeList),
 mAttribute_mSemanticInstructionListForGeneration (in_mSemanticInstructionListForGeneration) {
 }
@@ -14081,9 +14081,9 @@ void cPtr_overridingExtensionSetterForGeneration::description (C_String & ioStri
   ioString << ", " ;
   mAttribute_mBaseTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExtensionModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mExtensionSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExtensionModifierFormalParameterList.description (ioString, inIndentation+1) ;
+  mAttribute_mExtensionSetterFormalParameterList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypedAttributeList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -14095,7 +14095,7 @@ void cPtr_overridingExtensionSetterForGeneration::description (C_String & ioStri
 
 acPtr_class * cPtr_overridingExtensionSetterForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingExtensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mBaseTypeName, mAttribute_mExtensionModifierName, mAttribute_mExtensionModifierFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingExtensionSetterForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mBaseTypeName, mAttribute_mExtensionSetterName, mAttribute_mExtensionSetterFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -249,9 +249,9 @@ if [type_mInstanceMethodMap count] > 0 then
   %</td></tr>%
 end
 #--- Modifiers
-if [type_mModifierMap count] > 0 then
+if [type_mSetterMap count] > 0 then
   %<tr class="result_line"><td>Setters</td><td>%
-  for () in type_mModifierMap do
+  for () in type_mSetterMap do
     switch mKind
     case definedAsMember :
     case definedAsExtension : %(extension) %

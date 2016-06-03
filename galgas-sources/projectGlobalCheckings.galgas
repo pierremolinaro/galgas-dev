@@ -28,10 +28,10 @@ listmap @genericExtensionMethodListMap (@lstringlist)
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @semanticDeclarationAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionSettierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
   ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
   ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
@@ -54,7 +54,7 @@ listmap @descendantClassListMap (@unifiedTypeMapProxyList)
 #                                                                                                                      *
 #  E X T E N S I O N    M E T H O D    M A P                                                                           *
 #                                                                                                                      *
-# Used for checking a extension-method is defined once for a type                                                       *
+# Used for checking a extension-method is defined once for a type                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionMethodMapForGlobalCheckings {
@@ -63,20 +63,20 @@ map @extensionMethodMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  E X T E N S I O N    M O D I F I E R    M A P                                                                       *
+#  E X T E N S I O N    S E T T E R    M A P                                                                           *
 #                                                                                                                      *
 # Used for checking a extension-setter is defined once for a type                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @extensionModifierMapForGlobalCheckings {
+map @extensionSetterMapForGlobalCheckings {
   insert insertKey error message "the '%K' extension setter is already declared in %L"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  E X T E N S I O N    G E T T E R    M A P                                                                             *
+#  E X T E N S I O N    G E T T E R    M A P                                                                           *
 #                                                                                                                      *
-# Used for checking a extension-method is defined once for a type                                                       *
+# Used for checking a extension-method is defined once for a type                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 map @extensionGetterMapForGlobalCheckings {
@@ -96,33 +96,34 @@ func outputDirectory ?let @lstring inSourceFile ->  @string outOuputDirectory {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkExtensionModifierDefinitionForClass
+proc checkextensionSetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
-  ?let @lstring inAbstractExtensionModifierName
+  ?let @lstring inAbstractExtensionSetterName
   ?let @descendantClassListMap inDescendantClassListMap
   ?let @genericExtensionMethodListMap inOverridingExtensionMethodListMap
-  ?let @unifiedTypeMap inUnifiedTypeMap {
+  ?let @unifiedTypeMap inUnifiedTypeMap
+{
   let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
   for () in descendantClasses do
     let @lstring descendantClassName = [mType lkey]
     @lstringlist overridingMethods = [inOverridingExtensionMethodListMap listForKey ![descendantClassName string]]
     @bool found = false
     for () in overridingMethods while not found do
-      found = [inAbstractExtensionModifierName string] == [mValue string]
+      found = [inAbstractExtensionSetterName string] == [mValue string]
     end
     if not found then
       if not [mType mIsConcrete] then
-        checkExtensionModifierDefinitionForClass (
+        checkextensionSetterDefinitionForClass (
           !inClassNameForErrorSignaling
           ![descendantClassName string]
-          !inAbstractExtensionModifierName
+          !inAbstractExtensionSetterName
           !inDescendantClassListMap
           !inOverridingExtensionMethodListMap
           !inUnifiedTypeMap
         )
       else
-        error inAbstractExtensionModifierName: "an abstract extension method '" + inAbstractExtensionModifierName + "' is defined for abstract class '@"
+        error inAbstractExtensionSetterName: "an abstract extension method '" + inAbstractExtensionSetterName + "' is defined for abstract class '@"
         + inClassNameForErrorSignaling
         + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
       end
@@ -232,16 +233,16 @@ proc performGalgas3ProjectGlobalCheckings
   var extensionReaderListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
   var overridingAbstractExtensionGetterListMap =@genericExtensionMethodListMap.emptyMap{}
-  var abstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
-  var extensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
-  var overridingExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
-  var overridingAbstractExtensionModifierListMap =@genericExtensionMethodListMap.emptyMap{}
+  var abstractExtensionSetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var extensionSetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingExtensionSetterListMap =@genericExtensionMethodListMap.emptyMap{}
+  var overridingAbstractExtensionSetterListMap =@genericExtensionMethodListMap.emptyMap{}
   for () in inSemanticDeclarationList do
     [mSemanticDeclaration buildExtensionListMaps
-      !?abstractExtensionModifierListMap
-      !?extensionModifierListMap
-      !?overridingExtensionModifierListMap
-      !?overridingAbstractExtensionModifierListMap
+      !?abstractExtensionSetterListMap
+      !?extensionSetterListMap
+      !?overridingExtensionSetterListMap
+      !?overridingAbstractExtensionSetterListMap
       !?abstractExtensionMethodListMap
       !?extensionMethodListMap
       !?overridingExtensionMethodListMap
@@ -254,56 +255,56 @@ proc performGalgas3ProjectGlobalCheckings
   end
 #------ Check Extension
   if @uint.errorCount == 0 then
-  #--- A given abstract extension modifier is defined only once for a class
-    for () in abstractExtensionModifierListMap do
-      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+  #--- A given abstract extension setter is defined only once for a class
+    for () in abstractExtensionSetterListMap do
+      var extensionSetterMap =@extensionSetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?extensionModifierMap insertKey !mValue]
+        [!?extensionSetterMap insertKey !mValue]
       end
     end  
-  #--- A given base extension modifier is defined only once for a class
-    for () in extensionModifierListMap do
-      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+  #--- A given base extension setter is defined only once for a class
+    for () in extensionSetterListMap do
+      var extensionSetterMap =@extensionSetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?extensionModifierMap insertKey !mValue]
+        [!?extensionSetterMap insertKey !mValue]
       end
     end  
-  #--- A given overriding extension modifier is defined only once for a class
-    for () in overridingExtensionModifierListMap do
-      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+  #--- A given overriding extension setter is defined only once for a class
+    for () in overridingExtensionSetterListMap do
+      var extensionSetterMap =@extensionSetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?extensionModifierMap insertKey !mValue]
+        [!?extensionSetterMap insertKey !mValue]
       end
     end  
-  #--- A given overriding abstract extension modifier is defined only once for a class
+  #--- A given overriding abstract extension setter is defined only once for a class
     for () in overridingAbstractExtensionMethodListMap do
-      var extensionModifierMap =@extensionModifierMapForGlobalCheckings.emptyMap{}
+      var extensionSetterMap =@extensionSetterMapForGlobalCheckings.emptyMap{}
       for () in mList do
-        [!?extensionModifierMap insertKey !mValue]
+        [!?extensionSetterMap insertKey !mValue]
       end
     end  
-  #------ Check that for every abstract extension modifier, an overridden extension modifier defined in an concrete subclass
-    for () in abstractExtensionModifierListMap do
+  #------ Check that for every abstract extension setter, an overridden extension setter defined in an concrete subclass
+    for () in abstractExtensionSetterListMap do
       for () in mList do
-        checkExtensionModifierDefinitionForClass (
+        checkextensionSetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingExtensionModifierListMap
+          !overridingExtensionSetterListMap
           !inSemanticContext.mTypeMap
         )
       end
     end
-  #------ Check that for every overriding abstract extension modifier, an overridden extension modifier defined in an concrete subclass
-    for () in overridingAbstractExtensionModifierListMap do
+  #------ Check that for every overriding abstract extension setter, an overridden extension setter defined in an concrete subclass
+    for () in overridingAbstractExtensionSetterListMap do
       for () in mList do
-        checkExtensionModifierDefinitionForClass (
+        checkextensionSetterDefinitionForClass (
           !key
           !key
           !mValue
           !descendantClassListMap
-          !overridingExtensionModifierListMap
+          !overridingExtensionSetterListMap
           !inSemanticContext.mTypeMap
         )
       end

@@ -15,7 +15,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -29,7 +29,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
 override method @mapProxyDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a map
   [ioSemanticContext.mTypeMap searchKey
@@ -49,7 +49,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Associated map type index
@@ -171,14 +171,14 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     end
   end
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mMapProxyTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Enter type in type map
@@ -194,7 +194,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !mapTypedAttributeList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !classMethodMap
     !@enumerationDescriptorList.emptyList
@@ -286,7 +286,7 @@ override method @mapProxyTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

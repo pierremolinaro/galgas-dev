@@ -79,7 +79,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -114,7 +114,7 @@ override method @sortedListDeclarationAST addAssociatedElement
 override method @sortedListDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
@@ -127,7 +127,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Enumeration description
   var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
   var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var modifierFormalArgumentList =@formalParameterSignature.emptyList{}
+  var setterFormalArgumentList =@formalParameterSignature.emptyList{}
   var typedAttributeList =@typedPropertyList.emptyList{}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
@@ -136,7 +136,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    modifierFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
+    setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
   end
 #--- Constructors
   var constructorMap = @constructorMap.emptyMap{}
@@ -163,19 +163,19 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !false
   )
 #--- Modifiers
-  var modifierMap =@setterMap.emptyMap{}
-  [!?modifierMap insertOrReplace
+  var setterMap =@setterMap.emptyMap{}
+  [!?setterMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-  [!?modifierMap insertOrReplace
+  [!?setterMap insertOrReplace
     !@lstring.new {!"popSmallest" !@location.here}
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !true
     !@methodQualifier.isBasic
     !"" # No error message
@@ -185,7 +185,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"greatest" !@location.here}
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic
@@ -194,7 +194,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   [!?instanceMethodMap insertKey
     !@lstring.new {!"smallest" !@location.here}
     !@methodKind.definedAsMember
-    !modifierFormalArgumentList
+    !setterFormalArgumentList
     !@location.here
     !true
     !@methodQualifier.isBasic
@@ -205,14 +205,14 @@ override method @sortedListDeclarationAST enterInSemanticContext
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mSortedListTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Enter in type map
@@ -228,7 +228,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
@@ -345,7 +345,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

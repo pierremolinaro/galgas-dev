@@ -42,7 +42,7 @@ override method @abstractExtensionMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
   let key = @lstring.new {!"extension method @" + mTypeName + " " + mAbstractExtensionMethodName ![mAbstractExtensionMethodName location]}
@@ -79,7 +79,7 @@ override getter @abstractExtensionMethodAST keyRepresentation
 override method @abstractExtensionMethodAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext {
 }
 
@@ -127,10 +127,10 @@ override method @abstractExtensionMethodAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractExtensionMethodAST buildExtensionListMaps
-  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
-  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionSetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionSettierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionSetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionSetterListMap
   ?!@genericExtensionMethodListMap ioAbstractExtensionMethodListMapAST
   ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap

@@ -58,7 +58,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
   let key = @lstring.new {!"@" + mGraphTypeName ![mGraphTypeName location]}
@@ -73,7 +73,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 override method @graphDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- string type proxy
   [@unifiedTypeMap-proxy makeProxyFromString
@@ -108,7 +108,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #---
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
@@ -310,7 +310,7 @@ override method @graphDeclarationAST enterInSemanticContext
       !mFormalArgumentName
   end
   for () in mInsertModifierList do
-    [!?modifierMap insertOrReplace
+    [!?setterMap insertOrReplace
       !mInsertModifierName
       !@methodKind.definedAsMember
       !formalParameterList
@@ -321,7 +321,7 @@ override method @graphDeclarationAST enterInSemanticContext
   end
   drop formalParameterList
 #--- setter 'removeEdgeToDominators'
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
     !@formalParameterSignature.emptyList
@@ -332,7 +332,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- setter 'removeEdgesToNode'
   formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeName"
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToNode" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
@@ -345,7 +345,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inTargetNodeLKey"
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !@lstring.new {!"addEdge" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
@@ -357,7 +357,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- setter 'noteNode'
   formalParameterList = @formalParameterSignature.emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST.argumentIn !"inNodeLKey"
-  [!?modifierMap insertKey
+  [!?setterMap insertKey
     !@lstring.new {!"noteNode" !@location.here}
     !@methodKind.definedAsMember
     !formalParameterList
@@ -367,14 +367,14 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
   drop formalParameterList
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mGraphTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Enter type in type map
@@ -390,7 +390,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
@@ -472,7 +472,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

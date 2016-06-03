@@ -39,7 +39,7 @@ list @externTypeGetterList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @externTypeModifierList {
-  @lstring mModifierName
+  @lstring mSetterName
   @formalParameterListAST mFormalParameterList
 }
 
@@ -120,10 +120,10 @@ syntax extension galgas3DeclarationsSyntax {
         !argumentTypeList
     while
       $setter$
-      $identifier$ ?var  @lstring modifierName
+      $identifier$ ?var  @lstring setterName
       <formal_parameter_list> ?var @formalParameterListAST formalParameterList
       externTypeModifierList +=
-        !modifierName
+        !setterName
         !formalParameterList
     while
       $method$
@@ -157,7 +157,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mExternTypeName ![mExternTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -170,12 +170,12 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
 override method @externTypeDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   var constructorMap =@constructorMap.emptyMap{}
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Constructors
@@ -232,8 +232,8 @@ override method @externTypeDeclarationAST enterInSemanticContext
       routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
     end
   #---
-    [!?modifierMap insertKey
-      !mModifierName
+    [!?setterMap insertKey
+      !mSetterName
       !@methodKind.definedAsMember
       !routineSignature
       !true #inHasLexiqueAndLocationArguments
@@ -277,7 +277,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
@@ -346,7 +346,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

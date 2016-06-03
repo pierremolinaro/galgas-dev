@@ -62,7 +62,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
@@ -76,7 +76,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 override method @listmapDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionModifierMapForBuildingContext inExtensionModifierMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
   [ioSemanticContext.mTypeMap searchKey
@@ -94,7 +94,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #---
   var constructorMap =@constructorMap.emptyMap{}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var modifierMap =@setterMap.emptyMap{}
+  var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Associated map type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
@@ -154,14 +154,14 @@ override method @listmapDeclarationAST enterInSemanticContext
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
-  addCategories (
+  addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
-    !inExtensionModifierMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
     !mListmapTypeName
     !?getterMap
-    !?modifierMap
+    !?setterMap
     !?instanceMethodMap
   )
 #--- Element type index
@@ -183,7 +183,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !listTypedAttributeList
     !constructorMap
     !getterMap
-    !modifierMap
+    !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumeratorDescriptor
@@ -266,7 +266,7 @@ override method @listmapTypeForGeneration appendDeclaration1
     ![mTypeProxy mIsConcrete]
     ![mTypeProxy mConstructorMap]
     ![mTypeProxy mGetterMap]
-    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
     ![mTypeProxy mEnumerationDescriptor]

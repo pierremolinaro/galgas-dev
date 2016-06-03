@@ -331,7 +331,7 @@ sharedmap @unifiedTypeMap {
   @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
   @getterMap mGetterMap
-  @setterMap mModifierMap
+  @setterMap mSetterMap
   @instanceMethodMap mInstanceMethodMap
   @classMethodMap mClassMethodMap
   @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
@@ -454,10 +454,10 @@ method @predefinedTypeAST getGetterMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-method @predefinedTypeAST getModifierMap
+method @predefinedTypeAST getSetterMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@setterMap outModifierMap {
-  outModifierMap = @setterMap. emptyMap
+  !@setterMap outSetterMap {
+  outSetterMap = @setterMap. emptyMap
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

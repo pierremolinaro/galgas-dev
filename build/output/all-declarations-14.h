@@ -261,9 +261,9 @@ class GALGAS_abstractExtensionSetterForGeneration : public GALGAS_semanticDeclar
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mAbstractExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mAbstractExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mAbstractExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mAbstractExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
 
@@ -287,15 +287,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSe
 class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mAbstractExtensionModifierName ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractExtensionModifierFormalParameterList ;
+  public : GALGAS_string mAttribute_mAbstractExtensionSetterName ;
+  public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractExtensionSetterFormalParameterList ;
 
 //--- Constructor
   public : cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                                      const GALGAS_string & in_mAbstractExtensionModifierName,
-                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionModifierFormalParameterList
+                                                      const GALGAS_string & in_mAbstractExtensionSetterName,
+                                                      const GALGAS_formalParameterListForGeneration & in_mAbstractExtensionSetterFormalParameterList
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -303,8 +303,8 @@ class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclaratio
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mAbstractExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mAbstractExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mAbstractExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mAbstractExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -612,9 +612,9 @@ class GALGAS_extensionSetterForGeneration : public GALGAS_semanticDeclarationWit
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mImplementedAsFunction (LOCATION_ARGS) const ;
 
@@ -644,9 +644,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForG
 class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mExtensionModifierName ;
+  public : GALGAS_string mAttribute_mExtensionSetterName ;
   public : GALGAS_bool mAttribute_mImplementedAsFunction ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionModifierFormalParameterList ;
+  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionSetterFormalParameterList ;
   public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
 
@@ -654,9 +654,9 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
   public : cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
                                               const GALGAS_string & in_mImplementationCppFileName,
                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
-                                              const GALGAS_string & in_mExtensionModifierName,
+                                              const GALGAS_string & in_mExtensionSetterName,
                                               const GALGAS_bool & in_mImplementedAsFunction,
-                                              const GALGAS_formalParameterListForGeneration & in_mExtensionModifierFormalParameterList,
+                                              const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                               const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                               const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                               COMMA_LOCATION_ARGS) ;
@@ -666,9 +666,9 @@ class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHea
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mExtensionSetterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mImplementedAsFunction (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList getter_mTypedAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration getter_mSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
 //--- Description
@@ -1764,9 +1764,9 @@ class GALGAS_overridingExtensionSetterForGeneration : public GALGAS_semanticDecl
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mBaseTypeName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mExtensionModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mExtensionSetterName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
 
@@ -1795,8 +1795,8 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 //--- Attributes
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
   public : GALGAS_string mAttribute_mBaseTypeName ;
-  public : GALGAS_string mAttribute_mExtensionModifierName ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionModifierFormalParameterList ;
+  public : GALGAS_string mAttribute_mExtensionSetterName ;
+  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionSetterFormalParameterList ;
   public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
 
@@ -1805,8 +1805,8 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
                                                         const GALGAS_string & in_mImplementationCppFileName,
                                                         const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                         const GALGAS_string & in_mBaseTypeName,
-                                                        const GALGAS_string & in_mExtensionModifierName,
-                                                        const GALGAS_formalParameterListForGeneration & in_mExtensionModifierFormalParameterList,
+                                                        const GALGAS_string & in_mExtensionSetterName,
+                                                        const GALGAS_formalParameterListForGeneration & in_mExtensionSetterFormalParameterList,
                                                         const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                         const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                         COMMA_LOCATION_ARGS) ;
@@ -1817,8 +1817,8 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string getter_mBaseTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mExtensionModifierName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mExtensionModifierFormalParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mExtensionSetterName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration getter_mExtensionSetterFormalParameterList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList getter_mTypedAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration getter_mSemanticInstructionListForGeneration (LOCATION_ARGS) const ;
 //--- Description

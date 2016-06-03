@@ -6529,105 +6529,105 @@ GALGAS_extensionMethodMapForGlobalCheckings GALGAS_extensionMethodMapForGlobalCh
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cMapElement_extensionModifierMapForGlobalCheckings::cMapElement_extensionModifierMapForGlobalCheckings (const GALGAS_lstring & inKey
-                                                                                                        COMMA_LOCATION_ARGS) :
+cMapElement_extensionSetterMapForGlobalCheckings::cMapElement_extensionSetterMapForGlobalCheckings (const GALGAS_lstring & inKey
+                                                                                                    COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-bool cMapElement_extensionModifierMapForGlobalCheckings::isValid (void) const {
+bool cMapElement_extensionSetterMapForGlobalCheckings::isValid (void) const {
   return mAttribute_lkey.isValid () ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cMapElement * cMapElement_extensionModifierMapForGlobalCheckings::copy (void) {
+cMapElement * cMapElement_extensionSetterMapForGlobalCheckings::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionModifierMapForGlobalCheckings (mAttribute_lkey COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionSetterMapForGlobalCheckings (mAttribute_lkey COMMA_HERE)) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cMapElement_extensionModifierMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
+void cMapElement_extensionSetterMapForGlobalCheckings::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cMapElement_extensionModifierMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
-  cMapElement_extensionModifierMapForGlobalCheckings * operand = (cMapElement_extensionModifierMapForGlobalCheckings *) inOperand ;
+typeComparisonResult cMapElement_extensionSetterMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionSetterMapForGlobalCheckings * operand = (cMapElement_extensionSetterMapForGlobalCheckings *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings::GALGAS_extensionModifierMapForGlobalCheckings (void) :
+GALGAS_extensionSetterMapForGlobalCheckings::GALGAS_extensionSetterMapForGlobalCheckings (void) :
 AC_GALGAS_map () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings::GALGAS_extensionModifierMapForGlobalCheckings (const GALGAS_extensionModifierMapForGlobalCheckings & inSource) :
+GALGAS_extensionSetterMapForGlobalCheckings::GALGAS_extensionSetterMapForGlobalCheckings (const GALGAS_extensionSetterMapForGlobalCheckings & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings & GALGAS_extensionModifierMapForGlobalCheckings::operator = (const GALGAS_extensionModifierMapForGlobalCheckings & inSource) {
+GALGAS_extensionSetterMapForGlobalCheckings & GALGAS_extensionSetterMapForGlobalCheckings::operator = (const GALGAS_extensionSetterMapForGlobalCheckings & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings GALGAS_extensionModifierMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForGlobalCheckings result ;
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForGlobalCheckings result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings GALGAS_extensionModifierMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_extensionModifierMapForGlobalCheckings & inMapToOverride
-                                                                                                                               COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForGlobalCheckings result ;
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::constructor_mapWithMapToOverride (const GALGAS_extensionSetterMapForGlobalCheckings & inMapToOverride
+                                                                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForGlobalCheckings result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings GALGAS_extensionModifierMapForGlobalCheckings::getter_overriddenMap (C_Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_extensionModifierMapForGlobalCheckings result ;
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::getter_overriddenMap (C_Compiler * inCompiler
+                                                                                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionSetterMapForGlobalCheckings result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForGlobalCheckings::addAssign_operation (const GALGAS_lstring & inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  cMapElement_extensionModifierMapForGlobalCheckings * p = NULL ;
-  macroMyNew (p, cMapElement_extensionModifierMapForGlobalCheckings (inKey COMMA_HERE)) ;
+void GALGAS_extensionSetterMapForGlobalCheckings::addAssign_operation (const GALGAS_lstring & inKey,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForGlobalCheckings * p = NULL ;
+  macroMyNew (p, cMapElement_extensionSetterMapForGlobalCheckings (inKey COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@extensionModifierMapForGlobalCheckings insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@extensionSetterMapForGlobalCheckings insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_extensionModifierMapForGlobalCheckings::setter_insertKey (GALGAS_lstring inKey,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  cMapElement_extensionModifierMapForGlobalCheckings * p = NULL ;
-  macroMyNew (p, cMapElement_extensionModifierMapForGlobalCheckings (inKey COMMA_HERE)) ;
+void GALGAS_extensionSetterMapForGlobalCheckings::setter_insertKey (GALGAS_lstring inKey,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForGlobalCheckings * p = NULL ;
+  macroMyNew (p, cMapElement_extensionSetterMapForGlobalCheckings (inKey COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -6638,33 +6638,33 @@ void GALGAS_extensionModifierMapForGlobalCheckings::setter_insertKey (GALGAS_lst
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cMapElement_extensionModifierMapForGlobalCheckings * GALGAS_extensionModifierMapForGlobalCheckings::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                                                       const GALGAS_string & inKey
-                                                                                                                                       COMMA_LOCATION_ARGS) {
-  cMapElement_extensionModifierMapForGlobalCheckings * result = (cMapElement_extensionModifierMapForGlobalCheckings *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_extensionModifierMapForGlobalCheckings) ;
+cMapElement_extensionSetterMapForGlobalCheckings * GALGAS_extensionSetterMapForGlobalCheckings::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                                                   const GALGAS_string & inKey
+                                                                                                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_extensionSetterMapForGlobalCheckings * result = (cMapElement_extensionSetterMapForGlobalCheckings *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionSetterMapForGlobalCheckings) ;
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-cEnumerator_extensionModifierMapForGlobalCheckings::cEnumerator_extensionModifierMapForGlobalCheckings (const GALGAS_extensionModifierMapForGlobalCheckings & inEnumeratedObject,
-                                                                                                        const typeEnumerationOrder inOrder) :
+cEnumerator_extensionSetterMapForGlobalCheckings::cEnumerator_extensionSetterMapForGlobalCheckings (const GALGAS_extensionSetterMapForGlobalCheckings & inEnumeratedObject,
+                                                                                                    const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings_2D_element cEnumerator_extensionModifierMapForGlobalCheckings::current (LOCATION_ARGS) const {
-  const cMapElement_extensionModifierMapForGlobalCheckings * p = (const cMapElement_extensionModifierMapForGlobalCheckings *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionModifierMapForGlobalCheckings) ;
-  return GALGAS_extensionModifierMapForGlobalCheckings_2D_element (p->mAttribute_lkey) ;
+GALGAS_extensionSetterMapForGlobalCheckings_2D_element cEnumerator_extensionSetterMapForGlobalCheckings::current (LOCATION_ARGS) const {
+  const cMapElement_extensionSetterMapForGlobalCheckings * p = (const cMapElement_extensionSetterMapForGlobalCheckings *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionSetterMapForGlobalCheckings) ;
+  return GALGAS_extensionSetterMapForGlobalCheckings_2D_element (p->mAttribute_lkey) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cEnumerator_extensionModifierMapForGlobalCheckings::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_extensionSetterMapForGlobalCheckings::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
@@ -6674,42 +6674,42 @@ GALGAS_lstring cEnumerator_extensionModifierMapForGlobalCheckings::current_lkey 
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                    @extensionModifierMapForGlobalCheckings type                                     *
+//                                     @extensionSetterMapForGlobalCheckings type                                      *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings ("extensionModifierMapForGlobalCheckings",
-                                                               NULL) ;
+kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ("extensionSetterMapForGlobalCheckings",
+                                                             NULL) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_extensionModifierMapForGlobalCheckings::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionModifierMapForGlobalCheckings ;
+const C_galgas_type_descriptor * GALGAS_extensionSetterMapForGlobalCheckings::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionSetterMapForGlobalCheckings ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_extensionModifierMapForGlobalCheckings::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_extensionSetterMapForGlobalCheckings::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionModifierMapForGlobalCheckings (*this)) ;
+    macroMyNew (result, GALGAS_extensionSetterMapForGlobalCheckings (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_extensionModifierMapForGlobalCheckings GALGAS_extensionModifierMapForGlobalCheckings::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_extensionModifierMapForGlobalCheckings result ;
-  const GALGAS_extensionModifierMapForGlobalCheckings * p = (const GALGAS_extensionModifierMapForGlobalCheckings *) inObject.embeddedObject () ;
+GALGAS_extensionSetterMapForGlobalCheckings GALGAS_extensionSetterMapForGlobalCheckings::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionSetterMapForGlobalCheckings result ;
+  const GALGAS_extensionSetterMapForGlobalCheckings * p = (const GALGAS_extensionSetterMapForGlobalCheckings *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionModifierMapForGlobalCheckings *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_extensionSetterMapForGlobalCheckings *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("extensionModifierMapForGlobalCheckings", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("extensionSetterMapForGlobalCheckings", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

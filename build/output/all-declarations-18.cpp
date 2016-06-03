@@ -1701,7 +1701,7 @@ typeComparisonResult cPtr_selfSetterCallInstructionAST::dynamicObjectCompare (co
     result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mModifierName.objectCompare (p->mAttribute_mModifierName) ;
+    result = mAttribute_mSetterName.objectCompare (p->mAttribute_mSetterName) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mActualParameterList.objectCompare (p->mAttribute_mActualParameterList) ;
@@ -1753,32 +1753,32 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_selfSetterCallInstructionAST GALGAS_selfSetterCallInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                          const GALGAS_lstring & inAttribute_mModifierName,
+                                                                                          const GALGAS_lstring & inAttribute_mSetterName,
                                                                                           const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_selfSetterCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mModifierName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mModifierName, inAttribute_mActualParameterList COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mActualParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_selfSetterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mSetterName, inAttribute_mActualParameterList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_selfSetterCallInstructionAST::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_selfSetterCallInstructionAST::getter_mSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_selfSetterCallInstructionAST * p = (const cPtr_selfSetterCallInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_selfSetterCallInstructionAST) ;
-    result = p->mAttribute_mModifierName ;
+    result = p->mAttribute_mSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_selfSetterCallInstructionAST::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mModifierName ;
+GALGAS_lstring cPtr_selfSetterCallInstructionAST::getter_mSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1804,11 +1804,11 @@ GALGAS_actualParameterListAST cPtr_selfSetterCallInstructionAST::getter_mActualP
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_selfSetterCallInstructionAST::cPtr_selfSetterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                                                      const GALGAS_lstring & in_mModifierName,
+                                                                      const GALGAS_lstring & in_mSetterName,
                                                                       const GALGAS_actualParameterListAST & in_mActualParameterList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mAttribute_mModifierName (in_mModifierName),
+mAttribute_mSetterName (in_mSetterName),
 mAttribute_mActualParameterList (in_mActualParameterList) {
 }
 
@@ -1823,7 +1823,7 @@ void cPtr_selfSetterCallInstructionAST::description (C_String & ioString,
   ioString << "[@selfSetterCallInstructionAST:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mActualParameterList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -1833,7 +1833,7 @@ void cPtr_selfSetterCallInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_selfSetterCallInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_selfSetterCallInstructionAST (mAttribute_mInstructionLocation, mAttribute_mModifierName, mAttribute_mActualParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_selfSetterCallInstructionAST (mAttribute_mInstructionLocation, mAttribute_mSetterName, mAttribute_mActualParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -1902,7 +1902,7 @@ typeComparisonResult cPtr_setterCallInstructionAST::dynamicObjectCompare (const 
     result = mAttribute_mTypeNameForCasting.objectCompare (p->mAttribute_mTypeNameForCasting) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mModifierName.objectCompare (p->mAttribute_mModifierName) ;
+    result = mAttribute_mSetterName.objectCompare (p->mAttribute_mSetterName) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mActualParameterList.objectCompare (p->mAttribute_mActualParameterList) ;
@@ -1960,12 +1960,12 @@ GALGAS_setterCallInstructionAST GALGAS_setterCallInstructionAST::constructor_new
                                                                                   const GALGAS_lstring & inAttribute_mReceiverName,
                                                                                   const GALGAS_lstringlist & inAttribute_mReceiverStructAttributes,
                                                                                   const GALGAS_lstring & inAttribute_mTypeNameForCasting,
-                                                                                  const GALGAS_lstring & inAttribute_mModifierName,
+                                                                                  const GALGAS_lstring & inAttribute_mSetterName,
                                                                                   const GALGAS_actualParameterListAST & inAttribute_mActualParameterList
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_setterCallInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mTypeNameForCasting.isValid () && inAttribute_mModifierName.isValid () && inAttribute_mActualParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mReceiverName, inAttribute_mReceiverStructAttributes, inAttribute_mTypeNameForCasting, inAttribute_mModifierName, inAttribute_mActualParameterList COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mTypeNameForCasting.isValid () && inAttribute_mSetterName.isValid () && inAttribute_mActualParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_setterCallInstructionAST (inAttribute_mInstructionLocation, inAttribute_mReceiverName, inAttribute_mReceiverStructAttributes, inAttribute_mTypeNameForCasting, inAttribute_mSetterName, inAttribute_mActualParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2026,20 +2026,20 @@ GALGAS_lstring cPtr_setterCallInstructionAST::getter_mTypeNameForCasting (UNUSED
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_setterCallInstructionAST::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_setterCallInstructionAST::getter_mSetterName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_setterCallInstructionAST * p = (const cPtr_setterCallInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_setterCallInstructionAST) ;
-    result = p->mAttribute_mModifierName ;
+    result = p->mAttribute_mSetterName ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_setterCallInstructionAST::getter_mModifierName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mModifierName ;
+GALGAS_lstring cPtr_setterCallInstructionAST::getter_mSetterName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSetterName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -2068,14 +2068,14 @@ cPtr_setterCallInstructionAST::cPtr_setterCallInstructionAST (const GALGAS_locat
                                                               const GALGAS_lstring & in_mReceiverName,
                                                               const GALGAS_lstringlist & in_mReceiverStructAttributes,
                                                               const GALGAS_lstring & in_mTypeNameForCasting,
-                                                              const GALGAS_lstring & in_mModifierName,
+                                                              const GALGAS_lstring & in_mSetterName,
                                                               const GALGAS_actualParameterListAST & in_mActualParameterList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
 mAttribute_mReceiverName (in_mReceiverName),
 mAttribute_mReceiverStructAttributes (in_mReceiverStructAttributes),
 mAttribute_mTypeNameForCasting (in_mTypeNameForCasting),
-mAttribute_mModifierName (in_mModifierName),
+mAttribute_mSetterName (in_mSetterName),
 mAttribute_mActualParameterList (in_mActualParameterList) {
 }
 
@@ -2096,7 +2096,7 @@ void cPtr_setterCallInstructionAST::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mTypeNameForCasting.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mModifierName.description (ioString, inIndentation+1) ;
+  mAttribute_mSetterName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mActualParameterList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -2106,7 +2106,7 @@ void cPtr_setterCallInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_setterCallInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_setterCallInstructionAST (mAttribute_mInstructionLocation, mAttribute_mReceiverName, mAttribute_mReceiverStructAttributes, mAttribute_mTypeNameForCasting, mAttribute_mModifierName, mAttribute_mActualParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_setterCallInstructionAST (mAttribute_mInstructionLocation, mAttribute_mReceiverName, mAttribute_mReceiverStructAttributes, mAttribute_mTypeNameForCasting, mAttribute_mSetterName, mAttribute_mActualParameterList COMMA_THERE)) ;
   return ptr ;
 }
 

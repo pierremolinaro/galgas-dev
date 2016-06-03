@@ -117,14 +117,14 @@ proc buildGalgas3SemanticContext
   var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
   var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
   var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
-  var extensionModifierMapForBuildingContext = @extensionModifierMapForBuildingContext.emptyMap{}
+  var extensionSetterMapForBuildingContext = @extensionSetterMapForBuildingContext.emptyMap{}
   var extensionOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?extensionMethodMapForBuildingContext
       !?extensionGetterMapForBuildingContext
-      !?extensionModifierMapForBuildingContext
+      !?extensionSetterMapForBuildingContext
       !?extensionOverrideDefinitionList
     ]  
   end
@@ -165,7 +165,7 @@ proc buildGalgas3SemanticContext
         [mSemanticDeclaration enterInSemanticContext
           !extensionMethodMapForBuildingContext
           !extensionGetterMapForBuildingContext
-          !extensionModifierMapForBuildingContext
+          !extensionSetterMapForBuildingContext
           !?outSemanticContext
         ]
       end
