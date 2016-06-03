@@ -555,57 +555,6 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C L .                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingExtensionMethodAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionMethodName
-  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-  @semanticInstructionListAST mOverridingExtensionMethodInstructionList
-  @location mEndOfMethodLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  O V E R R I D I N G    A B S T R A C T    E X T E N S I O N    M E T H O D                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionMethodName
-  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  O V E R R I D I N G    A B S T R A C T    E X T E N S I O N    M O D I F I E R                                        *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingAbstractExtensionModifierAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mOverridingExtensionModifierName
-  @formalParameterListAST mOverridingExtensionModifierFormalParameterList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# O V E R R I D I N G    A B S T R A C T   E X T E N S I O N    R E A D E R    D E C L A R A T I O N                     *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
-  @lstring mTypeName
-  @lstring mAbstractExtensionGetterName
-  @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList
-  @lstring mAbstractExtensionGetterReturnedTypeName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    Common Rules                                                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

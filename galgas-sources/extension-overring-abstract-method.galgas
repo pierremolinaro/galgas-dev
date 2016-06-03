@@ -1,0 +1,151 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @overridingAbstractExtensionMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingExtensionMethodName
+  @formalParameterListAST mOverridingExtensionMethodFormalParameterList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $override$
+    $abstract$
+    $method$
+    $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+    $identifier$ ?var  @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
+    <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+    ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {
+      !false # Is not predefined
+      !className
+      !mMethodName
+      !formalParameterList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   KEY REPRESENTATION                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @overridingAbstractExtensionMethodAST keyRepresentation
+  ->@string outString {
+  outString = "overriding extension method @" + mTypeName + " " + mOverridingExtensionMethodName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingAbstractExtensionMethodAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionModifierMapForBuildingContext unused ioExtensionModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+{
+  ioExtensionOverrideDefinitionList += !self
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingAbstractExtensionMethodAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionModifierMapForBuildingContext unused inExtensionModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingAbstractExtensionMethodAST semanticAnalysis
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
+{
+#--- Self type
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+#--- Check type is an abstract class
+  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+    error mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
+  elsif [selfType mIsConcrete] then
+    error mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
+  end
+#--- Find base type name
+  @string baseTypeName = ""
+  @unifiedTypeMap-proxy superType = [selfType mSuperType]
+  var inheritedSignature =@formalParameterSignature.emptyList{}
+  @location inheritedDeclarationLocation = @location.here
+  loop( [inSemanticContext.mTypeMap count] + 1)
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mInstanceMethodMap] hasKey ![mOverridingExtensionMethodName string]] then
+      @methodQualifier qualifier
+      [[superType mInstanceMethodMap] searchKey !mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      if qualifier <= @methodQualifier. isBasicFinal then
+        baseTypeName = [superType key]
+      end
+    end
+    superType = [superType mSuperType]
+  end
+  if baseTypeName == "" then
+    error mOverridingExtensionMethodName:"this getter is not declared by a super class"
+  end
+#--- Analyze formal argument list
+  var variableMap =@variableMap.emptyMap{}
+  @formalParameterListForGeneration formalParameterListForGeneration
+  buildLocalVariableMapAndSignature (
+    !inSemanticContext
+    !mOverridingExtensionMethodFormalParameterList
+    !?variableMap
+    ?formalParameterListForGeneration
+  )
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures (
+      !formalParameterListForGeneration
+      ![mOverridingExtensionMethodName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    )
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   EXTENSION LIST MAP                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionModifierListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionModifierListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionMethodListMapAST
+  ?!@genericExtensionMethodListMap unused ioExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionMethodListMap
+  ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionMethodListMap
+  ?!@genericExtensionMethodListMap unused ioAbstractExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ioOverridingAbstractExtensionMethodListMap +=
+    ![mTypeName string]
+    !mOverridingExtensionMethodName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
