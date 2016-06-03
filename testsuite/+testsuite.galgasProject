@@ -18,7 +18,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_mapproxy.galgas"
   "galgas-sources/testsuite_extension_readers.galgas"
   "galgas-sources/testsuite_extension_methods.galgas"
-  "galgas-sources/testsuite_extension_modifiers.galgas"
+  "galgas-sources/testsuite_extension_setters.galgas"
   "galgas-sources/testsuite_type_categories.galgas"
   "galgas-sources/testsuite_strings.galgas"
   "galgas-sources/testsuite_range.galgas"

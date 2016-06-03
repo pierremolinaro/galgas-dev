@@ -322,13 +322,13 @@ LOGGING r: <@uint:5>
   @B_B
   @C_C
   @TestExtensionMethod
-  @TestExtensionModifier
+  @TestExtensionSetter
   @aList
   @aList-element
   @aMap
   @aMap-element
-  @abstractOverridingTestExtensionModifier
-  @abstractTestExtensionModifier
+  @abstractOverridingTestExtensionSetter
+  @abstractTestExtensionSetter
   @adjMat
   @application
   @baseClassForTypeCastInSetterCall
@@ -375,7 +375,7 @@ LOGGING r: <@uint:5>
   @object
   @objectlist
   @objectlist-element
-  @overridingTestExtensionModifier
+  @overridingTestExtensionSetter
   @range
   @sint
   @sint64
@@ -414,9 +414,9 @@ LOGGING Proxy: : <@maTable-proxy regular (key "abc", unsolved)>
 LOGGING [table unsolvedProxyCount]: <@uint:1>
 *************************************** begin of extension reader test
 LOGGING s: <@string:"-3-4-4">
-*************************************** begin of extension modifier test
+*************************************** begin of extension setter test
 LOGGING u: <@uint:3>
-LOGGING v: <@TestExtensionModifier:[@TestExtensionModifier:<@uint:3>, <@string:"Hello World">]>
+LOGGING v: <@TestExtensionSetter:[@TestExtensionSetter:<@uint:3>, <@string:"Hello World">]>
 Appel @inheritedClassForTypeCastInSetterCall unSetter
 *************************************** begin of type extension test
 LOGGING Square of 7: <@uint64:49>
