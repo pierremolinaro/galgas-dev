@@ -79,14 +79,18 @@ project (3:1:9) -> "galgas" {
   "galgas-sources/type-sorted-list.galgas"
   "galgas-sources/type-struct.galgas"
 
-#--- Type declaration
+#--- Extensions
   "galgas-sources/extension-abstract-getter.galgas"
   "galgas-sources/extension-abstract-method.galgas"
   "galgas-sources/extension-abstract-setter.galgas"
   "galgas-sources/extension-getter.galgas"
   "galgas-sources/extension-method.galgas"
   "galgas-sources/extension-setter.galgas"
+  "galgas-sources/extension-overring-abstract-getter.galgas"
+  "galgas-sources/extension-overring-abstract-method.galgas"
+  "galgas-sources/extension-overring-abstract-setter.galgas"
   "galgas-sources/extension-overriding-getter.galgas"
+  "galgas-sources/extension-overriding-method.galgas"
   "galgas-sources/extension-overriding-setter.galgas"
 
 #--- Semantics Component

@@ -1243,34 +1243,6 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @overridingExtensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.noHeader
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @overridingExtensionMethodForGeneration appendSpecificImplementation
-  ?let @unifiedTypeMap unused inTypeMap
-  ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  generateExtensionMethod (
-    !mReceiverType
-    !mBaseTypeName
-    !?ioInclusionSet
-    !mExtensionMethodName
-    !mExtensionMethodFormalParameterList
-    !mSemanticInstructionListForGeneration
-    ?let @string methodImplementation
-  )
-  outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionMethodImplementation
-    ![mReceiverType key]
-    !mExtensionMethodName
-    !methodImplementation
-  ] 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 #! Option component
 
 #----------------------------------------------------------------------------------------------------------------------*

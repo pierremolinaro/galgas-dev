@@ -743,21 +743,6 @@ class @primitiveTypeForGeneration : @semanticTypeForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    E X T E N S I O N    M E T H O D    D E C .                                                     *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMap-proxy mReceiverType
-  @string mBaseTypeName
-  @string mExtensionMethodName
-  @formalParameterListForGeneration mExtensionMethodFormalParameterList
-  @typedPropertyList mTypedAttributeList
-  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

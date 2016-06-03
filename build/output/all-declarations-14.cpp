@@ -4538,10 +4538,10 @@ GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMe
 //   Object comparison                                                                                                 *
 //----------------------------------------------------------------------------------------------------------------------
 
-typeComparisonResult cPtr_overridingAbstractExtensionModifierAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_overridingAbstractExtensionSetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_overridingAbstractExtensionModifierAST * p = (const cPtr_overridingAbstractExtensionModifierAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_overridingAbstractExtensionModifierAST) ;
+  const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
   }
@@ -4560,7 +4560,7 @@ typeComparisonResult cPtr_overridingAbstractExtensionModifierAST::dynamicObjectC
 //----------------------------------------------------------------------------------------------------------------------
 
 
-typeComparisonResult GALGAS_overridingAbstractExtensionModifierAST::objectCompare (const GALGAS_overridingAbstractExtensionModifierAST & inOperand) const {
+typeComparisonResult GALGAS_overridingAbstractExtensionSetterAST::objectCompare (const GALGAS_overridingAbstractExtensionSetterAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -4578,48 +4578,48 @@ typeComparisonResult GALGAS_overridingAbstractExtensionModifierAST::objectCompar
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionModifierAST::GALGAS_overridingAbstractExtensionModifierAST (void) :
+GALGAS_overridingAbstractExtensionSetterAST::GALGAS_overridingAbstractExtensionSetterAST (void) :
 GALGAS_semanticDeclarationAST () {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionModifierAST GALGAS_overridingAbstractExtensionModifierAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_overridingAbstractExtensionModifierAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                                         GALGAS_lstring::constructor_default (HERE),
-                                                                         GALGAS_lstring::constructor_default (HERE),
-                                                                         GALGAS_formalParameterListAST::constructor_emptyList (HERE)
-                                                                         COMMA_THERE) ;
+GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_overridingAbstractExtensionSetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_formalParameterListAST::constructor_emptyList (HERE)
+                                                                       COMMA_THERE) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionModifierAST::GALGAS_overridingAbstractExtensionModifierAST (const cPtr_overridingAbstractExtensionModifierAST * inSourcePtr) :
+GALGAS_overridingAbstractExtensionSetterAST::GALGAS_overridingAbstractExtensionSetterAST (const cPtr_overridingAbstractExtensionSetterAST * inSourcePtr) :
 GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionModifierAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionSetterAST) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionModifierAST GALGAS_overridingAbstractExtensionModifierAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                                                              const GALGAS_lstring & inAttribute_mTypeName,
-                                                                                                              const GALGAS_lstring & inAttribute_mOverridingExtensionModifierName,
-                                                                                                              const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionModifierFormalParameterList
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractExtensionModifierAST result ;
+GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                                          const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionModifierName,
+                                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionModifierFormalParameterList
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionSetterAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionModifierName.isValid () && inAttribute_mOverridingExtensionModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionModifierAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionModifierName, inAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
+    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionSetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionModifierName, inAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractExtensionModifierAST * p = (const cPtr_overridingAbstractExtensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionModifierAST) ;
+    const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
     result = p->mAttribute_mTypeName ;
   }
   return result ;
@@ -4627,17 +4627,17 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionModifierAST::getter_mTypeName (
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_overridingAbstractExtensionModifierAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_overridingAbstractExtensionSetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring GALGAS_overridingAbstractExtensionModifierAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractExtensionModifierAST * p = (const cPtr_overridingAbstractExtensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionModifierAST) ;
+    const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
     result = p->mAttribute_mOverridingExtensionModifierName ;
   }
   return result ;
@@ -4645,17 +4645,17 @@ GALGAS_lstring GALGAS_overridingAbstractExtensionModifierAST::getter_mOverriding
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstring cPtr_overridingAbstractExtensionModifierAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOverridingExtensionModifierName ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionModifierAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   GALGAS_formalParameterListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_overridingAbstractExtensionModifierAST * p = (const cPtr_overridingAbstractExtensionModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractExtensionModifierAST) ;
+    const cPtr_overridingAbstractExtensionSetterAST * p = (const cPtr_overridingAbstractExtensionSetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionSetterAST) ;
     result = p->mAttribute_mOverridingExtensionModifierFormalParameterList ;
   }
   return result ;
@@ -4663,19 +4663,19 @@ GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionModifierAST::get
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionModifierAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
+GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionSetterAST::getter_mOverridingExtensionModifierFormalParameterList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mOverridingExtensionModifierFormalParameterList ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-//                           Pointer class for @overridingAbstractExtensionModifierAST class                           *
+//                            Pointer class for @overridingAbstractExtensionSetterAST class                            *
 //----------------------------------------------------------------------------------------------------------------------
 
-cPtr_overridingAbstractExtensionModifierAST::cPtr_overridingAbstractExtensionModifierAST (const GALGAS_bool & in_mIsPredefined,
-                                                                                          const GALGAS_lstring & in_mTypeName,
-                                                                                          const GALGAS_lstring & in_mOverridingExtensionModifierName,
-                                                                                          const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList
-                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_overridingAbstractExtensionSetterAST::cPtr_overridingAbstractExtensionSetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                                                      const GALGAS_lstring & in_mTypeName,
+                                                                                      const GALGAS_lstring & in_mOverridingExtensionModifierName,
+                                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionModifierFormalParameterList
+                                                                                      COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mTypeName (in_mTypeName),
 mAttribute_mOverridingExtensionModifierName (in_mOverridingExtensionModifierName),
@@ -4684,13 +4684,13 @@ mAttribute_mOverridingExtensionModifierFormalParameterList (in_mOverridingExtens
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionModifierAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionModifierAST ;
+const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionSetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
-void cPtr_overridingAbstractExtensionModifierAST::description (C_String & ioString,
-                                                               const int32_t inIndentation) const {
-  ioString << "[@overridingAbstractExtensionModifierAST:" ;
+void cPtr_overridingAbstractExtensionSetterAST::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "[@overridingAbstractExtensionSetterAST:" ;
   mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
@@ -4703,51 +4703,51 @@ void cPtr_overridingAbstractExtensionModifierAST::description (C_String & ioStri
 
 //----------------------------------------------------------------------------------------------------------------------
 
-acPtr_class * cPtr_overridingAbstractExtensionModifierAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_overridingAbstractExtensionSetterAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_overridingAbstractExtensionModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionModifierName, mAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_overridingAbstractExtensionSetterAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingExtensionModifierName, mAttribute_mOverridingExtensionModifierFormalParameterList COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
-//                                    @overridingAbstractExtensionModifierAST type                                     *
+//                                     @overridingAbstractExtensionSetterAST type                                      *
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_overridingAbstractExtensionModifierAST ("overridingAbstractExtensionModifierAST",
-                                                               & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ("overridingAbstractExtensionSetterAST",
+                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionModifierAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionModifierAST ;
+const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionSetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionSetterAST ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-AC_GALGAS_root * GALGAS_overridingAbstractExtensionModifierAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_overridingAbstractExtensionSetterAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_overridingAbstractExtensionModifierAST (*this)) ;
+    macroMyNew (result, GALGAS_overridingAbstractExtensionSetterAST (*this)) ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_overridingAbstractExtensionModifierAST GALGAS_overridingAbstractExtensionModifierAST::extractObject (const GALGAS_object & inObject,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_overridingAbstractExtensionModifierAST result ;
-  const GALGAS_overridingAbstractExtensionModifierAST * p = (const GALGAS_overridingAbstractExtensionModifierAST *) inObject.embeddedObject () ;
+GALGAS_overridingAbstractExtensionSetterAST GALGAS_overridingAbstractExtensionSetterAST::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionSetterAST result ;
+  const GALGAS_overridingAbstractExtensionSetterAST * p = (const GALGAS_overridingAbstractExtensionSetterAST *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_overridingAbstractExtensionModifierAST *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_overridingAbstractExtensionSetterAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("overridingAbstractExtensionModifierAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("overridingAbstractExtensionSetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
