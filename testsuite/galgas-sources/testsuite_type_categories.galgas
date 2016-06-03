@@ -60,7 +60,7 @@ method @lstring op !@string outResult {
   outResult = string + " !"
 }
 
-#------------ Extension modifiers
+#------------ Extension setters
 setter @lstring appendInt ?let@uint inValue {
   string += [inValue string]
 }
