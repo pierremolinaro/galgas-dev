@@ -1,31 +1,33 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //  Routines for computing followed by empty strings symbols                                                           *
 //                                                                                                                     *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                                                           *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
+//                                                                                                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
+//                                                                                                                     *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "follow_by_empty_computation.h"
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
@@ -71,17 +73,18 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
                                           C_HTMLString & ioHTMLFileContents,
+                                          const bool inPopulateHTMLHelperString,
                                           const cVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
   const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
 
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
     ioHTMLFileContents << "Calculus completed in "
                 << cStringWithSigned (inIterationsCount)
@@ -112,11 +115,12 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
                               C_HTMLString & ioHTMLFileContents,
+                              const bool inPopulateHTMLHelperString,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,
@@ -127,7 +131,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
@@ -142,9 +146,10 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
 //--- Display nonterminal symbols followed by empty 
  displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty,
                                            ioHTMLFileContents,
+                                           inPopulateHTMLHelperString,
                                            inVocabulary,
                                            iterationsCount,
                                            inVerboseOptionOn) ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*

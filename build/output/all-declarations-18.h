@@ -1,19 +1,19 @@
 #ifndef all_2D_declarations_2D__31__38__ENTITIES_DEFINED
 #define all_2D_declarations_2D__31__38__ENTITIES_DEFINED
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-predefined-types.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-declarations-17.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        @templateClassToTypeOperandAST class                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateClassToTypeOperandAST : public GALGAS_templateExpressionAST {
 //--- Constructor
@@ -60,15 +60,15 @@ class GALGAS_templateClassToTypeOperandAST : public GALGAS_templateExpressionAST
 } ; // End of GALGAS_templateClassToTypeOperandAST class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateClassToTypeOperandAST ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Pointer class for @templateClassToTypeOperandAST class                                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateClassToTypeOperandAST : public cPtr_templateExpressionAST {
 //--- Attributes
@@ -93,11 +93,11 @@ class cPtr_templateClassToTypeOperandAST : public cPtr_templateExpressionAST {
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     @templateFileWrapperWithStaticPathAST class                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateFileWrapperWithStaticPathAST : public GALGAS_templateExpressionAST {
 //--- Constructor
@@ -147,15 +147,15 @@ class GALGAS_templateFileWrapperWithStaticPathAST : public GALGAS_templateExpres
 } ; // End of GALGAS_templateFileWrapperWithStaticPathAST class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapperWithStaticPathAST ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Pointer class for @templateFileWrapperWithStaticPathAST class                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateFileWrapperWithStaticPathAST : public cPtr_templateExpressionAST {
 //--- Attributes
@@ -183,11 +183,11 @@ class cPtr_templateFileWrapperWithStaticPathAST : public cPtr_templateExpression
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @templateIfThenElseExpressionAST class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateIfThenElseExpressionAST : public GALGAS_templateExpressionAST {
 //--- Constructor
@@ -240,15 +240,15 @@ class GALGAS_templateIfThenElseExpressionAST : public GALGAS_templateExpressionA
 } ; // End of GALGAS_templateIfThenElseExpressionAST class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateIfThenElseExpressionAST ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @templateIfThenElseExpressionAST class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateIfThenElseExpressionAST : public cPtr_templateExpressionAST {
 //--- Attributes
@@ -282,11 +282,11 @@ class cPtr_templateIfThenElseExpressionAST : public cPtr_templateExpressionAST {
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @templateBlockInstructionForGeneration class                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateBlockInstructionForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -336,15 +336,15 @@ class GALGAS_templateBlockInstructionForGeneration : public GALGAS_templateInstr
 } ; // End of GALGAS_templateBlockInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @templateBlockInstructionForGeneration class                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -375,11 +375,11 @@ class cPtr_templateBlockInstructionForGeneration : public cPtr_templateInstructi
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                  @templateInstructionExpressionForGeneration class                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionExpressionForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -423,15 +423,15 @@ class GALGAS_templateInstructionExpressionForGeneration : public GALGAS_template
 } ; // End of GALGAS_templateInstructionExpressionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionExpressionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                         Pointer class for @templateInstructionExpressionForGeneration class                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -456,11 +456,11 @@ class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInst
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                   @templateInstructionForeachForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionForeachForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -525,15 +525,15 @@ class GALGAS_templateInstructionForeachForGeneration : public GALGAS_templateIns
 } ; // End of GALGAS_templateInstructionForeachForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionForeachForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                          Pointer class for @templateInstructionForeachForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -579,11 +579,11 @@ class cPtr_templateInstructionForeachForGeneration : public cPtr_templateInstruc
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              @templateInstructionGetColumnLocationForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionGetColumnLocationForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -627,15 +627,15 @@ class GALGAS_templateInstructionGetColumnLocationForGeneration : public GALGAS_t
 } ; // End of GALGAS_templateInstructionGetColumnLocationForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGetColumnLocationForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     Pointer class for @templateInstructionGetColumnLocationForGeneration class                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -657,11 +657,11 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              @templateInstructionGotoColumnLocationForGeneration class                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionGotoColumnLocationForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -705,15 +705,15 @@ class GALGAS_templateInstructionGotoColumnLocationForGeneration : public GALGAS_
 } ; // End of GALGAS_templateInstructionGotoColumnLocationForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionGotoColumnLocationForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     Pointer class for @templateInstructionGotoColumnLocationForGeneration class                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -735,11 +735,11 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @templateInstructionIfForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -789,15 +789,15 @@ class GALGAS_templateInstructionIfForGeneration : public GALGAS_templateInstruct
 } ; // End of GALGAS_templateInstructionIfForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionIfForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @templateInstructionIfForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -825,11 +825,11 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @templateInstructionStringForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -876,15 +876,15 @@ class GALGAS_templateInstructionStringForGeneration : public GALGAS_templateInst
 } ; // End of GALGAS_templateInstructionStringForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionStringForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @templateInstructionStringForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -909,11 +909,11 @@ class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstruct
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @templateInstructionSwitchForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchForGeneration : public GALGAS_templateInstructionForGeneration {
 //--- Constructor
@@ -960,15 +960,15 @@ class GALGAS_templateInstructionSwitchForGeneration : public GALGAS_templateInst
 } ; // End of GALGAS_templateInstructionSwitchForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstructionSwitchForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @templateInstructionSwitchForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
@@ -996,11 +996,11 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                    Abstract extension method '@templateExpressionAST templateExpressionAnalysis'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis) (const class cPtr_templateExpressionAST * inObject,
                                                                                            const class GALGAS_templateAnalysisContext constinArgument0,
@@ -1008,12 +1008,12 @@ typedef void (*extensionMethodSignature_templateExpressionAST_templateExpression
                                                                                            class C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void enterExtensionMethod_templateExpressionAnalysis (const int32_t inClassIndex,
                                                       extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_templateExpressionAnalysis (const class cPtr_templateExpressionAST * inObject,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,

@@ -1440,7 +1440,6 @@
 		CF23743419967BEF0061D2D8 /* C++ files */ = {
 			isa = PBXGroup;
 			children = (
-				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 				CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */,
 				CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */,
 				CF23743A19967C4F0061D2D8 /* all-declarations-2.cpp */,
@@ -1468,6 +1467,7 @@
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
 				CFC2223E1AFBE6A00049A4CB /* all-declarations-26.cpp */,
+				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 			);
 			name = "C++ files";
 			sourceTree = "<group>";
@@ -1475,7 +1475,6 @@
 		CF23743519967BFC0061D2D8 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				CF12C0BF1D043E6C0060778F /* all-predefined-types.h */,
 				CFB02C8619F3FC570011D03D /* all-declarations-0.h */,
 				CFB02C8719F3FC570011D03D /* all-declarations-1.h */,
 				CFB02C8819F3FC570011D03D /* all-declarations-2.h */,
@@ -1504,6 +1503,7 @@
 				CF393C641A0681A000153A38 /* all-declarations-25.h */,
 				CFC222411AFBE6AD0049A4CB /* all-declarations-26.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
+				CF12C0BF1D043E6C0060778F /* all-predefined-types.h */,
 				CF237AE819967E4E0061D2D8 /* project_header.h */,
 			);
 			name = Headers;

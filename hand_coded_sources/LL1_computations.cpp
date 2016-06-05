@@ -1,22 +1,22 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //  Routines for checking LL(1) condition                                                                              *
 //                                                                                                                     *
 //  Copyright (C) 1994, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "files/C_TextFileWrite.h"
@@ -24,14 +24,14 @@
 #include "galgas2/C_Compiler.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "LL1_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
@@ -47,7 +47,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
                                 const uint32_t nombreVariables) ;
 } ;
   
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
                                                             const cVocabulary & inVocabulary) :
@@ -55,7 +55,7 @@ mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
                                            const uint32_t nombreVariables) {
@@ -67,7 +67,7 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
   mVocabulary.printInFile (mFichierBNF, element COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool
 check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
@@ -76,10 +76,11 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
                      C_HTMLString & ioHTMLFileContents,
+                     const bool inPopulateHTMLHelperString,
                      const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents << "The FIRST of a production is :\n"
                    " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
@@ -96,7 +97,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
   }
   for (int32_t i=0 ; i<nombreNonTerminaux ; i++) {
@@ -105,14 +106,14 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
       const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
-        if (ioHTMLFileContents.registeringIsEnabled ()) {
+        if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
           inVocabulary.printInFile (ioHTMLFileContents, i + terminalSymbolsCount COMMA_HERE) ;
           ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
         }
         for (int32_t j=first ; j<=derniere ; j++) {
           const int32_t numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-          if (ioHTMLFileContents.registeringIsEnabled ()) {
+          if (inPopulateHTMLHelperString) {
             ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
             ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
             ioHTMLFileContents.outputRawData ("\">") ;
@@ -135,7 +136,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               }
             }
           }
-          if (ioHTMLFileContents.registeringIsEnabled ()) {
+          if (inPopulateHTMLHelperString) {
             TC_UniqueArray <uint64_t> array ;
             p.derivationFirst ().getValueArray (array) ;
             for (int32_t k=0 ; k < array.count () ; k++) {
@@ -156,7 +157,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
               nombreDeConflits ++ ;
-              if (ioHTMLFileContents.registeringIsEnabled ()) {
+              if (inPopulateHTMLHelperString) {
                 ioHTMLFileContents.outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
                 ioHTMLFileContents << "***** Conflict between the productions "
                             << cStringWithSigned (numeroProductionJ)
@@ -182,7 +183,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     }
     co.flush () ;
   }
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     if (nombreDeConflits == 0) {
       ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
       ioHTMLFileContents << "No conflict : the grammar is LL (1).\n" ;
@@ -201,7 +202,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   return nombreDeConflits == 0 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
@@ -220,7 +221,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
                                 const uint32_t nombreVariables) ;
 } ;
   
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cEcrireNonTerminal::
 cEcrireNonTerminal (C_HTMLString & inHTMLfile,
@@ -232,7 +233,7 @@ aNomClasseLexique (nomClasseLexique),
 aIndice (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
                                  const uint32_t nombreVariables) {
@@ -250,7 +251,7 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
               << ", " ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
@@ -281,7 +282,7 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class C_ProductionNameDescriptor {
   public : C_String mName ;
@@ -295,7 +296,7 @@ class C_ProductionNameDescriptor {
                                        const uint32_t inLineNumber) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_ProductionNameDescriptor::C_ProductionNameDescriptor (void) :
 mName (),
@@ -303,7 +304,7 @@ mFileName (),
 mLineNumber (0) {
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_ProductionNameDescriptor::C_ProductionNameDescriptor (const C_String & inName,
                                                         const C_String & inFileName,
@@ -313,7 +314,7 @@ mFileName (inFileName),
 mLineNumber (inLineNumber) {
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printProductions (const cPureBNFproductionsList & inPureBNFproductions,
@@ -382,7 +383,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
@@ -432,7 +433,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
@@ -886,12 +887,13 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents.appendCppHyphenLineComment () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTMLString & ioHTMLFileContents,
+                  const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
@@ -921,6 +923,7 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,
                                ioHTMLFileContents,
+                               inPopulateHTMLHelperString,
                                inVerboseOptionOn) ;
 
 //--- Generate C++ file
@@ -938,4 +941,4 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*

@@ -150,7 +150,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
         + [mNonterminalName identifierRepresentation]
         + "_i" + [mRuleIndex string] + "_" + [mLabelName identifierRepresentation]
-      outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
       generateProcedure (
         !static:false
         !ruleName
@@ -172,7 +172,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
     + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
     + [mNonterminalName identifierRepresentation]
     + "_i" + [mRuleIndex string] + "_parse"
-    outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+    outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
     generateProcedure (
       !static:false
       !parseRuleName
@@ -195,7 +195,7 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
       + [mNonterminalName identifierRepresentation]
       + "_i" + [mRuleIndex string] + "_indexing"
-      outImplementation += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+      outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
       generateProcedure (
         !static:false
         !ruleName

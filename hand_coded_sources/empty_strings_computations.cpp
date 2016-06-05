@@ -1,33 +1,33 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// Routines for computing empty string derivations                             *
+// Routines for computing empty string derivations                                                                     *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "empty_strings_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static C_Relation
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
@@ -43,7 +43,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
   return nonterminalSymbolsHavingEmptyDerivation ;
 }
   
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSymbolsHavingEmptyDerivation,
@@ -74,7 +74,7 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_Relation & inNonterminalSy
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static C_Relation
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
@@ -123,16 +123,17 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingToEmpty,
                                        const C_Relation & inNonTerminalHavingEmptyDerivation,
                                        C_HTMLString & ioHTMLFileContents,
+                                       const bool inPopulateHTMLstring,
                                        const int32_t inIterationsCount,
                                        const bool inVerboseOptionOn) { 
   const uint64_t t = inVocabularyDerivingToEmpty.value64Count () ;
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLstring) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents << "Nonterminal symbols deriving indirectly in empty string : calculus in " ;
     ioHTMLFileContents.appendSigned (inIterationsCount) ;
@@ -173,11 +174,12 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_HTMLString & ioHTMLFileContents,
+                            const bool inPopulateHTMLstring,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) {
@@ -187,14 +189,14 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLstring) {
     ioHTMLFileContents.appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
   const C_Relation nonTerminalHavingEmptyDerivation
     = computeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
                                                       inVocabularyConfiguration) ;
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLstring) {
     printNonterminalSymbolsHavingEmptyDerivation (nonTerminalHavingEmptyDerivation, ioHTMLFileContents) ;
   }
 
@@ -212,9 +214,10 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
   printNonterminalDerivingInEmptyString (vocabularyDerivingToEmpty,
                                          nonTerminalHavingEmptyDerivation,
                                          ioHTMLFileContents,
+                                         inPopulateHTMLstring,
                                          iterationCount,
                                          inVerboseOptionOn) ;
   return vocabularyDerivingToEmpty ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
