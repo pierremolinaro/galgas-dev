@@ -79,7 +79,30 @@ override method @overridingExtensionGetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
+  if [option galgas_cli_options.newExtensionGeneration value] then
+  #--- Compute method signature
+    @functionSignature functionSignature = {}
+    for () in mOverridingExtensionGetterFormalInputParameterList do
+      functionSignature +=
+        !mFormalSelector
+        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        !mFormalArgumentName.string
+    end
+    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
+    [!?getterMap insertKey
+      !mOverridingExtensionGetterName
+      !.definedAsMember
+      !functionSignature
+      !mOverridingExtensionGetterName.location
+      !true
+      !.searchKey {!ioSemanticContext.mTypeMap !mOverridingExtensionGetterReturnedTypeName}
+      !.isOverriding
+      !"" # If not empty, calling the method raises an error with this message
+    ]
+    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

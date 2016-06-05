@@ -16,19 +16,29 @@
 
 option galgas_cli_options {
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component"
+
   @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file" -> "Output a HTML file that contains all defined types"
+
   @string create_project : '\0', "create-project" -> "Create a new GALGAS Project"
-  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions"
-#  @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)"
+
+  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions"
+  -> "Print the list of predefined lexical routines and functions"
+
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path"
   
   @bool generateOneHeader : '\0', "generate-one-cpp-header" -> "Generate one C++ header file for all declarations"
+
   @bool generateManyFiles : '\0', "generate-many-cpp-files" -> "Generate many C++ implementation files"
   
   @string cppCompile : '\0', "compile" -> "Perform C++ compilation on 'string' target"
 
-  @bool generateSharedMapAutomatonDotFiles : '\0', "generate-shared-map-automaton-dot-files" -> "Generate shared map automaton dot files"
+  @bool generateSharedMapAutomatonDotFiles : '\0', "generate-shared-map-automaton-dot-files"
+  -> "Generate shared map automaton dot files"
+
   @bool check_gmp : '\0', "check-gmp" -> "Run a GMP check"
+
+  @bool newExtensionGeneration : '\0', "new-extension-generation"
+  -> "Use new extension code generation (instable, under development)"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
