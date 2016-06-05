@@ -3,16 +3,16 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-declarations-10.h"
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Routine 'commonGetterMapForAllTypes'                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_commonGetterMapForAllTypes (GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
                                          GALGAS_getterMap & outArgument_outMap,
@@ -35,11 +35,11 @@ void routine_commonGetterMapForAllTypes (GALGAS_unifiedTypeMap & ioArgument_ioUn
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      Routine 'enterModifierWithInputArgument'                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterModifierWithInputArgument (GALGAS_setterMap & ioArgument_ioSetterMap,
                                              GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -61,11 +61,11 @@ void routine_enterModifierWithInputArgument (GALGAS_setterMap & ioArgument_ioSet
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     Routine 'enterModifierWith2InputArguments'                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterModifierWith_32_InputArguments (GALGAS_setterMap & ioArgument_ioSetterMap,
                                                   GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -93,11 +93,11 @@ void routine_enterModifierWith_32_InputArguments (GALGAS_setterMap & ioArgument_
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       Routine 'enterModifierWithoutArgument'                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterModifierWithoutArgument (GALGAS_setterMap & ioArgument_ioSetterMap,
                                            const GALGAS_string constinArgument_inSetterName,
@@ -110,11 +110,11 @@ void routine_enterModifierWithoutArgument (GALGAS_setterMap & ioArgument_ioSette
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    Routine 'enterInstanceMethodWithoutArgument'                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterInstanceMethodWithoutArgument (GALGAS_instanceMethodMap & ioArgument_ioInstanceMethodMap,
                                                  const GALGAS_string constinArgument_inInstanceMethodName,
@@ -127,11 +127,11 @@ void routine_enterInstanceMethodWithoutArgument (GALGAS_instanceMethodMap & ioAr
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                   Routine 'enterInstanceMethodWithInputArgument'                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterInstanceMethodWithInputArgument (GALGAS_instanceMethodMap & ioArgument_ioInstanceMethodMap,
                                                    GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -153,11 +153,11 @@ void routine_enterInstanceMethodWithInputArgument (GALGAS_instanceMethodMap & io
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     Routine 'enterClassMethodWithInputArgument'                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterClassMethodWithInputArgument (GALGAS_classMethodMap & ioArgument_ioClassMethodMap,
                                                 GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -179,11 +179,11 @@ void routine_enterClassMethodWithInputArgument (GALGAS_classMethodMap & ioArgume
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                  Routine 'enterClassMethodWithStringInputArgument'                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterClassMethodWithStringInputArgument (GALGAS_classMethodMap & ioArgument_ioClassMethodMap,
                                                       GALGAS_unifiedTypeMap & ioArgument_ioUnifiedTypeMap,
@@ -204,11 +204,11 @@ void routine_enterClassMethodWithStringInputArgument (GALGAS_classMethodMap & io
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Once function 'compilerCppName'                                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_string onceFunction_compilerCppName (C_Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) {
@@ -220,14 +220,14 @@ static GALGAS_string onceFunction_compilerCppName (C_Compiler * /* inCompiler */
 
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function implementation                                                                                            *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool gOnceFunctionResultAvailable_compilerCppName = false ;
 static GALGAS_string gOnceFunctionResult_compilerCppName ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
@@ -238,26 +238,26 @@ GALGAS_string function_compilerCppName (class C_Compiler * inCompiler
   return gOnceFunctionResult_compilerCppName ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void releaseOnceFunctionResult_compilerCppName (void) {
   gOnceFunctionResult_compilerCppName.drop () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gEpilogueForOnceFunction_compilerCppName (NULL,
                                                              releaseOnceFunctionResult_compilerCppName) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_compilerCppName [1] = {
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_compilerCppName (C_Compiler * inCompiler,
                                                                 const cObjectArray & /* inEffectiveParameterArray */,
@@ -266,7 +266,7 @@ static GALGAS_object functionWithGenericHeader_compilerCppName (C_Compiler * inC
   return function_compilerCppName (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_compilerCppName ("compilerCppName",
                                                                  functionWithGenericHeader_compilerCppName,
@@ -274,11 +274,11 @@ C_galgas_function_descriptor functionDescriptor_compilerCppName ("compilerCppNam
                                                                  0,
                                                                  functionArgs_compilerCppName) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Once function 'syntaxDirectedTranslationResultVarName'                                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_string onceFunction_syntaxDirectedTranslationResultVarName (C_Compiler * /* inCompiler */
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -290,14 +290,14 @@ static GALGAS_string onceFunction_syntaxDirectedTranslationResultVarName (C_Comp
 
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function implementation                                                                                            *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool gOnceFunctionResultAvailable_syntaxDirectedTranslationResultVarName = false ;
 static GALGAS_string gOnceFunctionResult_syntaxDirectedTranslationResultVarName ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string function_syntaxDirectedTranslationResultVarName (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
@@ -308,26 +308,26 @@ GALGAS_string function_syntaxDirectedTranslationResultVarName (class C_Compiler 
   return gOnceFunctionResult_syntaxDirectedTranslationResultVarName ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName (void) {
   gOnceFunctionResult_syntaxDirectedTranslationResultVarName.drop () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gEpilogueForOnceFunction_syntaxDirectedTranslationResultVarName (NULL,
                                                                                     releaseOnceFunctionResult_syntaxDirectedTranslationResultVarName) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_syntaxDirectedTranslationResultVarName [1] = {
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_syntaxDirectedTranslationResultVarName (C_Compiler * inCompiler,
                                                                                        const cObjectArray & /* inEffectiveParameterArray */,
@@ -336,7 +336,7 @@ static GALGAS_object functionWithGenericHeader_syntaxDirectedTranslationResultVa
   return function_syntaxDirectedTranslationResultVarName (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_syntaxDirectedTranslationResultVarName ("syntaxDirectedTranslationResultVarName",
                                                                                         functionWithGenericHeader_syntaxDirectedTranslationResultVarName,
@@ -344,11 +344,11 @@ C_galgas_function_descriptor functionDescriptor_syntaxDirectedTranslationResultV
                                                                                         0,
                                                                                         functionArgs_syntaxDirectedTranslationResultVarName) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                               Routine 'addExtensions'                                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_addExtensions (const GALGAS_extensionMethodMapForBuildingContext constinArgument_inExtensionMethodMapForBuildingContext,
                             const GALGAS_extensionGetterMapForBuildingContext constinArgument_inExtensionGetterMapForBuildingContext,
@@ -433,11 +433,11 @@ void routine_addExtensions (const GALGAS_extensionMethodMapForBuildingContext co
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Once function 'elementTypeNameSuffix'                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_string onceFunction_elementTypeNameSuffix (C_Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -449,14 +449,14 @@ static GALGAS_string onceFunction_elementTypeNameSuffix (C_Compiler * /* inCompi
 
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function implementation                                                                                            *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool gOnceFunctionResultAvailable_elementTypeNameSuffix = false ;
 static GALGAS_string gOnceFunctionResult_elementTypeNameSuffix ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
               COMMA_LOCATION_ARGS) {
@@ -467,26 +467,26 @@ GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
   return gOnceFunctionResult_elementTypeNameSuffix ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void releaseOnceFunctionResult_elementTypeNameSuffix (void) {
   gOnceFunctionResult_elementTypeNameSuffix.drop () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gEpilogueForOnceFunction_elementTypeNameSuffix (NULL,
                                                                    releaseOnceFunctionResult_elementTypeNameSuffix) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_elementTypeNameSuffix [1] = {
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_elementTypeNameSuffix (C_Compiler * inCompiler,
                                                                       const cObjectArray & /* inEffectiveParameterArray */,
@@ -495,7 +495,7 @@ static GALGAS_object functionWithGenericHeader_elementTypeNameSuffix (C_Compiler
   return function_elementTypeNameSuffix (inCompiler COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_elementTypeNameSuffix ("elementTypeNameSuffix",
                                                                        functionWithGenericHeader_elementTypeNameSuffix,
@@ -503,11 +503,11 @@ C_galgas_function_descriptor functionDescriptor_elementTypeNameSuffix ("elementT
                                                                        0,
                                                                        functionArgs_elementTypeNameSuffix) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      Routine 'recursivelyEnumerateDirectories'                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_recursivelyEnumerateDirectories (const GALGAS_string constinArgument_inAbsoluteSourcePath,
                                               const GALGAS_string constinArgument_inPathInWrapper,
@@ -564,11 +564,11 @@ void routine_recursivelyEnumerateDirectories (const GALGAS_string constinArgumen
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Routine 'buildSemanticContext'                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_buildSemanticContext (const GALGAS_semanticDeclarationListAST constinArgument_inSemanticDeclarationList,
                                    GALGAS_semanticContext & outArgument_outSemanticContext,
@@ -632,11 +632,11 @@ void routine_buildSemanticContext (const GALGAS_semanticDeclarationListAST const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'generateInstructionList'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateInstructionList (GALGAS_stringset & ioArgument_ioInclusionSet,
                                       const GALGAS_semanticInstructionListForGeneration constinArgument_inInstructionList,
@@ -660,11 +660,11 @@ void routine_generateInstructionList (GALGAS_stringset & ioArgument_ioInclusionS
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Routine 'checkAssignmentTypes'                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkAssignmentTypes (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inTargetType,
                                    const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inSourceType,
@@ -699,11 +699,11 @@ void routine_checkAssignmentTypes (const GALGAS_unifiedTypeMap_2D_proxy constinA
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       Routine 'analyzeConstructorInvocation'                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeConstructorInvocation (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inType,
                                            const GALGAS_analysisContext constinArgument_inAnalysisContext,
@@ -820,11 +820,11 @@ void routine_analyzeConstructorInvocation (const GALGAS_unifiedTypeMap_2D_proxy 
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                 Function 'checkReaderImplementationInSuperClasses'                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string function_checkReaderImplementationInSuperClasses (const GALGAS_lstring & constinArgument_inGetterName,
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & constinArgument_inSuperClass,
@@ -871,9 +871,9 @@ GALGAS_string function_checkReaderImplementationInSuperClasses (const GALGAS_lst
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_checkReaderImplementationInSuperClasses [3] = {
   & kTypeDescriptor_GALGAS_lstring,
@@ -881,7 +881,7 @@ static const C_galgas_type_descriptor * functionArgs_checkReaderImplementationIn
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_checkReaderImplementationInSuperClasses (C_Compiler * inCompiler,
                                                                                         const cObjectArray & inEffectiveParameterArray,
@@ -899,7 +899,7 @@ static GALGAS_object functionWithGenericHeader_checkReaderImplementationInSuperC
                                                            COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_checkReaderImplementationInSuperClasses ("checkReaderImplementationInSuperClasses",
                                                                                          functionWithGenericHeader_checkReaderImplementationInSuperClasses,
@@ -907,11 +907,11 @@ C_galgas_function_descriptor functionDescriptor_checkReaderImplementationInSuper
                                                                                          2,
                                                                                          functionArgs_checkReaderImplementationInSuperClasses) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                            Routine 'checkDiadicOperator'                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkDiadicOperator (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inLeftType,
                                   const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inRightType,
@@ -971,11 +971,11 @@ void routine_checkDiadicOperator (const GALGAS_unifiedTypeMap_2D_proxy constinAr
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      Routine 'analyzeSemanticInstructionList'                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeSemanticInstructionList (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                              const GALGAS_localConstantList constinArgument_inLocalConstantList,
@@ -1023,11 +1023,11 @@ void routine_analyzeSemanticInstructionList (const GALGAS_analysisContext consti
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'analyzeRoutineArguments'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeRoutineArguments (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                       const GALGAS_lstring constinArgument_inRoutineName,
@@ -1059,11 +1059,11 @@ void routine_analyzeRoutineArguments (const GALGAS_analysisContext constinArgume
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                 Function 'checkMethodImplementationInSuperClasses'                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string function_checkMethodImplementationInSuperClasses (const GALGAS_lstring & constinArgument_inMethodName,
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & constinArgument_inSuperClass,
@@ -1109,9 +1109,9 @@ GALGAS_string function_checkMethodImplementationInSuperClasses (const GALGAS_lst
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_checkMethodImplementationInSuperClasses [3] = {
   & kTypeDescriptor_GALGAS_lstring,
@@ -1119,7 +1119,7 @@ static const C_galgas_type_descriptor * functionArgs_checkMethodImplementationIn
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_checkMethodImplementationInSuperClasses (C_Compiler * inCompiler,
                                                                                         const cObjectArray & inEffectiveParameterArray,
@@ -1137,7 +1137,7 @@ static GALGAS_object functionWithGenericHeader_checkMethodImplementationInSuperC
                                                            COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_checkMethodImplementationInSuperClasses ("checkMethodImplementationInSuperClasses",
                                                                                          functionWithGenericHeader_checkMethodImplementationInSuperClasses,
@@ -1145,11 +1145,11 @@ C_galgas_function_descriptor functionDescriptor_checkMethodImplementationInSuper
                                                                                          2,
                                                                                          functionArgs_checkMethodImplementationInSuperClasses) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                         Routine 'checkExpressionIsBoolean'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkExpressionIsBoolean (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                        const GALGAS_location constinArgument_inErrorLocation,
@@ -1246,11 +1246,11 @@ void routine_checkExpressionIsBoolean (const GALGAS_analysisContext constinArgum
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Routine 'checkMethodSignatures'                                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkMethodSignatures (const GALGAS_formalParameterListForGeneration constinArgument_inTestedSignature,
                                     const GALGAS_location constinArgument_inErrorLocation,
@@ -1297,11 +1297,11 @@ void routine_checkMethodSignatures (const GALGAS_formalParameterListForGeneratio
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Routine 'checkReaderSignatures'                                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkReaderSignatures (const GALGAS_formalInputParameterListForGeneration constinArgument_inTestedSignature,
                                     const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inReturnType,
@@ -1349,11 +1349,11 @@ void routine_checkReaderSignatures (const GALGAS_formalInputParameterListForGene
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     Routine 'buildLocalVariableMapAndSignature'                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_buildLocalVariableMapAndSignature (const GALGAS_semanticContext constinArgument_inSemanticContext,
                                                 const GALGAS_formalParameterListAST constinArgument_inRoutineSignatureAST,
@@ -1430,11 +1430,11 @@ void routine_buildLocalVariableMapAndSignature (const GALGAS_semanticContext con
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                            Routine 'analyzeRoutineBody'                                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeRoutineBody (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                  const GALGAS_formalParameterListAST constinArgument_inRoutineSignatureAST,
@@ -1492,11 +1492,11 @@ void routine_analyzeRoutineBody (const GALGAS_analysisContext constinArgument_in
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                            Routine 'analyzeFunctionBody'                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeFunctionBody (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                   const GALGAS_formalInputParameterListAST constinArgument_inFunctionSignature,
@@ -1573,11 +1573,11 @@ void routine_analyzeFunctionBody (const GALGAS_analysisContext constinArgument_i
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                           Function 'buildPredefinedTypes'                                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_predefinedTypes function_buildPredefinedTypes (const GALGAS_semanticContext & constinArgument_inSemanticContext,
                                                       C_Compiler * inCompiler
@@ -1589,16 +1589,16 @@ GALGAS_predefinedTypes function_buildPredefinedTypes (const GALGAS_semanticConte
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //  Function introspection                                                                                             *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_buildPredefinedTypes [2] = {
   & kTypeDescriptor_GALGAS_semanticContext,
   NULL
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_object functionWithGenericHeader_buildPredefinedTypes (C_Compiler * inCompiler,
                                                                      const cObjectArray & inEffectiveParameterArray,
@@ -1612,7 +1612,7 @@ static GALGAS_object functionWithGenericHeader_buildPredefinedTypes (C_Compiler 
                                         COMMA_THERE).getter_object (THERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_buildPredefinedTypes ("buildPredefinedTypes",
                                                                       functionWithGenericHeader_buildPredefinedTypes,
@@ -1620,11 +1620,11 @@ C_galgas_function_descriptor functionDescriptor_buildPredefinedTypes ("buildPred
                                                                       1,
                                                                       functionArgs_buildPredefinedTypes) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'performSemanticAnalysis'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_performSemanticAnalysis (const GALGAS_string constinArgument_inProductDirectory,
                                       const GALGAS_semanticDeclarationListAST constinArgument_inDeclarationList,
@@ -1658,11 +1658,11 @@ void routine_performSemanticAnalysis (const GALGAS_string constinArgument_inProd
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     Filewrapper 'syntaxFileGenerationTemplate'                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 //--- All files of '' directory
 
@@ -1687,11 +1687,11 @@ const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate (
 ) ;
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     Filewrapper template 'syntaxFileGenerationTemplate syntaxFileHeaderGalgas3'                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileHeaderGalgas_33_ (C_Compiler * /* inCompiler */,
                                                                                            const GALGAS_string & in_COMPONENT_5F_NAME,
@@ -1727,11 +1727,11 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileHeaderG
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                 Filewrapper template 'syntaxFileGenerationTemplate syntaxFileImplementationGalgas3'                 *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (C_Compiler * /* inCompiler */,
                                                                                                    const GALGAS_stringset & in_INCLUSION_5F_SET
@@ -1753,11 +1753,11 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImpleme
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                 Filewrapper template 'syntaxFileGenerationTemplate syntaxAnalyserClassDeclaration'                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (C_Compiler * inCompiler,
                                                                                                const GALGAS_string & in_COMPONENT_5F_NAME,
@@ -1770,13 +1770,13 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Parser class '").add_operation (in_COMPONENT_5F_NAME, inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 3)).add_operation (GALGAS_string ("' declaration"), inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cParser_" ;
   result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 7)).stringValue () ;
@@ -2022,11 +2022,11 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                 Routine 'enterNonterminalNonTerminalInMapAndCheck'                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_enterNonterminalNonTerminalInMapAndCheck (const GALGAS_lstring constinArgument_inNonTerminalName,
                                                        const GALGAS_nonterminalLabelMap constinArgument_inNonterminalLabelMap,
@@ -2090,11 +2090,11 @@ void routine_enterNonterminalNonTerminalInMapAndCheck (const GALGAS_lstring cons
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      Routine 'buildNonterminalDeclarationsMap'                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_buildNonterminalDeclarationsMap (const GALGAS_nonterminalDeclarationListAST constinArgument_inNonterminalDeclarationList,
                                               const GALGAS_semanticContext constinArgument_inSemanticContext,
@@ -2130,11 +2130,11 @@ void routine_buildNonterminalDeclarationsMap (const GALGAS_nonterminalDeclaratio
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       Routine 'analyzeSyntaxInstructionList'                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_analyzeSyntaxInstructionList (const GALGAS_analysisContext constinArgument_inAnalysisContext,
                                            const GALGAS_bool constinArgument_inHasTranslateFeature,
@@ -2166,11 +2166,11 @@ void routine_analyzeSyntaxInstructionList (const GALGAS_analysisContext constinA
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Routine 'semanticAnalysisOfRuleLabel'                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_semanticAnalysisOfRuleLabel (const GALGAS_formalParameterListAST constinArgument_inFormalArguments,
                                           const GALGAS_syntaxInstructionList constinArgument_inSyntaxInstructionList,
@@ -2212,11 +2212,11 @@ void routine_semanticAnalysisOfRuleLabel (const GALGAS_formalParameterListAST co
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     Routine 'semanticAnalysisOfSyntaxComponent'                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_semanticAnalysisOfSyntaxComponent (const GALGAS_nonterminalDeclarationListAST constinArgument_inNonterminalDeclarationList,
                                                 const GALGAS_syntaxRuleListAST constinArgument_inRuleList,
@@ -2293,11 +2293,11 @@ void routine_semanticAnalysisOfSyntaxComponent (const GALGAS_nonterminalDeclarat
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                             Routine 'generateProcedure'                                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateProcedure (const GALGAS_bool constinArgument_inGenerateStatic,
                                 const GALGAS_string constinArgument_inProcedureName,
@@ -2455,11 +2455,11 @@ void routine_generateProcedure (const GALGAS_bool constinArgument_inGenerateStat
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                             Routine 'generateFunction'                                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateFunction (const GALGAS_string constinArgument_inFunctionCppRepresentationName,
                                GALGAS_stringset & ioArgument_ioInclusionSet,
@@ -2545,11 +2545,11 @@ void routine_generateFunction (const GALGAS_string constinArgument_inFunctionCpp
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'generateExtensionSetter'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateExtensionSetter (const GALGAS_string constinArgument_inClassName,
                                       const GALGAS_string constinArgument_inBaseClassName,
@@ -2667,11 +2667,11 @@ void routine_generateExtensionSetter (const GALGAS_string constinArgument_inClas
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'generateExtensionMethod'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateExtensionMethod (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inReceiverType,
                                       const GALGAS_string constinArgument_inBaseClassName,
@@ -2827,11 +2827,11 @@ void routine_generateExtensionMethod (const GALGAS_unifiedTypeMap_2D_proxy const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                          Routine 'generateExtensionGetter'                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateExtensionGetter (const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inReceiverType,
                                       const GALGAS_string constinArgument_inBaseClassName,
@@ -2978,11 +2978,11 @@ void routine_generateExtensionGetter (const GALGAS_unifiedTypeMap_2D_proxy const
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        Filewrapper 'typeGenerationTemplate'                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 //--- All files of '' directory
 
@@ -3007,11 +3007,11 @@ const cDirectoryWrapper gWrapperDirectory_0_typeGenerationTemplate (
 ) ;
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                        Filewrapper template 'typeGenerationTemplate unifiedClassBodyForType'                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler * inCompiler,
                                                                                   const GALGAS_string & /* in_TYPE_5F_NAME */,
@@ -3844,9 +3844,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     "\n" ;
   const enumGalgasBool test_62 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 370)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_62) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "//   Enumerator declaration                                                                                            *\n"
-      "//----------------------------------------------------------------------------------------------------------------------\n"
+      "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "class cEnumerator_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -3888,7 +3888,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   }else if (kBoolFalse == test_62) {
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -3897,11 +3897,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                       Filewrapper template 'typeGenerationTemplate genericTypeImplementation'                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (C_Compiler * inCompiler,
                                                                                     const GALGAS_string & in_TYPE_5F_NAME,
@@ -3911,13 +3911,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" type"), inCompiler COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("generic-type.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "const C_galgas_type_descriptor\n"
     "kTypeDescriptor_GALGAS_" ;
@@ -3938,7 +3938,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
   }
   result << ") ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "const C_galgas_type_descriptor * GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -3948,7 +3948,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
   result << " ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "AC_GALGAS_root * GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -3962,7 +3962,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4002,11 +4002,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementati
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Filewrapper template 'typeGenerationTemplate externTypeHeader1'                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (C_Compiler * inCompiler,
                                                                                const GALGAS_string & in_TYPE_5F_NAME,
@@ -4015,19 +4015,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (C
                                                                                const GALGAS_string & in_CODE
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_extern_type.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" extern type"), inCompiler COMMA_SOURCE_FILE ("GALGAS_extern_type.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_extern_type.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//  Predeclarations (from GALGAS extern type declaration                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_PRE_5F_DECLARATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4052,24 +4052,24 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_externTypeHeader_31_ (C
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Filewrapper template 'typeGenerationTemplate graphTypeHeader1'                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (C_Compiler * inCompiler,
                                                                               const GALGAS_string & in_TYPE_5F_NAME,
                                                                               const GALGAS_string & in_TYPE_5F_IDENTIFIER
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" graph"), inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_graph.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4082,11 +4082,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (C_
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                    Filewrapper template 'typeGenerationTemplate graphTypeSpecificImplementation'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                           const GALGAS_unifiedTypeMap_2D_proxy & /* in_TYPE */,
@@ -4096,13 +4096,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("'@").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("' graph"), inCompiler COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_graph.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4112,7 +4112,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "AC_GALGAS_graph () {\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4130,7 +4130,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   if (in_INSERT_5F_MODIFIER_5F_LIST.isValid ()) {
     cEnumerator_graphInsertModifierList enumerator_996 (in_INSERT_5F_MODIFIER_5F_LIST, kEnumeration_up) ;
     while (enumerator_996.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4184,7 +4184,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     }
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4227,7 +4227,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   result << "::detachSharedList (unsortedList) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4271,7 +4271,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "}\n"
     "\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4285,7 +4285,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4310,7 +4310,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   result << "::detachSharedList (infoList) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4335,7 +4335,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   result << "::detachSharedList (infoList) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4360,7 +4360,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   result << "::detachSharedList (infoList) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4385,7 +4385,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_lstringlist GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4416,11 +4416,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Filewrapper template 'typeGenerationTemplate arrayTypeHeader1'                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (C_Compiler * inCompiler,
                                                                               const GALGAS_string & in_TYPE_5F_NAME,
@@ -4429,19 +4429,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (C_
                                                                               const GALGAS_uint & /* in_DIMENSION */
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_array.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" array"), inCompiler COMMA_SOURCE_FILE ("GALGAS_array.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_array.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4493,11 +4493,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeHeader_31_ (C_
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                    Filewrapper template 'typeGenerationTemplate arrayTypeSpecificImplementation'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                           const GALGAS_string & in_TYPE_5F_NAME,
@@ -4508,13 +4508,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_array.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" array"), inCompiler COMMA_SOURCE_FILE ("GALGAS_array.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_array.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4664,7 +4664,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << "COMMA_LOCATION_ARGS) ;\n"
     "} ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4726,7 +4726,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4782,7 +4782,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static inline uint32_t " ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4833,7 +4833,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << "  return idx ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "int32_t cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4917,7 +4917,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4927,7 +4927,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return mObjectArray [inIndex] ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4942,7 +4942,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  mObjectArray [inIndex] = inObject ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4952,7 +4952,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  macroMyDeleteArray (mObjectArray) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5109,7 +5109,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  mObjectArray = p ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5119,7 +5119,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  macroDetachSharedObject (mSharedObject) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5127,7 +5127,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  macroDetachSharedObject (mSharedObject) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5141,7 +5141,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  macroAssignSharedObject (mSharedObject, inSourceObject.mSharedObject) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5156,7 +5156,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return *this ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5223,7 +5223,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5264,7 +5264,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  ioString << \">\" ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_uint GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5278,7 +5278,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_range GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5319,7 +5319,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_uint GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5360,7 +5360,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_bool GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5424,7 +5424,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5514,7 +5514,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5532,7 +5532,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5599,7 +5599,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5718,7 +5718,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5786,7 +5786,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5855,7 +5855,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5919,7 +5919,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typeComparisonResult cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5982,7 +5982,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typeComparisonResult GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5999,24 +5999,24 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                          Filewrapper template 'typeGenerationTemplate listmapTypeHeader1'                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (C_Compiler * inCompiler,
                                                                                 const GALGAS_string & in_TYPE_5F_NAME,
                                                                                 const GALGAS_string & in_TYPE_5F_IDENTIFIER
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_listmap.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" list map"), inCompiler COMMA_SOURCE_FILE ("GALGAS_listmap.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_listmap.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6029,11 +6029,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                   Filewrapper template 'typeGenerationTemplate listmapTypeSpecificImplementation'                   *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                             const GALGAS_string & in_TYPE_5F_IDENTIFIER,
@@ -6042,7 +6042,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6052,7 +6052,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "AC_GALGAS_listmap () {\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6066,7 +6066,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6122,7 +6122,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6138,7 +6138,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << " (listForKey (inKey)) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6156,7 +6156,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6170,7 +6170,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << "_2D_element (p->mKey, p->mSharedListMapList) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_string cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6180,7 +6180,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "  return GALGAS_string (p->mKey) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6197,11 +6197,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Filewrapper template 'typeGenerationTemplate mapTypeHeader1'                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Compiler * inCompiler,
                                                                             const GALGAS_string & in_TYPE_5F_NAME,
@@ -6210,13 +6210,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Co
                                                                             const GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_map.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" map"), inCompiler COMMA_SOURCE_FILE ("GALGAS_map.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_map.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6226,7 +6226,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Co
   if (in_SEARCH_5F_METHOD_5F_LIST.isValid ()) {
     cEnumerator_mapSearchMethodListAST enumerator_628 (in_SEARCH_5F_METHOD_5F_LIST, kEnumeration_up) ;
     while (enumerator_628.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "extern const char * kSearchErrorMessage_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6238,7 +6238,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Co
       enumerator_628.gotoNextObject () ;
     }
   }
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6263,11 +6263,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Co
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Filewrapper template 'typeGenerationTemplate mapTypeHeader2'                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (C_Compiler * inCompiler,
                                                                             const GALGAS_string & in_TYPE_5F_NAME,
@@ -6276,13 +6276,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (C_Co
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Class for element of '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_map.h2.galgasTemplate", 3)).add_operation (GALGAS_string ("' map"), inCompiler COMMA_SOURCE_FILE ("GALGAS_map.h2.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_map.h2.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6342,11 +6342,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_32_ (C_Co
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     Filewrapper template 'typeGenerationTemplate mapTypeSpecificImplementation'                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                         const GALGAS_string & in_TYPE_5F_IDENTIFIER,
@@ -6358,7 +6358,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6402,7 +6402,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << " {\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "bool cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6422,7 +6422,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << " ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cMapElement * cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6445,7 +6445,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 40)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
@@ -6475,7 +6475,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   }
   result << "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typeComparisonResult cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6504,7 +6504,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6514,7 +6514,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "AC_GALGAS_map () {\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6526,7 +6526,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "AC_GALGAS_map (inSource) {\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6539,7 +6539,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return * this ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6553,7 +6553,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6574,7 +6574,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6592,7 +6592,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6657,7 +6657,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_INSERT_5F_METHOD_5F_LIST.isValid ()) {
     cEnumerator_insertMethodListAST enumerator_5719 (in_INSERT_5F_METHOD_5F_LIST, kEnumeration_up) ;
     while (enumerator_5719.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6730,7 +6730,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_SEARCH_5F_METHOD_5F_LIST.isValid ()) {
     cEnumerator_mapSearchMethodListAST enumerator_6858 (in_SEARCH_5F_METHOD_5F_LIST, kEnumeration_up) ;
     while (enumerator_6858.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "const char * kSearchErrorMessage_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6740,7 +6740,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << enumerator_6858.current_mErrorMessage (HERE).mAttribute_string.getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 162)).stringValue () ;
       result << " ;\n"
         "\n"
-        "//----------------------------------------------------------------------------------------------------------------------\n"
+        "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6833,7 +6833,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_REMOVE_5F_METHOD_5F_LIST.isValid ()) {
     cEnumerator_mapRemoveMethodListAST enumerator_8314 (in_REMOVE_5F_METHOD_5F_LIST, kEnumeration_up) ;
     while (enumerator_8314.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6905,7 +6905,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   }
   const enumGalgasBool test_1 = in_HAS_5F_INSERT_5F_OR_5F_REPLACE.boolEnum () ;
   if (kBoolTrue == test_1) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "void GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -6959,7 +6959,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
     cEnumerator_typedPropertyList enumerator_10237 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
     while (enumerator_10237.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
       result << enumerator_10237.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 235)).stringValue () ;
@@ -7004,7 +7004,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
     cEnumerator_typedPropertyList enumerator_11266 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
     while (enumerator_11266.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7044,7 +7044,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       enumerator_11266.gotoNextObject () ;
     }
   }
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7068,7 +7068,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7086,7 +7086,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7117,7 +7117,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_lstring cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7131,7 +7131,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
     cEnumerator_typedPropertyList enumerator_14162 (in_ATTRIBUTE_5F_LIST, kEnumeration_up) ;
     while (enumerator_14162.hasCurrentObject ()) {
-      result << "//----------------------------------------------------------------------------------------------------------------------\n"
+      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
       result << enumerator_14162.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 306)).stringValue () ;
@@ -7162,11 +7162,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Filewrapper template 'typeGenerationTemplate classTypeHeader1'                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (C_Compiler * inCompiler,
                                                                               const GALGAS_string & /* in_TYPE_5F_NAME */,
@@ -7177,13 +7177,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (C_
                                                                               const GALGAS_bool & in_HAS_5F_DEFAULT_5F_CONSTRUCTOR
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("@").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_class.h1.galgasTemplate", 3)).add_operation (GALGAS_string (" class"), inCompiler COMMA_SOURCE_FILE ("GALGAS_class.h1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_class.h1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7227,11 +7227,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_31_ (C_
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                         Filewrapper template 'typeGenerationTemplate classTypeHeader2part1'                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part_31_ (C_Compiler * inCompiler,
                                                                                       const GALGAS_string & in_TYPE_5F_NAME,
@@ -7242,13 +7242,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part
                                                                                       const GALGAS_bool & /* in_IS_5F_ABSTRACT */
                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Pointer class for @").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_class.h2-part1.galgasTemplate", 3)).add_operation (GALGAS_string (" class"), inCompiler COMMA_SOURCE_FILE ("GALGAS_class.h2-part1.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_class.h2-part1.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7264,11 +7264,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                         Filewrapper template 'typeGenerationTemplate classTypeHeader2part2'                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part_32_ (C_Compiler * inCompiler,
                                                                                       const GALGAS_string & /* in_TYPE_5F_NAME */,
@@ -7392,11 +7392,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeHeader_32_part
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                    Filewrapper template 'typeGenerationTemplate classTypeSpecificImplementation'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                           const GALGAS_string & in_TYPE_5F_NAME,
@@ -7410,9 +7410,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//   Object comparison                                                                                                 *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   const enumGalgasBool test_0 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 6)).operator_and (GALGAS_bool (kIsEqual, in_ALL_5F_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 6)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 6)).boolEnum () ;
   if (kBoolTrue == test_0) {
@@ -7422,7 +7422,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
       "  return kOperandEqual ;\n"
       "}\n"
       "\n"
-      "//----------------------------------------------------------------------------------------------------------------------\n" ;
+      "//---------------------------------------------------------------------------------------------------------------------*\n" ;
   }else if (kBoolFalse == test_0) {
   }
   const enumGalgasBool test_1 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 14)).operator_and (GALGAS_bool (kIsStrictSup, in_ALL_5F_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 14)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 14)).boolEnum () ;
@@ -7457,7 +7457,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     result << "  return result ;\n"
       "}\n"
       "\n"
-      "//----------------------------------------------------------------------------------------------------------------------\n" ;
+      "//---------------------------------------------------------------------------------------------------------------------*\n" ;
   }else if (kBoolFalse == test_1) {
   }
   result << "\n"
@@ -7482,7 +7482,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7501,7 +7501,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     "\n" ;
   const enumGalgasBool test_3 = in_HAS_5F_DEFAULT_5F_CONSTRUCTOR.operator_and (in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 52)) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 52)).boolEnum () ;
   if (kBoolTrue == test_3) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7542,7 +7542,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
       "\n" ;
   }else if (kBoolFalse == test_3) {
   }
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7566,7 +7566,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     "\n" ;
   const enumGalgasBool test_6 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 77)).operator_and (GALGAS_bool (kIsEqual, in_ALL_5F_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 77)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 77)).boolEnum () ;
   if (kBoolTrue == test_6) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7586,7 +7586,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
   }
   const enumGalgasBool test_7 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 86)).operator_and (GALGAS_bool (kIsStrictSup, in_ALL_5F_ATTRIBUTE_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 86)).objectCompare (GALGAS_uint ((uint32_t) 0U))) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 86)).boolEnum () ;
   if (kBoolTrue == test_7) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "GALGAS_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7667,7 +7667,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     while (enumerator_4934.hasCurrentObject ()) {
       const enumGalgasBool test_9 = enumerator_4934.current_mHasGetter (HERE).boolEnum () ;
       if (kBoolTrue == test_9) {
-        result << "//----------------------------------------------------------------------------------------------------------------------\n"
+        result << "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "GALGAS_" ;
         result << enumerator_4934.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 120)).stringValue () ;
@@ -7695,7 +7695,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
           "  return result ;\n"
           "}\n"
           "\n"
-          "//----------------------------------------------------------------------------------------------------------------------\n"
+          "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "GALGAS_" ;
         result << enumerator_4934.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 130)).stringValue () ;
@@ -7721,7 +7721,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     while (enumerator_6104.hasCurrentObject ()) {
       const enumGalgasBool test_10 = enumerator_6104.current_mHasSetter (HERE).boolEnum () ;
       if (kBoolTrue == test_10) {
-        result << "//----------------------------------------------------------------------------------------------------------------------\n"
+        result << "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "void GALGAS_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7750,7 +7750,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
           "  }\n"
           "}\n"
           "\n"
-          "//----------------------------------------------------------------------------------------------------------------------\n"
+          "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "void cPtr_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7774,11 +7774,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
       enumerator_6104.gotoNextObject () ;
     }
   }
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//" ;
   result << GALGAS_string ("Pointer class for @").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 157)).add_operation (GALGAS_string (" class"), inCompiler COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 157)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 157)).stringValue () ;
   result << "*\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7858,7 +7858,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
     "\n" ;
   const enumGalgasBool test_14 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 189)).boolEnum () ;
   if (kBoolTrue == test_14) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "const C_galgas_type_descriptor * cPtr_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7915,7 +7915,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
   }
   const enumGalgasBool test_16 = in_IS_5F_ABSTRACT.operator_not (SOURCE_FILE ("GALGAS_class.cpp.galgasTemplate", 212)).boolEnum () ;
   if (kBoolTrue == test_16) {
-    result << "//----------------------------------------------------------------------------------------------------------------------\n"
+    result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "\n"
       "acPtr_class * cPtr_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -7951,11 +7951,11 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_classTypeSpecificImplem
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                  Filewrapper 'semanticComponentGenerationTemplate'                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 //--- All files of '' directory
 
@@ -7980,11 +7980,11 @@ const cDirectoryWrapper gWrapperDirectory_0_semanticComponentGenerationTemplate 
 ) ;
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //            Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterDeclaration'            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterDeclaration (C_Compiler * inCompiler,
                                                                                                           const GALGAS_string & in_CLASS_5F_NAME,
@@ -7994,13 +7994,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef class GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 7)).stringValue () ;
@@ -8042,7 +8042,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionGetter_" ;
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 22)).stringValue () ;
@@ -8057,7 +8057,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 23)).stringValue () ;
   result << " inMethod) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.h.galgasTemplate", 27)).stringValue () ;
@@ -8099,11 +8099,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //          Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionGetterImplementation'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionGetterImplementation (C_Compiler * inCompiler,
                                                                                                              const GALGAS_string & in_CLASS_5F_NAME,
@@ -8113,13 +8113,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <enterExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 7)).stringValue () ;
@@ -8131,7 +8131,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionGetter_" ;
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 11)).stringValue () ;
@@ -8152,7 +8152,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 18)).stringValue () ;
@@ -8166,7 +8166,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 24)).stringValue () ;
@@ -8183,7 +8183,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 25)).stringValue () ;
   result << ") ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("abstract-extension-getter.cpp.galgasTemplate", 29)).stringValue () ;
@@ -8293,11 +8293,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                Filewrapper template 'semanticComponentGenerationTemplate extensionGetterDeclaration'                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterDeclaration (C_Compiler * inCompiler,
                                                                                                   const GALGAS_string & in_CLASS_5F_NAME,
@@ -8307,13 +8307,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef class GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 7)).stringValue () ;
@@ -8355,7 +8355,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionGetter_" ;
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 22)).stringValue () ;
@@ -8370,7 +8370,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 23)).stringValue () ;
   result << " inGetter) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 27)).stringValue () ;
@@ -8412,11 +8412,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //              Filewrapper template 'semanticComponentGenerationTemplate extensionGetterImplementation'               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterImplementation (C_Compiler * inCompiler,
                                                                                                      const GALGAS_string & in_CLASS_5F_NAME,
@@ -8427,13 +8427,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <enterExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 7)).stringValue () ;
@@ -8445,7 +8445,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionGetter_" ;
   result << in_GETTER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 11)).stringValue () ;
@@ -8466,7 +8466,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << ".forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_RETURN_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 18)).stringValue () ;
@@ -8573,11 +8573,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
     "  return result ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_GETTER_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 67)).stringValue () ;
@@ -8600,7 +8600,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 74)).stringValue () ;
@@ -8614,7 +8614,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.cpp.galgasTemplate", 80)).stringValue () ;
@@ -8638,11 +8638,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //         Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionGetterImplementation'          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionGetterImplementation (C_Compiler * inCompiler,
                                                                                                                const GALGAS_string & in_CLASS_5F_NAME,
@@ -8652,17 +8652,17 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Overriding extension getter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_GETTER_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 10)).stringValue () ;
@@ -8685,7 +8685,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gGetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-getter.cpp.galgasTemplate", 17)).stringValue () ;
@@ -8700,11 +8700,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //            Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionSetterDeclaration'            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterDeclaration (C_Compiler * inCompiler,
                                                                                                           const GALGAS_string & in_CLASS_5F_NAME,
@@ -8713,13 +8713,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef void (*extensionSetterSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 7)).stringValue () ;
@@ -8775,7 +8775,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 26)).stringValue () ;
@@ -8790,7 +8790,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 27)).stringValue () ;
   result << " inModifier) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.h.galgasTemplate", 31)).stringValue () ;
@@ -8846,11 +8846,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //          Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionSetterImplementation'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionSetterImplementation (C_Compiler * inCompiler,
                                                                                                              const GALGAS_string & in_CLASS_5F_NAME,
@@ -8859,13 +8859,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <extensionSetterSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 7)).stringValue () ;
@@ -8877,7 +8877,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 11)).stringValue () ;
@@ -8898,7 +8898,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionModifier_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 18)).stringValue () ;
@@ -8912,7 +8912,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gSetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 24)).stringValue () ;
@@ -8929,7 +8929,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 25)).stringValue () ;
   result << ") ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-setter.cpp.galgasTemplate", 29)).stringValue () ;
@@ -9079,11 +9079,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                Filewrapper template 'semanticComponentGenerationTemplate extensionSetterDeclaration'                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterDeclaration (C_Compiler * inCompiler,
                                                                                                   const GALGAS_string & in_CLASS_5F_NAME,
@@ -9092,13 +9092,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-setter.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-setter.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-setter.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef void (*extensionSetterSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.h.galgasTemplate", 7)).stringValue () ;
@@ -9154,7 +9154,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.h.galgasTemplate", 26)).stringValue () ;
@@ -9169,7 +9169,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.h.galgasTemplate", 27)).stringValue () ;
   result << " inModifier) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.h.galgasTemplate", 31)).stringValue () ;
@@ -9225,11 +9225,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //              Filewrapper template 'semanticComponentGenerationTemplate extensionsetterImplementation'               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionsetterImplementation (C_Compiler * inCompiler,
                                                                                                      const GALGAS_string & in_CLASS_5F_NAME,
@@ -9239,13 +9239,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <extensionSetterSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 7)).stringValue () ;
@@ -9257,7 +9257,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 11)).stringValue () ;
@@ -9278,7 +9278,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
   result << ".forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 18)).stringValue () ;
@@ -9425,11 +9425,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_MODIFIER_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionSetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 81)).stringValue () ;
@@ -9452,7 +9452,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionModifier_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 88)).stringValue () ;
@@ -9466,7 +9466,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gSetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter.cpp.galgasTemplate", 94)).stringValue () ;
@@ -9490,11 +9490,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensions
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //         Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionSetterImplementation'          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionSetterImplementation (C_Compiler * inCompiler,
                                                                                                                const GALGAS_string & in_CLASS_5F_NAME,
@@ -9503,17 +9503,17 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Overriding extension setter '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_MODIFIER_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionSetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 10)).stringValue () ;
@@ -9536,7 +9536,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gSetter_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-setter.cpp.galgasTemplate", 17)).stringValue () ;
@@ -9551,11 +9551,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //            Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodDeclaration'            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodDeclaration (C_Compiler * inCompiler,
                                                                                                           const GALGAS_string & in_CLASS_5F_NAME,
@@ -9564,13 +9564,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef void (*extensionMethodSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 7)).stringValue () ;
@@ -9626,7 +9626,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 26)).stringValue () ;
@@ -9641,7 +9641,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 27)).stringValue () ;
   result << " inMethod) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.h.galgasTemplate", 31)).stringValue () ;
@@ -9697,11 +9697,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //          Filewrapper template 'semanticComponentGenerationTemplate abstractExtensionMethodImplementation'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractExtensionMethodImplementation (C_Compiler * inCompiler,
                                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & in_RECEIVER_5F_TYPE,
@@ -9710,13 +9710,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Abstract extension method '@").add_operation (in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)), inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <extensionMethodSignature_" ;
   result << in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 7)).getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 7)).stringValue () ;
@@ -9728,7 +9728,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 11)).stringValue () ;
@@ -9749,7 +9749,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionMethod_" ;
   result << in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 18)).getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 18)).stringValue () ;
@@ -9763,7 +9763,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gMethod_" ;
   result << in_RECEIVER_5F_TYPE.getter_key (inCompiler COMMA_SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 24)).getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 24)).stringValue () ;
@@ -9780,7 +9780,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 25)).stringValue () ;
   result << ") ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("abstract-extension-method.cpp.galgasTemplate", 29)).stringValue () ;
@@ -9934,11 +9934,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractEx
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                Filewrapper template 'semanticComponentGenerationTemplate extensionMethodDeclaration'                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodDeclaration (C_Compiler * inCompiler,
                                                                                                   const GALGAS_string & in_CLASS_5F_NAME,
@@ -9947,13 +9947,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-method.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-method.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-method.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typedef void (*extensionMethodSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.h.galgasTemplate", 7)).stringValue () ;
@@ -10009,7 +10009,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.h.galgasTemplate", 26)).stringValue () ;
@@ -10024,7 +10024,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.h.galgasTemplate", 27)).stringValue () ;
   result << " inMethod) ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.h.galgasTemplate", 31)).stringValue () ;
@@ -10080,11 +10080,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //              Filewrapper template 'semanticComponentGenerationTemplate extensionMethodImplementation'               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodImplementation (C_Compiler * inCompiler,
                                                                                                      const GALGAS_string & in_CLASS_5F_NAME,
@@ -10094,13 +10094,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static TC_UniqueArray <extensionMethodSignature_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 7)).stringValue () ;
@@ -10112,7 +10112,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 7)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void enterExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 11)).stringValue () ;
@@ -10133,7 +10133,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result << ".forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void callExtensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 18)).stringValue () ;
@@ -10282,11 +10282,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
     "  }\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_METHOD_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionMethod_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 83)).stringValue () ;
@@ -10309,7 +10309,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void freeExtensionMethod_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 90)).stringValue () ;
@@ -10323,7 +10323,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   result << ".free () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gMethod_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method.cpp.galgasTemplate", 96)).stringValue () ;
@@ -10347,11 +10347,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //         Filewrapper template 'semanticComponentGenerationTemplate overridingExtensionMethodImplementation'          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingExtensionMethodImplementation (C_Compiler * inCompiler,
                                                                                                                const GALGAS_string & in_CLASS_5F_NAME,
@@ -10360,18 +10360,18 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Overriding extension method '@").add_operation (in_CLASS_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_METHOD_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void defineExtensionMethod_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 11)).stringValue () ;
@@ -10394,7 +10394,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   result << ") ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gMethod_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("overriding-extension-method.cpp.galgasTemplate", 18)).stringValue () ;
@@ -10409,11 +10409,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overriding
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                  Filewrapper template 'semanticComponentGenerationTemplate filewrapperDeclaration'                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (C_Compiler * inCompiler,
                                                                                               const GALGAS_stringlist & in_FILE_5F_INDEX_5F_STRING_5F_LIST,
@@ -10423,13 +10423,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
                                                                                               const GALGAS_string & in_FILEWRAPPER_5F_NAME
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Filewrapper '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("filewrapper-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   GALGAS_uint index_625_idx (0) ;
   if (in_TEXT_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
@@ -10445,7 +10445,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
     }
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   GALGAS_uint index_913_idx (0) ;
   if (in_BINARY_5F_CONTENT_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
@@ -10461,7 +10461,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
     }
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   GALGAS_uint index_1195_idx (0) ;
   if (in_FILE_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
@@ -10477,7 +10477,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
     }
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   GALGAS_uint index_1474_ (0) ;
   if (in_DIRECTORY_5F_INDEX_5F_STRING_5F_LIST.isValid ()) {
@@ -10496,35 +10496,35 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                Filewrapper template 'semanticComponentGenerationTemplate filewrapperImplementation'                 *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (C_Compiler * inCompiler,
                                                                                                  const GALGAS_string & in_FILEWRAPPER_5F_NAME,
                                                                                                  const GALGAS_string & in_FILEWRAPPER_5F_IMPLEMENTATION
                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Filewrapper '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("filewrapper-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_FILEWRAPPER_5F_IMPLEMENTATION.stringValue () ;
   result << "\n" ;
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //           Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionDeclaration'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionDeclaration (C_Compiler * inCompiler,
                                                                                                             const GALGAS_string & in_TYPE_5F_NAME,
@@ -10534,13 +10534,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("' (as function)"), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-getter-as-function-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_RETURN_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -10582,11 +10582,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //         Filewrapper template 'semanticComponentGenerationTemplate extensionGetterAsFunctionImplementation'          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionGetterAsFunctionImplementation (C_Compiler * inCompiler,
                                                                                                                const GALGAS_string & in_TYPE_5F_NAME,
@@ -10594,13 +10594,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
                                                                                                                const GALGAS_string & in_FUNCTION_5F_IMPLEMENTATION
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension Getter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (in_GETTER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-getter-as-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_FUNCTION_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
@@ -10609,11 +10609,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //           Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionDeclaration'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionDeclaration (C_Compiler * inCompiler,
                                                                                                             const GALGAS_string & in_TYPE_5F_NAME,
@@ -10622,13 +10622,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void extensionMethod_" ;
   result << in_METHOD_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-method-as-function.h.galgasTemplate", 7)).stringValue () ;
@@ -10684,11 +10684,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //         Filewrapper template 'semanticComponentGenerationTemplate extensionMethodAsFunctionImplementation'          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionMethodAsFunctionImplementation (C_Compiler * inCompiler,
                                                                                                                const GALGAS_string & in_TYPE_5F_NAME,
@@ -10696,24 +10696,24 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionM
                                                                                                                const GALGAS_string & in_METHOD_5F_IMPLEMENTATION
                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension method '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.cpp.galgasTemplate", 3)).add_operation (in_METHOD_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-method-as-function.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-method-as-function.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_METHOD_5F_IMPLEMENTATION.stringValue () ;
   result << "\n" ;
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //           Filewrapper template 'semanticComponentGenerationTemplate extensionSetterAsFunctionDeclaration'           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionSetterAsFunctionDeclaration (C_Compiler * inCompiler,
                                                                                                             const GALGAS_string & in_TYPE_5F_NAME,
@@ -10722,13 +10722,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Extension setter '@").add_operation (in_TYPE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 3)).add_operation (in_MODIFIER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void extensionSetter_" ;
   result << in_MODIFIER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-setter-as-function.h.galgasTemplate", 7)).stringValue () ;
@@ -10784,11 +10784,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionS
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                   Filewrapper template 'semanticComponentGenerationTemplate functionDeclaration'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDeclaration (C_Compiler * inCompiler,
                                                                                            const GALGAS_string & in_FUNCTION_5F_NAME,
@@ -10797,13 +10797,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDe
                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Function '").add_operation (in_FUNCTION_5F_NAME, inCompiler COMMA_SOURCE_FILE ("function-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("function-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("function-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class GALGAS_" ;
   result << in_RETURN_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -10842,11 +10842,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionDe
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                  Filewrapper template 'semanticComponentGenerationTemplate functionImplementation'                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionImplementation (C_Compiler * inCompiler,
                                                                                               const GALGAS_string & in_FUNCTION_5F_NAME,
@@ -10856,19 +10856,19 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionIm
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Function '").add_operation (in_FUNCTION_5F_NAME, inCompiler COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_FUNCTION_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//  Function introspection                                                                                             *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static const C_galgas_type_descriptor * functionArgs_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 12)).stringValue () ;
@@ -10889,7 +10889,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionIm
   result << "  NULL\n"
     "} ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_FORMAL_5F_ARGUMENT_5F_LIST.getter_length (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 23)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
@@ -10967,7 +10967,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionIm
       "}\n" ;
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_galgas_function_descriptor functionDescriptor_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("function-implementation.cpp.galgasTemplate", 51)).stringValue () ;
@@ -10994,11 +10994,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_functionIm
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                    Filewrapper template 'semanticComponentGenerationTemplate routineDeclaration'                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDeclaration (C_Compiler * inCompiler,
                                                                                           const GALGAS_string & in_ROUTINE_5F_NAME,
@@ -11006,13 +11006,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDec
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Routine '").add_operation (in_ROUTINE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("routine-declaration.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("routine-declaration.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("routine-declaration.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "void routine_" ;
   result << in_ROUTINE_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("routine-declaration.h.galgasTemplate", 7)).stringValue () ;
@@ -11064,35 +11064,35 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineDec
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                  Filewrapper template 'semanticComponentGenerationTemplate routineImplementation'                   *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_routineImplementation (C_Compiler * inCompiler,
                                                                                              const GALGAS_string & in_ROUTINE_5F_NAME,
                                                                                              const GALGAS_string & in_ROUTINE_5F_IMPLEMENTATION
                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Routine '").add_operation (in_ROUTINE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("routine-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("routine-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("routine-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_ROUTINE_5F_IMPLEMENTATION.stringValue () ;
   result << "\n" ;
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                Filewrapper template 'semanticComponentGenerationTemplate onceFunctionImplementation'                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFunctionImplementation (C_Compiler * inCompiler,
                                                                                                   const GALGAS_string & in_FUNCTION_5F_NAME,
@@ -11102,20 +11102,20 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Once function '").add_operation (in_FUNCTION_5F_NAME, inCompiler COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   result << in_FUNCTION_5F_IMPLEMENTATION.stringValue () ;
   result << "\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//  Function implementation                                                                                            *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static bool gOnceFunctionResultAvailable_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 13)).stringValue () ;
@@ -11126,7 +11126,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 14)).stringValue () ;
   result << " ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_" ;
   result << in_RETURN_5F_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -11155,7 +11155,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   result << " ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static void releaseOnceFunctionResult_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 29)).stringValue () ;
@@ -11165,7 +11165,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   result << ".drop () ;\n"
     "}\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_PrologueEpilogue gEpilogueForOnceFunction_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 35)).stringValue () ;
@@ -11178,9 +11178,9 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 36)).stringValue () ;
   result << ") ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//  Function introspection                                                                                             *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "static const C_galgas_type_descriptor * functionArgs_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 42)).stringValue () ;
@@ -11201,7 +11201,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   result << "  NULL\n"
     "} ;\n"
     "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, in_FORMAL_5F_ARGUMENT_5F_LIST.getter_length (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 53)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
@@ -11267,7 +11267,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
       "}\n" ;
   }
   result << "\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "C_galgas_function_descriptor functionDescriptor_" ;
   result << in_FUNCTION_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("once-function-implementation.cpp.galgasTemplate", 78)).stringValue () ;
@@ -11294,11 +11294,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_onceFuncti
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //              Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateDeclaration'              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (C_Compiler * inCompiler,
                                                                                                       const GALGAS_string & in_FILEWRAPPER_5F_NAME,
@@ -11307,13 +11307,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Filewrapper template '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 3)).add_operation (in_TEMPLATE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_string filewrapperTemplate_" ;
   result << in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-template.h.galgasTemplate", 7)).stringValue () ;
@@ -11344,11 +11344,11 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
   return GALGAS_string (result) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //            Filewrapper template 'semanticComponentGenerationTemplate filewrapperTemplateImplementation'             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (C_Compiler * inCompiler,
                                                                                                          const GALGAS_string & in_FILEWRAPPER_5F_NAME,
@@ -11360,13 +11360,13 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_filewrappe
                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
-  result << "//----------------------------------------------------------------------------------------------------------------------\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
   result << GALGAS_string ("Filewrapper template '").add_operation (in_FILEWRAPPER_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 3)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 3)).add_operation (in_TEMPLATE_5F_NAME, inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 3)).stringValue () ;
   result << "*\n"
     "//                                                                                                                     *\n"
-    "//----------------------------------------------------------------------------------------------------------------------\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "GALGAS_string filewrapperTemplate_" ;
   result << in_FILEWRAPPER_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("filewrapper-template.cpp.galgasTemplate", 7)).stringValue () ;

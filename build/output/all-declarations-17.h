@@ -1,19 +1,19 @@
 #ifndef all_2D_declarations_2D__31__37__ENTITIES_DEFINED
 #define all_2D_declarations_2D__31__37__ENTITIES_DEFINED
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-predefined-types.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-declarations-16.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -66,15 +66,15 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 } ; // End of GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //            Pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -108,11 +108,11 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                         @logInstructionForGeneration class                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -159,15 +159,15 @@ class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForG
 } ; // End of GALGAS_logInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                Pointer class for @logInstructionForGeneration class                                 *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -195,11 +195,11 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                         @loopInstructionForGeneration class                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -255,15 +255,15 @@ class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionFor
 } ; // End of GALGAS_loopInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                Pointer class for @loopInstructionForGeneration class                                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -300,11 +300,11 @@ class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGene
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        @matchInstructionForGeneration class                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -357,15 +357,15 @@ class GALGAS_matchInstructionForGeneration : public GALGAS_semanticInstructionFo
 } ; // End of GALGAS_matchInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Pointer class for @matchInstructionForGeneration class                                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_matchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -396,11 +396,11 @@ class cPtr_matchInstructionForGeneration : public cPtr_semanticInstructionForGen
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @messageInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -447,15 +447,15 @@ class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstruction
 } ; // End of GALGAS_messageInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @messageInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -483,11 +483,11 @@ class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForG
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @methodCallInstructionForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -552,15 +552,15 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
 } ; // End of GALGAS_methodCallInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @methodCallInstructionForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -606,11 +606,11 @@ class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionF
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @opEqualInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_opEqualInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -672,15 +672,15 @@ class GALGAS_opEqualInstructionForGeneration : public GALGAS_semanticInstruction
 } ; // End of GALGAS_opEqualInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opEqualInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @opEqualInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_opEqualInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -723,11 +723,11 @@ class cPtr_opEqualInstructionForGeneration : public cPtr_semanticInstructionForG
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @plusEqualnstructionForGeneration class                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_plusEqualnstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -789,15 +789,15 @@ class GALGAS_plusEqualnstructionForGeneration : public GALGAS_semanticInstructio
 } ; // End of GALGAS_plusEqualnstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @plusEqualnstructionForGeneration class                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -837,11 +837,11 @@ class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionFor
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @procCallInstructionForGeneration class                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_procCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -891,15 +891,15 @@ class GALGAS_procCallInstructionForGeneration : public GALGAS_semanticInstructio
 } ; // End of GALGAS_procCallInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @procCallInstructionForGeneration class                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -927,11 +927,11 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     @readOnlyWithInstructionForGeneration class                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -993,15 +993,15 @@ class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstru
 } ; // End of GALGAS_readOnlyWithInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readOnlyWithInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Pointer class for @readOnlyWithInstructionForGeneration class                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1044,11 +1044,11 @@ class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructio
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @readWriteWithInstructionForGeneration class                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -1116,15 +1116,15 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
 } ; // End of GALGAS_readWriteWithInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteWithInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @readWriteWithInstructionForGeneration class                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1173,11 +1173,11 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @selfSetterCallInstructionForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -1236,15 +1236,15 @@ class GALGAS_selfSetterCallInstructionForGeneration : public GALGAS_semanticInst
 } ; // End of GALGAS_selfSetterCallInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @selfSetterCallInstructionForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1284,11 +1284,11 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @setterCallInstructionForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -1362,15 +1362,15 @@ class GALGAS_setterCallInstructionForGeneration : public GALGAS_semanticInstruct
 } ; // End of GALGAS_setterCallInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @setterCallInstructionForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1425,11 +1425,11 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @structuredCastInstructionForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -1479,15 +1479,15 @@ class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInst
 } ; // End of GALGAS_structuredCastInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @structuredCastInstructionForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1518,11 +1518,11 @@ class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstruct
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        @switchInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -1572,15 +1572,15 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
 } ; // End of GALGAS_switchInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Pointer class for @switchInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -1611,11 +1611,11 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     @nonterminalInstructionForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -1669,15 +1669,15 @@ class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructi
 } ; // End of GALGAS_nonterminalInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Pointer class for @nonterminalInstructionForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -1712,11 +1712,11 @@ class cPtr_nonterminalInstructionForGeneration : public cPtr_syntaxInstructionFo
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @parseLoopInstructionForGeneration class                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -1767,15 +1767,15 @@ class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstruction
 } ; // End of GALGAS_parseLoopInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @parseLoopInstructionForGeneration class                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -1807,11 +1807,11 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                     @parseRewindInstructionForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -1859,15 +1859,15 @@ class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructi
 } ; // End of GALGAS_parseRewindInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                            Pointer class for @parseRewindInstructionForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -1893,11 +1893,11 @@ class cPtr_parseRewindInstructionForGeneration : public cPtr_syntaxInstructionFo
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @parseWhenInstructionForGeneration class                                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -1948,15 +1948,15 @@ class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstruction
 } ; // End of GALGAS_parseWhenInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @parseWhenInstructionForGeneration class                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -1988,11 +1988,11 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        @repeatInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -2052,15 +2052,15 @@ class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionFor
 } ; // End of GALGAS_repeatInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Pointer class for @repeatInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -2098,11 +2098,11 @@ class cPtr_repeatInstructionForGeneration : public cPtr_syntaxInstructionForGene
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                        @selectInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -2156,15 +2156,15 @@ class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionFor
 } ; // End of GALGAS_selectInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Pointer class for @selectInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -2196,11 +2196,11 @@ class cPtr_selectInstructionForGeneration : public cPtr_syntaxInstructionForGene
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                      @syntaxSendInstructionForGeneration class                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -2245,15 +2245,15 @@ class GALGAS_syntaxSendInstructionForGeneration : public GALGAS_syntaxInstructio
 } ; // End of GALGAS_syntaxSendInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                             Pointer class for @syntaxSendInstructionForGeneration class                             *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -2279,11 +2279,11 @@ class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionFor
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @terminalCheckInstructionForGeneration class                                     *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstructionForGeneration {
 //--- Constructor
@@ -2343,15 +2343,15 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
 } ; // End of GALGAS_terminalCheckInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @terminalCheckInstructionForGeneration class                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
@@ -2392,11 +2392,11 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    @typeMethodCallInstructionForGeneration class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_typeMethodCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -2452,15 +2452,15 @@ class GALGAS_typeMethodCallInstructionForGeneration : public GALGAS_semanticInst
 } ; // End of GALGAS_typeMethodCallInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                           Pointer class for @typeMethodCallInstructionForGeneration class                           *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -2494,11 +2494,11 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                @undefinedLocalConstantDeclarationForGeneration class                                *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -2548,15 +2548,15 @@ class GALGAS_undefinedLocalConstantDeclarationForGeneration : public GALGAS_sema
 } ; // End of GALGAS_undefinedLocalConstantDeclarationForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConstantDeclarationForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                       Pointer class for @undefinedLocalConstantDeclarationForGeneration class                       *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -2584,11 +2584,11 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                       @warningInstructionForGeneration class                                        *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -2641,15 +2641,15 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 } ; // End of GALGAS_warningInstructionForGeneration class
 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              Pointer class for @warningInstructionForGeneration class                               *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -2683,11 +2683,11 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                   Pointer class for @semanticsComponentAST class                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_semanticsComponentAST : public acPtr_class {
 //--- Attributes

@@ -1,31 +1,31 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Routines for checking LL(1) condition                                      *
+//  Routines for checking LL(1) condition                                                                              *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef LL1_COMPUTATIONS_ROUTINE_DEFINED
 #define LL1_COMPUTATIONS_ROUTINE_DEFINED
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "collections/TC_UniqueArray.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
 class C_HTMLString ;
@@ -35,12 +35,13 @@ class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 class C_Relation ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTMLString & ioHTMLFileContents,
+                  const bool inPopulateHTMLHelperString,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
@@ -55,6 +56,6 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                   const bool inHasIndexing,
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #endif

@@ -1,31 +1,29 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//     Routines for SLR grammar computations                                   *
+//     Routines for SLR grammar computations                                                                           *
 //                                                                                                                     *
-//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, École Centrale de Nantes (France)                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU General Public License as published by the      *
-//  Free Software Foundation.                                                  *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//   more details.                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
+//  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "files/C_TextFileWrite.h"
 #include "collections/TC_UniqueArray2.h"
 #include "galgas2/C_Compiler.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "SLR_computations.h"
 #include "cPureBNFproductionsList.h"
@@ -33,11 +31,11 @@
 #include "cDecisionTableElement.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    C L A S S    F O R   L R 0    I T E M                                    *
+//    C L A S S    F O R   L R 0    I T E M                                                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class c_LR0_item {
   public : int32_t mProductionRuleIndex ;
@@ -52,14 +50,14 @@ class c_LR0_item {
                                             const c_LR0_item & inItem2) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_item::c_LR0_item (void) :
 mProductionRuleIndex (-1),
 mLocationIndex (-1) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_item::c_LR0_item (const int32_t inProductionRuleIndex,
                         const int32_t inLocationIndex) :
@@ -67,7 +65,7 @@ mProductionRuleIndex (inProductionRuleIndex),
 mLocationIndex (inLocationIndex) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t c_LR0_item::
 compare_LR0_items (const c_LR0_item & inItem1,
@@ -79,17 +77,17 @@ compare_LR0_items (const c_LR0_item & inItem1,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    C L A S S    F O R   L R 0    I T E M S    S E T                         *
+//    C L A S S    F O R   L R 0    I T E M S    S E T                                                                 *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class c_LR0_items_set {
 //--- Private data
@@ -138,20 +136,20 @@ class c_LR0_items_set {
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_items_set::c_LR0_items_set (void) :
 mItemsSet () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_items_set::c_LR0_items_set (const c_LR0_items_set & inSource) :
 mItemsSet () {
   inSource.mItemsSet.copyTo (mItemsSet) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 bool c_LR0_items_set::
 add_LR0_item (const int32_t inProductionRuleIndex,
@@ -170,7 +168,7 @@ add_LR0_item (const int32_t inProductionRuleIndex,
   return ! found ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 
 void c_LR0_items_set::
@@ -200,13 +198,13 @@ close_items_set (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 bool c_LR0_items_set::isEmptySet (void) const {
   return mItemsSet.count () == 0 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -234,7 +232,7 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -254,7 +252,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
@@ -275,7 +273,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   }  
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t c_LR0_items_set::
 compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
@@ -294,23 +292,23 @@ compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
   return result ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
   swap (ioOperand1.mItemsSet, ioOperand2.mItemsSet) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// E L E M E N T    C L A S S    F O R   A V L    T R E E                      *
+// E L E M E N T    C L A S S    F O R   A V L    T R E E                                                              *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cLR0_items_sets_AVL_tree {
   public : cLR0_items_sets_AVL_tree * mPtrToInf ;
@@ -332,7 +330,7 @@ class cLR0_items_sets_AVL_tree {
   private : cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
 cLR0_items_sets_AVL_tree (const int32_t inInfo) :
@@ -342,7 +340,7 @@ mInfo (inInfo),
 mBalance (0) {
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
 ~cLR0_items_sets_AVL_tree (void) {
@@ -350,7 +348,7 @@ cLR0_items_sets_AVL_tree::
   macroMyDelete (mPtrToSup) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cLR0_items_sets_AVL_tree::
 compare (const c_LR0_items_set & in_LR0_items_set,
@@ -358,11 +356,11 @@ compare (const c_LR0_items_set & in_LR0_items_set,
   return c_LR0_items_set::compare_LR0_items_sets (in_LR0_items_sets_array (mInfo COMMA_HERE), in_LR0_items_set) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Rotate left                                                           *
+//       Rotate left                                                                                                   *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -381,11 +379,11 @@ static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 } 
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       Rotate right                                                          *
+//       Rotate right                                                                                                  *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -404,7 +402,7 @@ static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 }
  
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cLR0_items_sets_AVL_tree::
 recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
@@ -483,17 +481,17 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 }
 
  
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N    *
+// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N                                            *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class c_LR0_items_sets_collection {
 //--- Default constructor and destructor
@@ -532,7 +530,7 @@ class c_LR0_items_sets_collection {
   private : cLR0_items_sets_AVL_tree * mRoot ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
 m_LR0_items_sets_array (),
@@ -540,13 +538,13 @@ mRoot (NULL) {
   m_LR0_items_sets_array.makeRoomUsingSwap (500) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
   macroMyDelete (mRoot) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t c_LR0_items_sets_collection::
 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
@@ -554,7 +552,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
   return cLR0_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot, ioItemSet, m_LR0_items_sets_array, extension) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -569,13 +567,13 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t c_LR0_items_sets_collection::getStatesCount (void) {
   return m_LR0_items_sets_array.count () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -585,7 +583,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   m_LR0_items_sets_array (inStateIndex COMMA_HERE).getTransitionFrom (inProductionRules, inSymbol, out_LR0_item_set) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 getProductionsWhereLocationIsRight (const int32_t inStateIndex,
@@ -598,17 +596,17 @@ getProductionsWhereLocationIsRight (const int32_t inStateIndex,
                                             outAcceptCondition) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// L R 0    A U T O M A T O N    T R A N S I T I O N                           *
+// L R 0    A U T O M A T O N    T R A N S I T I O N                                                                   *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 class c_LR0_automaton_transition {
   public : int32_t mSourceState ;
@@ -619,7 +617,7 @@ class c_LR0_automaton_transition {
                                        const int32_t inTargetState) ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 c_LR0_automaton_transition::
 c_LR0_automaton_transition (const int32_t inSourceState,
@@ -630,23 +628,23 @@ mAction (inAction),
 mTargetState (inTargetState) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// G E N E R A T E    S L R    A N A L Y Z E R                                 *
+// G E N E R A T E    S L R    A N A L Y Z E R                                                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
@@ -1192,15 +1190,15 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents.appendCppHyphenLineComment () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// G E N E R A T E    S L R    A N A L Y Z E R                                 *
+// G E N E R A T E    S L R    A N A L Y Z E R                                                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// C O M P U T E    L R 0    A U T O M A T O N                                 *
+// C O M P U T E    L R 0    A U T O M A T O N                                                                         *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
@@ -1228,17 +1226,18 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// S L R    C O M P U T A T I O N S                                            *
+// S L R    C O M P U T A T I O N S                                                                                    *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTMLString & ioHTMLFileContents,
+                  const bool inPopulateHTMLHelperString,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
@@ -1255,7 +1254,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.appendCppTitleComment ("Building SLR automaton", "title") ;
     ioHTMLFileContents.outputRawData ("<p></p>") ;
   }
@@ -1273,7 +1272,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     co.flush () ;
   }
 //--- Display automaton states
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<table class=\"result\">"
                               "<tr><td class=\"result_title\" colspan=\"2\">") ;
     ioHTMLFileContents << "LR0 automaton states" ;
@@ -1282,7 +1281,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     ioHTMLFileContents.outputRawData ("</table>") ;
   }
 //--- Display automaton transitions
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
     ioHTMLFileContents << "LR0 automaton transitions" ;
     ioHTMLFileContents.outputRawData ("</td></tr>") ;
@@ -1304,7 +1303,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
   ioHTMLFileContents.appendCppTitleComment ("Checking SLR condition", "title") ;
   }
 
@@ -1314,7 +1313,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   int32_t shiftActions = 0 ;
   int32_t reduceActions = 0 ;
   int32_t successorEntries = 0 ;
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
     ioHTMLFileContents << "SLR decision table" ;
     ioHTMLFileContents.outputRawData ("</td></tr>") ;
@@ -1325,7 +1324,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
       const int32_t sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const int32_t targetState = transitionList (index COMMA_HERE).mTargetState ;
       const int32_t terminal = transitionList (index COMMA_HERE).mAction ;
-      if (ioHTMLFileContents.registeringIsEnabled ()) {
+      if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Action [S" << cStringWithSigned (sourceState) << ", " ;
         inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
@@ -1347,7 +1346,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                                                                   acceptCondition) ;
     if (acceptCondition) {
       const int32_t terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      if (ioHTMLFileContents.registeringIsEnabled ()) {
+      if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Action [S"
                     << cStringWithSigned (state)
@@ -1357,7 +1356,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
         ioHTMLFileContents.outputRawData ("</code>") ;
       }
       if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
-        if (ioHTMLFileContents.registeringIsEnabled ()) {
+        if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
           ioHTMLFileContents << " *** CONFLICT ***" ;
           ioHTMLFileContents.outputRawData ("</span>") ;
@@ -1365,7 +1364,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
         conflictCount ++ ;
       }
       SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
-      if (ioHTMLFileContents.registeringIsEnabled ()) {
+      if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("</td></tr>") ;
       }
     }
@@ -1374,7 +1373,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
       const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
         const int32_t terminal = (int32_t) inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
-        if (ioHTMLFileContents.registeringIsEnabled ()) {
+        if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           ioHTMLFileContents << "Action [S"
                       << cStringWithSigned (state)
@@ -1385,14 +1384,14 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
           ioHTMLFileContents.outputRawData ("</code>") ;
         }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
-          if (ioHTMLFileContents.registeringIsEnabled ()) {
+          if (inPopulateHTMLHelperString) {
             ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
             ioHTMLFileContents << " *** CONFLICT ***" ;
             ioHTMLFileContents.outputRawData ("</span>") ;
           }
           conflictCount ++ ;
         }
-        if (ioHTMLFileContents.registeringIsEnabled ()) {
+        if (inPopulateHTMLHelperString) {
           ioHTMLFileContents.outputRawData ("</td></tr>") ;
         }
         SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
@@ -1404,7 +1403,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   for (int32_t t=0 ; t<transitionList.length () ; t++) {
     if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
       successorEntries ++ ;
-      if (ioHTMLFileContents.registeringIsEnabled ()) {
+      if (inPopulateHTMLHelperString) {
         ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         ioHTMLFileContents << "Successor [S"
                     << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
@@ -1425,7 +1424,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     }
     co.flush () ;
   }
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("</table><p>") ;
     ioHTMLFileContents << "LR0 automaton has "
                 << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
@@ -1469,4 +1468,4 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   outOk = conflictCount == 0 ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*

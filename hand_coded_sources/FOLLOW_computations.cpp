@@ -1,37 +1,37 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// Routines for computing FOLLOWS                                              *
+// Routines for computing FOLLOWS                                                                                      *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "FOLLOW_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//    C O M P U T E    F O L L O W    S E T S                                  *
+//    C O M P U T E    F O L L O W    S E T S                                                                          *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
@@ -117,7 +117,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   outFOLLOWsets.getArray (outFOLLOWarray COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
@@ -155,10 +155,11 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
   inHTMLfile.outputRawData ("</table>") ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool
 checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
+                 const bool inPopulateHTMLHelperString,
                  const C_Relation & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
                  const C_Relation & inUsefulSymbols,
@@ -176,7 +177,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   const C_Relation suivantsPlusVide = ntVide.orOp (inFOLLOWsets COMMA_HERE) ;
 
 //--- Verifier les suivants
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents << "Every useful nonterminal symbol should:"
                    " either have a non empty FOLLOW,"
@@ -201,7 +202,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
     }
     co.flush () ;
   }
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     if (n == 0) {
       ioHTMLFileContents.outputRawData ("<p><span class=\"success\">") ;
       ioHTMLFileContents << "All FOLLOW are correct." ;
@@ -232,10 +233,11 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   return n == 0 ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           C_HTMLString & ioHTMLFileContents,
+                          const bool inPopulateHTMLHelperString,
                           const cVocabulary & inVocabulary,
                           const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                           const C_Relation & inUsefulSymbols,
@@ -251,7 +253,7 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p></p>") ;
     ioHTMLFileContents.appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
   }
@@ -268,7 +270,7 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      iterationsCount) ;
 
 //--- Print FOLLOW sets
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     printFOLLOWsets (outFOLLOWarray,
                      inVocabulary,
                      ioHTMLFileContents,
@@ -278,6 +280,7 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
 
 //--- Check FOLLOW
   outOk = checkFOLLOWsets (ioHTMLFileContents,
+                           inPopulateHTMLHelperString,
                            inNonterminalSymbolsFollowedByEmpty,
                            inVocabulary,
                            inUsefulSymbols,
@@ -285,4 +288,4 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                            inVerboseOptionOn) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*

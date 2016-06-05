@@ -1,24 +1,22 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Routines for computing useful symbols of the pure BNF grammar              *
+//  Routines for computing useful symbols of the pure BNF grammar                                                      *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, École Centrale de Nantes (France)                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU General Public License as published by the      *
-//  Free Software Foundation.                                                  *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//   more details.                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
+//  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
@@ -26,14 +24,14 @@
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "useful_symbols_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
@@ -64,7 +62,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   outUsefulSymbols = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
@@ -180,7 +178,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   return warning ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void useful_symbols_computations (C_Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
@@ -189,6 +187,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
                                   C_HTMLString & ioHTMLFileContents,
+                                  const bool inPopulateHTMLHelperString,
                                   C_Relation & outUsefulSymbols,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) {
@@ -198,7 +197,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   int32_t iterationsCount = 0 ;
@@ -220,4 +219,4 @@ void useful_symbols_computations (C_Compiler * inCompiler,
   outWarningFlag |= warning ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*

@@ -1,34 +1,34 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Perform FIRST computations for pure BNF grammar.                           *
+//  Perform FIRST computations for pure BNF grammar.                                                                   *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 #include "collections/TC_Array2.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "FIRST_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static C_Relation
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
@@ -70,10 +70,11 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   return FIRST ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool
 displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
+                          const bool inPopulateHTMLHelperString,
                           const C_Relation & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
                           const C_Relation & inUsefulSymbols,
@@ -103,7 +104,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
 
 //--- Display FIRST
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents << "Calculus completed in "
                 << cStringWithSigned (inIterationsCount)
@@ -140,7 +141,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   const uint64_t ntInErrorCount = ntInError_relation.value64Count () ;
 
 //--- Display nonterminal symbols in error
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p>") ;
     ioHTMLFileContents << "Every useful nonterminal should"
                    " either have a non empty FIRST,"
@@ -184,11 +185,12 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   return ntInErrorCount == 0 ; 
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     C_HTMLString & ioHTMLFileContents,
+                    const bool inPopulateHTMLHelperString,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_Relation & inVocabularyDerivingToEmpty,
@@ -204,7 +206,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  if (inPopulateHTMLHelperString) {
     ioHTMLFileContents.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
     ioHTMLFileContents.appendCppTitleComment ("FIRST set", "title") ;
   }
@@ -219,7 +221,8 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
 
 //--- Display and Check FIRST
  outOk = displayAndCheckFIRSTsets (ioHTMLFileContents,
-                                  inVocabularyDerivingToEmpty,
+                                   inPopulateHTMLHelperString,
+                                   inVocabularyDerivingToEmpty,
                                    inVocabulary,
                                    inUsefulSymbols,
                                    outFIRSTsets,
@@ -228,5 +231,5 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inVerboseOptionOn) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 

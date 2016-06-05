@@ -327,12 +327,12 @@ private proc generateManyHeaders
       if [mDeclaration headerKind] != @headerKind.noHeader then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
-        headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += "#include \"all-predefined-types.h\"\n\n"
-        headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += headerIncludes1
         headerString += "\n"
-        headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += "#endif\n\n"
         let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
@@ -348,12 +348,12 @@ private proc generateManyHeaders
       if [mDeclaration headerKind] == @headerKind.twoHeaders then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
-        headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += "#include \"" + [mDeclaration implementationCppFileName] + "-1.h\"\n"
-        headerString += "\n//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "\n//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += headerIncludes2
         headerString += "\n"
-        headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
         headerString += "#endif\n\n"
         headerInclusionList2 += ![mDeclaration implementationCppFileName]
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] + ".h"

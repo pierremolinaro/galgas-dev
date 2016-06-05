@@ -1,26 +1,26 @@
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //  This file handles all computations performed on grammars                                                           *
 //                                                                                                                     *
 //  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This program is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU General Public License as published by the                                              *
-//  Free Software Foundation.                                                                                          *
+//  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
+//  License as published by the Free Software Foundation.                                                              *
 //                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 // #define LOG_GRAMMAR_COMPUTATIONS
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "files/C_TextFileWrite.h"
 #include "files/C_FileManager.h"
@@ -34,7 +34,7 @@
 #include "strings/C_HTMLString.h"
 #include "galgas2/F_verbose_output.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "useful_symbols_computations.h"
 #include "empty_strings_computations.h"
@@ -50,7 +50,7 @@
 #include "buildPureBNFgrammar.h"
 #include "grammarCompilation.h"
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cProduction::cProduction (void) :
 mSourceFileName (),
@@ -63,7 +63,7 @@ mDerivationFirst (),
 mProductionIndex (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cProduction::cProduction (const C_String & inSourceFileName,
                           const int32_t inDefinitionLine,
@@ -82,7 +82,7 @@ mProductionIndex (inProductionIndex) {
   swap (mDerivation, ioDerivation) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cProduction::cProduction (const C_String & inSourceFileName,
                           const int32_t inDefinitionLine,
@@ -98,7 +98,7 @@ mDerivationFirst (),
 mProductionIndex (0) {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 cPureBNFproductionsList::cPureBNFproductionsList (void) :
 tableauIndicePremiereProduction (),
@@ -109,7 +109,7 @@ mLastProductionIndex (),
 mProductionIndex () {
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
@@ -131,7 +131,7 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
   fichierCPP << ") ;\n" ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
@@ -143,7 +143,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
@@ -183,7 +183,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
   return ok ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static const char k_default_style [] = {
   "body {\n"
@@ -284,7 +284,7 @@ static const char k_default_style [] = {
   "}\n"
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 analyzeGrammar (C_Compiler * inCompiler,
@@ -302,7 +302,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const bool inHasIndexing,
                 const C_String & inSyntaxDirectedTranslationVarName,
                 C_String & ioCppFileContents,
-                C_HTMLString & outHTMLHelperFileContents) {
+                C_HTMLString & outHTMLHelperFileContents,
+                const bool inPopulateHTMLHelperString) {
   bool warningFlag = false ;
 
 //--- Depending of grammar class, fix operations to perform
@@ -453,6 +454,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  vocabularyBDDType,
                                  vocabulary,
                                  outHTMLHelperFileContents,
+                                 inPopulateHTMLHelperString,
                                  usefulSymbols,
                                  warningFlag,
                                  verboseOptionOn) ;
@@ -466,6 +468,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
                                                             outHTMLHelperFileContents,
+                                                            inPopulateHTMLHelperString,
                                                             vocabularyDerivingToEmpty_Array,
                                                             usefulSymbols.configuration (),
                                                             verboseOptionOn) ;
@@ -477,6 +480,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
                         outHTMLHelperFileContents,
+                        inPopulateHTMLHelperString,
                         vocabulary,
                         vocabularyDerivingToEmpty_Array,
                         vocabularyDerivingToEmpty,
@@ -494,6 +498,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
                                   outHTMLHelperFileContents,
+                                  inPopulateHTMLHelperString,
                                   vocabulary,
                                   vocabularyDerivingToEmpty_Array,
                                   nonTerminalSymbolsFollowedByEmpty,
@@ -508,6 +513,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     FOLLOW_computations (pureBNFproductions,
                          outHTMLHelperFileContents,
+                         inPopulateHTMLHelperString,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbols,
@@ -529,6 +535,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     LL1_computations (inImplementationFileHeaderList,
                       pureBNFproductions,
                       outHTMLHelperFileContents,
+                      inPopulateHTMLHelperString,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
                       FIRSTsets,
@@ -555,6 +562,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
+                      inPopulateHTMLHelperString,
                       FOLLOWarray,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
@@ -581,6 +589,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
+                      inPopulateHTMLHelperString,
                       FIRSTarray,
                       vocabularyDerivingToEmpty_Array,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
@@ -605,7 +614,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16_t) errorFlag) ;
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String errorMessage  ;
-    if (outHTMLHelperFileContents.registeringIsEnabled ()) {
+    if (inPopulateHTMLHelperString) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
                       " 'file://"
                    << inHTMLFileName
@@ -629,7 +638,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
-    if (outHTMLHelperFileContents.registeringIsEnabled ()) {
+    if (inPopulateHTMLHelperString) {
       warningMessage << "see file 'file://" << inHTMLFileName << "'" ;
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
@@ -642,7 +651,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   outHTMLHelperFileContents.writeEndCode () ;
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
 
 void
 routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFileHeaderSet,
@@ -681,13 +690,8 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
     }
 
     C_HTMLString HTMLHelperFileContents ;
-  //--- Output a HTML file ?
-    if (! gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue) {
-      HTMLHelperFileContents.disableRegistering ()  ;
-    }
-    
     C_String CppFileContents ;
-    
+    const bool populateHTMLHelperString = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
     analyzeGrammar (inCompiler,
                     inHTMLFileName.stringValue (),
                     implementationFileHeaderList,
@@ -703,10 +707,11 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                     inHasIndexing.boolValue (),
                     inSyntaxDirectedTranslationVarName.stringValue (),
                     CppFileContents,
-                    HTMLHelperFileContents) ;
+                    HTMLHelperFileContents,
+                    populateHTMLHelperString) ;
     outHTMLHelperFileContents = GALGAS_string (HTMLHelperFileContents) ;
     outCppFileContents = GALGAS_string (CppFileContents) ;
   }
 }
 
-//----------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------*
