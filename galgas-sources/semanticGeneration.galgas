@@ -59,19 +59,6 @@ override method @grammarForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#override method @grammarForGeneration appendSpecificFiles
-#  ?let @string inProductDirectory
-#  ?!@stringset unused ioAllProductFileSet {
-#  let HTMLFilePath = inProductDirectory + "/../helpers/" + mGrammarName + ".html"
-#  if [option galgas_cli_options.outputHTMLgrammarFile value] then
-#    [mHTLMHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*]
-#  else
-#    [@string deleteFileIfExists !HTMLFilePath]
-#  end
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @grammarForGeneration implementationCppFileName -> @string outName {
   outName = "grammar-" + mGrammarName
 }
@@ -1635,9 +1622,7 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
 }{
   template predefinedTypesImplementation "predefined_types.cpp.galgasTemplate"
 
-
   template primitiveTypesHeaderPrologue "predefined-types-file-header.h.galgasTemplate"
-    ?@stringset TYPE_LIST
 
   template predefinedTypeSeparation "predefined-types-separation.h.galgasTemplate"
 
@@ -1740,86 +1725,91 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+
+override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!@string ioHeader {
+  ioHeader += "class GALGAS_" + mPredefinedTypeName + " ;\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! Generate Predefined types
+#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 # G E N E R A T E    P R E D E F I N E D    T Y P E    F I L E S                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc generatePredefinedTypeFiles ?let @string inDirectory {
-  if inDirectory != "" then
-    if not [inDirectory directoryExists] then
-      error @location.here : "the '" + inDirectory + "' directory does not exist"
-    else
-    #------ Add predefined types to semantics declarations
-      var predefinedTypeASTlist =@semanticDeclarationListAST.emptyList{}
-      appendPredefinedTypesASTs ( !?predefinedTypeASTlist )
-    #------ Build Semantic Context
-      buildSemanticContext (
-        !predefinedTypeASTlist
-        ?let @semanticContext semanticContext
-      )
-    #------ Semantic Analysis
-      @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
-      performSemanticAnalysis (
-        !inDirectory
-        !predefinedTypeASTlist
-        !semanticContext
-        ?decoratedDeclarationListForGeneration
-      )
-    #------ Generate primitive types declaration file
-      @string generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue
-        ![semanticContext.mTypeMap allKeys]
-      ]
-      for () in decoratedDeclarationListForGeneration do
-        generatedCode += [mDeclaration appendPrimitiveTypeDeclaration]
-      end
-      for () in decoratedDeclarationListForGeneration do
-        @stringset unusedInclusionSet = {}
-        [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
-        generatedCode += code
-      end
-      generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
-      for () in decoratedDeclarationListForGeneration do
-        @stringset inclusionSet2 = {}
-        [mDeclaration appendDeclaration2 !inDirectory !?inclusionSet2 ?let @string headerString2]
-        generatedCode += headerString2
-      end
-      if @uint.errorCount == 0 then
-        [@string generateFileWithPattern
-          !startPath:inDirectory
-          !fileName:"predefined-types.h"
-          !lineComment:"//"
-          !header:"" # Header
-          !defaultUserZone1:"\n\n" # Defaut user zone1
-          !generatedZone2:generatedCode
-          !defaultUserZone2:"\n\n" # Defaut user zone2
-          !generatedZone3:"#endif\n"
-          !makeExecutable:false
-        ]
-      end
-    #------ Generate predefined types implementation
-      generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
-      for () in decoratedDeclarationListForGeneration do
-        generatedCode += [mDeclaration appendTypeGenericImplementation]
-        [mDeclaration appendSpecificImplementation !@unifiedTypeMap. emptyMap !?* ?let @string code]
-        generatedCode += code
-      end
-      if @uint.errorCount == 0 then
-        [@string generateFileWithPattern
-          !startPath:inDirectory
-          !fileName:"predefined-types.cpp"
-          !lineComment:"//"
-          !header:"" # Header
-          !defaultUserZone1:"\n\n" # Defaut user zone1
-          !generatedZone2:generatedCode
-          !defaultUserZone2:"\n\n" # Defaut user zone2
-          !generatedZone3:""
-          !makeExecutable:false
-        ]
-      end
+proc generatePredefinedTypeFiles
+  ?let @string inDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolHeaderFileList
+  ?!@stringlist ioToolCppFileList
+  ?!@stringset ioAllProductFileSet
+{
+#------------------------------------------------------------------ Generate header file
+  var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
+  for () in inSemanticDeclarationSortedListForGeneration do
+    if [mDeclaration isPredefined] then
+      [mDeclaration appendPrimitiveTypePreDeclaration !?generatedCode]
     end
+  end
+  generatedCode += "\n"
+  for () in inSemanticDeclarationSortedListForGeneration do
+    if [mDeclaration isPredefined] then
+      generatedCode += [mDeclaration appendPrimitiveTypeDeclaration]
+    end
+  end
+  for () in inSemanticDeclarationSortedListForGeneration do
+    if [mDeclaration isPredefined] then
+      [mDeclaration appendDeclaration1 !?* ?let @string code]
+      generatedCode += code
+    end
+  end
+  generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
+  for () in inSemanticDeclarationSortedListForGeneration do
+    if [mDeclaration isPredefined] then
+      [mDeclaration appendDeclaration2 !inDirectory !?* ?let @string headerString2]
+      generatedCode += headerString2
+    end
+  end
+  if @uint.errorCount == 0 then
+    ioToolHeaderFileList += !"all-predefined-types.h"
+    ioAllProductFileSet += !"all-predefined-types.h"
+    [@string generateFileWithPattern
+      !startPath:inDirectory
+      !fileName:"all-predefined-types.h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:generatedCode
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"#endif\n"
+      !makeExecutable:false
+    ]
+  end
+#------------------------------------------------------------------ Generate implementation file
+  generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
+  for () in inSemanticDeclarationSortedListForGeneration do
+    if [mDeclaration isPredefined] then
+      generatedCode += [mDeclaration appendTypeGenericImplementation]
+      [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptyMap !?* ?let @string code]
+      generatedCode += code
+    end
+  end
+  if @uint.errorCount == 0 then
+    ioToolCppFileList += !"all-predefined-types.cpp"
+    ioAllProductFileSet += !"all-predefined-types.cpp"
+    [@string generateFileWithPattern
+      !startPath:inDirectory
+      !fileName:"all-predefined-types.cpp"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:generatedCode
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:""
+      !makeExecutable:false
+    ]
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-

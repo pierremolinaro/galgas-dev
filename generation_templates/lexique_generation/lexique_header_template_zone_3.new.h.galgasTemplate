@@ -58,6 +58,3 @@
   protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 
-//----------------------------------------------------------------------------------------------------------------------
-
-#endif

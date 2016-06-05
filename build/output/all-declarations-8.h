@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -146,16 +146,16 @@ class GALGAS_galgas_33_GrammarComponentAST : public GALGAS_semanticDeclarationAS
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_galgas_33_GrammarComponentAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                        const class GALGAS_lbool & inOperand1,
-                                                                        const class GALGAS_lstring & inOperand2,
-                                                                        const class GALGAS_lstring & inOperand3,
-                                                                        const class GALGAS_lstringlist & inOperand4,
-                                                                        const class GALGAS_lstring & inOperand5,
-                                                                        const class GALGAS_nonTerminalLabelListAST & inOperand6,
-                                                                        const class GALGAS_lstringlist & inOperand7,
-                                                                        const class GALGAS_bool & inOperand8
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_galgas_33_GrammarComponentAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                              const class GALGAS_lbool & inOperand1,
+                                                                              const class GALGAS_lstring & inOperand2,
+                                                                              const class GALGAS_lstring & inOperand3,
+                                                                              const class GALGAS_lstringlist & inOperand4,
+                                                                              const class GALGAS_lstring & inOperand5,
+                                                                              const class GALGAS_nonTerminalLabelListAST & inOperand6,
+                                                                              const class GALGAS_lstringlist & inOperand7,
+                                                                              const class GALGAS_bool & inOperand8
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_galgas_33_GrammarComponentAST & inOperand) const ;
@@ -337,10 +337,10 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_headerCompositionMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_headerCompositionMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_headerCompositionMap constructor_mapWithMapToOverride (const class GALGAS_headerCompositionMap & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_headerCompositionMap constructor_mapWithMapToOverride (const class GALGAS_headerCompositionMap & inOperand0
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -493,10 +493,10 @@ class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_headerCompositionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_stringset & inOperand1,
-                                                                          const class GALGAS_string & inOperand2
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_headerCompositionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_stringset & inOperand1,
+                                                                                const class GALGAS_string & inOperand2
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -560,10 +560,10 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_headerRepartitionMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_headerRepartitionMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_headerRepartitionMap constructor_mapWithMapToOverride (const class GALGAS_headerRepartitionMap & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_headerRepartitionMap constructor_mapWithMapToOverride (const class GALGAS_headerRepartitionMap & inOperand0
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -699,9 +699,9 @@ class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_headerRepartitionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_string & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_headerRepartitionMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_string & inOperand1
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -763,10 +763,10 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_projectQualifiedFeatureMap constructor_emptyMap (LOCATION_ARGS) ;
+  public : static class GALGAS_projectQualifiedFeatureMap constructor_emptyMap (LOCATION_ARGS) ;
 
-  public : static GALGAS_projectQualifiedFeatureMap constructor_mapWithMapToOverride (const class GALGAS_projectQualifiedFeatureMap & inOperand0
-                                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_projectQualifiedFeatureMap constructor_mapWithMapToOverride (const class GALGAS_projectQualifiedFeatureMap & inOperand0
+                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
@@ -902,9 +902,9 @@ class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_projectQualifiedFeatureMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                const class GALGAS_lstring & inOperand1
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_projectQualifiedFeatureMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                      const class GALGAS_lstring & inOperand1
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -965,13 +965,13 @@ class GALGAS_XCodeGroupList : public AC_GALGAS_list {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeGroupList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeGroupList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_XCodeGroupList constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                   const class GALGAS_string & inOperand1,
-                                                                   const class GALGAS_string & inOperand2,
-                                                                   const class GALGAS_stringlist & inOperand3
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeGroupList constructor_listWithValue (const class GALGAS_string & inOperand0,
+                                                                         const class GALGAS_string & inOperand1,
+                                                                         const class GALGAS_string & inOperand2,
+                                                                         const class GALGAS_stringlist & inOperand3
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_XCodeGroupList inOperand,
@@ -1142,11 +1142,11 @@ class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeGroupList_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                    const class GALGAS_string & inOperand1,
-                                                                    const class GALGAS_string & inOperand2,
-                                                                    const class GALGAS_stringlist & inOperand3
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeGroupList_2D_element constructor_new (const class GALGAS_string & inOperand0,
+                                                                          const class GALGAS_string & inOperand1,
+                                                                          const class GALGAS_string & inOperand2,
+                                                                          const class GALGAS_stringlist & inOperand3
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1218,20 +1218,20 @@ class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeToolTargetList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeToolTargetList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_XCodeToolTargetList constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                        const class GALGAS_string & inOperand1,
-                                                                        const class GALGAS_string & inOperand2,
-                                                                        const class GALGAS_string & inOperand3,
-                                                                        const class GALGAS_stringlist & inOperand4,
-                                                                        const class GALGAS_string & inOperand5,
-                                                                        const class GALGAS_string & inOperand6,
-                                                                        const class GALGAS_stringlist & inOperand7,
-                                                                        const class GALGAS_string & inOperand8,
-                                                                        const class GALGAS_stringlist & inOperand9,
-                                                                        const class GALGAS_string & inOperand10
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeToolTargetList constructor_listWithValue (const class GALGAS_string & inOperand0,
+                                                                              const class GALGAS_string & inOperand1,
+                                                                              const class GALGAS_string & inOperand2,
+                                                                              const class GALGAS_string & inOperand3,
+                                                                              const class GALGAS_stringlist & inOperand4,
+                                                                              const class GALGAS_string & inOperand5,
+                                                                              const class GALGAS_string & inOperand6,
+                                                                              const class GALGAS_stringlist & inOperand7,
+                                                                              const class GALGAS_string & inOperand8,
+                                                                              const class GALGAS_stringlist & inOperand9,
+                                                                              const class GALGAS_string & inOperand10
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_XCodeToolTargetList inOperand,
@@ -1500,18 +1500,18 @@ class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeToolTargetList_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                         const class GALGAS_string & inOperand1,
-                                                                         const class GALGAS_string & inOperand2,
-                                                                         const class GALGAS_string & inOperand3,
-                                                                         const class GALGAS_stringlist & inOperand4,
-                                                                         const class GALGAS_string & inOperand5,
-                                                                         const class GALGAS_string & inOperand6,
-                                                                         const class GALGAS_stringlist & inOperand7,
-                                                                         const class GALGAS_string & inOperand8,
-                                                                         const class GALGAS_stringlist & inOperand9,
-                                                                         const class GALGAS_string & inOperand10
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeToolTargetList_2D_element constructor_new (const class GALGAS_string & inOperand0,
+                                                                               const class GALGAS_string & inOperand1,
+                                                                               const class GALGAS_string & inOperand2,
+                                                                               const class GALGAS_string & inOperand3,
+                                                                               const class GALGAS_stringlist & inOperand4,
+                                                                               const class GALGAS_string & inOperand5,
+                                                                               const class GALGAS_string & inOperand6,
+                                                                               const class GALGAS_stringlist & inOperand7,
+                                                                               const class GALGAS_string & inOperand8,
+                                                                               const class GALGAS_stringlist & inOperand9,
+                                                                               const class GALGAS_string & inOperand10
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1600,23 +1600,23 @@ class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeAppTargetList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeAppTargetList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_XCodeAppTargetList constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                       const class GALGAS_string & inOperand1,
-                                                                       const class GALGAS_string & inOperand2,
-                                                                       const class GALGAS_string & inOperand3,
-                                                                       const class GALGAS_stringlist & inOperand4,
-                                                                       const class GALGAS_string & inOperand5,
-                                                                       const class GALGAS_string & inOperand6,
-                                                                       const class GALGAS_stringlist & inOperand7,
-                                                                       const class GALGAS_string & inOperand8,
-                                                                       const class GALGAS_stringlist & inOperand9,
-                                                                       const class GALGAS_string & inOperand10,
-                                                                       const class GALGAS__32_stringlist & inOperand11,
-                                                                       const class GALGAS_string & inOperand12,
-                                                                       const class GALGAS_stringlist & inOperand13
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeAppTargetList constructor_listWithValue (const class GALGAS_string & inOperand0,
+                                                                             const class GALGAS_string & inOperand1,
+                                                                             const class GALGAS_string & inOperand2,
+                                                                             const class GALGAS_string & inOperand3,
+                                                                             const class GALGAS_stringlist & inOperand4,
+                                                                             const class GALGAS_string & inOperand5,
+                                                                             const class GALGAS_string & inOperand6,
+                                                                             const class GALGAS_stringlist & inOperand7,
+                                                                             const class GALGAS_string & inOperand8,
+                                                                             const class GALGAS_stringlist & inOperand9,
+                                                                             const class GALGAS_string & inOperand10,
+                                                                             const class GALGAS__32_stringlist & inOperand11,
+                                                                             const class GALGAS_string & inOperand12,
+                                                                             const class GALGAS_stringlist & inOperand13
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_XCodeAppTargetList inOperand,
@@ -1927,21 +1927,21 @@ class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XCodeAppTargetList_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                        const class GALGAS_string & inOperand1,
-                                                                        const class GALGAS_string & inOperand2,
-                                                                        const class GALGAS_string & inOperand3,
-                                                                        const class GALGAS_stringlist & inOperand4,
-                                                                        const class GALGAS_string & inOperand5,
-                                                                        const class GALGAS_string & inOperand6,
-                                                                        const class GALGAS_stringlist & inOperand7,
-                                                                        const class GALGAS_string & inOperand8,
-                                                                        const class GALGAS_stringlist & inOperand9,
-                                                                        const class GALGAS_string & inOperand10,
-                                                                        const class GALGAS__32_stringlist & inOperand11,
-                                                                        const class GALGAS_string & inOperand12,
-                                                                        const class GALGAS_stringlist & inOperand13
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XCodeAppTargetList_2D_element constructor_new (const class GALGAS_string & inOperand0,
+                                                                              const class GALGAS_string & inOperand1,
+                                                                              const class GALGAS_string & inOperand2,
+                                                                              const class GALGAS_string & inOperand3,
+                                                                              const class GALGAS_stringlist & inOperand4,
+                                                                              const class GALGAS_string & inOperand5,
+                                                                              const class GALGAS_string & inOperand6,
+                                                                              const class GALGAS_stringlist & inOperand7,
+                                                                              const class GALGAS_string & inOperand8,
+                                                                              const class GALGAS_stringlist & inOperand9,
+                                                                              const class GALGAS_string & inOperand10,
+                                                                              const class GALGAS__32_stringlist & inOperand11,
+                                                                              const class GALGAS_string & inOperand12,
+                                                                              const class GALGAS_stringlist & inOperand13
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -2025,12 +2025,12 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_BuildFileList constructor_emptyList (LOCATION_ARGS) ;
+  public : static class GALGAS_BuildFileList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_BuildFileList constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                  const class GALGAS_string & inOperand1,
-                                                                  const class GALGAS_string & inOperand2
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_BuildFileList constructor_listWithValue (const class GALGAS_string & inOperand0,
+                                                                        const class GALGAS_string & inOperand1,
+                                                                        const class GALGAS_string & inOperand2
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
   public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_BuildFileList inOperand,
@@ -2187,10 +2187,10 @@ class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_BuildFileList_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                   const class GALGAS_string & inOperand1,
-                                                                   const class GALGAS_string & inOperand2
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_BuildFileList_2D_element constructor_new (const class GALGAS_string & inOperand0,
+                                                                         const class GALGAS_string & inOperand1,
+                                                                         const class GALGAS_string & inOperand2
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,

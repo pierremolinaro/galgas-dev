@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -810,11 +810,11 @@ class GALGAS_assignmentInstructionAST : public GALGAS_semanticInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_assignmentInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_lstringlist & inOperand2,
-                                                                   const class GALGAS_semanticExpressionAST & inOperand3
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_assignmentInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_lstringlist & inOperand2,
+                                                                         const class GALGAS_semanticExpressionAST & inOperand3
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_assignmentInstructionAST & inOperand) const ;
@@ -905,11 +905,11 @@ class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructio
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_divEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_lstring & inOperand1,
-                                                                           const class GALGAS_lstringlist & inOperand2,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand3
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_divEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_lstring & inOperand1,
+                                                                                 const class GALGAS_lstringlist & inOperand2,
+                                                                                 const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_divEqualExpressionInstructionAST & inOperand) const ;
@@ -1003,9 +1003,9 @@ class GALGAS_dropInstructionAST : public GALGAS_semanticInstructionAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_dropInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_lstringlist & inOperand1
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_dropInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_lstringlist & inOperand1
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_dropInstructionAST & inOperand) const ;
@@ -1086,11 +1086,11 @@ class GALGAS_enumeratedCollectionCstListInExpAST : public GALGAS_abstractEnumera
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_enumeratedCollectionCstListInExpAST constructor_new (const class GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand0,
-                                                                              const class GALGAS_bool & inOperand1,
-                                                                              const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                              const class GALGAS_location & inOperand3
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_enumeratedCollectionCstListInExpAST constructor_new (const class GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand0,
+                                                                                    const class GALGAS_bool & inOperand1,
+                                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                                    const class GALGAS_location & inOperand3
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumeratedCollectionCstListInExpAST & inOperand) const ;
@@ -1185,10 +1185,10 @@ class GALGAS_enumeratedCollectionImplicitVarInExpAST : public GALGAS_abstractEnu
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_enumeratedCollectionImplicitVarInExpAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                  const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                                  const class GALGAS_location & inOperand2
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_enumeratedCollectionImplicitVarInExpAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                        const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                                        const class GALGAS_location & inOperand2
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumeratedCollectionImplicitVarInExpAST & inOperand) const ;
@@ -1278,11 +1278,11 @@ class GALGAS_enumeratedCollectionVarInExpAST : public GALGAS_abstractEnumeratedC
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_enumeratedCollectionVarInExpAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_lstring & inOperand1,
-                                                                          const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                          const class GALGAS_location & inOperand3
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_enumeratedCollectionVarInExpAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_lstring & inOperand1,
+                                                                                const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                                const class GALGAS_location & inOperand3
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumeratedCollectionVarInExpAST & inOperand) const ;
@@ -1377,11 +1377,11 @@ class GALGAS_errorInstructionAST : public GALGAS_semanticInstructionAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_errorInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                              const class GALGAS_semanticExpressionAST & inOperand1,
-                                                              const class GALGAS_semanticExpressionAST & inOperand2,
-                                                              const class GALGAS_lstringlist & inOperand3
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_errorInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                    const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                    const class GALGAS_lstringlist & inOperand3
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_errorInstructionAST & inOperand) const ;
@@ -1475,12 +1475,12 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externFunctionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_formalInputParameterListAST & inOperand2,
-                                                                       const class GALGAS_lstring & inOperand3,
-                                                                       const class GALGAS_lstring & inOperand4
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_externFunctionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_formalInputParameterListAST & inOperand2,
+                                                                             const class GALGAS_lstring & inOperand3,
+                                                                             const class GALGAS_lstring & inOperand4
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externFunctionDeclarationAST & inOperand) const ;
@@ -1579,11 +1579,11 @@ class GALGAS_externRoutineDeclarationAST : public GALGAS_semanticDeclarationAST 
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externRoutineDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                      const class GALGAS_bool & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      const class GALGAS_formalParameterListAST & inOperand3
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_externRoutineDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                            const class GALGAS_bool & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            const class GALGAS_formalParameterListAST & inOperand3
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externRoutineDeclarationAST & inOperand) const ;
@@ -1674,21 +1674,21 @@ class GALGAS_forInstructionAST : public GALGAS_semanticInstructionAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_forInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_forInstructionEnumeratedObjectListAST & inOperand1,
-                                                            const class GALGAS_lstring & inOperand2,
-                                                            const class GALGAS_semanticExpressionAST & inOperand3,
-                                                            const class GALGAS_location & inOperand4,
-                                                            const class GALGAS_semanticInstructionListAST & inOperand5,
-                                                            const class GALGAS_location & inOperand6,
-                                                            const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                            const class GALGAS_location & inOperand8,
-                                                            const class GALGAS_semanticInstructionListAST & inOperand9,
-                                                            const class GALGAS_location & inOperand10,
-                                                            const class GALGAS_semanticInstructionListAST & inOperand11,
-                                                            const class GALGAS_location & inOperand12,
-                                                            const class GALGAS_location & inOperand13
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_forInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_forInstructionEnumeratedObjectListAST & inOperand1,
+                                                                  const class GALGAS_lstring & inOperand2,
+                                                                  const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                  const class GALGAS_location & inOperand4,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                  const class GALGAS_location & inOperand6,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                  const class GALGAS_location & inOperand8,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand9,
+                                                                  const class GALGAS_location & inOperand10,
+                                                                  const class GALGAS_semanticInstructionListAST & inOperand11,
+                                                                  const class GALGAS_location & inOperand12,
+                                                                  const class GALGAS_location & inOperand13
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_forInstructionAST & inOperand) const ;
@@ -1832,15 +1832,15 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_functionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                 const class GALGAS_lstring & inOperand1,
-                                                                 const class GALGAS_formalInputParameterListAST & inOperand2,
-                                                                 const class GALGAS_lstring & inOperand3,
-                                                                 const class GALGAS_lstring & inOperand4,
-                                                                 const class GALGAS_semanticInstructionListAST & inOperand5,
-                                                                 const class GALGAS_location & inOperand6,
-                                                                 const class GALGAS_bool & inOperand7
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_functionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_formalInputParameterListAST & inOperand2,
+                                                                       const class GALGAS_lstring & inOperand3,
+                                                                       const class GALGAS_lstring & inOperand4,
+                                                                       const class GALGAS_semanticInstructionListAST & inOperand5,
+                                                                       const class GALGAS_location & inOperand6,
+                                                                       const class GALGAS_bool & inOperand7
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_functionDeclarationAST & inOperand) const ;
@@ -1935,14 +1935,14 @@ class GALGAS_grammarInFileInstructionAST : public GALGAS_semanticInstructionAST 
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInFileInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                      const class GALGAS_location & inOperand4,
-                                                                      const class GALGAS_actualParameterListAST & inOperand5,
-                                                                      const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInFileInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                            const class GALGAS_location & inOperand4,
+                                                                            const class GALGAS_actualParameterListAST & inOperand5,
+                                                                            const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand6
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInFileInstructionAST & inOperand) const ;
@@ -2048,16 +2048,16 @@ class GALGAS_grammarInStringInstructionAST : public GALGAS_semanticInstructionAS
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInStringInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_lstring & inOperand2,
-                                                                        const class GALGAS_semanticExpressionAST & inOperand3,
-                                                                        const class GALGAS_location & inOperand4,
-                                                                        const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                        const class GALGAS_location & inOperand6,
-                                                                        const class GALGAS_actualParameterListAST & inOperand7,
-                                                                        const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInStringInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_lstring & inOperand1,
+                                                                              const class GALGAS_lstring & inOperand2,
+                                                                              const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                              const class GALGAS_location & inOperand4,
+                                                                              const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                              const class GALGAS_location & inOperand6,
+                                                                              const class GALGAS_actualParameterListAST & inOperand7,
+                                                                              const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand8
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInStringInstructionAST & inOperand) const ;
@@ -2176,8 +2176,8 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult : public GALG
                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult constructor_new (const class GALGAS_location & inOperand0
-                                                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult constructor_new (const class GALGAS_location & inOperand0
+                                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationDropResult & inOperand) const ;
@@ -2260,9 +2260,9 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : 
                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                                           const class GALGAS_lstring & inOperand1
-                                                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                                                 const class GALGAS_lstring & inOperand1
+                                                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst & inOperand) const ;
@@ -2350,9 +2350,9 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : pu
                                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                                         const class GALGAS_lstring & inOperand1
-                                                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                                               const class GALGAS_lstring & inOperand1
+                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar & inOperand) const ;
@@ -2440,8 +2440,8 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar : public GAL
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar constructor_new (const class GALGAS_lstring & inOperand0
-                                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultInVar & inOperand) const ;
@@ -2524,7 +2524,7 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone : public GALG
                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone & inOperand) const ;
@@ -2599,13 +2599,13 @@ class GALGAS_ifInstructionAST : public GALGAS_semanticInstructionAST {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_ifInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                           const class GALGAS_semanticExpressionAST & inOperand1,
-                                                           const class GALGAS_semanticInstructionListAST & inOperand2,
-                                                           const class GALGAS_location & inOperand3,
-                                                           const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                           const class GALGAS_location & inOperand5
-                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_ifInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                 const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                 const class GALGAS_location & inOperand3,
+                                                                 const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                 const class GALGAS_location & inOperand5
+                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_ifInstructionAST & inOperand) const ;
@@ -2706,11 +2706,11 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_incDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_lstring & inOperand1,
-                                                               const class GALGAS_lstringlist & inOperand2,
-                                                               const class GALGAS_incDecKind & inOperand3
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_incDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     const class GALGAS_lstringlist & inOperand2,
+                                                                     const class GALGAS_incDecKind & inOperand3
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_incDecInstructionAST & inOperand) const ;
@@ -2801,11 +2801,11 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_incDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                    const class GALGAS_lstring & inOperand1,
-                                                                    const class GALGAS_lstringlist & inOperand2,
-                                                                    const class GALGAS_incDecKind & inOperand3
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_incDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_lstring & inOperand1,
+                                                                          const class GALGAS_lstringlist & inOperand2,
+                                                                          const class GALGAS_incDecKind & inOperand3
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_incDecNoOVFInstructionAST & inOperand) const ;
@@ -2899,7 +2899,7 @@ class GALGAS_inputParameterAnonymousVariable : public GALGAS_abstractInputParame
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputParameterAnonymousVariable constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_inputParameterAnonymousVariable constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_inputParameterAnonymousVariable & inOperand) const ;
@@ -2977,9 +2977,9 @@ class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParamet
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputParameterDeclaredConstant constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_lstring & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_inputParameterDeclaredConstant constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                               const class GALGAS_lstring & inOperand1
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_inputParameterDeclaredConstant & inOperand) const ;
@@ -3067,9 +3067,9 @@ class GALGAS_inputParameterDeclaredVariable : public GALGAS_abstractInputParamet
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputParameterDeclaredVariable constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_lstring & inOperand1
-                                                                         COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_inputParameterDeclaredVariable constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                               const class GALGAS_lstring & inOperand1
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_inputParameterDeclaredVariable & inOperand) const ;
@@ -3157,8 +3157,8 @@ class GALGAS_inputParameterVariable : public GALGAS_abstractInputParameter {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputParameterVariable constructor_new (const class GALGAS_lstring & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_inputParameterVariable constructor_new (const class GALGAS_lstring & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_inputParameterVariable & inOperand) const ;
@@ -3238,10 +3238,10 @@ class GALGAS_localConstantDeclarationWithAssignmentAST : public GALGAS_semanticI
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_localConstantDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                    const class GALGAS_lstring & inOperand1,
-                                                                                    const class GALGAS_semanticExpressionAST & inOperand2
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_localConstantDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                          const class GALGAS_lstring & inOperand1,
+                                                                                          const class GALGAS_semanticExpressionAST & inOperand2
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localConstantDeclarationWithAssignmentAST & inOperand) const ;
@@ -3327,10 +3327,10 @@ class GALGAS_localVariableDeclarationWithAssignmentAST : public GALGAS_semanticI
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                    const class GALGAS_lstring & inOperand1,
-                                                                                    const class GALGAS_semanticExpressionAST & inOperand2
-                                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_localVariableDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                          const class GALGAS_lstring & inOperand1,
+                                                                                          const class GALGAS_semanticExpressionAST & inOperand2
+                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localVariableDeclarationWithAssignmentAST & inOperand) const ;
@@ -3416,12 +3416,12 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS
                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableOrConstantDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                              const class GALGAS_bool & inOperand1,
-                                                                                              const class GALGAS_lstring & inOperand2,
-                                                                                              const class GALGAS_lstring & inOperand3,
-                                                                                              const class GALGAS_semanticExpressionAST & inOperand4
-                                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                                    const class GALGAS_bool & inOperand1,
+                                                                                                    const class GALGAS_lstring & inOperand2,
+                                                                                                    const class GALGAS_lstring & inOperand3,
+                                                                                                    const class GALGAS_semanticExpressionAST & inOperand4
+                                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithAssignmentAST & inOperand) const ;
@@ -3520,9 +3520,9 @@ class GALGAS_logInstructionAST : public GALGAS_semanticInstructionAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_logInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_logListAST & inOperand1
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_logInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_logListAST & inOperand1
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_logInstructionAST & inOperand) const ;
@@ -3603,17 +3603,17 @@ class GALGAS_loopInstructionAST : public GALGAS_semanticInstructionAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_loopInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                             const class GALGAS_semanticExpressionAST & inOperand1,
-                                                             const class GALGAS_location & inOperand2,
-                                                             const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                             const class GALGAS_location & inOperand4,
-                                                             const class GALGAS_semanticExpressionAST & inOperand5,
-                                                             const class GALGAS_location & inOperand6,
-                                                             const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                             const class GALGAS_location & inOperand8,
-                                                             const class GALGAS_location & inOperand9
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_loopInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                   const class GALGAS_location & inOperand2,
+                                                                   const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                   const class GALGAS_location & inOperand4,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                   const class GALGAS_location & inOperand6,
+                                                                   const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                   const class GALGAS_location & inOperand8,
+                                                                   const class GALGAS_location & inOperand9
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_loopInstructionAST & inOperand) const ;
@@ -3737,12 +3737,12 @@ class GALGAS_matchInstructionAST : public GALGAS_semanticInstructionAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_matchInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                              const class GALGAS_semanticExpressionListAST & inOperand1,
-                                                              const class GALGAS_matchInstructionBranchListAST & inOperand2,
-                                                              const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                              const class GALGAS_location & inOperand4
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_matchInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                    const class GALGAS_semanticExpressionListAST & inOperand1,
+                                                                    const class GALGAS_matchInstructionBranchListAST & inOperand2,
+                                                                    const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                    const class GALGAS_location & inOperand4
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_matchInstructionAST & inOperand) const ;
@@ -3838,9 +3838,9 @@ class GALGAS_messageInstructionAST : public GALGAS_semanticInstructionAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_messageInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_messageInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_messageInstructionAST & inOperand) const ;
@@ -3921,11 +3921,11 @@ class GALGAS_methodCallInstructionAST : public GALGAS_semanticInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_methodCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                   const class GALGAS_lstring & inOperand2,
-                                                                   const class GALGAS_actualParameterListAST & inOperand3
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_methodCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                         const class GALGAS_lstring & inOperand2,
+                                                                         const class GALGAS_actualParameterListAST & inOperand3
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_methodCallInstructionAST & inOperand) const ;
@@ -4016,11 +4016,11 @@ class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstruct
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_minusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                             const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_lstringlist & inOperand2,
-                                                                             const class GALGAS_semanticExpressionAST & inOperand3
-                                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_minusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                   const class GALGAS_lstring & inOperand1,
+                                                                                   const class GALGAS_lstringlist & inOperand2,
+                                                                                   const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_minusEqualExpressionInstructionAST & inOperand) const ;
@@ -4111,11 +4111,11 @@ class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructio
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_mulEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                           const class GALGAS_lstring & inOperand1,
-                                                                           const class GALGAS_lstringlist & inOperand2,
-                                                                           const class GALGAS_semanticExpressionAST & inOperand3
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_mulEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                 const class GALGAS_lstring & inOperand1,
+                                                                                 const class GALGAS_lstringlist & inOperand2,
+                                                                                 const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mulEqualExpressionInstructionAST & inOperand) const ;
@@ -4209,14 +4209,14 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_onceFunctionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstring & inOperand2,
-                                                                     const class GALGAS_lstring & inOperand3,
-                                                                     const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                     const class GALGAS_location & inOperand5,
-                                                                     const class GALGAS_bool & inOperand6
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_onceFunctionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_lstring & inOperand3,
+                                                                           const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                           const class GALGAS_location & inOperand5,
+                                                                           const class GALGAS_bool & inOperand6
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_onceFunctionDeclarationAST & inOperand) const ;
@@ -4325,11 +4325,11 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_plusEqualElementsInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_lstring & inOperand1,
-                                                                          const class GALGAS_lstringlist & inOperand2,
-                                                                          const class GALGAS_actualOutputExpressionList & inOperand3
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_plusEqualElementsInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_lstring & inOperand1,
+                                                                                const class GALGAS_lstringlist & inOperand2,
+                                                                                const class GALGAS_actualOutputExpressionList & inOperand3
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_plusEqualElementsInstructionAST & inOperand) const ;
@@ -4420,11 +4420,11 @@ class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructi
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_plusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
-                                                                            const class GALGAS_lstringlist & inOperand2,
-                                                                            const class GALGAS_semanticExpressionAST & inOperand3
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_plusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstringlist & inOperand2,
+                                                                                  const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_plusEqualExpressionInstructionAST & inOperand) const ;
@@ -4518,10 +4518,10 @@ class GALGAS_procCallInstructionAST : public GALGAS_semanticInstructionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_procCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_lstring & inOperand1,
-                                                                 const class GALGAS_actualParameterListAST & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_procCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_actualParameterListAST & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_procCallInstructionAST & inOperand) const ;
@@ -4607,18 +4607,18 @@ class GALGAS_readAccessWithInstructionAST : public GALGAS_semanticInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readAccessWithInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                       const class GALGAS_location & inOperand3,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand4,
-                                                                       const class GALGAS_location & inOperand5,
-                                                                       const class GALGAS_lstring & inOperand6,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand7,
-                                                                       const class GALGAS_location & inOperand8,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand9,
-                                                                       const class GALGAS_location & inOperand10
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_readAccessWithInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand2,
+                                                                             const class GALGAS_location & inOperand3,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand4,
+                                                                             const class GALGAS_location & inOperand5,
+                                                                             const class GALGAS_lstring & inOperand6,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand7,
+                                                                             const class GALGAS_location & inOperand8,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand9,
+                                                                             const class GALGAS_location & inOperand10
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_readAccessWithInstructionAST & inOperand) const ;
@@ -4744,19 +4744,19 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readWriteAccessWithInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                            const class GALGAS_lstring & inOperand1,
-                                                                            const class GALGAS_lstring & inOperand2,
-                                                                            const class GALGAS_lstringlist & inOperand3,
-                                                                            const class GALGAS_location & inOperand4,
-                                                                            const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                            const class GALGAS_location & inOperand6,
-                                                                            const class GALGAS_lstring & inOperand7,
-                                                                            const class GALGAS_semanticInstructionListAST & inOperand8,
-                                                                            const class GALGAS_location & inOperand9,
-                                                                            const class GALGAS_semanticInstructionListAST & inOperand10,
-                                                                            const class GALGAS_location & inOperand11
-                                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_readWriteAccessWithInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1,
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  const class GALGAS_lstringlist & inOperand3,
+                                                                                  const class GALGAS_location & inOperand4,
+                                                                                  const class GALGAS_semanticExpressionAST & inOperand5,
+                                                                                  const class GALGAS_location & inOperand6,
+                                                                                  const class GALGAS_lstring & inOperand7,
+                                                                                  const class GALGAS_semanticInstructionListAST & inOperand8,
+                                                                                  const class GALGAS_location & inOperand9,
+                                                                                  const class GALGAS_semanticInstructionListAST & inOperand10,
+                                                                                  const class GALGAS_location & inOperand11
+                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_readWriteAccessWithInstructionAST & inOperand) const ;
@@ -4890,13 +4890,13 @@ class GALGAS_routineDeclarationAST : public GALGAS_externRoutineDeclarationAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_routineDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                const class GALGAS_bool & inOperand1,
-                                                                const class GALGAS_lstring & inOperand2,
-                                                                const class GALGAS_formalParameterListAST & inOperand3,
-                                                                const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                const class GALGAS_location & inOperand5
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_routineDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                      const class GALGAS_bool & inOperand1,
+                                                                      const class GALGAS_lstring & inOperand2,
+                                                                      const class GALGAS_formalParameterListAST & inOperand3,
+                                                                      const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                      const class GALGAS_location & inOperand5
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_routineDeclarationAST & inOperand) const ;
@@ -4985,9 +4985,9 @@ class GALGAS_selfAssignmentInstructionAST : public GALGAS_semanticInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfAssignmentInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand1
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfAssignmentInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand1
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfAssignmentInstructionAST & inOperand) const ;
@@ -5068,9 +5068,9 @@ class GALGAS_selfDivEqualExpressionInstructionAST : public GALGAS_semanticInstru
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfDivEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand1
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfDivEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_semanticExpressionAST & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfDivEqualExpressionInstructionAST & inOperand) const ;
@@ -5151,9 +5151,9 @@ class GALGAS_selfIncDecInstructionAST : public GALGAS_semanticInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfIncDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_incDecKind & inOperand1
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfIncDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_incDecKind & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfIncDecInstructionAST & inOperand) const ;
@@ -5234,9 +5234,9 @@ class GALGAS_selfIncDecNoOVFInstructionAST : public GALGAS_semanticInstructionAS
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfIncDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_incDecKind & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfIncDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_incDecKind & inOperand1
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfIncDecNoOVFInstructionAST & inOperand) const ;
@@ -5317,9 +5317,9 @@ class GALGAS_selfMinusEqualExpressionInstructionAST : public GALGAS_semanticInst
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfMinusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_semanticExpressionAST & inOperand1
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfMinusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                       const class GALGAS_semanticExpressionAST & inOperand1
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfMinusEqualExpressionInstructionAST & inOperand) const ;
@@ -5400,9 +5400,9 @@ class GALGAS_selfMulEqualExpressionInstructionAST : public GALGAS_semanticInstru
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfMulEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_semanticExpressionAST & inOperand1
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfMulEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_semanticExpressionAST & inOperand1
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfMulEqualExpressionInstructionAST & inOperand) const ;
@@ -5486,9 +5486,9 @@ class GALGAS_selfPlusEqualElementsInstructionAST : public GALGAS_semanticInstruc
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfPlusEqualElementsInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                              const class GALGAS_actualOutputExpressionList & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfPlusEqualElementsInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                    const class GALGAS_actualOutputExpressionList & inOperand1
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfPlusEqualElementsInstructionAST & inOperand) const ;
@@ -5569,9 +5569,9 @@ class GALGAS_selfPlusEqualExpressionInstructionAST : public GALGAS_semanticInstr
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfPlusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_semanticExpressionAST & inOperand1
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfPlusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                      const class GALGAS_semanticExpressionAST & inOperand1
+                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfPlusEqualExpressionInstructionAST & inOperand) const ;
@@ -5655,10 +5655,10 @@ class GALGAS_selfSetterCallInstructionAST : public GALGAS_semanticInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selfSetterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_actualParameterListAST & inOperand2
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selfSetterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_actualParameterListAST & inOperand2
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selfSetterCallInstructionAST & inOperand) const ;
@@ -5747,13 +5747,13 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_setterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_lstringlist & inOperand2,
-                                                                   const class GALGAS_lstring & inOperand3,
-                                                                   const class GALGAS_lstring & inOperand4,
-                                                                   const class GALGAS_actualParameterListAST & inOperand5
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_setterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_lstringlist & inOperand2,
+                                                                         const class GALGAS_lstring & inOperand3,
+                                                                         const class GALGAS_lstring & inOperand4,
+                                                                         const class GALGAS_actualParameterListAST & inOperand5
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_setterCallInstructionAST & inOperand) const ;
@@ -5854,12 +5854,12 @@ class GALGAS_structuredCastInstructionAST : public GALGAS_semanticInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_structuredCastInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                       const class GALGAS_castInstructionBranchListAST & inOperand2,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand3,
-                                                                       const class GALGAS_location & inOperand4
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_structuredCastInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                             const class GALGAS_castInstructionBranchListAST & inOperand2,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                             const class GALGAS_location & inOperand4
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_structuredCastInstructionAST & inOperand) const ;
@@ -5955,12 +5955,12 @@ class GALGAS_switchInstructionAST : public GALGAS_semanticInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_switchInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_location & inOperand2,
-                                                               const class GALGAS_switchBranchesAST & inOperand3,
-                                                               const class GALGAS_location & inOperand4
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_switchInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                     const class GALGAS_location & inOperand2,
+                                                                     const class GALGAS_switchBranchesAST & inOperand3,
+                                                                     const class GALGAS_location & inOperand4
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_switchInstructionAST & inOperand) const ;
@@ -6059,11 +6059,11 @@ class GALGAS_typeMethodCallInstructionAST : public GALGAS_semanticInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typeMethodCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_actualParameterListAST & inOperand3
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_typeMethodCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstring & inOperand2,
+                                                                             const class GALGAS_actualParameterListAST & inOperand3
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeMethodCallInstructionAST & inOperand) const ;
@@ -6157,10 +6157,10 @@ class GALGAS_undefinedLocalConstantDeclarationAST : public GALGAS_semanticInstru
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_undefinedLocalConstantDeclarationAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_lstring & inOperand2
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_undefinedLocalConstantDeclarationAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_undefinedLocalConstantDeclarationAST & inOperand) const ;
@@ -6246,10 +6246,10 @@ class GALGAS_warningInstructionAST : public GALGAS_semanticInstructionAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_warningInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                const class GALGAS_semanticExpressionAST & inOperand2
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_warningInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_warningInstructionAST & inOperand) const ;
@@ -6358,14 +6358,14 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_galgas_33_DeclarationAST constructor_new (const class GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                   const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
-                                                                   const class GALGAS_syntaxExtensions & inOperand2,
-                                                                   const class GALGAS_galgas_33_GUIComponentListAST & inOperand3,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand4,
-                                                                   const class GALGAS_programRuleList & inOperand5,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand6
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_galgas_33_DeclarationAST constructor_new (const class GALGAS_semanticDeclarationListAST & inOperand0,
+                                                                         const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
+                                                                         const class GALGAS_syntaxExtensions & inOperand2,
+                                                                         const class GALGAS_galgas_33_GUIComponentListAST & inOperand3,
+                                                                         const class GALGAS_prologueEpilogueList & inOperand4,
+                                                                         const class GALGAS_programRuleList & inOperand5,
+                                                                         const class GALGAS_prologueEpilogueList & inOperand6
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -6823,12 +6823,12 @@ class GALGAS_abstractExtensionGetterAST : public GALGAS_semanticDeclarationAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_abstractExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstring & inOperand2,
-                                                                     const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                     const class GALGAS_lstring & inOperand4
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_abstractExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                           const class GALGAS_lstring & inOperand4
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_abstractExtensionGetterAST & inOperand) const ;
@@ -6927,11 +6927,11 @@ class GALGAS_abstractExtensionMethodAST : public GALGAS_semanticDeclarationAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_abstractExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstring & inOperand2,
-                                                                     const class GALGAS_formalParameterListAST & inOperand3
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_abstractExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_formalParameterListAST & inOperand3
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_abstractExtensionMethodAST & inOperand) const ;
@@ -7025,11 +7025,11 @@ class GALGAS_abstractExtensionSetterAST : public GALGAS_semanticDeclarationAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_abstractExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstring & inOperand2,
-                                                                     const class GALGAS_formalParameterListAST & inOperand3
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_abstractExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_formalParameterListAST & inOperand3
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_abstractExtensionSetterAST & inOperand) const ;
@@ -7123,11 +7123,11 @@ class GALGAS_arrayDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_arrayDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                              const class GALGAS_lstring & inOperand1,
-                                                              const class GALGAS_lstring & inOperand2,
-                                                              const class GALGAS_luint & inOperand3
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_arrayDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_lstring & inOperand2,
+                                                                    const class GALGAS_luint & inOperand3
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_arrayDeclarationAST & inOperand) const ;
@@ -7221,13 +7221,13 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_classDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                              const class GALGAS_bool & inOperand1,
-                                                              const class GALGAS_lstring & inOperand2,
-                                                              const class GALGAS_lstring & inOperand3,
-                                                              const class GALGAS_lstringlist & inOperand4,
-                                                              const class GALGAS_propertyInCollectionListAST & inOperand5
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_classDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_bool & inOperand1,
+                                                                    const class GALGAS_lstring & inOperand2,
+                                                                    const class GALGAS_lstring & inOperand3,
+                                                                    const class GALGAS_lstringlist & inOperand4,
+                                                                    const class GALGAS_propertyInCollectionListAST & inOperand5
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_classDeclarationAST & inOperand) const ;
@@ -7316,10 +7316,10 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_enumDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_enumConstantList & inOperand2
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_enumDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_enumConstantList & inOperand2
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumDeclarationAST & inOperand) const ;
@@ -7408,15 +7408,15 @@ class GALGAS_extensionGetterAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_extensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_lstring & inOperand2,
-                                                             const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                             const class GALGAS_lstring & inOperand4,
-                                                             const class GALGAS_lstring & inOperand5,
-                                                             const class GALGAS_semanticInstructionListAST & inOperand6,
-                                                             const class GALGAS_location & inOperand7
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_extensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                   const class GALGAS_lstring & inOperand4,
+                                                                   const class GALGAS_lstring & inOperand5,
+                                                                   const class GALGAS_semanticInstructionListAST & inOperand6,
+                                                                   const class GALGAS_location & inOperand7
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_extensionGetterAST & inOperand) const ;
@@ -7530,13 +7530,13 @@ class GALGAS_extensionMethodAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_extensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_lstring & inOperand2,
-                                                             const class GALGAS_formalParameterListAST & inOperand3,
-                                                             const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                             const class GALGAS_location & inOperand5
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_extensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_formalParameterListAST & inOperand3,
+                                                                   const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                   const class GALGAS_location & inOperand5
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_extensionMethodAST & inOperand) const ;
@@ -7640,13 +7640,13 @@ class GALGAS_extensionSetterAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_extensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_lstring & inOperand2,
-                                                             const class GALGAS_formalParameterListAST & inOperand3,
-                                                             const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                             const class GALGAS_location & inOperand5
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_extensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_lstring & inOperand2,
+                                                                   const class GALGAS_formalParameterListAST & inOperand3,
+                                                                   const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                   const class GALGAS_location & inOperand5
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_extensionSetterAST & inOperand) const ;
@@ -7750,15 +7750,15 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externTypeDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_string & inOperand2,
-                                                                   const class GALGAS_string & inOperand3,
-                                                                   const class GALGAS_externTypeConstructorList & inOperand4,
-                                                                   const class GALGAS_externTypeGetterList & inOperand5,
-                                                                   const class GALGAS_externTypeModifierList & inOperand6,
-                                                                   const class GALGAS_externTypeMethodList & inOperand7
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_externTypeDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_string & inOperand2,
+                                                                         const class GALGAS_string & inOperand3,
+                                                                         const class GALGAS_externTypeConstructorList & inOperand4,
+                                                                         const class GALGAS_externTypeGetterList & inOperand5,
+                                                                         const class GALGAS_externTypeModifierList & inOperand6,
+                                                                         const class GALGAS_externTypeMethodList & inOperand7
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externTypeDeclarationAST & inOperand) const ;
@@ -7872,15 +7872,15 @@ class GALGAS_filewrapperDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_filewrapperDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                    const class GALGAS_bool & inOperand1,
-                                                                    const class GALGAS_string & inOperand2,
-                                                                    const class GALGAS_lstring & inOperand3,
-                                                                    const class GALGAS_lstring & inOperand4,
-                                                                    const class GALGAS_lstringlist & inOperand5,
-                                                                    const class GALGAS_lstringlist & inOperand6,
-                                                                    const class GALGAS_filewrapperTemplateListAST & inOperand7
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_filewrapperDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                          const class GALGAS_bool & inOperand1,
+                                                                          const class GALGAS_string & inOperand2,
+                                                                          const class GALGAS_lstring & inOperand3,
+                                                                          const class GALGAS_lstring & inOperand4,
+                                                                          const class GALGAS_lstringlist & inOperand5,
+                                                                          const class GALGAS_lstringlist & inOperand6,
+                                                                          const class GALGAS_filewrapperTemplateListAST & inOperand7
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_filewrapperDeclarationAST & inOperand) const ;
@@ -7994,11 +7994,11 @@ class GALGAS_graphDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_graphDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                              const class GALGAS_lstring & inOperand1,
-                                                              const class GALGAS_lstring & inOperand2,
-                                                              const class GALGAS_graphInsertModifierList & inOperand3
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_graphDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_lstring & inOperand2,
+                                                                    const class GALGAS_graphInsertModifierList & inOperand3
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_graphDeclarationAST & inOperand) const ;
@@ -8092,10 +8092,10 @@ class GALGAS_listDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_listDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                             const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_propertyInCollectionListAST & inOperand2
-                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_listDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                   const class GALGAS_lstring & inOperand1,
+                                                                   const class GALGAS_propertyInCollectionListAST & inOperand2
+                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_listDeclarationAST & inOperand) const ;
@@ -8178,10 +8178,10 @@ class GALGAS_listmapDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_listmapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                const class GALGAS_lstring & inOperand1,
-                                                                const class GALGAS_lstring & inOperand2
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_listmapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_lstring & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_listmapDeclarationAST & inOperand) const ;
@@ -8270,11 +8270,11 @@ class GALGAS_localVariableDeclarationAST : public GALGAS_semanticInstructionAST 
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_localVariableDeclarationAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1,
-                                                                      const class GALGAS_lstring & inOperand2,
-                                                                      const class GALGAS_bool & inOperand3
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_localVariableDeclarationAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1,
+                                                                            const class GALGAS_lstring & inOperand2,
+                                                                            const class GALGAS_bool & inOperand3
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localVariableDeclarationAST & inOperand) const ;
@@ -8368,15 +8368,15 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_mapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                            const class GALGAS_lstring & inOperand1,
-                                                            const class GALGAS_lstringlist & inOperand2,
-                                                            const class GALGAS_propertyInCollectionListAST & inOperand3,
-                                                            const class GALGAS_insertMethodListAST & inOperand4,
-                                                            const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                            const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                            const class GALGAS_insertOrReplaceDeclarationListAST & inOperand7
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_mapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                  const class GALGAS_lstring & inOperand1,
+                                                                  const class GALGAS_lstringlist & inOperand2,
+                                                                  const class GALGAS_propertyInCollectionListAST & inOperand3,
+                                                                  const class GALGAS_insertMethodListAST & inOperand4,
+                                                                  const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                  const class GALGAS_mapRemoveMethodListAST & inOperand6,
+                                                                  const class GALGAS_insertOrReplaceDeclarationListAST & inOperand7
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mapDeclarationAST & inOperand) const ;
@@ -8490,10 +8490,10 @@ class GALGAS_mapProxyDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_mapProxyDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                 const class GALGAS_lstring & inOperand1,
-                                                                 const class GALGAS_lstring & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_mapProxyDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_lstring & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mapProxyDeclarationAST & inOperand) const ;
@@ -8582,12 +8582,12 @@ class GALGAS_overridingAbstractExtensionGetterAST : public GALGAS_semanticDeclar
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingAbstractExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_lstring & inOperand2,
-                                                                               const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                               const class GALGAS_lstring & inOperand4
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingAbstractExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                     const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                                     const class GALGAS_lstring & inOperand4
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingAbstractExtensionGetterAST & inOperand) const ;
@@ -8686,11 +8686,11 @@ class GALGAS_overridingAbstractExtensionMethodAST : public GALGAS_semanticDeclar
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingAbstractExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_lstring & inOperand2,
-                                                                               const class GALGAS_formalParameterListAST & inOperand3
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingAbstractExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                     const class GALGAS_formalParameterListAST & inOperand3
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingAbstractExtensionMethodAST & inOperand) const ;
@@ -8784,11 +8784,11 @@ class GALGAS_overridingAbstractExtensionSetterAST : public GALGAS_semanticDeclar
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingAbstractExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                               const class GALGAS_lstring & inOperand1,
-                                                                               const class GALGAS_lstring & inOperand2,
-                                                                               const class GALGAS_formalParameterListAST & inOperand3
-                                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingAbstractExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstring & inOperand2,
+                                                                                     const class GALGAS_formalParameterListAST & inOperand3
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingAbstractExtensionSetterAST & inOperand) const ;
@@ -8882,15 +8882,15 @@ class GALGAS_overridingExtensionGetterAST : public GALGAS_semanticDeclarationAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_formalInputParameterListAST & inOperand3,
-                                                                       const class GALGAS_lstring & inOperand4,
-                                                                       const class GALGAS_lstring & inOperand5,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand6,
-                                                                       const class GALGAS_location & inOperand7
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingExtensionGetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstring & inOperand2,
+                                                                             const class GALGAS_formalInputParameterListAST & inOperand3,
+                                                                             const class GALGAS_lstring & inOperand4,
+                                                                             const class GALGAS_lstring & inOperand5,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand6,
+                                                                             const class GALGAS_location & inOperand7
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingExtensionGetterAST & inOperand) const ;
@@ -9004,13 +9004,13 @@ class GALGAS_overridingExtensionMethodAST : public GALGAS_semanticDeclarationAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_formalParameterListAST & inOperand3,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                       const class GALGAS_location & inOperand5
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingExtensionMethodAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstring & inOperand2,
+                                                                             const class GALGAS_formalParameterListAST & inOperand3,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                             const class GALGAS_location & inOperand5
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingExtensionMethodAST & inOperand) const ;
@@ -9114,13 +9114,13 @@ class GALGAS_overridingExtensionSetterAST : public GALGAS_semanticDeclarationAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_overridingExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_formalParameterListAST & inOperand3,
-                                                                       const class GALGAS_semanticInstructionListAST & inOperand4,
-                                                                       const class GALGAS_location & inOperand5
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_overridingExtensionSetterAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                             const class GALGAS_lstring & inOperand1,
+                                                                             const class GALGAS_lstring & inOperand2,
+                                                                             const class GALGAS_formalParameterListAST & inOperand3,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand4,
+                                                                             const class GALGAS_location & inOperand5
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_overridingExtensionSetterAST & inOperand) const ;
@@ -9224,16 +9224,16 @@ class GALGAS_sharedMapDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_sharedMapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                  const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_lstringlist & inOperand2,
-                                                                  const class GALGAS_propertyInCollectionListAST & inOperand3,
-                                                                  const class GALGAS_insertMethodListAST & inOperand4,
-                                                                  const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                                  const class GALGAS_mapStateList & inOperand6,
-                                                                  const class GALGAS_mapOverrideBlockListAST & inOperand7,
-                                                                  const class GALGAS_sharedMapAttributeListAST & inOperand8
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_sharedMapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        const class GALGAS_lstringlist & inOperand2,
+                                                                        const class GALGAS_propertyInCollectionListAST & inOperand3,
+                                                                        const class GALGAS_insertMethodListAST & inOperand4,
+                                                                        const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                        const class GALGAS_mapStateList & inOperand6,
+                                                                        const class GALGAS_mapOverrideBlockListAST & inOperand7,
+                                                                        const class GALGAS_sharedMapAttributeListAST & inOperand8
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sharedMapDeclarationAST & inOperand) const ;
@@ -9352,11 +9352,11 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_sortedListDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_propertyInCollectionListAST & inOperand2,
-                                                                   const class GALGAS_sortedListSortDescriptorListAST & inOperand3
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_sortedListDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_propertyInCollectionListAST & inOperand2,
+                                                                         const class GALGAS_sortedListSortDescriptorListAST & inOperand3
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sortedListDeclarationAST & inOperand) const ;
@@ -9450,11 +9450,11 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_structDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                               const class GALGAS_lstring & inOperand1,
-                                                               const class GALGAS_propertyInCollectionListAST & inOperand2,
-                                                               const class GALGAS_string & inOperand3
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_structDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                     const class GALGAS_lstring & inOperand1,
+                                                                     const class GALGAS_propertyInCollectionListAST & inOperand2,
+                                                                     const class GALGAS_string & inOperand3
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_structDeclarationAST & inOperand) const ;
@@ -10053,8 +10053,8 @@ class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFu
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalAttributeInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalAttributeInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const ;
@@ -10137,9 +10137,9 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexi
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalAttributeInputOutputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalAttributeInputOutputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                       const class GALGAS_lstring & inOperand1
+                                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const ;
@@ -10223,8 +10223,8 @@ class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFu
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterInputArgumentAST constructor_new (const class GALGAS_lchar & inOperand0
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalCharacterInputArgumentAST constructor_new (const class GALGAS_lchar & inOperand0
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const ;
@@ -10307,9 +10307,9 @@ class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionA
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterIntervalMatchAST constructor_new (const class GALGAS_lchar & inOperand0,
-                                                                           const class GALGAS_lchar & inOperand1
-                                                                           COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalCharacterIntervalMatchAST constructor_new (const class GALGAS_lchar & inOperand0,
+                                                                                 const class GALGAS_lchar & inOperand1
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const ;
@@ -10397,8 +10397,8 @@ class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterMatchAST constructor_new (const class GALGAS_lchar & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalCharacterMatchAST constructor_new (const class GALGAS_lchar & inOperand0
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const ;
@@ -10481,8 +10481,8 @@ class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCharacterSetMatchAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalCharacterSetMatchAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const ;
@@ -10565,8 +10565,8 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalCurrentCharacterInputArgumentAST constructor_new (const class GALGAS_location & inOperand0
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalCurrentCharacterInputArgumentAST constructor_new (const class GALGAS_location & inOperand0
+                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const ;
@@ -10649,8 +10649,8 @@ class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalDropInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalDropInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const ;
@@ -10802,8 +10802,8 @@ class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAS
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalErrorByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalErrorByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const ;
@@ -10886,8 +10886,8 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalErrorInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalErrorInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const ;
@@ -10967,9 +10967,9 @@ class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalExplicitRuleAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
-                                                                 const class GALGAS_lexicalInstructionListAST & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalExplicitRuleAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
+                                                                       const class GALGAS_lexicalInstructionListAST & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const ;
@@ -11054,9 +11054,9 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalFormalInputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                        const class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalFormalInputArgumentAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                              const class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand1
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const ;
@@ -11140,9 +11140,9 @@ class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFun
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalFunctionInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_lexicalFunctionCallActualArgumentListAST & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalFunctionInputArgumentAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_lexicalFunctionCallActualArgumentListAST & inOperand1
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const ;
@@ -11230,8 +11230,8 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalImplicitRuleAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalImplicitRuleAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const ;
@@ -11314,7 +11314,7 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalLogInstructionAST constructor_new (LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalLogInstructionAST constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const ;
@@ -11389,9 +11389,9 @@ class GALGAS_lexicalOrExpressionAST : public GALGAS_lexicalExpressionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalOrExpressionAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
-                                                                 const class GALGAS_lexicalExpressionAST & inOperand1
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalOrExpressionAST constructor_new (const class GALGAS_lexicalExpressionAST & inOperand0,
+                                                                       const class GALGAS_lexicalExpressionAST & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const ;
@@ -11479,9 +11479,9 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRepeatInstructionAST constructor_new (const class GALGAS_lexicalInstructionListAST & inOperand0,
-                                                                      const class GALGAS_lexicalWhileBranchListAST & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalRepeatInstructionAST constructor_new (const class GALGAS_lexicalInstructionListAST & inOperand0,
+                                                                            const class GALGAS_lexicalWhileBranchListAST & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const ;
@@ -11569,9 +11569,9 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRewindInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_lstring & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalRewindInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                            const class GALGAS_lstring & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const ;
@@ -11659,10 +11659,10 @@ class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST 
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalRoutineInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                       const class GALGAS_lexicalRoutineCallActualArgumentListAST & inOperand1,
-                                                                       const class GALGAS_lstringlist & inOperand2
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalRoutineInstructionAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                             const class GALGAS_lexicalRoutineCallActualArgumentListAST & inOperand1,
+                                                                             const class GALGAS_lstringlist & inOperand2
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const ;
@@ -11755,9 +11755,9 @@ class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSelectInstructionAST constructor_new (const class GALGAS_lexicalSelectBranchListAST & inOperand0,
-                                                                      const class GALGAS_lexicalInstructionListAST & inOperand1
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalSelectInstructionAST constructor_new (const class GALGAS_lexicalSelectBranchListAST & inOperand0,
+                                                                            const class GALGAS_lexicalInstructionListAST & inOperand1
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const ;
@@ -11845,8 +11845,8 @@ class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultA
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSendTerminalByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalSendTerminalByDefaultAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const ;
@@ -11929,8 +11929,8 @@ class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionA
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalSimpleSendInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalSimpleSendInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const ;
@@ -12013,8 +12013,8 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStringMatchAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalStringMatchAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const ;
@@ -12097,9 +12097,9 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStringNotMatchAST constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalStringNotMatchAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const ;
@@ -12184,9 +12184,9 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalStructuredSendInstructionAST constructor_new (const class GALGAS_lexicalSendSearchListAST & inOperand0,
-                                                                              const class GALGAS_lexicalSendDefaultActionAST & inOperand1
-                                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalStructuredSendInstructionAST constructor_new (const class GALGAS_lexicalSendSearchListAST & inOperand0,
+                                                                                    const class GALGAS_lexicalSendDefaultActionAST & inOperand1
+                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const ;
@@ -12274,8 +12274,8 @@ class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalTagInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalTagInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const ;
@@ -12358,8 +12358,8 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalUnsignedInputArgumentAST constructor_new (const class GALGAS_luint & inOperand0
-                                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalUnsignedInputArgumentAST constructor_new (const class GALGAS_luint & inOperand0
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const ;
@@ -12442,8 +12442,8 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexicalWarningInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexicalWarningInstructionAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const ;
@@ -12526,22 +12526,22 @@ class GALGAS_lexiqueComponentAST : public GALGAS_semanticDeclarationAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexiqueComponentAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                              const class GALGAS_lstring & inOperand1,
-                                                              const class GALGAS_bool & inOperand2,
-                                                              const class GALGAS_metamodelTemplateDelimitorListAST & inOperand3,
-                                                              const class GALGAS_templateReplacementListAST & inOperand4,
-                                                              const class GALGAS_lexicalAttributeListAST & inOperand5,
-                                                              const class GALGAS_lexicalStyleListAST & inOperand6,
-                                                              const class GALGAS_terminalDeclarationListAST & inOperand7,
-                                                              const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
-                                                              const class GALGAS_lexicalListDeclarationListAST & inOperand9,
-                                                              const class GALGAS_lexicalRuleListAST & inOperand10,
-                                                              const class GALGAS_externRoutineListAST & inOperand11,
-                                                              const class GALGAS_externFunctionListAST & inOperand12,
-                                                              const class GALGAS_indexingListAST & inOperand13,
-                                                              const class GALGAS_lstring & inOperand14
-                                                              COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexiqueComponentAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                    const class GALGAS_lstring & inOperand1,
+                                                                    const class GALGAS_bool & inOperand2,
+                                                                    const class GALGAS_metamodelTemplateDelimitorListAST & inOperand3,
+                                                                    const class GALGAS_templateReplacementListAST & inOperand4,
+                                                                    const class GALGAS_lexicalAttributeListAST & inOperand5,
+                                                                    const class GALGAS_lexicalStyleListAST & inOperand6,
+                                                                    const class GALGAS_terminalDeclarationListAST & inOperand7,
+                                                                    const class GALGAS_lexicalMessageDeclarationListAST & inOperand8,
+                                                                    const class GALGAS_lexicalListDeclarationListAST & inOperand9,
+                                                                    const class GALGAS_lexicalRuleListAST & inOperand10,
+                                                                    const class GALGAS_externRoutineListAST & inOperand11,
+                                                                    const class GALGAS_externFunctionListAST & inOperand12,
+                                                                    const class GALGAS_indexingListAST & inOperand13,
+                                                                    const class GALGAS_lstring & inOperand14
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const ;
@@ -12743,10 +12743,10 @@ class GALGAS_optionComponentDeclarationAST : public GALGAS_semanticDeclarationAS
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_optionComponentDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
-                                                                        const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_commandLineOptionListAST & inOperand2
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_optionComponentDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
+                                                                              const class GALGAS_lstring & inOperand1,
+                                                                              const class GALGAS_commandLineOptionListAST & inOperand2
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_optionComponentDeclarationAST & inOperand) const ;
@@ -13163,12 +13163,12 @@ class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_nonterminalCallInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstring & inOperand2,
-                                                                     const class GALGAS_actualParameterListAST & inOperand3,
-                                                                     const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_nonterminalCallInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_lstring & inOperand2,
+                                                                           const class GALGAS_actualParameterListAST & inOperand3,
+                                                                           const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const ;
@@ -13264,14 +13264,14 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_parseLoopInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_location & inOperand2,
-                                                               const class GALGAS_semanticExpressionAST & inOperand3,
-                                                               const class GALGAS_location & inOperand4,
-                                                               const class GALGAS_syntaxInstructionList & inOperand5,
-                                                               const class GALGAS_location & inOperand6
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_parseLoopInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                     const class GALGAS_location & inOperand2,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand3,
+                                                                     const class GALGAS_location & inOperand4,
+                                                                     const class GALGAS_syntaxInstructionList & inOperand5,
+                                                                     const class GALGAS_location & inOperand6
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_parseLoopInstruction & inOperand) const ;
@@ -13380,10 +13380,10 @@ class GALGAS_parseRewindInstruction : public GALGAS_syntaxInstructionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_parseRewindInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_listOfSyntaxInstructionList & inOperand1,
-                                                                 const class GALGAS_location & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_parseRewindInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_listOfSyntaxInstructionList & inOperand1,
+                                                                       const class GALGAS_location & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_parseRewindInstruction & inOperand) const ;
@@ -13469,14 +13469,14 @@ class GALGAS_parseWhenInstruction : public GALGAS_syntaxInstructionAST {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_parseWhenInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                               const class GALGAS_semanticExpressionAST & inOperand1,
-                                                               const class GALGAS_location & inOperand2,
-                                                               const class GALGAS_syntaxInstructionList & inOperand3,
-                                                               const class GALGAS_location & inOperand4,
-                                                               const class GALGAS_syntaxInstructionList & inOperand5,
-                                                               const class GALGAS_location & inOperand6
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_parseWhenInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                     const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                     const class GALGAS_location & inOperand2,
+                                                                     const class GALGAS_syntaxInstructionList & inOperand3,
+                                                                     const class GALGAS_location & inOperand4,
+                                                                     const class GALGAS_syntaxInstructionList & inOperand5,
+                                                                     const class GALGAS_location & inOperand6
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_parseWhenInstruction & inOperand) const ;
@@ -13585,12 +13585,12 @@ class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_repeatInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_syntaxInstructionList & inOperand1,
-                                                            const class GALGAS_location & inOperand2,
-                                                            const class GALGAS_listOfSyntaxInstructionList & inOperand3,
-                                                            const class GALGAS_location & inOperand4
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_repeatInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_syntaxInstructionList & inOperand1,
+                                                                  const class GALGAS_location & inOperand2,
+                                                                  const class GALGAS_listOfSyntaxInstructionList & inOperand3,
+                                                                  const class GALGAS_location & inOperand4
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_repeatInstruction & inOperand) const ;
@@ -13689,10 +13689,10 @@ class GALGAS_selectInstruction : public GALGAS_syntaxInstructionAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_selectInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                            const class GALGAS_listOfSyntaxInstructionList & inOperand1,
-                                                            const class GALGAS_location & inOperand2
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_selectInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                  const class GALGAS_listOfSyntaxInstructionList & inOperand1,
+                                                                  const class GALGAS_location & inOperand2
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_selectInstruction & inOperand) const ;
@@ -13778,9 +13778,9 @@ class GALGAS_syntaxSendInstruction : public GALGAS_syntaxInstructionAST {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_syntaxSendInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                                const class GALGAS_semanticExpressionAST & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_syntaxSendInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxSendInstruction & inOperand) const ;
@@ -13861,13 +13861,13 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_terminalCheckInstruction constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_actualInputParameterListAST & inOperand2,
-                                                                   const class GALGAS__32_lstringlist & inOperand3,
-                                                                   const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
-                                                                   const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_terminalCheckInstruction constructor_new (const class GALGAS_location & inOperand0,
+                                                                         const class GALGAS_lstring & inOperand1,
+                                                                         const class GALGAS_actualInputParameterListAST & inOperand2,
+                                                                         const class GALGAS__32_lstringlist & inOperand3,
+                                                                         const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
+                                                                         const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const ;

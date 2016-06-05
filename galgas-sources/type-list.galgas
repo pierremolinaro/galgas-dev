@@ -343,10 +343,11 @@ override method @listDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
+  let selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mListTypeName}
   ioSemanticDeclarationListForGeneration +=
     !"list type " + mListTypeName
     !@listTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mListTypeName}
+      !selfType
       !.searchKey {!inSemanticContext.mTypeMap !.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
       !typedAttributeList
     }

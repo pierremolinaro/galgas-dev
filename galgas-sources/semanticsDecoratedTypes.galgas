@@ -461,6 +461,11 @@ getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @stri
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@string unused ioHeader {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string outName
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -797,7 +802,8 @@ class @programComponentForGeneration : @semanticDeclarationWithHeaderForGenerati
 
 method @semanticDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   outHeader = ""
 }
 

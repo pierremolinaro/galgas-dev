@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -167,27 +167,6 @@ void enterExtensionGetter_implementationCppFileName (const int32_t inClassIndex,
 class GALGAS_string callExtensionGetter_implementationCppFileName (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//                                                                                                                     *
-//                     Abstract extension getter '@semanticDeclarationForGeneration isPredefined'                      *
-//                                                                                                                     *
-//----------------------------------------------------------------------------------------------------------------------
-
-typedef class GALGAS_bool (*enterExtensionGetter_semanticDeclarationForGeneration_isPredefined) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                 class C_Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-void enterExtensionGetter_isPredefined (const int32_t inClassIndex,
-                                        enterExtensionGetter_semanticDeclarationForGeneration_isPredefined inMethod) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool callExtensionGetter_isPredefined (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
@@ -1208,28 +1187,28 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
-                                                                 const class GALGAS_string & inOperand1,
-                                                                 const class GALGAS_stringlist & inOperand2,
-                                                                 const class GALGAS_string & inOperand3,
-                                                                 const class GALGAS_XCodeGroupList & inOperand4,
-                                                                 const class GALGAS_XCodeToolTargetList & inOperand5,
-                                                                 const class GALGAS_XCodeAppTargetList & inOperand6,
-                                                                 const class GALGAS__32_stringlist & inOperand7,
-                                                                 const class GALGAS__32_stringlist & inOperand8,
-                                                                 const class GALGAS__32_stringlist & inOperand9,
-                                                                 const class GALGAS__32_stringlist & inOperand10,
-                                                                 const class GALGAS__32_stringlist & inOperand11,
-                                                                 const class GALGAS__32_stringlist & inOperand12,
-                                                                 const class GALGAS_BuildFileList & inOperand13,
-                                                                 const class GALGAS_string & inOperand14,
-                                                                 const class GALGAS_stringlist & inOperand15,
-                                                                 const class GALGAS_string & inOperand16,
-                                                                 const class GALGAS__32_stringlist & inOperand17,
-                                                                 const class GALGAS__32_stringlist & inOperand18,
-                                                                 const class GALGAS__32_stringlist & inOperand19,
-                                                                 const class GALGAS__32_stringlist & inOperand20
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
+                                                                       const class GALGAS_string & inOperand1,
+                                                                       const class GALGAS_stringlist & inOperand2,
+                                                                       const class GALGAS_string & inOperand3,
+                                                                       const class GALGAS_XCodeGroupList & inOperand4,
+                                                                       const class GALGAS_XCodeToolTargetList & inOperand5,
+                                                                       const class GALGAS_XCodeAppTargetList & inOperand6,
+                                                                       const class GALGAS__32_stringlist & inOperand7,
+                                                                       const class GALGAS__32_stringlist & inOperand8,
+                                                                       const class GALGAS__32_stringlist & inOperand9,
+                                                                       const class GALGAS__32_stringlist & inOperand10,
+                                                                       const class GALGAS__32_stringlist & inOperand11,
+                                                                       const class GALGAS__32_stringlist & inOperand12,
+                                                                       const class GALGAS_BuildFileList & inOperand13,
+                                                                       const class GALGAS_string & inOperand14,
+                                                                       const class GALGAS_stringlist & inOperand15,
+                                                                       const class GALGAS_string & inOperand16,
+                                                                       const class GALGAS__32_stringlist & inOperand17,
+                                                                       const class GALGAS__32_stringlist & inOperand18,
+                                                                       const class GALGAS__32_stringlist & inOperand19,
+                                                                       const class GALGAS__32_stringlist & inOperand20
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,

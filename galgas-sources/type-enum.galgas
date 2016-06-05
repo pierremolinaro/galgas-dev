@@ -240,10 +240,11 @@ override method @enumDeclarationAST semanticAnalysis
     enumConstantListForGeneration += !mConstantName.string !associatedTypeList
   end
 #---
+  let selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mEnumTypeName}
   ioSemanticDeclarationListForGeneration +=
     !"enum " + mEnumTypeName
     !@enumTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mEnumTypeName}
+      !selfType
       !enumConstantListForGeneration
     }
     !""

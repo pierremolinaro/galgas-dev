@@ -409,7 +409,7 @@ override method @classDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"class " + mClassTypeName
     !@classTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
+      !selfType
       !mIsAbstract
       !mClassTypeName
       !superClassProxy

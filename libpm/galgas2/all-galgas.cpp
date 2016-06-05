@@ -31,7 +31,6 @@
 #include "acPtr_class.cpp"
 #include "cPtr_object.cpp"
 
-#include "predefined-types.cpp"
 #include "scanner_actions.cpp"
 #include "GALGAS_application.cpp"
 #include "GALGAS_bigint.cpp"

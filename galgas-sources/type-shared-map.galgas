@@ -599,8 +599,8 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !mMapTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
-    !@typeKindEnum. uniqueMapType
+    !@unifiedTypeMap-proxy.null
+    !@typeKindEnum.uniqueMapType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
@@ -609,7 +609,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !@classMethodMap.emptyMap
     !enumerationDescriptor
     !enumerationVariants
     !doNotGenererateObjectCompare () | supportWithAccessor ()

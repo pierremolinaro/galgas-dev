@@ -306,12 +306,10 @@ override method @externTypeDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
-  let externTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
-#---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + mExternTypeName
     !@externTypeDeclarationForGeneration.new {
-      !externTypeProxy
+      !.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
       !mExternTypeName.string
       !mCppPreDeclarationCode
       !mCppClassCode
