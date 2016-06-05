@@ -1113,8 +1113,6 @@ proc updateGalgas3Targets
         !"GALGAS_type.cpp",
         !"GALGAS_uint_36__34_.cpp",
         !"GALGAS_uint.cpp",
-        !"predefined-types.cpp",
-        !"predefined-types.h",
         !"scanner_actions.cpp",
         !"scanner_actions.h",
         !"typeComparisonResult.cpp",

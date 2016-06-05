@@ -26,7 +26,7 @@
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/F_verbose_output.h"
 

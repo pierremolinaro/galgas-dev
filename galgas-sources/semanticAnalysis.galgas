@@ -1146,8 +1146,8 @@ proc performSemanticAnalysis
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
   end
 #---
-  outDecoratedDeclarationListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
-  if @uint. errorCount == 0 then
+  outDecoratedDeclarationListForGeneration = {}
+  if @uint.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!inSemanticContext)
     for () in semanticDeclarationList do
       [mSemanticDeclaration semanticAnalysis

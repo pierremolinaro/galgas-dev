@@ -12,7 +12,7 @@
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
   for () in CONSTRUCTOR_MAP do
-    %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
+    %  public : static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
     for () in mArgumentTypeList
       do index IDX %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^

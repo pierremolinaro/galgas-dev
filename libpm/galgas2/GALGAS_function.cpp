@@ -20,7 +20,7 @@
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 #include "galgas2/C_galgas_function_descriptor.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/C_Compiler.h"

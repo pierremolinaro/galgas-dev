@@ -328,7 +328,7 @@ private proc generateManyHeaders
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
         headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
-        headerString += "#include \"galgas2/predefined-types.h\"\n\n"
+        headerString += "#include \"all-predefined-types.h\"\n\n"
         headerString += "//----------------------------------------------------------------------------------------------------------------------\n\n"
         headerString += headerIncludes1
         headerString += "\n"

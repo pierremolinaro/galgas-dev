@@ -23,7 +23,7 @@
 #include "galgas2/AC_GALGAS_sortedlist.h"
 #include "galgas2/capSortedListElement.h"
 #include "galgas2/cSortedListElement.h"
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 

@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -113,10 +113,10 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_arrayTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                 const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                 const class GALGAS_uint & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_arrayTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                       const class GALGAS_uint & inOperand2
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_arrayTypeForGeneration & inOperand) const ;
@@ -205,14 +205,14 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_classTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                 const class GALGAS_bool & inOperand1,
-                                                                 const class GALGAS_lstring & inOperand2,
-                                                                 const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
-                                                                 const class GALGAS_typedPropertyList & inOperand4,
-                                                                 const class GALGAS_typedPropertyList & inOperand5,
-                                                                 const class GALGAS_bool & inOperand6
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_classTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                       const class GALGAS_bool & inOperand1,
+                                                                       const class GALGAS_lstring & inOperand2,
+                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                       const class GALGAS_typedPropertyList & inOperand4,
+                                                                       const class GALGAS_typedPropertyList & inOperand5,
+                                                                       const class GALGAS_bool & inOperand6
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_classTypeForGeneration & inOperand) const ;
@@ -321,9 +321,9 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_enumTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                const class GALGAS_enumConstantListForGeneration & inOperand1
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_enumTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                      const class GALGAS_enumConstantListForGeneration & inOperand1
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumTypeForGeneration & inOperand) const ;
@@ -407,11 +407,11 @@ class GALGAS_externTypeDeclarationForGeneration : public GALGAS_semanticTypeForG
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_externTypeDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                             const class GALGAS_string & inOperand1,
-                                                                             const class GALGAS_string & inOperand2,
-                                                                             const class GALGAS_string & inOperand3
-                                                                             COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_externTypeDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                                   const class GALGAS_string & inOperand1,
+                                                                                   const class GALGAS_string & inOperand2,
+                                                                                   const class GALGAS_string & inOperand3
+                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externTypeDeclarationForGeneration & inOperand) const ;
@@ -505,11 +505,11 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_graphDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
-                                                                        const class GALGAS_graphInsertModifierList & inOperand3
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_graphDeclarationForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                                              const class GALGAS_graphInsertModifierList & inOperand3
+                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_graphDeclarationForGeneration & inOperand) const ;
@@ -603,10 +603,10 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_listTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                const class GALGAS_typedPropertyList & inOperand2
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_listTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                      const class GALGAS_typedPropertyList & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_listTypeForGeneration & inOperand) const ;
@@ -695,11 +695,11 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_listmapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                   const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                   const class GALGAS_typedPropertyList & inOperand2,
-                                                                   const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3
-                                                                   COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_listmapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                         const class GALGAS_typedPropertyList & inOperand2,
+                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3
+                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_listmapTypeForGeneration & inOperand) const ;
@@ -793,11 +793,11 @@ class GALGAS_mapProxyTypeForGeneration : public GALGAS_semanticTypeForGeneration
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_mapProxyTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                    const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                    const class GALGAS_typedPropertyList & inOperand2,
-                                                                    const class GALGAS_mapSearchMethodListAST & inOperand3
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_mapProxyTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                          const class GALGAS_typedPropertyList & inOperand2,
+                                                                          const class GALGAS_mapSearchMethodListAST & inOperand3
+                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mapProxyTypeForGeneration & inOperand) const ;
@@ -891,15 +891,15 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_mapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                               const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                               const class GALGAS_lstring & inOperand2,
-                                                               const class GALGAS_typedPropertyList & inOperand3,
-                                                               const class GALGAS_insertMethodListAST & inOperand4,
-                                                               const class GALGAS_mapSearchMethodListAST & inOperand5,
-                                                               const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                               const class GALGAS_bool & inOperand7
-                                                               COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_mapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                     const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                     const class GALGAS_lstring & inOperand2,
+                                                                     const class GALGAS_typedPropertyList & inOperand3,
+                                                                     const class GALGAS_insertMethodListAST & inOperand4,
+                                                                     const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                     const class GALGAS_mapRemoveMethodListAST & inOperand6,
+                                                                     const class GALGAS_bool & inOperand7
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mapTypeForGeneration & inOperand) const ;
@@ -1010,10 +1010,10 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_primitiveTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                     const class GALGAS_string & inOperand1,
-                                                                     const class GALGAS_predefinedTypeKindEnum & inOperand2
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_primitiveTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                           const class GALGAS_string & inOperand1,
+                                                                           const class GALGAS_predefinedTypeKindEnum & inOperand2
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_primitiveTypeForGeneration & inOperand) const ;
@@ -1099,18 +1099,18 @@ class GALGAS_sharedMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_sharedMapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_typedPropertyList & inOperand2,
-                                                                     const class GALGAS_insertMethodListAST & inOperand3,
-                                                                     const class GALGAS_mapSearchMethodListAST & inOperand4,
-                                                                     const class GALGAS_mapAutomatonStateMap & inOperand5,
-                                                                     const class GALGAS_mapAutomatonActionMap & inOperand6,
-                                                                     const class GALGAS_mapStateSortedList & inOperand7,
-                                                                     const class GALGAS_mapOverrideList & inOperand8,
-                                                                     const class GALGAS_mapAutomatonMessageKind & inOperand9,
-                                                                     const class GALGAS_string & inOperand10
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_sharedMapTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                           const class GALGAS_lstring & inOperand1,
+                                                                           const class GALGAS_typedPropertyList & inOperand2,
+                                                                           const class GALGAS_insertMethodListAST & inOperand3,
+                                                                           const class GALGAS_mapSearchMethodListAST & inOperand4,
+                                                                           const class GALGAS_mapAutomatonStateMap & inOperand5,
+                                                                           const class GALGAS_mapAutomatonActionMap & inOperand6,
+                                                                           const class GALGAS_mapStateSortedList & inOperand7,
+                                                                           const class GALGAS_mapOverrideList & inOperand8,
+                                                                           const class GALGAS_mapAutomatonMessageKind & inOperand9,
+                                                                           const class GALGAS_string & inOperand10
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sharedMapTypeForGeneration & inOperand) const ;
@@ -1239,11 +1239,11 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_sortedListTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                      const class GALGAS_typedPropertyList & inOperand2,
-                                                                      const class GALGAS_sortDescriptorListForGeneration & inOperand3
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_sortedListTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                            const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                            const class GALGAS_typedPropertyList & inOperand2,
+                                                                            const class GALGAS_sortDescriptorListForGeneration & inOperand3
+                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sortedListTypeForGeneration & inOperand) const ;
@@ -1337,9 +1337,9 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                  const class GALGAS_typedPropertyList & inOperand1
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_structTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                        const class GALGAS_typedPropertyList & inOperand1
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_structTypeForGeneration & inOperand) const ;
@@ -1423,8 +1423,8 @@ class GALGAS_hereExpressionAST : public GALGAS_semanticExpressionAST {
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_hereExpressionAST constructor_new (const class GALGAS_location & inOperand0
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_hereExpressionAST constructor_new (const class GALGAS_location & inOperand0
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_hereExpressionAST & inOperand) const ;
@@ -1504,11 +1504,11 @@ class GALGAS_addExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_addExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                     const class GALGAS_location & inOperand1,
-                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_addExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                           const class GALGAS_location & inOperand1,
+                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                           const class GALGAS_semanticExpressionForGeneration & inOperand3
+                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_addExpressionForGeneration & inOperand) const ;

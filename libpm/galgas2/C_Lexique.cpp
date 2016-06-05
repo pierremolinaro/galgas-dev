@@ -24,7 +24,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #include "galgas2/C_Lexique.h"
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "collections/TC_LinkedList.h"
 #include "strings/unicode_character_cpp.h"

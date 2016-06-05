@@ -3,7 +3,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -47,8 +47,6 @@ extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_cppCompile ;
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_create_5F_project ;
 
 extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_extractLIBPMOption ;
-
-extern C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_generatePredefinedTypes ;
 
 //----------------------------------------------------------------------------------------------------------------------
 //                                                                                                                     *
@@ -205,8 +203,8 @@ class GALGAS_templateInstructionStringAST : public GALGAS_templateInstructionAST
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_templateInstructionStringAST constructor_new (const class GALGAS_string & inOperand0
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_templateInstructionStringAST constructor_new (const class GALGAS_string & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateInstructionStringAST & inOperand) const ;
@@ -372,27 +370,27 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_predefinedTypes constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand6,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand7,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand8,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand9,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand10,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand11,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand12,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand17,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand18,
-                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand19
-                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_predefinedTypes constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand6,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand7,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand8,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand9,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand10,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand11,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand12,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand17,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand18,
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand19
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -509,15 +507,15 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_semanticContext constructor_new (const class GALGAS_unifiedTypeMap & inOperand0,
-                                                          const class GALGAS_routineMap & inOperand1,
-                                                          const class GALGAS_functionMap & inOperand2,
-                                                          const class GALGAS_filewrapperMap & inOperand3,
-                                                          const class GALGAS_grammarMap & inOperand4,
-                                                          const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand5,
-                                                          const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
-                                                          const class GALGAS_syntaxComponentMap & inOperand7
-                                                          COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_semanticContext constructor_new (const class GALGAS_unifiedTypeMap & inOperand0,
+                                                                const class GALGAS_routineMap & inOperand1,
+                                                                const class GALGAS_functionMap & inOperand2,
+                                                                const class GALGAS_filewrapperMap & inOperand3,
+                                                                const class GALGAS_grammarMap & inOperand4,
+                                                                const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand5,
+                                                                const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
+                                                                const class GALGAS_syntaxComponentMap & inOperand7
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -600,10 +598,10 @@ class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_templateAnalysisContext constructor_new (const class GALGAS_semanticContext & inOperand0,
-                                                                  const class GALGAS_predefinedTypes & inOperand1,
-                                                                  const class GALGAS_templateVariableMap & inOperand2
-                                                                  COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_templateAnalysisContext constructor_new (const class GALGAS_semanticContext & inOperand0,
+                                                                        const class GALGAS_predefinedTypes & inOperand1,
+                                                                        const class GALGAS_templateVariableMap & inOperand2
+                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -1089,19 +1087,19 @@ class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexiqueAnalysisContext constructor_new (const class GALGAS_string & inOperand0,
-                                                                 const class GALGAS_lexicalRoutineMap & inOperand1,
-                                                                 const class GALGAS_lexicalFunctionMap & inOperand2,
-                                                                 const class GALGAS_lexicalMessageMap & inOperand3,
-                                                                 const class GALGAS_terminalMap & inOperand4,
-                                                                 const class GALGAS_terminalList & inOperand5,
-                                                                 const class GALGAS_lexicalAttributeMap & inOperand6,
-                                                                 const class GALGAS_lexicalExplicitTokenListMapMap & inOperand7,
-                                                                 const class GALGAS_stringset & inOperand8,
-                                                                 const class GALGAS_templateDelimitorList & inOperand9,
-                                                                 const class GALGAS_styleMap & inOperand10,
-                                                                 const class GALGAS_stringset & inOperand11
-                                                                 COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_lexiqueAnalysisContext constructor_new (const class GALGAS_string & inOperand0,
+                                                                       const class GALGAS_lexicalRoutineMap & inOperand1,
+                                                                       const class GALGAS_lexicalFunctionMap & inOperand2,
+                                                                       const class GALGAS_lexicalMessageMap & inOperand3,
+                                                                       const class GALGAS_terminalMap & inOperand4,
+                                                                       const class GALGAS_terminalList & inOperand5,
+                                                                       const class GALGAS_lexicalAttributeMap & inOperand6,
+                                                                       const class GALGAS_lexicalExplicitTokenListMapMap & inOperand7,
+                                                                       const class GALGAS_stringset & inOperand8,
+                                                                       const class GALGAS_templateDelimitorList & inOperand9,
+                                                                       const class GALGAS_styleMap & inOperand10,
+                                                                       const class GALGAS_stringset & inOperand11
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,

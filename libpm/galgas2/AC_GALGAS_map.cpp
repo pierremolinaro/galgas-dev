@@ -20,7 +20,7 @@
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-#include "galgas2/predefined-types.h"
+#include "all-predefined-types.h"
 #include "galgas2/capCollectionElement.h"
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "utilities/MF_MemoryControl.h"
@@ -1481,7 +1481,6 @@ void AC_GALGAS_map::getOverridenMap (AC_GALGAS_map & outMap,
   outMap.drop () ;
   if (isValid ()) {
     if (NULL == mSharedMap->mOverridenMap) {
- //     outMap.makeNewEmptyMap (HERE) ;
       inCompiler->onTheFlySemanticError ("reader 'overriddenMap': no overriden map" COMMA_THERE) ;
     }else{
       macroAssignSharedObject (outMap.mSharedMap, mSharedMap->mOverridenMap) ;
@@ -1537,7 +1536,7 @@ void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnu
   case kENUMERATION_ENTER_ORDER :
   case kENUMERATION_REVERSE_ENTER_ORDER :
     MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
-//    break ;
+    break ;
   }
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
 }
