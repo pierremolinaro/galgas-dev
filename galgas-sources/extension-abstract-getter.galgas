@@ -58,23 +58,29 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension getter @" + mTypeName + " " + mAbstractExtensionGetterName ![mAbstractExtensionGetterName location]}
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {
+    !"extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
+    ![mAbstractExtensionGetterName location]
+  }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !mTypeName
-      !@extensionGetterMapForType. emptyMap
+      !@extensionGetterMapForType.emptyMap
     ]
   end
-  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-    [!?mExtensionGetterMapForType insertKey
-      !mAbstractExtensionGetterName
-      !mAbstractExtensionGetterReturnedTypeName
-      !mAbstractExtensionGetterFormalInputParameterList
-    ]
+  if not [option galgas_cli_options.newExtensionGeneration value] then
+    with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+      [!?mExtensionGetterMapForType insertKey
+        !mAbstractExtensionGetterName
+        !mAbstractExtensionGetterReturnedTypeName
+        !mAbstractExtensionGetterFormalInputParameterList
+      ]
+    end
   end
 }
 
@@ -86,7 +92,30 @@ override method @abstractExtensionGetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
+  if [option galgas_cli_options.newExtensionGeneration value] then
+  #--- Compute method signature
+    @functionSignature functionSignature = {}
+    for () in mAbstractExtensionGetterFormalInputParameterList do
+      functionSignature +=
+        !mFormalSelector
+        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+        ![mFormalArgumentName string]
+    end
+    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
+    [!?getterMap insertKey
+      !mAbstractExtensionGetterName
+      !.definedAsMember # @methodKind mKind
+      !functionSignature #  @functionSignature mArgumentTypeList
+      !mAbstractExtensionGetterName.location # @location mDeclarationLocation
+      !true # @bool mHasCompilerArgument
+      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+      !.isAbstract # @methodQualifier mQualifier
+      !"" #@string mErrorMessage # If not empty, calling the method raises an error with this message
+    ]
+    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -97,7 +126,8 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class
@@ -107,11 +137,11 @@ override method @abstractExtensionGetterAST semanticAnalysis
     error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
-  var formalParameterListForGeneration = @formalInputParameterListForGeneration.emptyList{}
+  @formalInputParameterListForGeneration formalParameterListForGeneration = {}
   for () in mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsConstant
