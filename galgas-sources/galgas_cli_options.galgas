@@ -37,8 +37,8 @@ option galgas_cli_options {
 
   @bool check_gmp : '\0', "check-gmp" -> "Run a GMP check"
 
-  @bool newExtensionGeneration : '\0', "new-extension-generation"
-  -> "Use new extension code generation (instable, under development)"
+#  @bool newExtensionGeneration : '\0', "new-extension-generation"
+#  -> "Use new extension code generation (instable, under development)"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
