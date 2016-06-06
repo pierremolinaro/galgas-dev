@@ -38,12 +38,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutoma
                                          "generate-shared-map-automaton-dot-files",
                                          "Generate shared map automaton dot files") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_newExtensionGeneration ("galgas_cli_options",
-                                         "newExtensionGeneration",
-                                         0,
-                                         "new-extension-generation",
-                                         "Use new extension code generation (instable, under development)") ;
-
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
                                          "outputHTMLTypeListFile",
                                          84,

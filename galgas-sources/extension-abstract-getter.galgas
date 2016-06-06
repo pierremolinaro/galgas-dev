@@ -73,7 +73,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
       !@extensionGetterMapForType.emptyMap
     ]
   end
-  if not [option galgas_cli_options.newExtensionGeneration value] then
+#  if not [option galgas_cli_options.newExtensionGeneration value] then
     with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
       [!?mExtensionGetterMapForType insertKey
         !mAbstractExtensionGetterName
@@ -81,7 +81,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
         !mAbstractExtensionGetterFormalInputParameterList
       ]
     end
-  end
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -92,30 +92,30 @@ override method @abstractExtensionGetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContext unused ioSemanticContext
 {
-  if [option galgas_cli_options.newExtensionGeneration value] then
-  #--- Compute method signature
-    @functionSignature functionSignature = {}
-    for () in mAbstractExtensionGetterFormalInputParameterList do
-      functionSignature +=
-        !mFormalSelector
-        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        ![mFormalArgumentName string]
-    end
-    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
-    [!?getterMap insertKey
-      !mAbstractExtensionGetterName
-      !.definedAsMember # @methodKind mKind
-      !functionSignature #  @functionSignature mArgumentTypeList
-      !mAbstractExtensionGetterName.location # @location mDeclarationLocation
-      !true # @bool mHasCompilerArgument
-      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
-      !.isAbstract # @methodQualifier mQualifier
-      !"" #@string mErrorMessage # If not empty, calling the method raises an error with this message
-    ]
-    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
-  end
+#  if [option galgas_cli_options.newExtensionGeneration value] then
+#  #--- Compute method signature
+#    @functionSignature functionSignature = {}
+#    for () in mAbstractExtensionGetterFormalInputParameterList do
+#      functionSignature +=
+#        !mFormalSelector
+#        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+#        ![mFormalArgumentName string]
+#    end
+#    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
+#    [!?getterMap insertKey
+#      !mAbstractExtensionGetterName
+#      !.definedAsMember # @methodKind mKind
+#      !functionSignature #  @functionSignature mArgumentTypeList
+#      !mAbstractExtensionGetterName.location # @location mDeclarationLocation
+#      !true # @bool mHasCompilerArgument
+#      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+#      !.isAbstract # @methodQualifier mQualifier
+#      !"" #@string mErrorMessage # If not empty, calling the method raises an error with this message
+#    ]
+#    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

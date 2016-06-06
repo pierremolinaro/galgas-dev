@@ -71,30 +71,30 @@ override method @overridingAbstractExtensionGetterAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
+  ?!@semanticContext unused ioSemanticContext
 {
-  if [option galgas_cli_options.newExtensionGeneration value] then
-  #--- Compute method signature
-    @functionSignature functionSignature = {}
-    for () in mAbstractExtensionGetterFormalInputParameterList do
-      functionSignature +=
-        !mFormalSelector
-        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        ![mFormalArgumentName string]
-    end
-    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
-    [!?getterMap insertKey
-      !mAbstractExtensionGetterName
-      !.definedAsMember
-      !functionSignature
-      !mAbstractExtensionGetterName.location
-      !true
-      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
-      !.isOverridingAbstract
-      !"" # If not empty, calling the method raises an error with this message
-    ]
-    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
-  end
+#  if [option galgas_cli_options.newExtensionGeneration value] then
+#  #--- Compute method signature
+#    @functionSignature functionSignature = {}
+#    for () in mAbstractExtensionGetterFormalInputParameterList do
+#      functionSignature +=
+#        !mFormalSelector
+#        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+#        ![mFormalArgumentName string]
+#    end
+#    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
+#    [!?getterMap insertKey
+#      !mAbstractExtensionGetterName
+#      !.definedAsMember
+#      !functionSignature
+#      !mAbstractExtensionGetterName.location
+#      !true
+#      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+#      !.isOverridingAbstract
+#      !"" # If not empty, calling the method raises an error with this message
+#    ]
+#    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
