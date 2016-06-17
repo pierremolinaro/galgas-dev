@@ -2149,10 +2149,28 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = IRCCyN;
 				TargetAttributes = {
+					CF2C85131CC3B0890008D960 = {
+						DevelopmentTeam = YW8QY74J2A;
+						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
+					CF6DF12309E3F23700506859 = {
+						DevelopmentTeam = YW8QY74J2A;
+						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
+					CF6DF19C09E3F30400506859 = {
+						DevelopmentTeam = YW8QY74J2A;
+						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
+						ProvisioningStyle = Automatic;
+					};
 					CF6DF20D09E3F3A700506859 = {
+						DevelopmentTeam = YW8QY74J2A;
+						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -3166,6 +3184,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -3173,6 +3192,7 @@
 				LD_OPENMP_FLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-developer-debug-32";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				VALID_ARCHS = i386;
 			};
@@ -3181,6 +3201,7 @@
 		CF6DF18E09E3F23700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
@@ -3188,12 +3209,14 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DO_NOT_GENERATE_CHECKINGS;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-developer";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Default;
 		};
 		CF6DF20409E3F30400506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -3211,6 +3234,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
