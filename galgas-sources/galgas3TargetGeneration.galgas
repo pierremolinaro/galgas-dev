@@ -389,6 +389,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"Yosemite"
   availableGenerationFeatures += !"ElCapitanYosemite"
   availableGenerationFeatures += !"ElCapitan"
+  availableGenerationFeatures += !"Sierra"
   availableGenerationFeatures += !"LatestMacOS"
   @stringset generationFeatures = {}
 #--- Check xcode target architectures
@@ -400,7 +401,7 @@ proc updateGalgas3Targets
         error mValue: "duplicate '" + mValue + "' feature"
       end
       let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
-          " \"Yosemite\", \"ElCapitanYosemite\" and \"ElCapitan\", \"LatestMacOS\" are exclusive"
+          " \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"Sierra\", \"LatestMacOS\" are exclusive"
     #--- SnowLeopard
       if mValue.string == "SnowLeopard" then
         if (SDK != "") then
@@ -450,6 +451,13 @@ proc updateGalgas3Targets
         end
         SDK = "macosx10.11"
         MACOSX_DEPLOYMENT_TARGET = "10.11"
+    #--- Sierra
+      elsif mValue.string == "Sierra" then
+        if (SDK != "") then
+          error mValue: macOsDuplicateMessage
+        end
+        SDK = "macosx10.12"
+        MACOSX_DEPLOYMENT_TARGET = "10.12"
     #--- Lastest MacOS
       elsif mValue.string == "LatestMacOS" then
         if (SDK != "") then
