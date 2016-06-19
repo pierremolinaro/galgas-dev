@@ -9989,10 +9989,10 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
           lexicalError (gLexicalMessage_galgas_33_Scanner_incorrectCharConstant COMMA_LINE_AND_SOURCE_FILE) ;
         }
       }else if (testForInputUTF32Char (TO_UNICODE ('$'))) {
-        if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
+        if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
           do {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE ('~'))) {
+            if (testForInputUTF32CharRange (TO_UNICODE ('!'), TO_UNICODE ('#')) || testForInputUTF32CharRange (TO_UNICODE ('%'), TO_UNICODE (65533))) {
             }else{
               mLoop = false ;
             }

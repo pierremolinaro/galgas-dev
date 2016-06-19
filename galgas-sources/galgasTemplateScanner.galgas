@@ -147,11 +147,11 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "while",
   "with" }
 
-rule 'a'->'z' |  'A'->'Z' {
+rule isUnicodeLetter {
   repeat
     enterCharacterIntoString ( !?identifierString !toLower (!*) )
     enterCharacterIntoString ( !?tokenString !* )
-  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  while isUnicodeLetter | '_' | '0'->'9' :
   end
   send search identifierString in galgasKeyWordList default $identifier$
 }
@@ -164,16 +164,16 @@ message incorrectTypeNameError : "in a type name, a letter should follow the '@'
 
 rule '@' {
   select
-  case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  case isUnicodeLetter | '_' | '0'->'9' :
     repeat
       enterCharacterIntoString ( !?tokenString !* )
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    while isUnicodeLetter | '_' | '0'->'9' :
     end
     select
     case '-' :
       repeat
         enterCharacterIntoString ( !?tokenString !* )
-      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+      while isUnicodeLetter | '_' | '0'->'9' :
       end
     default
     end

@@ -284,7 +284,7 @@ Retourne la valeur du récepteur sous la forme d'une chaîne de caractères cons
 \begin{itemize}
 \item une lettre ASCII (minuscule ou majuscule) est inchangée ;
 \item un chiffre décimal est inchangé ;
-\item les caractères « \_ »,  « . » et  « \$ » sont inchangés ;
+\item les caractères « . » et  « \$ » sont inchangés ;
 \item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
 \end{itemize}
 
@@ -294,6 +294,7 @@ Par exemple :
 \begin{galgas}
 let x = ["$Z2.3" assemblerRepresentation] # "$Z2.3"
 let y = [":?" assemblerRepresentation] # "_3A__3F_"
+let y = ["_é" assemblerRepresentation] # "_5F__E8_"
 \end{galgas}
 
 Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide et le \refGetterPage{string}{nameRepresentation}.
@@ -745,7 +746,6 @@ Retourne la valeur du récepteur sous la forme d'une chaîne de caractères cons
 \begin{itemize}
 \item une lettre ASCII (minuscule ou majuscule) est inchangée ;
 \item un chiffre décimal est inchangé ;
-\item le caractère « \_ » est inchangé ;
 \item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
 \end{itemize}
 
@@ -755,6 +755,7 @@ Par exemple :
 \begin{galgas}
 let x = ["Z23" nameRepresentation] # "Z23"
 let y = [":?" nameRepresentation] # "_3A__3F_"
+let y = ["_é" nameRepresentation] # "_5F__E8_"
 \end{galgas}
 
 Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide, et le \refGetterPage{string}{assemblerRepresentation}.

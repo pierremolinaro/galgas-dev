@@ -521,10 +521,10 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
         scanningOk = NO ;
       }
     }else if (scanningOk && ([self testForInputChar:36])) {
-      if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:126])) {
+      if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:126])) {
+          if (scanningOk && ([self testForInputFromChar:33 toChar:35] || [self testForInputFromChar:37 toChar:65533])) {
           }else{
             mLoop = NO ;
           }
