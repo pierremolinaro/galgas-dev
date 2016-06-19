@@ -21,7 +21,8 @@ proc checkMethodSignatures
   ?let @formalParameterListForGeneration inTestedSignature
   ?let @location inErrorLocation
   ?let @formalParameterSignature inReferenceSignature
-  ?let @location inReferenceLocation {
+  ?let @location inReferenceLocation
+{
   if [inTestedSignature length] != [inReferenceSignature length] then
     error inErrorLocation:"this method declares " + [[inTestedSignature length] string]
     + " formal parameter(s), but overriden method declares " + [[inReferenceSignature length] string]

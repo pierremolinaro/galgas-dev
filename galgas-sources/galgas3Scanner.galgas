@@ -193,11 +193,11 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "with"
 }
 
-rule 'a'->'z' |  'A'->'Z' {
+rule isUnicodeLetter {
   repeat
-    enterCharacterIntoString (!?identifierString !toLower (!*) )
-    enterCharacterIntoString (!?tokenString !* )
-  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    enterCharacterIntoString (!?identifierString !toLower (!*))
+    enterCharacterIntoString (!?tokenString !*)
+  while isUnicodeLetter | '_' | '0'->'9' :
   end
   send search identifierString in galgasKeyWordList default $identifier$
 }
