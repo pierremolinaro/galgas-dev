@@ -394,11 +394,11 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
       mLexicalAttribute_uint32value = 0 ;
       mLexicalAttribute_uint64value = 0 ;
       mTokenStartLocation = mCurrentLocation ;
-      if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+      if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_identifierString, scanner_cocoa_function_toLower (mPreviousChar)) ;
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+          if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
           }else{
             mLoop = NO ;
           }
@@ -411,10 +411,10 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mTokenCode = galgasTemplateScanner_1_identifier ;
         }
       }else if (scanningOk && ([self testForInputChar:64])) {
-        if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+        if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
           do {
             scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-            if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+            if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
             }else{
               mLoop = NO ;
             }
@@ -423,7 +423,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           if (scanningOk && ([self testForInputChar:45])) {
             do {
               scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-              if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+              if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
               }else{
                 mLoop = NO ;
               }

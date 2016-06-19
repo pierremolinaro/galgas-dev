@@ -514,10 +514,10 @@ message incorrect_terminal_end : "terminal does not end with '$'"
 
 rule '$' {
   select
-  case '!' -> '#' | '%' -> '~'  : # All printable characters, but '$'
+  case '!' -> '#' | '%' -> '\uFFFD'  : # All printable characters, but '$'
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while '!' -> '#' | '%' -> '~' :
+    while '!' -> '#' | '%' -> '\uFFFD' :
     end
   default
     error incorrect_terminal_start
