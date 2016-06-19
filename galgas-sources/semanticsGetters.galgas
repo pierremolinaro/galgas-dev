@@ -470,6 +470,13 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"assemblerRepresentation"
+    !returnedTypeName:"string"
+    !false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"nameRepresentation"
     !returnedTypeName:"string"
     !false

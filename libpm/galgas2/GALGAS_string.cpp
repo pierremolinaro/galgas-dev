@@ -560,6 +560,16 @@ GALGAS_string GALGAS_string::getter_nameRepresentation (UNUSED_LOCATION_ARGS) co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::getter_assemblerRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mString.assemblerRepresentation ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_string::getter_subStringFromIndex (const GALGAS_uint & inStartIndex
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
