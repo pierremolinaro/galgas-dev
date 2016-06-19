@@ -525,7 +525,7 @@ proc printPredefinedLexicalActions {
   end
 #--------------------------------------- Build lexical function map
   @lexicalFunctionMap lexicalFunctionMap
-  buildLexicalFunctionMap ( ?lexicalFunctionMap )
+  buildLexicalFunctionMap (?lexicalFunctionMap )
 #--------------------------------------- Display lexical functions
   s += "**************** Prefined lexical functions ****************\n"
   for () in lexicalFunctionMap do
