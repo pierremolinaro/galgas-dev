@@ -1201,6 +1201,29 @@ C_String C_String::nameRepresentation (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_String C_String::assemblerRepresentation (void) const {
+  C_String s ;
+  const int32_t receiver_length = length () ;
+  s.setCapacity ((uint32_t) receiver_length) ;
+  const utf32 * ptr = utf32String (HERE) ;
+  for (int32_t i=0 ; i<receiver_length ; i++) {
+    const utf32 c = ptr [i] ;
+    if (isalnum ((int) UNICODE_VALUE (c))
+     || (UNICODE_VALUE (c) == '_')
+     || (UNICODE_VALUE (c) == '.')
+     || (UNICODE_VALUE (c) == '$')) {
+      s.appendUnicodeCharacter (c COMMA_HERE) ;
+    }else{
+      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
+      s.appendUnsignedHex (UNICODE_VALUE (c)) ;
+      s.appendUnicodeCharacter (TO_UNICODE ('_') COMMA_HERE) ;
+    }
+  }
+  return s ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 C_String C_String::utf32Representation (void) const {
   C_String result ;
   result.appendUTF32LiteralStringConstant (*this) ;

@@ -274,6 +274,34 @@ Si la valeur du récepteur est un chemin relatif, cette valeur est retournée pr
 
 
 
+\subsectionGetter{assemblerRepresentation}{string}
+
+\begin{galgasbox}
+getter assemblerRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères construite en traduisant chaque caractère :
+\begin{itemize}
+\item une lettre ASCII (minuscule ou majuscule) est inchangée ;
+\item un chiffre décimal est inchangé ;
+\item les caractères « \_ »,  « . » et  « \$ » sont inchangés ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
+\end{itemize}
+
+La chaîne obtenue est un identificateur C ou C++ valide si le récepteur commence par une lettre ASCII ou un caractère de soulignement « \_ ».
+
+Par exemple :
+\begin{galgas}
+let x = ["$Z2.3" assemblerRepresentation] # "$Z2.3"
+let y = [":?" assemblerRepresentation] # "_3A__3F_"
+\end{galgas}
+
+Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide et le \refGetterPage{string}{nameRepresentation}.
+
+
+
+
+
 
 
 \subsectionGetter{capacity}{string}
@@ -571,7 +599,7 @@ let x = ["Z23" identifierRepresentation] # "Z_32__33_"
 let y = [":?" identifierRepresentation] # "_3A__3F_"
 \end{galgas}
 
-Voir aussi le \refGetterPage{string}{nameRepresentation} qui laisse inchangé un chiffre décimal.
+Voir aussi le \refGetterPage{string}{nameRepresentation} qui laisse inchangé un chiffre décimal, et le \refGetterPage{string}{assemblerRepresentation}.
 
 
 
@@ -713,12 +741,15 @@ let x = ["Hello" md5] # "8B1A9953C4611296A827ABF8C47804D7"
 getter nameRepresentation -> @string
 \end{galgasbox}
 
-Retourne la valeur du récepteur sous la forme d'une chaîne de caractères qui sera toujours un identificateur C ou C++ valide :
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères construite en traduisant chaque caractère :
 \begin{itemize}
 \item une lettre ASCII (minuscule ou majuscule) est inchangée ;
 \item un chiffre décimal est inchangé ;
+\item le caractère « \_ » est inchangé ;
 \item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « \_ ».
 \end{itemize}
+
+La chaîne obtenue est un identificateur C ou C++ valide si le récepteur commence par une lettre ASCII ou un caractère de soulignement « \_ ».
 
 Par exemple :
 \begin{galgas}
@@ -726,7 +757,7 @@ let x = ["Z23" nameRepresentation] # "Z23"
 let y = [":?" nameRepresentation] # "_3A__3F_"
 \end{galgas}
 
-Voir aussi le \refGetterPage{string}{identifierRepresentation} qui encode un chiffre décimal.
+Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide, et le \refGetterPage{string}{assemblerRepresentation}.
 
 
 
