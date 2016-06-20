@@ -122,7 +122,7 @@ Le paquetage \tpp{lineno} permet de numéroter les lignes sources :
 Et on obtient :
 
 \resetlinenumber
-\begin{linenumbers}\singlespacing\ttfamily
+\begin{linenumbers}\linespread{1}\ttfamily
 \textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
 \textcolor{blue}{\bf BEGIN} \\
 \hspace*{1.2em}\textcolor{blue}{\bf FORWARD}\hspace*{.6em}\textcolor{brown}{5{}0{}}\textcolor{brown}{\bf ;} \\
@@ -314,7 +314,7 @@ Ce qui permettra d'obtenir :
 \subsection{Package \texttt{verbatim}}
 Pour cela, nous avons besoin du paquetage \tpp{verbatim}. Il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
 
-{\singlespacing
+{\linespread{1}
 \begin{verbatim}
 \documentclass [...] {...}
 \usepackage{verbatim}
@@ -351,7 +351,7 @@ La définition de l'environnement \tpp{logocode} est la suivante :
 %\end{verbatim}
 
 \resetlinenumber
-\begin{linenumbers}\singlespacing\ttfamily
+\begin{linenumbers}\linespread{1}\ttfamily
 \textbackslash newwrite\textbackslash tempf{}ile\newline
 \textbackslash makeatletter\newline
 \textbackslash newenvironment\{\textcolor{blue}{logocode}\}\{\%\newline
@@ -415,7 +415,7 @@ Les mots réservés de LOGO sont \colorbox{gray!6}{\ttfamily\textcolor{blue}{\bf
 
 Comme pour l'affichage d'un listing, nous avons besoin du paquetage \tpp{verbatim}. Rappelons qu'il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
 
-{\singlespacing
+{\linespread{1}
 \begin{verbatim}
 \documentclass [...] {...}
 \usepackage{verbatim}
@@ -490,7 +490,7 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 
 
 \resetlinenumber
-\begin{linenumbers}\singlespacing\ttfamily
+\begin{linenumbers}\linespread{1}\ttfamily
 \textbackslash newwrite\textbackslash tempf{}ile\newline
 \textbackslash makeatletter\newline
 \textbackslash newcommand*\textbackslash \textcolor{blue}{logo}\{\%\newline

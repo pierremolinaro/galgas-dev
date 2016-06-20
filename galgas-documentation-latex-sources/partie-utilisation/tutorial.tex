@@ -22,7 +22,7 @@ Un programme LOGO est contenu dans un fichier texte, d'extension \tpp{.logo}. Il
 
 \subsection{Quelques exemples}
 
-Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo} et \refTableauPage{hexagoneOctogoneLogo}). Le \refTableauPage{logoErreurSemantiques} liste des programmes présentant des erreurs sémantiques : le compilateur qui va être écrit décelera ces erreurs.
+Voici quelques exemples de programmes LOGO (\refTableau{carreEtoilePentagoneLogo} et \refTableauPage{hexagoneOctogoneLogo}). Le \refTableauPage{logoErreurSemantiques} liste des programmes présentant des erreurs sémantiques : le compilateur qui va être écrit décèlera ces erreurs.
 
 
 \begin{table}[t]
@@ -871,7 +871,7 @@ Vérifiez que votre analyseur détecte correctement les erreurs. Pour cela, vous
 
 Dans la sémantique dynamique (\refSubsectionPage{semantiqueDynamiqueLOGO}), nous allons prendre en compte la signification de l'exécution d'une instruction. En préliminaire, nous allons compléter l'analyseur lexical pour qu'il envoie la valeur d'une constante entière.
 
-\subsubsection{Préliminaire : les constantes entières}
+\subsection{Préliminaire : les constantes entières}
 
 Modifier maintenant l’analyse syntaxique des constantes entières, à l’image de ce qui a été fait pour les identificateurs :
 \begin{galgas}
@@ -880,10 +880,10 @@ $integer$ ?let @luint unNom
 
 Le type \ggs+@luint+ est une structure composée d’une valeur de type \ggs+@uint+ et d’une valeur de type \ggs+@location+.
 
-\subsubsection{Mise à plat de la liste des instructions}
+\subsection{Mise à plat de la liste des instructions}
 Le but ultime est d'obtenir la liste des instructions du programme principal. Mais quelles sont les instructions qui devront apparaître dans cette liste ? A priori, toutes les instructions décrites dans la \refSubsectionPage{semantiqueDynamiqueLOGO}. En fait, vous pouvez vous passer de l'instruction \tpp{CALL} en insérant dans la liste des instructions non pas cette instruction, mais la liste des instructions de la routine correspondante. Il faut procéder de même lors de construction de la liste de chaque routine.
 
-\subsubsection{Hiérarchie des classes des instructions}
+\subsection{Hiérarchie des classes des instructions}
 Une solution classique pour ce type de situation est de définir une classe abstraite \ggs+@instruction+, et des classes concrètes \ggs+@penUp+, \ggs+@penDown+, \ggs+@rotate+ et \ggs+@forward+ qui héritent de cette classe abstraite.
 
 Éditez le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, dans n’importe quel ordre, GALGAS est indifférent à l’ordre des déclarations) :
@@ -906,7 +906,7 @@ class @rotate : @instruction {
 
 Les trois premières classes n'ont pas de propriété, et les deux dernières une propriété de type \ggs+@luint+.
 
-\subsubsection{Instructions sur les objets de type \texttt{class}}
+\subsection{Instructions sur les objets de type \texttt{class}}
 
 Vous avez besoin de deux instructions relatives aux classes :
 \begin{itemize}
@@ -929,10 +929,10 @@ Les deux instructions peuvent réduites en :
 @instruction instruction = @rotate.new {!valeurAngle}
 \end{galgas}
 
-\subsubsection{Travail à faire}
+\subsection{Travail à faire}
 Compléter les règles de productions pour chaque instruction (sauf l'instruction \tpp{CALL}).
 
-\subsubsection{Le type liste d'instructions}
+\subsection{Le type liste d'instructions}
 Pour construire la liste des instructions, il faut définir un nouveau type dont les valeurs sont des listes.
 
 Éditez le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} et insérer le texte suivant (n’importe où, GALGAS est indifférent à l’ordre des déclarations) :
@@ -974,13 +974,13 @@ maListe += !instruction
 \end{galgas}
 L'ajout s'effectue toujours à la fin de la liste.
 
-\subsubsection{Travail à faire}
+\subsection{Travail à faire}
 Compléter les règles de productions construire la liste des instructions d'une routine et la liste des instructions du programme principal (les instructions CALL sont toujours ignorées).
 
-\subsubsection{L'instruction \texttt{CALL}}
+\subsection{L'instruction \texttt{CALL}}
 Pour prendre en compte l’instruction \tpp{CALL}, nous allons procéder comme suit : d’abord, la définition du type table \ggs+@routineMap+ va être modifier de façon à associer à chaque routine la liste mise à plat des instructions. Ensuite, nous prendrons en compte l’instruction \tpp{CALL} en extrayant de la table des routines la liste des instructions de la routine appelée, et en l’insérant à la fin de la liste courante des instructions.
 
-\subsubsection{Modification du type table \texttt{@routineMap}}
+\subsection{Modification du type table \texttt{@routineMap}}
 Il faut maintenant modifier la définition du type table \ggs+@routineMap+ de façon qu'à chaque nom de routine soit associée sa liste d'instructions :
 
 \begin{galgas}
@@ -1035,7 +1035,7 @@ L'allure du calcul des tracés est la suivante (à placer à la fin de la règle
 
 Pour exprimer l'action à réaliser, des méthodes (définies et implémentées en dehors de leurs classes) vont être utilisées.
 
-\subsubsection{Déclaration de la méthode abstraite}
+\subsection{Déclaration de la méthode abstraite}
 Elle est nommée par exemple \ggs+codeDisplay+ et on peut la déclarer dans n'importe que fichier ; par souci de simplicité, on choisit le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} qui contient les déclarations sémantiques.
 
 \begin{galgas}
@@ -1046,7 +1046,7 @@ abstract method @instruction codeDisplay
   ?!@double ioAngle
 \end{galgas}
 
-\subsubsection{Implémentation d'une héritière concrète}
+\subsection{Implémentation d'une héritière concrète}
 
 Par exemple, pour la classe \ggs+@penUp+, la surcharge de la méthode \ggs+codeDisplay+ est la suivante. Pour la même raison que précédemment, on place cette déclaration dans le fichier de définitions sémantiques \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
 
@@ -1063,7 +1063,7 @@ override method @penUp codeDisplay
 
 L'mplémentation de la méthode héritière concrète pour \ggs+@penDown+ est élémentaire.
 
-\subsubsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
+\subsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
 Il faut accumuler l'angle de rotation dans l'argument \ggs+ioAngle+. Or l'attribut \ggs+mAngle+ de la classe \ggs+@rotate+ n'est pas du type \ggs+@uint+, mais du type \ggs+@luint+. Pour extraire la composante \ggs+@uint+ d’un \ggs+@luint+, on écrit \ggs+[mAngle uint]+. Pour transformer un objet \ggs+unUint+ de type \ggs+@uint+ en \ggs+@double+, on écrit de la même façon \ggs+[unUint double]+. 
 
 
@@ -1072,7 +1072,7 @@ Il faut accumuler l'angle de rotation dans l'argument \ggs+ioAngle+. Or l'attrib
 ioAngle = ioAngle + [[mAngle uint] double]
 \end{galgas}
 
-\subsubsection{Implémentation de l'héritière concrète pour \texttt{@forward}}
+\subsection{Implémentation de l'héritière concrète pour \texttt{@forward}}
 La méthode complète est alors :
 
 \begin{galgas}
@@ -1092,7 +1092,7 @@ override method @forward codeDisplay
 }
 \end{galgas}
 
-\subsubsection{Calcul des tracés}
+\subsection{Calcul des tracés}
 Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'appel de la méhode \ggs+codeDisplay+ pour chaque instruction.
 \begin{galgas}
   ...
@@ -1107,10 +1107,10 @@ Le calcul des tracés dans \tpp{logo-syntax.galgas} peut être complété par l'
 
 Maintenant vous pouvez effectuer la compilation GALGAS et la compilation C++.
 
-\subsubsection{Exemple de fichier SVG}
+\subsection{Exemple de fichier SVG}
 Voici à titre d'exemple le fichier SVG qui doit être engendré par la compilation de l'exemple \tpp{carre.logo} :
 
-{\singlespacing
+{\linespread{1}
 \begin{verbatim}
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -1125,9 +1125,9 @@ Voici à titre d'exemple le fichier SVG qui doit être engendré par la compilat
 \end{verbatim}
 }
 
-\subsubsection{Template de génération du fichier SVG}
+\subsection{Template de génération du fichier SVG}
 Créer un fichier \tpp{chezmoi/logo/galgas-sources/logo-svg.galgasTemplate} et y insérer le contenu suivant :
-{\singlespacing
+{\linespread{1}
 \begin{verbatim}
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -1145,7 +1145,7 @@ Notez :
   \item les deux symboles \ggs+TITLE+ et \ggs+DRAWINGS+.
 \end{itemize}
 
-\subsubsection{Déclarer un template en GALGAS}
+\subsection{Déclarer un template en GALGAS}
 Dans le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}, insérer la déclaration du template :
 \begin{galgas}
 filewrapper generationTemplate in "." {
@@ -1159,7 +1159,7 @@ filewrapper generationTemplate in "." {
 
 En GALGAS, un filewrapper est une structure de données qui est l'image d'un répertoire contenant des fichiers et des sous répertoires. Un fichier particulier est un template ; la déclaration mentionne les symboles (ici \ggs+TITLE+ et \ggs+DRAWINGS+) comme arguments d'entrée, et le contenu est analysé par GALGAS de façon à vérifier qu'il est bien formé (usage correct des caractères \tpp{\%}).
 
-\subsubsection{Construire la liste des instructions SVG}
+\subsection{Construire la liste des instructions SVG}
 La liste des instructions de tracé est accumulée dans une chaîne de caractères. Modifier toutes les méthodes \ggs+codeDisplay+ de façon à construire cette chaîne en ajoutant un argument formel en entrée/sortie : \tpp{?!@string SVG}. Il faut modifier la méthode \ggs+codeDisplay+ de la classe \ggs+@forward+ pour ajouter la génération de code :
 
 \begin{galgas}
