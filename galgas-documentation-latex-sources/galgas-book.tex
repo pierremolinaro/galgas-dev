@@ -66,8 +66,9 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Interligne 1,5 ligne
-\linespread{1.5}
+%--- Interligne 1,5 ligne (voir http://tex.stackexchange.com/questions/819/double-line-spacing)
+\usepackage{setspace}
+\onehalfspacing
 
 % Voir "Une courte introduction à Latex2e", § 6.4
 
@@ -130,7 +131,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{array}
+%\usepackage{array}
 
 %  http://en.wikibooks.org/wiki/LaTeX/Colors
 \usepackage[dvipsnames, svgnames, table]{xcolor} % À placer avant \usepackage{listings}
@@ -140,10 +141,9 @@
 %  - le titre est en italique.
 \usepackage[font=it, labelfont=bf]{caption}
 
-%--- Par défaut, le paquetage nomme "Table" les tableaux. La commande
-%   suivante impose le nom "Tableau"
+%--- Par défaut, le caption de chaque tableau est préfixé par « Tab. ». La commande suivante impose le nom "Tableau"
 % Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
-%\addto\captionsfrench{\def\tablename{Tableau}}
+\addto\captionsfrench{\def\tablename{Tableau}}
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UN TABLEAU
 % La référence au tableau "nom-du-tableau" est définie par \labelTableau{nom-du-tableau}
@@ -164,20 +164,29 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   P A Q U E T A G E S                                                                                                 *
+%   E X T E N S I O N S    P O U R    P R É S E N T E R    L E S    F I G U R E S                                       *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+%--- Par défaut, le caption de chaque figure est préfixé par « Fig. ». La commande suivante impose le nom "Figure"
+% Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
+\addto\captionsfrench{\def\figurename{Figure}}
+
+% Grâce à ce paquetage, il est possible de placer plusieurs figures, tables, côte à côte.
+% Voir http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+%\usepackage{subfig}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A Q U E T A G E S                                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
 \usepackage{ifthen}
 
 %--- Affiche les sections dans le log
 \usepackage{dprogress}
-
-% Grâce à ce paquetage, il est possible de placer plusieurs figures, tables, côte à côte.
-% Voir http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-%\usepackage{subfig}
 
 \usepackage{listings} % À placer après \usepackage[table]{xcolor}
 
@@ -263,6 +272,49 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
+%   C O N T R Ô L E    D E   L A   T A B L E   D E S   M A T I È R E S                                                  *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% http://tex.stackexchange.com/questions/50471/question-about-indent-lengths-in-toc
+\usepackage{tocloft}
+
+%--- Gérer de l'indentation dans la table des matières
+%\cftsetindents{part}{0.0em}{2.0em}
+\cftsetindents{chapter}{0.0em}{2.0em}
+\cftsetindents{section}{2.0em}{3.5em}
+\cftsetindents{subsection}{5.5em}{4.5em}
+
+%    Pour faire figurer la liste des tableaux (et la table des matières) dans la table des matières
+\usepackage{tocbibind}
+
+%--- Pour afficher dans la tables des matières jusqu'au niveau 2 (subsection)
+\setcounter{tocdepth}{2}
+
+%--- Par défaut, les parties ne sont pas numérotées dans la table des matières ; la commande suivante
+%    ajoute une numération en chiffres romains
+%    http://tex.stackexchange.com/questions/193809/add-part-string-to-part-list-in-toc
+\makeatletter
+\def\@part[#1]#2{\ifnum \c@secnumdepth >-2\relax
+        \refstepcounter{part}%
+        \addcontentsline{toc}{part}{\Roman{part} \thepart
+        \hspace{1em}#1}\else
+        \addcontentsline{toc}{part}{#1}\fi
+   \markboth{}{}%
+   {\centering
+    \interlinepenalty \@M
+    \ifnum \c@secnumdepth >-2\relax
+      \huge\bf \partname~\thepart
+    \par
+    \vskip 20\p@\fi
+    \Huge \bf
+    #2\par}\@endpart}
+\makeatother
+
+%\renewcommand\cftpartpresnum{Part~}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
 %   G E S T I O N    D E    L ' I N D E X                                                                               *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -276,17 +328,6 @@
 % Voir le fichier de commande "build.command"
 \usepackage{makeidx}
 \makeindex
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   T O C B I D I N D                                                                                                   *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%    Pour faire figurer la liste des tableaux (et la table des matières) dans la table des matières
-\usepackage{tocbibind}
-
-\setcounter{tocdepth}{3}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
