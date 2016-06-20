@@ -1,7 +1,12 @@
+%!TEX TS-program = personallatex
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass[a4paper, 11pt, openany]{book}
+% Le script utilisé pour compiler est :
+%       xelatex --file-line-error --shell-escape --synctex=1
+
+\documentclass[a4paper, 10pt, openany]{book}
 \usepackage{verbatim}
+\usepackage{filecontents}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -9,14 +14,34 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Latex demande ce paquetage pour mieux afficher le caractère "°" et \textquotesingle "'"
-\usepackage{textcomp}
+%--------------------------- Pour compilation LaTex
 
 %--- Ce paquetage permet d'effectuer certaines césures, et ainsi d'éviter les messages "Overfull \hbox"
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 
 %--- Paquetage pour le codage des sources en UTF-8
-\usepackage[utf8x]{inputenc}
+%\usepackage[utf8x]{inputenc}
+
+%--- Paquetage pour imposer les réglages français
+%\usepackage[frenchb]{babel}
+
+%--- Polices
+%%\usepackage{fouriernc}
+%%\usepackage[scaled=0.875]{helvet}
+
+%\usepackage[scaled=0.85, default]{sourcecodepro}
+%\usepackage[scaled=1.0, default]{sourcesanspro}
+
+
+%--------------------------- Pour compilation XeLaTex
+% http://www.tuteurs.ens.fr/logiciels/latex/xetex.html
+\RequirePackage{etex}
+\usepackage{fontspec}
+\setmainfont{Verdana}[Ligatures=TeX]
+\setsansfont{Courier}[Ligatures=NoCommon]
+\setmonofont{Menlo}[Ligatures=NoCommon]
+\usepackage{polyglossia}
+\setdefaultlanguage{french}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -24,17 +49,16 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Paquetage pour imposer les réglages français
-%\usepackage[francais]{babel}
-\usepackage[frenchb]{babel}
+%--- Latex demande ce paquetage pour mieux afficher le caractère "°" et \textquotesingle "'"
+\usepackage{textcomp}
 
 %--- Contrôle de l'indentation et de la séparation des paragraphes
 \setlength{\parindent}{0pt} 
 %\setlength{\parskip}{1.2ex} % Reporté avant les chapitres
 
 %--- Ajouter une séparation à la fin des itemize
-\let\EndItemize\enditemize
-\def\enditemize{\EndItemize\vspace{1.2ex}}
+%\let\EndItemize\enditemize
+%\def\enditemize{\EndItemize\vspace{1.2ex}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -43,8 +67,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Interligne 1,5 ligne
-\usepackage{setspace}
-\onehalfspacing
+\linespread{1.5}
 
 % Voir "Une courte introduction à Latex2e", § 6.4
 
@@ -87,18 +110,6 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   C H O I X    D E    L A    P O L I C E                                                                              *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%\usepackage{fouriernc}
-%\usepackage[scaled=0.875]{helvet}
-
-\usepackage[scaled=0.85, default]{sourcecodepro}
-\usepackage[scaled=1.0, default]{sourcesanspro}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   E X T E N S I O N S    P O U R    L ' É C R I T U R E    D E S     F O R M U L E S    M A T H É M A T I Q U E S     *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -119,7 +130,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%\usepackage{array}
+\usepackage{array}
 
 %  http://en.wikibooks.org/wiki/LaTeX/Colors
 \usepackage[dvipsnames, svgnames, table]{xcolor} % À placer avant \usepackage{listings}
@@ -132,7 +143,7 @@
 %--- Par défaut, le paquetage nomme "Table" les tableaux. La commande
 %   suivante impose le nom "Tableau"
 % Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
-\addto\captionsfrench{\def\tablename{Tableau}}
+%\addto\captionsfrench{\def\tablename{Tableau}}
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UN TABLEAU
 % La référence au tableau "nom-du-tableau" est définie par \labelTableau{nom-du-tableau}
@@ -157,7 +168,6 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{filecontents}
 
 %--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
 \usepackage{ifthen}
@@ -248,8 +258,8 @@
 \renewcommand{\headrulewidth}{0.5 pt}
 \renewcommand{\footrulewidth}{0.5 pt}
 
-\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{}.} #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\bsc{\thesection{}.} #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{}.} #1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\bsc{\thesection{}.} #1}{}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -285,7 +295,8 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Pour les hyperliens, et le contrôle de la génération PDF 
-\usepackage{hyperref}
+\usepackage[xetex]{hyperref}
+\usepackage{bookmark} % see http://tex.stackexchange.com/questions/176113/problem-with-in-pdf-bookmark-under-xelatex
 \hypersetup{colorlinks=true}
 \hypersetup{linkcolor=blue}
 \hypersetup{breaklinks=true}

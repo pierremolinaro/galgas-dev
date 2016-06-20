@@ -12,7 +12,7 @@ rm -f galgas-book.pdf ref.* galgas-book.ilg galgas-book.ind &&
 rm -f galgas-book.aux galgas-book.idx galgas-book.lof galgas-book.lot galgas-book.toc &&
 rm -f galgas-book.log galgas-book.out galgas-book.synctex.gz &&
 #--- First pass
-PDF_LATEX=`which pdflatex` &&
+PDF_LATEX=`which xelatex` &&
 MAKE_INDEX=`which makeindex` &&
 $PDF_LATEX --file-line-error --shell-escape galgas-book.tex &&
 touch ref.idx &&
