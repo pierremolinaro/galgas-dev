@@ -6,7 +6,6 @@
 
 \documentclass[a4paper, 10pt, openany]{book}
 \usepackage{verbatim}
-\usepackage{filecontents}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -182,6 +181,8 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+\usepackage{filecontents}
+
 %--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
 \usepackage{ifthen}
 
@@ -328,6 +329,15 @@
 % Voir le fichier de commande "build.command"
 \usepackage{makeidx}
 \makeindex
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   N A M E R E F                                                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+%  http://tex.stackexchange.com/questions/6238/get-the-title-instead-of-the-number-of-a-referenced-chapter-section
+
+\usepackage{nameref}% Only if hyperref isn't loaded
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
