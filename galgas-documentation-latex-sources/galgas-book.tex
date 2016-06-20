@@ -1,6 +1,6 @@
 %!TEX encoding = UTF-8 Unicode
 
-\documentclass [a4paper, 11pt, openany] {book}
+\documentclass[a4paper, 11pt, openany]{book}
 \usepackage{verbatim}
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -9,18 +9,14 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Paquetage pour le codage des sources en UTF-8
-\usepackage[utf8]{inputenc}
-
 %--- Latex demande ce paquetage pour mieux afficher le caractère "°" et \textquotesingle "'"
 \usepackage{textcomp}
 
 %--- Ce paquetage permet d'effectuer certaines césures, et ainsi d'éviter les messages "Overfull \hbox"
 \usepackage[T1]{fontenc}
 
-\usepackage{lmodern}
-
-\usepackage{filecontents}
+%--- Paquetage pour le codage des sources en UTF-8
+\usepackage[utf8x]{inputenc}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -115,18 +111,7 @@
 %--- Paquetage "IEEEtrantools"
 % Pour créer des tableaux d'équations, bien alignées
 % Voir courte-intro-latex.pdf, page §3.5.2 page 83
-\usepackage[retainorgcmds]{IEEEtrantools}
-
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   P A Q U E T A G E    « I F T H E N »                                                                                *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
-\usepackage{ifthen}
-
+%\usepackage[retainorgcmds]{IEEEtrantools}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -134,7 +119,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{array}
+%\usepackage{array}
 
 %  http://en.wikibooks.org/wiki/LaTeX/Colors
 \usepackage[dvipsnames, svgnames, table]{xcolor} % À placer avant \usepackage{listings}
@@ -168,19 +153,21 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   P A Q U E T A G E    « S U B F I G »                                                                                *
+%   P A Q U E T A G E S                                                                                                 *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{filecontents}
+
+%--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
+\usepackage{ifthen}
+
+%--- Affiche les sections dans le log
+\usepackage{dprogress}
 
 % Grâce à ce paquetage, il est possible de placer plusieurs figures, tables, côte à côte.
 % Voir http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-\usepackage{subfig}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   P A Q U E T A G E    « L I S T I N G S »                                                                            *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
+%\usepackage{subfig}
 
 \usepackage{listings} % À placer après \usepackage[table]{xcolor}
 
@@ -196,12 +183,12 @@
 
 \usepackage{tikz}
 \usepackage{tkz-graph}
+%\usepackage{pgfplots}
 \usetikzlibrary{calc}
-\usepackage{pgfplots}
 \usetikzlibrary{arrows}
 \usetikzlibrary{decorations}
-\usetikzlibrary{decorations.pathmorphing}
-\usetikzlibrary{shapes.callouts}
+%\usetikzlibrary{decorations.pathmorphing}
+%\usetikzlibrary{shapes.callouts}
 \usetikzlibrary{shapes.misc}
 \usetikzlibrary{automata}
 \usetikzlibrary{positioning}
@@ -215,7 +202,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{relsize}
+%\usepackage{relsize}
 
 \input{galgas-book-latex-inclusions/galgas-language-definitions.tex}
 
@@ -286,8 +273,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%    Pour faire figurer la liste des tableaux (et la table des matières)
-%    dans la table des matières
+%    Pour faire figurer la liste des tableaux (et la table des matières) dans la table des matières
 \usepackage{tocbibind}
 
 \setcounter{tocdepth}{3}
@@ -311,23 +297,22 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 % Au lieu d'écrire \chapter{titre-chapitre}, on écrit \chapterLabel{titre-chapitre}{label-chapitre}
-\newcommand \chapterLabel[2]{\chapter{#1}\label{chapter:#2}}
+\newcommand\chapterLabel[2]{\chapter{#1}\label{chapter:#2}}
 
 % \refChapter{label-chapter} ---> "chapitre n"
-\newcommand \refChapter[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1}}}
+\newcommand\refChapter[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1}}}
 
-\newcommand \refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} page \pageref{chapter:#1}}}
+\newcommand\refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} page \pageref{chapter:#1}}}
 
 % Au lieu d'écrire \section{titre-section}, on écrit \sectionLabel{titre-section}{label-section}
-\newcommand \sectionLabel[2]{\section{#1}\label{sec:#2}}
-
+\newcommand\sectionLabel[2]{\section{#1}\label{sec:#2}}
 
 % \refSectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la section
 \newcommand\refSectionPage[1]{\hyperref[sec:#1]{section \ref*{sec:#1} page \pageref{sec:#1}}}
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SUB-SECTION
 % Au lieu d'écrire \subsection{titre-section}, on écrit \subsectionLabel{titre-section}{label-section}
-\newcommand \subsectionLabel[2]{\subsection{#1}\label{subsec:#2}}
+\newcommand\subsectionLabel[2]{\subsection{#1}\label{subsec:#2}}
 
 
 % \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
@@ -335,8 +320,7 @@
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SUB-SUB-SECTION
 % Au lieu d'écrire \subsection{titre-section}, on écrit \subsectionLabel{titre-section}{label-section}
-\newcommand \subsubsectionLabel[2]{\subsubsection{#1}\label{subsubsec:#2}}
-
+\newcommand\subsubsectionLabel[2]{\subsubsection{#1}\label{subsubsec:#2}}
 
 % \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
 \newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
@@ -362,7 +346,6 @@
 % \refFigurePageSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z page n" où x.y est le n° de la figure
 \newcommand\refFigurePageSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
 
-
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   AFFICHAGE D'UNE OPTION DE LA LIGNE DE COMMANDE                                                                      *
@@ -370,15 +353,6 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand\optionGGS[1]{\colorbox{gray!10}{\small\bf\textbf{#1}}}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   D P R O G R E S S                                                                                                   *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%--- Affiche les sections dans le log
-\usepackage{dprogress}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
