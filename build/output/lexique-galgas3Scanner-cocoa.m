@@ -402,10 +402,10 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
       }
       mTokenCode = galgas3Scanner_1_type_5F_name ;
     }else if (scanningOk && ([self testForInputChar:37])) {
-      if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57])) {
+      if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
+          if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputChar:45] || [self testForInputChar:95] || [self testForInputFromChar:48 toChar:57])) {
           }else{
             mLoop = NO ;
           }
@@ -713,10 +713,10 @@ static NSInteger search_into_galgas_33_Scanner_galgasKeyWordList (NSString * inS
         mTokenCode = galgas3Scanner_1__3C__3D_ ;
       }else if (scanningOk && ([self testForInputChar:60])) {
         mTokenCode = galgas3Scanner_1__3C__3C_ ;
-      }else if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90])) {
+      }else if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter])) {
         do {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, mPreviousChar) ;
-          if (scanningOk && ([self testForInputFromChar:97 toChar:122] || [self testForInputFromChar:65 toChar:90] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
+          if (scanningOk && ([self testForCharWithFunction:isUnicodeLetter] || [self testForInputFromChar:48 toChar:57] || [self testForInputChar:95])) {
           }else{
             mLoop = NO ;
           }

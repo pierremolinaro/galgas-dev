@@ -36,7 +36,8 @@ Il y a une seconde option à ajouter dans le projet GALGAS : \ggs+%applicationBu
 \begin{table}[t]
   \centering
   \begin{tabular}{rlll}
-    \textbf{Option} & \textbf{Version SDK Mac OS} & \textbf{Version de deploiement} &  \textbf{Gestion mémoire}\\
+    \textbf{Option} & \textbf{Version SDK Mac OS} & \textbf{Version de}  &  \textbf{Gestion mémoire}\\
+                    &                             & \textbf{déploiement} &                          \\
     \ggs+%SnowLeopard+ & \texttt{SnowLeopard} (10.6) & 10.6  & \emph{Garbage Collector}\\
     \ggs+%Lion+ & \texttt{Lion} (10.7) & 10.7 & \emph{ARC}\\
     \ggs+%MountainLion+ & \texttt{Mountain Lion} (10.8) & 10.8 & \emph{ARC}\\
@@ -44,6 +45,7 @@ Il y a une seconde option à ajouter dans le projet GALGAS : \ggs+%applicationBu
     \ggs+%Yosemite+ & \texttt{Yosemite} (10.10) & 10.10  & \emph{ARC}\\
     \ggs+%YosemiteElCapitan+ & \texttt{El Capitan} (10.11) & 10.10  & \emph{ARC}\\
     \ggs+%ElCapitan+ & \texttt{El Capitan} (10.11) & 10.11  & \emph{ARC}\\
+    \ggs+%Sierra+ & \texttt{Sierra} (10.12) & 10.12  & \emph{ARC}\\
     \ggs+%LatestMacOS+ & -- & -- & --\\
   \end{tabular}
   \caption{Options du projet GALGAS indiquant la version Mac OS}
@@ -213,7 +215,7 @@ Note : maintenant, la compilation GALGAS s'effectue sans erreur.
 
 \subsection{Règle d'analyse des fichiers sources}
 
-La règle d'analyse des fichiers source doit mentionner dans l'en-tête la grammaire utilisée pour l'analyse (pour l'exemple du langage LOGO, la troisième ligne \ggs+grammar logo_grammar+ remplit ce rôle).
+La règle d'analyse des fichiers source doit mentionner dans l'en-tête la grammaire utilisée pour l'analyse (pour l'exemple du langage LOGO, c'est le rôle de la troisième ligne \ggs+grammar logo_grammar+).
 
 \begin{galgas}
 case . "logo"
@@ -224,7 +226,7 @@ grammar logo_grammar
 }
 \end{galgas}
 
-Quand le mode d'exécution (absence de l'option \tpp{-{}-mode}) est le mode par défaut, les instructions de la règle sont exécutées. Ci-dessus, la seule instruction est \ggs+grammar logo_grammar in inSourceFile+ (ligne 5).
+Quand le mode d'exécution (absence de l'option \tpp{-{}-mode}) est le mode par défaut, les instructions de la règle sont exécutées. Ci-dessus, la seule instruction est l'instruction \ggs+grammar logo_grammar in inSourceFile+ (ligne 5).
 
 Quand le mode d'exécution (présence de l'option \tpp{-{}-mode}) n'est pas le mode par défaut, les instructions de la règle ne sont pas exécutées, et les opérations sont guidées par la grammaire indiquée ligne 3. Dans le cas de l'indexation, l'exécution construit l'indexation du fichier source.
 
@@ -269,19 +271,19 @@ Considérons d'abord la déclaration de routine. La règle de l'analyseur syntax
 \begin{galgas}
 rule <routine_definition> {
   $ROUTINE$
-  $identifier$ ?let @lstring routineName
+  $identifier$ ?let routineName
   $BEGIN$
   <instruction_list>
   $END$
 }
 \end{galgas}
 
-Le nom de la routine est défini par l'instruction \ggs+$identifier$ ?let @lstring routineName+ : on la modifie alors de façon à signifier que l'indentificateur doit être indéxé comme une définition de routine :
+Le nom de la routine est défini par l'instruction \ggs+$identifier$ ?let routineName+ : on la modifie alors de façon à signifier que l'indentificateur doit être indéxé comme une définition de routine :
 
 \begin{galgas}
 rule <routine_definition> {
   $ROUTINE$
-  $identifier$ ?let @lstring routineName indexing routineDefinition
+  $identifier$ ?let routineName indexing routineDefinition
   $BEGIN$
   <instruction_list>
   $END$

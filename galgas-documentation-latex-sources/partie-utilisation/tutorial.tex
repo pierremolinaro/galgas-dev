@@ -13,6 +13,39 @@ Il est rédigé pour être réalisé sur Unix (Linux, Mac OS X).
 
 
 
+\section{Description rapide de GALGAS}
+
+GALGAS est un générateur de compilateur. Vous allez donc écrire l'analyseur lexical du langage LOGO, son analyseur syntaxique, sa sémantique statique, et sa sémantique dynamique (la génération de code). Ces descriptions sont contenues dans des fichiers texte encodés obligatoirement en UTF-8\footnote{Vous pourrez ainsi utiliser des caractères accentués ou des lettres grecques, cyrilliques, ... dans vos identificateurs.}. Il y a deux types de fichiers source GALGAS :
+\begin{itemize}
+\item le fichier \emph{projet}, d'extension \tpp{.galgasProject} ;
+\item les fichiers contenant les descriptions des analyseurs lexicaux, syntaxiques, sémantiques, d'extension \tpp{.galgas}.
+\end{itemize}
+
+Le fichier projet est unique dans un projet et référence tous les fichiers d'extension \tpp{.galgas}. Aussi la compilation GALGAS s'effectue en compilant le fichier projet. Cette compilation engendre des fichiers C++, et il faut effectuer une compilation C++ pour obtenir un binaire exécutable.
+
+les descriptions des analyseurs lexicaux, syntaxiques, sémantiques sont disposés dans des fichiers d'extension \tpp{.galgas} de manière quelconque, c'est-à-dire que l'ordre des descriptions et leur répartition dans les différents fichiers sont indifférentes : par exemple, la déclaration d'un classe et de ses héritières peuvent être dans un même fichier (et dans un ordre quelconque), ou dans des fichiers différents.
+
+Pour simplifier la mise en œuvre du développement, l'option \tpp{--create-project} du compilateur GALGAS permet de créer une arborescence de fichiers contenant un projet GALGAS prêt à être compilé. Ce projet contient aussi des scripts Python permet de lancer facilement la compilation C++.
+
+Ce tutorial est organisé comme suit :
+\begin{itemize}
+  \item la \refSectionPage{presentation-logo} présente de manière informelle le langage LOGO ;
+  \item la \refSectionPage{installationGalgas} vous guide pour installer GALGAS sur votre ordinateur ;
+  \item la \refSectionPage{creationProjetLOGO} décrit comment utiliser l'option \tpp{--create-project} pour créer le projet GALGAS, et le compiler et l'exécuter ;
+  \item la \refSectionPage{analyseurLexicalLOGO} vous explique comment coder l'analyseur lexical du langage LOGO ;
+  \item la \refSectionPage{analyseurSyntaxiqueLOGO} pour coder l'analyseur syntaxique du langage LOGO ;
+  \item la \refSectionPage{semantiqueStatiqueLOGO} pour coder la sémantique statique du langage LOGO ;
+  \item la \refSectionPage{semantiqueDynamiqueLOGO} pour coder la sémantique statique du langage LOGO ;
+  \item et pour finir, la \refSectionPage{generationCodeLOGO} pour coder la génération de code en obtenant un compilateur qui engendre un fichier SVG.
+\end{itemize}
+
+À l'issue de ce tutorial, vous aurez un compilateur complet  du langage LOGO qui effectue des vérifications sémantiques et qui engendre un fichier SVG pour chaque source LOGO qui lui est soumis.
+
+
+
+
+
+
 \sectionLabel{Présentation du langage LOGO}{presentation-logo}
 
 Vous trouverez une description précise du langage à la fin de cette section. Un programme LOGO décrit le déplacement d'une tortue dans un plan. Celle-ci peut effectuer des déplacements en ligne droite et des rotations sur place. La tortue est munie d'un crayon, qui peut être abaissé ou levé. Un déplacement provoque le tracé d'un segment de droite si le crayon est abaissé.
@@ -194,7 +227,7 @@ L'exécution de chaque instruction a l'effet suivant :
 
 
 
-\section{Installation de GALGAS}
+\sectionLabel{Installation de GALGAS}{installationGalgas}
 
 Aller sur la page \url{http://galgas.rts-software.org/download/}.
 
@@ -275,7 +308,7 @@ Sur Mac :
 
 
 
-\section{Création du squelette du compilateur LOGO}
+\sectionLabel{Création du squelette du compilateur LOGO}{creationProjetLOGO}
 
 Un projet GALGAS nécessite la mise en place de nombreux fichiers, de créer des makefile pour différentes plateformes, … 
 
@@ -395,7 +428,7 @@ Sous Mac, vous pouvez utiliser le projet Xcode engendré, et ainsi créer une ap
 Dans tous les cas, comme les analyseurs lexicaux et syntaxiques sont vides après la création, les exécutables ainsi obtenus ne sont pas exploitables.
 
 
-\section {Analyseur lexical}
+\sectionLabel{Analyseur lexical}{analyseurLexicalLOGO}
 
 
 Dans cette partie, vous allez écrire l’analyseur lexical du langage LOGO. Pour cela, vous allez modifier le fichier \tpp{chezmoi/logo/galgas-sources/logo-lexique.galgas}.
@@ -564,7 +597,7 @@ Travail à faire
 
 Note : l'option \tpp{-{}-help} permet d'afficher la liste des options de l'exécutable. 
 
-\section{Analyseur syntaxique}
+\sectionLabel{Analyseur syntaxique}{analyseurSyntaxiqueLOGO}
 
 Deux fichiers sont concernés :
 \begin{itemize}
@@ -666,7 +699,13 @@ Si des erreurs d'analyse de la grammaire surviennent, vous pouvez utiliser l'opt
 
 Vous pouvez utiliser l'option \tpp{-{}-mode=syntax-only} pour afficher la trace de l'analyse syntaxique.
 
-\section{Sémantique statique}
+
+
+
+
+
+
+\sectionLabel{Sémantique statique}{semantiqueStatiqueLOGO}
 
 Le but de cette étape est d'enrichir les fichiers GALGAS de façon à vérifier la sémantique statique du langage LOGO (\refSubsectionPage{semantiqueStatiqueLOGO}).
 
@@ -867,7 +906,11 @@ Vérifiez que votre analyseur détecte correctement les erreurs. Pour cela, vous
 
 
 
-\section{Sémantique dynamique}
+
+
+
+
+\sectionLabel{Sémantique dynamique}{semantiqueDynamiqueLOGO}
 
 Dans la sémantique dynamique (\refSubsectionPage{semantiqueDynamiqueLOGO}), nous allons prendre en compte la signification de l'exécution d'une instruction. En préliminaire, nous allons compléter l'analyseur lexical pour qu'il envoie la valeur d'une constante entière.
 
@@ -1016,7 +1059,14 @@ end
 
 L'instruction \ggs+for+ permet d’énumérer un objet de type liste. Le corps de la boucle (entre \ggs+do+ et \ggs+end+) est exécuté une fois pour chaque élément \ggs+i+ de la liste.
 
-\section{Génération de code}
+
+
+
+
+
+
+
+\sectionLabel{Génération de code}{generationCodeLOGO}
 
 Dans ce TP, la génération de code est divisée en deux étapes : d'abord, la succession des segments à tracer est simplement affichée sur le terminal ; dans un second temps, un fichier SVG est engendré au moyen d'un template.
 
