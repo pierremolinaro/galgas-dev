@@ -30,11 +30,13 @@ Un identificateur commence par une lettre minuscule ou majuscule, suivie de zér
 
 \ggs=element=, \ggs=element0=, \ggs=element_0=, \ggs=instructionList=, \ggs=instruction_list=.
 
-Toutes les lettres Unicode sont accéptées : il est possible d'utiliser des lettres accentuées, des lettres grecques, ... Par exemple :
+Toutes les lettres Unicode sont acceptées : il est possible d'utiliser des lettres accentuées, des lettres grecques, ... Par exemple :
 
 \begin{galgas}
 let constanteAccentuée = 12
 let π = 3.14
+let α = 1
+var переменная = 7
 \end{galgas}
 
 
@@ -114,7 +116,7 @@ Un \emph{non terminal} d'une grammaire est un identificateur placé entre les ca
  <expression>, <instruction>
 \end{galgas}
 
-
+Les lettres Unicode y sont acceptées.
 
 
 
@@ -122,15 +124,15 @@ Un \emph{non terminal} d'une grammaire est un identificateur placé entre les ca
 
 \section{Les terminaux}
 
-Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères \texttt{\$}. Exemple :
+Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères «~\texttt{\$}~». Exemple :
 
 \begin{galgas}
  $identifier$, $constant$
 \end{galgas}
 
-Tout caractère ASCII imprimable, sauf le caractère \texttt{\$}, peut apparaître dans un terminal :
+Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD}, sauf le caractère «~\texttt{\$}~», peut apparaître dans un terminal :
 \begin{galgas}
- $=$, $($, $--$
+ $=$, $($, $--$, $≠$
 \end{galgas}
 
 
@@ -279,13 +281,14 @@ Par exemple :
 
 Un attribut :
 \begin{itemize}
-  \item commence par un caractère \texttt{\%} ;
-  \item est suivi par une ou plusieurs lettres.
+  \item commence par un caractère «~\texttt{\%}~» ;
+  \item est suivi par une lettre Unicode ;
+  \item est suivi par une ou plusieurs lettres Unicode, chiffres décimaux, «~\texttt{-}~» ou «~\texttt{\_}~».
 \end{itemize}
 
 Par exemple :
 \begin{galgas}
- %once, %translate
+ %once, %translate, %héhé-π
 \end{galgas}
 
 

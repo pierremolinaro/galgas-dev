@@ -58,6 +58,7 @@ cGraphNode::~ cGraphNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
 }
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cSharedGraph : public C_SharedObject {

@@ -359,10 +359,10 @@ message attributeError : "in an attribute name, a letter or a digit should follo
 
 rule '%' {
   select
-  case 'a'->'z' | 'A'->'Z' | '0'->'9' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a'->'z' | 'A'->'Z' | '-'  | '_' | '0'->'9' :
+    while isUnicodeLetter | '-' | '_' | '0'->'9' :
     end
   default
     error attributeError
@@ -640,10 +640,10 @@ rule '<' {
     send $<=$
   case '<' :
     send $<<$
-  case 'a' -> 'z' | 'A' ->'Z' :
+  case isUnicodeLetter :
     repeat
       enterCharacterIntoString (!?tokenString !* )
-    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    while isUnicodeLetter | '0' -> '9' | '_' :
     end
     select
     case '>' :

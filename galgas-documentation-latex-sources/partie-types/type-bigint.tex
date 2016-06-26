@@ -378,8 +378,10 @@ getter @bigint spacedString ?@uint inSeparation -> @string
 Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « \texttt{-} ». Par exemple :
 
 \begin{galgas}
-message [123_456_789_012_345_678G spacedString !3] + "\n" # "123 456 789 012 345 678"
-message [-123_456_789_012_345_678G spacedString !3] + "\n" # "-123 456 789 012 345 678"
+message [123_456_789_012_345_678G spacedString !3] + "\n"
+# "123 456 789 012 345 678"
+message [-123_456_789_012_345_678G spacedString !3] + "\n"
+# "-123 456 789 012 345 678"
 \end{galgas}
 
 
@@ -540,10 +542,10 @@ getter @bigint extract32ForUnsignedRepresentation -> @uintlist
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
 \begin{galgas}
-# Parcours dans le sens des indices croissants : little endian
 @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract32ForUnsignedRepresentation
 ]
+# Parcours dans le sens des indices croissants : little endian
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -585,10 +587,10 @@ Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément �
 Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
 
 \begin{galgas}
-# Parcours dans le sens des indices croissants : little endian
-@uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+let @uintlist a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract32ForSignedRepresentation
 ]
+# Parcours dans le sens des indices croissants : little endian
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -607,8 +609,8 @@ message s + "\n" # 0x00FFEEDD 0xCCBBAA99 0x88776655 0x44332211
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
 
 \begin{galgas}
+let @uintlist a = [-0x55_4433_2211G extract32ForSignedRepresentation]
 # Parcours dans le sens des indices croissants : little endian
-@uintlist a = [-0x55_4433_2211G extract32ForSignedRepresentation]
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -637,10 +639,10 @@ getter @bigint extract64ForUnsignedRepresentation -> @uint64list
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uint64list!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
 
 \begin{galgas}
-# Parcours dans le sens des indices croissants : little endian
-@uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+let @uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract64ForUnsignedRepresentation
 ]
+# Parcours dans le sens des indices croissants : little endian
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -682,10 +684,10 @@ Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément �
 Si la valeur du récepteur est positive, alors son bit de poids fort est zéro. Ce bit est le bit le plus significatif du dernier élément de la liste renvoyée.
 
 \begin{galgas}
-# Parcours dans le sens des indices croissants : little endian
-@uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
+let @uint64list a = [0xFF_EEDD_CCBB_AA99_8877_6655_4433_2211G
   extract64ForSignedRepresentation
 ]
+# Parcours dans le sens des indices croissants : little endian
 var s = ""
 for (n) in a
   do s += [n hexString]
@@ -704,8 +706,8 @@ message s + "\n" # 0xFFEEDDCCBBAA99 0x8877665544332211
 Un nombre négatif est représenté sous la forme de son complément à deux, son bit de poids fort est toujours un $1$ : 
 
 \begin{galgas}
+let @uint64list a = [-0x55_4433_2211G extract64ForSignedRepresentation]
 # Parcours dans le sens des indices croissants : little endian
-@uint64list a = [-0x55_4433_2211G extract64ForSignedRepresentation]
 var s = ""
 for (n) in a
   do s += [n hexString]

@@ -30,19 +30,6 @@
 #include "galgas2/cCollectionElement.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint ;
-class GALGAS_string ;
-class GALGAS_object ;
-class GALGAS_stringlist ;
-class C_Compiler ;
-class capCollectionElementArray ;
-class C_galgas_type_descriptor ;
-class capCollectionElement ;
-class cSharedGraph ;
-class GALGAS__32_stringlist ;
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //  A C _ G A L G A S _ g r a p h                                                                                      *
 //                                                                                                                     *
@@ -50,7 +37,7 @@ class GALGAS__32_stringlist ;
 
 class AC_GALGAS_graph : public AC_GALGAS_root {
 //--- Private Data member
-  private : cSharedGraph * mSharedGraph ;
+  private : class cSharedGraph * mSharedGraph ;
 
 //--- Default constructor
   public : AC_GALGAS_graph (void) ;
@@ -74,7 +61,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 //--- Create a new list
   protected : VIRTUAL_IN_DEBUG void makeNewEmptyGraph (LOCATION_ARGS) ;
 
-//--------------------------------- Readers
+//--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_isNodeDefined (const GALGAS_string & inKey COMMA_LOCATION_ARGS) const ;
@@ -87,14 +74,14 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist getter_undefinedNodeKeyList (LOCATION_ARGS) const ;
 
-//--------------------------------- Modifiers
+//--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
-                                                   const GALGAS_lstring & inTargetNodeKey
-                                                   COMMA_LOCATION_ARGS) ;
+                                                 const GALGAS_lstring & inTargetNodeKey
+                                                 COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_removeEdgesToNode (const GALGAS_string & inNodeName,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_removeEdgesToDominators (LOCATION_ARGS) ;
 
@@ -127,7 +114,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                      COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_noteNode (const GALGAS_lstring & inKey
-                                                    COMMA_LOCATION_ARGS) ;
+                                                  COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
@@ -159,7 +146,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_string getter_graphviz (UNUSED_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG GALGAS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist getter_edges (UNUSED_LOCATION_ARGS) const ;
 
   friend class cSharedGraph ;
 } ;

@@ -8,17 +8,15 @@
 //  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
-//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU Lesser General Public License as published                                              *
-//  by the Free Software Foundation; either version 2 of the License, or                                               *
-//  (at your option) any later version.                                                                                *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT                                             *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or                                              *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for                                           *
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)  *
+//  any later version.                                                                                                 *
+//                                                                                                                     *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -519,10 +517,7 @@ void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) {
-  signalLexicalError (sourceText (),
-                      currentLocationInSource (),
-                      inLexicalErrorMessage
-                      COMMA_THERE) ;
+  signalLexicalError (sourceText (), currentLocationInSource (), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
   }
@@ -534,10 +529,7 @@ void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
 void C_Lexique::lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
                                         const C_LocationInSource & inErrorLocation
                                         COMMA_LOCATION_ARGS) {
-  signalLexicalError (sourceText (),
-                      inErrorLocation,
-                      inLexicalErrorMessage
-                      COMMA_THERE) ;
+  signalLexicalError (sourceText (), inErrorLocation, inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
   }
@@ -563,11 +555,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
 //--- Signal error
-  signalParsingError (sourceText (),
-                      mCurrentLocation,
-                      foundTokenMessage,
-                      expectedTokenNames
-                      COMMA_THERE) ;
+  signalParsingError (sourceText (), mCurrentLocation, foundTokenMessage, expectedTokenNames COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -580,10 +568,7 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
 
 void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
                                 COMMA_LOCATION_ARGS) {
-  signalLexicalWarning (sourceText (),
-                        mCurrentLocation,
-                        inLexicalWarningMessage
-                        COMMA_THERE) ;
+  signalLexicalWarning (sourceText (), mCurrentLocation, inLexicalWarningMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1404,14 +1389,15 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
           actionTable ++ ;
           const int16_t expectedAction = * actionTable ;
           actionTable ++ ;
-          const bool terminalAccepted = acceptExpectedTerminalForBottomUpParsingError
-                                             (expectedTerminal,
-                                              expectedAction,
-                                              actualErrorStack,
-                                              inActionTable,
-                                              inActionTableIndex,
-                                              inSuccessorTable,
-                                              inProductionsTable) ;
+          const bool terminalAccepted = acceptExpectedTerminalForBottomUpParsingError (
+            expectedTerminal,
+            expectedAction,
+            actualErrorStack,
+            inActionTable,
+            inActionTableIndex,
+            inSuccessorTable,
+            inProductionsTable
+          ) ;
           if (terminalAccepted) {
             expectedTerminalsArray.addObject (expectedTerminal) ;
           }
@@ -1663,7 +1649,10 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
+      const utf32 c = ((sourceText () == NULL)
+        ? TO_UNICODE ('\0')
+        : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE))
+      ;
       appendCharacterToLatexFile (c) ;
       mLatexNextCharacterToEnterIndex ++ ;
     }
@@ -1698,7 +1687,7 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   case '%' : mLatexOutputString << "\\%" ; break ;
   case '#' : mLatexOutputString << "\\#" ; break ;
   case '$' : mLatexOutputString << "\\$" ; break ;
-  case '`' : mLatexOutputString << "\\`{}" ; break ;
+//  case '`' : mLatexOutputString << "\\`{}" ; break ;
   case ' ' : mLatexOutputString << "\\hspace*{.6em}" ; break ;
   case '\n' : mLatexOutputString << "\\newline\n" ; break ;
   case '{' : mLatexOutputString << "\\{" ; break ;

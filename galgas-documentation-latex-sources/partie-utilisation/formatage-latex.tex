@@ -47,6 +47,7 @@ END
 
 En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient :
 
+{\small
 \begin{verbatim}
 \keywordsStyle{R{}O{}U{}T{}I{}N{}E{}}\hspace*{.6em}t{}r{}a{}c{}e{} \\
 \keywordsStyle{B{}E{}G{}I{}N{}} \\
@@ -56,11 +57,13 @@ En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.lo
                                        \integerStyle{9{}0{}}\delimitersStyle{;{}} \\
 \keywordsStyle{E{}N{}D{}}
 \end{verbatim}
+}
 
 Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keywordsStyle}, \tpp{\textbackslash integerStyle} et \tpp{\textbackslash delimitersStyle}\footnote{Aucune commande n'est définie pour les identificateurs, car l'analyseur lexical ne définit pas de style pour ceux-ci (voir \refSubsectionPage{fonctionnement-mode-latex}).}, et de placer ce texte dans un environnement où une police à échappement fixe est activée :
 
 
 
+{\small
 \begin{verbatim}
 \newcommand\keywordsStyle[1]{\textcolor{blue}{\textbf{#1}}}
 \newcommand\delimitersStyle[1]{\textcolor{brown}{\textbf{#1}}}
@@ -75,6 +78,7 @@ Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keyword
 \keywordsStyle{E{}N{}D{}}
 }
 \end{verbatim}
+}
 
 On obtient ainsi (noter l'identation de la première ligne) :
 
@@ -91,6 +95,7 @@ On obtient ainsi (noter l'identation de la première ligne) :
 
 Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de nom de style. Une variante de l'option \tpp{-{}-mode=latex} est de préciser un suffixe : \tpp{-{}-mode:suffixe=latex}. Le \tpp{suffixe} doit être un nom uniquement constitué de lettres (minuscules ou majuscules). Ce suffixe est ajouté aux noms de style. En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex:Logo test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient :
 
+{\small
 \begin{verbatim}
 \keywordsStyleLogo{R{}O{}U{}T{}I{}N{}E{}}\hspace*{.6em}t{}r{}a{}c{}e{} \\
 \keywordsStyleLogo{B{}E{}G{}I{}N{}} \\
@@ -100,7 +105,7 @@ Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de no
                               \integerStyleLogo{9{}0{}}\delimitersStyleLogo{;{}} \\
 \keywordsStyleLogo{E{}N{}D{}}
 \end{verbatim}
-
+}
 
 
 
@@ -186,12 +191,12 @@ La traduction s'effectue comme suit :
 
 Vous devez donc créer une commande particulière pour chaque style, plus éventuellement la commande \tpp{\textbackslash lexicalError} pour afficher l'occurrence des erreurs lexicales. Vous pouvez choisir de ne pas définir la commande \tpp{\textbackslash lexicalError}, auquel cas la compilation \LaTeX échouera en présence d'erreur lexicale ; mais si elle réussit, vous êtes sûr qu'il y a aucune erreur lexicale.
 
-L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage :
-\begin{itemize}
-  \item la séquence \tpp{-{}-} est affichée \tpp{--} : le compilateur produit \tpp{-\{\}-\{\}}, on a ainsi l'affichage souhaité \tpp{-{}-} ;
-  \item de même \tpp{\textgreater{}\textgreater} est affiché \tpp{\textgreater\textgreater} et \tpp{\textless{}\textless} est affiché \tpp{\textless\textless} : le compilateur produit \tpp{\textgreater\{\}\textgreater\{\}} et  \tpp{\textless\{\}\textless\{\}} ;
-  \item \LaTeX effectue par défaut des ligatures : \tpp{f{}i} est affiché \tpp{fi}, le compilateur produit \tpp{f\{\}i} pour obtenir  \tpp{f{}i}.
-\end{itemize}
+%L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage :
+%\begin{itemize}
+%  \item la séquence \tpp{-{}-} est affichée \tpp{--} : le compilateur produit \tpp{-\{\}-\{\}}, on a ainsi l'affichage souhaité \tpp{-{}-} ;
+%  \item de même \LaTeX affiche \tpp{\textgreater{}\textgreater} en \tpp{>>} et \tpp{\textless{}\textless} est affiché \tpp{<<} ; le compilateur produit \tpp{\textgreater\{\}\textgreater\{\}} et \tpp{\textless\{\}\textless\{\}}, ce qui produit les affichages \tpp{\textgreater{}\textgreater} et \tpp{\textless{}\textless} ;
+%  \item \LaTeX effectue par défaut des ligatures : \tpp{f{}i} est affiché \tpp{fi}, le compilateur produit \tpp{f\{\}i} pour obtenir  \tpp{f{}i}.
+%\end{itemize}
 
 
 
@@ -208,7 +213,7 @@ L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de
     \texttt{\textquotesingle\%\textquotesingle} & \texttt{\textbackslash \%} \\
     \texttt{\textquotesingle\#\textquotesingle} & \texttt{\textbackslash \#} \\
     \texttt{\textquotesingle\$\textquotesingle} & \texttt{\textbackslash \$} \\
-    \texttt{\textquotesingle\`{}\textquotesingle} & \texttt{\textbackslash \`{}\{\}} \\
+%    \texttt{\textquotesingle\`{}\textquotesingle} & \texttt{\textbackslash \`{}\{\}} \\
     \texttt{\textquotesingle~\textquotesingle} & \texttt{\textbackslash hspace*\{.6em\}} \\
     \texttt{\textquotesingle\textbackslash n\textquotesingle} & \texttt{\textbackslash newline\textbackslash n} \\
     \texttt{\textquotesingle\{\textquotesingle} & \texttt{\textbackslash \{} \\
@@ -286,7 +291,7 @@ Cette deuxième approche est plus satisfaisante car on peut faire figurer le tex
 
 
 
-\section{Définition d'un environnement d'affichage formatté}
+\section{Environnement d'affichage formatté}
 
 Dans cette section, on va voir comment nous allons définir un environnement \tpp{logocode} qui permettra d'entrer et de formatter implicitement un texte LOGO :
 
@@ -359,7 +364,7 @@ La définition de l'environnement \tpp{logocode} est la suivante :
 \hspace*{1.2em}\textbackslash @bsphack\newline
 \hspace*{1.2em}\textbackslash immediate\textbackslash openout\textbackslash tempf{}ile=\textcolor{blue}{temp.logo}\%\newline
 \hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash @makeother\textbackslash dospecials\newline
-\hspace*{1.2em}\textbackslash catcode\`{}\textbackslash$\wedge\wedge$M\textbackslash active\newline
+\hspace*{1.2em}\textbackslash catcode`\textbackslash$\wedge\wedge$M\textbackslash active\newline
 \hspace*{1.2em}\textbackslash verbatim@startline\newline
 \hspace*{1.2em}\textbackslash verbatim@addtoline\newline
 \hspace*{1.2em}\textbackslash verbatim@f{}inish\newline
@@ -379,7 +384,7 @@ Quelques commentaires :
 \begin{itemize}
   \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
   \item ligne 3, le nom d'environnement (en bleu) est défini : bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur ;
-  \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent aigu \tpp{\`{}} ;
+  \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent ~\tpp{`}~» ;
   \item ligne 19, l'affichage de la ligne traduite est effectuée ; à cet endroit, nous pouvez utiliser toutes les commandes de formattage, comme par exemple les paquetages \tpp{lineno} et \tpp{mdframed} cités plus haut.
 \end{itemize}
 
@@ -498,20 +503,20 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 \hspace*{1.2em}\textbackslash begingroup\%\newline
 \hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash @makeother\textbackslash dospecials\%\newline
 \hspace*{1.2em}\textbackslash let\textbackslash do\textbackslash do@noligs\textbackslash verbatim@nolig@list\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}\textbackslash $\wedge\wedge$M=15\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`\textbackslash $\wedge\wedge$M=15\textbackslash relax\%\newline
 \hspace*{1.2em}\textbackslash @vobeyspaces\%\newline
 \hspace*{1.2em}\textbackslash @\textcolor{blue}{logo}\{\textbackslash temporary\}\%\newline
 \}\%\newline
 \textbackslash newcommand\textbackslash @\textcolor{blue}{logo}[2]\{\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}-=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}<=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}>=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{},=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}\textquotesingle=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}\`{}=12\textbackslash relax\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}\#2\textbackslash active\%\newline
-\hspace*{1.2em}\textbackslash catcode\`{}$\sim$\textbackslash active\%\newline
-\hspace*{1.2em}\textbackslash lccode\`{}\textbackslash $\sim$\`{}\#2\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`-=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`<=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`>=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`,=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`\textquotesingle=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode``=12\textbackslash relax\%\newline
+\hspace*{1.2em}\textbackslash catcode`\#2\textbackslash active\%\newline
+\hspace*{1.2em}\textbackslash catcode`$\sim$\textbackslash active\%\newline
+\hspace*{1.2em}\textbackslash lccode`\textbackslash $\sim$`\#2\textbackslash relax\%\newline
 \hspace*{1.2em}\textbackslash lowercase\{\%\newline
 \hspace*{2.4em}\textbackslash begingroup\%\newline
 \hspace*{2.4em}\textbackslash def\textbackslash @tempa\#\#1$\sim$\{\%\newline
@@ -535,7 +540,7 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 \hspace*{3.6em}\textbackslash colorbox\{gray!6\}\{\textbackslash ttfamily\textbackslash input\{\textcolor{blue}{temp.logo.tex}\}\textbackslash unskip\}\%\newline
 \hspace*{2.4em}\}\%\newline
 \hspace*{1.2em}\}\%\newline
-\hspace*{1.2em}\textbackslash ifnum\`{}\#2=\`{}\textbackslash $\sim$\textbackslash else\textbackslash @makeother\textbackslash $\sim$\textbackslash f{}i\%\newline
+\hspace*{1.2em}\textbackslash ifnum`\#2=`\textbackslash $\sim$\textbackslash else\textbackslash @makeother\textbackslash $\sim$\textbackslash f{}i\%\newline
 \hspace*{1.2em}\textbackslash expandafter\textbackslash endgroup\%\newline
 \hspace*{1.2em}\textbackslash @tempa\%\newline
 \}\%\newline
@@ -545,7 +550,7 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 Commentaires :
 \begin{itemize}
   \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
-  \item ligne 8, 13 à 21 et 38 : attention, c'est un accent aigu \tpp{\`{}} ;
+  \item ligne 8, 13 à 21 et 38 : attention, c'est un accent aigu \tpp{`} ;
   \item ligne 3, 10 et 12 : le nom \tpp{logo} apparaît trois fois (en bleu pour être repéré plus facilement) : si vous changez le nom de la commande, veillez à en remplacer toutes les occurrences ;
   \item une difficulté est d'assurer que la commande n'insère aucune espace supplémentaire : c'est pour cela que toutes les lignes se terminent par \tpp{\%}\footnote{En fait, uniquement certaines lignes doivent être obligatoirement terminées par \tpp{\%} ; pour simplifier, on applique cette terminaison à toutes.} ;
     \item enfin le plus intéressant : ligne 31, le fichier \tpp{temp.logo} est ouvert en écriture ;

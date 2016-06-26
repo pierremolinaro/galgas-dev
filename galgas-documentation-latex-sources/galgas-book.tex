@@ -4,7 +4,15 @@
 % Le script utilisé pour compiler est :
 %       xelatex --file-line-error --shell-escape --synctex=1
 
-\documentclass[a4paper, 10pt, openany]{book}
+\documentclass[a4paper, 10pt, obeyspaces, openany]{book}
+% L'option 'openany' permet de démarrer un chapitre sur une page paire
+
+% L'option 'obeyspaces' indique au paquetage hyperref de respecter les espaces dans les chemins \path ou \url.
+% Par exemple : \path{ab cd} est écrit ab cd
+% Sans cette option, \path{ab cd} est écrit abcd
+% Voir : http://compgroups.net/comp.text.tex/space-in-path-hyperref-package
+
+
 \usepackage{verbatim}
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -66,6 +74,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Interligne 1,5 ligne (voir http://tex.stackexchange.com/questions/819/double-line-spacing)
+%    Ce paquetage définit : \doublespacing, \onehalfspacing, \singlespacing et \setstretch{baselinestretch}
 \usepackage{setspace}
 \onehalfspacing
 
@@ -311,8 +320,6 @@
     \Huge \bf
     #2\par}\@endpart}
 \makeatother
-
-%\renewcommand\cftpartpresnum{Part~}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
