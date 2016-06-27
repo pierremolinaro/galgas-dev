@@ -345,7 +345,8 @@ getter componentsSeparatedByString ?@string inSeparator -> @stringlist
 Retourne une liste des sous-chaînes de la valeur du récepteur qui a été divisée par \ggs!inSeparator!.
 
 \begin{galgas}
-let b = ["a--b--c--" componentsSeparatedByString!"--"] # "a", "b", "c", ""
+let b = ["a--b--c--" componentsSeparatedByString !"--"]
+# "a", "b", "c", ""
 \end{galgas}
 
 
@@ -367,7 +368,7 @@ getter containsCharacter ?@char inCharacter -> @bool
 Retourne \ggs!true! si le récepteur contient le caractère \ggs!inCharacter!, et \ggs!false! dans le cas contraire.
 
 \begin{galgas}
-let b = ["abcdef" containsCharacter!'c'] # true
+let b = ["abcdef" containsCharacter !'c'] # true
 \end{galgas}
 
 
@@ -572,7 +573,7 @@ Retourne la valeur du récepteur encodée pour former une chaîne HTML valide. L
   \texttt{<} & \texttt{\&lt;} \\
   \texttt{>} & \texttt{\&gt;} \\
   \end{tabular}
-  \caption{Codage des caractères, \refGetterPage{string}{HTMLRepresentation}}
+  \caption{Codage des caractères, getter \texttt{HTMLRepresentation} du type \texttt{@string}}
   \labelTableau{codageHTML}
   \ligne
 \end{table}
