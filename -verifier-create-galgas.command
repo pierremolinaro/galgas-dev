@@ -7,9 +7,9 @@ rm -fr ${DIR}/${TEST} &&
 echo "---------------- BUILD GALGAS --------------------------" &&
 cd ${DIR}/makefile-macosx && python ./build.py &&
 echo "---------------- CREATE PROJECT --------------------------" &&
-cd ${DIR} && ${GALGAS} --note-file-access --create-project=${TEST} &&
+cd ${DIR} && ${GALGAS} --create-project=${TEST} &&
 echo "---------------- GALGAS COMPILE --------------------------" &&
-${GALGAS} --new-code-generation --Werror ${DIR}/${TEST}/+${TEST}.galgasProject &&
+${GALGAS} --output-html-grammar-file --Werror ${DIR}/${TEST}/+${TEST}.galgasProject &&
 echo "---------------- XCODE BUILD --------------------------" &&
 cd ${DIR}/${TEST}/xcode-project && xcodebuild -alltargets &&
 echo "---------------- MAKE i386 Linux --------------------------" &&
