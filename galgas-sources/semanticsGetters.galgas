@@ -491,6 +491,13 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"decodedStringFromRepresentation"
+    !returnedTypeName:"string"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"HTMLRepresentation"
     !returnedTypeName:"string"
     !false

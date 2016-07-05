@@ -420,7 +420,8 @@ override method @openedSliceExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   [mLeftExpression generateExpression
@@ -439,6 +440,7 @@ override method @openedSliceExpressionForGeneration generateExpression
     ?let rightTemporaryOperand
   ]
 #--- Generate Comparison
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression = 
    "GALGAS_range (" + leftTemporaryOperand + ", "
    +  rightTemporaryOperand + ".substract_operation (" + leftTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + "))"
