@@ -30,12 +30,6 @@ before { #--- Print predefined lexical action
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#before { #--- Generate predefined files
-#  generatePredefinedTypeFilesFromOption ( ![option galgas_cli_options.generatePredefinedTypes value] )
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 before { #--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath ( ![option galgas_cli_options.extractLIBPMOption value] )

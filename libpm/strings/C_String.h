@@ -158,9 +158,7 @@ class C_String : public AC_OutputStream {
   public : C_String identifierRepresentation (void) const ; // Preserves ASCII letters
   public : C_String nameRepresentation (void) const ; // Preserves ASCII letters, digits and '_'
   public : C_String assemblerRepresentation (void) const ; // Preserves ASCII letters, digits, '_', '.' and '$'
-
-//--- Get an UTF32 representation
-  public : C_String utf32Representation (void) const ;
+  public : C_String decodedStringFromRepresentation (bool & outOk) const ; // Reverses the above representations
 
 //--- Get an HTML representation (&, <, > and " are escaped using HTML escape sequence)
   public : C_String HTMLRepresentation (void) const ;

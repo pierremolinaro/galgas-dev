@@ -31,7 +31,7 @@ lexique nom {
 Le \ggs+nom+ est le nom donné au composant ; il est utilisé pour référencer le composant \ggs+lexique+ dans un composant \ggs+syntax+.
 
 
-Dans un composant \ggs+lexique+, cinq types de déclarations sont définis :
+Un composant \ggs+lexique+ peut contenir les déclarations suivantes :
 \begin{itemize}
   \item déclaration d'attribut lexical ;
   \item déclaration d'un symbole terminal ;
@@ -41,7 +41,9 @@ Dans un composant \ggs+lexique+, cinq types de déclarations sont définis :
   \item déclaration de règles d'analyse.
 \end{itemize}
 
-A //lexical attribute// carries the value associated with a terminal symbol: for example, the integer value of a literal integer constant, the string value of a character string constant, ...
+Un \emph{attribut lexical} contient la valeur associée à un symbol terminal : par exemple, la valeur entière d'une constante entière, la valeur chaîne de caractères d'un identificateur ou d'une constante chaîne de caractères, ...
+
+%A //lexical attribute// carries the value associated with a terminal symbol: for example, the integer value of a literal integer constant, the string value of a character string constant, ...
 
 In GALGAS, all terminal symbols must be declared either by a //single terminal symbol declaration//, either by a //list of terminal symbols declaration//. This defines the set of defined terminal symbols of your grammar.
 

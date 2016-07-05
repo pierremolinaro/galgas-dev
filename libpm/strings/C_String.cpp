@@ -1149,9 +1149,8 @@ void C_String::appendSpacesUntilColumn (const uint32_t inColumn) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::
-stringWithRepeatedCharacter (const utf32 inRepeatedCharacter,
-                             const uint32_t inCount) {
+C_String C_String::stringWithRepeatedCharacter (const utf32 inRepeatedCharacter,
+                                                const uint32_t inCount) {
   C_String result ;
   for (uint32_t i=0 ; i<inCount ; i++) {
     result.appendUnicodeCharacter (inRepeatedCharacter COMMA_HERE) ;
@@ -1221,10 +1220,33 @@ C_String C_String::assemblerRepresentation (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String C_String::utf32Representation (void) const {
+C_String C_String::decodedStringFromRepresentation (bool & outOk) const {
+  TC_UniqueArray <C_String> components ;
+  componentsSeparatedByString ("_", components) ;
   C_String result ;
-  result.appendUTF32LiteralStringConstant (*this) ;
-  return result ;
+  outOk = true ;
+  for (int32_t i=0 ; i<components.count () ; i++) {
+    if ((i & 1) == 0) {
+      result << components (i COMMA_HERE) ;
+    }else{
+      uint32_t codePoint = 0 ;
+      for (int32_t j=0 ; j<components (i COMMA_HERE).length () ; j++) {
+        codePoint *= 16 ;
+        const uint32_t c = UNICODE_VALUE (components (i COMMA_HERE) (j COMMA_HERE)) ;
+        if ((c >= '0') && (c <= '9')) {
+          codePoint += c - '0' ;
+        }else if ((c >= 'a') && (c <= 'f')) {
+          codePoint += c + 10 - 'a' ;
+        }else if ((c >= 'A') && (c <= 'F')) {
+          codePoint += c + 10 - 'A' ;
+        }else{
+          outOk = false ;
+        }
+      }
+      result.appendUnicodeCharacter (codePoint COMMA_HERE) ;
+    }
+  }
+  return outOk ? result : "" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

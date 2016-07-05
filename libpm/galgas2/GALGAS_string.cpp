@@ -570,6 +570,26 @@ GALGAS_string GALGAS_string::getter_assemblerRepresentation (UNUSED_LOCATION_ARG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::getter_decodedStringFromRepresentation (C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    bool ok = true ;
+    const C_String r = mString.decodedStringFromRepresentation (ok) ;
+    if (ok) {
+      result = GALGAS_string (r) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError (
+        "@string decodedStringFromRepresentation getter called with a string that is not a valid string representation"
+        COMMA_THERE
+      ) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_string::getter_subStringFromIndex (const GALGAS_uint & inStartIndex
                                                         COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;

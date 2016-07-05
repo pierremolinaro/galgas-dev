@@ -299,6 +299,8 @@ let y = ["_é" assemblerRepresentation] # "_5F__E8_"
 
 Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide et le \refGetterPage{string}{nameRepresentation}.
 
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
 
 
 
@@ -424,6 +426,29 @@ Retourne la valeur du récepteur convertie en entier non signé. La valeur du r�
 
 La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalUnsignedNumber}.
 
+
+
+
+
+
+
+\subsectionGetter{decodedStringFromRepresentation}{string}
+
+\begin{galgasbox}
+getter decodedStringFromRepresentation -> @string
+\end{galgasbox}
+
+Ce getter suppose que le récepteur est une chaîne de caractères résultat de l'appel du \refGetterPage{string}{assemblerRepresentation}, du \refGetterPage{string}{identifierRepresentation} ou du \refGetterPage{string}{nameRepresentation}, et retourne la chaîne d'origine.
+
+Par exemple :
+\begin{galgas}
+let s = ["chaîne accentuée" identifierRepresentation]
+log s # LOGGING s: <@string:"cha_EE_ne_20_accentu_E9_e">
+let y = [s decodedStringFromRepresentation]
+log y #LOGGING y: <@string:"chaîne accentuée">
+\end{galgas}
+
+Une erreur est déclenchée à l'exécution si le réception n'est pas une chaîne valide, et la valeur retournée n'est pas construite.
 
 
 
@@ -604,6 +629,8 @@ let y = [":?" identifierRepresentation] # "_3A__3F_"
 Voir aussi le \refGetterPage{string}{nameRepresentation} qui laisse inchangé un chiffre décimal, et le \refGetterPage{string}{assemblerRepresentation}.
 
 
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
 
 
 
@@ -761,6 +788,7 @@ let y = ["_é" nameRepresentation] # "_5F__E8_"
 
 Voir aussi le \refGetterPage{string}{identifierRepresentation} qui retourne toujours un identificateur C ou C++ valide, et le \refGetterPage{string}{assemblerRepresentation}.
 
+Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
 
 
 
