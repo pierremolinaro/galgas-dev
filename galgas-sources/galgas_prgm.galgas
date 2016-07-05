@@ -160,7 +160,7 @@ proc compileProject
   @stringlist frameworkToolFileList = {}
   var handCodedSourceDirectorySet = @stringset. emptySet
   for () in inProjectComponentAST.mQualifiedFeatureList do
-    if mFeatureName.string == "tool-source" then
+    if "tool-source" == mFeatureName then
       handCodedSourceToolFileList += !mFeatureValue.string
       let directory = [mFeatureValue stringByDeletingLastPathComponent]
       if directory == "" then
