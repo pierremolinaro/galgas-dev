@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  Semantic Analysis of expression                                                                                     *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2016 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -1534,29 +1534,54 @@ override method @equalExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+ {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !leftType !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !leftType
+    !inAnalysisContext
+    !?ioVariableMap 
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if [[leftType lkey] string] != [[rightType lkey] string] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType lkey] + "', right operand type is '@" + [rightType lkey] + "': '==' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @equalExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression
-    }
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !"=="
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @equalExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+
+#  if [[leftType lkey] string] != [[rightType lkey] string] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType lkey] + "', right operand type is '@" + [rightType lkey] + "': '==' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @equalExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression
+#    }
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1588,22 +1613,39 @@ override method @notEqualExpressionAST analyzeSemanticExpression
     !leftType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration rightExpression
+    ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if [[leftType lkey] string] != [[rightType lkey] string] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @notEqualExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression}
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !"!="
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @notEqualExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+
+#  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+#  if [[leftType lkey] string] != [[rightType lkey] string] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @notEqualExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression}
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1629,32 +1671,49 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !leftType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration rightExpression
+    ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
-    :outExpression
-  elsif [leftType key] != [rightType key] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @lowerOrEqualExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression}
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !"<="
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @lowerOrEqualExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+#  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+#  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+#  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
+#    :outExpression
+#  elsif [leftType key] != [rightType key] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<=' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @lowerOrEqualExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression}
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1686,26 +1745,42 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
     !leftType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration rightExpression
+    ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
-    :outExpression
-  elsif [leftType key] != [rightType key] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>=' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @greaterOrEqualExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression}
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !">="
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @greaterOrEqualExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+#  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+#  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
+#    :outExpression
+#  elsif [leftType key] != [rightType key] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>=' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @greaterOrEqualExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression}
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1737,26 +1812,42 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
     !leftType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration rightExpression
+    ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
-    :outExpression
-  elsif [leftType key] != [rightType key] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @strictGreaterExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression}
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !">"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @strictGreaterExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+#  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+#  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
+#    :outExpression
+#  elsif [leftType key] != [rightType key] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @strictGreaterExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression}
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1788,26 +1879,45 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
     !leftType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration rightExpression
+    ?@semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
-    :outExpression
-  elsif [leftType key] != [rightType key] then
-    error mOperatorLocation
-    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<' operator requires the types are the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @strictLowerExpressionForGeneration.new {
-      !inAnalysisContext.mPredefinedTypes.mBoolType
-      !mOperatorLocation
-      !leftExpression
-      !rightExpression}
-  end
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !true
+    !"<"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @strictLowerExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+
+
+
+
+#  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+#  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
+#    :outExpression
+#  elsif [leftType key] != [rightType key] then
+#    error mOperatorLocation
+#    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<' operator requires the types are the same"
+#    :outExpression
+#  else
+#  #--- Generate expression
+#    outExpression = @strictLowerExpressionForGeneration.new {
+#      !inAnalysisContext.mPredefinedTypes.mBoolType
+#      !mOperatorLocation
+#      !leftExpression
+#      !rightExpression}
+#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
