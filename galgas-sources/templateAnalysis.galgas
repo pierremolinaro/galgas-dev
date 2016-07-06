@@ -132,13 +132,13 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressionList length] string] + " parameter(s)" : outExpression
   else
-    var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
     for () in mExpressionList, () in getterFormalArgumentTypeList do
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration exp]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration exp]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp
     end
     outExpression = @getterCallExpressionForGeneration.new {
@@ -203,12 +203,12 @@ override method @templateConstructorAST templateExpressionAnalysis
   else
     constructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
     for () in mExpressionList, () in constructorFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?exp]
       if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        error mActualSelector
+          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration exp]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp
     end
   end
@@ -617,8 +617,8 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
     for () in functionSignature, () in mExpressionList do
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration expression]
-      checkAssignmentTypes ( !mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
+      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration expression]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
       semanticExpressionListForGeneration += !expression
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"

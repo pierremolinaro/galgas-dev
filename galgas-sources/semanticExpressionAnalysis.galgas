@@ -435,15 +435,131 @@ sharedmap @variableMap {
 proc checkAssignmentTypes
   ?let @unifiedTypeMap-proxy inTargetType
   ?let @unifiedTypeMap-proxy inSourceType
-  ?let @location inErrorLocation {
+  ?let @location inErrorLocation
+{
   @unifiedTypeMap-proxy sourceType = inSourceType
   @bool ok = inTargetType == inSourceType
-  loop( @uint. max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
+  loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType = [sourceType mSuperType]
     ok = inTargetType == sourceType
   end
   if not ok then
-    error inErrorLocation : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
+    error inErrorLocation
+     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc checkAssignmentTypeWithImplicitGetterCall
+  ?let @unifiedTypeMap-proxy inTargetType
+  ?let @unifiedTypeMap-proxy inSourceType
+  ?let @location inErrorLocation
+  ?!@semanticExpressionForGeneration ioRightExpression
+{
+  @unifiedTypeMap-proxy sourceType = inSourceType
+  @bool ok = inTargetType == inSourceType
+  loop (@uint.max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
+    sourceType = [sourceType mSuperType]
+    ok = inTargetType == sourceType
+  end
+#  if not ok then
+#    error inErrorLocation
+#     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
+#  end
+#--- Check if there is a conversion getter
+  if (not ok) && [[inSourceType mGetterMap] hasKey ![inTargetType key]] then
+    [[inSourceType mGetterMap] searchKey
+      ![inTargetType lkey]
+      ?let kind
+      ?var @functionSignature argumentTypeList
+      ?*
+      ?let hasCompilerArgument
+      ?let returnedType
+      ?2*
+    ]
+    ok = ([argumentTypeList length] == 0) & (returnedType == inTargetType)
+ #--- Add conversion expression
+    let conversionExpression = @getterCallExpressionForGeneration.new {
+      !inTargetType
+      !inErrorLocation
+      !kind
+      !ioRightExpression
+      !{}
+      ![inTargetType key]
+      !{}
+      !hasCompilerArgument
+    }
+    ioRightExpression = conversionExpression
+  end
+  if not ok then
+    error inErrorLocation
+     : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key]
+     + "' object; this type have no '"
+    + [inTargetType key] + "' getter without argument that returns a '@" + [inTargetType key] + "' object"
+#    error inErrorLocation
+#    : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inTargetType key]
+#    + "', right operand type is '@" + [inSourceType key]
+#    + "', it should be either the same, either inherits from left operand type, either have a '"
+#    + [inTargetType key] + "' getter without argument that returns a '@" + [inTargetType key] + "' object"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc checkDiadicOperator
+  ?let @unifiedTypeMap-proxy inLeftType
+  ?let @unifiedTypeMap-proxy inRightType
+  ?let @bool inOperandIsHandled
+  ?let @string inOperatorNameForErrorMessage
+  ?let @location inErrorLocation
+  ?!@semanticExpressionForGeneration ioRightExpression
+{
+  if not inOperandIsHandled then
+    error inErrorLocation
+    : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage 
+      + "' operator (right operand type is '@" + [inRightType key] + ")"
+  else
+    @unifiedTypeMap-proxy rightType = inRightType
+    @bool ok = inLeftType == rightType
+    loop (@uint.max) while (not ok) & (not [[rightType mSuperType] isNull]) do
+      rightType = [rightType mSuperType]
+      ok = inLeftType == rightType
+    end
+  #--- Check if there is a conversion getter
+    if (not ok) && [[inRightType mGetterMap] hasKey ![inLeftType key]] then
+      @bool hasCompilerArgument
+      @unifiedTypeMap-proxy returnedType
+      @methodKind kind
+      [[inRightType mGetterMap] searchKey
+        ![inLeftType lkey]
+        ?kind
+        ?var @functionSignature argumentTypeList
+        ?*
+        ?hasCompilerArgument
+        ?returnedType
+        ?2*
+      ]
+      ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
+   #--- Add conversion expression
+      let conversionExpression = @getterCallExpressionForGeneration.new {
+        !inLeftType
+        !inErrorLocation
+        !kind
+        !ioRightExpression
+        !@stringlist.emptyList
+        ![inLeftType key]
+        !@semanticExpressionListForGeneration.emptyList
+        !hasCompilerArgument}
+      ioRightExpression = conversionExpression
+    end
+    if not ok then
+      error inErrorLocation
+      : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType key]
+      + "', right operand type is '@" + [inRightType key]
+      + "', it should be either the same, either inherits from left operand type, either have a '"
+      + [inLeftType key] + "' getter without argument that returns a '@" + [inLeftType key] + "' object"
+    end
   end
 }
 
@@ -518,30 +634,14 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
     error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression
   else
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
     outExpression = @selfCopyInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
   end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @hereExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
-{
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @hereExpressionAST analyzeSemanticExpression
-  ?let @unifiedTypeMap-proxy unused inType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-  outExpression = @hereExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mLocationType !mLocation}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -557,7 +657,8 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
@@ -574,7 +675,8 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
@@ -591,8 +693,13 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalCharExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mCharType ![mCharacter location] ![mCharacter char]}
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalCharExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mCharType
+    ![mCharacter location]
+    ![mCharacter char]
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -608,7 +715,8 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   @string s = ""
   for () in mStringSequence do
     s += mValue
@@ -629,7 +737,8 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalDoubleExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
 }
 
@@ -646,8 +755,13 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalUIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mUIntType ![mValue location] ![mValue uint]}
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalUIntExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !mValue # [mValue location]
+    !mValue # [mValue uint]
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -663,7 +777,8 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
     ![mValue location]
@@ -683,7 +798,8 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
 }
 
@@ -787,15 +903,20 @@ proc analyzeConstructorInvocation
       + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
-    outConstructorEffectiveParameterList = @semanticExpressionListForGeneration.emptyList
+    outConstructorEffectiveParameterList = {}
     for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp
-      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp]
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
-      if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
-      end
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       outConstructorEffectiveParameterList += !exp
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector 
+         : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
     end
   end
 }
@@ -816,7 +937,8 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   var type = inType
   if mTypeName.string != "" then
     type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
@@ -854,7 +976,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   analyzeConstructorInvocation (
     !inType
     !inAnalysisContext
@@ -993,12 +1116,12 @@ override method @getterCallExpressionAST analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
-        ?let @semanticExpressionForGeneration exp
+        ?@semanticExpressionForGeneration exp
       ]
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp
     end
     outExpression = @getterCallExpressionForGeneration.new {
@@ -1118,65 +1241,6 @@ override method @optionExpressionAST analyzeSemanticExpression
     error mOptionEntryName
     : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option; available options:" + s
     : outExpression
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc checkDiadicOperator
-  ?let @unifiedTypeMap-proxy inLeftType
-  ?let @unifiedTypeMap-proxy inRightType
-  ?let @bool inOperandIsHandled
-  ?let @string inOperatorNameForErrorMessage
-  ?let @location inErrorLocation
-  ?!@semanticExpressionForGeneration ioRightExpression {
-  if not inOperandIsHandled then
-    error inErrorLocation
-    : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage + "' operator (right operand type is '@" + [inRightType key] + ")"
-  else
-    @unifiedTypeMap-proxy rightType = inRightType
-    @bool ok = inLeftType == rightType
-    loop( @uint. max) while (not ok) & (not [[rightType mSuperType] isNull]) do
-      rightType = [rightType mSuperType]
-      ok = inLeftType == rightType
-    end
-    
-    if not ok then
-    #--- Check if there is a conversion getter
-      if [[inRightType mGetterMap] hasKey ![inLeftType key]] then
-        @bool hasCompilerArgument
-        @unifiedTypeMap-proxy returnedType
-        @methodKind kind
-        [[inRightType mGetterMap] searchKey
-          ![inLeftType lkey]
-          ?kind
-          ?var @functionSignature argumentTypeList
-          ?*
-          ?hasCompilerArgument
-          ?returnedType
-          ?2*
-        ]
-        ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
-     #--- Add conversion expression
-        @semanticExpressionForGeneration conversionExpression = @getterCallExpressionForGeneration.new {
-          !inLeftType
-          !inErrorLocation
-          !kind
-          !ioRightExpression
-          !@stringlist.emptyList
-          ![inLeftType key]
-          !@semanticExpressionListForGeneration.emptyList
-          !hasCompilerArgument}
-        ioRightExpression = conversionExpression
-      end
-      if not ok then
-        error inErrorLocation
-        : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType key]
-        + "', right operand type is '@" + [inRightType key]
-        + "', it should be either the same, either inherits from left operand type, either have a '"
-        + [inLeftType key] + "' getter without argument that returns a '@" + [inLeftType key] + "' object"
-      end
-    end
   end
 }
 
@@ -1440,14 +1504,14 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -1463,7 +1527,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   end
 #--- Generate expression
   outExpression = @closedSliceExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
     !mOperatorLocation
     !leftExpression
     !rightExpression
@@ -1489,14 +1553,14 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration rightExpression
@@ -1512,7 +1576,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   end
 #--- Generate expression
   outExpression = @openedSliceExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
+    !.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"range" ![leftExpression mLocation]}}
     !mOperatorLocation
     !leftExpression
     !rightExpression
@@ -1935,7 +1999,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
     !@unifiedTypeMap-proxy.null
@@ -1945,7 +2010,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
@@ -1967,7 +2032,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
       !leftType
       !mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !rightExpression
+    }
   end
 }
 
@@ -1986,7 +2052,8 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
     !@unifiedTypeMap-proxy.null
@@ -1996,7 +2063,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
@@ -2018,7 +2085,8 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
       !leftType
       !mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !rightExpression
+    }
   end
 }
 
@@ -2059,7 +2127,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
     !leftType
     ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & infixAddOperatorNoOVF ()) != 0
-    !"+"
+    !"&+"
     !mOperatorLocation
     !?rightExpression
   )  
@@ -2158,7 +2226,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
     !leftType
     ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & infixSubOperatorNoOVF ()) != 0
-    !"-"
+    !"&-"
     !mOperatorLocation
     !?rightExpression
   )  
@@ -2256,7 +2324,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !leftType
     ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & infixMulOperatorNoOVF ()) != 0
-    !"*"
+    !"&*"
     !mOperatorLocation
     !?rightExpression
   )  
@@ -2352,7 +2420,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !leftType
     ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & infixDivOperatorNoOVF ()) != 0
-    !"/"
+    !"&/"
     !mOperatorLocation
     !?rightExpression
   )  
@@ -2677,10 +2745,15 @@ override method @ifExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- 'if' expression analysis
-  @semanticExpressionForGeneration if_expression
-  [mIfExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?if_expression]
+  [mIfExpression analyzeSemanticExpression
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration if_expression
+  ]
 #--- 'then' expression analysis
   @semanticExpressionForGeneration then_expression
   [mThenExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?then_expression]
@@ -2724,7 +2797,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Retrieve function features
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !mFunctionName
@@ -2753,9 +2827,9 @@ override method @functionCallExpressionAST analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
-        ?let @semanticExpressionForGeneration expression
+        ?@semanticExpressionForGeneration expression
       ]
-      checkAssignmentTypes ( !mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
@@ -2810,7 +2884,8 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
@@ -2834,14 +2909,15 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Receiver expression analysis
   @semanticExpressionForGeneration expression
   [mReceiverExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
 #--- Get type information
    let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- This type is either a class
-  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
+  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum.classType then
   #--- Check expression type is a descendant of named type
     @unifiedTypeMap-proxy t = castType
     @bool found = t == [expression mResultType]
@@ -2881,7 +2957,8 @@ override method @castInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Receiver expression analysis
   [mReceiverExpression analyzeSemanticExpression
     !@unifiedTypeMap-proxy. null
@@ -2946,7 +3023,8 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -2985,7 +3063,8 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #---
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
      !mFilewrapperName
@@ -3016,8 +3095,13 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      [mExpression analyzeSemanticExpression 
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       effectiveParameterList += !exp
     end
   end
@@ -3043,7 +3127,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Parse filewrapper path
   @stringlist directoryList
   @string fileName
@@ -3125,7 +3210,8 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Check  lexique is declared
   [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueComponentName
@@ -3175,15 +3261,16 @@ override method @expressionCollectionValue analyze
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-proxy inElementType
   ?!@variableMap ioVariableMap
-  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
+{
   [mExpression analyzeSemanticExpression
     !inElementType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes ( !inElementType ![expression mResultType] !mExpressionLocation )
+  checkAssignmentTypeWithImplicitGetterCall (!inElementType ![expression mResultType] !mExpressionLocation !?expression)
 #---
   ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!mExpressionLocation !expression}
 }
@@ -3204,11 +3291,17 @@ override method @expressionListCollectionValue analyze
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for expression in mExpressionList, () in formalParameterTypeList do
-      [expression.mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      [expression.mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
       if mFormalSelector.string != expression.mActualSelector.string then
-        error expression.mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        error expression.mActualSelector
+          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp
     end
     ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {

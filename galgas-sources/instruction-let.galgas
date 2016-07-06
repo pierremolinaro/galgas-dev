@@ -165,7 +165,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?var @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check target variable
   let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
@@ -175,7 +175,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !targetType

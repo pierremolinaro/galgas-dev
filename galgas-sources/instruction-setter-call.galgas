@@ -130,30 +130,26 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     let attributeMap = [receiverType mAttributeMap]
     [attributeMap searchKey
       !mValue
-#      ??@bool isPrivate
       ?receiverType
     ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
   end
 #--- Type cast ?
   @unifiedTypeMap-proxy castType
   if mTypeNameForCasting.string != "" then
-    castType = @unifiedTypeMap-proxy. searchKey {
-      !inAnalysisContext.mSemanticContext.mTypeMap
-      !mTypeNameForCasting
-    }
+    castType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameForCasting}
     checkAssignmentTypes (!receiverType !castType !mTypeNameForCasting.location)
   else 
     castType = receiverType
   end
 #--- Get setter signature
-  @formalParameterSignature routineSignature
-  @bool hasCompilerArgument
-  @string setterErrorMessage
-  @methodKind kind
-  [[castType mSetterMap] searchKey !mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?setterErrorMessage]
+  [[castType mSetterMap] searchKey
+    !mSetterName
+    ?let kind
+    ?let routineSignature
+    ?let hasCompilerArgument
+    ?*
+    ?let setterErrorMessage
+  ]
   if setterErrorMessage != "" then
     error mSetterName : setterErrorMessage
   end

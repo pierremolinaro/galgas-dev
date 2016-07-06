@@ -186,10 +186,10 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !mInstructionLocation
@@ -233,10 +233,10 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !mInstructionLocation
@@ -280,10 +280,10 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !mInstructionLocation
@@ -327,10 +327,10 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
     !mInstructionLocation
@@ -383,13 +383,14 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
-        ?let @semanticExpressionForGeneration exp
+        ?@semanticExpressionForGeneration expression
       ]
       if mFormalSelector.string != mActualSelector.string then
-        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+        error mActualSelector
+          : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
-      effectiveParameterList += !exp
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
+      effectiveParameterList += !expression
     end
   #--- Generate instruction
     ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {

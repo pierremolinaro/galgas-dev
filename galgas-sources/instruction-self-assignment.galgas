@@ -54,7 +54,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     !inAnalysisContext.mSelfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Analyze "self", as receiver expression
   if [inAnalysisContext.mSelfTypeProxy isNull] then
@@ -63,7 +63,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     error mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypes ( !inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation )
+  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !inAnalysisContext.mSelfTypeProxy

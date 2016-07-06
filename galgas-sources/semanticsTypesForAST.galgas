@@ -45,12 +45,6 @@ class @selfCopyInExpressionAST : @semanticExpressionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @hereExpressionAST : @semanticExpressionAST {
-  @location mLocation
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @trueExpressionAST : @semanticExpressionAST {
   @location mLocation
 }
