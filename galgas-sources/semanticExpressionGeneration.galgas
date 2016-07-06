@@ -48,18 +48,6 @@ override method @selfCopyInExpressionForGeneration generateExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @hereExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  outCppExpression = compilerCppName () + "->here ()"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @trueExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset unused ioInclusionSet

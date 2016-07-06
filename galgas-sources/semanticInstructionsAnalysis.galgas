@@ -113,24 +113,27 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+{
   if (inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentIn)
-   & (inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentConstantIn) then
+   & (inFormalArgumentPassingMode != @formalArgumentPassingModeAST.argumentConstantIn) then
     error mActualSelector
     :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
-    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+    + "' passing mode: this parameter should be passed with '"
+    + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
   else
     if inFormalSelector.string != mActualSelector.string then
-       error mActualSelector : "the selector should be '!" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+       error mActualSelector
+        : "the selector should be '!" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
      end
     [mOutputActualParameterExpression analyzeSemanticExpression
       !inFormalArgumentType
       !inAnalysisContext
       !?ioVariableMap
-      ?let @semanticExpressionForGeneration expression
+      ?@semanticExpressionForGeneration expression
     ]
   #--- Check effective expression type against formal argument type
-    checkAssignmentTypes ( !inFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
+    checkAssignmentTypeWithImplicitGetterCall (!inFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
   #--- Generate actual parameter
     ioActualParameterListForGeneration += !@outputActualParameterForGeneration.new {
       !inFormalArgumentType
@@ -537,7 +540,8 @@ proc analyzeRoutineArguments
   ?let @actualParameterListAST inActualParameterList
   ?!@variableMap ioVariableMap
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  !@actualParameterListForGeneration outActualParameterListForGeneration {
+  !@actualParameterListForGeneration outActualParameterListForGeneration
+{
   if [inRoutineSignature length] != [inActualParameterList length] then
     error inRoutineName
     :"the " + inInvokedEntityName + " defines " + [[inRoutineSignature length] string] 

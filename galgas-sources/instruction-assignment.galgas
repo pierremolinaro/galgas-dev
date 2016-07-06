@@ -87,10 +87,10 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    ?let @semanticExpressionForGeneration expression
+    ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
 #--- Get target variable
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
