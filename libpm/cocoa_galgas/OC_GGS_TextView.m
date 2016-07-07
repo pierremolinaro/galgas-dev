@@ -244,6 +244,8 @@
   if (keys.length == 0) {
     [super keyDown:inEvent] ;
   }else{
+    const NSUInteger flags = NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask ;
+    // NSLog (@"MODIFIERS 0x%lx 0x%lX", [inEvent modifierFlags], flags) ;
     const unichar c = [keys characterAtIndex:0] ;
     switch (c) {
     case 9 : // A Tab Character ?
@@ -284,11 +286,23 @@
         }
         [self insertText:stringToInsert] ;
       }break ;
+    case 63234 : // Left arrow
+      if (([self selectedRange].length > 0) && (([inEvent modifierFlags] & flags) == 0)) {
+        [mDisplayDescriptor shiftLeftAction] ;
+      }else{
+        [super keyDown:inEvent] ;
+      }
+      break ;
+    case 63235 : // Right arrow
+      if (([self selectedRange].length > 0) && (([inEvent modifierFlags] & flags) == 0)) {
+        [mDisplayDescriptor shiftRightAction] ;
+      }else{
+        [super keyDown:inEvent] ;
+      }
+      break ;
     case 127 : // A Back Character ?
     case 63232 : // Up arrow
     case 63233 : // Down arrow
-    case 63234 : // Left arrow
-    case 63235 : // Right arrow
     case 63272 : // Suppr
     case 63273 : // Home
     case 63275 : // Goto end
