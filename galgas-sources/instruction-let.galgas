@@ -181,7 +181,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     !targetType
     !mIsConstant
     !targetVariableCppName
-    !expression}
+    !expression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

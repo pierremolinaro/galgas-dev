@@ -2856,7 +2856,8 @@ override method @varInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext unused inAnalysisContext
   ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   [!?ioVariableMap searchForReadAccess
     !mVarName
     ?let @unifiedTypeMap-proxy type

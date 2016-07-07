@@ -42,8 +42,8 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_attribute) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 41)) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_2859.mAttribute_string.objectCompare (GALGAS_string ("translate"))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_1 (var_featureName_2859.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_1, GALGAS_string ("only 'feature translate' can be declared here")  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
+      GALGAS_location location_2917 = var_featureName_2859.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
+      inCompiler->emitSemanticError (location_2917, GALGAS_string ("only 'feature translate' can be declared here")  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
     }
     var_hasTranslateFeature_2771 = GALGAS_bool (true) ;
   } break ;
@@ -52,8 +52,8 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
   }
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 47)) ;
   GALGAS_lstringlist var_syntaxComponents_3074 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 49)) ;
-  bool repeatFlag_2 = true ;
-  while (repeatFlag_2) {
+  bool repeatFlag_1 = true ;
+  while (repeatFlag_1) {
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_syntax) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 51)) ;
     GALGAS_lstring var_syntaxComponent_3149 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 52)) ;
@@ -62,7 +62,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
     case 2: {
     } break ;
     default:
-      repeatFlag_2 = false ;
+      repeatFlag_1 = false ;
       break ;
     }
   }
@@ -71,8 +71,8 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 57)) ;
   GALGAS_nonTerminalLabelListAST var_mLabelList_3313 = GALGAS_nonTerminalLabelListAST::constructor_emptyList (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 58)) ;
   nt_grammar_5F_start_5F_symbol_5F_label_ (GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 59))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 59)), var_mLabelList_3313, inCompiler) ;
-  bool repeatFlag_3 = true ;
-  while (repeatFlag_3) {
+  bool repeatFlag_2 = true ;
+  while (repeatFlag_2) {
     switch (select_galgas_33_GrammarComponentSyntax_3 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_label) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 62)) ;
@@ -81,13 +81,13 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
       nt_grammar_5F_start_5F_symbol_5F_label_ (var_labelName_3501, var_mLabelList_3313, inCompiler) ;
     } break ;
     default:
-      repeatFlag_3 = false ;
+      repeatFlag_2 = false ;
       break ;
     }
   }
   GALGAS_lstringlist var_mUnusedNonterminalList_3627 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 67)) ;
-  bool repeatFlag_4 = true ;
-  while (repeatFlag_4) {
+  bool repeatFlag_3 = true ;
+  while (repeatFlag_3) {
     switch (select_galgas_33_GrammarComponentSyntax_4 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 70)) ;
@@ -96,7 +96,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
       var_mUnusedNonterminalList_3627.addAssign_operation (var_nonterminalSymbolName_3746  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 72)) ;
     } break ;
     default:
-      repeatFlag_4 = false ;
+      repeatFlag_3 = false ;
       break ;
     }
   }
@@ -258,8 +258,8 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
       nt_label_5F_formal_5F_parameter_ (var_argumentName_4466, var_mFormalParameterList_4386, inCompiler) ;
       const enumGalgasBool test_1 = var_argumentNameSet_4336.getter_hasKey (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        GALGAS_location location_2 (var_argumentName_4466.getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_2, GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
+        GALGAS_location location_4604 = var_argumentName_4466.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
+        inCompiler->emitSemanticError (location_4604, GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
       }
       var_argumentNameSet_4336.addAssign_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102)) ;
     } break ;
@@ -610,8 +610,8 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_5006.mAttribute_string.objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (var_selector_5006.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
+    GALGAS_location location_5062 = var_selector_5006.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
+    inCompiler->emitSemanticError (location_5062, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
   }
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
   case 1: {
@@ -619,10 +619,10 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   case 2: {
     GALGAS_lstring var_typeName_5167 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 88)) ;
-    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeName_5167.mAttribute_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (var_typeName_5167.getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_typeName_5167.mAttribute_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      GALGAS_location location_5220 = var_typeName_5167.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
+      inCompiler->emitSemanticError (location_5220, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
     }
   } break ;
   default:

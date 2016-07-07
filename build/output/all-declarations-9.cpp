@@ -715,8 +715,8 @@ void routine_buildLexicalAttributeMap (const GALGAS_lexicalTypeMap constinArgume
         }
         enumerator_22367.gotoNextObject () ;
       }
-      GALGAS_location location_1 (enumerator_21979.current_mTypeName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_1, var_m_22207  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 548)) ;
+      GALGAS_location location_22448 = enumerator_21979.current_mTypeName (HERE).getter_location (SOURCE_FILE ("lexiqueTypesForAST.galgas", 548)) ;
+      inCompiler->emitSemanticError (location_22448, var_m_22207  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 548)) ;
     }
     enumerator_21979.gotoNextObject () ;
   }
@@ -4245,8 +4245,8 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
                                             COMMA_UNUSED_LOCATION_ARGS) {
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.mAttribute_string.objectCompare (GALGAS_string ("cocoa"))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("the gui name should be 'cocoa'")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 107)) ;
+    GALGAS_location location_5349 = constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.getter_location (SOURCE_FILE ("guiCompilation.galgas", 107)) ;
+    inCompiler->emitSemanticError (location_5349, GALGAS_string ("the gui name should be 'cocoa'")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 107)) ;
   }
   GALGAS_guiAnalysisContext var_context_5462 = GALGAS_guiAnalysisContext::constructor_new (GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 111)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 112)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 113)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 114)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 115)), GALGAS_extensionMap::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 116)), GALGAS_importedLexiqueList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 117))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 110)) ;
   cEnumerator_lstringlist enumerator_5852 (constinArgument_inGUIComponentAST.mAttribute_mImportedOptionList, kEnumeration_up) ;
@@ -4262,11 +4262,11 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
   }
   cEnumerator_guiSimpleAttributeListAST enumerator_6105 (constinArgument_inGUIComponentAST.mAttribute_mGlobalSimpleAttributeList, kEnumeration_up) ;
   while (enumerator_6105.hasCurrentObject ()) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 129)).objectCompare (GALGAS_string ("nibAndMainClass"))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      GALGAS_location location_3 (enumerator_6105.current_mKey (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticWarning (location_3, GALGAS_string ("the '").add_operation (enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)) ;
-    }else if (kBoolFalse == test_2) {
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 129)).objectCompare (GALGAS_string ("nibAndMainClass"))).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      GALGAS_location location_6169 = enumerator_6105.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 130)) ;
+      inCompiler->emitSemanticWarning (location_6169, GALGAS_string ("the '").add_operation (enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)) ;
+    }else if (kBoolFalse == test_1) {
       cEnumerator_stringlist enumerator_6309 (enumerator_6105.current_mValue (HERE).mAttribute_string.getter_componentsSeparatedByString (GALGAS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 132)), kEnumeration_up) ;
       while (enumerator_6309.hasCurrentObject ()) {
         var_context_5462.mAttribute_mNibAndClassList.addAssign_operation (enumerator_6309.current (HERE).mAttribute_mValue  COMMA_SOURCE_FILE ("guiCompilation.galgas", 133)) ;
@@ -4286,10 +4286,10 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     while (enumerator_6773.hasCurrentObject ()) {
       cEnumerator_terminalLabelListAST enumerator_6806 (enumerator_6773.current_mTerminalList (HERE), kEnumeration_up) ;
       while (enumerator_6806.hasCurrentObject ()) {
-        const enumGalgasBool test_4 = var_terminalSymbolSet_6708.getter_hasKey (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 150)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 150)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 150)).boolEnum () ;
-        if (kBoolTrue == test_4) {
-          GALGAS_location location_5 (enumerator_6806.current_mTerminal (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-          inCompiler->emitSemanticError (location_5, GALGAS_string ("the '$").add_operation (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)).add_operation (enumerator_6476.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 153)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 154))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
+        const enumGalgasBool test_2 = var_terminalSymbolSet_6708.getter_hasKey (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 150)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 150)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 150)).boolEnum () ;
+        if (kBoolTrue == test_2) {
+          GALGAS_location location_6892 = enumerator_6806.current_mTerminal (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 151)) ;
+          inCompiler->emitSemanticError (location_6892, GALGAS_string ("the '$").add_operation (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)).add_operation (enumerator_6476.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 153)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 154))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
         }
         enumerator_6806.gotoNextObject () ;
       }
@@ -4298,11 +4298,11 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     GALGAS_textMacroList var_textMacroList_7132 = GALGAS_textMacroList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 160)) ;
     cEnumerator_guiCompoundAttributeListAST enumerator_7194 (enumerator_6476.current_mCompoundAttributes (HERE), kEnumeration_up) ;
     while (enumerator_7194.hasCurrentObject ()) {
-      const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_7194.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 162)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
-      if (kBoolTrue == test_6) {
-        GALGAS_location location_7 (enumerator_7194.current_mKey (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-        inCompiler->emitSemanticError (location_7, GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
-      }else if (kBoolFalse == test_6) {
+      const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, enumerator_7194.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 162)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
+      if (kBoolTrue == test_3) {
+        GALGAS_location location_7254 = enumerator_7194.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 163)) ;
+        inCompiler->emitSemanticError (location_7254, GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
+      }else if (kBoolFalse == test_3) {
         var_textMacroList_7132.addAssign_operation (enumerator_7194.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165)), enumerator_7194.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
       }
       enumerator_7194.gotoNextObject () ;
@@ -4314,49 +4314,49 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     GALGAS_string var_blockComment_7607 = GALGAS_string::makeEmptyString () ;
     cEnumerator_guiSimpleAttributeListAST enumerator_7644 (enumerator_6476.current_mSimpleAttributes (HERE), kEnumeration_up) ;
     while (enumerator_7644.hasCurrentObject ()) {
-      const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 175)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
-      if (kBoolTrue == test_8) {
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 175)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
+      if (kBoolTrue == test_4) {
         {
         var_context_5462.mAttribute_mExtensionMap.setter_insertKey (enumerator_7644.current_mValue (HERE), enumerator_6476.current_mLexiqueFileName (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
         }
         var_hasAssociatedExtension_7476 = GALGAS_bool (true) ;
-      }else if (kBoolFalse == test_8) {
-        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 178)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
-        if (kBoolTrue == test_9) {
-          const enumGalgasBool test_10 = var_hasTabViewTitle_7510.boolEnum () ;
-          if (kBoolTrue == test_10) {
-            GALGAS_location location_11 (enumerator_7644.current_mKey (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-            inCompiler->emitSemanticError (location_11, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)) ;
+      }else if (kBoolFalse == test_4) {
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 178)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
+        if (kBoolTrue == test_5) {
+          const enumGalgasBool test_6 = var_hasTabViewTitle_7510.boolEnum () ;
+          if (kBoolTrue == test_6) {
+            GALGAS_location location_7899 = enumerator_7644.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 180)) ;
+            inCompiler->emitSemanticError (location_7899, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)) ;
           }
           var_hasTabViewTitle_7510 = GALGAS_bool (true) ;
           var_tabViewTitle_7577 = enumerator_7644.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 183)) ;
-        }else if (kBoolFalse == test_9) {
-          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 184)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
-          if (kBoolTrue == test_12) {
-            const enumGalgasBool test_13 = var_hasBlockComment_7544.boolEnum () ;
-            if (kBoolTrue == test_13) {
-              GALGAS_location location_14 (enumerator_7644.current_mKey (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-              inCompiler->emitSemanticError (location_14, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)) ;
+        }else if (kBoolFalse == test_5) {
+          const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 184)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
+          if (kBoolTrue == test_7) {
+            const enumGalgasBool test_8 = var_hasBlockComment_7544.boolEnum () ;
+            if (kBoolTrue == test_8) {
+              GALGAS_location location_8132 = enumerator_7644.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 186)) ;
+              inCompiler->emitSemanticError (location_8132, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)) ;
             }
             var_hasBlockComment_7544 = GALGAS_bool (true) ;
             var_blockComment_7607 = enumerator_7644.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-          }else if (kBoolFalse == test_12) {
-            GALGAS_location location_15 (enumerator_7644.current_mKey (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-            inCompiler->emitSemanticError (location_15, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
+          }else if (kBoolFalse == test_7) {
+            GALGAS_location location_8293 = enumerator_7644.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 191)) ;
+            inCompiler->emitSemanticError (location_8293, GALGAS_string ("the '").add_operation (enumerator_7644.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
           }
         }
       }
       enumerator_7644.gotoNextObject () ;
     }
-    const enumGalgasBool test_16 = var_hasAssociatedExtension_7476.operator_not (SOURCE_FILE ("guiCompilation.galgas", 195)).boolEnum () ;
-    if (kBoolTrue == test_16) {
-      GALGAS_location location_17 (enumerator_6476.current_mLexiqueFileName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_17, GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 196)) ;
+    const enumGalgasBool test_9 = var_hasAssociatedExtension_7476.operator_not (SOURCE_FILE ("guiCompilation.galgas", 195)).boolEnum () ;
+    if (kBoolTrue == test_9) {
+      GALGAS_location location_8488 = enumerator_6476.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 196)) ;
+      inCompiler->emitSemanticError (location_8488, GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 196)) ;
     }
-    const enumGalgasBool test_18 = var_hasTabViewTitle_7510.operator_not (SOURCE_FILE ("guiCompilation.galgas", 199)).boolEnum () ;
-    if (kBoolTrue == test_18) {
-      GALGAS_location location_19 (enumerator_6476.current_mLexiqueFileName (HERE).getter_location (HERE)) ; // Implicit use of 'location' getter
-      inCompiler->emitSemanticError (location_19, GALGAS_string ("the 'title' key should be defined once (it is not defined)")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 200)) ;
+    const enumGalgasBool test_10 = var_hasTabViewTitle_7510.operator_not (SOURCE_FILE ("guiCompilation.galgas", 199)).boolEnum () ;
+    if (kBoolTrue == test_10) {
+      GALGAS_location location_8668 = enumerator_6476.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 200)) ;
+      inCompiler->emitSemanticError (location_8668, GALGAS_string ("the 'title' key should be defined once (it is not defined)")  COMMA_SOURCE_FILE ("guiCompilation.galgas", 200)) ;
     }
     var_context_5462.mAttribute_mWithLexiqueList.addAssign_operation (enumerator_6476.current_mLexiqueFileName (HERE).mAttribute_string, var_blockComment_7607, var_tabViewTitle_7577, var_textMacroList_7132, enumerator_6476.current_mLabels (HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas", 203)) ;
     enumerator_6476.gotoNextObject () ;
@@ -6200,8 +6200,8 @@ void routine_check_5F_K_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
         GALGAS_char var_c_19118 = enumerator_19061.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 515)) ;
         const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19118.objectCompare (GALGAS_char (TO_UNICODE (75)))).boolEnum () ;
         if (kBoolTrue == test_1) {
-          GALGAS_location location_2 (inArgument_inString.getter_location (HERE)) ; // Implicit use of 'location' getter
-          inCompiler->emitSemanticError (location_2, GALGAS_string ("only '%K' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 517)) ;
+          GALGAS_location location_19190 = inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 517)) ;
+          inCompiler->emitSemanticError (location_19190, GALGAS_string ("only '%K' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 517)) ;
         }
       }
       enumerator_19061.gotoNextObject () ;
@@ -6234,8 +6234,8 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters (GALGAS_lstring inArgument_inSt
         GALGAS_char var_c_19816 = enumerator_19759.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 532)) ;
         const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19816.objectCompare (GALGAS_char (TO_UNICODE (75)))).operator_and (GALGAS_bool (kIsNotEqual, var_c_19816.objectCompare (GALGAS_char (TO_UNICODE (76)))) COMMA_SOURCE_FILE ("type-map.galgas", 533)).boolEnum () ;
         if (kBoolTrue == test_1) {
-          GALGAS_location location_2 (inArgument_inString.getter_location (HERE)) ; // Implicit use of 'location' getter
-          inCompiler->emitSemanticError (location_2, GALGAS_string ("only '%K', '%L' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 534)) ;
+          GALGAS_location location_19903 = inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 534)) ;
+          inCompiler->emitSemanticError (location_19903, GALGAS_string ("only '%K', '%L' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 534)) ;
         }
       }
       enumerator_19759.gotoNextObject () ;

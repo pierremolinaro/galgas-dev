@@ -7075,8 +7075,8 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ (G
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__21_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 516)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28580.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_1 (var_selector_28580.getter_location (HERE)) ; // Implicit use of 'location' getter
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("templateSyntax.galgas", 518)) ;
+    GALGAS_location location_28622 = var_selector_28580.getter_location (SOURCE_FILE ("templateSyntax.galgas", 518)) ;
+    inCompiler->emitSemanticError (location_28622, GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("templateSyntax.galgas", 518)) ;
   }
   GALGAS_templateExpressionAST var_expression_28722 ;
   nt_expression_ (var_expression_28722, inCompiler) ;
