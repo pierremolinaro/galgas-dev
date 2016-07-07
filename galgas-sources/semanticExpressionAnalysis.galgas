@@ -550,7 +550,8 @@ proc checkDiadicOperator
         !@stringlist.emptyList
         ![inLeftType key]
         !@semanticExpressionListForGeneration.emptyList
-        !hasCompilerArgument}
+        !hasCompilerArgument
+      }
       ioRightExpression = conversionExpression
     end
     if not ok then

@@ -67,7 +67,6 @@ proc analyzeErrorOrWarningInstruction
   ?let @location inErrorLocation
   ?let @string inErrorOrWarningString
   ?!@variableMap ioVariableMap
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   !@semanticExpressionForGeneration outLocationExpression
   !@semanticExpressionForGeneration outMessageExpression
 {
@@ -103,30 +102,41 @@ proc analyzeErrorOrWarningInstruction
         + "' object; it should be either of the '@location' type, either defines a 'location' getter without"
         + " argument that returns an '@location' object"
       else
-        let getterExpression = @getterCallExpressionForGeneration.new {
+        let conversionExpression = @getterCallExpressionForGeneration.new {
           !inAnalysisContext.mPredefinedTypes.mLocationType
           !inErrorLocation
           !kind
           !outLocationExpression
           !{}
-          !"location"
+          ![inAnalysisContext.mPredefinedTypes.mLocationType key]
           !{}
           !hasCompilerArgument
         }
-        let resultCppName = "location_" + [inErrorLocation locationIndex]
-        let assignment = @localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
-          !inAnalysisContext.mPredefinedTypes.mLocationType
-          !true # is constant
-          !resultCppName
-          !getterExpression
-        }
-        ioInstructionListForGeneration += !assignment
-        outLocationExpression = @varInExpressionForGeneration.new {
-          !inAnalysisContext.mPredefinedTypes.mLocationType
-          !inErrorLocation
-          !resultCppName
-          !""
-        }
+        outLocationExpression = conversionExpression
+#        let getterExpression = @getterCallExpressionForGeneration.new {
+#          !inAnalysisContext.mPredefinedTypes.mLocationType
+#          !inErrorLocation
+#          !kind
+#          !outLocationExpression
+#          !{}
+#          !"location"
+#          !{}
+#          !hasCompilerArgument
+#        }
+#        let resultCppName = "location_" + [inErrorLocation locationIndex]
+#        let assignment = @localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+#          !inAnalysisContext.mPredefinedTypes.mLocationType
+#          !true # is constant
+#          !resultCppName
+#          !getterExpression
+#        }
+#        ioInstructionListForGeneration += !assignment
+#        outLocationExpression = @varInExpressionForGeneration.new {
+#          !inAnalysisContext.mPredefinedTypes.mLocationType
+#          !inErrorLocation
+#          !resultCppName
+#          !""
+#        }
       end
     else
       error inErrorLocation
@@ -164,7 +174,6 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"error"
     !?ioVariableMap
-    !?ioInstructionListForGeneration
     ?let locationExpression
     ?let messageExpression
   )

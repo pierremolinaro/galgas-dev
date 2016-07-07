@@ -42,8 +42,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_attribute) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 41)) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_2859.mAttribute_string.objectCompare (GALGAS_string ("translate"))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_location location_2917 = var_featureName_2859.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
-      inCompiler->emitSemanticError (location_2917, GALGAS_string ("only 'feature translate' can be declared here")  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
+      inCompiler->emitSemanticError (var_featureName_2859.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)), GALGAS_string ("only 'feature translate' can be declared here")  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
     }
     var_hasTranslateFeature_2771 = GALGAS_bool (true) ;
   } break ;
@@ -258,8 +257,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
       nt_label_5F_formal_5F_parameter_ (var_argumentName_4466, var_mFormalParameterList_4386, inCompiler) ;
       const enumGalgasBool test_1 = var_argumentNameSet_4336.getter_hasKey (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 99)).boolEnum () ;
       if (kBoolTrue == test_1) {
-        GALGAS_location location_4604 = var_argumentName_4466.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
-        inCompiler->emitSemanticError (location_4604, GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
+        inCompiler->emitSemanticError (var_argumentName_4466.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), GALGAS_string ("there is already an argument named '").add_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 100)) ;
       }
       var_argumentNameSet_4336.addAssign_operation (var_argumentName_4466.getter_string (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102))  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 102)) ;
     } break ;
@@ -610,8 +608,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_5006.mAttribute_string.objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    GALGAS_location location_5062 = var_selector_5006.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
-    inCompiler->emitSemanticError (location_5062, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
+    inCompiler->emitSemanticError (var_selector_5006.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)), GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
   }
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
   case 1: {
@@ -621,8 +618,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 88)) ;
     const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_typeName_5167.mAttribute_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
     if (kBoolTrue == test_1) {
-      GALGAS_location location_5220 = var_typeName_5167.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
-      inCompiler->emitSemanticError (location_5220, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
+      inCompiler->emitSemanticError (var_typeName_5167.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)), GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;
     }
   } break ;
   default:

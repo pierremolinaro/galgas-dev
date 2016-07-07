@@ -60,7 +60,6 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"warning"
     !?ioVariableMap
-    !?ioInstructionListForGeneration
     ?let locationExpression
     ?let messageExpression
   )
