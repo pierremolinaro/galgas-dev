@@ -13892,8 +13892,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   GALGAS_stringlist var_candidateProjectFiles_3852 = var_parentDirectory_3730.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 61)) ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_3852.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 62)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    GALGAS_location location_3982 = constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 63)) ;
-    inCompiler->emitSemanticError (location_3982, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 63)) ;
+    inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 63)), GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 63)) ;
   }else if (kBoolFalse == test_1) {
     const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3852.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 64)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_2) {
@@ -13904,8 +13903,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
           "  - ").add_operation (enumerator_4203.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
         enumerator_4203.gotoNextObject () ;
       }
-      GALGAS_location location_4253 = constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
-      inCompiler->emitSemanticError (location_4253, var_s_4108  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
+      inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 69)), var_s_4108  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
     }else if (kBoolFalse == test_2) {
       GALGAS_string var_projectFilePath_4301 = var_parentDirectory_3730.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)).add_operation (var_candidateProjectFiles_3852.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
       {

@@ -20,10 +20,18 @@ abstract class @C_C : @B_B {}
 
 override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string outResult
 
+abstract getter @A_A location -> @location outLocation
+
+override getter @B_B location -> @location outLocation { outLocation = .here}
+
+
 proc testsuite_extension_readers {
   message "*************************************** begin of extension reader test\n"
   @B_B b = .new
   @string s = [b otherReader !2 !"-"]
   log s
+  if false then
+    error b : "non displayed message"
+  end
 }
 
