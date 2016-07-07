@@ -60,15 +60,14 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"warning"
     !?ioVariableMap
+    !?ioInstructionListForGeneration
     ?let locationExpression
     ?let messageExpression
-    ?let useLocationReader
   )
 #--- Generate instruction
   ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
     !mInstructionLocation
     !locationExpression
-    !useLocationReader
     !messageExpression
   }
 }
@@ -80,7 +79,6 @@ override method @warningInstructionAST analyzeSemanticInstruction
 class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
-  @bool mUseLocationGetter
   @semanticExpressionForGeneration mWarningExpression
 }
 
@@ -91,19 +89,19 @@ override method @warningInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+ {
 #--- Receiver expression
   @string receiverCppVarName
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
 #--- Receiver expression
-  @string messageCppVarName
-  [mWarningExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
-#--- Use location getter ?
-  if mUseLocationGetter then
-    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".getter_location (HERE)) ; // Implicit use of 'location' getter\n"
-    receiverCppVarName = locationVar
-  end
+  [mWarningExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let messageCppVarName
+  ]
 #--- Generate warning instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->emitSemanticWarning (" + receiverCppVarName + ", " + messageCppVarName

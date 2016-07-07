@@ -5976,9 +5976,6 @@ typeComparisonResult cPtr_warningInstructionForGeneration::dynamicObjectCompare 
     result = mAttribute_mReceiverExpression.objectCompare (p->mAttribute_mReceiverExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mUseLocationGetter.objectCompare (p->mAttribute_mUseLocationGetter) ;
-  }
-  if (kOperandEqual == result) {
     result = mAttribute_mWarningExpression.objectCompare (p->mAttribute_mWarningExpression) ;
   }
   return result ;
@@ -6020,12 +6017,11 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 GALGAS_warningInstructionForGeneration GALGAS_warningInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                const GALGAS_bool & inAttribute_mUseLocationGetter,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mWarningExpression
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_warningInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mUseLocationGetter.isValid () && inAttribute_mWarningExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mUseLocationGetter, inAttribute_mWarningExpression COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mWarningExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mWarningExpression COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6068,24 +6064,6 @@ GALGAS_semanticExpressionForGeneration cPtr_warningInstructionForGeneration::get
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_warningInstructionForGeneration::getter_mUseLocationGetter (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_warningInstructionForGeneration * p = (const cPtr_warningInstructionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
-    result = p->mAttribute_mUseLocationGetter ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool cPtr_warningInstructionForGeneration::getter_mUseLocationGetter (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mUseLocationGetter ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_semanticExpressionForGeneration GALGAS_warningInstructionForGeneration::getter_mWarningExpression (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticExpressionForGeneration result ;
   if (NULL != mObjectPtr) {
@@ -6108,13 +6086,11 @@ GALGAS_semanticExpressionForGeneration cPtr_warningInstructionForGeneration::get
 
 cPtr_warningInstructionForGeneration::cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                            const GALGAS_bool & in_mUseLocationGetter,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mWarningExpression
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mReceiverExpression (in_mReceiverExpression),
-mAttribute_mUseLocationGetter (in_mUseLocationGetter),
 mAttribute_mWarningExpression (in_mWarningExpression) {
 }
 
@@ -6131,8 +6107,6 @@ void cPtr_warningInstructionForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mUseLocationGetter.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
   mAttribute_mWarningExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
@@ -6141,7 +6115,7 @@ void cPtr_warningInstructionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_warningInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_warningInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mUseLocationGetter, mAttribute_mWarningExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_warningInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mWarningExpression COMMA_THERE)) ;
   return ptr ;
 }
 

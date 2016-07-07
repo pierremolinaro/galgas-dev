@@ -67,40 +67,72 @@ proc analyzeErrorOrWarningInstruction
   ?let @location inErrorLocation
   ?let @string inErrorOrWarningString
   ?!@variableMap ioVariableMap
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   !@semanticExpressionForGeneration outLocationExpression
   !@semanticExpressionForGeneration outMessageExpression
-  !@bool outUseLocationReader
 {
 #--- Analyze location expression
-  let locationType = @unifiedTypeMap-proxy.searchKey {
-    !inAnalysisContext.mSemanticContext.mTypeMap
-    !["location" nowhere]
-  }
   [inLocationExpression analyzeSemanticExpression
-    !locationType
+    !inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
     !?ioVariableMap
     ?outLocationExpression
   ]
 #--- Check location expression type is either @location either has a correct location getter
-  outUseLocationReader = [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType
-  if outUseLocationReader then
-    let getterMap = [[outLocationExpression mResultType] mGetterMap]
-    with "location" in getterMap  do
-      if [mArgumentTypeList length] != 0 then
+  if [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType then
+    let @getterMap getterMap = [[outLocationExpression mResultType] mGetterMap]
+    if [getterMap hasKey !"location"] then
+      [getterMap searchKey
+        !["location" nowhere]
+        ?let @methodKind kind
+        ?let @functionSignature argumentTypeList
+        ?*
+        ?let @bool hasCompilerArgument
+        ?let @unifiedTypeMap-proxy returnedType
+        ?2*
+      ]
+      if [argumentTypeList length] != 0 then
         error inErrorLocation
         :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
-        + "' and defines a 'location' getter with arguments; it should be either of the '@location' type, either defines a 'location' getter without argument that returns an '@location' object"      
-      elsif mReturnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
+        + "' and defines a 'location' getter with arguments; it should be either of the '@location' type,"
+        + " either defines a 'location' getter without argument that returns an '@location' object"
+      elsif returnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
         error inErrorLocation
         :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
-        + "' and defines a 'location' getter that returns an '@" + [mReturnedType key]
-        + "' object; it should be either of the '@location' type, either defines a 'location' getter without argument that returns an '@location' object"      
+        + "' and defines a 'location' getter that returns an '@" + [returnedType key]
+        + "' object; it should be either of the '@location' type, either defines a 'location' getter without"
+        + " argument that returns an '@location' object"
+      else
+        let getterExpression = @getterCallExpressionForGeneration.new {
+          !inAnalysisContext.mPredefinedTypes.mLocationType
+          !inErrorLocation
+          !kind
+          !outLocationExpression
+          !{}
+          !"location"
+          !{}
+          !hasCompilerArgument
+        }
+        let resultCppName = "location_" + [inErrorLocation locationIndex]
+        let assignment = @localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
+          !inAnalysisContext.mPredefinedTypes.mLocationType
+          !true # is constant
+          !resultCppName
+          !getterExpression
+        }
+        ioInstructionListForGeneration += !assignment
+        outLocationExpression = @varInExpressionForGeneration.new {
+          !inAnalysisContext.mPredefinedTypes.mLocationType
+          !inErrorLocation
+          !resultCppName
+          !""
+        }
       end
     else
       error inErrorLocation
       :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
-      + "' and does not define a 'location' getter; it should be either of the '@location' type, either defines a 'location' getter without argument that returns an '@location' object"
+      + "' and does not define a 'location' getter; it should be either of the '@location' type, either"
+      + " defines a 'location' getter without argument that returns an '@location' object"
     end
   end
 #--- Analyze message expression
@@ -113,7 +145,8 @@ proc analyzeErrorOrWarningInstruction
 #--- Check message expression type is @string
   if [outMessageExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
     error inErrorLocation
-    :"the " + inErrorOrWarningString + " message expression type is '@" + [[outMessageExpression mResultType] key] + "'; it should be of the '@string' type"
+    :"the " + inErrorOrWarningString + " message expression type is '@" + [[outMessageExpression mResultType] key]
+     + "'; it should be of the '@string' type"
   end
 }
 
@@ -131,9 +164,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"error"
     !?ioVariableMap
+    !?ioInstructionListForGeneration
     ?let locationExpression
     ?let messageExpression
-    ?let useLocationGetter
   )
 #--- Handle dropped variables
   var builtVariableCppNameList = @stringlist {}
@@ -145,7 +178,6 @@ override method @errorInstructionAST analyzeSemanticInstruction
   ioInstructionListForGeneration += !@errorInstructionForGeneration.new {
     !mInstructionLocation
     !locationExpression
-    !useLocationGetter
     !messageExpression
     !builtVariableCppNameList
   }
@@ -158,7 +190,6 @@ override method @errorInstructionAST analyzeSemanticInstruction
 class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
-  @bool mUseLocationGetter
   @semanticExpressionForGeneration mErrorExpression
   @stringlist mBuiltVariableCppNameList
 }
@@ -170,7 +201,8 @@ override method @errorInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
 #--- Receiver expression
   @string receiverCppVarName
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
@@ -178,11 +210,14 @@ override method @errorInstructionForGeneration generateInstruction
   @string messageCppVarName
   [mErrorExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
 #--- Use location getter ?
-  if mUseLocationGetter then
-    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".getter_location (HERE)) ; // Implicit use of 'location' getter\n"
-    receiverCppVarName = locationVar
-  end
+#  switch mUseLocationGetter 
+#  case no :
+#  case yes (@methodKind kind @bool hasCompilerArgument) :
+#
+#    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+#    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".getter_location (HERE)) ; // Implicit use of 'location' getter\n"
+#    receiverCppVarName = locationVar
+#  end
 #--- Generate error instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->emitSemanticError (" + receiverCppVarName + ", " + messageCppVarName

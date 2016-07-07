@@ -1135,7 +1135,7 @@ override method @getterCallExpressionForGeneration generateExpression
    [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet]
     @unifiedTypeMap-proxy baseType = [mReceiverExpression mResultType]
     @bool searching = true
-    loop( @uint. max) while searching do
+    loop (@uint.max) while searching do
       if not [[baseType mSuperType] isNull] then
         if [[[baseType mSuperType] mGetterMap] hasKey !mGetterName] then
           baseType = [baseType mSuperType]

@@ -2427,8 +2427,7 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_warningInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand1,
-                                                                                const class GALGAS_bool & inOperand2,
-                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand3
+                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2443,8 +2442,6 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
   public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mUseLocationGetter (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mWarningExpression (LOCATION_ARGS) const ;
 
@@ -2469,13 +2466,11 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Attributes
   public : GALGAS_location mAttribute_mInstructionLocation ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_bool mAttribute_mUseLocationGetter ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mWarningExpression ;
 
 //--- Constructor
   public : cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                  const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                 const GALGAS_bool & in_mUseLocationGetter,
                                                  const GALGAS_semanticExpressionForGeneration & in_mWarningExpression
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -2485,7 +2480,6 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mUseLocationGetter (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mWarningExpression (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
