@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2011, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -368,6 +368,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
   NSInteger insertedCharsCount = 0 ;
   NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  const BOOL selectionBeginsAtFirstColumn = currentLineRange.location == selectedRange.location ;
   do {
     //NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
     [mutableSourceString insertAttributedString:spaceString atIndex:currentLineRange.location] ;
@@ -377,7 +378,10 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
 //--- Update selected range
-  const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + (NSUInteger) insertedCharsCount) ;
+  const NSRange newSelectedRange = selectionBeginsAtFirstColumn
+    ? NSMakeRange (selectedRange.location, selectedRange.length + (NSUInteger) insertedCharsCount)
+    : NSMakeRange (selectedRange.location + (NSUInteger) insertedCharsCount, selectedRange.length)
+  ;
   [mTextView setSelectedRange:newSelectedRange] ;
 //--- Register undo
   [documentData.textSyntaxColoring.undoManager

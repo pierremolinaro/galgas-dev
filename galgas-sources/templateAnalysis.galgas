@@ -1124,16 +1124,19 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @templateClassToTypeOperandAST  templateExpressionAnalysis
+override method @templateClassToTypeOperandAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mTypeName ?26*]
 #---
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
     ![mTypeName location]
-    ![mTypeName string]}
+    !type
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
