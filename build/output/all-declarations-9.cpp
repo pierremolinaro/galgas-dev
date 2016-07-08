@@ -559,10 +559,10 @@ void routine_templateInstructionListAnalysis (const GALGAS_templateAnalysisConte
                                               GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListAST enumerator_53763 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_53763.hasCurrentObject ()) {
-    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_53763.current_mInstruction (HERE).ptr (), constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1156)) ;
-    enumerator_53763.gotoNextObject () ;
+  cEnumerator_templateInstructionListAST enumerator_53836 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_53836.hasCurrentObject ()) {
+    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_53836.current_mInstruction (HERE).ptr (), constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1159)) ;
+    enumerator_53836.gotoNextObject () ;
   }
 }
 

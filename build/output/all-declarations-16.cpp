@@ -5244,7 +5244,7 @@ typeComparisonResult cPtr_literalTypeInExpressionForGeneration::dynamicObjectCom
     result = mAttribute_mLocation.objectCompare (p->mAttribute_mLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+    result = mAttribute_mLiteralType.objectCompare (p->mAttribute_mLiteralType) ;
   }
   return result ;
 }
@@ -5279,7 +5279,7 @@ GALGAS_semanticExpressionForGeneration () {
 GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
-                                                                       GALGAS_string::constructor_default (HERE)
+                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)
                                                                        COMMA_THERE) ;
 }
 
@@ -5294,31 +5294,31 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_string & inAttribute_mTypeName
+                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mLiteralType
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_literalTypeInExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mTypeName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalTypeInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mTypeName COMMA_THERE)) ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLiteralType.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_literalTypeInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLiteralType COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_literalTypeInExpressionForGeneration::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_literalTypeInExpressionForGeneration::getter_mLiteralType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_literalTypeInExpressionForGeneration * p = (const cPtr_literalTypeInExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_literalTypeInExpressionForGeneration) ;
-    result = p->mAttribute_mTypeName ;
+    result = p->mAttribute_mLiteralType ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string cPtr_literalTypeInExpressionForGeneration::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
+GALGAS_unifiedTypeMap_2D_proxy cPtr_literalTypeInExpressionForGeneration::getter_mLiteralType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLiteralType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5327,10 +5327,10 @@ GALGAS_string cPtr_literalTypeInExpressionForGeneration::getter_mTypeName (UNUSE
 
 cPtr_literalTypeInExpressionForGeneration::cPtr_literalTypeInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
-                                                                                      const GALGAS_string & in_mTypeName
+                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mLiteralType
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mAttribute_mTypeName (in_mTypeName) {
+mAttribute_mLiteralType (in_mLiteralType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5346,7 +5346,7 @@ void cPtr_literalTypeInExpressionForGeneration::description (C_String & ioString
   ioString << ", " ;
   mAttribute_mLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  mAttribute_mLiteralType.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5354,7 +5354,7 @@ void cPtr_literalTypeInExpressionForGeneration::description (C_String & ioString
 
 acPtr_class * cPtr_literalTypeInExpressionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalTypeInExpressionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mTypeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_literalTypeInExpressionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mLiteralType COMMA_THERE)) ;
   return ptr ;
 }
 

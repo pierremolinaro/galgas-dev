@@ -2416,7 +2416,7 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_literalTypeInExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                      const class GALGAS_location & inOperand1,
-                                                                                     const class GALGAS_string & inOperand2
+                                                                                     const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2428,7 +2428,7 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mLiteralType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -2449,19 +2449,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpres
 
 class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mTypeName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLiteralType ;
 
 //--- Constructor
   public : cPtr_literalTypeInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                       const GALGAS_location & in_mLocation,
-                                                      const GALGAS_string & in_mTypeName
+                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mLiteralType
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mLiteralType (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

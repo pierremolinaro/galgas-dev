@@ -317,7 +317,8 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+{
 #--- Check passing mode
   if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
     error mActualSelector
@@ -373,7 +374,8 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+{
 #--- Check passing mode
   if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
     error mActualSelector

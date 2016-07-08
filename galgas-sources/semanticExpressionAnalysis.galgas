@@ -2876,8 +2876,9 @@ override method @varInExpressionAST analyzeSemanticExpression
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap unused ioTypeMap
+  ?!@unifiedTypeMap ioTypeMap
 {
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mLiteralTypeName ?*]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2891,10 +2892,12 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mLiteralTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
     ![mLiteralTypeName location]
-    ![mLiteralTypeName string]}
+    !type
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

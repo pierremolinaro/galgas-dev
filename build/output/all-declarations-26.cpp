@@ -2479,19 +2479,19 @@ static void extensionMethod_localVariableDeclarationAST_analyzeSemanticInstructi
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_localVariableDeclarationAST * object = (const cPtr_localVariableDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_localVariableDeclarationAST) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_targetType_2958 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mTypeName, inCompiler  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 55)) ;
-  GALGAS_string var_targetVariableCppName_3078 = GALGAS_string ("var_").add_operation (object->mAttribute_mVariableName.mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("instruction-var-declaration.galgas", 56)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 56)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 56)).add_operation (object->mAttribute_mVariableName.mAttribute_location.getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 56)).getter_string (SOURCE_FILE ("instruction-var-declaration.galgas", 56)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 56)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_targetType_2958 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mTypeName, inCompiler  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 56)) ;
+  GALGAS_string var_targetVariableCppName_3078 = GALGAS_string ("var_").add_operation (object->mAttribute_mVariableName.mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("instruction-var-declaration.galgas", 57)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 57)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 57)).add_operation (object->mAttribute_mVariableName.mAttribute_location.getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 57)).getter_string (SOURCE_FILE ("instruction-var-declaration.galgas", 57)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 57)) ;
   const enumGalgasBool test_0 = object->mAttribute_mIsUndefinedConstant.boolEnum () ;
   if (kBoolTrue == test_0) {
     {
-    ioArgument_ioVariableMap.setter_insertUndefinedLocalConstant (object->mAttribute_mVariableName, var_targetType_2958, var_targetVariableCppName_3078, var_targetVariableCppName_3078, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 58)) ;
+    ioArgument_ioVariableMap.setter_insertUndefinedLocalConstant (object->mAttribute_mVariableName, var_targetType_2958, var_targetVariableCppName_3078, var_targetVariableCppName_3078, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 59)) ;
     }
   }else if (kBoolFalse == test_0) {
     {
-    ioArgument_ioVariableMap.setter_insertUndefinedLocalVariable (object->mAttribute_mVariableName, var_targetType_2958, var_targetVariableCppName_3078, var_targetVariableCppName_3078, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 60)) ;
+    ioArgument_ioVariableMap.setter_insertUndefinedLocalVariable (object->mAttribute_mVariableName, var_targetType_2958, var_targetVariableCppName_3078, var_targetVariableCppName_3078, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 61)) ;
     }
   }
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_localVariableDeclarationForGeneration::constructor_new (var_targetType_2958, var_targetVariableCppName_3078  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 63))  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 63)) ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_localVariableDeclarationForGeneration::constructor_new (var_targetType_2958, var_targetVariableCppName_3078  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 64))  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 64)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2521,8 +2521,8 @@ static void extensionMethod_localVariableDeclarationForGeneration_generateInstru
                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_localVariableDeclarationForGeneration * object = (const cPtr_localVariableDeclarationForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_localVariableDeclarationForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mAttribute_mVariableType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 87)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (object->mAttribute_mVariableType.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)).add_operation (object->mAttribute_mCppVariableName, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)), inCompiler  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)) ;
+  extensionMethod_addHeaderFileName (object->mAttribute_mVariableType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 88)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (object->mAttribute_mVariableType.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)).add_operation (object->mAttribute_mCppVariableName, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)), inCompiler  COMMA_SOURCE_FILE ("instruction-var-declaration.galgas", 89)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

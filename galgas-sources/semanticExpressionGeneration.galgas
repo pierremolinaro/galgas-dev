@@ -188,12 +188,18 @@ override method @constructorExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [mResultType addHeaderFileName !?ioInclusionSet]
-  var parameterList =@stringlist.emptyList{}
+  @stringlist parameterList = {}
   for () in mEffectiveParameterList do
-    @string parameter
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet 
+      ?let @string parameter
+    ]
     parameterList += !parameter  
   end
   outCppExpression = "GALGAS_"  + [mConstructorType identifierRepresentation]
@@ -981,12 +987,14 @@ override method @ifExpressionForGeneration generateExpression
 
 override method @literalTypeInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
+  [mLiteralType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "GALGAS_type (& kTypeDescriptor_GALGAS_"
-                  + [mTypeName identifierRepresentation] + ")"
+                  + [[mLiteralType key] identifierRepresentation] + ")"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
