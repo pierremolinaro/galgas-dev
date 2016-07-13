@@ -477,17 +477,10 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [tvi setLabel:title] ;
   [mLexicalColoringTabView insertTabViewItem:tvi atIndex: (NSInteger) inIndex] ;
 //--- Duplicate 'SetFont' Button
-//  NSLog (@"ALL NAMES IN PREFERENCES: '%@'", allFontPreferenceNames) ;
   NSButton * setFontButton = [[NSButton alloc] initWithFrame:[mSetFontButton frame]] ;
-//  NSData * data = [NSArchiver archivedDataWithRootObject:mSetFontButton] ;
-//  NSButton * setFontButton = [NSUnarchiver unarchiveObjectWithData:data] ;
-//  [setFontButton setButtonType:[mSetFontButton buttonType]] ;
-//  [setFontButton setAutoresizingMask:[mSetFontButton autoresizingMask]] ;
-//  NSLog (@"TITLE '%@'", [mSetFontButton title]) ;
   [[setFontButton cell] setRepresentedObject:allFontPreferenceNames] ;
   [setFontButton setTitle:@"Set Font…"] ;
   [setFontButton setState:[mSetFontButton state]] ;
-//  [setFontButton setAttributedTitle:[mSetFontButton attributedTitle]] ;
   [setFontButton setBezelStyle:[mSetFontButton bezelStyle]] ;
   [setFontButton setBordered:[mSetFontButton isBordered]] ;
   [setFontButton setAutoresizingMask:NSViewNotSizable] ;
@@ -507,8 +500,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [sc setAutoresizingMask:[mLexicalColoringScrollView autoresizingMask]] ;
   [[tvi view] addSubview:sc] ;
   [sc setDocumentView:view] ;
-  // NSRect fff = [[tvi view] frame] ;
-  // NSLog (@"%f %f %f %f", fff.origin.x, fff.origin.y, fff.size.width, fff.size.height) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -519,7 +510,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #endif
 //--- Get all preference names
   mCurrentFontArray = [[inSender cell] representedObject] ;
-  //NSLog (@"mCurrentFontArray '%@'", mCurrentFontArray) ;
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   NSString * preferenceName = nil ;
   NSMutableSet * fontSet = [NSMutableSet new] ;
@@ -532,9 +522,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     if (f != nil) {
       [fontSet addObject:f] ;
     }
-    //NSLog (@"%@ -> '%@' -> '%@'", preferenceName, data, [f displayName]) ;
   }
-  // NSLog (@"Font set : '%@'", fontSet) ;
 //--- Set font manager selected fonts
   NSFontManager * fontManager = [NSFontManager sharedFontManager] ;
   if ([fontSet count] == 1) {
@@ -558,8 +546,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//--- Get all preference names
-  // NSLog (@"mCurrentFontArray '%@'", mCurrentFontArray) ;
 //--- Changing fonts
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   NSFontManager * fontManager = [NSFontManager sharedFontManager] ;
@@ -610,7 +596,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
- // NSLog (@"[inTitleComponents count] %u, inMenu %@", [inTitleComponents count], inMenu) ;
   if ([inTitleComponents count] == 1) {
     [inMenu
       addItemWithTitle:[inTitleComponents lastObject]
@@ -660,7 +645,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  // NSLog (@"mTextMacroMenu %@", mTextMacroMenu) ;
   NSArray * tokenizerArray = tokenizers () ;
   NSUInteger macroCount = 0 ;
   for (OC_Lexique * tokenizer in tokenizerArray) {
@@ -779,7 +763,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   //--- Comment text
     tx = [NSTextField new] ;
     NSString * title = [option title] ;
- //   [tx setTitleWithMnemonic: title] ;
     [tx setStringValue:title] ;
     [tx setAutoresizingMask: mask] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -841,7 +824,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   //--- Comment text
     tx = [NSTextField new] ;
     NSString * title = [option title] ;
-//    [tx setTitleWithMnemonic: title] ;
     [tx setStringValue:title] ;
     [tx setAutoresizingMask: mask] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
