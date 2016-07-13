@@ -233,7 +233,10 @@ def runInThread (job, displayLock, terminationSemaphore):
   else:
     if job.mLogUtilityTool :
       print ("Utility tool is '" + executable + "'")
-    childProcess = subprocess.Popen (job.mCommand, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    if len (job.mCommand) < 100 :
+      childProcess = subprocess.Popen (job.mCommand, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
+    else:
+      childProcess = subprocess.Popen (job.mCommand, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
     while True:
       line = childProcess.stdout.readline ()
       if line != "":
