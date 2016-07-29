@@ -91,7 +91,7 @@ syntax extension galgas3InstructionsSyntax {
     $cast$
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST expression
-    var mCastInstructionBranchList =@castInstructionBranchListAST.emptyList{}
+    var mCastInstructionBranchList =@castInstructionBranchListAST {}
     repeat
       <cast_instruction_branch> !? mCastInstructionBranchList
     while
@@ -151,7 +151,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
-  var castBranchList =@castInstructionBranchListForGeneration.emptyList{}
+  var castBranchList =@castInstructionBranchListForGeneration {}
   for () in mCastInstructionBranchList do
   #--- Get named type
     let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
@@ -169,7 +169,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     end
   #--- Declare a local constant ?
     @string localConstantName
-    var localConstantList =@localConstantList.emptyList{}
+    var localConstantList =@localConstantList {}
     if [mConstantVarName length] > 0 then
       localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
       localConstantList +=

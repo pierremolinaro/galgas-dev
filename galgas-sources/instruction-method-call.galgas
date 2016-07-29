@@ -140,9 +140,9 @@ override method @methodCallInstructionForGeneration generateInstruction
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
   [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
 #---
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
+  var parameterCppNameList =@stringlist {}
+  var jokerParametersToReleaseList =@stringlist {}
+  var inputVariableList =@stringlist {}
   for () in mActualParameterList do
     @string parameterCppName
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]

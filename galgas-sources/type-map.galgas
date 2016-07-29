@@ -63,11 +63,11 @@ syntax extension galgas3DeclarationsSyntax {
     end
   #--- Map properties
     ${$
-    var propertyList =@propertyInCollectionListAST.emptyList{}
-    var mInsertMethodList =@insertMethodListAST.emptyList{}
-    var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
-    var mRemoveMethodList =@mapRemoveMethodListAST.emptyList{}
-    var insertOrReplaceDeclarationListAST =@insertOrReplaceDeclarationListAST.emptyList{}
+    var propertyList =@propertyInCollectionListAST {}
+    var mInsertMethodList =@insertMethodListAST {}
+    var mSearchMethodList =@mapSearchMethodListAST {}
+    var mRemoveMethodList =@mapRemoveMethodListAST {}
+    var insertOrReplaceDeclarationListAST =@insertOrReplaceDeclarationListAST {}
     repeat
     while
       <property_declaration> !? propertyList
@@ -152,7 +152,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
 #    !false # Is not private
     !["lstring" nowhere]
@@ -215,7 +215,7 @@ override method @mapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
-  var enumerationVariants =@stringlist.emptyList{}
+  var enumerationVariants =@stringlist {}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Attributes
@@ -312,8 +312,8 @@ override method @mapDeclarationAST enterInSemanticContext
     !false
   )
 #--- Handle properties
-  var insertMethodFormalArgumentList = @formalParameterSignature.emptyList{}
-  var typedPropertyList = @typedPropertyList.emptyList{}
+  var insertMethodFormalArgumentList = @formalParameterSignature {}
+  var typedPropertyList = @typedPropertyList {}
   @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
   argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !lstringTypeIndex !"lkey"
   insertMethodFormalArgumentList +=
@@ -321,7 +321,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var removeMethodFormalArgumentList =@formalParameterSignature.emptyList{}
+  var removeMethodFormalArgumentList =@formalParameterSignature {}
   removeMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
@@ -429,7 +429,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mPropertyTypeName
       ?let @unifiedTypeMap-proxy attributeTypeIndex
     ]
-    var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
+    var accessorFormalArgumentList =@formalParameterSignature {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
@@ -562,7 +562,7 @@ override method @mapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #------ Enter attributes
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mPropertyList do
     var t =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}

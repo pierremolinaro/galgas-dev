@@ -72,7 +72,7 @@ proc enterConstructorWith2Arguments
 {
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  var argumentTypeList =@functionSignature.emptyList{}
+  var argumentTypeList =@functionSignature {}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument1Name

@@ -79,15 +79,15 @@ syntax extension galgas3DeclarationsSyntax {
       end
     $}$
     ${$
-    var externTypeConstructorList =@externTypeConstructorList.emptyList{}
+    var externTypeConstructorList =@externTypeConstructorList {}
     @externTypeGetterList externTypeGetterList = {}
-    var externTypeModifierList =@externTypeModifierList.emptyList{}
-    var externTypeMethodList =@externTypeMethodList.emptyList{}
+    var externTypeModifierList =@externTypeModifierList {}
+    var externTypeMethodList =@externTypeMethodList {}
     repeat
     while
       $constructor$
       $identifier$ ?var  @lstring constructorName
-      var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+      var argumentTypeList =@typeNameFormalParameterNameList {}
       repeat
       while
         $?$ ?let selector
@@ -104,7 +104,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $getter$
       $identifier$ ?var  @lstring getterName
-      var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+      var argumentTypeList =@typeNameFormalParameterNameList {}
       repeat
       while
         $?$ ?let selector
@@ -183,7 +183,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     @unifiedTypeMap-proxy returnedTypeProxy
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
   #---
-    var arguments =@functionSignature.emptyList{}
+    var arguments =@functionSignature {}
     for () in mParameterList do
       @unifiedTypeMap-proxy argumentTypeProxy
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
@@ -222,7 +222,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Modifiers
   for () in mExternTypeModifierList do
-    var routineSignature =@formalParameterSignature.emptyList{}
+    var routineSignature =@formalParameterSignature {}
     for () in mFormalParameterList do
       [@unifiedTypeMap-proxy makeProxy
         !?ioSemanticContext.mTypeMap
@@ -243,7 +243,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Methods
   for () in mExternTypeMethodList do
-    var routineSignature =@formalParameterSignature.emptyList{}
+    var routineSignature =@formalParameterSignature {}
     for () in mFormalParameterList do
       @unifiedTypeMap-proxy parameterTypeIndex
       [@unifiedTypeMap-proxy makeProxy

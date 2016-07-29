@@ -110,7 +110,7 @@ rule <actual_parameter_list>
     $!?$ ?let selector
     @lstring outputInputActualParameterName
     $identifier$ ?outputInputActualParameterName
-    var structAttributeList =@lstringlist.emptyList{}
+    var structAttributeList =@lstringlist {}
     repeat
     while
       $.$

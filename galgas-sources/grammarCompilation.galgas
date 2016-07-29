@@ -20,7 +20,7 @@ func transformLabelMap
 {
   outNonterminalSymbolLabelMapForGrammarAnalysis = @nonterminalSymbolLabelMapForGrammarAnalysis. emptyMap
   for () in inLabels do
-    var formalParametersList =@signatureForGrammarAnalysis.emptyList{}
+    var formalParametersList =@signatureForGrammarAnalysis {}
     for () in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
@@ -39,7 +39,7 @@ proc checkLabelMap
   ?let @nonTerminalLabelListAST inLabels
   ?let @location inOriginalNonTerminalLocation
   ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis {
-  var labelStringSet =@stringset.emptySet{}
+  var labelStringSet =@stringset {}
   for () in inLabels do
     labelStringSet += ![mLabelName string]
     @signatureForGrammarAnalysis formalParametersList
@@ -113,7 +113,7 @@ proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ?let @syntaxRuleListAST inRuleList {
   for () in inRuleList do
-    var nonTerminalLabelListAST =@nonTerminalLabelListAST.emptyList{}
+    var nonTerminalLabelListAST =@nonTerminalLabelListAST {}
     for () in mLabelList do
       nonTerminalLabelListAST += 
         !mLabelName
@@ -183,7 +183,7 @@ proc buildRuleList
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ?!@syntaxComponentListForGrammarAnalysis ioSyntaxComponentListForGrammarAnalysis
   ?!@uint ioAddedNonTerminalCount {
-  var productionRulesList =@productionRuleListForGrammarAnalysis.emptyList{}
+  var productionRulesList =@productionRuleListForGrammarAnalysis {}
   for () in inRuleList do
     @uint nonTerminalIndex
     @nonterminalSymbolLabelMapForGrammarAnalysis nonterminalSymbolParametersMap
@@ -191,7 +191,7 @@ proc buildRuleList
   #--- Retrieve instruction list from first label
     @syntaxInstructionList parsedSyntaxInstructionList [mLabelList first ?* ?* ?* ?parsedSyntaxInstructionList ?*]
   #--- Transform instruction list
-    var instructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
+    var instructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !parsedSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap

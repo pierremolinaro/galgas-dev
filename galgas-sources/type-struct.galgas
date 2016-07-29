@@ -69,8 +69,8 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Constructors and attribute map
   var attributeMap =@attributeMap.emptyMap{}
   var constructorMap =@constructorMap.emptyMap{}
-  var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var constructorAttributeTypeList =@functionSignature {}
+  var typedAttributeList =@typedPropertyList {}
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
@@ -189,7 +189,7 @@ override method @structDeclarationAST semanticAnalysis
   if [mAttributeList length] == 0 then
     error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
   end
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

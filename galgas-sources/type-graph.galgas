@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $type_name$ ?var  @lstring associatedListTypeName
     $)$
     ${$
-    var graphInsertModifierList =@graphInsertModifierList.emptyList{}
+    var graphInsertModifierList =@graphInsertModifierList {}
     repeat
     while
       $insert$
@@ -427,7 +427,7 @@ override method @graphDeclarationAST semanticAnalysis
     error mAssociatedListTypeName: "the '@" + mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods
-  var reservedModifierNames =@stringset.emptySet{}
+  var reservedModifierNames =@stringset {}
   reservedModifierNames += !"noteNode"
   reservedModifierNames += !"addArc"
   for () in mInsertModifierList do

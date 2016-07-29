@@ -116,7 +116,7 @@ override method @extensionMethodAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
+  var formalParameterListForGeneration =@formalParameterListForGeneration {}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext

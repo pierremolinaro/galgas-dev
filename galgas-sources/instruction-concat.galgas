@@ -377,7 +377,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
     + [[mExpressions length] string] + " parameter(s)"
   else
-    var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    var effectiveParameterList =@semanticExpressionListForGeneration {}
     for () in mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
@@ -426,7 +426,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
 #--- Parameters
   [mTargetType addHeaderFileName !?ioInclusionSet]
-  var parameterList =@stringlist.emptyList{}
+  var parameterList =@stringlist {}
   for () in mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode

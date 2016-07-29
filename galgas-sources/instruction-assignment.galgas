@@ -19,7 +19,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction>
     !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
-    var mStructAttributeList =@lstringlist.emptyList{}
+    var mStructAttributeList =@lstringlist {}
     repeat
     while
       $.$

@@ -113,7 +113,7 @@ override method @syntaxDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
   ioInclusionSet += !"lexique-" + mLexiqueName
-  var selectMethodList =@uintlist.emptyList{}
+  var selectMethodList =@uintlist {}
   @uint idx = 0
   loop( mSelectMethodCount + 1)
   while idx < mSelectMethodCount do
@@ -234,7 +234,7 @@ proc generateProcedure
   !@string outGeneratedCode
 {
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset.emptySet{}
+  var unusedVariableCppNameSet =@stringset {}
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName ()
   end
@@ -354,7 +354,7 @@ proc generateFunction
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset.emptySet{}
+  var unusedVariableCppNameSet =@stringset {}
   unusedVariableCppNameSet += !compilerCppName ()
 #--- Release 'in' and 'const in' arguments at the end of the routine
   for () in inFormalArgumentList do
@@ -434,7 +434,7 @@ proc generateExtensionSetter
   ?let @semanticInstructionListForGeneration inInstructionList
   !@string outGeneratedCode {
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset.emptySet{}
+  var unusedVariableCppNameSet =@stringset {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -531,7 +531,7 @@ proc generateExtensionMethod
   !@string outGeneratedCode {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset.emptySet{}
+  var unusedVariableCppNameSet =@stringset {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -650,7 +650,7 @@ proc generateExtensionGetter
   !@string outGeneratedCode {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset.emptySet{}
+  var unusedVariableCppNameSet =@stringset {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -1445,10 +1445,10 @@ proc recursivlyEnumerateRegularFile
 override method @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  var regularFileIndexStringList =@stringlist.emptyList{}
-  var regularBinaryContentIndexStringList =@stringlist.emptyList{}
-  var regularTextContentIndexStringList =@stringlist.emptyList{}
-  var directoryIndexStringList =@stringlist.emptyList{}
+  var regularFileIndexStringList =@stringlist {}
+  var regularBinaryContentIndexStringList =@stringlist {}
+  var regularTextContentIndexStringList =@stringlist {}
+  var directoryIndexStringList =@stringlist {}
   recursivlyEnumerateRegularFile (
     !mFilewrapperFileMap
     !mFilewrapperDirectoryMap
@@ -1585,7 +1585,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList = ""
     @uint temporaryVariableIndex = 0
-    var unusedVariableCppNameSet =@stringset.emptySet{}
+    var unusedVariableCppNameSet =@stringset {}
     unusedVariableCppNameSet += !compilerCppName ()
     for () in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName

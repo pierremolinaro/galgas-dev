@@ -1111,7 +1111,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressions length] string] + " parameter(s)" : outExpression
   else
-    var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    var constructorEffectiveParameterList =@semanticExpressionListForGeneration {}
     for () in mExpressions, () in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
@@ -2822,7 +2822,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
+    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
     for () in functionSignature, () in mExpressionList do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType

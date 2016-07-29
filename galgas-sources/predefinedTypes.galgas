@@ -18,8 +18,8 @@
 private proc appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?let @string inElementTypeName {
-  var attributeList =@propertyInCollectionListAST.emptyList{}
-  var attributeFeatureList =@lstringlist.emptyList{}
+  var attributeList =@propertyInCollectionListAST {}
+  var attributeFeatureList =@lstringlist {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!inElementTypeName !@location.here}
@@ -35,8 +35,8 @@ private proc appendPredefinedListTypeAST
 
 private proc appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var attributeList =@propertyInCollectionListAST.emptyList{}
-  var attributeFeatureList =@lstringlist.emptyList{}
+  var attributeList =@propertyInCollectionListAST {}
+  var attributeFeatureList =@lstringlist {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!"string" !@location.here}
@@ -57,8 +57,8 @@ private proc appendPredefined2StringListTypeAST
 
 private proc appendPredefined2LStringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var attributeList =@propertyInCollectionListAST.emptyList{}
-  var attributeFeatureList =@lstringlist.emptyList{}
+  var attributeList =@propertyInCollectionListAST {}
+  var attributeFeatureList =@lstringlist {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!"lstring" !@location.here}
@@ -80,8 +80,8 @@ private proc appendPredefined2LStringListTypeAST
 private proc appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ?let @string inElementTypeName {
-  var featureList =@lstringlist.emptyList{}
-  var attributeList =@propertyInCollectionListAST.emptyList{}
+  var featureList =@lstringlist {}
+  var attributeList =@propertyInCollectionListAST {}
   attributeList += 
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}

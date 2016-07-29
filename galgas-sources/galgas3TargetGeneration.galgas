@@ -677,7 +677,7 @@ proc updateGalgas3Targets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    var extensionList =@stringlist.emptyList{}
+    var extensionList =@stringlist {}
     extensionList += !"icns"
     let @stringlist resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes

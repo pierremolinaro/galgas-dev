@@ -19,7 +19,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $do$
-    var mParseDoBranchList =@listOfSyntaxInstructionList.emptyList{}
+    var mParseDoBranchList =@listOfSyntaxInstructionList {}
     <syntax_instruction_list> ?let @syntaxInstructionList il
     mParseDoBranchList += !il !@location.here
     repeat
@@ -86,11 +86,11 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount
 {
 #--- 'Rewind' blocks
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   let @uint referenceSelectMethodCount = ioSelectMethodCount
   for () in mParseRewindBranchList do
     ioSelectMethodCount = referenceSelectMethodCount
-    var instructionList =@semanticInstructionListForGeneration.emptyList{}
+    var instructionList =@semanticInstructionListForGeneration {}
     for () in mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inAnalysisContext

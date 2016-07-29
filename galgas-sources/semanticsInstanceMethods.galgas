@@ -43,7 +43,7 @@ private proc enterInstanceMethodWithInputArgument
 {
   @unifiedTypeMap-proxy argumentTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
-  var argList = @formalParameterSignature.emptyList{}
+  var argList = @formalParameterSignature {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
@@ -68,7 +68,7 @@ private proc enterInstanceMethodWithInputArgument
 #{
 #  @unifiedTypeMap-proxy argumentTypeIndex
 #  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
-#  var argList =@formalParameterSignature.emptyList{}
+#  var argList =@formalParameterSignature {}
 #  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
 #  [!?ioInstanceMethodMap insertKey
 #    !inInstanceMethodName
@@ -103,7 +103,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !methodName:"writeToExecutableFile"
     !true
   )
-  var argList =@formalParameterSignature.emptyList{}
+  var argList =@formalParameterSignature {}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"

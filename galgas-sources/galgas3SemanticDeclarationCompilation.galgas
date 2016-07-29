@@ -118,7 +118,7 @@ proc buildGalgas3SemanticContext
   var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
   var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
   var extensionSetterMapForBuildingContext = @extensionSetterMapForBuildingContext.emptyMap{}
-  var extensionOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
+  var extensionOverrideDefinitionList = @semanticDeclarationListAST {}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph

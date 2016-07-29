@@ -150,7 +150,7 @@ rule <element>
     message s
   end
 
-  var nodeList =@xmlNodeList.emptyList{}
+  var nodeList =@xmlNodeList {}
   select
     $/>$
   or

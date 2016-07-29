@@ -224,7 +224,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   #--- Check syntax directed translation result parameter
     let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
-    var assignementList =@stringlist.emptyList{}
+    var assignementList =@stringlist {}
     [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
       !inAnalysisContext
       !hasTranslateFeature
@@ -302,7 +302,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   #--- Check syntax directed translation result parameter
     let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
-    var assignementList =@stringlist.emptyList{}
+    var assignementList =@stringlist {}
     [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
       !inAnalysisContext
       !hasTranslateFeature
@@ -357,9 +357,9 @@ syntax extension galgas3InstructionsSyntax {
       ?let @string sourceVar
     ]
   #--- Parameters
-    var parameterCppNameList =@stringlist.emptyList{}
-    var jokerParametersToReleaseList =@stringlist.emptyList{}
-    var inputVariableList =@stringlist.emptyList{}
+    var parameterCppNameList =@stringlist {}
+    var jokerParametersToReleaseList =@stringlist {}
+    var inputVariableList =@stringlist {}
     for () in mActualParameterList do
       [mActualParameter generateActualParameter
         !?ioInclusionSet
@@ -436,9 +436,9 @@ syntax extension galgas3InstructionsSyntax {
       ?let @string nameVar
     ]
   #--- Parameters
-    var parameterCppNameList =@stringlist.emptyList{}
-    var jokerParametersToReleaseList =@stringlist.emptyList{}
-    var inputVariableList =@stringlist.emptyList{}
+    var parameterCppNameList =@stringlist {}
+    var jokerParametersToReleaseList =@stringlist {}
+    var inputVariableList =@stringlist {}
     for () in mActualParameterList do
       [mActualParameter generateActualParameter
          !?ioInclusionSet

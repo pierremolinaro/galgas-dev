@@ -21,7 +21,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
     $terminal$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
-    var indexNameList =@2lstringlist.emptyList{}
+    var indexNameList =@2lstringlist {}
     select
     or
       $indexing$
@@ -112,7 +112,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     + if [mActualInputParameterList length] > 1 then "s" else "" end
   end
 #---
-  var terminalCheckAssignementList =@terminalCheckAssignementList.emptyList{}
+  var terminalCheckAssignementList =@terminalCheckAssignementList {}
   for () in mActualInputParameterList, () in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext

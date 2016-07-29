@@ -127,7 +127,7 @@ syntax extension galgas3DeclarationsSyntax {
         stateMessageKind = @mapAutomatonMessageKind.errorMessage
       end
       ${$
-      var transitionList =@mapStateTransitionList.emptyList{}
+      var transitionList =@mapStateTransitionList {}
       repeat
       while
         $identifier$ ?var  @lstring actionName
@@ -196,7 +196,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       $override$
       $identifier$ ?var  @lstring overrideBlockName
-      var mapOverrideBlockDescriptor1AST =@mapOverrideBlockDescriptorAST.emptyList{}
+      var mapOverrideBlockDescriptor1AST =@mapOverrideBlockDescriptorAST {}
       ${$
       repeat
       while
@@ -222,7 +222,7 @@ syntax extension galgas3DeclarationsSyntax {
         mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
       end
       $}$
-      var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST.emptyList{}
+      var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
       ${$
       repeat
       while
@@ -454,7 +454,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--------------------------- EnterEdge setter
-  var enterEdgeFormalArgumentList =@formalParameterSignature.emptyList{}
+  var enterEdgeFormalArgumentList =@formalParameterSignature {}
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inSource"
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex !.argumentConstantIn !"inTarget"
   [!?setterMap insertOrReplace
@@ -466,7 +466,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--------------------------- topologicalSort Method
-  var topologicalSortFormalArgumentList =@formalParameterSignature.emptyList{}
+  var topologicalSortFormalArgumentList =@formalParameterSignature {}
   topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outSortedLKeys"
   topologicalSortFormalArgumentList += !["" nowhere] !lstringlistTypeIndex !.argumentOut !"outUnsortedLKeys"
   [!?instanceMethodMap insertKey
@@ -571,7 +571,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   for () in mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
-    var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
+    var accessorFormalArgumentList =@formalParameterSignature {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
     [!?setterMap insertOrReplace
@@ -716,7 +716,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Compute initial state set
-  var initialStateSet = @stringset.emptySet{}
+  var initialStateSet = @stringset {}
   for () in mInsertMethodList do
     if [mMapStateList length] > 0 then
       if [mInitialStateName string] == "" then
@@ -845,8 +845,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #---
   @mapOverrideList mapOverrideList = {}
   for () in mMapOverrideBlockListAST do
-    var handledAssociations =@stringset.emptySet{}
-    var neededCombinaisons =@stringset.emptySet{}
+    var handledAssociations =@stringset {}
+    var neededCombinaisons =@stringset {}
     var branchBehaviourSortedListForMapOverride1 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
     for () in mMapOverrideBlockDescriptor1AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let startStateNameIndex ?*]
@@ -888,7 +888,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       error @location.here: [[forgottenAssociations count] string] + " associations should be defined:" + s
     end
-    var definedCombinaisons =@stringset.emptySet{}
+    var definedCombinaisons =@stringset {}
     var branchBehaviourSortedListForMapOverride2 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
     for () in mMapOverrideBlockDescriptor2AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let leftStateIndex ?*]

@@ -102,7 +102,7 @@ override method @abstractExtensionSetterAST semanticAnalysis
     error mAbstractExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute setter signature
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
+  var formalParameterListForGeneration =@formalParameterListForGeneration {}
   for () in mAbstractExtensionSetterFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector

@@ -233,7 +233,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  var formalArgumentList =@formalInputParameterListForGeneration.emptyList{}
+  var formalArgumentList =@formalInputParameterListForGeneration {}
   for () in mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
@@ -260,7 +260,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  var formalArgumentList =@formalParameterListForGeneration.emptyList{}
+  var formalArgumentList =@formalParameterListForGeneration {}
   for () in mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
@@ -288,7 +288,7 @@ override method @routineDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Instruction list
-  var formalArgumentList =@formalParameterListForGeneration.emptyList{}
+  var formalArgumentList =@formalParameterListForGeneration {}
   @semanticInstructionListForGeneration instructionList
   let analysisContext = @analysisContext.new {
     !inSemanticContext
@@ -517,7 +517,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     error mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
   else
   #---- Analyze filewrapper templates
-    var filewrapperTemplateListForGeneration =@filewrapperTemplateListForGeneration.emptyList{}
+    var filewrapperTemplateListForGeneration =@filewrapperTemplateListForGeneration {}
     for () in mFilewrapperTemplateList do
       if [[mFilewrapperTemplatePath string] firstCharacterOrNul] == '/' then
         error mFilewrapperTemplatePath : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
@@ -528,7 +528,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       grammar templateGrammar in @lstring.new {!absoluteTemplatePath ![mFilewrapperTemplatePath location]} ?resultingInstructionList
     #--- Build template variable map
       @templateVariableMap templateVariableMap = {}
-      var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration.emptyList{}
+      var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration {}
       for () in mFilewrapperTemplateFormalInputParameters do
         var type =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
@@ -536,7 +536,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true
       end
     #--- Analyze template
-      var templateInstructionListForGeneration =@templateInstructionListForGeneration.emptyList{}
+      var templateInstructionListForGeneration =@templateInstructionListForGeneration {}
       let templateAnalysisContext = @templateAnalysisContext.new {
         !inSemanticContext
         !inPredefinedTypes
@@ -601,6 +601,26 @@ override method @optionComponentDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+func escapeForTex ?let @string inString -> @string result {
+  result = ""
+  for idx in 0 ..< [inString length] do
+    let c = [inString characterAtIndex !idx]
+    if c == '_' then
+      result += "\\_"
+    elsif c == '{' then
+      result += "\\{"
+    elsif c == '}' then
+      result += "\\}"
+    elsif c == '&' then
+      result += "\\&"
+    else
+      result += c
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -615,7 +635,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ?let @lstring indexingDirectory
   ]
 #--------------------------------------- Build "indexing" set
-  var indexNameSet =@stringset.emptySet{}
+  var indexNameSet =@stringset {}
   for () in indexingListAST do
     indexNameSet += !mIndexName.string
   end
@@ -655,11 +675,11 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
 #---------------------------------------------------------- Parse syntax components
-  var actuallyUsedTerminalSymbolMap =@terminalSymbolsMapForGrammarAnalysis.emptyMap{}
-  var nonTerminalMapForGrammarAnalysis =@nonTerminalSymbolMapForGrammarAnalysis.emptyMap{}
+  @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = {}
+  @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis ={}
   @lstring lexiqueComponentName =  ["" nowhere] # Empty string means unknown
-  var syntaxComponentListForGrammarAnalysis =@syntaxComponentListForGrammarAnalysis.emptyList{}
-  var nonTerminalToAddList =@nonTerminalToAddList.emptyList{}
+  @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = {}
+  @nonTerminalToAddList nonTerminalToAddList = {}
   @uint addedNonTerminalCount = 0
   for () in mSyntaxComponents do
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
@@ -711,7 +731,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     end
   end
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
-  var lexiqueComponentSet = @stringset. emptySet
+  @stringset lexiqueComponentSet = {}
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !lexiqueComponentName
     ?* # @terminalMap inTerminalMap
@@ -726,9 +746,11 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   end
 #---------------------------------------------------------- Start symbol
 #--- Search start symbol in non terminal map
-  @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
-  @uint startSymbolIndex
-  [nonTerminalMapForGrammarAnalysis searchKey !mStartSymbolName ?startSymbolIndex ?startSymbolAltMap]
+  [nonTerminalMapForGrammarAnalysis searchKey
+    !mStartSymbolName
+    ?let @uint startSymbolIndex
+    ?let @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap
+  ]
 #--- Check signatures
   checkLabelMap (
     !mStartSymbolName.location
@@ -737,21 +759,101 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !startSymbolAltMap
   )
 #---------------------------------------------------------- Unused Non Terminal Symbols
-  var unusedNonTerminalSymbolsForGrammar =@unusedNonTerminalSymbolMapForGrammarAnalysis.emptyMap{}
+  @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar = {}
   for () in mUnusedNonterminalList do
-    @uint nonterminalIndex
-    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*]
+    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?let @uint nonterminalIndex ?*]
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex]
   end
 #---------------------------------------------------------- Non terminal symbols, sorted by index
-  var nonTerminalSymbolSortedListForGrammarAnalysis =@nonTerminalSymbolSortedListForGrammarAnalysis.emptySortedList{}
+  @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis = {}
   for () in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
+  end
+#---------------------------------------------------------- Print an tex file for grammar rule list
+  if [option galgas_cli_options.outputGrammarRuleListInTexFile value] then
+    let texFilePath = inProductDirectory + "/../helpers/" + mGrammarComponentName + ".tex"
+    var s = ""
+    for nonterminal in nonTerminalMapForGrammarAnalysis do
+      s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}\n\n"
+      for syntaxComponent in syntaxComponentListForGrammarAnalysis do
+        for productionRule in syntaxComponent.mProductionRulesList do
+          if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
+            @rowList rowArray = {!{!"P0start" !"[point] {}"}}
+            @stringlist arrowList = {}
+            @string currentArrows = ""
+            for (instruction) in productionRule.mInstructionList do
+              [instruction tikzNodeForSyntaxInstruction
+                !?rowArray
+                !fromRow:0
+                !fromNode:"P0start"
+                !?arrowList:arrowList
+                !?currentArrows:currentArrows
+              ]
+            end
+            arrowList += !currentArrows
+            let loc = productionRule.mLeftNonterminalSymbol.location
+            s += "\\ruleSubsection{"
+              + escapeForTex (!syntaxComponent.mSyntaxComponentName.string)
+              + "}{"
+              + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+              + "}{" + escapeForTex (![loc line])
+              + "}\n\n"
+              + "\\begin{tikzpicture}\n"
+              + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
+            for > (columns) in rowArray do
+              s += "    "
+              for column in columns do
+                if column.mValue0 == "" then
+                  s += "& "
+                else
+                  s += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
+                end
+              end
+              s += "\\\\\n"
+            end
+            s += "  };\n"
+          #--- Arrows
+            for (arrows) in arrowList do
+              s += "  { [start chain]\n"
+                 + arrows
+                 + "  }\n\n"
+            end
+#            for (columns) in rowArray do
+#              @bool started = false
+#              for column in columns do (idx)
+#                if column.mValue0 == "" then
+#                  if started then
+#                    started = false
+#                    s += "  }\n\n"
+#                  end
+#                else
+#                  if not started then
+#                    s += "  { [start chain]\n"
+#                    started = true
+#                  end
+#                  s += "    \\chainin (" + column.mValue0 + ")"
+#                  if idx > 0 then
+#                    s += " [join=by tip]"
+#                  end
+#                  s += ";\n"
+#                end
+#              end
+#              if started then
+#                s += "  }\n\n"
+#              end
+#            end
+            s += "\\end{tikzpicture}\n\n"
+          end
+        end
+      end
+    end
+    [[texFilePath stringByDeletingLastPathComponent] makeDirectory]
+    [s writeToFileWhenDifferentContents !texFilePath ?*]
   end
 #---------------------------------------------------------- Header of implementation file
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.
-  var implementationFileHeader = @stringset. emptySet
+  @stringset implementationFileHeader = {}
   for nonTerminal in nonTerminalMapForGrammarAnalysis do
     for () in nonTerminal.mNonterminalSymbolParametersMap do
       for () in mFormalParametersList do
@@ -765,7 +867,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     end
   end
   if [option galgas_cli_options.generateOneHeader value] then
-    implementationFileHeader = @stringset. emptySet
+    implementationFileHeader = {}
   end
 #---------------------------------------------------------- Analyze grammar
   let HTMLFilePath = inProductDirectory + "/../helpers/" + mGrammarComponentName + ".html"
@@ -807,9 +909,147 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !mStartSymbolName.string
       !mHasTranslateFeature
       !grammarCppFile
-#      !grammarHTMLHelperContents
     }
     !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @rowList {
+  @2stringlist columns %setter # Node name, node definition
+}
+
+setter @rowList append
+  ?nodeDefinition:let @string inNodeDefinition
+  ?row:let @uint inRow
+  !nodeName:@string outNodeName
+{
+  var cols = [self columnsAtIndex !inRow]
+  outNodeName = "p" + inRow + "-" + [cols length]
+  cols += !outNodeName !inNodeDefinition
+  [!?self setColumnsAtIndex !cols !inRow]
+}
+
+setter @rowList appendEmpty
+  ?row:let @uint inRow
+{
+  var cols = [self columnsAtIndex !inRow]
+  cols += !"" !""
+  [!?self setColumnsAtIndex !cols !inRow]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?fromNode:let @string inIncomingNode
+  ?!arrowList:@stringlist ioArrowList
+  ?!currentArrows:@string ioCurrentArrows
+
+override method @terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?fromNode:let @string unused inIncomingNode
+  ?!arrowList:@stringlist unused ioArrowList
+  ?!currentArrows:@string ioCurrentArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[terminal] {" + escapeForTex (!mTerminalSymbolName) + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioCurrentArrows += "  \\chainin (" + nodeName + ") [join=by tip] ;\n"
+}
+
+override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?fromNode:let @string unused inIncomingNode
+  ?!arrowList:@stringlist unused ioArrowList
+  ?!currentArrows:@string ioCurrentArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[nonterminal] {" + escapeForTex (!mNonterminalSymbolName) + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioCurrentArrows += "  \\chainin (" + nodeName + ") [join=by tip] ;\n"
+}
+
+override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?fromNode:let @string unused inIncomingNode
+  ?!arrowList:@stringlist unused ioArrowList
+  ?!currentArrows:@string ioCurrentArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[nonterminal] {repeat" + [mRepeatBranchList length] + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioCurrentArrows += "  \\chainin (" + nodeName + ") [join=by tip] ;\n"
+}
+
+override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?fromNode:let @string inIncomingNode
+  ?!arrowList:@stringlist ioArrowList
+  ?!currentArrows:@string ioCurrentArrows
+{
+#  [!?ioRowList append
+#    !nodeDefinition:"[nonterminal] {select" + [mSelectBranchList length] + "}"
+#    !row:inRow
+#    ?nodeName:let nodeName
+#  ]
+#  ioCurrentArrows += "  \\chainin (" + nodeName + ") [join=by tip] ;\n"
+#--- Enter start point
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let startNodeName]
+  [!?ioRowList appendEmpty !row:0]
+  ioCurrentArrows += "  \\chainin (" + startNodeName + ") [join=by tip] ;\n"
+#--- Extends columns
+  let firstRowLength = [[ioRowList columnsAtIndex !0] length]
+  loop (inRow + [mSelectBranchList length]) while [ioRowList length] < (inRow + [mSelectBranchList length]) do
+    [!?ioRowList appendEmpty !row:0]
+    @2stringlist columns = {}
+    for i in 0 ..< firstRowLength do
+      columns += !"" !""
+    end
+    ioRowList += {!columns}
+  end
+#--- Enter branch zero
+  var branches = mSelectBranchList
+  [!?branches popFirst ?let brancheZero]
+  for (instruction) in brancheZero do
+    [instruction tikzNodeForSyntaxInstruction
+      !?ioRowList
+      !fromRow:inRow
+      !fromNode:inIncomingNode
+      !?arrowList:ioArrowList
+      !?currentArrows:ioCurrentArrows
+    ]
+  end
+#--- Enter following branches
+#  var enterArrows = "  \\chainin (" + startNodeName + ")] ;\n"
+  for branch in branches do (idx)
+    var currentArrows = ""
+    for (instruction) in branch.mSyntaxInstructionList do
+      [instruction tikzNodeForSyntaxInstruction
+        !?ioRowList
+        !fromRow:inRow + idx + 1
+        !fromNode:inIncomingNode
+        !?arrowList:ioArrowList
+        !?currentArrows:currentArrows
+      ]
+    end
+    ioArrowList += !currentArrows
+  end
+#--- Enter end point
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let endNodeName]
+  [!?ioRowList appendEmpty !row:0]
+  ioCurrentArrows += "  \\chainin (" + endNodeName + ") [join=by tip] ;\n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -826,7 +1066,7 @@ override method @lexiqueComponentAST semanticAnalysis
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Add extern routines
   for () in mExternRoutineList do
-    var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList.emptyList{}
+    var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList {}
     for () in mLexicalRoutineFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
@@ -839,7 +1079,7 @@ override method @lexiqueComponentAST semanticAnalysis
   buildLexicalFunctionMap ( ?lexicalFunctionMap )
 #--------------------------------------- Add extern functions
   for () in mExternFunctionList do
-    var lexicalFunctionFormalArgumentList =@lexicalFunctionFormalArgumentList.emptyList{}
+    var lexicalFunctionFormalArgumentList =@lexicalFunctionFormalArgumentList {}
     for () in mLexicalFunctionFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
@@ -897,7 +1137,7 @@ override method @lexiqueComponentAST semanticAnalysis
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
@@ -934,7 +1174,7 @@ override method @lexiqueComponentAST semanticAnalysis
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
@@ -1011,7 +1251,7 @@ override method @lexiqueComponentAST semanticAnalysis
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
     end
   end
-  var indexNameSet =@stringset.emptySet{}
+  var indexNameSet =@stringset {}
   for () in mIndexingListAST do
     if [indexNameSet hasKey ![mIndexName string]] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
@@ -1308,8 +1548,8 @@ proc buildNonterminalDeclarationsMap
   for () in inNonterminalDeclarationList do
     var nonterminalLabelMap =@nonterminalLabelMap.emptyMap{}
     for () in mLabels do
-      var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
-      var signature =@formalParameterSignature.emptyList{}
+      var signatureForGeneration =@formalParameterListForGeneration {}
+      var signature =@formalParameterSignature {}
       for () in mFormalArgumentList do
         let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string]
@@ -1705,7 +1945,7 @@ proc semanticAnalysisOfRuleLabel
   end
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
-  var localVariableCppNameList =@stringlist.emptyList{}
+  var localVariableCppNameList =@stringlist {}
   for () in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
@@ -1753,8 +1993,8 @@ proc semanticAnalysisOfSyntaxComponent
   for () in inRuleList do
     var nonterminalLabelMap =@nonterminalLabelMap.emptyMap{}
     for () in mLabelList do
-      var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
-      var signature =@formalParameterSignature.emptyList{}
+      var signatureForGeneration =@formalParameterListForGeneration {}
+      var signature =@formalParameterSignature {}
       for () in mFormalArguments do
         let type = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" + mFormalArgumentName
@@ -1773,10 +2013,10 @@ proc semanticAnalysisOfSyntaxComponent
     !@unifiedTypeMap-proxy. null}
 #--- Rule list
   @uint selectMethodCount = 0
-  var ruleDeclarationList =@ruleDeclarationList.emptyList{}
+  var ruleDeclarationList =@ruleDeclarationList {}
   @uint newRuleIndex = 0
   for () in inRuleList do
-    var ruleLabelImplementationList =@ruleLabelImplementationList.emptyList{}
+    var ruleLabelImplementationList =@ruleLabelImplementationList {}
     @uint localSelectMethodCount = selectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
     for () in mLabelList do

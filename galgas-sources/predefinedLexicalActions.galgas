@@ -479,7 +479,7 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
 proc buildLexicalFunctionMap !@lexicalFunctionMap outLexicalFunctionMap {
   outLexicalFunctionMap = @lexicalFunctionMap. emptyMap
 #--- toLower
-  var lexicalTypeList =@lexicalFunctionFormalArgumentList.emptyList{}
+  var lexicalTypeList =@lexicalFunctionFormalArgumentList {}
   lexicalTypeList += !.lexicalType_char !"inCharacter"
   [!?outLexicalFunctionMap insertKey
     !@lstring.new {!"toLower" !@location.here}

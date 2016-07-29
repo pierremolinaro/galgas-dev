@@ -27,7 +27,7 @@ syntax extension galgas3DeclarationsSyntax {
       mIsAbstract = true
     end
     $class$
-    var classNameList =@lstringlist.emptyList{}
+    var classNameList =@lstringlist {}
     repeat
       $type_name$ ?var @lstring className indexing classDefinition
       classNameList += !className
@@ -41,7 +41,7 @@ syntax extension galgas3DeclarationsSyntax {
       $:$
       $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass
     end
-    var classFeatureList =@lstringlist.emptyList{}
+    var classFeatureList =@lstringlist {}
     repeat
     while
       $attribute$ ?var  @lstring classFeatureName
@@ -50,7 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     @string mClassMessage = ""
   #--- Class properties
-    var mAttributeList =@propertyInCollectionListAST.emptyList{}
+    var mAttributeList =@propertyInCollectionListAST {}
     repeat
     while
       <property_declaration> !? mAttributeList
@@ -191,7 +191,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Build attribute Map and constructor argument list
-  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  var constructorAttributeTypeList =@functionSignature {}
   for () in inheritedTypedAttributeList do
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
@@ -225,7 +225,7 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- Typed attribute list
-  var currentClassTypedAttributeList =@typedPropertyList.emptyList{}
+  var currentClassTypedAttributeList =@typedPropertyList {}
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mAttributeList do
     @unifiedTypeMap-proxy attributeTypeIndex
@@ -364,7 +364,7 @@ override method @classDeclarationAST semanticAnalysis
     end
   end
 #------ Enter attributes
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
