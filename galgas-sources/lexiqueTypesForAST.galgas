@@ -566,7 +566,7 @@ proc buildTerminalMap
 #--------------------------------------- 
   outTerminalMap = @terminalMap. emptyMap
   for () in [inLexiqueComponentRoot mTerminalDeclarationList] do
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
@@ -576,7 +576,7 @@ proc buildTerminalMap
   end
 #---
   for () in [inLexiqueComponentRoot mLexicalListDeclarationList] do
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]

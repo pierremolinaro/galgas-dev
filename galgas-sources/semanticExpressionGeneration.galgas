@@ -1202,7 +1202,7 @@ override method @functionCallExpressionForGeneration generateExpression
 #--- Add function header
   ioInclusionSet += !"func-" + mFunctionName
 #---
-  var parameterList =@stringlist.emptyList{}
+  var parameterList =@stringlist {}
   for () in mExpressions do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
@@ -1241,7 +1241,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   !@string outCppExpression {
 #---
   ioInclusionSet += !"filewrapper-" + mFilewrapperName
-  var parameterList =@stringlist.emptyList{}
+  var parameterList =@stringlist {}
   for () in mActualOutputParameterList do
     @string parameter
     [mExpression generateExpression

@@ -957,6 +957,16 @@ void routine_analyzeFunctionBody (const class GALGAS_analysisContext constinArgu
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                               Function 'escapeForTex'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string function_escapeForTex (const class GALGAS_string & constinArgument0,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                           Function 'buildPredefinedTypes'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

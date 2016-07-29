@@ -71,7 +71,7 @@ proc enterInheritedGetterWithArgument
   ?let @bool inHasLexiqueAndLocationArguments {
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  var argList =@functionSignature.emptyList{}
+  var argList =@functionSignature {}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argList += !["" nowhere] !t !inArgument1Name
@@ -101,7 +101,7 @@ proc enterInheritedGetterWith2Arguments
   ?let @bool inHasLexiqueAndLocationArguments {
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  var argList =@functionSignature.emptyList{}
+  var argList =@functionSignature {}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argList += !["" nowhere] !t !inArgument1Name

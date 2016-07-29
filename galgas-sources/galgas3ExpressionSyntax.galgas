@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  'expression' syntax                                                                                                 *
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2014, ..., 2016 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -23,14 +23,13 @@ syntax galgas3ExpressionSyntax (galgas3Scanner) {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <output_expression_list>
-  !@actualOutputExpressionList outExpressionList {
+rule <output_expression_list> !@actualOutputExpressionList outExpressionList {
   outExpressionList = @actualOutputExpressionList.emptyList
   repeat
   while
     $!$ ?let selector
     <expression> ?let @semanticExpressionAST expression
-    outExpressionList += !selector !expression !@location.here
+    outExpressionList += !selector !expression !.here
   end
 }
 
@@ -48,11 +47,14 @@ rule <expression> !@semanticExpressionAST outExpression {
     $is$
     @dynamicTypeComparisonKind kind
     select
-      $==$ kind = @dynamicTypeComparisonKind. equal
+      $==$
+      kind = .equal
     or
-      $>=$ kind = @dynamicTypeComparisonKind. inherited
+      $>=$
+      kind = .inherited
     or
-      $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
+      $>$
+      kind = .strictlyInherited
     end
     $type_name$ ?let @lstring typeName
     outExpression = @testDynamicClassInExpressionAST.new {
@@ -423,9 +425,8 @@ rule <primary> !@semanticExpressionAST outExpression {
 rule <primary> !@semanticExpressionAST outExpression {
   @stringlist literalStringList = {}
   repeat
-    @lstring literalString
-    $literal_string$ ?literalString
-    literalStringList += ![literalString string]
+    $literal_string$ ?let literalString
+    literalStringList += !literalString.string
   while
   end
   outExpression = @literalStringExpressionAST.new {!@location.here !literalStringList}
@@ -516,29 +517,25 @@ rule <primary> !@semanticExpressionAST outExpression {
 
 rule <primary> !@semanticExpressionAST outExpression {
   $if$
-  @semanticExpressionAST ifExpression
-  <expression> ? ifExpression
+  <expression> ?let ifExpression
   let operatorLocation = @location.here
   $then$
-  @semanticExpressionAST thenExpression
-  <expression> ? thenExpression
+  <expression> ?let thenExpression
   $else$
-  @semanticExpressionAST elseExpression
-  <expression> ? elseExpression
+  <expression> ?let elseExpression
   $end$
   outExpression = @ifExpressionAST.new {
     !operatorLocation
     !ifExpression
     !thenExpression
-    !elseExpression}
+    !elseExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #                         P R I M A R Y                                                                                *
 #   getter call           :   [expression getter !... ]                                                                *
-#   constructor call      :   [@class constructor !... ]                                                               *
-#   default constructor   :   [@class default]                                                                         *
 #   lexique introspection :   [lexique lexique_component_name.name]                                                    *
 #   option value          :   [option option_component_name.option_name]                                               *
 #   filewrapper object    :   [filewrapper filewrapper_name]                                                           *
@@ -547,13 +544,13 @@ rule <primary> !@semanticExpressionAST outExpression {
 
 rule <primary> !@semanticExpressionAST outExpression {
   $[$
-  <primary_entre_crochets> ?outExpression
+  <primary_between_brackets> ?outExpression
   $]$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
+rule <primary_between_brackets> !@semanticExpressionAST outExpression {
 #--- Get source identity characteristics
   <expression> ?let @semanticExpressionAST receiverExpression
 #--- Get getter name
@@ -565,7 +562,7 @@ rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
+rule <primary_between_brackets> !@semanticExpressionAST outExpression {
   $option$
   select
     $.$
@@ -583,7 +580,7 @@ rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
+rule <primary_between_brackets> !@semanticExpressionAST outExpression {
   $lexique$
   $identifier$ ?let lexiqueName
   $:$
@@ -593,26 +590,29 @@ rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
+rule <primary_between_brackets> !@semanticExpressionAST outExpression {
   $filewrapper$
   $identifier$ ?let filewrapperName indexing filewrapperReference
   select
     outExpression = @filewrapperObjectInstanciationInExpressionAST.new {
-      !filewrapperName}
+      !filewrapperName
+    }
   or
     $.$
     select
       $literal_string$ ?let @lstring filePath
       outExpression = @filewrapperInExpressionAST.new {
         !filewrapperName
-        !filePath}
+        !filePath
+      }
     or
       $identifier$ ?let @lstring filewrapperTemplateName
       <output_expression_list> ?let @actualOutputExpressionList expressionList
       outExpression = @filewrapperTemplateInExpressionAST.new {
         !filewrapperName
         !filewrapperTemplateName
-        !expressionList}
+        !expressionList
+      }
     end
   end
 }
@@ -670,7 +670,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 rule <primary> !@semanticExpressionAST outExpression {
   <optional_type> ?let @lstring typeName
   ${$
-  var elementList = @collectionValueElementList {}
+  @collectionValueElementList elementList = {}
   select
   or
     repeat
@@ -683,15 +683,15 @@ rule <primary> !@semanticExpressionAST outExpression {
   outExpression = @collectionValueAST.new {
     !typeName
     !elementList
-    !@location.here}  
+    !@location.here
+  }  
   $}$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <collection_value_element> 
-  !@abstractCollectionValueElement outValueElement {
-  var expressionList =@actualOutputExpressionList.emptyList{}
+rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
+  @actualOutputExpressionList expressionList = {}
   repeat
     $!$ ?let selector
     <expression> ?let @semanticExpressionAST expression
@@ -703,8 +703,7 @@ rule <collection_value_element>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <collection_value_element> 
-  !@abstractCollectionValueElement outValueElement {
+rule <collection_value_element> !@abstractCollectionValueElement outValueElement {
   <expression> ?let @semanticExpressionAST expression
   outValueElement = @expressionCollectionValue.new {!expression !@location.here}
 }
@@ -726,7 +725,8 @@ rule <primary> !@semanticExpressionAST outExpression {
   $)$
   outExpression = @functionCallExpressionAST.new {
     !functionName
-    !expressionList}
+    !expressionList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

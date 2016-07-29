@@ -23,7 +23,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     let mRepeatInstructionLocation = @location.here
     <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList
     let endOf_repeated_instructions = @location.here
-    var mRepeatBranchList =@listOfSyntaxInstructionList.emptyList{}
+    var mRepeatBranchList =@listOfSyntaxInstructionList {}
     repeat
       $while$
       <syntax_instruction_list> ?let @syntaxInstructionList mInstructionList
@@ -64,7 +64,7 @@ override method @repeatInstruction transformInstruction
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex ++
 
-  var repeatedInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
+  var repeatedInstructionList =@syntaxInstructionListForGrammarAnalysis {}
   transformInstructionList (
     !mRepeatedInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -75,7 +75,7 @@ override method @repeatInstruction transformInstruction
   var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
 
   for () in mRepeatBranchList do
-    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
+    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -182,7 +182,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration 
 {
   let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !m_repeated_instructionList)
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   for () in mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)

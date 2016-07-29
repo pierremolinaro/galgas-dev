@@ -55,7 +55,7 @@ rule <declaration>
   end
 #--- Root symbol
   $non_terminal_symbol$ ?var @lstring  mStartSymbol indexing ruleReference
-  var mLabelList =@nonTerminalLabelListAST.emptyList{}
+  var mLabelList =@nonTerminalLabelListAST {}
   <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
   repeat
   while
@@ -64,7 +64,7 @@ rule <declaration>
     <grammar_start_symbol_label> !labelName !?mLabelList
    end
 #--- Unused non terminal symbols
-  var mUnusedNonterminalList =@lstringlist.emptyList{}
+  var mUnusedNonterminalList =@lstringlist {}
   repeat
   while
     $unused$
@@ -90,8 +90,8 @@ rule <declaration>
 rule <grammar_start_symbol_label>
   ?let @lstring inLabelName
   ?!@nonTerminalLabelListAST ioLabelList {
-  var argumentNameSet =@stringset.emptySet{}
-  var mFormalParameterList =@formalParameterListAST.emptyList{}
+  var argumentNameSet =@stringset {}
+  var mFormalParameterList =@formalParameterListAST {}
   repeat
   while
     @lstring argumentName

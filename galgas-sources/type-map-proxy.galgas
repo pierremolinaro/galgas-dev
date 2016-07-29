@@ -64,7 +64,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy mapProxyTypeProxy
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?mapProxyTypeProxy]
 #--- class method : makeProxy
-  var argList =@formalParameterSignature.emptyList{}
+  var argList =@formalParameterSignature {}
   argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
   argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
   argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
@@ -92,7 +92,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !hasLexiqueAndLocationArgs:false
   )
 #--- Search methods of associated map as constructors
-  var constructorAttributeTypeList =@functionSignature.emptyList{}
+  var constructorAttributeTypeList =@functionSignature {}
   constructorAttributeTypeList += !["" nowhere] !associatedMapTypeIndex !"inMap"
   constructorAttributeTypeList += !["" nowhere] !lstringTypeIndex !"inLKey"
   for () in searchMethodList do

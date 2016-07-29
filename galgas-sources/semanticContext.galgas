@@ -466,7 +466,7 @@ proc addExtensions
     @extensionMethodMapForType extensionMethodMapForType
     [inExtensionMethodMapForBuildingContext searchKey !inTypeName ?extensionMethodMapForType]
     for () in extensionMethodMapForType do
-      var formalArgumentList =@formalParameterSignature.emptyList{}
+      var formalArgumentList =@formalParameterSignature {}
       for () in mFormalParameterList do
         [@unifiedTypeMap-proxy makeProxy
           !?ioSemanticContext.mTypeMap
@@ -491,7 +491,7 @@ proc addExtensions
     @extensionGetterMapForType extensionGetterMapForType
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?extensionGetterMapForType]
     for () in extensionGetterMapForType do
-      var formalArgumentList =@functionSignature.emptyList{}
+      var formalArgumentList =@functionSignature {}
       for () in mInputFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
         [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
@@ -516,7 +516,7 @@ proc addExtensions
     @extensionSetterMapForType extensionSetterMapForType
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
     for () in extensionSetterMapForType do
-      var formalArgumentList =@formalParameterSignature.emptyList{}
+      var formalArgumentList =@formalParameterSignature {}
       for () in mFormalParameterList do
         @unifiedTypeMap-proxy typeIndex
         [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
@@ -730,7 +730,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 #--- Templates
   var filewrapperTemplateMap =@filewrapperTemplateMap.emptyMap{}
   for () in mFilewrapperTemplateList do
-    var templateSignature =@functionSignature.emptyList{}
+    var templateSignature =@functionSignature {}
     for () in mFilewrapperTemplateFormalInputParameters do
       @unifiedTypeMap-proxy parameterTypeIndex
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
@@ -879,7 +879,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var routineSignature =@formalParameterSignature.emptyList{}
+  var routineSignature =@formalParameterSignature {}
   for () in mFormalArgumentList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -900,7 +900,7 @@ override method @routineDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var routineSignature =@formalParameterSignature.emptyList{}
+  var routineSignature =@formalParameterSignature {}
   for () in mFormalArgumentList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -923,7 +923,7 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
-  var functionSignature =@functionSignature.emptyList{}
+  var functionSignature =@functionSignature {}
   for () in mFormalArgumentList do
     @unifiedTypeMap-proxy parameterTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
@@ -981,7 +981,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   var grammarLabelMap =@grammarLabelMap.emptyMap{}
   for () in mStartSymbolLabelList do
   #--- Analyze signature
-    var formalArgumentList =@formalParameterSignature.emptyList{}
+    var formalArgumentList =@formalParameterSignature {}
     for () in mFormalArgumentList do
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let @unifiedTypeMap-proxy argumentType]
       formalArgumentList +=
@@ -1022,7 +1022,7 @@ override method @lexiqueComponentAST enterInSemanticContext
 #--------------------------------------- 
   @terminalMap terminalMap = {}
   for () in mTerminalDeclarationList do
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
@@ -1032,7 +1032,7 @@ override method @lexiqueComponentAST enterInSemanticContext
   end
 #---
   for () in mLexicalListDeclarationList do
-    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
@@ -1220,7 +1220,7 @@ proc buildSemanticContext
   var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
   var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
   var extensionSetterMapForBuildingContext = @extensionSetterMapForBuildingContext.emptyMap{}
-  var extensionOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
+  var extensionOverrideDefinitionList = @semanticDeclarationListAST {}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph

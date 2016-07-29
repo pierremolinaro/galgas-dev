@@ -94,7 +94,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  var structAttributeList =@propertyInCollectionListAST {}
   for () in mAttributeList do
     structAttributeList +=
 #      !mIsPrivate
@@ -125,10 +125,10 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enumeration description
-  var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
-  var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var setterFormalArgumentList =@formalParameterSignature.emptyList{}
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var enumerationDescriptor =@enumerationDescriptorList {}
+  var constructorAttributeTypeList =@functionSignature {}
+  var setterFormalArgumentList =@formalParameterSignature {}
+  var typedAttributeList =@typedPropertyList {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
@@ -201,7 +201,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Enumeration variants
-  var enumerationVariants =@stringlist.emptyList{}
+  var enumerationVariants =@stringlist {}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
@@ -259,7 +259,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Attribute
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -273,8 +273,8 @@ override method @sortedListDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
-  var attributesUsedForSorting =@stringset.emptySet{}
-  var sortDescriptorList =@sortDescriptorListForGeneration.emptyList{}
+  var attributesUsedForSorting =@stringset {}
+  var sortDescriptorList =@sortDescriptorListForGeneration {}
   for () in mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending

@@ -546,7 +546,7 @@ rule <template_instruction>
   <expression> ?expression
   $:$
 #--- Instruction list
-  var blockInstructionList =@templateInstructionListAST.emptyList{}
+  var blockInstructionList =@templateInstructionListAST {}
   enterTemplateString ( !? blockInstructionList )
   repeat
   while
@@ -589,7 +589,7 @@ rule <template_instruction>
     foreachPrefix = [prefixString string]
   end
 #--- before block
-  var beforeInstructionList =@templateInstructionListAST.emptyList{}
+  var beforeInstructionList =@templateInstructionListAST {}
   select
   or
     $before$
@@ -609,7 +609,7 @@ rule <template_instruction>
     $index$
     $identifier$ ? indexIdentifier
   end
-  var doInstructionList =@templateInstructionListAST.emptyList{}
+  var doInstructionList =@templateInstructionListAST {}
   enterTemplateString ( !?doInstructionList )
   repeat
   while
@@ -617,7 +617,7 @@ rule <template_instruction>
     enterTemplateString ( !?doInstructionList )
   end
 #--- between block
-  var betweenInstructionList =@templateInstructionListAST.emptyList{}
+  var betweenInstructionList =@templateInstructionListAST {}
   select
   or
     $between$
@@ -629,7 +629,7 @@ rule <template_instruction>
     end
   end
 #--- after block
-  var afterInstructionList =@templateInstructionListAST.emptyList{}
+  var afterInstructionList =@templateInstructionListAST {}
   select
   or
     $after$
@@ -658,12 +658,12 @@ rule <template_instruction>
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
   $if$
-  var templateInstructionIfBranchList =@templateInstructionIfBranchListAST.emptyList{}
+  var templateInstructionIfBranchList =@templateInstructionIfBranchListAST {}
   repeat
     @templateExpressionAST expression
     <expression> ?expression
     $then$
-    var instructionList =@templateInstructionListAST.emptyList{}
+    var instructionList =@templateInstructionListAST {}
     enterTemplateString ( !? instructionList )
     repeat
     while
@@ -675,7 +675,7 @@ rule <template_instruction>
     $elsif$
   end
 #--- else
-  var elseInstructionList =@templateInstructionListAST.emptyList{}
+  var elseInstructionList =@templateInstructionListAST {}
   select
   or
     $else$
@@ -702,11 +702,11 @@ rule <template_instruction>
   <expression> ?let @templateExpressionAST switchExpression
   let @location endOfSwitchExpression = @location.here
 #--- Loop on "when' clauses
-  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListAST.emptyList{}
+  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListAST {}
   repeat
   while
     $case$
-    var constantList =@lstringlist.emptyList{}
+    var constantList =@lstringlist {}
     repeat
       $identifier$ ?var @lstring constantName
       constantList += !constantName
@@ -714,7 +714,7 @@ rule <template_instruction>
       $,$
     end
     $:$
-    var instructionList =@templateInstructionListAST.emptyList{}
+    var instructionList =@templateInstructionListAST {}
     enterTemplateString ( !? instructionList )
     repeat
     while

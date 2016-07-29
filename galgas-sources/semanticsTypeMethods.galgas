@@ -65,7 +65,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringType]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-proxy boolType]
-  var argList =@formalParameterSignature.emptyList{}
+  var argList =@formalParameterSignature {}
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"

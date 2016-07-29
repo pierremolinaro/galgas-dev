@@ -253,7 +253,7 @@ proc compileProject
 #------------------------------------ Build an HTML file that contains all declared types
   let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    var firstLetterSet =@stringset.emptySet{}
+    var firstLetterSet =@stringset {}
     for () in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
@@ -369,7 +369,7 @@ proc projectGeneration
 #---------------------------------- Update targets
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
-    var handledExtensionSet =@stringset.emptySet{}
+    var handledExtensionSet =@stringset {}
     for () in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end

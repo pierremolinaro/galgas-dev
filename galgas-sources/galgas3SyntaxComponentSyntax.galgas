@@ -63,9 +63,9 @@ rule <declaration>
   end
   ${$
 #--- Loop on declarations
-  var nonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
-  var ruleList =@syntaxRuleListAST.emptyList{}
-  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
+  var ruleList =@syntaxRuleListAST {}
+  var mSemanticDeclarations =@semanticDeclarationListAST {}
   repeat
   while
     <nonterminal_declaration> !? nonterminalDeclarationList
@@ -97,9 +97,9 @@ rule <declaration>
   $identifier$ ?let @lstring syntaxComponentName
   ${$
 #--- Loop on declarations
-  var nonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
-  var ruleList =@syntaxRuleListAST.emptyList{}
-  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  var nonterminalDeclarationList =@nonterminalDeclarationListAST {}
+  var ruleList =@syntaxRuleListAST {}
+  var mSemanticDeclarations =@semanticDeclarationListAST {}
   repeat
   while
     <nonterminal_declaration> !? nonterminalDeclarationList
@@ -134,7 +134,7 @@ rule <nonterminal_label_declaration> ?let @lstring inLabelName ?!@nonTerminalLab
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
   $rule$
   $non_terminal_symbol$ ?let @lstring mNonterminalName indexing ruleDefinition
-  var mLabels =@nonTerminalLabelListAST.emptyList{}
+  var mLabels =@nonTerminalLabelListAST {}
   <nonterminal_label_declaration> !@lstring.new {!"" !@location.here} !?mLabels
   repeat
   while
@@ -176,7 +176,7 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
   $rule$
   $non_terminal_symbol$ ?var  @lstring mNonterminalName indexing ruleDefinition
   var labelName =@lstring.new{!"" !@location.here}
-  var mLabelList =@syntaxRuleLabelListAST.emptyList{}
+  var mLabelList =@syntaxRuleLabelListAST {}
   repeat
     <syntax_rule_label> !labelName !?mLabelList
   while

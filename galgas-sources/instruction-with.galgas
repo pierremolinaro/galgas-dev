@@ -95,7 +95,7 @@ syntax extension galgas3InstructionsSyntax {
         error selector : "an empty selector '!?' is required here"
       end
       $identifier$ ?let mTargetObjectName
-      var structAttributeList =@lstringlist.emptyList{}
+      var structAttributeList =@lstringlist {}
       repeat
       while
         $.$
@@ -218,7 +218,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Enter in a select block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
-  var localConstantList =@localConstantList.emptyList{}
+  var localConstantList =@localConstantList {}
   for () in [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
       !mAttributeTypeProxy

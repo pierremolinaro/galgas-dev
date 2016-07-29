@@ -26,9 +26,9 @@ rule <declaration>
   $gui$
   $identifier$ ?var @lstring mGUIName
   ${$
-  var importedOptionList =@lstringlist.emptyList{}
-  var simpleGlobalAttributes =@guiSimpleAttributeListAST.emptyList{}
-  var withLexiqueList =@withLexiqueListAST.emptyList{}
+  var importedOptionList =@lstringlist {}
+  var simpleGlobalAttributes =@guiSimpleAttributeListAST {}
+  var withLexiqueList =@withLexiqueListAST {}
   repeat
   while
     $identifier$ ?var @lstring mKey
@@ -49,9 +49,9 @@ rule <declaration>
     or
       $lexique$
       $identifier$ ?var @lstring lexiqueReference
-      var labels =@guiLabelListAST.emptyList{}
-      var simpleAttributes =@guiSimpleAttributeListAST.emptyList{}
-      var compoundAttributes =@guiCompoundAttributeListAST.emptyList{}
+      var labels =@guiLabelListAST {}
+      var simpleAttributes =@guiSimpleAttributeListAST {}
+      var compoundAttributes =@guiCompoundAttributeListAST {}
       ${$
       repeat
       while
@@ -63,7 +63,7 @@ rule <declaration>
           $*$
           displayStyle = 1
         end
-        var terminalList =@terminalLabelListAST.emptyList{}
+        var terminalList =@terminalLabelListAST {}
         repeat
           $terminal$ ?var  @lstring terminal
           @uint displayFlags

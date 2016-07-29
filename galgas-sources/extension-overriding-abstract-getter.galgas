@@ -147,7 +147,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   end
 #--- Check Signature
   if baseTypeName != "" then
-    var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
+    var formalParameterListForGeneration =@formalInputParameterListForGeneration {}
     for () in mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector

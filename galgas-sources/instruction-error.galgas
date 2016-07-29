@@ -22,7 +22,7 @@ syntax extension galgas3InstructionsSyntax {
     <expression> ?let @semanticExpressionAST mReceiverExpression
     $:$
     <expression> ?let @semanticExpressionAST mErrorExpression
-    var mBuiltVariableList =@lstringlist.emptyList{}
+    var mBuiltVariableList =@lstringlist {}
     select
     or
       $:$

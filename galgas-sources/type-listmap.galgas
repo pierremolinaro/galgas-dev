@@ -34,7 +34,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST.emptyList{}
+  var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
 #    !false # Is not private
     !["string" nowhere]
@@ -140,17 +140,17 @@ override method @listmapDeclarationAST enterInSemanticContext
     !hasLexiqueAndLocationArgs:false
   )
 #--- Enumerator description
-  var enumeratorDescriptor =@enumerationDescriptorList.emptyList{}
+  var enumeratorDescriptor =@enumerationDescriptorList {}
   enumeratorDescriptor += !stringTypeIndex !"key"
   enumeratorDescriptor += !associatedListTypeIndex !"mList"
 #--- Add assign operator description
-  var addAssignOperatorDescription =@functionSignature.emptyList{}
+  var addAssignOperatorDescription =@functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
   for () in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
 #--- Enumeration variants
-  var enumerationVariants =@stringlist.emptyList{}
+  var enumerationVariants =@stringlist {}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories

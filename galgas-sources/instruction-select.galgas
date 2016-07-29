@@ -19,7 +19,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     !@syntaxInstructionAST outInstruction {
     $select$
     let mSelectInstructionLocation = @location.here
-    var mSelectBranchList =@listOfSyntaxInstructionList.emptyList{}
+    var mSelectBranchList =@listOfSyntaxInstructionList {}
     <syntax_instruction_list> ?let @syntaxInstructionList il
     mSelectBranchList += !il !@location.here
     repeat
@@ -60,9 +60,9 @@ override method @selectInstruction transformInstruction
   let @uint addedNonTerminalIndex = ioAddedNonTerminalIndex
   ioAddedNonTerminalIndex ++
 
-  var selectBranchList =@branchListForGrammarAnalysis.emptyList{}
+  var selectBranchList =@branchListForGrammarAnalysis {}
   for () in mSelectBranchList do
-    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis.emptyList{}
+    var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
       !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
@@ -100,7 +100,7 @@ override method @selectInstruction analyzeSyntaxInstruction
 #--- Begin block
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   for () in mSelectBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
@@ -146,7 +146,7 @@ class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
 override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   for () in mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)

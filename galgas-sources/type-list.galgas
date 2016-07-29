@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
     $list$
     $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
     ${$
-    var mAttributeList =@propertyInCollectionListAST.emptyList{}
+    var mAttributeList =@propertyInCollectionListAST {}
     repeat
     while
       <property_declaration> !? mAttributeList
@@ -62,7 +62,7 @@ override method @listDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Handle attributes
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
@@ -87,10 +87,10 @@ override method @listDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Property description
-  var enumerationDescriptor =@enumerationDescriptorList.emptyList{}
-  var constructorAttributeTypeList =@functionSignature.emptyList{}
-  var setterOutputFormalArgumentList =@formalParameterSignature.emptyList{}
-  var setterInputFormalArgumentList =@formalParameterSignature.emptyList{}
+  var enumerationDescriptor =@enumerationDescriptorList {}
+  var constructorAttributeTypeList =@functionSignature {}
+  var setterOutputFormalArgumentList =@formalParameterSignature {}
+  var setterInputFormalArgumentList =@formalParameterSignature {}
   for () in typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
@@ -213,7 +213,7 @@ override method @listDeclarationAST enterInSemanticContext
   drop setterOutputFormalArgumentList
   for () in typedAttributeList do
     if mHasSetter then
-      var setterFormalArgumentList =@formalParameterSignature.emptyList{}
+      var setterFormalArgumentList =@formalParameterSignature {}
       setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
       [!?setterMap insertOrReplace
@@ -238,7 +238,7 @@ override method @listDeclarationAST enterInSemanticContext
   ]
   drop setterInputFormalArgumentList
 #--- Enumeration variants
-  var enumerationVariants =@stringlist.emptyList{}
+  var enumerationVariants =@stringlist {}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
@@ -314,7 +314,7 @@ override method @listDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  var typedAttributeList =@typedPropertyList.emptyList{}
+  var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

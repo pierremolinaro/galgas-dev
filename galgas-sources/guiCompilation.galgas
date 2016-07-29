@@ -157,7 +157,7 @@ private proc compileGuiComponentGalgas3
       end
     end
   #--- Compound attributes
-    var textMacroList =@textMacroList.emptyList{}
+    var textMacroList =@textMacroList {}
     for () in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"

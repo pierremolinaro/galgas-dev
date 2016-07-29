@@ -58,7 +58,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
   $type_name$ ?var  @lstring mAttributeTypeName
   $identifier$ ?var  @lstring mAttributeName
-  var featureList =@lstringlist.emptyList{}
+  var featureList =@lstringlist {}
   repeat
   while
     $attribute$ ?let @lstring featureName
@@ -88,7 +88,7 @@ rule <declaration_with_private>
   $in$
   $literal_string$ ?var  @lstring mFilewrapperPath
   ${$
-  var filewrapperTextFileExtensionList =@lstringlist.emptyList{}
+  var filewrapperTextFileExtensionList =@lstringlist {}
   select
   or
     repeat
@@ -100,7 +100,7 @@ rule <declaration_with_private>
   end
   $}$
   ${$
-  var filewrapperBinaryFileExtensionList =@lstringlist.emptyList{}
+  var filewrapperBinaryFileExtensionList =@lstringlist {}
   select
   or
     repeat
@@ -112,13 +112,13 @@ rule <declaration_with_private>
   end
   $}$
   ${$
-  var mFilewrapperTemplateList =@filewrapperTemplateListAST.emptyList{}
+  var mFilewrapperTemplateList =@filewrapperTemplateListAST {}
   repeat
   while
     $template$
     $identifier$ ?var  @lstring mFilewrapperTemplateName
     $literal_string$ ?var  @lstring mFilewrapperTemplatePath
-    var filewrapperTemplateFormalInputParameters =@formalTemplateInputParameterListAST.emptyList{}
+    var filewrapperTemplateFormalInputParameters =@formalTemplateInputParameterListAST {}
     repeat
     while
       $?$ ?let selector

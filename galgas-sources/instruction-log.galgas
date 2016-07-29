@@ -25,7 +25,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
-    var logList =@logListAST.emptyList{}
+    var logList =@logListAST {}
     repeat
       select
         $identifier$ ?let @lstring loggedVariableName

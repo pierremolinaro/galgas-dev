@@ -79,7 +79,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy uintType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
 #---
-  var uintArgs =@functionSignature.emptyList{}
+  var uintArgs =@functionSignature {}
   @uint idx = 0
   loop( [mDimension uint]) while idx < [mDimension uint] do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
@@ -117,7 +117,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !"" # No Error message
   ]
 #--- Modifiers
-  var setterFormalArgumentList =@formalParameterSignature.emptyList{}
+  var setterFormalArgumentList =@formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
   loop( [mDimension uint]) while idx < [mDimension uint] do
@@ -264,7 +264,7 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   [mTypeProxy addHeaderFileName !?ioInclusionSet]
   [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
 
-  var suffixList =@stringlist.emptyList{}
+  var suffixList =@stringlist {}
   @uint idx = 0
   loop( mDimension) while idx < mDimension do
     suffixList += ![idx string]

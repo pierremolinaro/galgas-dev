@@ -14,7 +14,7 @@ message "a source text file with the .lbb extension"
 #--- Build box type map
   var boxTypeMap =@boxTypeMap.emptyMap{}
   for () in  [programAST mBoxTypeListAST] do
-    var portStringSet =@stringset.emptySet{}
+    var portStringSet =@stringset {}
     for () in  mPortNameList do
       if [portStringSet hasKey !mValue.string] then
         error mValue : "the '" + mValue + "' port is already declared"

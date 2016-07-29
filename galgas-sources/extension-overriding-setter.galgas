@@ -94,7 +94,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName = ""
   @unifiedTypeMap-proxy superType = [selfType mSuperType]
-  var inheritedSignature =@formalParameterSignature.emptyList{}
+  var inheritedSignature =@formalParameterSignature {}
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -111,7 +111,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     error mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
+  var formalParameterListForGeneration =@formalParameterListForGeneration {}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   let analysisContext = @analysisContext.new {
     !inSemanticContext

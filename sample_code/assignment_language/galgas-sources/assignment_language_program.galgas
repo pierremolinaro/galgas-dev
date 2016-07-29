@@ -13,7 +13,7 @@ grammar assignment_language_grammar
   grammar assignment_language_grammar in inSourceFile ?programAST
 #--- Semantic analysis
   var variableMap =@variableMap.emptyMap{}
-  var instructionListForGeneration =@instructionListForGeneration.emptyList{}
+  var instructionListForGeneration =@instructionListForGeneration {}
   for () in  [programAST mProgramInstructionList] do
     [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration]
   end

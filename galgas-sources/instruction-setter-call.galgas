@@ -34,7 +34,7 @@ syntax extension galgas3InstructionsSyntax {
       error selector : "an empty selector '!?' is required here"
     end
     $identifier$ ?let mReceiverName
-    var mReceiverStructAttributes =@lstringlist.emptyList{}
+    var mReceiverStructAttributes =@lstringlist {}
     repeat
     while
       $.$
@@ -379,9 +379,9 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
 #--- Parameters
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
+  var parameterCppNameList =@stringlist {}
+  var jokerParametersToReleaseList =@stringlist {}
+  var inputVariableList =@stringlist {}
   for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet

@@ -90,7 +90,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName = ""
   @unifiedTypeMap-proxy superType = [selfType mSuperType]
-  var inheritedSignature =@formalParameterSignature.emptyList{}
+  var inheritedSignature =@formalParameterSignature {}
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do

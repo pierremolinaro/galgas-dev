@@ -24,7 +24,7 @@ rule <declaration>
   $option$
   $identifier$ ?let @lstring optionComponentName
   ${$
-  var options =@commandLineOptionListAST.emptyList{}
+  var options =@commandLineOptionListAST {}
   repeat
   while 
     <option> !?options

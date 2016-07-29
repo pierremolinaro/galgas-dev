@@ -62,7 +62,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
   @methodKind kind
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
-  var fieldList =@stringlist.emptyList{}
+  var fieldList =@stringlist {}
   if [getterMap hasKey ![mGetterName string]] then
     [getterMap searchKey !mGetterName
       ?kind
@@ -615,7 +615,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
       + " effective argument(s)"
     : outExpression
   else
-    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
+    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
     for () in functionSignature, () in mExpressionList do
       [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration expression]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
@@ -1191,7 +1191,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   if [[expression mResultType] key] != "uint" then
     error mLocation:"expression type should be '@uint' (it is '@" + [[expression mResultType] key] + "')"
   end
-  var blockInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var blockInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !inAnalysisContext !mBlockInstructionList !?blockInstructionList )
   ioInstructionList += !@templateBlockInstructionForGeneration.new {!expression !mLocation !blockInstructionList}
 }
@@ -1226,7 +1226,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     error [expression mLocation] : "expression of '@" + [[expression mResultType] key] + "' cannot be enumerated"
   end
 #--- Before instructions
-  var beforeInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var beforeInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !inAnalysisContext !mBeforeInstructionList !?beforeInstructionList )
 #--- Do instructions
   let @string enumeratorCppName = "enumerator_" + [[[mIndexIdentifier location] locationIndex] string]
@@ -1246,13 +1246,13 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inAnalysisContext.mSemanticContext
     !inAnalysisContext.mPredefinedTypes
     !doVariableMap}
-  var doInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var doInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !doAnalysisContext !mDoInstructionList !?doInstructionList )
 #--- Between instructions
-  var betweenInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var betweenInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !inAnalysisContext !mBetweenInstructionList !?betweenInstructionList )
 #--- After instructions
-  var afterInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var afterInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !inAnalysisContext !mAfterInstructionList !?afterInstructionList )
 #---
   ioInstructionList += !@templateInstructionForeachForGeneration.new {
@@ -1271,19 +1271,19 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
 override method @templateInstructionIfAST templateInstructionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList {
-  var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration.emptyList{}
+  var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration {}
   for () in mTemplateInstructionIfBranchList do
     @semanticExpressionForGeneration expression
     [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
     if [[expression mResultType] key] != "bool" then
       error [expression mLocation] : "'if' expression type should be '@bool' (it is '@" + [[expression mResultType] key] + "')"
     end
-    var instructionList =@templateInstructionListForGeneration.emptyList{}
+    var instructionList =@templateInstructionListForGeneration {}
     templateInstructionListAnalysis ( !inAnalysisContext !mInstructionList !?instructionList )
     templateInstructionIfBranchList += !expression !instructionList
   end
 #---
-  var elseInstructionList =@templateInstructionListForGeneration.emptyList{}
+  var elseInstructionList =@templateInstructionListForGeneration {}
   templateInstructionListAnalysis ( !inAnalysisContext !mElseInstructionList !?elseInstructionList )
 #---
   ioInstructionList += !@templateInstructionIfForGeneration.new {
@@ -1304,8 +1304,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   end
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
 #---
-  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListForGeneration.emptyList{}
-  var namedConstantSet =@stringset.emptySet{}
+  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListForGeneration {}
+  var namedConstantSet =@stringset {}
   for () in mTemplateInstructionSwitchBranchList do
     for () in mConstantList do
       if not [enumConstantMap hasKey ![mValue string]] then
@@ -1316,7 +1316,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       end
       namedConstantSet += ![mValue string]
     end
-    var instructionList =@templateInstructionListForGeneration.emptyList{}
+    var instructionList =@templateInstructionListForGeneration {}
     templateInstructionListAnalysis ( !inAnalysisContext !mInstructionList !?instructionList )
     templateInstructionSwitchBranchList += !mConstantList !instructionList
   end

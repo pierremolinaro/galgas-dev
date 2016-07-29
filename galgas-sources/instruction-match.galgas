@@ -83,7 +83,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $match$
-    var matchedExpressionNameList =@semanticExpressionListAST.emptyList{}
+    var matchedExpressionNameList =@semanticExpressionListAST {}
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST receiverExpression
     matchedExpressionNameList += !receiverExpression !@location.here
@@ -94,7 +94,7 @@ syntax extension galgas3InstructionsSyntax {
     while
       $,$
     end
-    var matchInstructionBranchList =@matchInstructionBranchListAST.emptyList{}
+    var matchInstructionBranchList =@matchInstructionBranchListAST {}
     repeat
       <match_instruction_branch> !? matchInstructionBranchList
     while
@@ -148,7 +148,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  var expressionList =@semanticExpressionListForGeneration.emptyList{}
+  var expressionList =@semanticExpressionListForGeneration {}
   for () in mMatchedExpressionList do
   #--- Analyze expression
     [mExpression analyzeSemanticExpression
@@ -167,11 +167,11 @@ override method @matchInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
-  var matchInstructionBranchList =@matchInstructionBranchListForGeneration.emptyList{}
+  var matchInstructionBranchList =@matchInstructionBranchListForGeneration {}
   for () in mMatchInstructionBranchList do
   #--- Match list
-    var localConstantList =@localConstantList.emptyList{}
-    var matchListForGeneration = @matchListForGeneration.emptyList{}
+    var localConstantList =@localConstantList {}
+    var matchListForGeneration = @matchListForGeneration {}
     if [expressionList length] == [mMatchEntryList length] then
       for () in expressionList, () in mMatchEntryList do
         let type = [mExpression mResultType]
@@ -286,7 +286,7 @@ override method @matchInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-  var receiverList =@stringlist.emptyList{}
+  var receiverList =@stringlist {}
   for () in mMatchedExpressionList do
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
     receiverList += !variable

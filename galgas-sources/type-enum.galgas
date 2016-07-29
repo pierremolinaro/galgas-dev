@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $enum$
     $type_name$ ?let @lstring mEnumTypeName indexing enumDefinition
     ${$
-    var mConstantList =@enumConstantList.emptyList{}
+    var mConstantList =@enumConstantList {}
     repeat
       $case$
       $identifier$ ?let @lstring constantName
@@ -221,7 +221,7 @@ override method @enumDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Constant list
-  var constantList =@stringlist.emptyList{}
+  var constantList =@stringlist {}
   @enumConstantListForGeneration enumConstantListForGeneration = {}
   var constantMap =@constantIndexMap.emptyMap{}
   for () in mConstantList do

@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2011, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -74,6 +74,7 @@
       options:NSKeyValueObservingOptionNew
       context:NULL
     ] ;
+    [self updateCursorColor] ;
   }
   return self;
 }
@@ -107,6 +108,28 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+- (void) updateCursorColor {
+  NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
+  NSData * data = [df valueForKey:GGS_editor_background_color] ;
+  // NSLog (@"DATA %@", data) ;
+  NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
+  NSColor * rgbColor = [color colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]] ;
+  CGFloat red ;
+  CGFloat green ;
+  CGFloat blue ;
+  CGFloat alpha ;
+  [rgbColor getRed: &red green: &green blue: &blue alpha: &alpha] ;
+  NSColor * newCursorColor = [NSColor
+    colorWithRed: 1.0 - red
+    green: 1.0 - green
+    blue: 1.0 - blue
+    alpha: alpha
+  ] ;
+  self.insertionPointColor = newCursorColor ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 - (void) observeValueForKeyPath:(NSString *) inKeyPath
          ofObject:(id) inObject
          change:(NSDictionary *) inChange
@@ -117,6 +140,7 @@
   }else if ((inObject == df) && [inKeyPath isEqualToString:GGS_page_guide_column]) {
     [self setNeedsDisplay:YES] ;
   }else if ((inObject == df) && [inKeyPath isEqualToString:GGS_editor_background_color]) {
+    [self updateCursorColor] ;
     [self setNeedsDisplay:YES] ;
   }else{
     [super

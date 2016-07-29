@@ -552,7 +552,7 @@ proc analyzeRoutineArguments
     : outActualParameterListForGeneration
   else
     outActualParameterListForGeneration = @actualParameterListForGeneration.emptyList
-    var exclusiveVariableSet =@stringset.emptySet{}
+    var exclusiveVariableSet =@stringset {}
     for () in inRoutineSignature, () in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inAnalysisContext

@@ -112,7 +112,7 @@ syntax extension galgas3InstructionsSyntax {
   rule <for_instruction_enumerated_object>
     !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
-    var elementList =@forInstructionEnumeratedObjectElementListAST.emptyList{}
+    var elementList =@forInstructionEnumeratedObjectElementListAST {}
     @bool endsWithEllipsis
     select
       $...$
@@ -185,7 +185,7 @@ syntax extension galgas3InstructionsSyntax {
     !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
-    var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST.emptyList{}
+    var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}
     repeat
       @bool ascending
       select
@@ -548,7 +548,7 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- Handle index
   [!?ioVariableMap openOverrideForRepeatBlock]
   @string indexCppName = ""
-  var indexDeclaration =@localConstantList.emptyList{}
+  var indexDeclaration =@localConstantList {}
   if [mIndexVariableName string] != "" then
     indexCppName = "index_" + [mInstructionLocation locationIndex]
     indexDeclaration +=
@@ -619,7 +619,7 @@ override method @forInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-  var enumerationVarCppNameList =@stringlist.emptyList{}
+  var enumerationVarCppNameList =@stringlist {}
   for () in mEnumeratedObjectList do
     @string enumerationVar
     [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar]

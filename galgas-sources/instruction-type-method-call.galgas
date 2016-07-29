@@ -98,9 +98,9 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
 #--- Parameters
-  var parameterCppNameList =@stringlist.emptyList{}
-  var jokerParametersToReleaseList =@stringlist.emptyList{}
-  var inputVariableList =@stringlist.emptyList{}
+  var parameterCppNameList =@stringlist {}
+  var jokerParametersToReleaseList =@stringlist {}
+  var inputVariableList =@stringlist {}
   for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
