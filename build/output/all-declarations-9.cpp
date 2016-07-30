@@ -38,12 +38,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutoma
                                          "generate-shared-map-automaton-dot-files",
                                          "Generate shared map automaton dot files") ;
 
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarRuleListInTexFile ("galgas_cli_options",
-                                         "outputGrammarRuleListInTexFile",
-                                         0,
-                                         "output-grammar-rule-list-in-tex-files",
-                                         "Output the grammar rule list, in TEX files") ;
-
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
                                          "outputHTMLTypeListFile",
                                          84,
