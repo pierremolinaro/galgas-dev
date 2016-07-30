@@ -98,37 +98,6 @@ void callExtensionMethod_analyzeGrammarInstructionSDT (const class cPtr_abstract
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//        Abstract extension method '@abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction'        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typedef void (*extensionMethodSignature_abstractSyntaxInstructionForGrammarAnalysis_tikzNodeForSyntaxInstruction) (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                                                                                                   class GALGAS_rowList & ioArgument0,
-                                                                                                                   const class GALGAS_uint constinArgument1,
-                                                                                                                   const class GALGAS_string constinArgument2,
-                                                                                                                   class GALGAS_stringlist & ioArgument3,
-                                                                                                                   class GALGAS_string & ioArgument4,
-                                                                                                                   class C_Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_tikzNodeForSyntaxInstruction (const int32_t inClassIndex,
-                                                        extensionMethodSignature_abstractSyntaxInstructionForGrammarAnalysis_tikzNodeForSyntaxInstruction inMethod) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_tikzNodeForSyntaxInstruction (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
-                                                       GALGAS_rowList & io_ioRowList,
-                                                       const GALGAS_uint constin_inRow,
-                                                       const GALGAS_string constin_inIncomingNode,
-                                                       GALGAS_stringlist & io_ioArrowList,
-                                                       GALGAS_string & io_ioCurrentArrows,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                               Extension setter '@XcodeProjectDescriptor addTIFF_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

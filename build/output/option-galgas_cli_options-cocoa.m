@@ -52,15 +52,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputGrammarRuleListInTexFile"
-    commandChar:0
-    commandString:@"output-grammar-rule-list-in-tex-files"
-    comment:@"Output the grammar rule list, in TEX files"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
     identifier:@"outputHTMLTypeListFile"
     commandChar:84
     commandString:@"output-html-type-dump-file"
