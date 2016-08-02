@@ -229,6 +229,15 @@ mEmbeddedString (NULL) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_String::newWithStdIn (void) {
+  const size_t BUFFER_SIZE = 1000 ;
+  char buffer [BUFFER_SIZE] ;
+  const char * s = fgets (buffer, BUFFER_SIZE, stdin) ;
+  return (s == NULL) ? "" : s ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //   D E S T R U C T O R                                                                                               *
 //                                                                                                                     *

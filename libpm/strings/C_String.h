@@ -100,6 +100,9 @@ class C_String : public AC_OutputStream {
   public : C_String (const C_String & inSource) ;
   public : C_String & operator = (const C_String & inString) ;
 
+//--- Get string from stdin
+  public : static C_String newWithStdIn (void) ;
+
 //--- Copy from a C string
   public : C_String & operator = (const char * inSource) ;
 
