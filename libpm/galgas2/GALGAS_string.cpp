@@ -151,6 +151,12 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::constructor_newWithStdIn (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string (C_String::newWithStdIn ()) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_string GALGAS_string::constructor_CppChar (const GALGAS_char & inCharacter
                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result ;

@@ -428,6 +428,8 @@ class GALGAS_string : public AC_GALGAS_root
 
   public : static class GALGAS_string constructor_homeDirectory (LOCATION_ARGS) ;
 
+  public : static class GALGAS_string constructor_newWithStdIn (LOCATION_ARGS) ;
+
   public : static class GALGAS_string constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
