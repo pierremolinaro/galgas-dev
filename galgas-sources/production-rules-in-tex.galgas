@@ -273,9 +273,8 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   ?!arrowShape: @string ioArrowShape
   ?!arrows:@string ioArrows
   ?!@uint ioMaxUsedRowIndex
-  ?debug:let @bool unused iinDebug
+  ?debug:let @bool inDebug
 {
-  let inDebug = true
 #--- Trace ?
   if inDebug then
     [!?ioRowList append
@@ -292,25 +291,25 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Enter return point
   [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let returnNodeName]
   ioColumn ++
-#--- Enter start point
-  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
-  ioColumn ++
 #--- Enter branch zero
   var branches = mRepeatBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
-  var branchZeroColumn = ioColumn
+#  var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
   [brancheZero tikzNodeForSyntaxInstruction
     !?ioRowList
     !fromRow:inRow
-    !?column:branchZeroColumn
+    !?column:ioColumn # branchZeroColumn
     !?node:ioCurrentNode
     !?arrowShape:ioArrowShape
     !?arrows:ioArrows
     !?maxUsedRowIndex
     !debug:inDebug
   ]
-  var endColumn = branchZeroColumn
+  var endColumn = ioColumn # branchZeroColumn
+#--- Enter start point
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
+  ioColumn ++
 #--- Enter following branches
   @stringlist endingNodes = {}
   for branch in branches do
