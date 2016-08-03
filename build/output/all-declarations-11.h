@@ -2847,9 +2847,12 @@ void routine_emitProductionRulesInTexFile (const class GALGAS_string constinArgu
 typedef void (*extensionMethodSignature_abstractSyntaxInstructionForGrammarAnalysis_tikzNodeForSyntaxInstruction) (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
                                                                                                                    class GALGAS_rowList & ioArgument0,
                                                                                                                    const class GALGAS_uint constinArgument1,
-                                                                                                                   class GALGAS_string & ioArgument2,
+                                                                                                                   class GALGAS_uint & ioArgument2,
                                                                                                                    class GALGAS_string & ioArgument3,
                                                                                                                    class GALGAS_string & ioArgument4,
+                                                                                                                   class GALGAS_string & ioArgument5,
+                                                                                                                   class GALGAS_uint & ioArgument6,
+                                                                                                                   const class GALGAS_bool constinArgument7,
                                                                                                                    class C_Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -2863,9 +2866,12 @@ void enterExtensionMethod_tikzNodeForSyntaxInstruction (const int32_t inClassInd
 void callExtensionMethod_tikzNodeForSyntaxInstruction (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
                                                        GALGAS_rowList & io_ioRowList,
                                                        const GALGAS_uint constin_inRow,
+                                                       GALGAS_uint & io_ioColumn,
                                                        GALGAS_string & io_ioCurrentNode,
-                                                       GALGAS_string & io_ioArrowStyle,
+                                                       GALGAS_string & io_ioArrowShape,
                                                        GALGAS_string & io_ioArrows,
+                                                       GALGAS_uint & io_ioMaxUsedRowIndex,
+                                                       const GALGAS_bool constin_inDebug,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
