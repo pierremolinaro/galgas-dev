@@ -158,6 +158,7 @@ project (3:2:4) -> "galgas" {
 #--- Grammar component
   "galgas-sources/grammarSemantics.galgas"
   "galgas-sources/grammarCompilation.galgas"
+  "galgas-sources/production-rules-in-tex.galgas"
 
 #--- Program component
   "galgas-sources/programComponentCompilation.galgas"
@@ -169,13 +170,13 @@ project (3:2:4) -> "galgas" {
   "galgas-sources/projectGlobalCheckings.galgas"
   "galgas-sources/libpmHandling.galgas"
 
-#--- GALGAS 3 Project
+#--- GALGAS Project
   "galgas-sources/galgas3Scanner.galgas"
   "galgas-sources/galgas3ProjectSyntax.galgas"
   "galgas-sources/galgas3ProjectGrammar.galgas"
   "galgas-sources/galgas3projectAST.galgas"
 
-#--- GALGAS 3 File
+#--- GALGAS File
   "galgas-sources/galgas3ExpressionSyntax.galgas"
   "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
   "galgas-sources/galgas3InstructionsSyntax.galgas"

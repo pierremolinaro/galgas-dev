@@ -2790,6 +2790,87 @@ void routine_grammarAnalysisAndGeneration (const class GALGAS_stringset constinA
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                   Filewrapper 'grammarRulesInTexDocumentTemplate'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemplate ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'grammarRulesInTexDocumentTemplate document'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class C_Compiler * inCompiler,
+                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               Function 'escapeForTex'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string function_escapeForTex (const class GALGAS_string & constinArgument0,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Routine 'emitProductionRulesInTexFile'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_emitProductionRulesInTexFile (const class GALGAS_string constinArgument0,
+                                           const class GALGAS_string constinArgument1,
+                                           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
+                                           const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument3,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//        Abstract extension method '@abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction'        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef void (*extensionMethodSignature_abstractSyntaxInstructionForGrammarAnalysis_tikzNodeForSyntaxInstruction) (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+                                                                                                                   class GALGAS_rowList & ioArgument0,
+                                                                                                                   const class GALGAS_uint constinArgument1,
+                                                                                                                   class GALGAS_string & ioArgument2,
+                                                                                                                   class GALGAS_string & ioArgument3,
+                                                                                                                   class GALGAS_string & ioArgument4,
+                                                                                                                   class C_Compiler * inCompiler
+                                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionMethod_tikzNodeForSyntaxInstruction (const int32_t inClassIndex,
+                                                        extensionMethodSignature_abstractSyntaxInstructionForGrammarAnalysis_tikzNodeForSyntaxInstruction inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callExtensionMethod_tikzNodeForSyntaxInstruction (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+                                                       GALGAS_rowList & io_ioRowList,
+                                                       const GALGAS_uint constin_inRow,
+                                                       GALGAS_string & io_ioCurrentNode,
+                                                       GALGAS_string & io_ioArrowStyle,
+                                                       GALGAS_string & io_ioArrows,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                     Filewrapper 'programFileGenerationTemplate'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
