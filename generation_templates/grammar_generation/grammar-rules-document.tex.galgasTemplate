@@ -1,0 +1,57 @@
+\%!TEX encoding = UTF-8 Unicode
+
+\documentclass{article}
+
+\usepackage{tikz}
+
+\usetikzlibrary{
+  arrows,
+  shapes.misc,\% wg. rounded rectangle
+  shapes.arrows,\%
+  matrix,\%
+  scopes,\%
+  shadows\%
+}
+\usepackage{verbatim}
+
+\tikzset{
+  nonterminal/.style={
+    \% The shape:
+    rectangle,
+    \% The size:
+    minimum size=6mm,
+    \% The border:
+    very thick,
+    draw=red!50!black!50,         \% 50\% red and 50\% black,
+                                  \% and that mixed with 50\% white
+    \% The filling:
+    top color=white,              \% a shading that is white at the top...
+    bottom color=red!50!black!20, \% and something else at the bottom
+    \% Font
+    font=\itshape
+  },
+  terminal/.style={
+    \% The shape:
+    rounded rectangle,
+    minimum size=6mm,
+    \% The rest
+    very thick,draw=black!50,
+    top color=white,bottom color=black!20,
+    font=\ttfamily
+  },
+  point/.style={coordinate,>=stealth',thick,draw=black!50},
+  tip/.style={->,shorten >=0.007pt},
+  every join/.style={rounded corners}
+\%  skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget)}}
+}
+
+\\newcommand\ruleSection[1]{\section{Nonterminal \texttt{#1}}}
+\\newcommand\ruleSubsection[3]{\subsection{Component \texttt{#1}, in file \texttt{#2}, line #3}}
+\\newcommand\ruleMatrixColumnSeparation{3mm}
+\\newcommand\ruleMatrixRowSeparation{3mm}
+
+\begin{document}
+
+\input{%!DOCUMENT_NAME%.tex}
+
+\end{document}

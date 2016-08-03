@@ -1,0 +1,288 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  Copyright (C) 2016, ..., 2016 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#    O U T P U T    P R O D U C T I O N    R U L E S    I N    T E X                                                   *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+filewrapper grammarRulesInTexDocumentTemplate in "../generation_templates/grammar_generation" {
+}{
+}{
+  template document "grammar-rules-document.tex.galgasTemplate"
+    ?@string DOCUMENT_NAME
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func escapeForTex ?let @string inString -> @string result {
+  result = ""
+  for idx in 0 ..< [inString length] do
+    let c = [inString characterAtIndex !idx]
+    if c == '_' then
+      result += "\\_"
+    elsif c == '{' then
+      result += "\\{"
+    elsif c == '}' then
+      result += "\\}"
+    elsif c == '&' then
+      result += "\\&"
+    elsif c == '^' then
+      result += "\\verb=^="
+    elsif c == '%' then
+      result += "\\verb=%="
+    else
+      result += c
+    end
+  end
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc emitProductionRulesInTexFile
+  ?let @string inProductDirectory
+  ?let @string  inGrammarComponentName
+  ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
+  ?let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis
+{
+#---------------------------------------------------------- Print an tex file for grammar rule list
+  let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
+  [[texDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
+  [[filewrapper grammarRulesInTexDocumentTemplate.document !inGrammarComponentName]
+    writeToFileWhenDifferentContents !texDocumentFilePath ?*
+  ]
+  
+  let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
+  var s = ""
+  for nonterminal in inNonTerminalMapForGrammarAnalysis do
+    s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}\n\n"
+    for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
+      for productionRule in syntaxComponent.mProductionRulesList do
+        if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
+          @string currentNode = "P0start"
+          @rowList rowArray = {!{!currentNode !"[point] {}"}}
+          @string arrows = ""
+          @string arrowStyle = "--"
+          for (instruction) in productionRule.mInstructionList do
+            [instruction tikzNodeForSyntaxInstruction
+              !?rowArray
+              !fromRow:0
+              !?node:currentNode
+              !?arrowStyle:arrowStyle
+              !?currentArrows:arrows
+            ]
+          end
+          let loc = productionRule.mLeftNonterminalSymbol.location
+          s += "\\ruleSubsection{"
+            + escapeForTex (!syntaxComponent.mSyntaxComponentName.string)
+            + "}{"
+            + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+            + "}{" + escapeForTex (![loc line])
+            + "}\n\n"
+            + "\\begin{tikzpicture}\n"
+            + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
+          for > (columns) in rowArray do
+            s += "    "
+            for column in columns do
+              if column.mValue0 == "" then
+                s += "& "
+              else
+                s += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
+              end
+            end
+            s += "\\\\\n"
+          end
+          s += "  };\n"
+        #--- Arrows
+          s += arrows
+          s += "\\end{tikzpicture}\n\n"
+        end
+      end
+    end
+  end
+  [s writeToFileWhenDifferentContents !texFilePath ?*]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @rowList {
+  @2stringlist columns %setter # Node name, node definition
+}
+
+setter @rowList append
+  ?nodeDefinition:let @string inNodeDefinition
+  ?row:let @uint inRow
+  !nodeName:@string outNodeName
+{
+  var cols = [self columnsAtIndex !inRow]
+  outNodeName = "p" + inRow + "-" + [cols length]
+  cols += !outNodeName !inNodeDefinition
+  [!?self setColumnsAtIndex !cols !inRow]
+}
+
+setter @rowList appendEmpty
+  ?row:let @uint inRow
+{
+  var cols = [self columnsAtIndex !inRow]
+  cols += !"" !""
+  [!?self setColumnsAtIndex !cols !inRow]
+}
+
+setter @rowList appendEmpties
+  ?row:let @uint inRow
+  ?column:let @uint inColumn
+{
+  var cols = [self columnsAtIndex !inRow]
+  if [cols length] < inColumn then
+    for i in [cols length] ..< inColumn do
+      cols += !"" !""
+    end
+  end
+  [!?self setColumnsAtIndex !cols !inRow]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+#  ?column:let @uint inColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowStyle: @string ioArrowStyle
+  ?!currentArrows:@string ioArrows
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+#  ?column:let @uint inColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowStyle: @string ioArrowStyle
+  ?!currentArrows:@string ioArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[terminal] {" + escapeForTex (!mTerminalSymbolName) + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
+  ioCurrentNode = nodeName
+  ioArrowStyle = "--"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+#  ?column:let @uint inColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowStyle: @string ioArrowStyle
+  ?!currentArrows:@string ioArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[nonterminal] {" + escapeForTex (!mNonterminalSymbolName) + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
+  ioCurrentNode = nodeName
+  ioArrowStyle = "--"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+#  ?column:let @uint inColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowStyle: @string ioArrowStyle
+  ?!currentArrows:@string ioArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[nonterminal] {repeat" + [mRepeatBranchList length] + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
+  ioCurrentNode = nodeName
+  ioArrowStyle = "--"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+#  ?column:let @uint inColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowStyle: @string ioArrowStyle
+  ?!currentArrows:@string ioArrows
+{
+  [!?ioRowList append
+    !nodeDefinition:"[nonterminal] {select" + [mSelectBranchList length] + "}"
+    !row:inRow
+    ?nodeName:let nodeName
+  ]
+  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
+  ioCurrentNode = nodeName
+  ioArrowStyle = "--"
+##--- Enter start point
+##  [!?ioRowList appendEmpties !row:inRow !column:inColumn]
+#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let startNodeName]
+##--- Add rows
+#  if [ioRowList length] < (inRow + [mSelectBranchList length]) then
+#    for i in [ioRowList length] ..< (inRow + [mSelectBranchList length]) do
+#      ioRowList += {!{}}
+#    end
+#  end
+##--- Enter branch zero
+#  var branches = mSelectBranchList
+#  [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
+#  for (instruction) in brancheZero do
+#    [instruction tikzNodeForSyntaxInstruction
+#      !?ioRowList
+#      !fromRow:inRow
+##      !column:
+#      !?node:ioCurrentNode
+#      !?arrowStyle:ioArrowStyle
+#      !?currentArrows:ioArrows
+#    ]
+#  end
+##--- Enter following branches
+#  for branch in branches do (idx)
+#    var currentNode = startNodeName
+#    var arrowStyle = "|-"
+#    for (instruction) in branch.mSyntaxInstructionList do
+#      [instruction tikzNodeForSyntaxInstruction
+#        !?ioRowList
+#        !fromRow:inRow + idx + 1
+#        !?node:currentNode
+#        !?arrowStyle:arrowStyle
+#        !?currentArrows:ioArrows
+#      ]
+#    end
+#  end
+##--- Enter end point
+#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let endNodeName]
+#  [!?ioRowList appendEmpty !row:0]
+#  ioCurrentNode = endNodeName
+#  ioArrowStyle = "--"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+

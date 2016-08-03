@@ -601,26 +601,6 @@ override method @optionComponentDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func escapeForTex ?let @string inString -> @string result {
-  result = ""
-  for idx in 0 ..< [inString length] do
-    let c = [inString characterAtIndex !idx]
-    if c == '_' then
-      result += "\\_"
-    elsif c == '{' then
-      result += "\\{"
-    elsif c == '}' then
-      result += "\\}"
-    elsif c == '&' then
-      result += "\\&"
-    else
-      result += c
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -770,58 +750,14 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
 #---------------------------------------------------------- Print an tex file for grammar rule list
-#  if [option galgas_cli_options.outputGrammarRuleListInTexFile value] then
-#    let texFilePath = inProductDirectory + "/../helpers/" + mGrammarComponentName + ".tex"
-#    var s = ""
-#    for nonterminal in nonTerminalMapForGrammarAnalysis do
-#      s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}\n\n"
-#      for syntaxComponent in syntaxComponentListForGrammarAnalysis do
-#        for productionRule in syntaxComponent.mProductionRulesList do
-#          if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
-#            @string currentNode = "P0start"
-#            @rowList rowArray = {!{!currentNode !"[point] {}"}}
-#            @string arrows = ""
-#            @string arrowStyle = "--"
-#            for (instruction) in productionRule.mInstructionList do
-#              [instruction tikzNodeForSyntaxInstruction
-#                !?rowArray
-#                !fromRow:0
-#                !?node:currentNode
-#                !?arrowStyle:arrowStyle
-#                !?currentArrows:arrows
-#              ]
-#            end
-#            let loc = productionRule.mLeftNonterminalSymbol.location
-#            s += "\\ruleSubsection{"
-#              + escapeForTex (!syntaxComponent.mSyntaxComponentName.string)
-#              + "}{"
-#              + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
-#              + "}{" + escapeForTex (![loc line])
-#              + "}\n\n"
-#              + "\\begin{tikzpicture}\n"
-#              + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
-#            for > (columns) in rowArray do
-#              s += "    "
-#              for column in columns do
-#                if column.mValue0 == "" then
-#                  s += "& "
-#                else
-#                  s += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
-#                end
-#              end
-#              s += "\\\\\n"
-#            end
-#            s += "  };\n"
-#          #--- Arrows
-#            s += arrows
-#            s += "\\end{tikzpicture}\n\n"
-#          end
-#        end
-#      end
-#    end
-#    [[texFilePath stringByDeletingLastPathComponent] makeDirectory]
-#    [s writeToFileWhenDifferentContents !texFilePath ?*]
-#  end
+  if [option galgas_cli_options.outputGrammarRuleListInTexFile value] then
+    emitProductionRulesInTexFile (
+      !inProductDirectory
+      !mGrammarComponentName
+      !nonTerminalMapForGrammarAnalysis
+      !syntaxComponentListForGrammarAnalysis
+    )
+  end
 #---------------------------------------------------------- Header of implementation file
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.

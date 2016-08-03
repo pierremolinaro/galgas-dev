@@ -249,7 +249,7 @@ void C_Compiler::castError (const C_String & inTargetTypeName,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark GALGAS 2 Error
+  #pragma mark GALGAS Error
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -395,7 +395,7 @@ void C_Compiler::semanticWarningWith_K_L_message (const GALGAS_lstring & inKey,
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark GALGAS 2 Warnings
+  #pragma mark GALGAS Warnings
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
