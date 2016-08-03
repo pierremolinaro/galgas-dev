@@ -74,7 +74,7 @@ proc emitProductionRulesInTexFile
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
           @string currentNode = "P0start"
-          @rowList rowArray = {!{!currentNode !"[point] {}"}}
+          @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
           @string arrows = ""
           @string arrowStyle = "--"
           var column = 1
@@ -261,7 +261,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList append
-      !nodeDefinition:"[nonterminal] {S" + [mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SS" + [mSelectBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -278,6 +278,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   var branches = mSelectBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
+  var maxUsedRowIndex = inRow
   for (instruction) in brancheZero do
     [instruction tikzNodeForSyntaxInstruction
       !?ioRowList
@@ -286,7 +287,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       !?node:ioCurrentNode
       !?arrowShape:ioArrowShape
       !?arrows:ioArrows
-      !?ioMaxUsedRowIndex
+      !?maxUsedRowIndex
       !debug:inDebug
     ]
   end
@@ -294,11 +295,11 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Enter following branches
   @stringlist endingNodes = {}
   for branch in branches do
-    ioMaxUsedRowIndex ++
+    maxUsedRowIndex ++
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
-    let row = ioMaxUsedRowIndex
+    let row = maxUsedRowIndex
     for (instruction) in branch.mSyntaxInstructionList do
       [instruction tikzNodeForSyntaxInstruction
         !?ioRowList
@@ -307,7 +308,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
         !?node:currentNode
         !?arrowShape:arrowStyle
         !?arrows:ioArrows
-        !?ioMaxUsedRowIndex
+        !?maxUsedRowIndex
         !debug:inDebug
       ]
     end
@@ -317,6 +318,9 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     end
   end
   ioColumn = endColumn
+  if ioMaxUsedRowIndex < maxUsedRowIndex then
+    ioMaxUsedRowIndex = maxUsedRowIndex
+  end
 #--- Enter end point
   [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let endNodeName]
   ioColumn ++
@@ -330,7 +334,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList append
-      !nodeDefinition:"[nonterminal] {E" + [mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SE" + [mSelectBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
