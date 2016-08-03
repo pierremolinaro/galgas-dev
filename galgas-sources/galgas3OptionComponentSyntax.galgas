@@ -57,7 +57,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
       $literal_string$ ? defaultValue
       optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
     or
-      $unsigned_literal_integer$ ?var  @luint v
+      $literal_uint32$ ?var  @luint v
       defaultValue = @lstring.new {![[v uint] string] ![v location]}
       optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
     end

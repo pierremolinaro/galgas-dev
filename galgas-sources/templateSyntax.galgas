@@ -314,7 +314,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint literalInt
-  $unsigned_literal_integer$ ?literalInt
+  $literal_uint32$ ?literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
 
@@ -327,7 +327,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint literalInt
-  $signed_literal_integer$ ?literalInt
+  $literal_sint32$ ?literalInt
   outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
 }
 
@@ -340,7 +340,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint64 literalInt
-  $unsigned_literal_integer64$ ?literalInt
+  $literal_uint64$ ?literalInt
   outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
 }
 
@@ -353,7 +353,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint64 literalInt
-  $signed_literal_integer64$ ?literalInt
+  $literal_sint64$ ?literalInt
   outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
 

@@ -34,7 +34,7 @@ rule list delimitorsList
 
 style integerStyle -> "Integer Constants"
 @uint uint32value
-$unsigned_literal_integer$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
+$literal_uint32$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
 message decimalNumberTooLarge : "decimal number too large"
 message characterIsNotDecimalDigitError : "internal error"
 
@@ -44,7 +44,7 @@ rule '0'->'9' {
   while '0'->'9' :
     enterDigitIntoUInt ( !* !?uint32value error decimalNumberTooLarge, characterIsNotDecimalDigitError )
   end
-  send $unsigned_literal_integer$
+  send $literal_uint32$
 }
 
 # --------------------- separators -----------------------------------------
