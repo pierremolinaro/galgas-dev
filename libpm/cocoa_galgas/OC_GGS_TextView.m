@@ -109,25 +109,15 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) updateCursorColor {
-  #ifdef AVAILABLE_MAC_OS_X_VERSION_10_9_AND_LATER
-    NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
-    NSData * data = [df valueForKey:GGS_editor_background_color] ;
-    // NSLog (@"DATA %@", data) ;
-    NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
-    NSColor * rgbColor = [color colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]] ;
-    CGFloat red ;
-    CGFloat green ;
-    CGFloat blue ;
-    CGFloat alpha ;
-    [rgbColor getRed: &red green: &green blue: &blue alpha: &alpha] ;
-    NSColor * newCursorColor = [NSColor
-      colorWithRed: 1.0 - red
-      green: 1.0 - green
-      blue: 1.0 - blue
-      alpha: alpha
-    ] ;
-    self.insertionPointColor = newCursorColor ;
-  #endif
+  NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
+  NSData * data = [df valueForKey:GGS_editor_background_color] ;
+  // NSLog (@"DATA %@", data) ;
+  NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
+  if ([color brightnessComponent] > 0.5) {
+    self.insertionPointColor = [color blendedColorWithFraction:0.5 ofColor:[NSColor blackColor]] ;
+  }else{
+    self.insertionPointColor = [color blendedColorWithFraction:0.5 ofColor:[NSColor whiteColor]] ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
