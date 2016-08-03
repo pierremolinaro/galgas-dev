@@ -22,6 +22,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "../generation_templates/gramma
 }{
   template document "grammar-rules-document.tex.galgasTemplate"
     ?@string DOCUMENT_NAME
+    ?@string TEX_ESCAPED_DOCUMENT_NAME
  }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -64,9 +65,11 @@ proc emitProductionRulesInTexFile
 #---------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
   [[texDocumentFilePath stringByDeletingLastPathComponent] makeDirectory]
-  [[filewrapper grammarRulesInTexDocumentTemplate.document !inGrammarComponentName]
-    writeToFileWhenDifferentContents !texDocumentFilePath ?*
+  let document = [filewrapper grammarRulesInTexDocumentTemplate.document
+    !inGrammarComponentName
+    !escapeForTex (!inGrammarComponentName)
   ]
+  [document writeToFileWhenDifferentContents !texDocumentFilePath ?*]
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
   [inNonTerminalMapForGrammarAnalysis searchKey !inStartSymbol ?let startSymbolIndex ?*] ;
@@ -307,14 +310,14 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [brancheZero tikzNodeForSyntaxInstruction
     !?ioRowList
     !fromRow:inRow
-    !?column:ioColumn # branchZeroColumn
+    !?column:ioColumn
     !?node:ioCurrentNode
     !?arrowShape:ioArrowShape
     !?arrows:ioArrows
     !?maxUsedRowIndex
     !debug:inDebug
   ]
-  var endColumn = ioColumn # branchZeroColumn
+  var endColumn = ioColumn
 #--- Enter start point
   [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn ++
@@ -341,19 +344,17 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       endColumn = branchColumn
     end
   end
-  nextBranchUsedRowIndex ++
-  if ioMaxUsedRowIndex < nextBranchUsedRowIndex then
-    ioMaxUsedRowIndex = nextBranchUsedRowIndex
-  end
   ioColumn = endColumn
-#--- Enter upper return node, and draw back arrow
-  ioMaxUsedRowIndex ++
-  [!?ioRowList append !nodeDefinition:"[point] {}" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
-  ioColumn ++
-  ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
+#--- Compute row of return node
+  ioMaxUsedRowIndex = nextBranchUsedRowIndex
   if ioMaxUsedRowIndex < maxUsedRowIndex then
     ioMaxUsedRowIndex = maxUsedRowIndex
   end
+  ioMaxUsedRowIndex ++
+#--- Enter upper return node, and draw back arrow
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
+  ioColumn ++
+  ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
 #--- Add ending arrows
   for (node) in endingNodes do
     ioArrows += "  \\draw[->] (" + node + ") -| (" + returnUpperNodeName + ") ;\n"

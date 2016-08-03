@@ -2812,7 +2812,8 @@ extern const cDirectoryWrapper gWrapperDirectory_0_grammarRulesInTexDocumentTemp
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (class C_Compiler * inCompiler,
-                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME
+                                                                              const class GALGAS_string & in_DOCUMENT_5F_NAME,
+                                                                              const class GALGAS_string & in_TEX_5F_ESCAPED_5F_DOCUMENT_5F_NAME
                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
