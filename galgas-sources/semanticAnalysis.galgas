@@ -756,6 +756,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !mGrammarComponentName
       !nonTerminalMapForGrammarAnalysis
       !syntaxComponentListForGrammarAnalysis
+      !mStartSymbolName
     )
   end
 #---------------------------------------------------------- Header of implementation file

@@ -1,6 +1,6 @@
 \%!TEX encoding = UTF-8 Unicode
 
-\documentclass[landscape]{article}
+\documentclass[landscape]{book}
 \usepackage[a3paper]{geometry}
 
 \usepackage{verbatim}
@@ -51,13 +51,24 @@
 \%  skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget)}}
 }
 
-\\newcommand\ruleSection[2]{\section{Nonterminal \texttt{#1}}\label{nt:#2}}
+\\newcommand\\nonTerminalSection[2]{\section{Nonterminal \texttt{#1}}\label{nt:#2}}
 \\newcommand\ruleSubsection[3]{\subsection{Component \texttt{#1}, in file \texttt{#2}, line #3}}
 \\newcommand\ruleMatrixColumnSeparation{3mm}
 \\newcommand\ruleMatrixRowSeparation{3mm}
 \\newcommand\\nonTerminalSymbol[2]{\hyperref[nt:#2]{#1}}
+\\newcommand\startSymbol[2]{The start symbol is \hyperref[nt:#2]{#1}.}
+
+\\newcommand\\nonTerminalSummaryStart{This is the alphabetical list of non terminal : }
+\\newcommand\\nonTerminalSummary[2]{\hyperref[nt:#2]{#1}}
+\\newcommand\\nonTerminalSummarySeparator{, }
+\\newcommand\\nonTerminalSummaryEnd{.\\\\}
 
 \begin{document}
+
+\title{\Huge{Grammar \texttt{%!DOCUMENT_NAME%}}}
+\date \today 
+
+\maketitle
 
 \input{%!DOCUMENT_NAME%.tex}
 

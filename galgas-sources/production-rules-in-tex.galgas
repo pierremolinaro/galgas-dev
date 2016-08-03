@@ -59,6 +59,7 @@ proc emitProductionRulesInTexFile
   ?let @string  inGrammarComponentName
   ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ?let @syntaxComponentListForGrammarAnalysis inSyntaxComponentListForGrammarAnalysis
+  ?let @lstring inStartSymbol
 {
 #---------------------------------------------------------- Print an tex file for grammar rule list
   let texDocumentFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".document.tex"
@@ -68,8 +69,16 @@ proc emitProductionRulesInTexFile
   ]
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
+  [inNonTerminalMapForGrammarAnalysis searchKey !inStartSymbol ?let startSymbolIndex ?*] ;
+  s += "\\startSymbol{" + escapeForTex (!inStartSymbol) + "}{" + startSymbolIndex + "}\n\n"
+  s += "\\nonTerminalSummaryStart "
+  for nonterminal in inNonTerminalMapForGrammarAnalysis
+    do s += "\\nonTerminalSummary{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}"
+    between s += "\\nonTerminalSummarySeparator "
+  end
+  s += "\\nonTerminalSummaryEnd "
   for nonterminal in inNonTerminalMapForGrammarAnalysis do
-    s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}\n\n"
+    s += "\\nonTerminalSection{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}\n\n"
     for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then

@@ -2835,6 +2835,7 @@ void routine_emitProductionRulesInTexFile (const class GALGAS_string constinArgu
                                            const class GALGAS_string constinArgument1,
                                            const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
                                            const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument3,
+                                           const class GALGAS_lstring constinArgument4,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
