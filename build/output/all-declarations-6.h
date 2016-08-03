@@ -4592,14 +4592,34 @@ class cParser_galgas_33_ProjectSyntax {
 
   protected : virtual void nt_project_5F_component_5F_start_5F_symbol_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
+  protected : virtual void nt_project_5F_header_ (class GALGAS_luint & outArgument0,
+                                                  class GALGAS_luint & outArgument1,
+                                                  class GALGAS_luint & outArgument2,
+                                                  class GALGAS_lstring & outArgument3,
+                                                  class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_project_5F_header_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_project_5F_header_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
 
 //--- Rule declarations
-  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_ (GALGAS_galgas_33_ProjectComponentAST & outArgument0,
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_header_i0_ (GALGAS_luint & outArgument0,
+                                                                       GALGAS_luint & outArgument1,
+                                                                       GALGAS_luint & outArgument2,
+                                                                       GALGAS_lstring & outArgument3,
+                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_header_i0_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_header_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_ (GALGAS_galgas_33_ProjectComponentAST & outArgument0,
                                                                                              C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_ProjectSyntax_project_5F_component_5F_start_5F_symbol_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
