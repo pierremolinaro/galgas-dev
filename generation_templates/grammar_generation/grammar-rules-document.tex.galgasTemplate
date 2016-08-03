@@ -40,6 +40,7 @@
     top color=white,bottom color=black!20,
     font=\ttfamily\small
   },
+  firstPoint/.style={circle,>=stealth',thick,draw=black!50},
   point/.style={coordinate,>=stealth',thick,draw=black!50},
   tip/.style={->,shorten >=0.007pt},
   lastPoint/.style={rectangle,>=stealth',thick,draw=black!50},
