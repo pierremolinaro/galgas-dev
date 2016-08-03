@@ -294,7 +294,6 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Enter branch zero
   var branches = mRepeatBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
-#  var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
   [brancheZero tikzNodeForSyntaxInstruction
     !?ioRowList
@@ -311,20 +310,21 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn ++
 #--- Enter following branches
+  var nextBranchUsedRowIndex = inRow
   @stringlist endingNodes = {}
   for branch in branches do
-    maxUsedRowIndex ++
+    nextBranchUsedRowIndex ++
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
     [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
       !?ioRowList
-      !fromRow:maxUsedRowIndex
+      !fromRow:nextBranchUsedRowIndex
       !?column:branchColumn
       !?node:currentNode
       !?arrowShape:arrowStyle
       !?arrows:ioArrows
-      !?maxUsedRowIndex
+      !?nextBranchUsedRowIndex
       !debug:inDebug
     ]
     endingNodes += !currentNode
@@ -332,21 +332,19 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       endColumn = branchColumn
     end
   end
-  ioColumn = endColumn
-  if ioMaxUsedRowIndex < maxUsedRowIndex then
-    ioMaxUsedRowIndex = maxUsedRowIndex
+  nextBranchUsedRowIndex ++
+  if ioMaxUsedRowIndex < nextBranchUsedRowIndex then
+    ioMaxUsedRowIndex = nextBranchUsedRowIndex
   end
+  ioColumn = endColumn
 #--- Enter upper return node, and draw back arrow
   ioMaxUsedRowIndex ++
   [!?ioRowList append !nodeDefinition:"[point] {}" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
   ioColumn ++
   ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
-#--- Enter end point
-#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let endNodeName]
-#  ioColumn ++
-#  ioArrowShape = "--"
-#  ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
-#  ioCurrentNode = endNodeName
+  if ioMaxUsedRowIndex < maxUsedRowIndex then
+    ioMaxUsedRowIndex = maxUsedRowIndex
+  end
 #--- Add ending arrows
   for (node) in endingNodes do
     ioArrows += "  \\draw[->] (" + node + ") -| (" + returnUpperNodeName + ") ;\n"
