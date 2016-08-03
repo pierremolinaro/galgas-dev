@@ -74,12 +74,12 @@ rule <declaration>
             displayFlags = 0xFFFF # Do not diplay
           or
             $($
-            $unsigned_literal_integer$ ?var @luint leadingStrip
+            $literal_uint32$ ?var @luint leadingStrip
             if leadingStrip.uint >= 15 then
               error leadingStrip:"leading strip should be < 15"
             end
             $,$
-            $unsigned_literal_integer$ ?var @luint endingStrip
+            $literal_uint32$ ?var @luint endingStrip
             if endingStrip.uint >= 15 then
               error endingStrip:"tail strip should be < 15"
             end

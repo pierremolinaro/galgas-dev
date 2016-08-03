@@ -96,11 +96,11 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
   NO /* identifier */,
   NO /* type_name */,
   NO /* literal_double */,
-  NO /* unsigned_literal_integer */,
-  NO /* signed_literal_integer */,
-  NO /* unsigned_literal_integer64 */,
-  NO /* signed_literal_integer64 */,
-  NO /* bigint */,
+  NO /* literal_uint32 */,
+  NO /* literal_sint32 */,
+  NO /* literal_uint64 */,
+  NO /* literal_sint64 */,
+  NO /* literal_bigint */,
   NO /* . */,
   NO /* .= */,
   NO /* ... */,
@@ -459,19 +459,19 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mLoop = YES ;
           if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
             scanner_cocoa_routine_convertHexStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
-            mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ ;
+            mTokenCode = galgasTemplateScanner_1_literal_5F_sint_36__34_ ;
           }else if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
             scanner_cocoa_routine_convertHexStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
-            mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer ;
+            mTokenCode = galgasTemplateScanner_1_literal_5F_sint_33__32_ ;
           }else if (scanningOk && ([self testForInputChar:76])) {
             scanner_cocoa_routine_convertHexStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
-            mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ ;
+            mTokenCode = galgasTemplateScanner_1_literal_5F_uint_36__34_ ;
           }else if (scanningOk && ([self testForInputChar:71])) {
             scanner_cocoa_routine_convertHexStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-            mTokenCode = galgasTemplateScanner_1_bigint ;
+            mTokenCode = galgasTemplateScanner_1_literal_5F_bigint ;
           }else{
             scanner_cocoa_routine_convertHexStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
-            mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer ;
+            mTokenCode = galgasTemplateScanner_1_literal_5F_uint_33__32_ ;
           }
         }else{
           scanningOk = NO ;
@@ -489,16 +489,16 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
         mLoop = YES ;
         if (scanningOk && ([self testForInputChar:83] || [self testForInputChar:115])) {
           scanner_cocoa_routine_convertDecimalStringIntoSInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint32value) ;
-          mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer ;
+          mTokenCode = galgasTemplateScanner_1_literal_5F_sint_33__32_ ;
         }else if (scanningOk && ([self testForInputString:@"LS" advance:YES])) {
           scanner_cocoa_routine_convertDecimalStringIntoSInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_sint64value) ;
-          mTokenCode = galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ ;
+          mTokenCode = galgasTemplateScanner_1_literal_5F_sint_36__34_ ;
         }else if (scanningOk && ([self testForInputChar:76])) {
           scanner_cocoa_routine_convertDecimalStringIntoUInt64 (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint64value) ;
-          mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ ;
+          mTokenCode = galgasTemplateScanner_1_literal_5F_uint_36__34_ ;
         }else if (scanningOk && ([self testForInputChar:71])) {
           scanner_cocoa_routine_convertDecimalStringIntoBigInt (& scanningOk, mLexicalAttribute_tokenString, mLexicalAttribute_bigintValue) ;
-          mTokenCode = galgasTemplateScanner_1_bigint ;
+          mTokenCode = galgasTemplateScanner_1_literal_5F_bigint ;
         }else if (scanningOk && ([self testForInputChar:46])) {
           scanner_cocoa_routine_enterCharacterIntoString (& scanningOk, mLexicalAttribute_tokenString, 46) ;
           do {
@@ -514,7 +514,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
           mTokenCode = galgasTemplateScanner_1_literal_5F_double ;
         }else{
           scanner_cocoa_routine_convertDecimalStringIntoUInt (& scanningOk, mLexicalAttribute_tokenString, & mLexicalAttribute_uint32value) ;
-          mTokenCode = galgasTemplateScanner_1_unsigned_5F_literal_5F_integer ;
+          mTokenCode = galgasTemplateScanner_1_literal_5F_uint_33__32_ ;
         }
       }else if (scanningOk && ([self testForInputChar:46])) {
         if (scanningOk && ([self testForInputFromChar:48 toChar:57])) {
@@ -1018,11 +1018,11 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1_type_5F_name */,
     7 /* galgasTemplateScanner_1_literal_5F_double */,
-    5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer */,
-    5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer */,
-    5 /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
-    5 /* galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ */,
-    6 /* galgasTemplateScanner_1_bigint */,
+    5 /* galgasTemplateScanner_1_literal_5F_uint_33__32_ */,
+    5 /* galgasTemplateScanner_1_literal_5F_sint_33__32_ */,
+    5 /* galgasTemplateScanner_1_literal_5F_uint_36__34_ */,
+    5 /* galgasTemplateScanner_1_literal_5F_sint_36__34_ */,
+    6 /* galgasTemplateScanner_1_literal_5F_bigint */,
     2 /* galgasTemplateScanner_1__2E_ */,
     2 /* galgasTemplateScanner_1__2E__3D_ */,
     2 /* galgasTemplateScanner_1__2E__2E__2E_ */,
@@ -1181,11 +1181,11 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_identifier */,
     YES /* galgasTemplateScanner_1_type_5F_name */,
     YES /* galgasTemplateScanner_1_literal_5F_double */,
-    YES /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer */,
-    YES /* galgasTemplateScanner_1_signed_5F_literal_5F_integer */,
-    YES /* galgasTemplateScanner_1_unsigned_5F_literal_5F_integer_36__34_ */,
-    YES /* galgasTemplateScanner_1_signed_5F_literal_5F_integer_36__34_ */,
-    YES /* galgasTemplateScanner_1_bigint */,
+    YES /* galgasTemplateScanner_1_literal_5F_uint_33__32_ */,
+    YES /* galgasTemplateScanner_1_literal_5F_sint_33__32_ */,
+    YES /* galgasTemplateScanner_1_literal_5F_uint_36__34_ */,
+    YES /* galgasTemplateScanner_1_literal_5F_sint_36__34_ */,
+    YES /* galgasTemplateScanner_1_literal_5F_bigint */,
     YES /* galgasTemplateScanner_1__2E_ */,
     YES /* galgasTemplateScanner_1__2E__3D_ */,
     YES /* galgasTemplateScanner_1__2E__2E__2E_ */,

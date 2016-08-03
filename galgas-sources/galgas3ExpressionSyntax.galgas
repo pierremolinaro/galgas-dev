@@ -439,7 +439,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $unsigned_literal_integer$ ?let @luint literalInt
+  $literal_uint32$ ?let @luint literalInt
   outExpression = @literalUIntExpressionAST.new {!literalInt}
 }
 
@@ -450,7 +450,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $signed_literal_integer$ ?let @lsint literalInt
+  $literal_sint32$ ?let @lsint literalInt
   outExpression = @literalSIntExpressionAST.new {!literalInt}
 }
 
@@ -461,7 +461,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $unsigned_literal_integer64$ ?let @luint64 literalInt
+  $literal_uint64$ ?let @luint64 literalInt
   outExpression = @literalUInt64ExpressionAST.new {!literalInt}
 }
 
@@ -472,7 +472,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $signed_literal_integer64$ ?let @lsint64 literalInt
+  $literal_sint64$ ?let @lsint64 literalInt
   outExpression = @literalSInt64ExpressionAST.new {!literalInt}
 }
 
@@ -483,7 +483,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $bigint$ ?let @lbigint literalInt
+  $literal_bigint$ ?let @lbigint literalInt
   outExpression = @literalBigIntExpressionAST.new {!literalInt}
 }
 

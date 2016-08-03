@@ -81,7 +81,7 @@ rule <actual_parameter_list>
       outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
     or
       @luint count
-      $unsigned_literal_integer$ ? count
+      $literal_uint32$ ? count
       $*$
       var n = [count uint]
       if selector.string != "" then
@@ -128,7 +128,7 @@ rule <actual_parameter_list>
     outActualParameterList += !@outputInputSingleJokerParameterAST.new {!selector}
   while
     $!?$ ?let selector
-    $unsigned_literal_integer$ ?let @luint count
+    $literal_uint32$ ?let @luint count
     $*$
     var n = [count uint]
     if selector.string != "" then

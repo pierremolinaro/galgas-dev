@@ -206,11 +206,11 @@ rule isUnicodeLetter {
 @double floatValue
 @bigint bigintValue
 $literal_double$ !floatValue !tokenString  style floatStyle error message "a float number"
-$unsigned_literal_integer$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
-$signed_literal_integer$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
-$unsigned_literal_integer64$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
-$signed_literal_integer64$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
-$bigint$ !bigintValue  style bigintStyle error message "a big integer number"
+$literal_uint32$ !uint32value  style integerStyle error message "a 32-bit unsigned decimal number"
+$literal_sint32$ !sint32value  style integerStyle error message "a 32-bit signed decimal number"
+$literal_uint64$ !uint64value  style integerStyle error message "a 64-bit unsigned decimal number"
+$literal_sint64$ !sint64value  style integerStyle error message "a 64-bit signed decimal number"
+$literal_bigint$ !bigintValue  style bigintStyle error message "a big integer number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message floatNumberConversionError : "invalid float number"
@@ -232,19 +232,19 @@ rule "0x" {
     select
     case "LS" :
       convertHexStringIntoSInt64 (!tokenString !?sint64value error decimalNumberTooLarge, internalError)
-      send $signed_literal_integer64$
+      send $literal_sint64$
     case 'S' | 's' :
       convertHexStringIntoSInt (!tokenString !?sint32value error decimalNumberTooLarge, internalError)
-      send $signed_literal_integer$
+      send $literal_sint32$
     case 'L' :
       convertHexStringIntoUInt64 (!tokenString !?uint64value error decimalNumberTooLarge, internalError)
-      send $unsigned_literal_integer64$
+      send $literal_uint64$
     case 'G' :
       convertHexStringIntoBigInt (!tokenString !?bigintValue error internalError)
-      send $bigint$
+      send $literal_bigint$
     default
       convertHexStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)
-      send $unsigned_literal_integer$
+      send $literal_uint32$
     end
   default
     error hexDigitError
@@ -261,16 +261,16 @@ rule '0'->'9' {
   select
   case 'S' | 's' :
     convertDecimalStringIntoSInt ( !tokenString !?sint32value error decimalNumberTooLarge, internalError )
-    send $signed_literal_integer$
+    send $literal_sint32$
   case "LS" :
     convertDecimalStringIntoSInt64 ( !tokenString !?sint64value error decimalNumberTooLarge, internalError )
-    send $signed_literal_integer64$
+    send $literal_sint64$
   case 'L' :
     convertDecimalStringIntoUInt64 ( !tokenString !?uint64value error decimalNumberTooLarge, internalError )
-    send $unsigned_literal_integer64$
+    send $literal_uint64$
   case 'G' :
     convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
-    send $bigint$
+    send $literal_bigint$
   case '.' :
     enterCharacterIntoString (!?tokenString !'.' )
     repeat
@@ -282,7 +282,7 @@ rule '0'->'9' {
     send $literal_double$
   default
     convertDecimalStringIntoUInt ( !tokenString !?uint32value error decimalNumberTooLarge, internalError )
-    send $unsigned_literal_integer$
+    send $literal_uint32$
   end
 }
 

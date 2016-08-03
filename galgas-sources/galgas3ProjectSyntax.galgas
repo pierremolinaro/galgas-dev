@@ -20,11 +20,11 @@ syntax galgas3ProjectSyntax (galgas3Scanner) {
 rule <project_header> !@luint majorVersion !@luint minorVersion !@luint revisionVersion !@lstring targetName {
   $project$
   $($
-  $unsigned_literal_integer$ ?majorVersion
+  $literal_uint32$ ?majorVersion
   $:$
-  $unsigned_literal_integer$ ?minorVersion
+  $literal_uint32$ ?minorVersion
   $:$
-  $unsigned_literal_integer$ ?revisionVersion
+  $literal_uint32$ ?revisionVersion
   $)$
   $->$
   $literal_string$ ?targetName

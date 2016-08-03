@@ -350,7 +350,7 @@ rule <lexical_output_effective_argument>
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-  $unsigned_literal_integer$ ?var @luint unsignedValue
+  $literal_uint32$ ?var @luint unsignedValue
   outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
 }
 

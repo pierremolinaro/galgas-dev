@@ -21,7 +21,7 @@ syntax extension galgas3DeclarationsSyntax {
     $:$
     $type_name$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
-    $unsigned_literal_integer$ ?var  @luint dimension
+    $literal_uint32$ ?var  @luint dimension
     $]$
     ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
       !false # Is not predefined
