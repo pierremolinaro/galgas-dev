@@ -109,7 +109,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) updateCursorColor {
-  #if AVAILABLE_MAC_OS_X_VERSION_10_9_AND_LATER
+  #ifdef AVAILABLE_MAC_OS_X_VERSION_10_9_AND_LATER
     NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
     NSData * data = [df valueForKey:GGS_editor_background_color] ;
     // NSLog (@"DATA %@", data) ;
