@@ -272,19 +272,98 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   ?!node: @string ioCurrentNode
   ?!arrowShape: @string ioArrowShape
   ?!arrows:@string ioArrows
-  ?!@uint unused ioMaxUsedRowIndex
-  ?debug:let @bool unused inDebug
+  ?!@uint ioMaxUsedRowIndex
+  ?debug:let @bool unused iinDebug
 {
-  [!?ioRowList append
-    !nodeDefinition:"[nonterminal] {repeat" + [mRepeatBranchList length] + "}"
-    !row:inRow
-    !column:ioColumn
-    ?nodeName:let nodeName
-  ]
-  ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
-  ioCurrentNode = nodeName
-  ioArrowShape = "--"
+  let inDebug = true
+#--- Trace ?
+  if inDebug then
+    [!?ioRowList append
+      !nodeDefinition:"[nonterminal] {RS" + [mRepeatBranchList length] + "}"
+      !row:inRow
+      !column:ioColumn
+      ?nodeName:let markerStartNodeName
+    ]
+    ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerStartNodeName + ") ;\n"
+    ioCurrentNode = markerStartNodeName
+    ioArrowShape = "--"
+    ioColumn ++
+  end
+#--- Enter return point
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let returnNodeName]
   ioColumn ++
+#--- Enter start point
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
+  ioColumn ++
+#--- Enter branch zero
+  var branches = mRepeatBranchList
+  [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
+  var branchZeroColumn = ioColumn
+  var maxUsedRowIndex = inRow
+  [brancheZero tikzNodeForSyntaxInstruction
+    !?ioRowList
+    !fromRow:inRow
+    !?column:branchZeroColumn
+    !?node:ioCurrentNode
+    !?arrowShape:ioArrowShape
+    !?arrows:ioArrows
+    !?maxUsedRowIndex
+    !debug:inDebug
+  ]
+  var endColumn = branchZeroColumn
+#--- Enter following branches
+  @stringlist endingNodes = {}
+  for branch in branches do
+    maxUsedRowIndex ++
+    var branchColumn = ioColumn
+    var currentNode = startNodeName
+    var arrowStyle = "|-"
+    [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
+      !?ioRowList
+      !fromRow:maxUsedRowIndex
+      !?column:branchColumn
+      !?node:currentNode
+      !?arrowShape:arrowStyle
+      !?arrows:ioArrows
+      !?maxUsedRowIndex
+      !debug:inDebug
+    ]
+    endingNodes += !currentNode
+    if endColumn < branchColumn then
+      endColumn = branchColumn
+    end
+  end
+  ioColumn = endColumn
+  if ioMaxUsedRowIndex < maxUsedRowIndex then
+    ioMaxUsedRowIndex = maxUsedRowIndex
+  end
+#--- Enter upper return node, and draw back arrow
+  ioMaxUsedRowIndex ++
+  [!?ioRowList append !nodeDefinition:"[point] {}" !row:ioMaxUsedRowIndex !column:ioColumn ?nodeName:let returnUpperNodeName]
+  ioColumn ++
+  ioArrows += "  \\draw[->] (" + returnUpperNodeName + ") -| (" + returnNodeName + ") ;\n"
+#--- Enter end point
+#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let endNodeName]
+#  ioColumn ++
+#  ioArrowShape = "--"
+#  ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + endNodeName + ") ;\n"
+#  ioCurrentNode = endNodeName
+#--- Add ending arrows
+  for (node) in endingNodes do
+    ioArrows += "  \\draw[->] (" + node + ") -| (" + returnUpperNodeName + ") ;\n"
+  end
+#--- Trace ?
+  if inDebug then
+    [!?ioRowList append
+      !nodeDefinition:"[nonterminal] {RE" + [mRepeatBranchList length] + "}"
+      !row:inRow
+      !column:ioColumn
+      ?nodeName:let markerEndNodeName
+    ]
+    ioColumn ++
+    ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerEndNodeName + ") ;\n"
+    ioCurrentNode = markerEndNodeName
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -320,18 +399,16 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
-#  for (instruction) in brancheZero do
-    [brancheZero tikzNodeForSyntaxInstruction
-      !?ioRowList
-      !fromRow:inRow
-      !?column:branchZeroColumn
-      !?node:ioCurrentNode
-      !?arrowShape:ioArrowShape
-      !?arrows:ioArrows
-      !?maxUsedRowIndex
-      !debug:inDebug
-    ]
-#  end
+  [brancheZero tikzNodeForSyntaxInstruction
+    !?ioRowList
+    !fromRow:inRow
+    !?column:branchZeroColumn
+    !?node:ioCurrentNode
+    !?arrowShape:ioArrowShape
+    !?arrows:ioArrows
+    !?maxUsedRowIndex
+    !debug:inDebug
+  ]
   var endColumn = branchZeroColumn
 #--- Enter following branches
   @stringlist endingNodes = {}
@@ -340,19 +417,16 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
-#    let row = maxUsedRowIndex
-#    for (instruction) in branch.mSyntaxInstructionList do
-      [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
-        !?ioRowList
-        !fromRow:maxUsedRowIndex
-        !?column:branchColumn
-        !?node:currentNode
-        !?arrowShape:arrowStyle
-        !?arrows:ioArrows
-        !?maxUsedRowIndex
-        !debug:inDebug
-      ]
-#    end
+    [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
+      !?ioRowList
+      !fromRow:maxUsedRowIndex
+      !?column:branchColumn
+      !?node:currentNode
+      !?arrowShape:arrowStyle
+      !?arrows:ioArrows
+      !?maxUsedRowIndex
+      !debug:inDebug
+    ]
     endingNodes += !currentNode
     if endColumn < branchColumn then
       endColumn = branchColumn

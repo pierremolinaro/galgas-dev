@@ -17,19 +17,27 @@
 
 syntax galgas3ProjectSyntax (galgas3Scanner) {
 
+rule <project_header> !@luint majorVersion !@luint minorVersion !@luint revisionVersion !@lstring targetName {
+  $project$
+  $($
+  $unsigned_literal_integer$ ?majorVersion
+  $:$
+  $unsigned_literal_integer$ ?minorVersion
+  $:$
+  $unsigned_literal_integer$ ?revisionVersion
+  $)$
+  $->$
+  $literal_string$ ?targetName
+}
+
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectComponentAST {
-  $project$
-  $($
-  $unsigned_literal_integer$ ?let @luint majorVersion
-  $:$
-  $unsigned_literal_integer$ ?let @luint minorVersion
-  $:$
-  $unsigned_literal_integer$ ?let @luint revisionVersion
-  $)$
-  $->$
-  $literal_string$ ?let @lstring targetName
+  <project_header>
+    ?let @luint majorVersion
+    ?let @luint minorVersion
+    ?let @luint revisionVersion
+    ?let @lstring targetName
   ${$
   @lstringlist projectSourceList = {}
   @lstringlist generateFeatureList = {}

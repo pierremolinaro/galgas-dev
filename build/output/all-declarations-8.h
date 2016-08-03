@@ -3517,6 +3517,20 @@ class cGrammar_galgas_33_ProjectGrammar : public cParser_galgas_33_ProjectSyntax
   public : static void performOnlySyntaxAnalysis (C_Compiler * inCompiler,
                                                   const C_String & inSourceFilePath) ;
 
+//------------------------------------- 'project_header' non terminal
+//--- 'parse' label
+  public : virtual void nt_project_5F_header_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_project_5F_header_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_project_5F_header_ (GALGAS_luint & outArgument0,
+                                               GALGAS_luint & outArgument1,
+                                               GALGAS_luint & outArgument2,
+                                               GALGAS_lstring & outArgument3,
+                                               C_Lexique_galgas_33_Scanner * inCompiler) ;
+
   public : virtual int32_t select_galgas_33_ProjectSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_ProjectSyntax_1 (C_Lexique_galgas_33_Scanner *) ;
