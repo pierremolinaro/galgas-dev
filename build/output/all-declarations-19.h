@@ -887,4 +887,22 @@ void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumerated
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//              Extension method '@syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInstructionListForGrammarAnalysis inObject,
+                                                   class GALGAS_rowList & io_ioRowList,
+                                                   const class GALGAS_uint constin_inRow,
+                                                   class GALGAS_uint & io_ioColumn,
+                                                   class GALGAS_string & io_ioCurrentNode,
+                                                   class GALGAS_string & io_ioArrowShape,
+                                                   class GALGAS_string & io_ioArrows,
+                                                   class GALGAS_uint & io_ioMaxUsedRowIndex,
+                                                   const class GALGAS_bool constin_inDebug,
+                                                   class C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) ;
+
 #endif
