@@ -69,7 +69,7 @@ proc emitProductionRulesInTexFile
   let texFilePath = inProductDirectory + "/../tex/" + inGrammarComponentName + ".tex"
   var s = ""
   for nonterminal in inNonTerminalMapForGrammarAnalysis do
-    s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}\n\n"
+    s += "\\ruleSection{" + escapeForTex (!nonterminal.lkey) + "}{" + nonterminal.mNonTerminalIndex + "}\n\n"
     for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
@@ -210,8 +210,10 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
   ?!@uint unused ioMaxUsedRowIndex
   ?debug:let @bool unused inDebug
 {
+  let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!mNonterminalSymbolName)
+    + "}{" + mNonterminalSymbolIndex + "}}"
   [!?ioRowList append
-    !nodeDefinition:"[nonterminal] {" + escapeForTex (!mNonterminalSymbolName) + "}"
+    !nodeDefinition:nodeDefinition
     !row:inRow
     !column:ioColumn
     ?nodeName:let nodeName
