@@ -65,7 +65,7 @@
 
 \begin{document}
 
-\title{\Huge{Grammar \texttt{%!DOCUMENT_NAME%}}}
+\title{\Huge{Grammar \texttt{%!TEX_ESCAPED_DOCUMENT_NAME%}}}
 \date \today 
 
 \maketitle
