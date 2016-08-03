@@ -128,6 +128,45 @@ proc emitProductionRulesInTexFile
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
+  ?!@rowList ioRowList
+  ?fromRow:let @uint inRow
+  ?!column:@uint ioColumn
+  ?!node: @string ioCurrentNode
+  ?!arrowShape: @string ioArrowShape
+  ?!arrows:@string ioArrows
+  ?!@uint ioMaxUsedRowIndex
+  ?debug:let @bool inDebug
+{
+  if [self length] == 0 then
+    [!?ioRowList append
+      !nodeDefinition:"[point] {}"
+      !row:inRow
+      !column:ioColumn
+      ?nodeName:let nodeName
+    ]
+    ioArrows += "  \\draw (" + ioCurrentNode + ") " + ioArrowShape + " (" + nodeName + ") ;\n"
+    ioCurrentNode = nodeName
+    ioArrowShape = "--"
+    ioColumn ++
+  else
+    for (instruction) in self do
+      [instruction tikzNodeForSyntaxInstruction
+        !?ioRowList
+        !fromRow:inRow
+        !?column:ioColumn
+        !?node:ioCurrentNode
+        !?arrowShape:ioArrowShape
+        !?arrows:ioArrows
+        !?ioMaxUsedRowIndex
+        !debug:inDebug
+      ]
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 list @rowList {
   @2stringlist columns %setter # Node name, node definition
 }
@@ -281,8 +320,8 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
-  for (instruction) in brancheZero do
-    [instruction tikzNodeForSyntaxInstruction
+#  for (instruction) in brancheZero do
+    [brancheZero tikzNodeForSyntaxInstruction
       !?ioRowList
       !fromRow:inRow
       !?column:branchZeroColumn
@@ -292,7 +331,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       !?maxUsedRowIndex
       !debug:inDebug
     ]
-  end
+#  end
   var endColumn = branchZeroColumn
 #--- Enter following branches
   @stringlist endingNodes = {}
@@ -301,11 +340,11 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
-    let row = maxUsedRowIndex
-    for (instruction) in branch.mSyntaxInstructionList do
-      [instruction tikzNodeForSyntaxInstruction
+#    let row = maxUsedRowIndex
+#    for (instruction) in branch.mSyntaxInstructionList do
+      [branch.mSyntaxInstructionList tikzNodeForSyntaxInstruction
         !?ioRowList
-        !fromRow:row
+        !fromRow:maxUsedRowIndex
         !?column:branchColumn
         !?node:currentNode
         !?arrowShape:arrowStyle
@@ -313,7 +352,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
         !?maxUsedRowIndex
         !debug:inDebug
       ]
-    end
+#    end
     endingNodes += !currentNode
     if endColumn < branchColumn then
       endColumn = branchColumn

@@ -31,11 +31,14 @@ syntax extension galgas3InstructionsSyntax {
     $case$
     @dynamicTypeComparisonKind kind
     select
-      $==$ kind = @dynamicTypeComparisonKind. equal
+      $==$
+      kind = .equal
     or
-      $>=$ kind = @dynamicTypeComparisonKind. inherited
+      $>=$
+      kind = .inherited
     or
-      $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
+      $>$
+      kind = .strictlyInherited
     end
     $type_name$ ?let mTypeName
     @lstring mConstantVarName # Empty string if no constant var
@@ -45,7 +48,7 @@ syntax extension galgas3InstructionsSyntax {
       mConstantVarName = @lstring.new {!"" !@location.here}
     end
     $:$
-    <semantic_instruction_list> ?var @semanticInstructionListAST mCastBranchInstructionList
+    <semantic_instruction_list> ?let @semanticInstructionListAST mCastBranchInstructionList
     ioCastInstructionBranchList +=
       !mTypeName
       !mConstantVarName
