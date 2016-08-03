@@ -3,6 +3,10 @@
 \documentclass[landscape]{article}
 \usepackage[a3paper]{geometry}
 
+\usepackage{verbatim}
+
+\usepackage{hyperref}
+
 \usepackage{tikz}
 
 \usetikzlibrary{
@@ -13,7 +17,6 @@
   scopes,\%
   shadows\%
 }
-\usepackage{verbatim}
 
 \tikzset{
   nonterminal/.style={
@@ -48,10 +51,11 @@
 \%  skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget)}}
 }
 
-\\newcommand\ruleSection[1]{\section{Nonterminal \texttt{#1}}}
+\\newcommand\ruleSection[2]{\section{Nonterminal \texttt{#1}}\label{nt:#2}}
 \\newcommand\ruleSubsection[3]{\subsection{Component \texttt{#1}, in file \texttt{#2}, line #3}}
 \\newcommand\ruleMatrixColumnSeparation{3mm}
 \\newcommand\ruleMatrixRowSeparation{3mm}
+\\newcommand\\nonTerminalSymbol[2]{\hyperref[nt:#2]{#1}}
 
 \begin{document}
 
