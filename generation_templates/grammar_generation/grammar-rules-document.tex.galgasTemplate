@@ -1,6 +1,7 @@
 \%!TEX encoding = UTF-8 Unicode
 
-\documentclass{article}
+\documentclass[landscape]{article}
+\usepackage[a3paper]{geometry}
 
 \usepackage{tikz}
 
@@ -28,7 +29,7 @@
     top color=white,              \% a shading that is white at the top...
     bottom color=red!50!black!20, \% and something else at the bottom
     \% Font
-    font=\itshape
+    font=\itshape\small
   },
   terminal/.style={
     \% The shape:
@@ -37,7 +38,7 @@
     \% The rest
     very thick,draw=black!50,
     top color=white,bottom color=black!20,
-    font=\ttfamily
+    font=\ttfamily\small
   },
   point/.style={coordinate,>=stealth',thick,draw=black!50},
   tip/.style={->,shorten >=0.007pt},

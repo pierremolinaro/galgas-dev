@@ -896,31 +896,9 @@ void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumerated
 void extensionSetter_append (class GALGAS_rowList & ioObject,
                              const class GALGAS_string constin_inNodeDefinition,
                              const class GALGAS_uint constin_inRow,
+                             const class GALGAS_uint constin_inColumn,
                              class GALGAS_string & out_outNodeName,
                              class C_Compiler * inCompiler
                              COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Extension setter '@rowList appendEmpty'                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void extensionSetter_appendEmpty (class GALGAS_rowList & ioObject,
-                                  const class GALGAS_uint constin_inRow,
-                                  class C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Extension setter '@rowList appendEmpties'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void extensionSetter_appendEmpties (class GALGAS_rowList & ioObject,
-                                    const class GALGAS_uint constin_inRow,
-                                    const class GALGAS_uint constin_inColumn,
-                                    class C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) ;
 
 #endif
