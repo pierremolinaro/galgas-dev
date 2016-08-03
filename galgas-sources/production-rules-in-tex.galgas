@@ -42,6 +42,10 @@ func escapeForTex ?let @string inString -> @string result {
       result += "\\verb=^="
     elsif c == '%' then
       result += "\\verb=%="
+    elsif c == '~' then
+      result += "$\\sim$"
+    elsif c == '^' then
+      result += "$\\wedge$"
     else
       result += c
     end
@@ -84,12 +88,12 @@ proc emitProductionRulesInTexFile
               !?arrowShape:arrowStyle
               !?arrows:arrows
               !?maxUsedRowIndex
-              !debug:true
+              !debug:false
             ]
           end
         #--- Add a final arrow
-#          [!?rowArray append !nodeDefinition:"[point] {}" !row:0 !column:column ?nodeName:let lastNodeName]
-#          arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
+          [!?rowArray append !nodeDefinition:"[lastPoint] {}" !row:0 !column:column ?nodeName:let lastNodeName]
+          arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
         #--- Write tex file
           let loc = productionRule.mLeftNonterminalSymbol.location
           s += "\\ruleSubsection{"
@@ -274,7 +278,6 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   var branches = mSelectBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
-#  var branchZeroMaxUsedRowIndex = ioMaxUsedRowIndex
   for (instruction) in brancheZero do
     [instruction tikzNodeForSyntaxInstruction
       !?ioRowList
@@ -283,31 +286,28 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
       !?node:ioCurrentNode
       !?arrowShape:ioArrowShape
       !?arrows:ioArrows
-      !?ioMaxUsedRowIndex # branchZeroMaxUsedRowIndex
+      !?ioMaxUsedRowIndex
       !debug:inDebug
     ]
   end
-#  if ioMaxUsedRowIndex < branchZeroMaxUsedRowIndex then
-#    ioMaxUsedRowIndex = branchZeroMaxUsedRowIndex
-#  end
   var endColumn = branchZeroColumn
 #--- Enter following branches
   @stringlist endingNodes = {}
-  for branch in branches do (idx)
+  for branch in branches do
     ioMaxUsedRowIndex ++
-#    var branchMaxUsedRowIndex = ioMaxUsedRowIndex + 1
     var branchColumn = ioColumn
     var currentNode = startNodeName
     var arrowStyle = "|-"
+    let row = ioMaxUsedRowIndex
     for (instruction) in branch.mSyntaxInstructionList do
       [instruction tikzNodeForSyntaxInstruction
         !?ioRowList
-        !fromRow:ioMaxUsedRowIndex # inRow + ioMaxUsedRowIndex + idx # idx + 1
+        !fromRow:row
         !?column:branchColumn
         !?node:currentNode
         !?arrowShape:arrowStyle
         !?arrows:ioArrows
-        !?ioMaxUsedRowIndex # branchMaxUsedRowIndex
+        !?ioMaxUsedRowIndex
         !debug:inDebug
       ]
     end
@@ -315,9 +315,6 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     if endColumn < branchColumn then
       endColumn = branchColumn
     end
-#    if ioMaxUsedRowIndex < branchMaxUsedRowIndex then
-#      ioMaxUsedRowIndex = branchMaxUsedRowIndex
-#    end
   end
   ioColumn = endColumn
 #--- Enter end point

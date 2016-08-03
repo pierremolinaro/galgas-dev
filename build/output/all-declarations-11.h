@@ -2877,6 +2877,20 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (const class cPtr_abstract
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                         Extension setter '@rowList append'                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void extensionSetter_append (class GALGAS_rowList & ioObject,
+                             const class GALGAS_string constin_inNodeDefinition,
+                             const class GALGAS_uint constin_inRow,
+                             const class GALGAS_uint constin_inColumn,
+                             class GALGAS_string & out_outNodeName,
+                             class C_Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                     Filewrapper 'programFileGenerationTemplate'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
