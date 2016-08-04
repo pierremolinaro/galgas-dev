@@ -130,13 +130,21 @@ Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre 
  $identifier$, $constant$
 \end{galgas}
 
-Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD}, sauf le caractère «~\texttt{\$}~», peut apparaître dans un terminal :
+Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD} peut apparaître dans un terminal :
 \begin{galgas}
  $=$, $($, $--$, $≠$
 \end{galgas}
 
+Deux échappements sont définis :
+\begin{itemize}
+\item «~\texttt{\textbackslash\textbackslash}~» qui permet de définir un unique «~\texttt{\textbackslash}~» ;
+\item «~\texttt{\textbackslash\$}~» qui permet de définir un «~\texttt{\$}~».
+\end{itemize}
 
-
+Ceci permet par exemple de définir les terminaux suivants :
+\begin{galgas}
+ $\\$, $\$terminal\$$
+\end{galgas}
 
 
 
