@@ -24,9 +24,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $graph$
-    $type_name$ ?var  @lstring graphTypeName indexing graphDefinition
+    $@type$ ?var  @lstring graphTypeName indexing graphDefinition
     $($
-    $type_name$ ?var  @lstring associatedListTypeName
+    $@type$ ?var  @lstring associatedListTypeName
     $)$
     ${$
     var graphInsertModifierList =@graphInsertModifierList {}

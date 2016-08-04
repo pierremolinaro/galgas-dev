@@ -77,7 +77,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 //--- Terminal symbols enumeration
   public : enum {kToken_,
    kToken_identifier,
-   kToken_type_5F_name,
+   kToken__40_type,
    kToken_literal_5F_double,
    kToken_literal_5F_uint_33__32_,
    kToken_literal_5F_sint_33__32_,

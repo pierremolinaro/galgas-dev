@@ -27,7 +27,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $enum$
-    $type_name$ ?let @lstring mEnumTypeName indexing enumDefinition
+    $@type$ ?let @lstring mEnumTypeName indexing enumDefinition
     ${$
     var mConstantList =@enumConstantList {}
     repeat
@@ -38,7 +38,7 @@ syntax extension galgas3DeclarationsSyntax {
       or
         $($
         repeat
-          $type_name$ ?let @lstring associatedValueType
+          $@type$ ?let @lstring associatedValueType
           @lstring associatedValueName
           select
             associatedValueName = ["" nowhere]

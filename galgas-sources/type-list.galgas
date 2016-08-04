@@ -17,7 +17,7 @@ syntax extension galgas3DeclarationsSyntax {
     ?!@galgas3DeclarationAST ioDeclarations
   {
     $list$
-    $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
     ${$
     var mAttributeList =@propertyInCollectionListAST {}
     repeat

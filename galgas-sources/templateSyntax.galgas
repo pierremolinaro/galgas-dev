@@ -428,7 +428,7 @@ rule <primary>
       !templateName
       !expressionList}
   or #------------ Constructor call
-    $type_name$ ?var @lstring typeName
+    $@type$ ?var @lstring typeName
     $identifier$ ?var  @lstring constructorName
     <output_expression_list> ?var @templateExpressionListAST expressionList
     outExpression = @templateConstructorAST.new {

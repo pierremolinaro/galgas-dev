@@ -19,7 +19,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $abstract$
     $setter$
-    $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionSetter
+    $@type$ ?var  @lstring className indexing typeReferenceAbstractExtensionSetter
     $identifier$ ?var  @lstring setterName indexing abstractExtensionSetterDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@abstractExtensionSetterAST.new {

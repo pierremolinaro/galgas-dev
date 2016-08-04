@@ -32,7 +32,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     let endOf_select_instruction = @location.here
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "select" then
         error terminator : "the terminator attribute should be '%select'"
       end

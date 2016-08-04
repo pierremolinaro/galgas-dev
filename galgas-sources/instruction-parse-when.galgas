@@ -68,7 +68,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     $end$
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "parse" then
         error terminator : "the terminator attribute should be '%parse'"
       end

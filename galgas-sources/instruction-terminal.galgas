@@ -19,7 +19,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   #····················································································································*
 
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
-    $terminal$ ?let @lstring terminalName indexing terminalReference
+    $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
     var indexNameList =@2lstringlist {}
     select

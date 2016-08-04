@@ -16,9 +16,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $listmap$
-    $type_name$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+    $@type$ ?var  @lstring mListmapTypeName indexing listmapDefinition
     $($
-    $type_name$ ?var  @lstring mAssociatedListTypeName
+    $@type$ ?var  @lstring mAssociatedListTypeName
     $)$
     ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
       !false # Is not predefined

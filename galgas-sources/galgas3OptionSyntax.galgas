@@ -43,7 +43,7 @@ end rule ;
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
-  $type_name$ ?@lstring mOptionTypeName  ;
+  $@type$ ?@lstring mOptionTypeName  ;
   $identifier$ ?@lstring mOptionInternalName ;
   $:$ ;
   $literal_char$ ?@lchar mOptionInvocationLetter ;

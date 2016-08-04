@@ -28,38 +28,38 @@ with lexique galgas3Scanner {
   title: "Source GALGAS"
   label $before$, ${$
   label $after$, ${$
-  label $map$, $type_name$
-  label $sharedmap$, $type_name$
-  label $list$, $type_name$
-  label $sortedlist$, $type_name$
-  label $enum$, $type_name$
-  label $class$, $type_name$
-  label $extern$, $type_name$
-  label $struct$, $type_name$
-  label $rule$, $non_terminal_symbol$
+  label $map$, $@type$
+  label $sharedmap$, $@type$
+  label $list$, $@type$
+  label $sortedlist$, $@type$
+  label $enum$, $@type$
+  label $class$, $@type$
+  label $extern$, $@type$
+  label $struct$, $@type$
+  label $rule$, $<non_terminal>$
   label $proc$, $identifier$
   label $func$, $identifier$
-  label $func$, $attribute$, $identifier$
+  label $func$, $%attribute$, $identifier$
   label $filewrapper$, $identifier$, $in$
 
-  label $abstract$, $method$, $type_name$, $identifier$
-  label $override$, $method$, $type_name$, $identifier$
-  label $method$, $type_name$, $identifier$
+  label $abstract$, $method$, $@type$, $identifier$
+  label $override$, $method$, $@type$, $identifier$
+  label $method$, $@type$, $identifier$
 
-  label $abstract$, $getter$, $type_name$, $identifier$
-  label $override$,  $getter$, $type_name$, $identifier$
-  label $getter$, $type_name$, $identifier$
+  label $abstract$, $getter$, $@type$, $identifier$
+  label $override$,  $getter$, $@type$, $identifier$
+  label $getter$, $@type$, $identifier$
 
-  label $abstract$, $setter$, $type_name$, $identifier$
-  label $override$,  $setter$, $type_name$, $identifier$
-  label $setter$, $type_name$, $identifier$
+  label $abstract$, $setter$, $@type$, $identifier$
+  label $override$,  $setter$, $@type$, $identifier$
+  label $setter$, $@type$, $identifier$
 
   label $syntax$, $extension$, $identifier$
 
   label $case$, $.$, $literal_string$
   label * $commentMark$ (2, 0)
-  label $terminal$, $!$ -
-  label $terminal$, $error$ -
+  label $\$terminal\$$, $!$ -
+  label $\$terminal\$$, $error$ -
 
   
   textMacro "Class" :

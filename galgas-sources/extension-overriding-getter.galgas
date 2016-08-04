@@ -23,11 +23,11 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $override$
     $getter$
-    $type_name$ ?var @lstring className indexing typeReferenceOverrideExtensionGetter
+    $@type$ ?var @lstring className indexing typeReferenceOverrideExtensionGetter
     $identifier$ ?var @lstring mMethodName indexing overrideExtensionGetterDefinition
     <formal_input_parameter_list> ?let formalInputParameterList
     $->$
-    $type_name$ ?var  @lstring mReturnedTypeName
+    $@type$ ?var  @lstring mReturnedTypeName
     $identifier$ ?var  @lstring mReturnedVariableName
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList

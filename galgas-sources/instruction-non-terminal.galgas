@@ -28,7 +28,7 @@ syntax extension galgas3SyntaxComponentSyntax {
       $parse$
       $identifier$ ? mLabelName
     end
-    $non_terminal_symbol$ ?let @lstring mNonterminalName indexing ruleReference
+    $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleReference
     <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
   #--- Get syntax directed translation result string
     @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult

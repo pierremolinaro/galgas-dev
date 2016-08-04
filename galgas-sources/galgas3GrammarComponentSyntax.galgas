@@ -38,7 +38,7 @@ rule <declaration>
   select
     hasTranslateFeature = false
   or
-    $attribute$ ?let @lstring featureName
+    $%attribute$ ?let @lstring featureName
     if featureName.string != "translate" then
       error featureName: "only 'feature translate' can be declared here"
     end
@@ -54,7 +54,7 @@ rule <declaration>
   while
   end
 #--- Root symbol
-  $non_terminal_symbol$ ?var @lstring  mStartSymbol indexing ruleReference
+  $<non_terminal>$ ?var @lstring  mStartSymbol indexing ruleReference
   var mLabelList =@nonTerminalLabelListAST {}
   <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
   repeat
@@ -68,7 +68,7 @@ rule <declaration>
   repeat
   while
     $unused$
-    $non_terminal_symbol$ ?var  @lstring nonterminalSymbolName
+    $<non_terminal>$ ?var  @lstring nonterminalSymbolName
     mUnusedNonterminalList += ! nonterminalSymbolName
   end
 #---
@@ -110,7 +110,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
   $?$ ?let selector
-  $type_name$ ?var @lstring mTypeName
+  $@type$ ?var @lstring mTypeName
   select
   or
    $unused$
@@ -131,7 +131,7 @@ rule <label_formal_parameter>
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
   $?$ ?let selector
   $let$
-  $type_name$ ?var @lstring mTypeName
+  $@type$ ?var @lstring mTypeName
   select
   or
    $unused$
@@ -151,7 +151,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
   $?!$ ?let selector
-  $type_name$ ?var @lstring mTypeName
+  $@type$ ?var @lstring mTypeName
   select
   or
    $unused$
@@ -171,7 +171,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
   $!$ ?let selector
-  $type_name$ ?var @lstring mTypeName
+  $@type$ ?var @lstring mTypeName
   $identifier$ ?outArgumentName
   ioStartSymbolLabelFormalParameterList +=
     !selector

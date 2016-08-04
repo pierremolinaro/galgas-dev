@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $class$
     var classNameList =@lstringlist {}
     repeat
-      $type_name$ ?var @lstring className indexing classDefinition
+      $@type$ ?var @lstring className indexing classDefinition
       classNameList += !className
     while
       $,$
@@ -39,12 +39,12 @@ syntax extension galgas3DeclarationsSyntax {
       mSuperClassName = ["" nowhere]
     or
       $:$
-      $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass
+      $@type$ ? mSuperClassName indexing classReferencedAsSuperClass
     end
     var classFeatureList =@lstringlist {}
     repeat
     while
-      $attribute$ ?var  @lstring classFeatureName
+      $%attribute$ ?var  @lstring classFeatureName
       classFeatureList += !classFeatureName
     end
     ${$

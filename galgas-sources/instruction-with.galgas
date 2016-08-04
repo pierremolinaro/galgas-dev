@@ -142,7 +142,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "with" then
         error terminator : "the terminator attribute should be '%with'"
       end

@@ -85,7 +85,7 @@ rule <declaration>
   end
   select
   or
-    $type_name$ ?let typeName
+    $@type$ ?let typeName
     if typeName.string != "lstring" then
       error typeName : "the only type allowed here is '@lstring'"
     end

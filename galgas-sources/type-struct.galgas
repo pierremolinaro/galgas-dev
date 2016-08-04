@@ -16,7 +16,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $struct$
-    $type_name$ ?let @lstring structTypeName indexing structDefinition
+    $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
     @propertyInCollectionListAST attributeList = {}
     repeat

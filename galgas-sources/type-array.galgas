@@ -17,9 +17,9 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $array$
   #--- Map type name
-    $type_name$ ?var  @lstring arrayTypeName indexing arrayTypeDefinition
+    $@type$ ?var  @lstring arrayTypeName indexing arrayTypeDefinition
     $:$
-    $type_name$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+    $@type$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
     $[$
     $literal_uint32$ ?var  @luint dimension
     $]$

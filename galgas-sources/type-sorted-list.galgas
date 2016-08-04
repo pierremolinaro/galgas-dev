@@ -27,7 +27,7 @@ syntax extension galgas3DeclarationsSyntax {
     ?!@galgas3DeclarationAST ioDeclarations
   {
     $sortedlist$
-    $type_name$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+    $@type$ ?let sortedListTypeName indexing sortedListDefinition, structDefinition "-element"
     ${$
     @propertyInCollectionListAST attributeList = {}
     repeat
