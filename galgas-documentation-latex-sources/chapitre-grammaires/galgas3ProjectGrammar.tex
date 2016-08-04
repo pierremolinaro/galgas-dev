@@ -1,0 +1,52 @@
+\startSymbol{project\_component\_start\_symbol}{1}
+
+\nonTerminalSummaryStart \nonTerminalSummary{project\_component\_start\_symbol}{1}\nonTerminalSummarySeparator \nonTerminalSummary{project\_header}{0}\nonTerminalSummaryEnd \nonTerminalSection{project\_component\_start\_symbol}{1}
+
+\ruleSubsection{galgas3ProjectSyntax}{galgas3ProjectSyntax}{35}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & & & & & \node (p4-12) [point] {}; & \\
+    & & & & & & & \node (p3-7) [terminal] {literal\_string}; & \\
+    & & & & & & & & & \node (p2-9) [point] {}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=attribute}; & \node (p1-8) [point] {}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [terminal] {literal\_string}; & \node (p1-11) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [nonterminal] {\nonTerminalSymbol{project\_header}{0}}; & \node (p0-3) [terminal] {\{}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & & & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw (p0-3) -- (p0-5) ;
+  \draw[->] (p0-6) |- (p1-7) ;
+  \draw[->] (p1-7) -- (p1-9) ;
+  \draw[->] (p1-9) -- (p1-10) ;
+  \draw (p1-8) |- (p2-9) ;
+  \draw (p1-10) -- (p1-11) ;
+  \draw[->] (p2-9) -| (p1-11) ;
+  \draw[->] (p0-6) |- (p3-7) ;
+  \draw[->] (p4-12) -| (p0-4) ;
+  \draw[->] (p1-11) -| (p4-12) ;
+  \draw[->] (p3-7) -| (p4-12) ;
+  \draw[->] (p0-5) -- (p0-13) ;
+  \draw[->] (p0-13) -- (p0-14) ;
+\end{tikzpicture}
+
+\nonTerminalSection{project\_header}{0}
+
+\ruleSubsection{galgas3ProjectSyntax}{galgas3ProjectSyntax}{20}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {project}; & \node (p0-3) [terminal] {(}; & \node (p0-4) [terminal] {literal\_uint32}; & \node (p0-5) [terminal] {:}; & \node (p0-6) [terminal] {literal\_uint32}; & \node (p0-7) [terminal] {:}; & \node (p0-8) [terminal] {literal\_uint32}; & \node (p0-9) [terminal] {)}; & \node (p0-10) [terminal] {->}; & \node (p0-11) [terminal] {literal\_string}; & \node (p0-12) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw[->] (p0-3) -- (p0-4) ;
+  \draw[->] (p0-4) -- (p0-5) ;
+  \draw[->] (p0-5) -- (p0-6) ;
+  \draw[->] (p0-6) -- (p0-7) ;
+  \draw[->] (p0-7) -- (p0-8) ;
+  \draw[->] (p0-8) -- (p0-9) ;
+  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-11) -- (p0-12) ;
+\end{tikzpicture}
+
