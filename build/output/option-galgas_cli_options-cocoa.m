@@ -25,6 +25,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"emitSyntaxDiagrams"
+    commandChar:0
+    commandString:@"emit-syntax-diagrams"
+    comment:@"Emit grammar syntax diagrams in TEX files"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"generateManyFiles"
     commandChar:0
     commandString:@"generate-many-cpp-files"
@@ -47,15 +56,6 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
     commandChar:0
     commandString:@"generate-shared-map-automaton-dot-files"
     comment:@"Generate shared map automaton dot files"
-    defaultValue:@""
-  ] ;
-  [ioBoolOptionArray addObject:option] ;
-  option = [[OC_GGS_CommandLineOption alloc]
-    initWithDomainName:@"galgas_cli_options"
-    identifier:@"outputGrammarRuleListInTexFile"
-    commandChar:0
-    commandString:@"output-grammar-rule-list-in-tex-files"
-    comment:@"Output the grammar rule list, in TEX files"
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
