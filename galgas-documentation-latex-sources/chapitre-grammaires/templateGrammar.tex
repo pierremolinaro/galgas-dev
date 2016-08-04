@@ -201,15 +201,13 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & \node (p2-6) [point] {}; & \\
     & & & & & \node (p1-5) [point] {}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {"string"}; & \node (p0-4) [point] {}; & & & \node (p0-7) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {"string"}; & \node (p0-4) [point] {}; & & \node (p0-6) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-3) ;
-  \draw (p0-4) |- (p1-5) ;
-  \draw[->] (p2-6) -| (p0-2) ;
-  \draw[->] (p1-5) -| (p2-6) ;
-  \draw[->] (p0-3) -- (p0-7) ;
+  \draw[->] (p1-5) -| (p0-2) ;
+  \draw[->] (p0-4) -| (p1-5) ;
+  \draw[->] (p0-3) -- (p0-6) ;
 \end{tikzpicture}
 
 \ruleSubsection{templateSyntax}{templateSyntax}{415}
