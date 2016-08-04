@@ -20,6 +20,12 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_c
                                          "check-gmp",
                                          "Run a GMP check") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ("galgas_cli_options",
+                                         "emitSyntaxDiagrams",
+                                         0,
+                                         "emit-syntax-diagrams",
+                                         "Emit grammar syntax diagrams in TEX files") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ("galgas_cli_options",
                                          "generateManyFiles",
                                          0,
@@ -37,12 +43,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutoma
                                          0,
                                          "generate-shared-map-automaton-dot-files",
                                          "Generate shared map automaton dot files") ;
-
-C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarRuleListInTexFile ("galgas_cli_options",
-                                         "outputGrammarRuleListInTexFile",
-                                         0,
-                                         "output-grammar-rule-list-in-tex-files",
-                                         "Output the grammar rule list, in TEX files") ;
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ("galgas_cli_options",
                                          "outputHTMLTypeListFile",

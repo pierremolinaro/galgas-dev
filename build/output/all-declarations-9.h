@@ -18,13 +18,13 @@
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ;
 
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams ;
+
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateManyFiles ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateOneHeader ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_generateSharedMapAutomatonDotFiles ;
-
-extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputGrammarRuleListInTexFile ;
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile ;
 

@@ -750,7 +750,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
 #---------------------------------------------------------- Print an tex file for grammar rule list
-  if [option galgas_cli_options.outputGrammarRuleListInTexFile value] then
+  if [option galgas_cli_options.emitSyntaxDiagrams value] then
     emitProductionRulesInTexFile (
       !inProductDirectory
       !mGrammarComponentName

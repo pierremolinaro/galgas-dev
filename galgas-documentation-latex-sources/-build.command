@@ -5,7 +5,7 @@ cd $DIR/../makefile-macosx && python build.py release &&
 PATH=$DIR/../makefile-macosx:$PATH &&
 cd $DIR &&
 #--- Obtenir la description des grammaires en tex
-../makefile-macosx/galgas --output-grammar-rule-list-in-tex-files ../+galgas.galgasProject &&
+../makefile-macosx/galgas --emit-syntax-diagrams ../+galgas.galgasProject &&
 cp ../build/tex/galgas3Grammar.tex ../galgas-documentation-latex-sources/chapitre-grammaires/galgas3Grammar.tex &&
 cp ../build/tex/galgas3ProjectGrammar.tex ../galgas-documentation-latex-sources/chapitre-grammaires/galgas3ProjectGrammar.tex &&
 cp ../build/tex/templateGrammar.tex ../galgas-documentation-latex-sources/chapitre-grammaires/templateGrammar.tex &&

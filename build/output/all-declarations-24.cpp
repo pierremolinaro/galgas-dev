@@ -7559,27 +7559,27 @@ static void extensionMethod_galgas_33_GrammarComponentAST_semanticAnalysis (cons
     var_nonTerminalSymbolSortedListForGrammarAnalysis_34489.addAssign_operation (enumerator_34542.current_lkey (HERE), enumerator_34542.current_mNonTerminalIndex (HERE), enumerator_34542.current_mNonterminalSymbolParametersMap (HERE)  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 750)) ;
     enumerator_34542.gotoNextObject () ;
   }
-  const enumGalgasBool test_7 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_outputGrammarRuleListInTexFile.getter_value ()).boolEnum () ;
+  const enumGalgasBool test_7 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_emitSyntaxDiagrams.getter_value ()).boolEnum () ;
   if (kBoolTrue == test_7) {
     {
     routine_emitProductionRulesInTexFile (constinArgument_inProductDirectory, object->mAttribute_mGrammarComponentName.getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 757)), var_nonTerminalMapForGrammarAnalysis_30426, var_syntaxComponentListForGrammarAnalysis_30586, object->mAttribute_mStartSymbolName, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 754)) ;
     }
   }
-  GALGAS_stringset var_implementationFileHeader_35358 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 765)) ;
-  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_35420 (var_nonTerminalMapForGrammarAnalysis_30426, kEnumeration_up) ;
-  while (enumerator_35420.hasCurrentObject ()) {
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_35481 (enumerator_35420.current (HERE).mAttribute_mNonterminalSymbolParametersMap, kEnumeration_up) ;
-    while (enumerator_35481.hasCurrentObject ()) {
-      cEnumerator_signatureForGrammarAnalysis enumerator_35522 (enumerator_35481.current_mFormalParametersList (HERE), kEnumeration_up) ;
-      while (enumerator_35522.hasCurrentObject ()) {
-        switch (enumerator_35522.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+  GALGAS_stringset var_implementationFileHeader_35346 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 765)) ;
+  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis enumerator_35408 (var_nonTerminalMapForGrammarAnalysis_30426, kEnumeration_up) ;
+  while (enumerator_35408.hasCurrentObject ()) {
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis enumerator_35469 (enumerator_35408.current (HERE).mAttribute_mNonterminalSymbolParametersMap, kEnumeration_up) ;
+    while (enumerator_35469.hasCurrentObject ()) {
+      cEnumerator_signatureForGrammarAnalysis enumerator_35510 (enumerator_35469.current_mFormalParametersList (HERE), kEnumeration_up) ;
+      while (enumerator_35510.hasCurrentObject ()) {
+        switch (enumerator_35510.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
           {
-            GALGAS_unifiedTypeMap_2D_proxy var_t_35644 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_35522.current_mGalgasTypeNameForGrammarAnalysis (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 771)) ;
-            extensionMethod_addHeaderFileName (var_t_35644, var_implementationFileHeader_35358, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 772)) ;
+            GALGAS_unifiedTypeMap_2D_proxy var_t_35632 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_35510.current_mGalgasTypeNameForGrammarAnalysis (HERE), inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 771)) ;
+            extensionMethod_addHeaderFileName (var_t_35632, var_implementationFileHeader_35346, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 772)) ;
           }
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
@@ -7588,19 +7588,19 @@ static void extensionMethod_galgas_33_GrammarComponentAST_semanticAnalysis (cons
           }
           break ;
         }
-        enumerator_35522.gotoNextObject () ;
+        enumerator_35510.gotoNextObject () ;
       }
-      enumerator_35481.gotoNextObject () ;
+      enumerator_35469.gotoNextObject () ;
     }
-    enumerator_35420.gotoNextObject () ;
+    enumerator_35408.gotoNextObject () ;
   }
   const enumGalgasBool test_8 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()).boolEnum () ;
   if (kBoolTrue == test_8) {
-    var_implementationFileHeader_35358 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 779)) ;
+    var_implementationFileHeader_35346 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 779)) ;
   }
-  GALGAS_string var_HTMLFilePath_36077 = constinArgument_inProductDirectory.add_operation (GALGAS_string ("/../helpers/"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)).add_operation (object->mAttribute_mGrammarComponentName.getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 782)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)).add_operation (GALGAS_string (".html"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)) ;
-  GALGAS_string var_grammarCppFile_36615 ;
-  GALGAS_string var_grammarHTMLHelperContents_36658 ;
+  GALGAS_string var_HTMLFilePath_36065 = constinArgument_inProductDirectory.add_operation (GALGAS_string ("/../helpers/"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)).add_operation (object->mAttribute_mGrammarComponentName.getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 782)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)).add_operation (GALGAS_string (".html"), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 782)) ;
+  GALGAS_string var_grammarCppFile_36603 ;
+  GALGAS_string var_grammarHTMLHelperContents_36646 ;
   {
   GALGAS_string temp_9 ;
   const enumGalgasBool test_10 = object->mAttribute_mHasTranslateFeature.boolEnum () ;
@@ -7609,19 +7609,19 @@ static void extensionMethod_galgas_33_GrammarComponentAST_semanticAnalysis (cons
   }else if (kBoolFalse == test_10) {
     temp_9 = GALGAS_string::makeEmptyString () ;
   }
-  routine_grammarAnalysisAndGeneration (GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 784)), object->mAttribute_mGrammarComponentName, object->mAttribute_mGrammarClass, var_startSymbolIndex_33628, var_lexiqueComponentName_30462.mAttribute_string, var_actuallyUsedTerminalSymbolMap_30346, var_syntaxComponentListForGrammarAnalysis_30586, var_unusedNonTerminalSymbolsForGrammar_34080, var_HTMLFilePath_36077, var_nonTerminalSymbolSortedListForGrammarAnalysis_34489, var_hasIndexing_33046, temp_9, var_grammarCppFile_36615, var_grammarHTMLHelperContents_36658, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 783)) ;
+  routine_grammarAnalysisAndGeneration (GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticAnalysis.galgas", 784)), object->mAttribute_mGrammarComponentName, object->mAttribute_mGrammarClass, var_startSymbolIndex_33628, var_lexiqueComponentName_30462.mAttribute_string, var_actuallyUsedTerminalSymbolMap_30346, var_syntaxComponentListForGrammarAnalysis_30586, var_unusedNonTerminalSymbolsForGrammar_34080, var_HTMLFilePath_36065, var_nonTerminalSymbolSortedListForGrammarAnalysis_34489, var_hasIndexing_33046, temp_9, var_grammarCppFile_36603, var_grammarHTMLHelperContents_36646, inCompiler  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 783)) ;
   }
   const enumGalgasBool test_11 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.getter_value ()).boolEnum () ;
   if (kBoolTrue == test_11) {
-    var_HTMLFilePath_36077.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("semanticAnalysis.galgas", 801)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 801)) ;
-    GALGAS_bool joker_36971 ; // Joker input parameter
-    var_grammarHTMLHelperContents_36658.method_writeToFileWhenDifferentContents (var_HTMLFilePath_36077, joker_36971, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 802)) ;
+    var_HTMLFilePath_36065.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("semanticAnalysis.galgas", 801)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 801)) ;
+    GALGAS_bool joker_36959 ; // Joker input parameter
+    var_grammarHTMLHelperContents_36646.method_writeToFileWhenDifferentContents (var_HTMLFilePath_36065, joker_36959, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 802)) ;
   }else if (kBoolFalse == test_11) {
     {
-    GALGAS_string::class_method_deleteFileIfExists (var_HTMLFilePath_36077, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 804)) ;
+    GALGAS_string::class_method_deleteFileIfExists (var_HTMLFilePath_36065, inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 804)) ;
     }
   }
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_grammarForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("grammar-").add_operation (object->mAttribute_mGrammarComponentName.getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 811)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 811)), object->mAttribute_mGrammarComponentName.mAttribute_string, var_lexiqueComponentName_30462.mAttribute_string, var_nonTerminalMapForGrammarAnalysis_30426, var_nonTerminalToAddList_30636, var_hasIndexing_33046, object->mAttribute_mSyntaxComponents, object->mAttribute_mStartSymbolName.mAttribute_string, object->mAttribute_mHasTranslateFeature, var_grammarCppFile_36615  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 809)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 807)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string::makeEmptyString (), GALGAS_grammarForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("grammar-").add_operation (object->mAttribute_mGrammarComponentName.getter_string (SOURCE_FILE ("semanticAnalysis.galgas", 811)), inCompiler COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 811)), object->mAttribute_mGrammarComponentName.mAttribute_string, var_lexiqueComponentName_30462.mAttribute_string, var_nonTerminalMapForGrammarAnalysis_30426, var_nonTerminalToAddList_30636, var_hasIndexing_33046, object->mAttribute_mSyntaxComponents, object->mAttribute_mStartSymbolName.mAttribute_string, object->mAttribute_mHasTranslateFeature, var_grammarCppFile_36603  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 809)), GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("semanticAnalysis.galgas", 807)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

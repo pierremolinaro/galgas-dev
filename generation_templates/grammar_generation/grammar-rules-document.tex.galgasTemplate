@@ -48,7 +48,6 @@
   tip/.style={->,shorten >=0.007pt},
   lastPoint/.style={rectangle,>=stealth',thick,draw=black!50},
   every join/.style={rounded corners}
-\%  skip loop/.style={to path={-- ++(0,#1) -| (\tikztotarget)}}
 }
 
 \\newcommand\\nonTerminalSection[2]{\section{Nonterminal \texttt{#1}}\label{nt:#2}}

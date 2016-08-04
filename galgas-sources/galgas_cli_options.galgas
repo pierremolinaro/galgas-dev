@@ -37,8 +37,7 @@ option galgas_cli_options {
 
   @bool check_gmp : '\0', "check-gmp" -> "Run a GMP check"
 
-  @bool outputGrammarRuleListInTexFile : '\0', "output-grammar-rule-list-in-tex-files"
-  -> "Output the grammar rule list, in TEX files"
+  @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams" -> "Emit grammar syntax diagrams in TEX files"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
