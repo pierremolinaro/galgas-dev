@@ -2,19 +2,19 @@
 %!TEX root = ../galgas-book.tex
 
 
-
-
-
-\chapterLabel{Grammaires}{grammairesGALGAS}
-
 Le langage GALGAS définit trois grammaires :
 \begin{itemize}
-\item la grammaire du fichier projet GALGAS d'extension \texttt{.galgasProject} (\refSectionPage{grammaireProjet}) ;
-\item la grammaire des sources GALGAS d'extension \texttt{.galgas} (\refSectionPage{grammaireSource}) ;
-\item la grammaire des fichiers \emph{template} d'extension \texttt{.galgasTemplate} (\refSectionPage{grammaireTemplate}).
+\item la grammaire du fichier projet GALGAS d'extension \texttt{.galgasProject} (\refChapterPage{grammaireProjet}) ;
+\item la grammaire des sources GALGAS d'extension \texttt{.galgas} (\refChapterPage{grammaireSource}) ;
+\item la grammaire des fichiers \emph{template} d'extension \texttt{.galgasTemplate} (\refChapterPage{grammaireTemplate}).
 \end{itemize}
 
-Ce chapitre liste l'ensemble des règles de production de ces trois grammaires.
+Ces chapitres listent l'ensemble des règles de production de ces trois grammaires.
+
+
+
+%\chapterLabel{Grammaires}{grammairesGALGAS}
+
 
 
 {
@@ -58,32 +58,32 @@ Ce chapitre liste l'ensemble des règles de production de ces trois grammaires.
 \newcommand\nonTerminalSummarySeparator{, }
 \newcommand\nonTerminalSummaryEnd{.\\}
 
-\newcommand\nonTerminalSection[2]{\subsection{Non terminal \texttt{\it#1}}\label{nt:#2}}
+\newcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt:#2}}
 \newcommand\nonTerminalSymbol[2]{\hyperref[nt:#2]{#1}}
 \newcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt:#2]{#1}.}
 \newcommand\nonTerminalSummary[2]{\hyperref[nt:#2]{#1}}
 
-\sectionLabel{Grammaire du projet GALGAS}{grammaireProjet}
+\chapterLabel{Grammaire du projet GALGAS}{grammaireProjet}
 
 \input{chapitre-grammaires/galgas3ProjectGrammar.tex}
 
 
-\renewcommand\nonTerminalSection[2]{\subsection{Non terminal \texttt{\it#1}}\label{nt1:#2}}
+\renewcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt1:#2}}
 \renewcommand\nonTerminalSymbol[2]{\hyperref[nt1:#2]{#1}}
 \renewcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt1:#2]{#1}.}
 \renewcommand\nonTerminalSummary[2]{\hyperref[nt1:#2]{#1}}
 
-\sectionLabel{Grammaire des sources GALGAS}{grammaireSource}
+\chapterLabel{Grammaire des sources GALGAS}{grammaireSource}
 
 \input{chapitre-grammaires/galgas3Grammar.tex}
 
 
-\renewcommand\nonTerminalSection[2]{\subsection{Non terminal \texttt{\it#1}}\label{nt2:#2}}
+\renewcommand\nonTerminalSection[2]{\section{Non terminal \texttt{\it#1}}\label{nt2:#2}}
 \renewcommand\nonTerminalSymbol[2]{\hyperref[nt2:#2]{#1}}
 \renewcommand\startSymbol[2]{L'axiome de la grammaire est \hyperref[nt2:#2]{#1}.}
 \renewcommand\nonTerminalSummary[2]{\hyperref[nt2:#2]{#1}}
 
-\sectionLabel{Grammaire des fichiers de template}{grammaireTemplate}
+\chapterLabel{Grammaire des fichiers de template}{grammaireTemplate}
 
 \input{chapitre-grammaires/templateGrammar.tex}
 }

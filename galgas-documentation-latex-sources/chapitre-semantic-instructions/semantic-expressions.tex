@@ -320,7 +320,7 @@ Alors :
   \item \ggs+[option mesOptions.extractOption comment]+ renvoie un \ggs+@string+ qui vaut \ggs+"Extract assembly code"+.
 \end{itemize}
 
-Noter qu'à partir de la version 3.1.4, les options \emph{quiet} et \emph{verbose} (\refSubsectionPage{optionsQuietVerbose}) ne peuvent pas être appelées par cette construction : il faut utiliser le \refConstructorPage{application}{verboseOutput}.
+Noter qu'à partir de la version 3.1.4, les options \emph{quiet} et \emph{verbose} (\refSectionPage{optionsQuietVerbose}) ne peuvent pas être appelées par cette construction : il faut utiliser le \refConstructorPage{application}{verboseOutput}.
 
 
 
@@ -333,6 +333,7 @@ Noter qu'à partir de la version 3.1.4, les options \emph{quiet} et \emph{verbos
 La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \ggs*4 + 3 - 2 - 3* est équivalent à \ggs*((4 + 3) - 2) - 3*.
 
 \begin{table}[t]
+  \small
   \centering
   \begin{tabular}{llll}
   \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\

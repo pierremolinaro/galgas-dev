@@ -7,7 +7,7 @@
 
 GALGAS accepte un certain nombre d’options, qui sont détaillées dans les pages suivantes.
 
-L’analyse des arguments de la ligne de commandes est simple :
+L’analyse des arguments de la ligne de commande est simple :
 \begin{itemize}
   \item tout argument qui commence par un « - » est une option ;
   \item tout argument qui ne commence pas par un « - » est considéré comme un fichier source GALGAS ;
@@ -105,7 +105,7 @@ Ces options ne sont pas destinées à être utilisées lors de l'exploitation de
 \optionGGS{-{-}generate-many-cpp-files} Engendre le code C++ dans une multitude de fichiers. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
 
 
-\optionGGS{-{-}generate-one-cpp-header} Engendre un seule fichier d'en-tête C++ pour tout le projet. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
+\optionGGS{-{-}generate-one-cpp-header} Engendre un seul fichier d'en-tête C++ pour tout le projet. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
 
 
 \optionGGS{-{-}check-gmp} Exécute au démarrage une série de calculs afin de vérifier si la librairie GMP s'exécute correctement.
@@ -118,7 +118,7 @@ Ces options ne sont pas destinées à être utilisées lors de l'exploitation de
 
 Ces options produisent des fichiers qui facilitent la documention \LaTeX de votre compilateur.
 
-\optionGGS{-{-}emit-syntax-diagrams} Cette option provoquent l'émission de fichiers \LaTeX qui contiennent les diagrammes syntaxiques. Son utilisation est détaillée au \refChapterPage{chapitreDiagrammesSyntaxiques}. C'est ainsi que les diagrammes du langage GALGAS présentés au \refChapterPage{grammairesGALGAS} ont été obtenus.
+\optionGGS{-{-}emit-syntax-diagrams} Cette option provoquent l'émission de fichiers \LaTeX qui contiennent les diagrammes syntaxiques des grammaires des projets compilés. Son utilisation est détaillée au \refChapterPage{chapitreDiagrammesSyntaxiques}. C'est ainsi que les diagrammes des langages GALGAS présentés au \refChapterPage{grammaireProjet}, \refChapterPage{grammaireSource} et \refChapterPage{grammaireTemplate} ont été obtenus.
 
 
 
@@ -163,7 +163,7 @@ En appelant votre compilateur avec l'option \optionGGS{-{-}output-keyword-list-f
   c & \\
 \end{lstlisting}
 
-C'est un fichier qui peut être inclus dans une définition de tableau à deux colonnes. Si le nombre d'éléments n'est pas un multiple du nombre de colonnes, la dernière ligne est complétée par des champs vides. Par exemple, on écrire en \LaTeX :
+C'est un fichier qui peut être inclus dans une définition de tableau à deux colonnes. Si le nombre d'éléments n'est pas un multiple du nombre de colonnes, la dernière ligne est complétée par des champs vides. Par exemple, on écrit en \LaTeX :
 \begin{lstlisting}[backgroundcolor=\color{yellow!10}, frame=tlbr, basicstyle=\small\tt]
 \begin{table}[!t]
   \centering
