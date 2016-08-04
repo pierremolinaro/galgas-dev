@@ -141,7 +141,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_uint32}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint32}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -151,7 +151,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_sint32}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {sint32\_S}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -161,7 +161,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_uint64}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {uint64\_L}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -171,7 +171,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_sint64}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {sint64\_LS}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -181,7 +181,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_double}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {double.xxx}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -191,7 +191,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {literal\_char}; & \node (p0-3) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {'char'}; & \node (p0-3) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -203,7 +203,7 @@
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     & & & & & & \node (p2-6) [point] {}; & \\
     & & & & & \node (p1-5) [point] {}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {literal\_string}; & \node (p0-4) [point] {}; & & & \node (p0-7) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {"string"}; & \node (p0-4) [point] {}; & & & \node (p0-7) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-3) ;
   \draw (p0-4) |- (p1-5) ;

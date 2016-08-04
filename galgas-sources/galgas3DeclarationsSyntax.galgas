@@ -86,13 +86,13 @@ rule <declaration_with_private>
   $filewrapper$
   $identifier$ ?var  @lstring mFilewrapperName indexing filewrapperDefinition
   $in$
-  $literal_string$ ?var  @lstring mFilewrapperPath
+  $"string"$ ?var  @lstring mFilewrapperPath
   ${$
   var filewrapperTextFileExtensionList =@lstringlist {}
   select
   or
     repeat
-      $literal_string$ ?var @lstring pathExtension
+      $"string"$ ?var @lstring pathExtension
       filewrapperTextFileExtensionList += !pathExtension
     while
       $,$
@@ -104,7 +104,7 @@ rule <declaration_with_private>
   select
   or
     repeat
-      $literal_string$ ?var @lstring pathExtension
+      $"string"$ ?var @lstring pathExtension
       filewrapperBinaryFileExtensionList += !pathExtension
     while
       $,$
@@ -117,7 +117,7 @@ rule <declaration_with_private>
   while
     $template$
     $identifier$ ?var  @lstring mFilewrapperTemplateName
-    $literal_string$ ?var  @lstring mFilewrapperTemplatePath
+    $"string"$ ?var  @lstring mFilewrapperTemplatePath
     var filewrapperTemplateFormalInputParameters =@formalTemplateInputParameterListAST {}
     repeat
     while

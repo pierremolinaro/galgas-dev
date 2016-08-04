@@ -32,7 +32,7 @@ rule <declaration>
   end
   $grammar$
   $identifier$ ?var  @lstring mGrammarName indexing grammarComponentDefinition
-  $literal_string$ ?var  @lstring mGrammarClass
+  $"string"$ ?var  @lstring mGrammarClass
 #--- Feature translate
   @bool hasTranslateFeature
   select

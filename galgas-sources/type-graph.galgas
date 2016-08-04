@@ -36,7 +36,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?var  @lstring insertName
       $error$
       $message$
-      $literal_string$ ?var  @lstring errorMessage
+      $"string"$ ?var  @lstring errorMessage
       graphInsertModifierList += !insertName !errorMessage
     end
     $}$

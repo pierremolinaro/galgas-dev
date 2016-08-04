@@ -46,11 +46,11 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
   $@type$ ?@lstring mOptionTypeName  ;
   $identifier$ ?@lstring mOptionInternalName ;
   $:$ ;
-  $literal_char$ ?@lchar mOptionInvocationLetter ;
+  $'char'$ ?@lchar mOptionInvocationLetter ;
   $,$ ;
-  $literal_string$ ?@lstring mOptionInvocationString ;
+  $"string"$ ?@lstring mOptionInvocationString ;
   $->$ ;
-  $literal_string$ ?@lstring mOptionComment ;
+  $"string"$ ?@lstring mOptionComment ;
   @lstring defaultValue [new !"" !here] ;
   @optionDefaultValueEnumAST optionDefaultValueKind ;
   select
@@ -58,10 +58,10 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
   or
     $default$ ;
     select
-      $literal_string$ ? defaultValue ;
+      $"string"$ ? defaultValue ;
       optionDefaultValueKind := [@optionDefaultValueEnumAST stringDefaultValue] ;
     or
-      $literal_uint32$ ? @luint v ;
+      $uint32$ ? @luint v ;
       defaultValue := [@lstring new ![[v uint] string] ![v location]] ;
       optionDefaultValueKind := [@optionDefaultValueEnumAST unsignedDefaultValue] ;
     end select ;

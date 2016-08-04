@@ -54,7 +54,7 @@ rule '0'->'9' {
 #----------------------------------------------------------------------------------------------------------------------*
 
 style stringStyle -> "String Constants"
-$literal_string$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
+$"string"$ ! tokenString style stringStyle %nonAtomicSelection error message "a character string constant \"...\""
 
 
 message incorrectStringEnd : "string does not end with '\"'"
@@ -66,7 +66,7 @@ rule '"' {
   end
   select
   case '"' :
-    send $literal_string$
+    send $"string"$
   default
     error incorrectStringEnd
   end

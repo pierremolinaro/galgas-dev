@@ -425,7 +425,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 rule <primary> !@semanticExpressionAST outExpression {
   @stringlist literalStringList = {}
   repeat
-    $literal_string$ ?let literalString
+    $"string"$ ?let literalString
     literalStringList += !literalString.string
   while
   end
@@ -439,7 +439,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_uint32$ ?let @luint literalInt
+  $uint32$ ?let @luint literalInt
   outExpression = @literalUIntExpressionAST.new {!literalInt}
 }
 
@@ -450,7 +450,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_sint32$ ?let @lsint literalInt
+  $sint32_S$ ?let @lsint literalInt
   outExpression = @literalSIntExpressionAST.new {!literalInt}
 }
 
@@ -461,7 +461,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_uint64$ ?let @luint64 literalInt
+  $uint64_L$ ?let @luint64 literalInt
   outExpression = @literalUInt64ExpressionAST.new {!literalInt}
 }
 
@@ -472,7 +472,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_sint64$ ?let @lsint64 literalInt
+  $sint64_LS$ ?let @lsint64 literalInt
   outExpression = @literalSInt64ExpressionAST.new {!literalInt}
 }
 
@@ -483,7 +483,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_bigint$ ?let @lbigint literalInt
+  $bigint_G$ ?let @lbigint literalInt
   outExpression = @literalBigIntExpressionAST.new {!literalInt}
 }
 
@@ -494,7 +494,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_char$ ?let @lchar literalChar
+  $'char'$ ?let @lchar literalChar
   outExpression = @literalCharExpressionAST.new {!literalChar}
 }
 
@@ -505,7 +505,7 @@ rule <primary> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $literal_double$ ?let @ldouble literalDouble ?*
+  $double.xxx$ ?let @ldouble literalDouble ?*
   outExpression = @literalDoubleExpressionAST.new {!literalDouble}
 }
 
@@ -600,7 +600,7 @@ rule <primary_between_brackets> !@semanticExpressionAST outExpression {
   or
     $.$
     select
-      $literal_string$ ?let @lstring filePath
+      $"string"$ ?let @lstring filePath
       outExpression = @filewrapperInExpressionAST.new {
         !filewrapperName
         !filePath

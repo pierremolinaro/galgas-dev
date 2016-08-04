@@ -314,7 +314,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint literalInt
-  $literal_uint32$ ?literalInt
+  $uint32$ ?literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
 
@@ -327,7 +327,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint literalInt
-  $literal_sint32$ ?literalInt
+  $sint32_S$ ?literalInt
   outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
 }
 
@@ -340,7 +340,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint64 literalInt
-  $literal_uint64$ ?literalInt
+  $uint64_L$ ?literalInt
   outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
 }
 
@@ -353,7 +353,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint64 literalInt
-  $literal_sint64$ ?literalInt
+  $sint64_LS$ ?literalInt
   outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
 
@@ -366,7 +366,7 @@ rule <primary>
 rule <primary>
   !@templateExpressionAST outExpression {
   @ldouble literalDouble
-  $literal_double$ ? literalDouble ?*
+  $double.xxx$ ? literalDouble ?*
   outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
 }
 
@@ -378,7 +378,7 @@ rule <primary>
 
 rule <primary>
   !@templateExpressionAST outExpression {
-  $literal_char$ ?var @lchar literalChar
+  $'char'$ ?var @lchar literalChar
   outExpression = @templateLiteralCharExpressionAST.new {!literalChar}
 }
 
@@ -393,7 +393,7 @@ rule <primary>
   @stringlist literalStringList = {}
   repeat
     @lstring literalString
-    $literal_string$ ?literalString
+    $"string"$ ?literalString
     literalStringList += ![literalString string]
   while
   end

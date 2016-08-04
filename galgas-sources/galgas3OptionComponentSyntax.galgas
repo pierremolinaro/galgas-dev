@@ -42,11 +42,11 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
   $@type$ ?var @lstring mOptionTypeName
   $identifier$ ?var @lstring mOptionInternalName
   $:$
-  $literal_char$ ?var @lchar mOptionInvocationLetter
+  $'char'$ ?var @lchar mOptionInvocationLetter
   $,$
-  $literal_string$ ?var @lstring mOptionInvocationString
+  $"string"$ ?var @lstring mOptionInvocationString
   $->$
-  $literal_string$ ?var @lstring mOptionComment
+  $"string"$ ?var @lstring mOptionComment
   var defaultValue =@lstring.new{!"" !@location.here}
   @optionDefaultValueEnumAST optionDefaultValueKind
   select
@@ -54,10 +54,10 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
   or
     $default$
     select
-      $literal_string$ ? defaultValue
+      $"string"$ ? defaultValue
       optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
     or
-      $literal_uint32$ ?var  @luint v
+      $uint32$ ?var  @luint v
       defaultValue = @lstring.new {![[v uint] string] ![v location]}
       optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
     end

@@ -119,11 +119,11 @@ syntax extension galgas3DeclarationsSyntax {
         stateMessage = @lstring.new {!"" !@location.here}
       or
         $warning$
-        $literal_string$ ? stateMessage
+        $"string"$ ? stateMessage
         stateMessageKind = @mapAutomatonMessageKind.warningMessage
       or
         $error$
-        $literal_string$ ? stateMessage
+        $"string"$ ? stateMessage
         stateMessageKind = @mapAutomatonMessageKind.errorMessage
       end
       ${$
@@ -140,11 +140,11 @@ syntax extension galgas3DeclarationsSyntax {
           transitionMessage = @lstring.new {!"" !@location.here}
         or
           $warning$
-          $literal_string$ ? transitionMessage
+          $"string"$ ? transitionMessage
           transitionMessageKind = @mapAutomatonMessageKind.warningMessage
         or
           $error$
-          $literal_string$ ? transitionMessage
+          $"string"$ ? transitionMessage
           transitionMessageKind = @mapAutomatonMessageKind.errorMessage
         end
         transitionList +=
@@ -169,7 +169,7 @@ syntax extension galgas3DeclarationsSyntax {
         isError = false
       end
       $%attribute$ ?let attributeName
-      $literal_string$ ?let messageText
+      $"string"$ ?let messageText
       sharedMapAttributeListAST += !attributeName !isError !messageText
     while
       <property_declaration> !? propertyList
@@ -188,7 +188,7 @@ syntax extension galgas3DeclarationsSyntax {
       end
       $error$
       $message$
-      $literal_string$ ?var  @lstring mErrorMessage
+      $"string"$ ?var  @lstring mErrorMessage
       mSearchMethodList +=
         !mMethodName
         !mErrorMessage
@@ -213,11 +213,11 @@ syntax extension galgas3DeclarationsSyntax {
         or
           $warning$
           messageKind = @mapAutomatonMessageKind.warningMessage
-          $literal_string$ ? messageText
+          $"string"$ ? messageText
         or
           $error$
           messageKind = @mapAutomatonMessageKind.errorMessage
-          $literal_string$ ? messageText
+          $"string"$ ? messageText
         end
         mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
       end
@@ -239,11 +239,11 @@ syntax extension galgas3DeclarationsSyntax {
         or
           $warning$
           messageKind = @mapAutomatonMessageKind.warningMessage
-          $literal_string$ ? messageText
+          $"string"$ ? messageText
         or
           $error$
           messageKind = @mapAutomatonMessageKind.errorMessage
-          $literal_string$ ? messageText
+          $"string"$ ? messageText
         end
         mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
       end
