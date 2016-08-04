@@ -67,9 +67,9 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $case$
   $.$
-  $literal_string$ ?let @lstring mSourceFileExtension
+  $"string"$ ?let @lstring mSourceFileExtension
   $message$
-  $literal_string$ ?let @lstring mSourceFileHelp
+  $"string"$ ?let @lstring mSourceFileHelp
 #--- Reference grammar
   @lstring referenceGrammar
   select

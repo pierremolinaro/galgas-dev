@@ -7,9 +7,9 @@
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     & & & & & & & & & & & & \node (p4-12) [point] {}; & \\
-    & & & & & & & \node (p3-7) [terminal] {literal\_string}; & \\
+    & & & & & & & \node (p3-7) [terminal] {"string"}; & \\
     & & & & & & & & & \node (p2-9) [point] {}; & \\
-    & & & & & & & \node (p1-7) [terminal] {\verb=%=attribute}; & \node (p1-8) [point] {}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [terminal] {literal\_string}; & \node (p1-11) [point] {}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=attribute}; & \node (p1-8) [point] {}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [terminal] {"string"}; & \node (p1-11) [point] {}; & \\
     \node (P0start) [firstPoint] {}; & & \node (p0-2) [nonterminal] {\nonTerminalSymbol{project\_header}{0}}; & \node (p0-3) [terminal] {\{}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & & & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
@@ -35,7 +35,7 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {project}; & \node (p0-3) [terminal] {(}; & \node (p0-4) [terminal] {literal\_uint32}; & \node (p0-5) [terminal] {:}; & \node (p0-6) [terminal] {literal\_uint32}; & \node (p0-7) [terminal] {:}; & \node (p0-8) [terminal] {literal\_uint32}; & \node (p0-9) [terminal] {)}; & \node (p0-10) [terminal] {->}; & \node (p0-11) [terminal] {literal\_string}; & \node (p0-12) [lastPoint] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {project}; & \node (p0-3) [terminal] {(}; & \node (p0-4) [terminal] {uint32}; & \node (p0-5) [terminal] {:}; & \node (p0-6) [terminal] {uint32}; & \node (p0-7) [terminal] {:}; & \node (p0-8) [terminal] {uint32}; & \node (p0-9) [terminal] {)}; & \node (p0-10) [terminal] {->}; & \node (p0-11) [terminal] {"string"}; & \node (p0-12) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;

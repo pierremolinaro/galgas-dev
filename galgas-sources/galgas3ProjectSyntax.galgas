@@ -20,14 +20,14 @@ syntax galgas3ProjectSyntax (galgas3Scanner) {
 rule <project_header> !@luint majorVersion !@luint minorVersion !@luint revisionVersion !@lstring targetName {
   $project$
   $($
-  $literal_uint32$ ?majorVersion
+  $uint32$ ?majorVersion
   $:$
-  $literal_uint32$ ?minorVersion
+  $uint32$ ?minorVersion
   $:$
-  $literal_uint32$ ?revisionVersion
+  $uint32$ ?revisionVersion
   $)$
   $->$
-  $literal_string$ ?targetName
+  $"string"$ ?targetName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -47,13 +47,13 @@ rule <project_component_start_symbol> !@galgas3ProjectComponentAST outProjectCom
     $%attribute$ ?let @lstring featureName
     select
       $:$
-      $literal_string$ ?let @lstring featureValue
+      $"string"$ ?let @lstring featureValue
       qualifiedFeatureList += !featureName !featureValue
     or
       generateFeatureList += !featureName
     end
   while
-    $literal_string$ ?let @lstring filePath
+    $"string"$ ?let @lstring filePath
     projectSourceList += !filePath
   end
   $}$

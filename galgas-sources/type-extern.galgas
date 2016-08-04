@@ -66,7 +66,7 @@ syntax extension galgas3DeclarationsSyntax {
       @string cppPredeclarationCode = ""
       repeat
       while
-        $literal_string$ ?var  @lstring cppPredeclarationCodeElement
+        $"string"$ ?var  @lstring cppPredeclarationCodeElement
         cppPredeclarationCode += cppPredeclarationCodeElement.string
       end
     $}$
@@ -74,7 +74,7 @@ syntax extension galgas3DeclarationsSyntax {
       @string cppClassCode = ""
       repeat
       while
-        $literal_string$ ?var  @lstring cppClassCodeElement
+        $"string"$ ?var  @lstring cppClassCodeElement
         cppClassCode += cppClassCodeElement.string
       end
     $}$

@@ -35,7 +35,7 @@ rule <declaration>
     $:$
     var mValue =@lstring.new{!"" !@location.here}
     repeat
-      $literal_string$ ?var @lstring value
+      $"string"$ ?var @lstring value
       mValue = @lstring.new {![mValue string] + [value string] ![value location]}
     while
     end
@@ -74,12 +74,12 @@ rule <declaration>
             displayFlags = 0xFFFF # Do not diplay
           or
             $($
-            $literal_uint32$ ?var @luint leadingStrip
+            $uint32$ ?var @luint leadingStrip
             if leadingStrip.uint >= 15 then
               error leadingStrip:"leading strip should be < 15"
             end
             $,$
-            $literal_uint32$ ?var @luint endingStrip
+            $uint32$ ?var @luint endingStrip
             if endingStrip.uint >= 15 then
               error endingStrip:"tail strip should be < 15"
             end
@@ -93,11 +93,11 @@ rule <declaration>
         labels += !displayStyle !terminalList !@location.here
       while
         $identifier$ ?var @lstring key
-        $literal_string$ ?var @lstring name
+        $"string"$ ?var @lstring name
         $:$
         var value =@lstring.new{!"" !@location.here}
         repeat
-          $literal_string$ ?var @lstring v
+          $"string"$ ?var @lstring v
           value = @lstring.new {![value string] + [v string] ![v location]}
         while
         end
@@ -105,7 +105,7 @@ rule <declaration>
       while
         $identifier$ ?var @lstring name
         $:$
-        $literal_string$ ?var @lstring value
+        $"string"$ ?var @lstring value
         simpleAttributes += !name !value
       end
       $}$

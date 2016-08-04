@@ -36,7 +36,7 @@ rule <declaration>
   or
     $indexing$
     $in$
-    $literal_string$ ? indexingDirectory
+    $"string"$ ? indexingDirectory
   end
   ${$
 #--- Parse lexique body
@@ -81,7 +81,7 @@ rule <declaration>
     $indexing$
     $identifier$ ?var @lstring indexName indexing indexingNameDefinition
     $:$
-    $literal_string$ ?var @lstring indexComment
+    $"string"$ ?var @lstring indexComment
     indexingListAST += !indexName !indexComment
   end
   $}$
@@ -107,7 +107,7 @@ rule <declaration>
 
 rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList {
   $template$
-  $literal_string$ ?let @lstring startString
+  $"string"$ ?let @lstring startString
   var optionList =@lstringlist {}
   repeat
   while
@@ -115,7 +115,7 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
     optionList += !optionName
   end
   $...$
-  $literal_string$ ?let @lstring endString
+  $"string"$ ?let @lstring endString
   ioTemplateDelimitorList += !startString !optionList !endString
 }
 
@@ -123,17 +123,17 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
 
 rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
   $replace$
-  $literal_string$ ?var @lstring matchString
+  $"string"$ ?var @lstring matchString
   @lstring replacementString
   @lstring replacementFunction
   select
     $...$
-    $literal_string$ ?replacementString
+    $"string"$ ?replacementString
     $:$
     $identifier$ ?replacementFunction
   or
     $->$
-    $literal_string$ ?replacementString
+    $"string"$ ?replacementString
     replacementFunction = @lstring.new {!"" !@location.here}
   end
   ioTemplateReplacement += !matchString !replacementString !replacementFunction
@@ -146,7 +146,7 @@ rule <lexical_message_declaration>
   $message$
   $identifier$ ?let @lstring messageName
   $:$
-  $literal_string$ ?let @lstring messageValue
+  $"string"$ ?let @lstring messageValue
   ioLexicalMessageDeclarationList += !messageName !messageValue
 }
 
@@ -342,7 +342,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-  $literal_char$ ?var @lchar character
+  $'char'$ ?var @lchar character
   outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
 }
 
@@ -350,7 +350,7 @@ rule <lexical_output_effective_argument>
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-  $literal_uint32$ ?var @luint unsignedValue
+  $uint32$ ?var @luint unsignedValue
   outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
 }
 
@@ -472,7 +472,7 @@ rule <lexical_term> !@lexicalExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor>!@lexicalExpressionAST outExpression {
-  $literal_string$ ?let @lstring string
+  $"string"$ ?let @lstring string
   outExpression = @lexicalStringMatchAST.new {!string}
 }
 
@@ -480,7 +480,7 @@ rule <lexical_factor>!@lexicalExpressionAST outExpression {
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $~$
-  $literal_string$ ?let @lstring string
+  $"string"$ ?let @lstring string
   $error$
   $identifier$ ?let @lstring errorMessage
   outExpression = @lexicalStringNotMatchAST.new {!string !errorMessage}
@@ -489,12 +489,12 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
-  $literal_char$ ?let @lchar character
+  $'char'$ ?let @lchar character
   select
     outExpression = @lexicalCharacterMatchAST.new {!character}
   or
     $->$
-    $literal_char$ ?let @lchar upperBound
+    $'char'$ ?let @lchar upperBound
     outExpression = @lexicalCharacterIntervalMatchAST.new {!character !upperBound}
   end
 }
@@ -527,7 +527,7 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
   end
   $error$
   $message$
-  $literal_string$ ?let @lstring errorMessage
+  $"string"$ ?let @lstring errorMessage
   ${$
   var entryList =@lexicalListEntryListAST {}
   repeat
@@ -542,7 +542,7 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
-  $literal_string$ ?var @lstring entrySpelling
+  $"string"$ ?var @lstring entrySpelling
   var optionList =@lstringlist {}
   select
   or
@@ -593,7 +593,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   end
   $error$
   $message$
-  $literal_string$ ?let @lstring errorMessage
+  $"string"$ ?let @lstring errorMessage
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
 }
 
@@ -609,7 +609,7 @@ rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
     error styleIdentifier : "for compatibility with latex formatting, a style name should not contain any digit"
   end
   $->$
-  $literal_string$ ?let @lstring comment
+  $"string"$ ?let @lstring comment
   ioLexicalStyleList += !styleIdentifier !comment
 }
 

@@ -79,7 +79,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?var  @lstring mMethodName
       $error$
       $message$
-      $literal_string$ ?var  @lstring mErrorMessage
+      $"string"$ ?var  @lstring mErrorMessage
       mSearchMethodList +=
         !mMethodName
         !mErrorMessage
@@ -89,7 +89,7 @@ syntax extension galgas3DeclarationsSyntax {
       $identifier$ ?var  @lstring mMethodName
       $error$
       $message$
-      $literal_string$ ?var  @lstring mErrorMessage
+      $"string"$ ?var  @lstring mErrorMessage
       mRemoveMethodList +=
         !mMethodName
         !mErrorMessage
@@ -127,13 +127,13 @@ syntax extension galgas3DeclarationsSyntax {
     end
     $error$
     $message$
-    $literal_string$ ?var  @lstring mErrorMessage
+    $"string"$ ?var  @lstring mErrorMessage
     @lstring mShadowErrorMessage
     select
       mShadowErrorMessage = @lstring.new {!"" !@location.here}
     or
       $,$
-      $literal_string$ ? mShadowErrorMessage
+      $"string"$ ? mShadowErrorMessage
     end
     ioMapMethodList +=
       !mMethodName

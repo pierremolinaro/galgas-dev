@@ -302,7 +302,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
     "#----------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "style stringStyle -> \"String Constants\"\n"
-    "$literal_string$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n"
+    "$\"string\"$ ! tokenString style stringStyle %nonAtomicSelection error message \"a character string constant \\\"...\\\"\"\n"
     "\n"
     "\n"
     "message incorrectStringEnd : \"string does not end with '\\\"'\"\n"
@@ -314,7 +314,7 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_lexique 
     "  end\n"
     "  select\n"
     "  case '\"' :\n"
-    "    send $literal_string$\n"
+    "    send $\"string\"$\n"
     "  default\n"
     "    error incorrectStringEnd\n"
     "  end\n"
@@ -6182,26 +6182,26 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
 void routine_check_5F_K_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_stringlist enumerator_18812 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 510)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 510)), kEnumeration_up) ;
-  while (enumerator_18812.hasCurrentObject ()) {
-    GALGAS_stringlist var_explodedArray_18842 = enumerator_18812.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 511)) ;
+  cEnumerator_stringlist enumerator_18788 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 510)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 510)), kEnumeration_up) ;
+  while (enumerator_18788.hasCurrentObject ()) {
+    GALGAS_stringlist var_explodedArray_18818 = enumerator_18788.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 511)) ;
     {
-    GALGAS_string joker_18929 ; // Joker input parameter
-    var_explodedArray_18842.setter_popFirst (joker_18929, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 512)) ;
+    GALGAS_string joker_18905 ; // Joker input parameter
+    var_explodedArray_18818.setter_popFirst (joker_18905, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 512)) ;
     }
-    cEnumerator_stringlist enumerator_18962 (var_explodedArray_18842, kEnumeration_up) ;
-    while (enumerator_18962.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_18962.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 514)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_stringlist enumerator_18938 (var_explodedArray_18818, kEnumeration_up) ;
+    while (enumerator_18938.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_18938.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 514)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_char var_c_19016 = enumerator_18962.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 515)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19016.objectCompare (GALGAS_char (TO_UNICODE (75)))).boolEnum () ;
+        GALGAS_char var_c_18992 = enumerator_18938.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 515)) ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_18992.objectCompare (GALGAS_char (TO_UNICODE (75)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 517)), GALGAS_string ("only '%K' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 517)) ;
         }
       }
-      enumerator_18962.gotoNextObject () ;
+      enumerator_18938.gotoNextObject () ;
     }
-    enumerator_18812.gotoNextObject () ;
+    enumerator_18788.gotoNextObject () ;
   }
 }
 
@@ -6215,26 +6215,26 @@ void routine_check_5F_K_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
 void routine_check_5F_K_5F_L_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
                                                   C_Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_stringlist enumerator_19510 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 527)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 527)), kEnumeration_up) ;
-  while (enumerator_19510.hasCurrentObject ()) {
-    GALGAS_stringlist var_explodedArray_19540 = enumerator_19510.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 528)) ;
+  cEnumerator_stringlist enumerator_19486 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 527)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 527)), kEnumeration_up) ;
+  while (enumerator_19486.hasCurrentObject ()) {
+    GALGAS_stringlist var_explodedArray_19516 = enumerator_19486.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 528)) ;
     {
-    GALGAS_string joker_19627 ; // Joker input parameter
-    var_explodedArray_19540.setter_popFirst (joker_19627, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 529)) ;
+    GALGAS_string joker_19603 ; // Joker input parameter
+    var_explodedArray_19516.setter_popFirst (joker_19603, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 529)) ;
     }
-    cEnumerator_stringlist enumerator_19660 (var_explodedArray_19540, kEnumeration_up) ;
-    while (enumerator_19660.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_19660.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 531)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_stringlist enumerator_19636 (var_explodedArray_19516, kEnumeration_up) ;
+    while (enumerator_19636.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_19636.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 531)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_char var_c_19714 = enumerator_19660.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 532)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19714.objectCompare (GALGAS_char (TO_UNICODE (75)))).operator_and (GALGAS_bool (kIsNotEqual, var_c_19714.objectCompare (GALGAS_char (TO_UNICODE (76)))) COMMA_SOURCE_FILE ("type-map.galgas", 533)).boolEnum () ;
+        GALGAS_char var_c_19690 = enumerator_19636.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 532)) ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19690.objectCompare (GALGAS_char (TO_UNICODE (75)))).operator_and (GALGAS_bool (kIsNotEqual, var_c_19690.objectCompare (GALGAS_char (TO_UNICODE (76)))) COMMA_SOURCE_FILE ("type-map.galgas", 533)).boolEnum () ;
         if (kBoolTrue == test_1) {
           inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 534)), GALGAS_string ("only '%K', '%L' and '%%' escape sequences are allowed in this error message")  COMMA_SOURCE_FILE ("type-map.galgas", 534)) ;
         }
       }
-      enumerator_19660.gotoNextObject () ;
+      enumerator_19636.gotoNextObject () ;
     }
-    enumerator_19510.gotoNextObject () ;
+    enumerator_19486.gotoNextObject () ;
   }
 }
 

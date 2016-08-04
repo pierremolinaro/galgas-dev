@@ -56,7 +56,7 @@ with lexique galgas3Scanner {
 
   label $syntax$, $extension$, $identifier$
 
-  label $case$, $.$, $literal_string$
+  label $case$, $.$, $"string"$
   label * $commentMark$ (2, 0)
   label $\$terminal\$$, $!$ -
   label $\$terminal\$$, $error$ -

@@ -264,28 +264,28 @@ static const UInt16 gPopUpData_galgas_33_Scanner_3076 [8] = {
   0
 } ;
 
-static const UInt16 gPopUpData_galgas_33_Scanner_3114 [8] = {
+static const UInt16 gPopUpData_galgas_33_Scanner_3108 [8] = {
   0, // Leading character count to strip
   galgas3Scanner_1_case, 0,
   galgas3Scanner_1__2E_, 0,
-  galgas3Scanner_1_literal_5F_string, 0,
+  galgas3Scanner_1__22_string_22_, 0,
   0
 } ;
 
-static const UInt16 gPopUpData_galgas_33_Scanner_3145 [4] = {
+static const UInt16 gPopUpData_galgas_33_Scanner_3139 [4] = {
   1, // Leading character count to strip
   galgas3Scanner_1_commentMark, 32,
   0
 } ;
 
-static const UInt16 gPopUpData_galgas_33_Scanner_3175 [6] = {
+static const UInt16 gPopUpData_galgas_33_Scanner_3169 [6] = {
   0, // Leading character count to strip
   galgas3Scanner_1__24_terminal_24_, 0,
   galgas3Scanner_1__21_, 65535,
   0
 } ;
 
-static const UInt16 gPopUpData_galgas_33_Scanner_3217 [6] = {
+static const UInt16 gPopUpData_galgas_33_Scanner_3211 [6] = {
   0, // Leading character count to strip
   galgas3Scanner_1__24_terminal_24_, 0,
   galgas3Scanner_1_error, 65535,
@@ -318,10 +318,10 @@ static const UInt16 * gPopUpData_galgas_33_Scanner [30] = {
   gPopUpData_galgas_33_Scanner_2990,
   gPopUpData_galgas_33_Scanner_3031,
   gPopUpData_galgas_33_Scanner_3076,
-  gPopUpData_galgas_33_Scanner_3114,
-  gPopUpData_galgas_33_Scanner_3145,
-  gPopUpData_galgas_33_Scanner_3175,
-  gPopUpData_galgas_33_Scanner_3217,
+  gPopUpData_galgas_33_Scanner_3108,
+  gPopUpData_galgas_33_Scanner_3139,
+  gPopUpData_galgas_33_Scanner_3169,
+  gPopUpData_galgas_33_Scanner_3211,
   NULL
 } ;
 

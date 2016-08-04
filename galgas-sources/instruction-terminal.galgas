@@ -31,7 +31,7 @@ syntax extension galgas3SyntaxComponentSyntax {
         select
           postfixName = ["" nowhere]
         or
-          $literal_string$ ?postfixName
+          $"string"$ ?postfixName
         end
         indexNameList += !indexName !postfixName
       while

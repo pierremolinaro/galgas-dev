@@ -41,7 +41,7 @@ rule <expression_factor> !@expressionAST outExpressionAST {
     $identifier$ ?var  @lstring varName
     outExpressionAST = @varInExpressionAST.new { !varName}
   or
-    $literal_uint32$ ?var  @luint constant
+    $uint32$ ?var  @luint constant
     outExpressionAST = @cstInExpressionAST.new { !constant}
   end
 }

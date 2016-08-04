@@ -13,24 +13,25 @@ class @listDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  rule <declaration>
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $list$
-    $@type$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
+    $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
-    var mAttributeList =@propertyInCollectionListAST {}
+    @propertyInCollectionListAST attributeList = {}
     repeat
+      <property_declaration> !? attributeList
+      select
+      or
+        $;$
+      end
     while
-      <property_declaration> !? mAttributeList
-    while
-      $;$
     end
     $}$
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
       !false # Is not predefined
-      !mListTypeName
-      !mAttributeList}
+      !listTypeName
+      !attributeList
+    }
   }
 
 }

@@ -81,7 +81,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <for_instruction_element>
     ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
-    $literal_uint32$ ?let @luint count
+    $uint32$ ?let @luint count
     $*$
     var n = [count uint]
     if n == 0 then

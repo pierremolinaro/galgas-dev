@@ -31,7 +31,7 @@ syntax extension galgas3InstructionsSyntax {
         $identifier$ ?let @lstring loggedVariableName
         logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
       or
-        $literal_string$ ?let logMessage
+        $"string"$ ?let logMessage
         $:$
         <expression> ?let @semanticExpressionAST logExpression
         logList += !logMessage !logExpression
