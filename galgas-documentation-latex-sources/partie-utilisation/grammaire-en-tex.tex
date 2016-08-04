@@ -1,0 +1,29 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Diagrammes syntaxiques des grammaires en TeX}
+%-------------------------------------------------------------
+
+Le compilateur GALGAS implémente l'option \tpp{-{}-emit-syntax-diagrams} qui permet d'obtenir les diagrammes syntaxiques de chaque grammaire de votre langage. Ceux-ci sont décrits en \LaTeX en utilisant le paquetage \texttt{tikz}\label{tikz}. C'est ainsi que les diagrammes du langage GALGAS présentés au \refChapterPage{grammairesGALGAS} ont été obtenus.
+
+Dans tout ce chapitre, nous appliquons cette démarche au langage LOGO, défini à la \refSectionPage{presentation-logo}.
+
+\section{Mise en œuvre}
+
+La mise en œuvre est très simple : il suffit d'ajouter l'option indiquée ci-dessus lors de la compilation de votre projet :
+\begin{description}
+  \item[ ] \tpp{galgas --emit-syntax-diagrams -v chezmoi/logo/+logo.galgasProject}
+\end{description}
+
+Les fichiers \LaTeX produits sont rangés dans le répertoire \tpp{chezmoi/build/tex}. Deux fichiers sont produits pour chaque grammaire implémentée par votre projet ; pour le projet LOGO, la grammaire définie s'appelle \ggs=logo_grammar= (\refSectionPage{analyseurSyntaxiqueLOGO}), ces fichiers sont :
+\begin{itemize}
+\item \tpp{chezmoi/build/logo\_grammar.document.tex} ;
+\item \tpp{chezmoi/build/logo\_grammar.tex}.
+\end{itemize}
+
+Le fichier \tpp{chezmoi/build/logo\_grammar.document.tex} contient un document \LaTeX directement compilable qui vous permet d'obtenir immédiatement un document PDF contenant les diagrammes syntaxiques de votre langage ; il inclut le fichier \tpp{chezmoi/build/logo\_grammar.tex} qui contient les diagrammes syntaxiques.
+
+
+
+
