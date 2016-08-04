@@ -2,11 +2,8 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Utilisation}
+\chapter{Options de la ligne de commande}\index{Options de la ligne de commande}
 %-------------------------------------------------------------
-
-
-\section{Options de la ligne de commande}\index{Options de la ligne de commande}
 
 GALGAS accepte un certain nombre d’options, qui sont détaillées dans les pages suivantes.
 
@@ -26,7 +23,7 @@ L’ordre des options et des fichiers sources est quelconque. La ligne de comman
 
 {\bf Note pour Windows.} L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer les références d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). L'option \optionGGS{-{-}no-dialog}, spécifique à cette plate forme, permet d'inhiber l’apparition du dialogue.
 
-\subsection{Options générales}
+\section{Options générales}
 
 \optionGGS{-{-}help} Affiche la liste des options.
 
@@ -34,10 +31,10 @@ L’ordre des options et des fichiers sources est quelconque. La ligne de comman
 
 \optionGGS{-{-}no-color} Les messages émis sur le terminal sont en texte pur, sans coloration.
 
-\optionGGS{-{-}no-dialog} (\emph{uniquement sur Windows}) L’outil Piccolo pour Windows propose par défaut un dialogue invitant à entrer les références d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). Cette option permet d'inhiber l’apparition du dialogue.
+\optionGGS{-{-}no-dialog} (\emph{uniquement sur Windows}) L’outil GALGAS pour Windows propose par défaut un dialogue invitant à entrer les références d’un fichier source si la ligne ne contient aucun fichier source (c’est le cas quand on double-clique sur l’icône de l’application). Cette option permet d'inhiber l’apparition du dialogue.
 
 
-\subsectionLabel{Options \emph{quiet} et \emph{verbose}}{optionsQuietVerbose}
+\sectionLabel{Options \emph{quiet} et \emph{verbose}}{optionsQuietVerbose}
 
 
 \optionGGS{-v}, \optionGGS{-{-}verbose} Affiche des messages complémentaires sur le terminal. Par défaut, quand toutes les étapes se déroulent correctement, aucun message n’est affiché.
@@ -55,7 +52,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\subsection{Option de création d'un projet}
+\section{Option de création d'un projet}
 
 
 \optionGGS{-{-}create-project=$nom$} Crée un nouveau projet GALGAS nommé $nom$ dans le répertoire courant.
@@ -63,7 +60,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\subsection{Options contrôlant le compilateur}
+\section{Options contrôlant le compilateur}
 
 
 
@@ -78,7 +75,7 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\subsectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
+\sectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
 
 
 
@@ -92,12 +89,44 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 
 
 
-\optionGGS{-{-}generate-shared-map-automaton-dot-f{}iles} Exporte les automates d'états finis associés à chaque table de symboles de type \ggs!sharedmap!. Les fichiers de sortie sont placés dans le répertoire \texttt{build/helpers}, et portent le nom du type table postfixé par l'extension \texttt{.dot}.
+
+
+\optionGGS{-{-}compile=$nom$} Enchaîne une compilation C++ après une compilation GALGAS sans erreur. Le $nom$ est le nom d'une cible de type \emph{makefile} ; par exemple, \texttt{-{-}compile=makefile-macosx} enchaîne la compilation C++ de la cible \emph{makefile-macosx}.
+
+
+
+
+\section{Options de débogage du compilateur}
+
+Ces options ne sont pas destinées à être utilisées lors de l'exploitation de GALGAS : elles permettent de déboguer le compilateur lui-même, et non pas le fichier source compilé.
+
+
+
+\optionGGS{-{-}generate-many-cpp-files} Engendre le code C++ dans une multitude de fichiers. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
+
+
+\optionGGS{-{-}generate-one-cpp-header} Engendre un seule fichier d'en-tête C++ pour tout le projet. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
+
+
+\optionGGS{-{-}check-gmp} Exécute au démarrage une série de calculs afin de vérifier si la librairie GMP s'exécute correctement.
+
+
+
+
+
+\section{Options de documentation}
+
+Ces options produisent des fichiers qui facilitent la documention \LaTeX de votre compilateur.
+
+\optionGGS{-{-}emit-syntax-diagrams} Cette option provoquent l'émission de fichiers \LaTeX qui contiennent les diagrammes syntaxiques. Son utilisation est détaillée au \refChapterPage{chapitreDiagrammesSyntaxiques}. C'est ainsi que les diagrammes du langage GALGAS présentés au \refChapterPage{grammairesGALGAS} ont été obtenus.
+
 
 
 
 
 \optionGGS{-{-}print-predefined-lexical-actions} Affiche sur la console la liste des routines lexicales prédéfinies.
+
+
 
 
 \optionGGS{-{-}generate-shared-map-automaton-dot-files} Exporte les automates d'états finis associés à chaque table de symboles de type \ggs!sharedmap!. Les fichiers de sortie sont placés dans le répertoire \texttt{build/helpers}, et portent le nom du type table postfixé par l'extension \texttt{.dot}.
@@ -109,34 +138,6 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 \optionGGS{-{-}output-concrete-syntax-tree} Exporte dans un fichier l'arbre syntaxique concret du code source analysé sous la forme d'un graphe dont le format est compatible avec \emph{Graphviz}. Le nom du fichier de sortie est le nom du fichier source doté de l'extension complémentaire \texttt{.dot}.
 
 
-\optionGGS{-{-}compile=$nom$} Enchaîne une compilation C++ après une compilation GALGAS sans erreur. Le $nom$ est le nom d'une cible de type \emph{makefile} ; par exemple, \texttt{-{-}compile=makefile-macosx} enchaîne la compilation C++ de la cible \emph{makefile-macosx}.
-
-
-
-
-\subsection{Options de débogage du compilateur}
-
-Ces options ne sont pas destinées à être utilisées lors de l'exploitation de GALGAS : elles permettent de déboguer le compilateur lui-même, et non pas le fichier source compilé.
-
-
-
-\optionGGS{-{-}trace} Émet un fichier de trace de du compilateur. Format non documenté, utile uniquement pour déboguer le compilateur lui-même.
-
-
-\optionGGS{-{-}generate-many-cpp-files} Engendre le code C++ dans une multitude de fichiers. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
-
-
-\optionGGS{-{-}generate-one-cpp-header} Engendre un seule fichier d'en-tête C++ pour tout le projet. Ceci permet un débogage plus simple du compilateur GALGAS lui-même, mais ralentit ensuite l'étape de compilation C++.
-
-
-\optionGGS{-{-}check-gmp} Exécute au démarrage une série de calculs afin de vérifier si la librairie GMP est correctement compilée.
-
-
-
-
-
-\subsection{Option de documentation} Cette option facilite la documention \LaTeX de votre compilateur.
-
 \optionGGS{-{-}output-keyword-list-file=$nomLexique$:$nomListe$:$colonnes$:$prefixe$:$postfixe$:$fichier$} Cette option permet d'engendrer un fichier au format contenant la liste des mots réservés de votre langage. L'argument qui sui le signe « \texttt{=} » est une séquence de six champs :
 \begin{itemize}
   \item $nomLexique$ est le nom du lexique ;
@@ -147,7 +148,7 @@ Ces options ne sont pas destinées à être utilisées lors de l'exploitation de
   \item $fichier$ est une chaîne qui désigne le fichier de sortie.
 \end{itemize}
 
-Prenons un exemple ; supposons que le composant \ggs!lexique! de votre langage soit :
+Prenons un exemple ; supposons que le composant \ggs!lexique! de votre langage soit~:
 \begin{galgas}
 lexique lex {
   ...
