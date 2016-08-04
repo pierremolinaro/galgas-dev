@@ -20,7 +20,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $method$
-    $type_name$ ?var  @lstring className indexing typeReferenceExtensionMethod
+    $@type$ ?var  @lstring className indexing typeReferenceExtensionMethod
     $identifier$ ?var  @lstring mMethodName indexing extensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ${$

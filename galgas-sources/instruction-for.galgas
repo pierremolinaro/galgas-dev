@@ -101,7 +101,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       typeName = ["" nowhere]
     or
-      $type_name$ ?typeName
+      $@type$ ?typeName
     end
     $identifier$ ?let @lstring constantName
     ioElementList += !typeName !constantName
@@ -147,7 +147,7 @@ syntax extension galgas3InstructionsSyntax {
     select
       typeName = ["" nowhere]
     or
-      $type_name$ ?typeName
+      $@type$ ?typeName
     end
     $identifier$ ?let @lstring enumerationVariable
     $in$
@@ -246,7 +246,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "for" then
         error terminator : "the terminator attribute should be '%for'"
       end

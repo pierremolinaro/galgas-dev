@@ -26,7 +26,7 @@
 
 enum {galgasTemplateScanner_1_,
   galgasTemplateScanner_1_identifier,
-  galgasTemplateScanner_1_type_5F_name,
+  galgasTemplateScanner_1__40_type,
   galgasTemplateScanner_1_literal_5F_double,
   galgasTemplateScanner_1_literal_5F_uint_33__32_,
   galgasTemplateScanner_1_literal_5F_sint_33__32_,

@@ -56,12 +56,12 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
-  $type_name$ ?var  @lstring mAttributeTypeName
+  $@type$ ?var  @lstring mAttributeTypeName
   $identifier$ ?var  @lstring mAttributeName
   var featureList =@lstringlist {}
   repeat
   while
-    $attribute$ ?let @lstring featureName
+    $%attribute$ ?let @lstring featureName
     featureList += !featureName
   end
   ioAttributeInCollectionList +=
@@ -122,7 +122,7 @@ rule <declaration_with_private>
     repeat
     while
       $?$ ?let selector
-      $type_name$ ?var  @lstring typeName
+      $@type$ ?var  @lstring typeName
       @bool isUnused
       select
         isUnused = false

@@ -111,7 +111,7 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
   var optionList =@lstringlist {}
   repeat
   while
-    $attribute$ ?var  @lstring optionName
+    $%attribute$ ?var  @lstring optionName
     optionList += !optionName
   end
   $...$
@@ -183,7 +183,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
-  $terminal$ ?let @lstring sentTerminal
+  $\$terminal\$$ ?let @lstring sentTerminal
   outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
 }
 
@@ -203,7 +203,7 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   end
   @lexicalSendDefaultActionAST lexicalSendDefaultAction
   select
-    $terminal$ ?let @lstring defaultSentTerminal
+    $\$terminal\$$ ?let @lstring defaultSentTerminal
     lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
   or
     $error$
@@ -232,7 +232,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $end$
   select
   or
-    $attribute$ ?let endRepeat
+    $%attribute$ ?let endRepeat
     if endRepeat.string != "repeat" then
       error endRepeat : "the attribute should be '%repeat'"
     end
@@ -284,7 +284,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $end$
   select
   or
-    $attribute$ ?let endSelect
+    $%attribute$ ?let endSelect
     if endSelect.string != "select" then
       error endSelect : "the attribute should be '%select'"
     end
@@ -418,7 +418,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $drop$
   @lstring terminalName
-  $terminal$ ? terminalName
+  $\$terminal\$$ ? terminalName
   ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
 }
 
@@ -439,7 +439,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $identifier$ ? tagName
   $send$
   @lstring terminalName
-  $terminal$ ? terminalName
+  $\$terminal\$$ ? terminalName
   ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
 }
 
@@ -546,13 +546,13 @@ rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
   var optionList =@lstringlist {}
   select
   or
-    $attribute$ ?var  @lstring optionName
+    $%attribute$ ?var  @lstring optionName
     optionList += !optionName
   end
   @lstring terminalSpelling
   select
     $->$
-    $terminal$ ? terminalSpelling
+    $\$terminal\$$ ? terminalSpelling
   or
     terminalSpelling = entrySpelling
   end
@@ -562,7 +562,7 @@ rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
-  $type_name$ ?let @lstring typeName
+  $@type$ ?let @lstring typeName
   $identifier$ ?let @lstring name
   ioLexicalAttributeList += !typeName !name
 }
@@ -570,7 +570,7 @@ rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttribu
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
-  $terminal$ ?let @lstring name indexing terminalDeclaration
+  $\$terminal\$$ ?let @lstring name indexing terminalDeclaration
   var sentAttributeList =@sentLexicalAttributeListAST {}
   repeat
   while
@@ -588,7 +588,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     end
     $identifier$ ? theStyle
   while
-    $attribute$ ?let @lstring optionName
+    $%attribute$ ?let @lstring optionName
     optionList += !optionName
   end
   $error$
@@ -637,7 +637,7 @@ rule <extern_routine_declaration>
       end
       lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
     end
-    $type_name$ ?var @lstring lexicalTypeName
+    $@type$ ?var @lstring lexicalTypeName
     $identifier$ ?var @lstring formalArgumentName
     lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
   end
@@ -669,12 +669,12 @@ rule <extern_function_declaration>
     if selector.string != "" then
       error selector : "the selector should be '?'"
     end
-    $type_name$ ?var @lstring lexicalTypeName
+    $@type$ ?var @lstring lexicalTypeName
     $identifier$ ?var @lstring formalArgumentName
     lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
   end
   $->$
-  $type_name$ ?var @lstring returnedTypeName
+  $@type$ ?var @lstring returnedTypeName
   ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
 }
 

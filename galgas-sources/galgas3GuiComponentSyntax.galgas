@@ -65,7 +65,7 @@ rule <declaration>
         end
         var terminalList =@terminalLabelListAST {}
         repeat
-          $terminal$ ?var  @lstring terminal
+          $\$terminal\$$ ?var  @lstring terminal
           @uint displayFlags
           select
             displayFlags = 0 # Default

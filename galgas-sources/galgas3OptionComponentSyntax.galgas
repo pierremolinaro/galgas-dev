@@ -39,7 +39,7 @@ rule <declaration>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
-  $type_name$ ?var @lstring mOptionTypeName
+  $@type$ ?var @lstring mOptionTypeName
   $identifier$ ?var @lstring mOptionInternalName
   $:$
   $literal_char$ ?var @lchar mOptionInvocationLetter

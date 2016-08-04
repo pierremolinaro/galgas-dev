@@ -52,7 +52,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "if" then
         error terminator : "the terminator attribute should be '%if'"
       end

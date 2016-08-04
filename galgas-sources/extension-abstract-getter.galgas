@@ -20,12 +20,12 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $abstract$
     $getter$
-    $type_name$ ?var  @lstring className indexing typeReferenceAbstractExtensionGetter
+    $@type$ ?var  @lstring className indexing typeReferenceAbstractExtensionGetter
     $identifier$ ?var  @lstring mGetterName indexing abstractExtensionGetterDefinition
     @formalInputParameterListAST mFormalInputParameterList
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
-    $type_name$ ?var  @lstring mReturnedTypeName
+    $@type$ ?var  @lstring mReturnedTypeName
     $identifier$ ? *
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined

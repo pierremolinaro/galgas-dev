@@ -34,7 +34,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     let endOf_repeat_instruction = @location.here
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "repeat" then
         error terminator : "the terminator attribute should be '%repeat'"
       end

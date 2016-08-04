@@ -45,7 +45,7 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
       $!$ ?selector
       mFormalParameterPassingMode = @formalArgumentPassingModeAST. argumentOut
     end
-    $type_name$ ?var @lstring mFormalParameterTypeName
+    $@type$ ?var @lstring mFormalParameterTypeName
     @bool mIsUnused
     select
       mIsUnused = false
@@ -157,7 +157,7 @@ rule <actual_parameter_list>
     select
       declarationTypeName = ["" nowhere]
     or
-      $type_name$ ?declarationTypeName
+      $@type$ ?declarationTypeName
     end
     $identifier$ ?let inputActualParameterName
     outActualParameterList += !@inputActualNewVariableParameterAST.new {
@@ -166,7 +166,7 @@ rule <actual_parameter_list>
       !inputActualParameterName}
   while  # input parameter, new variable, explicit type
     $?$ ?let selector
-    $type_name$ ?let @lstring declarationTypeName
+    $@type$ ?let @lstring declarationTypeName
     $identifier$ ?let inputActualParameterName
     outActualParameterList += !@inputActualNewVariableParameterAST.new {
       !selector
@@ -180,7 +180,7 @@ rule <actual_parameter_list>
     select
       declarationTypeName = ["" nowhere]
     or
-      $type_name$ ?declarationTypeName
+      $@type$ ?declarationTypeName
     end
     @bool markedAsUnused
     select
@@ -217,7 +217,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
       $let$
       isConstant = true
     end
-    $type_name$ ?var @lstring mFormalParameterTypeName
+    $@type$ ?var @lstring mFormalParameterTypeName
     @bool mIsUnused
     select
       mIsUnused = false

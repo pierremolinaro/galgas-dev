@@ -53,12 +53,12 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $map$
   #--- Map type name
-    $type_name$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+    $@type$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
   #--- Map attributes
     @lstringlist mapAttributeList = {}
     repeat
     while
-      $attribute$ ?let attribute
+      $%attribute$ ?let attribute
       mapAttributeList += !attribute
     end
   #--- Map properties

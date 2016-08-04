@@ -20,7 +20,7 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $method$
-    $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
+    $@type$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionMethod
     $identifier$ ?var  @lstring mMethodName indexing overrideAbstractExtensionMethodDefinition
     <formal_parameter_list> ?let @formalParameterListAST formalParameterList
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionMethodAST.new {

@@ -39,6 +39,8 @@ func escapeForTex ?let @string inString -> @string result {
       result += "\\}"
     elsif c == '&' then
       result += "\\&"
+    elsif c == '$' then
+      result += "\\$"
     elsif c == '^' then
       result += "\\verb=^="
     elsif c == '%' then

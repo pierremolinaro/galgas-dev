@@ -272,7 +272,7 @@ rule '0'->'9' {
     convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError )
     send $literal_bigint$
   case '.' :
-    enterCharacterIntoString (!?tokenString !'.' )
+    enterCharacterIntoString (!?tokenString !'.')
     repeat
     while '0'->'9' :
       enterCharacterIntoString (!?tokenString !* )
@@ -296,8 +296,8 @@ $..<$  style delimitersStyle error message "the '..<' delimitor"
 rule '.' {
   select
   case '0'->'9' :
-    enterCharacterIntoString (!?tokenString !'0' )
-    enterCharacterIntoString (!?tokenString !'.' )
+    enterCharacterIntoString (!?tokenString !'0')
+    enterCharacterIntoString (!?tokenString !'.')
     enterCharacterIntoString (!?tokenString !* )
     repeat
     while '0'->'9' :
@@ -321,7 +321,7 @@ rule '.' {
 
 # -------------------------- Type Name -----------------------------
 
-$type_name$ ! tokenString  style typeNameStyle error message "a type name (@...)"
+$@type$ ! tokenString  style typeNameStyle error message "a type name (@...)"
 
 message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
 
@@ -348,12 +348,12 @@ rule '@' {
   default
     error incorrectTypeNameError
   end
-  send $type_name$ 
+  send $@type$ 
 }
 
 # -------------------------- Attribute -----------------------------
 
-$attribute$ ! tokenString  style attributeStyle error message "an attribute (%...)"
+$%attribute$ ! tokenString  style attributeStyle error message "an attribute (%...)"
 
 message attributeError : "in an attribute name, a letter or a digit should follow the '%' character"
 
@@ -367,7 +367,7 @@ rule '%' {
   default
     error attributeError
   end
-  send $attribute$ 
+  send $%attribute$ 
 }
 
 #--------------------------------- Character constant ------------------------------------
@@ -392,21 +392,21 @@ rule '\'' {
   case '\\' :
     select
     case 'f' :
-      enterCharacterIntoCharacter (!?charValue !'\f' )
+      enterCharacterIntoCharacter (!?charValue !'\f')
     case 'n' :
-      enterCharacterIntoCharacter (!?charValue !'\n' )
+      enterCharacterIntoCharacter (!?charValue !'\n')
     case 'r' :
-      enterCharacterIntoCharacter (!?charValue !'\r' )
+      enterCharacterIntoCharacter (!?charValue !'\r')
     case 't' :
-      enterCharacterIntoCharacter (!?charValue !'\t' )
+      enterCharacterIntoCharacter (!?charValue !'\t')
     case 'v' :
-      enterCharacterIntoCharacter (!?charValue !'\v' )
+      enterCharacterIntoCharacter (!?charValue !'\v')
     case '\\' :
-      enterCharacterIntoCharacter (!?charValue !'\\' )
+      enterCharacterIntoCharacter (!?charValue !'\\')
     case '0' :
-      enterCharacterIntoCharacter (!?charValue !'\0' )
+      enterCharacterIntoCharacter (!?charValue !'\0')
     case '\'' :
-      enterCharacterIntoCharacter (!?charValue !'\'' )
+      enterCharacterIntoCharacter (!?charValue !'\'')
     case 'u' :
       select
       case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
@@ -506,7 +506,7 @@ rule '\'' {
 }
 
 #----------------------- Grammar terminal symbol ---------------------------
-$terminal$ ! tokenString  style terminalStyle error message "a terminal symbol ($...$)"
+$\$terminal\$$ ! tokenString  style terminalStyle error message "a terminal symbol ($...$)"
 
 message incorrect_terminal_start : "incorrect terminal start"
 
@@ -514,10 +514,35 @@ message incorrect_terminal_end : "terminal does not end with '$'"
 
 rule '$' {
   select
-  case '!' -> '#' | '%' -> '\uFFFD'  : # All printable characters, but '$'
+  case "\\\\" :
+    enterCharacterIntoString (!?tokenString !'\\')
     repeat
-      enterCharacterIntoString (!?tokenString !* )
+    while "\\\\" :
+      enterCharacterIntoString (!?tokenString !'\\')
+    while "\\$" :
+      enterCharacterIntoString (!?tokenString !'$')
     while '!' -> '#' | '%' -> '\uFFFD' :
+      enterCharacterIntoString (!?tokenString !* )
+    end
+  case "\\$" :
+    enterCharacterIntoString (!?tokenString !'$')
+    repeat
+    while "\\\\" :
+      enterCharacterIntoString (!?tokenString !'\\')
+    while "\\$" :
+      enterCharacterIntoString (!?tokenString !'$')
+    while '!' -> '#' | '%' -> '\uFFFD' :
+      enterCharacterIntoString (!?tokenString !* )
+    end
+  case '!' -> '#' | '%' -> '\uFFFD'  : # All printable characters, but '$'
+    enterCharacterIntoString (!?tokenString !* )
+    repeat
+    while "\\\\" :
+      enterCharacterIntoString (!?tokenString !'\\')
+    while "\\$" :
+      enterCharacterIntoString (!?tokenString !'$')
+    while '!' -> '#' | '%' -> '\uFFFD' :
+      enterCharacterIntoString (!?tokenString !* )
     end
   default
     error incorrect_terminal_start
@@ -527,7 +552,7 @@ rule '$' {
   default
     error incorrect_terminal_end
   end
-  send $terminal$ 
+  send $\$terminal\$$ 
 }
 
 # ----------------------------- Delimitors ---------------------------------------
@@ -631,7 +656,7 @@ rule '!' {
 $<$  style delimitersStyle error message "the '<' delimitor"
 $<=$  style delimitersStyle error message "the '<=' delimitor"
 $<<$  style delimitersStyle error message "the '<<' delimitor"
-$non_terminal_symbol$ ! tokenString  style nonTerminalStyle error message "a non terminal symbol <...>"
+$<non_terminal>$ ! tokenString  style nonTerminalStyle error message "a non terminal symbol <...>"
 
 rule '<' {
   tag onlyInfDelimiter
@@ -647,7 +672,7 @@ rule '<' {
     end
     select
     case '>' :
-      send $non_terminal_symbol$
+      send $<non_terminal>$
     default
       rewind onlyInfDelimiter send $<$
     end
@@ -668,23 +693,23 @@ rule '"' {
   while '\\' :
     select
     case 'f' :
-      enterCharacterIntoString (!?tokenString !'\f' )
+      enterCharacterIntoString (!?tokenString !'\f')
     case 'n' :
-      enterCharacterIntoString (!?tokenString !'\n' )
+      enterCharacterIntoString (!?tokenString !'\n')
     case 'r' :
-      enterCharacterIntoString (!?tokenString !'\r' )
+      enterCharacterIntoString (!?tokenString !'\r')
     case 't' :
-      enterCharacterIntoString (!?tokenString !'\t' )
+      enterCharacterIntoString (!?tokenString !'\t')
     case 'v' :
-      enterCharacterIntoString (!?tokenString !'\v' )
+      enterCharacterIntoString (!?tokenString !'\v')
     case '\\' :
-      enterCharacterIntoString (!?tokenString !'\\' )
+      enterCharacterIntoString (!?tokenString !'\\')
     case '"' :
-      enterCharacterIntoString (!?tokenString !'"' )
+      enterCharacterIntoString (!?tokenString !'"')
     case '\'' :
-      enterCharacterIntoString (!?tokenString !'\'' )
+      enterCharacterIntoString (!?tokenString !'\'')
     case '?' :
-      enterCharacterIntoString (!?tokenString !'?' )
+      enterCharacterIntoString (!?tokenString !'?')
     case '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :

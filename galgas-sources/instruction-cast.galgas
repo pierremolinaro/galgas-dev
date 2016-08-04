@@ -40,7 +40,7 @@ syntax extension galgas3InstructionsSyntax {
       $>$
       kind = .strictlyInherited
     end
-    $type_name$ ?let mTypeName
+    $@type$ ?let mTypeName
     @lstring mConstantVarName # Empty string if no constant var
     select
       $identifier$ ?mConstantVarName
@@ -103,7 +103,7 @@ syntax extension galgas3InstructionsSyntax {
     $end$
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "cast" then
         error terminator : "the terminator attribute should be '%cast'"
       end

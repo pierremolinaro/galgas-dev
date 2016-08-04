@@ -61,7 +61,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
     $extern$
-    $type_name$ ?var  @lstring externTypeName indexing externTypeDefinition
+    $@type$ ?var  @lstring externTypeName indexing externTypeDefinition
     ${$
       @string cppPredeclarationCode = ""
       repeat
@@ -91,12 +91,12 @@ syntax extension galgas3DeclarationsSyntax {
       repeat
       while
         $?$ ?let selector
-        $type_name$ ?var  @lstring argumentTypeName
+        $@type$ ?var  @lstring argumentTypeName
         $identifier$ ?var  @lstring argumentName
         argumentTypeList += !selector !argumentTypeName !argumentName
       end
       $->$
-      $type_name$ ?var  @lstring resultTypeName
+      $@type$ ?var  @lstring resultTypeName
       externTypeConstructorList +=
         !constructorName
         !resultTypeName
@@ -108,12 +108,12 @@ syntax extension galgas3DeclarationsSyntax {
       repeat
       while
         $?$ ?let selector
-        $type_name$ ?var  @lstring argumentTypeName
+        $@type$ ?var  @lstring argumentTypeName
         $identifier$ ?var  @lstring argumentName
         argumentTypeList += !selector !argumentTypeName !argumentName
       end
       $->$
-      $type_name$ ?var  @lstring resultTypeName
+      $@type$ ?var  @lstring resultTypeName
       externTypeGetterList +=
         !getterName
         !resultTypeName

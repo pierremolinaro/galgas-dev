@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
       typeNameForCasting = ["" nowhere]
     or
       $as$
-      $type_name$ ?typeNameForCasting
+      $@type$ ?typeNameForCasting
     end
     $identifier$ ?let mSetterName
     <actual_parameter_list> ?let @actualParameterListAST actualParameterList

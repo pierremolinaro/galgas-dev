@@ -45,7 +45,7 @@ syntax extension galgas3InstructionsSyntax {
   #···················································································································
   
   rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
-    $type_name$ ?let className
+    $@type$ ?let className
     @lstring localConstant
     select
       localConstant = @lstring.new {!"" !@location.here}
@@ -110,7 +110,7 @@ syntax extension galgas3InstructionsSyntax {
     let @location endOf_match_instruction = @location.here
     select
     or
-      $attribute$ ?let @lstring terminator
+      $%attribute$ ?let @lstring terminator
       if terminator.string != "match" then
         error terminator : "the terminator attribute should be '%match'"
       end

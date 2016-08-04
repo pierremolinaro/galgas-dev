@@ -91,13 +91,13 @@ syntax extension galgas3DeclarationsSyntax {
   {
     $sharedmap$
   #--- Map type name
-    $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
+    $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
     let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
   #--- Map attributes
     @lstringlist mapAttributeList = {}
     repeat
     while
-      $attribute$ ?let attribute
+      $%attribute$ ?let attribute
       mapAttributeList += !attribute
     end
   #--- Map properties
@@ -168,7 +168,7 @@ syntax extension galgas3DeclarationsSyntax {
         $warning$
         isError = false
       end
-      $attribute$ ?let attributeName
+      $%attribute$ ?let attributeName
       $literal_string$ ?let messageText
       sharedMapAttributeListAST += !attributeName !isError !messageText
     while

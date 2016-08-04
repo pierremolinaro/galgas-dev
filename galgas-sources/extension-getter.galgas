@@ -22,12 +22,12 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $getter$
-    $type_name$ ?var  @lstring className indexing typeReferenceExtensionGetter
+    $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
     @formalInputParameterListAST mFormalInputParameterList
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
-    $type_name$ ?var  @lstring mReturnedTypeName
+    $@type$ ?var  @lstring mReturnedTypeName
     $identifier$ ?var  @lstring mReturnedVariableName
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList

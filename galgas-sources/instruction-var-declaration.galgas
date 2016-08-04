@@ -18,7 +18,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $var$
-    $type_name$ ?let typeName
+    $@type$ ?let typeName
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
   }
@@ -26,7 +26,7 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $type_name$ ?let typeName
+    $@type$ ?let typeName
     $identifier$ ?let variableName
     outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
   }

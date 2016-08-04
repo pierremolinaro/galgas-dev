@@ -125,7 +125,7 @@ rule  <declaration_with_private>
   var isOnce = false
   select
   or
-    $attribute$ ?let @lstring onceQualifier
+    $%attribute$ ?let @lstring onceQualifier
     if onceQualifier.string != "once" then
       error onceQualifier : "the only attribute allowed here is '%once'"
     else
@@ -138,7 +138,7 @@ rule  <declaration_with_private>
     error functionName: "an 'once' function should has no argument"
   end
   $->$
-  $type_name$ ?let resultTypeName
+  $@type$ ?let resultTypeName
   $identifier$ ?let resultVariableName
   ${$
   <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
@@ -184,7 +184,7 @@ rule <declaration>
   @formalInputParameterListAST formalInputParameterList
   <formal_input_parameter_list> ? formalInputParameterList
   $->$
-  $type_name$ ?let resultTypeName
+  $@type$ ?let resultTypeName
   $identifier$ ?let resultVariableName
   ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
     !false # Is not predefined
@@ -209,7 +209,7 @@ rule <declaration>
 
 rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $var$
-  $type_name$ ?let typeName
+  $@type$ ?let typeName
   $identifier$ ?let variableName
   $=$
   <expression> ?let @semanticExpressionAST sourceExpression
@@ -225,7 +225,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-  $type_name$ ?let typeName
+  $@type$ ?let typeName
   $identifier$ ?let variableName
   $=$
   <expression> ?let @semanticExpressionAST sourceExpression
@@ -263,12 +263,12 @@ rule <syntax_directed_translation_result>
     $*$
     outResult = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
   or
-    $type_name$ ?let actualParameterTypeName
+    $@type$ ?let actualParameterTypeName
     $identifier$ ?let actualParameterName
     outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
   or
     $let$
-    $type_name$ ?let actualParameterTypeName
+    $@type$ ?let actualParameterTypeName
     $identifier$ ?let actualParameterName
     outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
   or
@@ -301,7 +301,7 @@ rule <actual_input_parameter>
     select
       actualParameterTypeName = ["" nowhere]
     or
-      $type_name$ ?actualParameterTypeName
+      $@type$ ?actualParameterTypeName
     end
     $identifier$ ?let actualParameterName
     outActualInputParameter = @inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
@@ -312,7 +312,7 @@ rule <actual_input_parameter>
     select
       actualParameterTypeName = ["" nowhere]
     or
-      $type_name$ ?actualParameterTypeName
+      $@type$ ?actualParameterTypeName
     end
     $identifier$ ?let actualParameterName
     outActualInputParameter = @inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
