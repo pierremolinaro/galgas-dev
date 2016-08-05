@@ -2110,7 +2110,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_iss
         const enumGalgasBool test_1 = var_hasFixItRemove_1596.boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          fixItArray2.addObject (C_FixItDescription (kFixItRemove, "", "")) ;
+          fixItArray2.addObject (C_FixItDescription (kFixItRemove, "")) ;
           inCompiler->emitSemanticWarning (var_errorLocation_1655, GALGAS_string ("duplicated action"), fixItArray2  COMMA_SOURCE_FILE ("instruction-error.galgas", 47)) ;
         }else if (kBoolFalse == test_1) {
           outArgument_outFixitListAST.addAssign_operation (GALGAS_fixitElementAST::constructor_fixItRemove (SOURCE_FILE ("instruction-error.galgas", 49))  COMMA_SOURCE_FILE ("instruction-error.galgas", 49)) ;
@@ -7965,7 +7965,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     GALGAS_lstring var_idf_1635 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 31)) ;
     TC_Array <C_FixItDescription> fixItArray0 ;
-    fixItArray0.addObject (C_FixItDescription (kFixItRemove, "", "")) ;
+    fixItArray0.addObject (C_FixItDescription (kFixItRemove, "")) ;
     inCompiler->emitSemanticWarning (var_idf_1635.getter_location (SOURCE_FILE ("extension-abstract-getter.galgas", 32)), GALGAS_string ("an identifier is no longer required here"), fixItArray0  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 32)) ;
   } break ;
   default:
@@ -8315,7 +8315,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     GALGAS_lstring var_idf_1669 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 31)) ;
     TC_Array <C_FixItDescription> fixItArray0 ;
-    fixItArray0.addObject (C_FixItDescription (kFixItRemove, "", "")) ;
+    fixItArray0.addObject (C_FixItDescription (kFixItRemove, "")) ;
     inCompiler->emitSemanticWarning (var_idf_1669.getter_location (SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 32)), GALGAS_string ("an identifier is no longer required here"), fixItArray0  COMMA_SOURCE_FILE ("extension-overriding-abstract-getter.galgas", 32)) ;
   } break ;
   case 2: {

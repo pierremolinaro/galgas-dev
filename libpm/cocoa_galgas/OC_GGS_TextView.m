@@ -433,12 +433,7 @@
   //--- Display menu
     menu.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]] ;
     menu.allowsContextMenuPlugIns = NO ;
-    [NSMenu
-      popUpContextMenu:menu
-      withEvent:inEvent
-      forView:self
-//      withFont:nil
-    ] ;
+    [NSMenu popUpContextMenu:menu withEvent:inEvent forView:self] ;
   }else{
     [super mouseDown:inEvent] ;
   }

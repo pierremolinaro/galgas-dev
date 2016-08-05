@@ -178,25 +178,13 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
           result << "Fix-it: remove \"" << token << "\"\n" ;
           break ;
         case kFixItReplace :
-          result << "Fix-it: replace \"" << token << "\" with \"" << d.actionString() << "\"" ;
-          if (d.commentString().length () > 0) {
-            result << " (" << d.commentString() << ")" ;
-          }
-          result << "\n" ;
+          result << "Fix-it: replace \"" << token << "\" with \"" << d.actionString() << "\"\n" ;
           break ;
         case kFixItInsertBefore :
-          result << "Fix-it: before \"" << token << "\", insert \"" << d.actionString() << "\"" ;
-          if (d.commentString().length () > 0) {
-            result << " (" << d.commentString() << ")" ;
-          }
-          result << "\n" ;
+          result << "Fix-it: before \"" << token << "\", insert \"" << d.actionString() << "\"\n" ;
           break ;
         case kFixItInsertAfter :
-          result << "Fix-it: after \"" << token << "\", insert \"" << d.actionString() << "\"" ;
-          if (d.commentString().length () > 0) {
-            result << " (" << d.commentString() << ")" ;
-          }
-          result << "\n" ;
+          result << "Fix-it: after \"" << token << "\", insert \"" << d.actionString() << "\"\n" ;
           break ;
         }
       }

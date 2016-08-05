@@ -316,7 +316,7 @@ void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
 //--- Add nearest keys, if any
   TC_Array <C_FixItDescription> fixItArray ;
   for (int32_t i=0 ; i<ioNearestKeyArray.count () ; i++) {
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE), "")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE))) ;
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mAttribute_location ;
