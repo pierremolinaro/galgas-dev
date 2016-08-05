@@ -76,6 +76,7 @@ syntax extension galgas3InstructionsSyntax {
         !errorLocationExpression
         !@literalStringExpressionAST.new {!instructionLocation!{!"cast instruction run-time error"}}
         !{}
+        !{}
       }
     end
   }

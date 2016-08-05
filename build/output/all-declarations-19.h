@@ -11,6 +11,29 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                  Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_string (*enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) (const class cPtr_lexicalSendDefaultActionAST * inObject,
+                                                                                                         class GALGAS_string inArgument0,
+                                                                                                         class C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_generateDefaultSendCode (const int32_t inClassIndex,
+                                                   enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string callExtensionGetter_generateDefaultSendCode (const class cPtr_lexicalSendDefaultActionAST * inObject,
+                                                                 GALGAS_string in_inScannerClassName,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                     Abstract extension getter '@lexicalInstructionAST generateInstructionCode'                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -832,6 +855,33 @@ void callExtensionMethod_generateCollectionElementCode (const class cPtr_abstrac
                                                         const GALGAS_string constin_inCppTargetVar,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Extension method '@fixitListAST enterFixItListInSemanticContext'                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void extensionMethod_enterFixItListInSemanticContext (const class GALGAS_fixitListAST inObject,
+                                                      class GALGAS_unifiedTypeMap & io_ioTypeMap,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Extension method '@fixitListForGeneration generateFixIt'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void extensionMethod_generateFixIt (const class GALGAS_fixitListForGeneration inObject,
+                                    class GALGAS_stringset & io_ioInclusionSet,
+                                    class GALGAS_uint & io_ioTemporaryVariableIndex,
+                                    class GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                    const class GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
+                                    class GALGAS_string & io_ioGeneratedCode,
+                                    class GALGAS_string & out_outFixItArrayCppName,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

@@ -71,22 +71,19 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "enum",
   "error",
   "extension",
-  "extends",
   "extern",
   "false",
-  "feature",
   "filewrapper",
+  "fixit",
   "for",
   "foreach",
   "func",
-  "function",
   "getter",
   "grammar",
   "graph",
   "gui",
   "here",
   "if",
-  "import",
   "in",
   "index",
   "indexing",
@@ -119,14 +116,10 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "remove",
   "replace",
   "repeat",
-  "rewind",
-  "root",
-  "routine",
   "rule",
   "search",
   "select",
   "self",
-  "semantics",
   "send",
   "setter",
   "sortedlist",
@@ -145,7 +138,8 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "warning",
   "when",              
   "while",
-  "with" }
+  "with"
+}
 
 rule isUnicodeLetter {
   repeat

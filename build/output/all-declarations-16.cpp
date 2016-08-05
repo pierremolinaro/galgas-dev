@@ -11258,6 +11258,9 @@ typeComparisonResult cPtr_errorInstructionForGeneration::dynamicObjectCompare (c
   if (kOperandEqual == result) {
     result = mAttribute_mBuiltVariableCppNameList.objectCompare (p->mAttribute_mBuiltVariableCppNameList) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mFixitListForGeneration.objectCompare (p->mAttribute_mFixitListForGeneration) ;
+  }
   return result ;
 }
 
@@ -11298,11 +11301,12 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 GALGAS_errorInstructionForGeneration GALGAS_errorInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mErrorExpression,
-                                                                                            const GALGAS_stringlist & inAttribute_mBuiltVariableCppNameList
+                                                                                            const GALGAS_stringlist & inAttribute_mBuiltVariableCppNameList,
+                                                                                            const GALGAS_fixitListForGeneration & inAttribute_mFixitListForGeneration
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_errorInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mErrorExpression.isValid () && inAttribute_mBuiltVariableCppNameList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_errorInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mErrorExpression, inAttribute_mBuiltVariableCppNameList COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mErrorExpression.isValid () && inAttribute_mBuiltVariableCppNameList.isValid () && inAttribute_mFixitListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_errorInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mErrorExpression, inAttribute_mBuiltVariableCppNameList, inAttribute_mFixitListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -11380,19 +11384,39 @@ GALGAS_stringlist cPtr_errorInstructionForGeneration::getter_mBuiltVariableCppNa
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration GALGAS_errorInstructionForGeneration::getter_mFixitListForGeneration (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_errorInstructionForGeneration * p = (const cPtr_errorInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_errorInstructionForGeneration) ;
+    result = p->mAttribute_mFixitListForGeneration ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration cPtr_errorInstructionForGeneration::getter_mFixitListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFixitListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                               Pointer class for @errorInstructionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_errorInstructionForGeneration::cPtr_errorInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mErrorExpression,
-                                                                        const GALGAS_stringlist & in_mBuiltVariableCppNameList
+                                                                        const GALGAS_stringlist & in_mBuiltVariableCppNameList,
+                                                                        const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mReceiverExpression (in_mReceiverExpression),
 mAttribute_mErrorExpression (in_mErrorExpression),
-mAttribute_mBuiltVariableCppNameList (in_mBuiltVariableCppNameList) {
+mAttribute_mBuiltVariableCppNameList (in_mBuiltVariableCppNameList),
+mAttribute_mFixitListForGeneration (in_mFixitListForGeneration) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11411,6 +11435,8 @@ void cPtr_errorInstructionForGeneration::description (C_String & ioString,
   mAttribute_mErrorExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mBuiltVariableCppNameList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mFixitListForGeneration.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -11418,7 +11444,7 @@ void cPtr_errorInstructionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_errorInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_errorInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mErrorExpression, mAttribute_mBuiltVariableCppNameList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_errorInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mErrorExpression, mAttribute_mBuiltVariableCppNameList, mAttribute_mFixitListForGeneration COMMA_THERE)) ;
   return ptr ;
 }
 

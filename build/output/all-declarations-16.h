@@ -5158,7 +5158,8 @@ class GALGAS_errorInstructionForGeneration : public GALGAS_semanticInstructionFo
   public : static class GALGAS_errorInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand1,
                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                              const class GALGAS_stringlist & inOperand3
+                                                                              const class GALGAS_stringlist & inOperand3,
+                                                                              const class GALGAS_fixitListForGeneration & inOperand4
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -5173,6 +5174,8 @@ class GALGAS_errorInstructionForGeneration : public GALGAS_semanticInstructionFo
   public : VIRTUAL_IN_DEBUG class GALGAS_stringlist getter_mBuiltVariableCppNameList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mErrorExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_fixitListForGeneration getter_mFixitListForGeneration (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
 
@@ -5201,12 +5204,14 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
   public : GALGAS_semanticExpressionForGeneration mAttribute_mErrorExpression ;
   public : GALGAS_stringlist mAttribute_mBuiltVariableCppNameList ;
+  public : GALGAS_fixitListForGeneration mAttribute_mFixitListForGeneration ;
 
 //--- Constructor
   public : cPtr_errorInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                const GALGAS_semanticExpressionForGeneration & in_mErrorExpression,
-                                               const GALGAS_stringlist & in_mBuiltVariableCppNameList
+                                               const GALGAS_stringlist & in_mBuiltVariableCppNameList,
+                                               const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -5217,6 +5222,7 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mErrorExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist getter_mBuiltVariableCppNameList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_fixitListForGeneration getter_mFixitListForGeneration (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

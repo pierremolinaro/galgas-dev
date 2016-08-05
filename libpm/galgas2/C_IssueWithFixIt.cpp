@@ -24,6 +24,24 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_FixItDescription::C_FixItDescription (void) :
+mKind (kFixItRemove),
+mActionString (""),
+mCommentString ("") {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_FixItDescription::C_FixItDescription (const EnumFixItKind inKind,
+                                        const C_String & inActionString,
+                                        const C_String & inCommentString) :
+mKind (inKind),
+mActionString (inActionString),
+mCommentString (inCommentString) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 C_IssueWithFixIt::C_IssueWithFixIt (void) :
 mStartLocation (),
 mEndLocation () {
@@ -32,9 +50,11 @@ mEndLocation () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_IssueWithFixIt::C_IssueWithFixIt (const C_LocationInSource & inStartLocation,
-                                    const C_LocationInSource & inEndLocation) :
+                                    const C_LocationInSource & inEndLocation,
+                                    const TC_Array <C_FixItDescription> & inFixItArray) :
 mStartLocation (inStartLocation),
-mEndLocation (inEndLocation) {
+mEndLocation (inEndLocation),
+mFixItArray (inFixItArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -5,6 +5,7 @@
 class @warningInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mLocationExpression
   @semanticExpressionAST mMessageExpression
+  @fixitListAST mFixitListAST
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -22,10 +23,12 @@ syntax extension galgas3InstructionsSyntax {
     <expression> ?var @semanticExpressionAST mReceiverExpression
     $:$
     <expression> ?let @semanticExpressionAST mWarningExpression
+    <issue_fixit> ?let @fixitListAST fixitListAST
     outInstruction = @warningInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
       !mWarningExpression
+      !fixitListAST
     }
   }
   
@@ -37,11 +40,10 @@ syntax extension galgas3InstructionsSyntax {
 #! CONTEXT
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @warningInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @warningInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
   [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -57,17 +59,20 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !mLocationExpression
     !mMessageExpression
+    !mFixitListAST
     !mInstructionLocation
     !"warning"
     !?ioVariableMap
     ?let locationExpression
     ?let messageExpression
+    ?let fixitListForGeneration
   )
 #--- Generate instruction
   ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
     !mInstructionLocation
     !locationExpression
     !messageExpression
+    !fixitListForGeneration
   }
 }
 
@@ -79,6 +84,7 @@ class @warningInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
   @semanticExpressionForGeneration mWarningExpression
+  @fixitListForGeneration mFixitListForGeneration
 }
 
 #······················································································································*

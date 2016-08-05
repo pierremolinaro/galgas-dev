@@ -225,20 +225,17 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_error = "the 'erro
 //--- Syntax error message for terminal '$extension$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_extension = "the 'extension' keyword" ;
 
-//--- Syntax error message for terminal '$extends$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_extends = "the 'extends' keyword" ;
-
 //--- Syntax error message for terminal '$extern$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_extern = "the 'extern' keyword" ;
 
 //--- Syntax error message for terminal '$false$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_false = "the 'false' keyword" ;
 
-//--- Syntax error message for terminal '$feature$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_feature = "the 'feature' keyword" ;
-
 //--- Syntax error message for terminal '$filewrapper$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_filewrapper = "the 'filewrapper' keyword" ;
+
+//--- Syntax error message for terminal '$fixit$' :
+static const char * gSyntaxErrorMessage_galgasTemplateScanner_fixit = "the 'fixit' keyword" ;
 
 //--- Syntax error message for terminal '$for$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_for = "the 'for' keyword" ;
@@ -248,9 +245,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_foreach = "the 'fo
 
 //--- Syntax error message for terminal '$func$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_func = "the 'func' keyword" ;
-
-//--- Syntax error message for terminal '$function$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_function = "the 'function' keyword" ;
 
 //--- Syntax error message for terminal '$getter$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_getter = "the 'getter' keyword" ;
@@ -269,9 +263,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_here = "the 'here'
 
 //--- Syntax error message for terminal '$if$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_if = "the 'if' keyword" ;
-
-//--- Syntax error message for terminal '$import$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_import = "the 'import' keyword" ;
 
 //--- Syntax error message for terminal '$in$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_in = "the 'in' keyword" ;
@@ -366,15 +357,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_replace = "the 're
 //--- Syntax error message for terminal '$repeat$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_repeat = "the 'repeat' keyword" ;
 
-//--- Syntax error message for terminal '$rewind$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_rewind = "the 'rewind' keyword" ;
-
-//--- Syntax error message for terminal '$root$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_root = "the 'root' keyword" ;
-
-//--- Syntax error message for terminal '$routine$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_routine = "the 'routine' keyword" ;
-
 //--- Syntax error message for terminal '$rule$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_rule = "the 'rule' keyword" ;
 
@@ -386,9 +368,6 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_select = "the 'sel
 
 //--- Syntax error message for terminal '$self$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_self = "the 'self' keyword" ;
-
-//--- Syntax error message for terminal '$semantics$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_semantics = "the 'semantics' keyword" ;
 
 //--- Syntax error message for terminal '$send$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_send = "the 'send' keyword" ;
@@ -557,7 +536,7 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner__26__2F_ = "the '&
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [152] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [145] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgasTemplateScanner_identifier,
     gSyntaxErrorMessage_galgasTemplateScanner__40_type,
     gSyntaxErrorMessage_galgasTemplateScanner_double_2E_xxx,
@@ -600,22 +579,19 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_enum,
     gSyntaxErrorMessage_galgasTemplateScanner_error,
     gSyntaxErrorMessage_galgasTemplateScanner_extension,
-    gSyntaxErrorMessage_galgasTemplateScanner_extends,
     gSyntaxErrorMessage_galgasTemplateScanner_extern,
     gSyntaxErrorMessage_galgasTemplateScanner_false,
-    gSyntaxErrorMessage_galgasTemplateScanner_feature,
     gSyntaxErrorMessage_galgasTemplateScanner_filewrapper,
+    gSyntaxErrorMessage_galgasTemplateScanner_fixit,
     gSyntaxErrorMessage_galgasTemplateScanner_for,
     gSyntaxErrorMessage_galgasTemplateScanner_foreach,
     gSyntaxErrorMessage_galgasTemplateScanner_func,
-    gSyntaxErrorMessage_galgasTemplateScanner_function,
     gSyntaxErrorMessage_galgasTemplateScanner_getter,
     gSyntaxErrorMessage_galgasTemplateScanner_grammar,
     gSyntaxErrorMessage_galgasTemplateScanner_graph,
     gSyntaxErrorMessage_galgasTemplateScanner_gui,
     gSyntaxErrorMessage_galgasTemplateScanner_here,
     gSyntaxErrorMessage_galgasTemplateScanner_if,
-    gSyntaxErrorMessage_galgasTemplateScanner_import,
     gSyntaxErrorMessage_galgasTemplateScanner_in,
     gSyntaxErrorMessage_galgasTemplateScanner_index,
     gSyntaxErrorMessage_galgasTemplateScanner_indexing,
@@ -647,14 +623,10 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_remove,
     gSyntaxErrorMessage_galgasTemplateScanner_replace,
     gSyntaxErrorMessage_galgasTemplateScanner_repeat,
-    gSyntaxErrorMessage_galgasTemplateScanner_rewind,
-    gSyntaxErrorMessage_galgasTemplateScanner_root,
-    gSyntaxErrorMessage_galgasTemplateScanner_routine,
     gSyntaxErrorMessage_galgasTemplateScanner_rule,
     gSyntaxErrorMessage_galgasTemplateScanner_search,
     gSyntaxErrorMessage_galgasTemplateScanner_select,
     gSyntaxErrorMessage_galgasTemplateScanner_self,
-    gSyntaxErrorMessage_galgasTemplateScanner_semantics,
     gSyntaxErrorMessage_galgasTemplateScanner_send,
     gSyntaxErrorMessage_galgasTemplateScanner_setter,
     gSyntaxErrorMessage_galgasTemplateScanner_sortedlist,
@@ -1188,18 +1160,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_error [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$extends$'
-static const utf32 kUnicodeString_galgasTemplateScanner_extends [] = {
-  TO_UNICODE ('e'),
-  TO_UNICODE ('x'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE ('s'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$extension$'
 static const utf32 kUnicodeString_galgasTemplateScanner_extension [] = {
   TO_UNICODE ('e'),
@@ -1235,18 +1195,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_false [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$feature$'
-static const utf32 kUnicodeString_galgasTemplateScanner_feature [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$filewrapper$'
 static const utf32 kUnicodeString_galgasTemplateScanner_filewrapper [] = {
   TO_UNICODE ('f'),
@@ -1260,6 +1208,16 @@ static const utf32 kUnicodeString_galgasTemplateScanner_filewrapper [] = {
   TO_UNICODE ('p'),
   TO_UNICODE ('e'),
   TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$fixit$'
+static const utf32 kUnicodeString_galgasTemplateScanner_fixit [] = {
+  TO_UNICODE ('f'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
 
@@ -1289,19 +1247,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_func [] = {
   TO_UNICODE ('u'),
   TO_UNICODE ('n'),
   TO_UNICODE ('c'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$function$'
-static const utf32 kUnicodeString_galgasTemplateScanner_function [] = {
-  TO_UNICODE ('f'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('n'),
   TO_UNICODE (0)
 } ;
 
@@ -1359,17 +1304,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_here [] = {
 static const utf32 kUnicodeString_galgasTemplateScanner_if [] = {
   TO_UNICODE ('i'),
   TO_UNICODE ('f'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$import$'
-static const utf32 kUnicodeString_galgasTemplateScanner_import [] = {
-  TO_UNICODE ('i'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('p'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('r'),
-  TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
 
@@ -1683,38 +1617,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_replace [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$rewind$'
-static const utf32 kUnicodeString_galgasTemplateScanner_rewind [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('w'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('d'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$root$'
-static const utf32 kUnicodeString_galgasTemplateScanner_root [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('t'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$routine$'
-static const utf32 kUnicodeString_galgasTemplateScanner_routine [] = {
-  TO_UNICODE ('r'),
-  TO_UNICODE ('o'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
 //--- Unicode string for '$rule$'
 static const utf32 kUnicodeString_galgasTemplateScanner_rule [] = {
   TO_UNICODE ('r'),
@@ -1752,20 +1654,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_self [] = {
   TO_UNICODE ('e'),
   TO_UNICODE ('l'),
   TO_UNICODE ('f'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$semantics$'
-static const utf32 kUnicodeString_galgasTemplateScanner_semantics [] = {
-  TO_UNICODE ('s'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('t'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('c'),
-  TO_UNICODE ('s'),
   TO_UNICODE (0)
 } ;
 
@@ -2045,7 +1933,7 @@ int16_t C_Lexique_galgasTemplateScanner::search_into_galgasDelimitorsList (const
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 94 ;
+static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 87 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [ktable_size_galgasTemplateScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_do, 2, C_Lexique_galgasTemplateScanner::kToken_do),
@@ -2075,7 +1963,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_loop, 4, C_Lexique_galgasTemplateScanner::kToken_loop),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_once, 4, C_Lexique_galgasTemplateScanner::kToken_once),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_proc, 4, C_Lexique_galgasTemplateScanner::kToken_proc),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_root, 4, C_Lexique_galgasTemplateScanner::kToken_root),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_rule, 4, C_Lexique_galgasTemplateScanner::kToken_rule),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_self, 4, C_Lexique_galgasTemplateScanner::kToken_self),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_send, 4, C_Lexique_galgasTemplateScanner::kToken_send),
@@ -2091,6 +1978,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_elsif, 5, C_Lexique_galgasTemplateScanner::kToken_elsif),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_error, 5, C_Lexique_galgasTemplateScanner::kToken_error),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_false, 5, C_Lexique_galgasTemplateScanner::kToken_false),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_fixit, 5, C_Lexique_galgasTemplateScanner::kToken_fixit),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_graph, 5, C_Lexique_galgasTemplateScanner::kToken_graph),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_index, 5, C_Lexique_galgasTemplateScanner::kToken_index),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_label, 5, C_Lexique_galgasTemplateScanner::kToken_label),
@@ -2102,13 +1990,11 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_before, 6, C_Lexique_galgasTemplateScanner::kToken_before),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_extern, 6, C_Lexique_galgasTemplateScanner::kToken_extern),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_getter, 6, C_Lexique_galgasTemplateScanner::kToken_getter),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_import, 6, C_Lexique_galgasTemplateScanner::kToken_import),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_insert, 6, C_Lexique_galgasTemplateScanner::kToken_insert),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_method, 6, C_Lexique_galgasTemplateScanner::kToken_method),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_option, 6, C_Lexique_galgasTemplateScanner::kToken_option),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_remove, 6, C_Lexique_galgasTemplateScanner::kToken_remove),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_repeat, 6, C_Lexique_galgasTemplateScanner::kToken_repeat),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_rewind, 6, C_Lexique_galgasTemplateScanner::kToken_rewind),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_search, 6, C_Lexique_galgasTemplateScanner::kToken_search),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_select, 6, C_Lexique_galgasTemplateScanner::kToken_select),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_setter, 6, C_Lexique_galgasTemplateScanner::kToken_setter),
@@ -2118,8 +2004,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_unused, 6, C_Lexique_galgasTemplateScanner::kToken_unused),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_between, 7, C_Lexique_galgasTemplateScanner::kToken_between),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_default, 7, C_Lexique_galgasTemplateScanner::kToken_default),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_extends, 7, C_Lexique_galgasTemplateScanner::kToken_extends),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_feature, 7, C_Lexique_galgasTemplateScanner::kToken_feature),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_foreach, 7, C_Lexique_galgasTemplateScanner::kToken_foreach),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_grammar, 7, C_Lexique_galgasTemplateScanner::kToken_grammar),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_lexique, 7, C_Lexique_galgasTemplateScanner::kToken_lexique),
@@ -2128,16 +2012,13 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_private, 7, C_Lexique_galgasTemplateScanner::kToken_private),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_project, 7, C_Lexique_galgasTemplateScanner::kToken_project),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_replace, 7, C_Lexique_galgasTemplateScanner::kToken_replace),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_routine, 7, C_Lexique_galgasTemplateScanner::kToken_routine),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_warning, 7, C_Lexique_galgasTemplateScanner::kToken_warning),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_abstract, 8, C_Lexique_galgasTemplateScanner::kToken_abstract),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_function, 8, C_Lexique_galgasTemplateScanner::kToken_function),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_indexing, 8, C_Lexique_galgasTemplateScanner::kToken_indexing),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_operator, 8, C_Lexique_galgasTemplateScanner::kToken_operator),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_override, 8, C_Lexique_galgasTemplateScanner::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_template, 8, C_Lexique_galgasTemplateScanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_extension, 9, C_Lexique_galgasTemplateScanner::kToken_extension),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_semantics, 9, C_Lexique_galgasTemplateScanner::kToken_semantics),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sharedmap, 9, C_Lexique_galgasTemplateScanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sortedlist, 10, C_Lexique_galgasTemplateScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_constructor, 11, C_Lexique_galgasTemplateScanner::kToken_constructor),
@@ -2403,11 +2284,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("extension") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_extends:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("extends") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken_extern:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("extern") ;
@@ -2418,14 +2294,14 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("false") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_feature:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("feature") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken_filewrapper:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("filewrapper") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_fixit:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("fixit") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_for:
@@ -2441,11 +2317,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
     case kToken_func:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("func") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_function:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("function") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_getter:
@@ -2476,11 +2347,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
     case kToken_if:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("if") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_import:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("import") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_in:
@@ -2638,21 +2504,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("repeat") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_rewind:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("rewind") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_root:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("root") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_routine:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("routine") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
     case kToken_rule:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("rule") ;
@@ -2671,11 +2522,6 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
     case kToken_self:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("self") ;
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      break ;
-    case kToken_semantics:
-      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("semantics") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_send:
@@ -2977,7 +2823,7 @@ static const cTemplateDelimiter kTemplateReplacementArray [3] = {
 //            Terminal Symbols as end of script in template mark                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const bool kEndOfScriptInTemplateArray [151] = {
+static const bool kEndOfScriptInTemplateArray [144] = {
   false /* identifier */,
   false /* @type */,
   false /* double.xxx */,
@@ -3020,22 +2866,19 @@ static const bool kEndOfScriptInTemplateArray [151] = {
   false /* enum */,
   false /* error */,
   false /* extension */,
-  false /* extends */,
   false /* extern */,
   false /* false */,
-  false /* feature */,
   false /* filewrapper */,
+  false /* fixit */,
   false /* for */,
   false /* foreach */,
   false /* func */,
-  false /* function */,
   false /* getter */,
   false /* grammar */,
   false /* graph */,
   false /* gui */,
   false /* here */,
   false /* if */,
-  false /* import */,
   false /* in */,
   false /* index */,
   false /* indexing */,
@@ -3067,14 +2910,10 @@ static const bool kEndOfScriptInTemplateArray [151] = {
   false /* remove */,
   false /* replace */,
   false /* repeat */,
-  false /* rewind */,
-  false /* root */,
-  false /* routine */,
   false /* rule */,
   false /* search */,
   false /* select */,
   false /* self */,
-  false /* semantics */,
   false /* send */,
   false /* setter */,
   false /* sortedlist */,
@@ -4097,22 +3936,19 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("enum") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("error") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("extension") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("extends") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("extern") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("false") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("feature") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("filewrapper") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("fixit") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("for") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("foreach") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("func") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("function") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("getter") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("grammar") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("graph") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("gui") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("here") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("if") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("import") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("in") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("index") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("indexing") COMMA_THERE) ;
@@ -4144,14 +3980,10 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("remove") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("replace") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("repeat") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("rewind") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("root") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("routine") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("rule") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("search") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("select") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("self") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("semantics") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("send") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("setter") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("sortedlist") COMMA_THERE) ;
@@ -4289,7 +4121,6 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.addObject ("loop") ;
     ioList.addObject ("once") ;
     ioList.addObject ("proc") ;
-    ioList.addObject ("root") ;
     ioList.addObject ("rule") ;
     ioList.addObject ("self") ;
     ioList.addObject ("send") ;
@@ -4305,6 +4136,7 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.addObject ("elsif") ;
     ioList.addObject ("error") ;
     ioList.addObject ("false") ;
+    ioList.addObject ("fixit") ;
     ioList.addObject ("graph") ;
     ioList.addObject ("index") ;
     ioList.addObject ("label") ;
@@ -4316,13 +4148,11 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.addObject ("before") ;
     ioList.addObject ("extern") ;
     ioList.addObject ("getter") ;
-    ioList.addObject ("import") ;
     ioList.addObject ("insert") ;
     ioList.addObject ("method") ;
     ioList.addObject ("option") ;
     ioList.addObject ("remove") ;
     ioList.addObject ("repeat") ;
-    ioList.addObject ("rewind") ;
     ioList.addObject ("search") ;
     ioList.addObject ("select") ;
     ioList.addObject ("setter") ;
@@ -4332,8 +4162,6 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.addObject ("unused") ;
     ioList.addObject ("between") ;
     ioList.addObject ("default") ;
-    ioList.addObject ("extends") ;
-    ioList.addObject ("feature") ;
     ioList.addObject ("foreach") ;
     ioList.addObject ("grammar") ;
     ioList.addObject ("lexique") ;
@@ -4342,16 +4170,13 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.addObject ("private") ;
     ioList.addObject ("project") ;
     ioList.addObject ("replace") ;
-    ioList.addObject ("routine") ;
     ioList.addObject ("warning") ;
     ioList.addObject ("abstract") ;
-    ioList.addObject ("function") ;
     ioList.addObject ("indexing") ;
     ioList.addObject ("operator") ;
     ioList.addObject ("override") ;
     ioList.addObject ("template") ;
     ioList.addObject ("extension") ;
-    ioList.addObject ("semantics") ;
     ioList.addObject ("sharedmap") ;
     ioList.addObject ("sortedlist") ;
     ioList.addObject ("constructor") ;
@@ -4371,7 +4196,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForI
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [152] = {0,
+  static const uint32_t kTerminalSymbolStyles [145] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -4414,22 +4239,19 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     1 /* galgasTemplateScanner_1_enum */,
     1 /* galgasTemplateScanner_1_error */,
     1 /* galgasTemplateScanner_1_extension */,
-    1 /* galgasTemplateScanner_1_extends */,
     1 /* galgasTemplateScanner_1_extern */,
     1 /* galgasTemplateScanner_1_false */,
-    1 /* galgasTemplateScanner_1_feature */,
     1 /* galgasTemplateScanner_1_filewrapper */,
+    1 /* galgasTemplateScanner_1_fixit */,
     1 /* galgasTemplateScanner_1_for */,
     1 /* galgasTemplateScanner_1_foreach */,
     1 /* galgasTemplateScanner_1_func */,
-    1 /* galgasTemplateScanner_1_function */,
     1 /* galgasTemplateScanner_1_getter */,
     1 /* galgasTemplateScanner_1_grammar */,
     1 /* galgasTemplateScanner_1_graph */,
     1 /* galgasTemplateScanner_1_gui */,
     1 /* galgasTemplateScanner_1_here */,
     1 /* galgasTemplateScanner_1_if */,
-    1 /* galgasTemplateScanner_1_import */,
     1 /* galgasTemplateScanner_1_in */,
     1 /* galgasTemplateScanner_1_index */,
     1 /* galgasTemplateScanner_1_indexing */,
@@ -4461,14 +4283,10 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     1 /* galgasTemplateScanner_1_remove */,
     1 /* galgasTemplateScanner_1_replace */,
     1 /* galgasTemplateScanner_1_repeat */,
-    1 /* galgasTemplateScanner_1_rewind */,
-    1 /* galgasTemplateScanner_1_root */,
-    1 /* galgasTemplateScanner_1_routine */,
     1 /* galgasTemplateScanner_1_rule */,
     1 /* galgasTemplateScanner_1_search */,
     1 /* galgasTemplateScanner_1_select */,
     1 /* galgasTemplateScanner_1_self */,
-    1 /* galgasTemplateScanner_1_semantics */,
     1 /* galgasTemplateScanner_1_send */,
     1 /* galgasTemplateScanner_1_setter */,
     1 /* galgasTemplateScanner_1_sortedlist */,
@@ -7075,7 +6893,8 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ (G
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__21_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 516)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28495.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
-    inCompiler->emitSemanticError (var_selector_28495.getter_location (SOURCE_FILE ("templateSyntax.galgas", 518)), GALGAS_string ("the selector should be '!'")  COMMA_SOURCE_FILE ("templateSyntax.galgas", 518)) ;
+    TC_Array <C_FixItDescription> fixItArray1 ;
+    inCompiler->emitSemanticError (var_selector_28495.getter_location (SOURCE_FILE ("templateSyntax.galgas", 518)), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 518)) ;
   }
   GALGAS_templateExpressionAST var_expression_28637 ;
   nt_expression_ (var_expression_28637, inCompiler) ;

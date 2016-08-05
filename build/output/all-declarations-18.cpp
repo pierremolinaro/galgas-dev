@@ -2635,6 +2635,9 @@ typeComparisonResult cPtr_warningInstructionAST::dynamicObjectCompare (const acP
   if (kOperandEqual == result) {
     result = mAttribute_mMessageExpression.objectCompare (p->mAttribute_mMessageExpression) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mFixitListAST.objectCompare (p->mAttribute_mFixitListAST) ;
+  }
   return result ;
 }
 
@@ -2674,11 +2677,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 
 GALGAS_warningInstructionAST GALGAS_warningInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                             const GALGAS_semanticExpressionAST & inAttribute_mLocationExpression,
-                                                                            const GALGAS_semanticExpressionAST & inAttribute_mMessageExpression
+                                                                            const GALGAS_semanticExpressionAST & inAttribute_mMessageExpression,
+                                                                            const GALGAS_fixitListAST & inAttribute_mFixitListAST
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_warningInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mLocationExpression.isValid () && inAttribute_mMessageExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_warningInstructionAST (inAttribute_mInstructionLocation, inAttribute_mLocationExpression, inAttribute_mMessageExpression COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mLocationExpression.isValid () && inAttribute_mMessageExpression.isValid () && inAttribute_mFixitListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_warningInstructionAST (inAttribute_mInstructionLocation, inAttribute_mLocationExpression, inAttribute_mMessageExpression, inAttribute_mFixitListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2720,16 +2724,36 @@ GALGAS_semanticExpressionAST cPtr_warningInstructionAST::getter_mMessageExpressi
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST GALGAS_warningInstructionAST::getter_mFixitListAST (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_warningInstructionAST * p = (const cPtr_warningInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_warningInstructionAST) ;
+    result = p->mAttribute_mFixitListAST ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST cPtr_warningInstructionAST::getter_mFixitListAST (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFixitListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @warningInstructionAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_warningInstructionAST::cPtr_warningInstructionAST (const GALGAS_location & in_mInstructionLocation,
                                                         const GALGAS_semanticExpressionAST & in_mLocationExpression,
-                                                        const GALGAS_semanticExpressionAST & in_mMessageExpression
+                                                        const GALGAS_semanticExpressionAST & in_mMessageExpression,
+                                                        const GALGAS_fixitListAST & in_mFixitListAST
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
 mAttribute_mLocationExpression (in_mLocationExpression),
-mAttribute_mMessageExpression (in_mMessageExpression) {
+mAttribute_mMessageExpression (in_mMessageExpression),
+mAttribute_mFixitListAST (in_mFixitListAST) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2746,6 +2770,8 @@ void cPtr_warningInstructionAST::description (C_String & ioString,
   mAttribute_mLocationExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mMessageExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mFixitListAST.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -2753,7 +2779,7 @@ void cPtr_warningInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_warningInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_warningInstructionAST (mAttribute_mInstructionLocation, mAttribute_mLocationExpression, mAttribute_mMessageExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_warningInstructionAST (mAttribute_mInstructionLocation, mAttribute_mLocationExpression, mAttribute_mMessageExpression, mAttribute_mFixitListAST COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13892,10 +13918,11 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
   GALGAS_stringlist var_candidateProjectFiles_3852 = var_parentDirectory_3730.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 61)) ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_3852.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 62)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 63)), GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 63)) ;
+    TC_Array <C_FixItDescription> fixItArray2 ;
+    inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 63)), GALGAS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 63)) ;
   }else if (kBoolFalse == test_1) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3852.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 64)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
-    if (kBoolTrue == test_2) {
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_3852.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 64)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    if (kBoolTrue == test_3) {
       GALGAS_string var_s_4108 = GALGAS_string ("several project files in source file parent directory:") ;
       cEnumerator_stringlist enumerator_4206 (var_candidateProjectFiles_3852, kEnumeration_up) ;
       while (enumerator_4206.hasCurrentObject ()) {
@@ -13903,8 +13930,9 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
           "  - ").add_operation (enumerator_4206.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 67)) ;
         enumerator_4206.gotoNextObject () ;
       }
-      inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 69)), var_s_4108  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
-    }else if (kBoolFalse == test_2) {
+      TC_Array <C_FixItDescription> fixItArray4 ;
+      inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 69)), var_s_4108, fixItArray4  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 69)) ;
+    }else if (kBoolFalse == test_3) {
       GALGAS_string var_projectFilePath_4301 = var_parentDirectory_3730.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)).add_operation (var_candidateProjectFiles_3852.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
       {
       routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath_4301, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)) ;
@@ -14640,67 +14668,6 @@ GALGAS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLe
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
     }else{
       result = f (inObject, inCompiler COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode> gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionGetter_generateDefaultSendCode (const int32_t inClassIndex,
-                                                   enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode inGetter) {
-  gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
-  gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
-                                                                                freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                           GALGAS_string in_inScannerClassName,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_string result ;
-//--- Find Reader
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_lexicalSendDefaultActionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode f = NULL ;
-    if (classIndex < gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-      f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.count ()) {
-           f = gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      result = f (inObject, in_inScannerClassName, inCompiler COMMA_THERE) ;
     }
   }
   return result ;
