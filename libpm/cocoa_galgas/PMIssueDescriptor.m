@@ -21,6 +21,7 @@
 #import "PMIssueDescriptor.h"
 #import "PMDebug.h"
 #import "OC_GGS_RulerViewForBuildOutput.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -187,7 +188,8 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) storeItemsToMenu: (NSMenu *) inMenu {
+- (void) storeItemsToMenu: (NSMenu *) inMenu
+         displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextView {
 //--- Extract
   NSString * title = @"???" ;
   NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
@@ -214,8 +216,18 @@
 //--- Suggestions
   for (NSUInteger i=4 ; i<components.count ; i++) {
     NSString * t = [components objectAtIndex:i] ;
-    [inMenu addItemWithTitle:t action:NULL keyEquivalent:@""] ;
+    menuItem = [[NSMenuItem alloc] initWithTitle:t action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
+    menuItem.target = self ;
+    menuItem.representedObject = inTextView ;
+    [inMenu addItem:menuItem] ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) actionFixItRemove: (NSMenuItem *) inSender {
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
+  [textViewDescriptor removeSelectedRange] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

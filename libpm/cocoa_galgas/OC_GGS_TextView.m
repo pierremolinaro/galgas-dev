@@ -424,7 +424,7 @@
   //--- Add issues
     for (PMIssueDescriptor * issue in mIssueArray) {
       if ([issue intersectWithRange:r]) {
-        [issue storeItemsToMenu:menu] ;
+        [issue storeItemsToMenu:menu displayDescriptor:mDisplayDescriptor] ;
       }
     }
   //--- Source indexing

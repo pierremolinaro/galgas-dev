@@ -23,6 +23,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 @class OC_GGS_RulerViewForBuildOutput ;
+@class OC_GGS_TextDisplayDescriptor ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -89,7 +90,8 @@ typedef enum {
 
 - (void) scrollAndSelectErrorMessage ;
 
-- (void) storeItemsToMenu: (NSMenu *) inMenu ;
+- (void) storeItemsToMenu: (NSMenu *) inMenu
+         displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextView ;
 
 @end
 

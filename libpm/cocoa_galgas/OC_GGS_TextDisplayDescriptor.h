@@ -79,6 +79,8 @@
 
 - (void) actionInsertTextMacro: (NSMenuItem *) inSender ;
 
+- (void) removeSelectedRange ;
+
 @end
 
 //---------------------------------------------------------------------------------------------------------------------*
