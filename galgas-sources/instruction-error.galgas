@@ -212,16 +212,12 @@ proc analyzeErrorOrWarningInstruction
   end
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
-    !@unifiedTypeMap-proxy. null
+    !.null
     !inAnalysisContext
     !?ioVariableMap
     ?outMessageExpression
   ]
 #--- Analyze fixit expressions
-  let twoStringListType = @unifiedTypeMap-proxy.searchKey {
-    !inAnalysisContext.mSemanticContext.mTypeMap
-    !["2stringlist" nowhere]
-  }
   outFixitListForGeneration = {}
   for (element) in inFixitListAST do
     switch element 
@@ -229,35 +225,35 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItRemove
     case fixItReplace (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !twoStringListType
+        !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != twoStringListType then
-        error errorLocation : "this expression should be an @2stringlist instance"
+      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
+        error errorLocation : "this expression should be an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !twoStringListType
+        !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != twoStringListType then
-        error errorLocation : "this expression should be an @2stringlist instance"
+      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
+        error errorLocation : "this expression should be an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
       [exp analyzeSemanticExpression
-        !twoStringListType
+        !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != twoStringListType then
-        error errorLocation : "this expression should be an @2stringlist instance"
+      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
+        error errorLocation : "this expression should be an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
     end
@@ -324,7 +320,7 @@ method @fixitListForGeneration generateFixIt
   for (element) in self do
     switch (element)
     case fixItRemove :
-      ioGeneratedCode += outFixItArrayCppName + ".addObject (C_FixItDescription (kFixItRemove, \"\", \"\")) ;\n"
+      ioGeneratedCode += outFixItArrayCppName + ".addObject (C_FixItDescription (kFixItRemove, \"\")) ;\n"
     case fixItReplace (@semanticExpressionForGeneration exp) :
       [exp generateExpression
         !?ioGeneratedCode

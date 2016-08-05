@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -38,9 +38,9 @@
 //                                                                                                                     *
 // * WIN32 is defined when compiling for Microsoft Windows                                                             *
 // * __APPLE__is defined, but __NEXT_RUNTIME__ is not when compiling for                                               *
-//   Mac OS X Darwin (command line tools)                                                                              *
+//   OS X Darwin (command line tools)                                                                                  *
 // * __APPLE__and __NEXT_RUNTIME__ are both defined when compiling for                                                 *
-//   Mac OS X Cocoa (GUI applications)                                                                                 *
+//   OS X Cocoa (GUI applications)                                                                                     *
 // * __MINGW32__ is defined when compiling by MinGW (for Windows)                                                      *
 // * __linux is defined when compiling by GCC (for Linux)                                                              *
 //                                                                                                                     *

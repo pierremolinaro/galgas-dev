@@ -31,7 +31,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS__32_stringlist ;
+class GALGAS_stringlist ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -50,18 +50,15 @@ class C_FixItDescription {
 
 //--- Constructor
   public : C_FixItDescription (const EnumFixItKind inKind,
-                               const C_String & inActionString,
-                               const C_String & inCommentString) ;
+                               const C_String & inActionString) ;
 
 //--- Accessors
   public : EnumFixItKind kind (void) const { return mKind ; }
   public : C_String actionString (void) const { return mActionString ; }
-  public : C_String commentString (void) const { return mCommentString ; }
   
 //--- Private properties
   private : EnumFixItKind mKind ;
   private : C_String mActionString ;
-  private : C_String mCommentString ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -85,7 +82,7 @@ class C_IssueWithFixIt {
 
 void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
-                         const GALGAS__32_stringlist & inList) ;
+                         const GALGAS_stringlist & inList) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

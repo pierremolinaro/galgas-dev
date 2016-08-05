@@ -319,9 +319,9 @@ analyzeGrammar (C_Compiler * inCompiler,
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
     TC_Array <C_FixItDescription> fixItArray ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LL1", "")) ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "SLR", "")) ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LR1", "")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LL1")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "SLR")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LR1")) ;
     inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 

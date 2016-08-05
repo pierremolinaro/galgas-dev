@@ -6359,25 +6359,25 @@ static void extensionMethod_errorInstructionAST_analyzeSemanticInstruction (cons
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_errorInstructionAST * object = (const cPtr_errorInstructionAST *) inObject ;
   macroValidSharedObject (object, cPtr_errorInstructionAST) ;
-  GALGAS_semanticExpressionForGeneration var_locationExpression_11194 ;
-  GALGAS_semanticExpressionForGeneration var_messageExpression_11221 ;
-  GALGAS_fixitListForGeneration var_fixitListForGeneration_11253 ;
+  GALGAS_semanticExpressionForGeneration var_locationExpression_11225 ;
+  GALGAS_semanticExpressionForGeneration var_messageExpression_11252 ;
+  GALGAS_fixitListForGeneration var_fixitListForGeneration_11284 ;
   {
-  routine_analyzeErrorOrWarningInstruction (constinArgument_inAnalysisContext, object->mAttribute_mLocationExpression, object->mAttribute_mMessageExpression, object->mAttribute_mFixitListAST, object->mAttribute_mInstructionLocation, GALGAS_string ("error"), ioArgument_ioVariableMap, var_locationExpression_11194, var_messageExpression_11221, var_fixitListForGeneration_11253, inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 281)) ;
+  routine_analyzeErrorOrWarningInstruction (constinArgument_inAnalysisContext, object->mAttribute_mLocationExpression, object->mAttribute_mMessageExpression, object->mAttribute_mFixitListAST, object->mAttribute_mInstructionLocation, GALGAS_string ("error"), ioArgument_ioVariableMap, var_locationExpression_11225, var_messageExpression_11252, var_fixitListForGeneration_11284, inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 277)) ;
   }
-  GALGAS_stringlist var_builtVariableCppNameList_11318 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("instruction-error.galgas", 294)) ;
-  cEnumerator_lstringlist enumerator_11369 (object->mAttribute_mBuiltVariableList, kEnumeration_up) ;
-  while (enumerator_11369.hasCurrentObject ()) {
-    GALGAS_string var_varCppName_11438 ;
+  GALGAS_stringlist var_builtVariableCppNameList_11349 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("instruction-error.galgas", 290)) ;
+  cEnumerator_lstringlist enumerator_11400 (object->mAttribute_mBuiltVariableList, kEnumeration_up) ;
+  while (enumerator_11400.hasCurrentObject ()) {
+    GALGAS_string var_varCppName_11469 ;
     {
-    GALGAS_unifiedTypeMap_2D_proxy joker_11421 ; // Joker input parameter
-    GALGAS_string joker_11440 ; // Joker input parameter
-    ioArgument_ioVariableMap.setter_searchForWriteAccess (enumerator_11369.current_mValue (HERE), joker_11421, var_varCppName_11438, joker_11440, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 296)) ;
+    GALGAS_unifiedTypeMap_2D_proxy joker_11452 ; // Joker input parameter
+    GALGAS_string joker_11471 ; // Joker input parameter
+    ioArgument_ioVariableMap.setter_searchForWriteAccess (enumerator_11400.current_mValue (HERE), joker_11452, var_varCppName_11469, joker_11471, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 292)) ;
     }
-    var_builtVariableCppNameList_11318.addAssign_operation (var_varCppName_11438  COMMA_SOURCE_FILE ("instruction-error.galgas", 297)) ;
-    enumerator_11369.gotoNextObject () ;
+    var_builtVariableCppNameList_11349.addAssign_operation (var_varCppName_11469  COMMA_SOURCE_FILE ("instruction-error.galgas", 293)) ;
+    enumerator_11400.gotoNextObject () ;
   }
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_errorInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_locationExpression_11194, var_messageExpression_11221, var_builtVariableCppNameList_11318, var_fixitListForGeneration_11253  COMMA_SOURCE_FILE ("instruction-error.galgas", 300))  COMMA_SOURCE_FILE ("instruction-error.galgas", 300)) ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_errorInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_locationExpression_11225, var_messageExpression_11252, var_builtVariableCppNameList_11349, var_fixitListForGeneration_11284  COMMA_SOURCE_FILE ("instruction-error.galgas", 296))  COMMA_SOURCE_FILE ("instruction-error.galgas", 296)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6407,23 +6407,23 @@ static void extensionMethod_errorInstructionForGeneration_generateInstruction (c
                                                                                COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_errorInstructionForGeneration * object = (const cPtr_errorInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_errorInstructionForGeneration) ;
-  GALGAS_string var_receiverCppVarName_14815 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mReceiverExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14815, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 379)) ;
-  GALGAS_string var_messageCppVarName_15017 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mErrorExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_messageCppVarName_15017, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 387)) ;
-  GALGAS_string var_fixItArrayCppName_15265 ;
-  extensionMethod_generateFixIt (object->mAttribute_mFixitListForGeneration, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, var_fixItArrayCppName_15265, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 395)) ;
+  GALGAS_string var_receiverCppVarName_14840 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mReceiverExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverCppVarName_14840, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 375)) ;
+  GALGAS_string var_messageCppVarName_15042 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mErrorExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_messageCppVarName_15042, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 383)) ;
+  GALGAS_string var_fixItArrayCppName_15290 ;
+  extensionMethod_generateFixIt (object->mAttribute_mFixitListForGeneration, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, var_fixItArrayCppName_15290, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 391)) ;
   {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 404)) COMMA_SOURCE_FILE ("instruction-error.galgas", 404)) ;
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 400)) COMMA_SOURCE_FILE ("instruction-error.galgas", 400)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string ("->emitSemanticError ("), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (var_receiverCppVarName_14815, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 406)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 406)).add_operation (var_messageCppVarName_15017, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 407)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 407)).add_operation (var_fixItArrayCppName_15265, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 408)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 408)).add_operation (extensionGetter_commaSourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 409)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 409)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 409)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 405)) ;
-  cEnumerator_stringlist enumerator_15650 (object->mAttribute_mBuiltVariableCppNameList, kEnumeration_up) ;
-  while (enumerator_15650.hasCurrentObject ()) {
+  ioArgument_ioGeneratedCode.plusAssign_operation(function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 401)).add_operation (GALGAS_string ("->emitSemanticError ("), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 401)).add_operation (var_receiverCppVarName_14840, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 402)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 402)).add_operation (var_messageCppVarName_15042, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 403)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 403)).add_operation (var_fixItArrayCppName_15290, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 404)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 404)).add_operation (extensionGetter_commaSourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 405)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 401)) ;
+  cEnumerator_stringlist enumerator_15675 (object->mAttribute_mBuiltVariableCppNameList, kEnumeration_up) ;
+  while (enumerator_15675.hasCurrentObject ()) {
     {
-    ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_15650.current_mValue (HERE) COMMA_SOURCE_FILE ("instruction-error.galgas", 412)) ;
+    ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (enumerator_15675.current_mValue (HERE) COMMA_SOURCE_FILE ("instruction-error.galgas", 408)) ;
     }
-    ioArgument_ioGeneratedCode.plusAssign_operation(enumerator_15650.current_mValue (HERE).add_operation (GALGAS_string (".drop () ; // Release error dropped variable\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 413)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 413)) ;
-    enumerator_15650.gotoNextObject () ;
+    ioArgument_ioGeneratedCode.plusAssign_operation(enumerator_15675.current_mValue (HERE).add_operation (GALGAS_string (".drop () ; // Release error dropped variable\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 409)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 409)) ;
+    enumerator_15675.gotoNextObject () ;
   }
 }
 
