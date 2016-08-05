@@ -5247,9 +5247,9 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
                                                       C_Compiler * inCompiler
                                                       COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_fixitListAST temp_0 = inObject ;
-  cEnumerator_fixitListAST enumerator_3683 (temp_0, kEnumeration_up) ;
-  while (enumerator_3683.hasCurrentObject ()) {
-    switch (enumerator_3683.current_mElement (HERE).enumValue ()) {
+  cEnumerator_fixitListAST enumerator_3677 (temp_0, kEnumeration_up) ;
+  while (enumerator_3677.hasCurrentObject ()) {
+    switch (enumerator_3677.current_mElement (HERE).enumValue ()) {
     case GALGAS_fixitElementAST::kNotBuilt:
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItRemove:
@@ -5258,13 +5258,13 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
       break ;
     case GALGAS_fixitElementAST::kEnum_fixItReplace:
       {
-        const cEnumAssociatedValues_fixitElementAST_fixItReplace * extractPtr_3846 = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) (enumerator_3683.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_3846->mAssociatedValue0 ;
+        const cEnumAssociatedValues_fixitElementAST_fixItReplace * extractPtr_3840 = (const cEnumAssociatedValues_fixitElementAST_fixItReplace *) (enumerator_3677.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_3840->mAssociatedValue0 ;
         callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 108)) ;
       }
       break ;
     }
-    enumerator_3683.gotoNextObject () ;
+    enumerator_3677.gotoNextObject () ;
   }
 }
 
@@ -5289,9 +5289,9 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
   ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 280)) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("TC_Array <C_FixItDescription> ").add_operation (outArgument_outFixItArrayCppName, inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 281)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-error.galgas", 281)), inCompiler  COMMA_SOURCE_FILE ("instruction-error.galgas", 281)) ;
   const GALGAS_fixitListForGeneration temp_0 = inObject ;
-  cEnumerator_fixitListForGeneration enumerator_10603 (temp_0, kEnumeration_up) ;
-  while (enumerator_10603.hasCurrentObject ()) {
-    switch (enumerator_10603.current_mElement (HERE).enumValue ()) {
+  cEnumerator_fixitListForGeneration enumerator_10597 (temp_0, kEnumeration_up) ;
+  while (enumerator_10597.hasCurrentObject ()) {
+    switch (enumerator_10597.current_mElement (HERE).enumValue ()) {
     case GALGAS_fixitElementForGeneration::kNotBuilt:
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItRemove:
@@ -5301,12 +5301,12 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
       break ;
     case GALGAS_fixitElementForGeneration::kEnum_fixItReplace:
       {
-        const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * extractPtr_10831 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) (enumerator_10603.current_mElement (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_10831->mAssociatedValue0 ;
+        const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace * extractPtr_10825 = (const cEnumAssociatedValues_fixitElementForGeneration_fixItReplace *) (enumerator_10597.current_mElement (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_10825->mAssociatedValue0 ;
       }
       break ;
     }
-    enumerator_10603.gotoNextObject () ;
+    enumerator_10597.gotoNextObject () ;
   }
 }
 

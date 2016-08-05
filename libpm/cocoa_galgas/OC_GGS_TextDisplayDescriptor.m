@@ -625,4 +625,54 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#pragma mark Delete selection
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) removeSelectedRange {
+  const NSRange r = [mTextView selectedRange] ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  NSString * removedString = [ts.string substringWithRange:r] ;
+  [ts replaceCharactersInRange:r withString: @""] ;
+//--- Register undo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoRemoveSelectedRange:)
+    object:[NSArray arrayWithObjects:removedString, [NSValue valueWithRange:r], nil]
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) undoRemoveSelectedRange : (NSArray *) inObject {
+  NSString * s = [inObject objectAtIndex:0] ;
+  NSValue * value = [inObject objectAtIndex:1] ;
+  const NSRange r = value.rangeValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  [ts replaceCharactersInRange:NSMakeRange (r.location, 0) withString:s] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (redoRemoveSelectedRange:)
+    object:inObject
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) redoRemoveSelectedRange : (NSArray *) inObject {
+  NSValue * value = [inObject objectAtIndex:1] ;
+  const NSRange r = value.rangeValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  [ts replaceCharactersInRange:r withString: @""] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoRemoveSelectedRange:)
+    object:inObject
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 @end

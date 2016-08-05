@@ -42,7 +42,7 @@ syntax extension galgas3InstructionsSyntax {
         let errorLocation = @location.here
         $remove$
         if hasFixItRemove then
-          warning errorLocation : "duplicated action" fixit { remove remove }
+          warning errorLocation : "duplicated action" fixit { remove  }
         end
         outFixitListAST += !.fixItRemove
         hasFixItRemove = true
