@@ -81,6 +81,10 @@
 
 - (void) removeSelectedRange ;
 
+- (void) replaceSelectedRangeWithString: (NSString *) inReplacement ;
+
+- (void) insertBeforeSelectedRange: (NSString *) inString ;
+
 @end
 
 //---------------------------------------------------------------------------------------------------------------------*
