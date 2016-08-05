@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -33,6 +33,7 @@
 #include "collections/TC_UniqueArray.h"
 #include "galgas2/C_LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
+#include "galgas2/C_IssueWithFixIt.h"
 #include "utilities/C_SharedObject.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -142,11 +143,11 @@ class C_parsingContext {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
+C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
                                        const C_SourceTextInString * inSourceTextPtr) ;
 
 void constructErrorOrWarningLocationMessage (C_String & ioMessage, 
-                                             const C_LocationInSource & inErrorLocation,
+                                             const C_IssueWithFixIt & inIssue,
                                              const C_SourceTextInString * inSourceTextPtr) ;
 
 //--- Errors count
@@ -160,41 +161,41 @@ int32_t maxWarningCount (void) ;
 int32_t totalWarningCount (void) ;
  
 void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const C_String & inFoundTokenMessage,
                          const TC_UniqueArray <C_String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
 void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
                          const C_String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
 void signalCastError (const C_SourceTextInString * inSourceTextPtr,
-                      const C_LocationInSource & inErrorLocation,
+                      const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
                       const C_String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) ;
 
 void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
-                           const C_LocationInSource & inWarningLocation,
+                           const C_IssueWithFixIt & inIssue,
                            const C_String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
 void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const C_String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
 void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
-                            const C_LocationInSource & inWarningLocation,
+                            const C_IssueWithFixIt & inIssue,
                             const C_String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
 void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
-                          const C_LocationInSource & inErrorLocation,
+                          const C_IssueWithFixIt & inIssue,
                           const C_String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
 
@@ -204,18 +205,17 @@ void signalRunTimeError (const C_String & inErrorMessage
 void signalRunTimeWarning (const C_String & inWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
-//--- Fatal error
 void fatalError (const C_String & inErrorMessage,
                  const char * inSourceFile,
                  const int inSourceLine) ;
 
 void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
-                     const C_LocationInSource & inErrorLocation,
+                     const C_IssueWithFixIt & inIssue,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
 void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
-                       const C_LocationInSource & inWarningLocation,
+                       const C_IssueWithFixIt & inIssue,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
@@ -226,26 +226,6 @@ void ggs_printFileCreationSuccess (const C_String & inMessage) ;
 void ggs_printMessage (const C_String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-/*uint32_t checkedLineCount (void) ;
-void incrementCheckedFileCount (const uint32_t inIncrement) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t generatedLineCount (void) ;
-void incrementGeneratedLileCount (const uint32_t inIncrement) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t preservedLineCount (void) ;
-void incrementPreservedLileCount (const uint32_t inIncrement) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-uint32_t generatedFileCount (void) ;
-void incrementGeneratedFileCount (void) ;
-*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 #endif

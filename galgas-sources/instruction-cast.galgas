@@ -60,31 +60,24 @@ syntax extension galgas3InstructionsSyntax {
   #····················································································································*
   
   rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
-    outElseOrDefault = @semanticInstructionListAST.emptyList
-  }
-  
-  #····················································································································*
-  
-  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
-    $else$
-    <semantic_instruction_list> ? outElseOrDefault
-  }
-  
-  #····················································································································*
-  
-  rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
-    $default$
-    let instructionLocation = @location.here
-    $error$
-    <expression> ?let @semanticExpressionAST errorLocationExpression
-    outElseOrDefault = @semanticInstructionListAST.emptyList
-    outElseOrDefault += !@errorInstructionAST.new {
-      !instructionLocation
-      !errorLocationExpression
-      !@literalStringExpressionAST.new {
+    select
+      outElseOrDefault = {}
+    or
+      $else$
+      <semantic_instruction_list> ? outElseOrDefault
+    or
+      $default$
+      let instructionLocation = @location.here
+      $error$
+      <expression> ?let @semanticExpressionAST errorLocationExpression
+      outElseOrDefault = {}
+      outElseOrDefault += !@errorInstructionAST.new {
         !instructionLocation
-        !@stringlist. listWithValue {!"cast instruction run-time error"}}
-      !@lstringlist.emptyList}
+        !errorLocationExpression
+        !@literalStringExpressionAST.new {!instructionLocation!{!"cast instruction run-time error"}}
+        !{}
+      }
+    end
   }
   
   #····················································································································*

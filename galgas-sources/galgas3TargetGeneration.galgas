@@ -1072,6 +1072,8 @@ proc updateGalgas3Targets
         !"C_galgas_io.h",
         !"C_galgas_type_descriptor.cpp",
         !"C_galgas_type_descriptor.h",
+        !"C_IssueWithFixIt.cpp",
+        !"C_IssueWithFixIt.h",
         !"C_Lexique.cpp",
         !"C_Lexique.h",
         !"C_LocationInSource.cpp",

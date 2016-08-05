@@ -19,7 +19,7 @@
 
 abstract getter @lexicalExpressionAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string result
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -88,7 +88,7 @@ override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument
-  -> @string outGeneratedCode
+  -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -136,7 +136,7 @@ override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionA
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -167,7 +167,7 @@ override getter @lexicalFormalInputArgumentAST generateCocoaRoutineArgument
 
 abstract getter @lexicalSendDefaultActionAST generateCocoaDefaultSendCode
   ?@string inScannerClassName
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -192,7 +192,7 @@ override getter @lexicalErrorByDefaultAST generateCocoaDefaultSendCode
 abstract getter @lexicalInstructionAST generateCocoaInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -363,7 +363,7 @@ override getter @lexicalLogInstructionAST generateCocoaInstructionCode
 abstract getter @abstractLexicalRuleAST generateCocoaCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 

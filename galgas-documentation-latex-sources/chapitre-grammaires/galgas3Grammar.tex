@@ -2,7 +2,7 @@
 
 \nonTerminalSummaryStart \nonTerminalSummary{actual\_input\_parameter}{20}\nonTerminalSummarySeparator \nonTerminalSummary{actual\_input\_parameter\_list}{21}\nonTerminalSummarySeparator \nonTerminalSummary{actual\_parameter\_list}{13}\nonTerminalSummarySeparator \nonTerminalSummary{branchOfParseWhenInstruction}{61}\nonTerminalSummarySeparator \nonTerminalSummary{cast\_else\_or\_default}{23}\nonTerminalSummarySeparator \nonTerminalSummary{cast\_instruction\_branch}{22}\nonTerminalSummarySeparator \nonTerminalSummary{casted\_expression}{2}\nonTerminalSummarySeparator \nonTerminalSummary{collection\_value\_element}{11}\nonTerminalSummarySeparator \nonTerminalSummary{declaration}{16}\nonTerminalSummarySeparator \nonTerminalSummary{declaration\_with\_private}{17}\nonTerminalSummarySeparator \nonTerminalSummary{expression}{1}\nonTerminalSummarySeparator \nonTerminalSummary{extern\_function\_declaration}{53}\nonTerminalSummarySeparator \nonTerminalSummary{extern\_routine\_declaration}{52}\nonTerminalSummarySeparator \nonTerminalSummary{factor}{7}\nonTerminalSummarySeparator \nonTerminalSummary{for\_instruction\_element}{25}\nonTerminalSummarySeparator \nonTerminalSummary{for\_instruction\_enumerated\_object}{26}\nonTerminalSummarySeparator \nonTerminalSummary{formal\_input\_parameter\_list}{14}\nonTerminalSummarySeparator \nonTerminalSummary{formal\_parameter\_list}{12}\nonTerminalSummarySeparator \nonTerminalSummary{function\_call\_or\_attribute}{43}\nonTerminalSummarySeparator \nonTerminalSummary{grammar\_start\_symbol\_label}{62}\nonTerminalSummarySeparator \nonTerminalSummary{if\_branch}{27}\nonTerminalSummarySeparator \nonTerminalSummary{insert\_method\_declaration}{32}\nonTerminalSummarySeparator \nonTerminalSummary{label\_formal\_parameter}{63}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_attribute\_declaration}{49}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_explicit\_rule}{38}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_expression}{44}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_factor}{46}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_implicit\_rule}{37}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_instruction}{39}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_list\_declaration}{47}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_list\_entry}{48}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_message\_declaration}{36}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_output\_effective\_argument}{42}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_send\_instruction}{40}\nonTerminalSummarySeparator \nonTerminalSummary{lexical\_term}{45}\nonTerminalSummarySeparator \nonTerminalSummary{match\_entry}{28}\nonTerminalSummarySeparator \nonTerminalSummary{match\_instruction\_branch}{29}\nonTerminalSummarySeparator \nonTerminalSummary{non\_empty\_output\_expression\_list}{24}\nonTerminalSummarySeparator \nonTerminalSummary{nonterminal\_declaration}{56}\nonTerminalSummarySeparator \nonTerminalSummary{nonterminal\_label\_declaration}{55}\nonTerminalSummarySeparator \nonTerminalSummary{option}{54}\nonTerminalSummarySeparator \nonTerminalSummary{optional\_type}{10}\nonTerminalSummarySeparator \nonTerminalSummary{output\_expression\_list}{0}\nonTerminalSummarySeparator \nonTerminalSummary{primary}{8}\nonTerminalSummarySeparator \nonTerminalSummary{primary\_between\_brackets}{9}\nonTerminalSummarySeparator \nonTerminalSummary{property\_declaration}{31}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_factor}{4}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_term}{3}\nonTerminalSummarySeparator \nonTerminalSummary{repeat\_while\_branch}{41}\nonTerminalSummarySeparator \nonTerminalSummary{semantic\_instruction}{18}\nonTerminalSummarySeparator \nonTerminalSummary{semantic\_instruction\_list}{15}\nonTerminalSummarySeparator \nonTerminalSummary{simple\_expression}{5}\nonTerminalSummarySeparator \nonTerminalSummary{sortedlist\_sort\_descriptor}{33}\nonTerminalSummarySeparator \nonTerminalSummary{start\_symbol}{30}\nonTerminalSummarySeparator \nonTerminalSummary{style\_declaration}{51}\nonTerminalSummarySeparator \nonTerminalSummary{syntax\_directed\_translation\_result}{19}\nonTerminalSummarySeparator \nonTerminalSummary{syntax\_instruction}{60}\nonTerminalSummarySeparator \nonTerminalSummary{syntax\_instruction\_list}{59}\nonTerminalSummarySeparator \nonTerminalSummary{syntax\_rule\_declaration}{58}\nonTerminalSummarySeparator \nonTerminalSummary{syntax\_rule\_label}{57}\nonTerminalSummarySeparator \nonTerminalSummary{template\_delimitor}{34}\nonTerminalSummarySeparator \nonTerminalSummary{template\_replacement}{35}\nonTerminalSummarySeparator \nonTerminalSummary{term}{6}\nonTerminalSummarySeparator \nonTerminalSummary{terminal\_declaration}{50}\nonTerminalSummaryEnd \nonTerminalSection{actual\_input\_parameter}{20}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{290}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{300}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -40,7 +40,7 @@
 
 \nonTerminalSection{actual\_input\_parameter\_list}{21}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{328}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{338}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -168,32 +168,20 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [lastPoint] {}; & \\
+    & & & \node (p2-3) [terminal] {default}; & \node (p2-4) [terminal] {error}; & \node (p2-5) [nonterminal] {\nonTerminalSymbol{expression}{1}}; & \\
+    & & & \node (p1-3) [terminal] {else}; & \node (p1-4) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & & & \node (p0-6) [point] {}; & \node (p0-7) [lastPoint] {}; & \\
   };
-  \draw[->] (P0start) -- (p0-2) ;
-\end{tikzpicture}
-
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-cast}{68}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {else}; & \node (p0-3) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-4) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-  \draw[->] (p0-3) -- (p0-4) ;
-\end{tikzpicture}
-
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-cast}{75}
-
-\begin{tikzpicture}
-  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {default}; & \node (p0-3) [terminal] {error}; & \node (p0-4) [nonterminal] {\nonTerminalSymbol{expression}{1}}; & \node (p0-5) [lastPoint] {}; & \\
-  };
-  \draw[->] (P0start) -- (p0-2) ;
-  \draw[->] (p0-2) -- (p0-3) ;
-  \draw[->] (p0-3) -- (p0-4) ;
-  \draw[->] (p0-4) -- (p0-5) ;
+  \draw (P0start) -- (p0-3) ;
+  \draw[->] (p0-2) |- (p1-3) ;
+  \draw[->] (p1-3) -- (p1-4) ;
+  \draw[->] (p0-2) |- (p2-3) ;
+  \draw[->] (p2-3) -- (p2-4) ;
+  \draw[->] (p2-4) -- (p2-5) ;
+  \draw (p0-3) -- (p0-6) ;
+  \draw[->] (p1-4) -| (p0-6) ;
+  \draw[->] (p2-5) -| (p0-6) ;
+  \draw[->] (p0-6) -- (p0-7) ;
 \end{tikzpicture}
 
 \nonTerminalSection{cast\_instruction\_branch}{22}
@@ -314,11 +302,12 @@
   \draw[->] (p0-5) -- (p0-6) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{179}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{184}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {extern}; & \node (p0-3) [terminal] {func}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-6) [terminal] {->}; & \node (p0-7) [terminal] {@type}; & \node (p0-8) [terminal] {identifier}; & \node (p0-9) [lastPoint] {}; & \\
+    & & & & & & & & & \node (p1-9) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {extern}; & \node (p0-3) [terminal] {func}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-6) [terminal] {->}; & \node (p0-7) [terminal] {@type}; & \node (p0-8) [point] {}; & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [point] {}; & \node (p0-11) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -326,8 +315,11 @@
   \draw[->] (p0-4) -- (p0-5) ;
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
-  \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
+  \draw[->] (p0-7) -- (p0-9) ;
+  \draw (p0-8) |- (p1-9) ;
+  \draw (p0-9) -- (p0-10) ;
+  \draw[->] (p1-9) -| (p0-10) ;
+  \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{type-array}{17}
@@ -776,7 +768,8 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {abstract}; & \node (p0-3) [terminal] {getter}; & \node (p0-4) [terminal] {@type}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-7) [terminal] {->}; & \node (p0-8) [terminal] {@type}; & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [lastPoint] {}; & \\
+    & & & & & & & & & & \node (p1-10) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {abstract}; & \node (p0-3) [terminal] {getter}; & \node (p0-4) [terminal] {@type}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-7) [terminal] {->}; & \node (p0-8) [terminal] {@type}; & \node (p0-9) [point] {}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & \node (p0-12) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -785,8 +778,11 @@
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
   \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
+  \draw (p0-8) -- (p0-10) ;
+  \draw[->] (p0-9) |- (p1-10) ;
+  \draw (p0-10) -- (p0-11) ;
+  \draw[->] (p1-10) -| (p0-11) ;
+  \draw[->] (p0-11) -- (p0-12) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{extension-abstract-method}{19}
@@ -821,7 +817,8 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {getter}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-6) [terminal] {->}; & \node (p0-7) [terminal] {@type}; & \node (p0-8) [terminal] {identifier}; & \node (p0-9) [terminal] {\{}; & \node (p0-10) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-11) [terminal] {\}}; & \node (p0-12) [lastPoint] {}; & \\
+    & & & & & & & & & \node (p1-9) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {getter}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [terminal] {identifier}; & \node (p0-5) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-6) [terminal] {->}; & \node (p0-7) [terminal] {@type}; & \node (p0-8) [point] {}; & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [point] {}; & \node (p0-11) [terminal] {\{}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -829,11 +826,14 @@
   \draw[->] (p0-4) -- (p0-5) ;
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
-  \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
+  \draw[->] (p0-7) -- (p0-9) ;
+  \draw (p0-8) |- (p1-9) ;
+  \draw (p0-9) -- (p0-10) ;
+  \draw[->] (p1-9) -| (p0-10) ;
   \draw[->] (p0-10) -- (p0-11) ;
   \draw[->] (p0-11) -- (p0-12) ;
+  \draw[->] (p0-12) -- (p0-13) ;
+  \draw[->] (p0-13) -- (p0-14) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{extension-method}{21}
@@ -872,7 +872,8 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {override}; & \node (p0-3) [terminal] {abstract}; & \node (p0-4) [terminal] {getter}; & \node (p0-5) [terminal] {@type}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-8) [terminal] {->}; & \node (p0-9) [terminal] {@type}; & \node (p0-10) [terminal] {identifier}; & \node (p0-11) [lastPoint] {}; & \\
+    & & & & & & & & & & & \node (p1-11) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {override}; & \node (p0-3) [terminal] {abstract}; & \node (p0-4) [terminal] {getter}; & \node (p0-5) [terminal] {@type}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-8) [terminal] {->}; & \node (p0-9) [terminal] {@type}; & \node (p0-10) [point] {}; & \node (p0-11) [terminal] {identifier}; & \node (p0-12) [point] {}; & \node (p0-13) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -882,8 +883,11 @@
   \draw[->] (p0-6) -- (p0-7) ;
   \draw[->] (p0-7) -- (p0-8) ;
   \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-9) -- (p0-11) ;
+  \draw (p0-10) |- (p1-11) ;
+  \draw (p0-11) -- (p0-12) ;
+  \draw[->] (p1-11) -| (p0-12) ;
+  \draw[->] (p0-12) -- (p0-13) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{extension-overriding-abstract-method}{19}
@@ -920,7 +924,8 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {override}; & \node (p0-3) [terminal] {getter}; & \node (p0-4) [terminal] {@type}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-7) [terminal] {->}; & \node (p0-8) [terminal] {@type}; & \node (p0-9) [terminal] {identifier}; & \node (p0-10) [terminal] {\{}; & \node (p0-11) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-12) [terminal] {\}}; & \node (p0-13) [lastPoint] {}; & \\
+    & & & & & & & & & & \node (p1-10) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {override}; & \node (p0-3) [terminal] {getter}; & \node (p0-4) [terminal] {@type}; & \node (p0-5) [terminal] {identifier}; & \node (p0-6) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-7) [terminal] {->}; & \node (p0-8) [terminal] {@type}; & \node (p0-9) [point] {}; & \node (p0-10) [terminal] {identifier}; & \node (p0-11) [point] {}; & \node (p0-12) [terminal] {\{}; & \node (p0-13) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-14) [terminal] {\}}; & \node (p0-15) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -929,11 +934,14 @@
   \draw[->] (p0-5) -- (p0-6) ;
   \draw[->] (p0-6) -- (p0-7) ;
   \draw[->] (p0-7) -- (p0-8) ;
-  \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
+  \draw[->] (p0-8) -- (p0-10) ;
+  \draw (p0-9) |- (p1-10) ;
+  \draw (p0-10) -- (p0-11) ;
+  \draw[->] (p1-10) -| (p0-11) ;
   \draw[->] (p0-11) -- (p0-12) ;
   \draw[->] (p0-12) -- (p0-13) ;
+  \draw[->] (p0-13) -- (p0-14) ;
+  \draw[->] (p0-14) -- (p0-15) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{extension-overriding-method}{21}
@@ -1309,8 +1317,8 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & \node (p1-4) [terminal] {\verb=%=attribute}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {func}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-8) [terminal] {->}; & \node (p0-9) [terminal] {@type}; & \node (p0-10) [terminal] {identifier}; & \node (p0-11) [terminal] {\{}; & \node (p0-12) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-13) [terminal] {\}}; & \node (p0-14) [lastPoint] {}; & \\
+    & & & & \node (p1-4) [terminal] {\verb=%=attribute}; & & & & & & & \node (p1-11) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {func}; & \node (p0-3) [point] {}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {identifier}; & \node (p0-7) [nonterminal] {\nonTerminalSymbol{formal\_input\_parameter\_list}{14}}; & \node (p0-8) [terminal] {->}; & \node (p0-9) [terminal] {@type}; & \node (p0-10) [point] {}; & \node (p0-11) [terminal] {identifier}; & \node (p0-12) [point] {}; & \node (p0-13) [terminal] {\{}; & \node (p0-14) [nonterminal] {\nonTerminalSymbol{semantic\_instruction\_list}{15}}; & \node (p0-15) [terminal] {\}}; & \node (p0-16) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw (p0-2) -- (p0-4) ;
@@ -1321,11 +1329,14 @@
   \draw[->] (p0-6) -- (p0-7) ;
   \draw[->] (p0-7) -- (p0-8) ;
   \draw[->] (p0-8) -- (p0-9) ;
-  \draw[->] (p0-9) -- (p0-10) ;
-  \draw[->] (p0-10) -- (p0-11) ;
-  \draw[->] (p0-11) -- (p0-12) ;
+  \draw[->] (p0-9) -- (p0-11) ;
+  \draw (p0-10) |- (p1-11) ;
+  \draw (p0-11) -- (p0-12) ;
+  \draw[->] (p1-11) -| (p0-12) ;
   \draw[->] (p0-12) -- (p0-13) ;
   \draw[->] (p0-13) -- (p0-14) ;
+  \draw[->] (p0-14) -- (p0-15) ;
+  \draw[->] (p0-15) -- (p0-16) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{galgas3DeclarationsSyntax}{83}
@@ -2893,7 +2904,7 @@
 
 \nonTerminalSection{semantic\_instruction}{18}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{210}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{220}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -2907,7 +2918,7 @@
   \draw[->] (p0-6) -- (p0-7) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{227}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{237}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -2939,7 +2950,7 @@
   \draw[->] (p0-10) -- (p0-11) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3InstructionsSyntax}{instruction-cast}{92}
+\ruleSubsection{galgas3InstructionsSyntax}{instruction-cast}{85}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -3750,7 +3761,7 @@
 
 \nonTerminalSection{syntax\_directed\_translation\_result}{19}
 
-\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{256}
+\ruleSubsection{galgas3InstructionsSyntax}{galgas3InstructionsSyntax}{266}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

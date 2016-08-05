@@ -27,7 +27,11 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
-    $identifier$ ? *
+    select
+      $identifier$ ? let idf
+      warning idf : "an identifier is no longer required here: remove it"
+    or
+    end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {
       !false # Is not predefined
       !className

@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -98,46 +98,6 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*static uint32_t mCheckedLines ;
-
-uint32_t checkedLineCount (void) { return mCheckedLines ; } ;
-
-void incrementCheckedFileCount (const uint32_t inIncrement) {
-  mCheckedLines += inIncrement ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static uint32_t mGeneratedLines ;
-
-uint32_t generatedLineCount (void) { return mGeneratedLines ; } ;
-
-void incrementGeneratedLileCount (const uint32_t inIncrement) {
-  mGeneratedLines += inIncrement ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static uint32_t mPreservedLines ;
-
-uint32_t preservedLineCount (void) { return mPreservedLines ; }
-
-void incrementPreservedLileCount (const uint32_t inIncrement) {
-  mPreservedLines += inIncrement ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static uint32_t mGeneratedFileCount ;
-
-uint32_t generatedFileCount (void) { return mGeneratedFileCount ; } ;
-
-void incrementGeneratedFileCount (void) {
-  mGeneratedFileCount ++ ;
-}
-*/
-//---------------------------------------------------------------------------------------------------------------------*
-
 int32_t maxErrorCount (void) {
   int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_errors.mValue ;
   return (result == 0) ? INT32_MAX : result ;
@@ -172,15 +132,16 @@ int32_t totalWarningCount (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
+C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
                                        const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
-    const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
+    const C_String textLine = inSourceTextPtr->getLineForLocation (inIssue.mStartLocation) ;
     result << inSourceTextPtr->sourceFilePath ()
-           << ":" << cStringWithSigned (inErrorLocation.lineNumber ())
-           << ":" << cStringWithSigned (inErrorLocation.columnNumber ()) << ": " ;
+           << ":" << cStringWithSigned (inIssue.mStartLocation.lineNumber ())
+           << ":" << cStringWithSigned (inIssue.mStartLocation.columnNumber ())
+           << ":" << cStringWithSigned (inIssue.mEndLocation.columnNumber ()) << ": " ;
   }
   return result ;
 }
@@ -188,20 +149,23 @@ C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocatio
 //---------------------------------------------------------------------------------------------------------------------*
 
 void constructErrorOrWarningLocationMessage (C_String & ioMessage, 
-                                             const C_LocationInSource & inErrorLocation,
+                                             const C_IssueWithFixIt & inIssue,
                                              const C_SourceTextInString * inSourceTextPtr) {
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
-    const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
+    const C_String textLine = inSourceTextPtr->getLineForLocation (inIssue.mStartLocation) ;
   //--- Construct message
-    ioMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr) ;
+    ioMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr) ;
     if (verboseOutput ()) {
       ioMessage << "\n" << textLine << "\n" ;
     //--- Point out column error
-      for (int32_t i=1 ; i<inErrorLocation.columnNumber () ; i++) {
+      for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
         ioMessage << "-" ;
       }
-      ioMessage << "^\n" ;
+      for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
+        ioMessage << "^" ;
+      }
+      ioMessage << "\n" ;
     }
   }
 }
@@ -213,7 +177,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
-                           const C_LocationInSource & inWarningLocation,
+                           const C_IssueWithFixIt & inIssue,
                            const C_String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) {
 //--- Increment warning count
@@ -224,7 +188,7 @@ void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
   warningMessage << (verboseOutput () ? "lexical " : "")
                  << "warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inLexicalWarningMessage << "\n" ;
 //--- Print
-  ggs_printWarning (inSourceTextPtr, inWarningLocation, warningMessage COMMA_THERE) ;
+  ggs_printWarning (inSourceTextPtr, inIssue, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
   if ((maxWarningCount () > 0) && (totalWarningCount () >= maxWarningCount ())) {
     throw max_warning_count_reached_exception () ;
@@ -238,7 +202,7 @@ void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const C_String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) {
 //--- Increment error count
@@ -248,7 +212,7 @@ void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
   errorMessage << (verboseOutput () ? "lexical " : "")
                << "error #" << cStringWithSigned (mErrorTotalCount) << ": " << inLexicalErrorMessage << "\n" ;
 //--- Print
-  ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
+  ggs_printError (inSourceTextPtr, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -262,7 +226,7 @@ void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const C_String & inFoundTokenMessage,
                          const TC_UniqueArray <C_String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) {
@@ -277,7 +241,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
     errorMessage << "-  " << inAcceptedTokenNames (i COMMA_HERE) << "\n" ;  
   }
 //--- Print
-  ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
+  ggs_printError (inSourceTextPtr, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -291,7 +255,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
-                         const C_LocationInSource & inErrorLocation,
+                         const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
                          const C_String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) {
@@ -303,31 +267,31 @@ void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
   errorMessage << (verboseOutput () ? "semantic " : "")
                << "error: I have found:\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   errorMessage << "  - " << inActualFoundClassErrorString <<";\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   errorMessage << "I was expected:\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   errorMessage << "  - " << inExpectedClassesErrorStringsArray (0 COMMA_HERE) ;
   for (int32_t i=1 ; i<inExpectedClassesErrorStringsArray.count () ; i++) {
     errorMessage << ";\n" ;
     if (! verboseOutput ()) {
-      errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+      errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                    << "error: " ;
     }
     errorMessage << "  - " << inExpectedClassesErrorStringsArray (i COMMA_HERE) ;  
   }
   errorMessage << ".\n" ;
 //--- Print
-  ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
+  ggs_printError (inSourceTextPtr, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -341,7 +305,7 @@ void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalCastError (const C_SourceTextInString * inSourceTextPtr,
-                      const C_LocationInSource & inErrorLocation,
+                      const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
                       const C_String & inActualFoundClassErrorString
@@ -383,17 +347,17 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
   errorMessage << (verboseOutput () ? "semantic " : "")
                << "error: I have found:\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   errorMessage << "  - " << inActualFoundClassErrorString <<";\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   errorMessage << "I was expected:\n" ;
   if (! verboseOutput ()) {
-    errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+    errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                  << "error: " ;
   }
   if (expectedClassMessageArray.count () > 0) {
@@ -401,7 +365,7 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
     for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
       errorMessage << ";\n" ;
       if (! verboseOutput ()) {
-        errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+        errorMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr)
                      << "error: " ;
       }
       errorMessage << "  - " << expectedClassMessageArray (i COMMA_HERE) ;
@@ -409,7 +373,7 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
   }
   errorMessage << ".\n" ;
 //--- Print
-  ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
+  ggs_printError (inSourceTextPtr, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -419,7 +383,7 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
-                            const C_LocationInSource & inWarningLocation,
+                            const C_IssueWithFixIt & inIssue,
                             const C_String & inWarningMessage
                             COMMA_LOCATION_ARGS) {
 //--- Increment warning count
@@ -430,7 +394,7 @@ void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
   warningMessage << (verboseOutput () ? "semantic " : "")
                  << "warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inWarningMessage << "\n" ;
 //--- Print
-  ggs_printWarning (inSourceTextPtr, inWarningLocation, warningMessage COMMA_THERE) ;
+  ggs_printWarning (inSourceTextPtr, inIssue, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
   if ((maxWarningCount () > 0) && (totalWarningCount () >= maxWarningCount ())) {
     throw max_warning_count_reached_exception () ;
@@ -447,16 +411,17 @@ void fatalError (const C_String & inErrorMessage,
 //--- Error message
   C_String errorMessage ;
   errorMessage << inErrorMessage << " in file '" << inSourceFile << "', line " << cStringWithSigned (inSourceLine) << "\n" ;
-  ggs_printError (NULL, C_LocationInSource (), errorMessage COMMA_HERE) ;
+  ggs_printError (NULL, C_IssueWithFixIt (), errorMessage COMMA_HERE) ;
   throw max_error_count_reached_exception () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
-                          const C_LocationInSource & inErrorLocation,
+                          const C_IssueWithFixIt & inIssue,
                           const C_String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
+  const C_LocationInSource inEndErrorLocation = inIssue.mStartLocation ; // §
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message
@@ -464,7 +429,7 @@ void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
 //--- Print error
   errorMessage << "semantic error #" << cStringWithSigned (mErrorTotalCount) << ": " << inErrorMessage << "\n" ;
 //--- Print
-  ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
+  ggs_printError (inSourceTextPtr, inIssue, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -481,7 +446,7 @@ void signalRunTimeError (const C_String & inRunTimeErrorMessage
   C_String errorMessage ;
   errorMessage << "Run Time Error #" << cStringWithSigned (mErrorTotalCount) << ": " << inRunTimeErrorMessage << "\n" ;
 //--- Print
-  ggs_printError (NULL, C_LocationInSource (), errorMessage COMMA_THERE) ;
+  ggs_printError (NULL, C_IssueWithFixIt (), errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
   if ((maxErrorCount () > 0) && (totalErrorCount () >= maxErrorCount ())) {
     throw max_error_count_reached_exception () ;
@@ -498,7 +463,7 @@ void signalRunTimeWarning (const C_String & inWarningMessage
   C_String warningMessage ;
   warningMessage << "Run Time Warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inWarningMessage << "\n" ;
 //--- Print
-  ggs_printWarning (NULL, C_LocationInSource (), warningMessage COMMA_THERE) ;
+  ggs_printWarning (NULL, C_IssueWithFixIt (), warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
   if ((maxWarningCount () > 0) && (totalWarningCount () >= maxWarningCount ())) {
     throw max_warning_count_reached_exception () ;
@@ -523,11 +488,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
-                     const C_LocationInSource & inErrorLocation,
+                     const C_IssueWithFixIt & inIssue,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) {
   C_String errorMessage ;
-  constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
+  constructErrorOrWarningLocationMessage (errorMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       errorMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
@@ -561,12 +526,12 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
-                       const C_LocationInSource & inWarningLocation,
+                       const C_IssueWithFixIt & inIssue,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) {
 //---
   C_String warningMessage ;
-  constructErrorOrWarningLocationMessage (warningMessage, inWarningLocation, inSourceTextPtr) ;
+  constructErrorOrWarningLocationMessage (warningMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       warningMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
