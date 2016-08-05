@@ -61,8 +61,6 @@ typedef enum {
 
 - (NSString *) fullMessage ;
 
-- (NSString *) reasonMessage ;
-
 - (NSURL *) issueStandardizedURL ;
 
 - (BOOL) isError ;
@@ -90,6 +88,8 @@ typedef enum {
          changeInLength: (NSInteger) inChangeInLength ;
 
 - (void) scrollAndSelectErrorMessage ;
+
+- (void) storeItemsToMenu: (NSMenu *) inMenu ;
 
 @end
 

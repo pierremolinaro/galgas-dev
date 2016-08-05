@@ -132,8 +132,8 @@ int32_t totalWarningCount (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
-                                       const C_SourceTextInString * inSourceTextPtr) {
+static C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
+                                              const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
@@ -141,37 +141,39 @@ C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
     result << inSourceTextPtr->sourceFilePath ()
            << ":" << cStringWithSigned (inIssue.mStartLocation.lineNumber ())
            << ":" << cStringWithSigned (inIssue.mStartLocation.columnNumber ())
-           << ":" << cStringWithSigned (inIssue.mEndLocation.columnNumber ()) << ": " ;
+           << ":" << cStringWithSigned (inIssue.mEndLocation.columnNumber ()) << ":\n" ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void constructErrorOrWarningLocationMessage (C_String & ioMessage, 
-                                             const C_IssueWithFixIt & inIssue,
-                                             const C_SourceTextInString * inSourceTextPtr) {
+static C_String constructErrorOrWarningLocationMessage (const C_String & inMessage,
+                                                        const C_IssueWithFixIt & inIssue,
+                                                        const C_SourceTextInString * inSourceTextPtr) {
+  C_String result ;
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
-    const C_String textLine = inSourceTextPtr->getLineForLocation (inIssue.mStartLocation) ;
   //--- Construct message
-    ioMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr) ;
+    result << errorOrWarningLocationString (inIssue, inSourceTextPtr)
+           << inMessage ;
     if (verboseOutput ()) {
-      ioMessage << "\n" << textLine << "\n" ;
+      const C_String textLine = inSourceTextPtr->getLineForLocation (inIssue.mStartLocation) ;
+      result << textLine << "\n" ;
     //--- Underline issue
       for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
-        ioMessage << "-" ;
+        result << "-" ;
       }
       for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
-        ioMessage << "^" ;
+        result << "^" ;
       }
-      ioMessage << "\n" ;
+      result << "\n" ;
     //--- Add fix it suggestions
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
         case kFixItRemove :
-          ioMessage << "Fix-it: remove\n" ;
+          result << "Fix-it: remove\n" ;
           break ;
         case kFixItReplace :
           break ;
@@ -179,6 +181,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
       }
     }
   }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -502,15 +505,13 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
                      const C_IssueWithFixIt & inIssue,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) {
-  C_String errorMessage ;
-  constructErrorOrWarningLocationMessage (errorMessage, inIssue, inSourceTextPtr) ;
+  C_String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       errorMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
                    << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
-  errorMessage << inMessage ;
 //--- Append source string
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
@@ -541,15 +542,13 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) {
 //---
-  C_String warningMessage ;
-  constructErrorOrWarningLocationMessage (warningMessage, inIssue, inSourceTextPtr) ;
+  C_String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceTextPtr) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
       warningMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
                      << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
-  warningMessage << inMessage ;
 //--- Append source string
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;

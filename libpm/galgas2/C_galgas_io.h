@@ -143,13 +143,6 @@ class C_parsingContext {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_String errorOrWarningLocationString (const C_IssueWithFixIt & inIssue,
-                                       const C_SourceTextInString * inSourceTextPtr) ;
-
-void constructErrorOrWarningLocationMessage (C_String & ioMessage, 
-                                             const C_IssueWithFixIt & inIssue,
-                                             const C_SourceTextInString * inSourceTextPtr) ;
-
 //--- Errors count
 int32_t maxErrorCount (void) ;
 
