@@ -99,7 +99,7 @@
             hasWarning = YES ;
           }
         }
-      }else if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
+      }else if (NSLocationInRange (issue.startLocationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
         hasError = issue.isError ;
         if (! issue.isError) {
           hasWarning = YES ;

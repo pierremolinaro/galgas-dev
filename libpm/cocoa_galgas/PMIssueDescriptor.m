@@ -29,11 +29,11 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) normalizeMessage {
-  while ((mMessage.length > 1) && ([mMessage characterAtIndex:mMessage.length-1] == '\n')) {
-    mMessage = [mMessage substringToIndex:mMessage.length-1] ;
+  while ((mFullMessage.length > 1) && ([mFullMessage characterAtIndex:mFullMessage.length-1] == '\n')) {
+    mFullMessage = [mFullMessage substringToIndex:mFullMessage.length-1] ;
   }
-  while ((mMessage.length > 0) && ([mMessage characterAtIndex:0] == '\n')) {
-    mMessage = [mMessage substringFromIndex:1] ;
+  while ((mFullMessage.length > 0) && ([mFullMessage characterAtIndex:0] == '\n')) {
+    mFullMessage = [mFullMessage substringFromIndex:1] ;
   }
 }
 
@@ -42,17 +42,19 @@
 - (PMIssueDescriptor *) initWithMessage: (NSString *) inMessage
                         URL: (NSURL *) inURL
                         line: (NSInteger) inLine
-                        column: (NSInteger) inColumn
+                        startColumn: (NSInteger) inStartColumn
+                        endColumn: (NSInteger) inEndColumn
                         isError: (BOOL) inIsError
                         rangeInOutputData: (NSRange) inRangeInOutputData
                         buildOutputRuler: (OC_GGS_RulerViewForBuildOutput *) inRuler {
   self = [self init] ;
   if (self) {
     noteObjectAllocation (self) ;
-    mMessage = inMessage.copy ;
+    mFullMessage = inMessage.copy ;
     mURL = inURL.standardizedURL ;
     mLine = (NSUInteger) inLine ;
-    mColumn = (NSUInteger) inColumn ;
+    mStartColumn = (NSUInteger) inStartColumn ;
+    mEndColumn = (NSUInteger) inEndColumn ;
     mIsError = inIsError ;
     mRangeInOutputData = inRangeInOutputData ;
     mLocationInSourceStringStatus = kLocationInSourceStringNotSolved ;
@@ -71,8 +73,23 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSString *) issueMessage {
-  return mMessage ;
+- (NSString *) fullMessage {
+  return mFullMessage ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (NSString *) reasonMessage {
+  NSString * result = @"???" ;
+  NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
+  if (components.count > 3) {
+    NSString * s = [components objectAtIndex:3] ;
+    components = [s componentsSeparatedByString:@": "] ;
+    if (components.count > 1) {
+      result = [components objectAtIndex:1] ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -95,8 +112,14 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSUInteger) issueColumn {
-  return mColumn ;
+- (NSUInteger) issueStartColumn {
+  return mStartColumn ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (NSUInteger) issueEndColumn {
+  return mEndColumn ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -113,14 +136,22 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSUInteger) locationInSourceString {
-  return mLocationInSourceString ;
+- (NSUInteger) startLocationInSourceString {
+  return mStartLocationInSourceString ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) setLocationInSourceString: (NSUInteger) inLocationInSourceString {
-  mLocationInSourceString = inLocationInSourceString ;
+- (NSUInteger) endLocationInSourceString {
+  return mEndLocationInSourceString ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) setStartLocationInSourceString: (NSUInteger) inStartLocationInSourceString
+         endLocation: (NSUInteger) inEndLocationInSourceString {
+  mStartLocationInSourceString = inStartLocationInSourceString ;
+  mEndLocationInSourceString = inEndLocationInSourceString ;
   mLocationInSourceStringStatus = kLocationInSourceStringSolved ;
 }
 
@@ -128,9 +159,12 @@
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  if (((NSUInteger) mLocationInSourceString) >= (inEditedRange.location + inEditedRange.length)) {
-    mLocationInSourceString += (NSUInteger) inChangeInLength ;
-  }else if (((NSUInteger) mLocationInSourceString) >= inEditedRange.location) {
+  if (mEndLocationInSourceString >= (inEditedRange.location + inEditedRange.length)) {
+    mEndLocationInSourceString += (NSUInteger) inChangeInLength ;
+  }
+  if (mStartLocationInSourceString >= (inEditedRange.location + inEditedRange.length)) {
+    mStartLocationInSourceString += (NSUInteger) inChangeInLength ;
+  }else if (((NSUInteger) mStartLocationInSourceString) >= inEditedRange.location) {
     mLocationInSourceStringStatus = kLocationInSourceStringInvalid ;
     [mBuildOutputRuler setNeedsDisplay:YES] ;
   }
@@ -148,6 +182,22 @@
   NSTextView * errorMessageTextView = mBuildOutputRuler.scrollView.documentView ;
   [errorMessageTextView setSelectedRange:mRangeInOutputData] ;
   [errorMessageTextView scrollRangeToVisible:mRangeInOutputData] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (BOOL) intersectWithRange: (NSRange) inRange {
+  BOOL result = mLocationInSourceStringStatus == kLocationInSourceStringSolved ;
+  if (result) {
+    const NSUInteger start = (mStartLocationInSourceString > inRange.location)
+      ? mStartLocationInSourceString
+      : inRange.location ;
+    const NSUInteger end = (mEndLocationInSourceString < NSMaxRange (inRange))
+      ? mEndLocationInSourceString
+      : NSMaxRange (inRange) ;
+    result = start < end ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

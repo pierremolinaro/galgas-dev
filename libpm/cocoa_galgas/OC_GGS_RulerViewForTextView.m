@@ -131,8 +131,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       BOOL hasWarning = NO ;
       NSMutableString * allMessages = [NSMutableString new] ;
       for (PMIssueDescriptor * issue in mIssueArray) {
-        if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
-          [allMessages appendString:issue.issueMessage] ;
+        if (NSLocationInRange (issue.startLocationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
+          [allMessages appendString:issue.fullMessage] ;
           if (issue.isError) {
             hasError = YES ;
           }else{
@@ -190,7 +190,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
     PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
     if (issue.locationInSourceStringStatus != kLocationInSourceStringInvalid) {
-      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInSourceString effectiveRange:NULL] ;
+      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.startLocationInSourceString effectiveRange:NULL] ;
       const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
       const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
       if (NSPointInRect (locationInView, rImage)) {

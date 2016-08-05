@@ -226,13 +226,17 @@
   for (PMIssueDescriptor * issue in mIssueArray) {
     if (issue.locationInSourceStringStatus == kLocationInSourceStringSolved) {
       // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
-      NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.locationInSourceString effectiveRange:NULL] ;
+      NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.startLocationInSourceString effectiveRange:NULL] ;
       lineRect.size.width = self.visibleRect.size.width ;
       // NSLog (@"r1 {{%g, %g}, {%g, %g}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
       [issue.isError ? errorHiliteBezierPath : warningHiliteBezierPath appendBezierPathWithRect:lineRect] ;
-      const NSPoint p1 = [self.layoutManager locationForGlyphAtIndex:issue.locationInSourceString] ;
-      const NSRect r = {{p1.x - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE}, {BULLET_SIZE, BULLET_SIZE}} ;
-      [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithOvalInRect:r] ;
+      const NSPoint p1 = [self.layoutManager locationForGlyphAtIndex:issue.startLocationInSourceString] ;
+      const NSPoint p2 = [self.layoutManager locationForGlyphAtIndex:issue.endLocationInSourceString + 1] ;
+      const NSRect r = {
+        {p1.x - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height},
+        {BULLET_SIZE + p2.x - p1.x, BULLET_SIZE}
+      } ;
+      [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithRect:r] ;
     }
   }
 //--- Draw warning hilite
@@ -410,18 +414,44 @@
 
 - (void) mouseDown:(NSEvent *) inEvent {
   if ((inEvent.modifierFlags & NSCommandKeyMask) != 0) {
+  //--- Select range
     const NSPoint local_point = [self convertPoint:[inEvent locationInWindow] fromView:nil] ;
     const NSUInteger characterIndex = [self characterIndexForInsertionAtPoint:local_point] ;
     const NSRange selectedRange = {characterIndex, 0} ;
     const NSRange r = [self selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
     [self setSelectedRange:r] ;
+    NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
+  //--- Add issues
+    NSDictionary * issueErrorAttributes = [NSDictionary
+      dictionaryWithObject:[NSColor redColor]
+      forKey:NSForegroundColorAttributeName
+    ] ;
+    NSDictionary * warningIssueAttributes = [NSDictionary
+      dictionaryWithObject:[NSColor orangeColor]
+      forKey:NSForegroundColorAttributeName
+    ] ;
+    for (PMIssueDescriptor * issue in mIssueArray) {
+      if ([issue intersectWithRange:r]) {
+        NSAttributedString * as = [[NSAttributedString alloc]
+          initWithString:issue.reasonMessage
+          attributes:issue.isError ? issueErrorAttributes : warningIssueAttributes
+        ] ;
+        NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:NULL keyEquivalent:@""] ;
+        menuItem.attributedTitle = as ;
+        [menu addItem:menuItem] ;
+      }
+    }
+  //--- Source indexing
     OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
-    NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:mDisplayDescriptor] ;
+    [dsc appendIndexingToMenu:menu forRange:r textDisplayDescriptor:mDisplayDescriptor] ;
+  //--- Display menu
+    menu.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]] ;
+    menu.allowsContextMenuPlugIns = NO ;
     [NSMenu
       popUpContextMenu:menu
       withEvent:inEvent
       forView:self
-      withFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]
+//      withFont:nil
     ] ;
   }else{
     [super mouseDown:inEvent] ;
