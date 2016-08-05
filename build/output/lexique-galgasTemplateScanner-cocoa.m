@@ -92,7 +92,7 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
+static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [144] = {
   NO /* identifier */,
   NO /* @type */,
   NO /* double.xxx */,
@@ -135,22 +135,19 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
   NO /* enum */,
   NO /* error */,
   NO /* extension */,
-  NO /* extends */,
   NO /* extern */,
   NO /* false */,
-  NO /* feature */,
   NO /* filewrapper */,
+  NO /* fixit */,
   NO /* for */,
   NO /* foreach */,
   NO /* func */,
-  NO /* function */,
   NO /* getter */,
   NO /* grammar */,
   NO /* graph */,
   NO /* gui */,
   NO /* here */,
   NO /* if */,
-  NO /* import */,
   NO /* in */,
   NO /* index */,
   NO /* indexing */,
@@ -182,14 +179,10 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
   NO /* remove */,
   NO /* replace */,
   NO /* repeat */,
-  NO /* rewind */,
-  NO /* root */,
-  NO /* routine */,
   NO /* rule */,
   NO /* search */,
   NO /* select */,
   NO /* self */,
-  NO /* semantics */,
   NO /* send */,
   NO /* setter */,
   NO /* sortedlist */,
@@ -253,7 +246,7 @@ static const BOOL kEndOfScriptInTemplateArray_galgasTemplateScanner [151] = {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [94] = {
+static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [87] = {
   {"do", galgasTemplateScanner_1_do},
   {"if", galgasTemplateScanner_1_if},
   {"in", galgasTemplateScanner_1_in},
@@ -281,7 +274,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"loop", galgasTemplateScanner_1_loop},
   {"once", galgasTemplateScanner_1_once},
   {"proc", galgasTemplateScanner_1_proc},
-  {"root", galgasTemplateScanner_1_root},
   {"rule", galgasTemplateScanner_1_rule},
   {"self", galgasTemplateScanner_1_self},
   {"send", galgasTemplateScanner_1_send},
@@ -297,6 +289,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"elsif", galgasTemplateScanner_1_elsif},
   {"error", galgasTemplateScanner_1_error},
   {"false", galgasTemplateScanner_1_false},
+  {"fixit", galgasTemplateScanner_1_fixit},
   {"graph", galgasTemplateScanner_1_graph},
   {"index", galgasTemplateScanner_1_index},
   {"label", galgasTemplateScanner_1_label},
@@ -308,13 +301,11 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"before", galgasTemplateScanner_1_before},
   {"extern", galgasTemplateScanner_1_extern},
   {"getter", galgasTemplateScanner_1_getter},
-  {"import", galgasTemplateScanner_1_import},
   {"insert", galgasTemplateScanner_1_insert},
   {"method", galgasTemplateScanner_1_method},
   {"option", galgasTemplateScanner_1_option},
   {"remove", galgasTemplateScanner_1_remove},
   {"repeat", galgasTemplateScanner_1_repeat},
-  {"rewind", galgasTemplateScanner_1_rewind},
   {"search", galgasTemplateScanner_1_search},
   {"select", galgasTemplateScanner_1_select},
   {"setter", galgasTemplateScanner_1_setter},
@@ -324,8 +315,6 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"unused", galgasTemplateScanner_1_unused},
   {"between", galgasTemplateScanner_1_between},
   {"default", galgasTemplateScanner_1_default},
-  {"extends", galgasTemplateScanner_1_extends},
-  {"feature", galgasTemplateScanner_1_feature},
   {"foreach", galgasTemplateScanner_1_foreach},
   {"grammar", galgasTemplateScanner_1_grammar},
   {"lexique", galgasTemplateScanner_1_lexique},
@@ -334,16 +323,13 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
   {"private", galgasTemplateScanner_1_private},
   {"project", galgasTemplateScanner_1_project},
   {"replace", galgasTemplateScanner_1_replace},
-  {"routine", galgasTemplateScanner_1_routine},
   {"warning", galgasTemplateScanner_1_warning},
   {"abstract", galgasTemplateScanner_1_abstract},
-  {"function", galgasTemplateScanner_1_function},
   {"indexing", galgasTemplateScanner_1_indexing},
   {"operator", galgasTemplateScanner_1_operator},
   {"override", galgasTemplateScanner_1_override},
   {"template", galgasTemplateScanner_1_template},
   {"extension", galgasTemplateScanner_1_extension},
-  {"semantics", galgasTemplateScanner_1_semantics},
   {"sharedmap", galgasTemplateScanner_1_sharedmap},
   {"sortedlist", galgasTemplateScanner_1_sortedlist},
   {"constructor", galgasTemplateScanner_1_constructor},
@@ -351,7 +337,7 @@ static const C_cocoa_lexique_table_entry ktable_for_galgasTemplateScanner_galgas
 } ;
 
 static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString * inSearchedString) {
-  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 94) ;
+  return searchStringInTable (inSearchedString, ktable_for_galgasTemplateScanner_galgasKeyWordList, 87) ;
 }
 
 
@@ -984,7 +970,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) terminalVocabularyCount {
-  return 151 ;
+  return 144 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1014,7 +1000,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
-  static const NSUInteger kTerminalSymbolStyles [152] = {0,
+  static const NSUInteger kTerminalSymbolStyles [145] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -1057,22 +1043,19 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_enum */,
     1 /* galgasTemplateScanner_1_error */,
     1 /* galgasTemplateScanner_1_extension */,
-    1 /* galgasTemplateScanner_1_extends */,
     1 /* galgasTemplateScanner_1_extern */,
     1 /* galgasTemplateScanner_1_false */,
-    1 /* galgasTemplateScanner_1_feature */,
     1 /* galgasTemplateScanner_1_filewrapper */,
+    1 /* galgasTemplateScanner_1_fixit */,
     1 /* galgasTemplateScanner_1_for */,
     1 /* galgasTemplateScanner_1_foreach */,
     1 /* galgasTemplateScanner_1_func */,
-    1 /* galgasTemplateScanner_1_function */,
     1 /* galgasTemplateScanner_1_getter */,
     1 /* galgasTemplateScanner_1_grammar */,
     1 /* galgasTemplateScanner_1_graph */,
     1 /* galgasTemplateScanner_1_gui */,
     1 /* galgasTemplateScanner_1_here */,
     1 /* galgasTemplateScanner_1_if */,
-    1 /* galgasTemplateScanner_1_import */,
     1 /* galgasTemplateScanner_1_in */,
     1 /* galgasTemplateScanner_1_index */,
     1 /* galgasTemplateScanner_1_indexing */,
@@ -1104,14 +1087,10 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     1 /* galgasTemplateScanner_1_remove */,
     1 /* galgasTemplateScanner_1_replace */,
     1 /* galgasTemplateScanner_1_repeat */,
-    1 /* galgasTemplateScanner_1_rewind */,
-    1 /* galgasTemplateScanner_1_root */,
-    1 /* galgasTemplateScanner_1_routine */,
     1 /* galgasTemplateScanner_1_rule */,
     1 /* galgasTemplateScanner_1_search */,
     1 /* galgasTemplateScanner_1_select */,
     1 /* galgasTemplateScanner_1_self */,
-    1 /* galgasTemplateScanner_1_semantics */,
     1 /* galgasTemplateScanner_1_send */,
     1 /* galgasTemplateScanner_1_setter */,
     1 /* galgasTemplateScanner_1_sortedlist */,
@@ -1177,7 +1156,7 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
-  static const BOOL kTerminalAtomicSelection [152] = {NO,
+  static const BOOL kTerminalAtomicSelection [145] = {NO,
     YES /* galgasTemplateScanner_1_identifier */,
     YES /* galgasTemplateScanner_1__40_type */,
     YES /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -1220,22 +1199,19 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_enum */,
     YES /* galgasTemplateScanner_1_error */,
     YES /* galgasTemplateScanner_1_extension */,
-    YES /* galgasTemplateScanner_1_extends */,
     YES /* galgasTemplateScanner_1_extern */,
     YES /* galgasTemplateScanner_1_false */,
-    YES /* galgasTemplateScanner_1_feature */,
     YES /* galgasTemplateScanner_1_filewrapper */,
+    YES /* galgasTemplateScanner_1_fixit */,
     YES /* galgasTemplateScanner_1_for */,
     YES /* galgasTemplateScanner_1_foreach */,
     YES /* galgasTemplateScanner_1_func */,
-    YES /* galgasTemplateScanner_1_function */,
     YES /* galgasTemplateScanner_1_getter */,
     YES /* galgasTemplateScanner_1_grammar */,
     YES /* galgasTemplateScanner_1_graph */,
     YES /* galgasTemplateScanner_1_gui */,
     YES /* galgasTemplateScanner_1_here */,
     YES /* galgasTemplateScanner_1_if */,
-    YES /* galgasTemplateScanner_1_import */,
     YES /* galgasTemplateScanner_1_in */,
     YES /* galgasTemplateScanner_1_index */,
     YES /* galgasTemplateScanner_1_indexing */,
@@ -1267,14 +1243,10 @@ static NSInteger search_into_galgasTemplateScanner_galgasKeyWordList (NSString *
     YES /* galgasTemplateScanner_1_remove */,
     YES /* galgasTemplateScanner_1_replace */,
     YES /* galgasTemplateScanner_1_repeat */,
-    YES /* galgasTemplateScanner_1_rewind */,
-    YES /* galgasTemplateScanner_1_root */,
-    YES /* galgasTemplateScanner_1_routine */,
     YES /* galgasTemplateScanner_1_rule */,
     YES /* galgasTemplateScanner_1_search */,
     YES /* galgasTemplateScanner_1_select */,
     YES /* galgasTemplateScanner_1_self */,
-    YES /* galgasTemplateScanner_1_semantics */,
     YES /* galgasTemplateScanner_1_send */,
     YES /* galgasTemplateScanner_1_setter */,
     YES /* galgasTemplateScanner_1_sortedlist */,

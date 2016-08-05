@@ -2,10 +2,24 @@
 #! AST
 #----------------------------------------------------------------------------------------------------------------------*
 
+enum @fixitElementAST {
+  case fixItRemove
+  case fixItReplace (@semanticExpressionAST exp @location errorLocation)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @fixitListAST {
+  @fixitElementAST mElement
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 class @errorInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mLocationExpression
   @semanticExpressionAST mMessageExpression
   @lstringlist mBuiltVariableList
+  @fixitListAST mFixitListAST
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -13,6 +27,33 @@ class @errorInstructionAST : @semanticInstructionAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 syntax extension galgas3InstructionsSyntax {
+
+  #····················································································································*
+
+  rule <issue_fixit> !@fixitListAST outFixitListAST {
+    outFixitListAST = {}
+    select
+    or
+      $fixit$
+      ${$
+      var hasFixItRemove = false
+      repeat
+      while
+        let errorLocation = @location.here
+        $remove$
+        if hasFixItRemove then
+          warning errorLocation : "duplicated action" fixit { remove remove }
+        end
+        outFixitListAST += !.fixItRemove
+        hasFixItRemove = true
+      while
+        $replace$
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:.here}
+      end
+      $}$
+    end
+  }
 
   #····················································································································*
 
@@ -33,11 +74,13 @@ syntax extension galgas3InstructionsSyntax {
         $,$
       end
     end
+    <issue_fixit> ?let @fixitListAST fixitListAST
     outInstruction = @errorInstructionAST.new {
       !instructionLocation
       !mReceiverExpression
       !mErrorExpression
       !mBuiltVariableList
+      !fixitListAST
     }
   }  
 
@@ -49,26 +92,52 @@ syntax extension galgas3InstructionsSyntax {
 #! CONTEXT
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @errorInstructionAST enterInstructionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
+override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
   [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  for (element) in self do
+    switch element 
+    case fixItRemove :
+    case fixItReplace (@semanticExpressionAST exp *) :
+      [exp enterExpressionInSemanticContext !?ioTypeMap]
+    end
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! SEMANTICS
 #----------------------------------------------------------------------------------------------------------------------*
 
+enum @fixitElementForGeneration {
+  case fixItRemove
+  case fixItReplace (@semanticExpressionForGeneration exp)
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @fixitListForGeneration {
+  @fixitElementForGeneration mElement
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 proc analyzeErrorOrWarningInstruction
   ?let @analysisContext inAnalysisContext
   ?let @semanticExpressionAST inLocationExpression
   ?let @semanticExpressionAST inMessageExpression
+  ?let @fixitListAST inFixitListAST
   ?let @location inErrorLocation
   ?let @string inErrorOrWarningString
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outLocationExpression
   !@semanticExpressionForGeneration outMessageExpression
+  !@fixitListForGeneration outFixitListForGeneration
 {
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
@@ -113,30 +182,6 @@ proc analyzeErrorOrWarningInstruction
           !hasCompilerArgument
         }
         outLocationExpression = conversionExpression
-#        let getterExpression = @getterCallExpressionForGeneration.new {
-#          !inAnalysisContext.mPredefinedTypes.mLocationType
-#          !inErrorLocation
-#          !kind
-#          !outLocationExpression
-#          !{}
-#          !"location"
-#          !{}
-#          !hasCompilerArgument
-#        }
-#        let resultCppName = "location_" + [inErrorLocation locationIndex]
-#        let assignment = @localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
-#          !inAnalysisContext.mPredefinedTypes.mLocationType
-#          !true # is constant
-#          !resultCppName
-#          !getterExpression
-#        }
-#        ioInstructionListForGeneration += !assignment
-#        outLocationExpression = @varInExpressionForGeneration.new {
-#          !inAnalysisContext.mPredefinedTypes.mLocationType
-#          !inErrorLocation
-#          !resultCppName
-#          !""
-#        }
       end
     else
       error inErrorLocation
@@ -152,6 +197,29 @@ proc analyzeErrorOrWarningInstruction
     !?ioVariableMap
     ?outMessageExpression
   ]
+#--- Analyze fixit expressions
+  let twoStringListType = @unifiedTypeMap-proxy.searchKey {
+    !inAnalysisContext.mSemanticContext.mTypeMap
+    !["2stringlist" nowhere]
+  }
+  outFixitListForGeneration = {}
+  for (element) in inFixitListAST do
+    switch element 
+    case fixItRemove :
+      outFixitListForGeneration += !.fixItRemove
+    case fixItReplace (exp errorLocation) :
+      [exp analyzeSemanticExpression
+        !twoStringListType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let expression
+      ]
+      if [expression mResultType] != twoStringListType then
+        error errorLocation : "this expression should be an @2stringlist instance"
+      end
+      outFixitListForGeneration += !.fixItReplace {!exp:expression}
+    end
+  end
 #--- Check message expression type is @string
   if [outMessageExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
     error inErrorLocation
@@ -172,11 +240,13 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !mLocationExpression
     !mMessageExpression
+    !mFixitListAST
     !mInstructionLocation
     !"error"
     !?ioVariableMap
     ?let locationExpression
     ?let messageExpression
+    ?let fixitListForGeneration
   )
 #--- Handle dropped variables
   var builtVariableCppNameList = @stringlist {}
@@ -190,6 +260,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !locationExpression
     !messageExpression
     !builtVariableCppNameList
+    !fixitListForGeneration
   }
 }
 
@@ -197,11 +268,34 @@ override method @errorInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #----------------------------------------------------------------------------------------------------------------------*
 
+method @fixitListForGeneration generateFixIt
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+  !@string outFixItArrayCppName
+{
+  outFixItArrayCppName = "fixItArray" + ioTemporaryVariableIndex
+  ioTemporaryVariableIndex ++
+  ioGeneratedCode += "TC_Array <C_FixItDescription> " + outFixItArrayCppName + " ;\n"
+  for (element) in self do
+    switch (element)
+    case fixItRemove :
+      ioGeneratedCode += outFixItArrayCppName + ".append (C_FixItDescription (kFixItRemove, \"\", \"\")) ;\n"
+    case fixItReplace (@semanticExpressionForGeneration exp) :
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
   @semanticExpressionForGeneration mErrorExpression
   @stringlist mBuiltVariableCppNameList
+  @fixitListForGeneration mFixitListForGeneration
 }
 
 #·····················································································································*
@@ -210,28 +304,41 @@ override method @errorInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
 #--- Receiver expression
-  @string receiverCppVarName
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let receiverCppVarName
+  ]
 #--- Receiver expression
-  @string messageCppVarName
-  [mErrorExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
-#--- Use location getter ?
-#  switch mUseLocationGetter 
-#  case no :
-#  case yes (@methodKind kind @bool hasCompilerArgument) :
-#
-#    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-#    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".getter_location (HERE)) ; // Implicit use of 'location' getter\n"
-#    receiverCppVarName = locationVar
-#  end
+  [mErrorExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let messageCppVarName
+  ]
+#--- Fix It array
+  [mFixitListForGeneration generateFixIt
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+    ?@string fixItArrayCppName
+  ]
 #--- Generate error instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += compilerCppName () + "->emitSemanticError (" + receiverCppVarName + ", " + messageCppVarName
-                   + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += compilerCppName () + "->emitSemanticError ("
+    + receiverCppVarName + ", "
+    + messageCppVarName + ", "
+    + fixItArrayCppName + " "
+    + [mInstructionLocation commaSourceFile] + ") ;\n"
 #--- Release dropped variables
   for () in mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]

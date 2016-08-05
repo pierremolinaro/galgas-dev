@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -30,6 +30,7 @@
 #include "utilities/C_SharedObject.h"
 #include "galgas2/C_LocationInSource.h"
 #include "galgas2/C_SourceTextInString.h"
+#include "galgas2/C_IssueWithFixIt.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -156,7 +157,8 @@ class C_Compiler : public C_SharedObject {
 
 //--- Emit an error
   public : void emitSemanticError (const GALGAS_location & inErrorLocation,
-                                   const GALGAS_string & inErrorMessage
+                                   const GALGAS_string & inErrorMessage,
+                                   const TC_Array <C_FixItDescription> & inFixItArray
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error message with an error message that contains %K espace sequence

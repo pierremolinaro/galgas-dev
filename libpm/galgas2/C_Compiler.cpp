@@ -159,7 +159,7 @@ void C_Compiler::resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTe
 void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
                                         COMMA_LOCATION_ARGS) {
   signalSemanticError (sourceText (),
-                       C_IssueWithFixIt (mCurrentLocation, mCurrentLocation),
+                       C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
                        inErrorMessage
                        COMMA_THERE) ;
 }
@@ -175,7 +175,7 @@ void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
 void C_Compiler::onTheFlySemanticWarning (const C_String & inWarningMessage
                                           COMMA_LOCATION_ARGS) {
   signalSemanticWarning (sourceText (), 
-                         C_IssueWithFixIt (mCurrentLocation, mCurrentLocation),
+                         C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()),
                          inWarningMessage
                          COMMA_THERE) ;
 }
@@ -262,7 +262,7 @@ void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocatio
       onTheFlyRunTimeError (inErrorMessage COMMA_THERE) ;
     }else{
       signalSemanticError (inErrorLocation.sourceText (),
-                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation ()),
+                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), TC_Array <C_FixItDescription> ()),
                            inErrorMessage
                            COMMA_THERE) ;
     }
@@ -272,7 +272,8 @@ void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocatio
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
-                                    const GALGAS_string & inErrorMessage
+                                    const GALGAS_string & inErrorMessage,
+                                    const TC_Array <C_FixItDescription> & inFixItArray
                                     COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid () && inErrorMessage.isValid ()) {
     const C_String errorMessage = inErrorMessage.stringValue () ;
@@ -280,7 +281,7 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
       onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
       signalSemanticError (inErrorLocation.sourceText (),
-                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation ()),
+                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
                            errorMessage
                            COMMA_THERE) ;
     }
@@ -408,7 +409,7 @@ void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLoc
       signalRunTimeWarning (inWarningMessage COMMA_THERE) ;
     }else{
       signalSemanticWarning (inWarningLocation.sourceText (),
-                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation ()),
+                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), TC_Array <C_FixItDescription> ()),
                              inWarningMessage
                              COMMA_THERE) ;
     }
@@ -426,7 +427,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
       signalRunTimeWarning (warningMessage COMMA_THERE) ;
     }else{
       signalSemanticWarning (inWarningLocation.sourceText (),
-                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation ()),
+                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), TC_Array <C_FixItDescription> ()),
                              warningMessage
                              COMMA_THERE) ;
     }

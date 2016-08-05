@@ -473,7 +473,8 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
       message << enumerator1.current_mValue (THERE).mAttribute_string.stringValue() ;
       message << "' is not a declared node, cannot start from it" ;
       inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mAttribute_location,
-                                     message
+                                     message,
+                                     TC_Array <C_FixItDescription> ()
                                      COMMA_THERE) ;
     }else{
       startNodeSet.add (nodePtr->mNodeID) ;

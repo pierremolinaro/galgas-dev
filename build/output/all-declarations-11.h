@@ -2308,11 +2308,13 @@ class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inOb
 void routine_analyzeErrorOrWarningInstruction (const class GALGAS_analysisContext constinArgument0,
                                                const class GALGAS_semanticExpressionAST constinArgument1,
                                                const class GALGAS_semanticExpressionAST constinArgument2,
-                                               const class GALGAS_location constinArgument3,
-                                               const class GALGAS_string constinArgument4,
-                                               class GALGAS_variableMap & ioArgument5,
-                                               class GALGAS_semanticExpressionForGeneration & outArgument6,
+                                               const class GALGAS_fixitListAST constinArgument3,
+                                               const class GALGAS_location constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               class GALGAS_variableMap & ioArgument6,
                                                class GALGAS_semanticExpressionForGeneration & outArgument7,
+                                               class GALGAS_semanticExpressionForGeneration & outArgument8,
+                                               class GALGAS_fixitListForGeneration & outArgument9,
                                                class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 

@@ -26,6 +26,37 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "galgas2/C_LocationInSource.h"
+#include "strings/C_String.h"
+#include "collections/TC_Array.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef enum {
+  kFixItRemove,
+  kFixItReplace
+} EnumFixItKind ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class C_FixItDescription {
+//--- Default constructor
+  public : C_FixItDescription (void) ;
+
+//--- Constructor
+  public : C_FixItDescription (const EnumFixItKind inKind,
+                               const C_String & inActionString,
+                               const C_String & inCommentString) ;
+
+//--- Accessors
+  public : EnumFixItKind kind (void) const { return mKind ; }
+  public : C_String actionString (void) const { return mActionString ; }
+  public : C_String commentString (void) const { return mCommentString ; }
+  
+//--- Private properties
+  private : EnumFixItKind mKind ;
+  private : C_String mActionString ;
+  private : C_String mCommentString ;
+} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -35,11 +66,13 @@ class C_IssueWithFixIt {
 
 //--- Constructor
   public : C_IssueWithFixIt (const C_LocationInSource & inStartLocation,
-                             const C_LocationInSource & inEndLocation) ;
+                             const C_LocationInSource & inEndLocation,
+                             const TC_Array <C_FixItDescription> & inFixItArray) ;
 
 //--- Properties
   public : const C_LocationInSource mStartLocation ;
   public : const C_LocationInSource mEndLocation ;
+  public : const TC_Array <C_FixItDescription> mFixItArray ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

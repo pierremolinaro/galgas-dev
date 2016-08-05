@@ -5978,6 +5978,9 @@ typeComparisonResult cPtr_warningInstructionForGeneration::dynamicObjectCompare 
   if (kOperandEqual == result) {
     result = mAttribute_mWarningExpression.objectCompare (p->mAttribute_mWarningExpression) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mFixitListForGeneration.objectCompare (p->mAttribute_mFixitListForGeneration) ;
+  }
   return result ;
 }
 
@@ -6017,11 +6020,12 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 GALGAS_warningInstructionForGeneration GALGAS_warningInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mWarningExpression
+                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mWarningExpression,
+                                                                                                const GALGAS_fixitListForGeneration & inAttribute_mFixitListForGeneration
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_warningInstructionForGeneration result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mWarningExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mWarningExpression COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mWarningExpression.isValid () && inAttribute_mFixitListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_warningInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mReceiverExpression, inAttribute_mWarningExpression, inAttribute_mFixitListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6081,17 +6085,37 @@ GALGAS_semanticExpressionForGeneration cPtr_warningInstructionForGeneration::get
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration GALGAS_warningInstructionForGeneration::getter_mFixitListForGeneration (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_warningInstructionForGeneration * p = (const cPtr_warningInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_warningInstructionForGeneration) ;
+    result = p->mAttribute_mFixitListForGeneration ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration cPtr_warningInstructionForGeneration::getter_mFixitListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFixitListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                              Pointer class for @warningInstructionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_warningInstructionForGeneration::cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                            const GALGAS_semanticExpressionForGeneration & in_mWarningExpression
+                                                                            const GALGAS_semanticExpressionForGeneration & in_mWarningExpression,
+                                                                            const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
 mAttribute_mReceiverExpression (in_mReceiverExpression),
-mAttribute_mWarningExpression (in_mWarningExpression) {
+mAttribute_mWarningExpression (in_mWarningExpression),
+mAttribute_mFixitListForGeneration (in_mFixitListForGeneration) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6108,6 +6132,8 @@ void cPtr_warningInstructionForGeneration::description (C_String & ioString,
   mAttribute_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mWarningExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mFixitListForGeneration.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6115,7 +6141,7 @@ void cPtr_warningInstructionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_warningInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_warningInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mWarningExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_warningInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mReceiverExpression, mAttribute_mWarningExpression, mAttribute_mFixitListForGeneration COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8638,6 +8664,9 @@ typeComparisonResult cPtr_errorInstructionAST::dynamicObjectCompare (const acPtr
   if (kOperandEqual == result) {
     result = mAttribute_mBuiltVariableList.objectCompare (p->mAttribute_mBuiltVariableList) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mFixitListAST.objectCompare (p->mAttribute_mFixitListAST) ;
+  }
   return result ;
 }
 
@@ -8678,11 +8707,12 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 GALGAS_errorInstructionAST GALGAS_errorInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                         const GALGAS_semanticExpressionAST & inAttribute_mLocationExpression,
                                                                         const GALGAS_semanticExpressionAST & inAttribute_mMessageExpression,
-                                                                        const GALGAS_lstringlist & inAttribute_mBuiltVariableList
+                                                                        const GALGAS_lstringlist & inAttribute_mBuiltVariableList,
+                                                                        const GALGAS_fixitListAST & inAttribute_mFixitListAST
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_errorInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mLocationExpression.isValid () && inAttribute_mMessageExpression.isValid () && inAttribute_mBuiltVariableList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_errorInstructionAST (inAttribute_mInstructionLocation, inAttribute_mLocationExpression, inAttribute_mMessageExpression, inAttribute_mBuiltVariableList COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mLocationExpression.isValid () && inAttribute_mMessageExpression.isValid () && inAttribute_mBuiltVariableList.isValid () && inAttribute_mFixitListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_errorInstructionAST (inAttribute_mInstructionLocation, inAttribute_mLocationExpression, inAttribute_mMessageExpression, inAttribute_mBuiltVariableList, inAttribute_mFixitListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8742,18 +8772,38 @@ GALGAS_lstringlist cPtr_errorInstructionAST::getter_mBuiltVariableList (UNUSED_L
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST GALGAS_errorInstructionAST::getter_mFixitListAST (UNUSED_LOCATION_ARGS) const {
+  GALGAS_fixitListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_errorInstructionAST * p = (const cPtr_errorInstructionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_errorInstructionAST) ;
+    result = p->mAttribute_mFixitListAST ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST cPtr_errorInstructionAST::getter_mFixitListAST (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFixitListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                    Pointer class for @errorInstructionAST class                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_errorInstructionAST::cPtr_errorInstructionAST (const GALGAS_location & in_mInstructionLocation,
                                                     const GALGAS_semanticExpressionAST & in_mLocationExpression,
                                                     const GALGAS_semanticExpressionAST & in_mMessageExpression,
-                                                    const GALGAS_lstringlist & in_mBuiltVariableList
+                                                    const GALGAS_lstringlist & in_mBuiltVariableList,
+                                                    const GALGAS_fixitListAST & in_mFixitListAST
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
 mAttribute_mLocationExpression (in_mLocationExpression),
 mAttribute_mMessageExpression (in_mMessageExpression),
-mAttribute_mBuiltVariableList (in_mBuiltVariableList) {
+mAttribute_mBuiltVariableList (in_mBuiltVariableList),
+mAttribute_mFixitListAST (in_mFixitListAST) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8772,6 +8822,8 @@ void cPtr_errorInstructionAST::description (C_String & ioString,
   mAttribute_mMessageExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mBuiltVariableList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mFixitListAST.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8779,7 +8831,7 @@ void cPtr_errorInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_errorInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_errorInstructionAST (mAttribute_mInstructionLocation, mAttribute_mLocationExpression, mAttribute_mMessageExpression, mAttribute_mBuiltVariableList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_errorInstructionAST (mAttribute_mInstructionLocation, mAttribute_mLocationExpression, mAttribute_mMessageExpression, mAttribute_mBuiltVariableList, mAttribute_mFixitListAST COMMA_THERE)) ;
   return ptr ;
 }
 
