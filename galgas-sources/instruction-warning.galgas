@@ -93,7 +93,7 @@ override method @warningInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
  {
 #--- Receiver expression
@@ -107,10 +107,22 @@ override method @warningInstructionForGeneration generateInstruction
     !?ioUnusedVariableCppNameSet
     ?let messageCppVarName
   ]
+#--- Fix It array
+  [mFixitListForGeneration generateFixIt
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+    ?@string fixItArrayCppName
+  ]
 #--- Generate warning instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += compilerCppName () + "->emitSemanticWarning (" + receiverCppVarName + ", " + messageCppVarName
-                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += compilerCppName () + "->emitSemanticWarning ("
+    + receiverCppVarName + ", "
+    + messageCppVarName + ", "
+    + fixItArrayCppName + " "
+    + [mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
