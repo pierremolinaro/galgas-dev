@@ -4433,7 +4433,8 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
   while (enumerator_6108.hasCurrentObject ()) {
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, enumerator_6108.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 129)).objectCompare (GALGAS_string ("nibAndMainClass"))).boolEnum () ;
     if (kBoolTrue == test_2) {
-      inCompiler->emitSemanticWarning (enumerator_6108.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 130)), GALGAS_string ("the '").add_operation (enumerator_6108.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)) ;
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticWarning (enumerator_6108.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 130)), GALGAS_string ("the '").add_operation (enumerator_6108.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)) ;
     }else if (kBoolFalse == test_2) {
       cEnumerator_stringlist enumerator_6312 (enumerator_6108.current_mValue (HERE).mAttribute_string.getter_componentsSeparatedByString (GALGAS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 132)), kEnumeration_up) ;
       while (enumerator_6312.hasCurrentObject ()) {
@@ -4454,10 +4455,10 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     while (enumerator_6776.hasCurrentObject ()) {
       cEnumerator_terminalLabelListAST enumerator_6809 (enumerator_6776.current_mTerminalList (HERE), kEnumeration_up) ;
       while (enumerator_6809.hasCurrentObject ()) {
-        const enumGalgasBool test_3 = var_terminalSymbolSet_6708.getter_hasKey (enumerator_6809.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 150)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 150)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 150)).boolEnum () ;
-        if (kBoolTrue == test_3) {
-          TC_Array <C_FixItDescription> fixItArray4 ;
-          inCompiler->emitSemanticError (enumerator_6809.current_mTerminal (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 151)), GALGAS_string ("the '$").add_operation (enumerator_6809.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 152)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 153)).add_operation (enumerator_6479.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 154)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 155)), fixItArray4  COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
+        const enumGalgasBool test_4 = var_terminalSymbolSet_6708.getter_hasKey (enumerator_6809.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 150)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 150)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 150)).boolEnum () ;
+        if (kBoolTrue == test_4) {
+          TC_Array <C_FixItDescription> fixItArray5 ;
+          inCompiler->emitSemanticError (enumerator_6809.current_mTerminal (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 151)), GALGAS_string ("the '$").add_operation (enumerator_6809.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 152)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 153)).add_operation (enumerator_6479.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 154)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 155)), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
         }
         enumerator_6809.gotoNextObject () ;
       }
@@ -4466,11 +4467,11 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     GALGAS_textMacroList var_textMacroList_7132 = GALGAS_textMacroList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 160)) ;
     cEnumerator_guiCompoundAttributeListAST enumerator_7188 (enumerator_6479.current_mCompoundAttributes (HERE), kEnumeration_up) ;
     while (enumerator_7188.hasCurrentObject ()) {
-      const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, enumerator_7188.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 162)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
-      if (kBoolTrue == test_5) {
-        TC_Array <C_FixItDescription> fixItArray6 ;
-        inCompiler->emitSemanticError (enumerator_7188.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 163)), GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray6  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
-      }else if (kBoolFalse == test_5) {
+      const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_7188.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 162)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
+      if (kBoolTrue == test_6) {
+        TC_Array <C_FixItDescription> fixItArray7 ;
+        inCompiler->emitSemanticError (enumerator_7188.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 163)), GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray7  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
+      }else if (kBoolFalse == test_6) {
         var_textMacroList_7132.addAssign_operation (enumerator_7188.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165)), enumerator_7188.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
       }
       enumerator_7188.gotoNextObject () ;
@@ -4482,49 +4483,49 @@ void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentL
     GALGAS_string var_blockComment_7598 = GALGAS_string::makeEmptyString () ;
     cEnumerator_guiSimpleAttributeListAST enumerator_7638 (enumerator_6479.current_mSimpleAttributes (HERE), kEnumeration_up) ;
     while (enumerator_7638.hasCurrentObject ()) {
-      const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 175)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
-      if (kBoolTrue == test_7) {
+      const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 175)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
+      if (kBoolTrue == test_8) {
         {
         var_context_5462.mAttribute_mExtensionMap.setter_insertKey (enumerator_7638.current_mValue (HERE), enumerator_6479.current_mLexiqueFileName (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
         }
         var_hasAssociatedExtension_7467 = GALGAS_bool (true) ;
-      }else if (kBoolFalse == test_7) {
-        const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 178)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
-        if (kBoolTrue == test_8) {
-          const enumGalgasBool test_9 = var_hasTabViewTitle_7501.boolEnum () ;
-          if (kBoolTrue == test_9) {
-            TC_Array <C_FixItDescription> fixItArray10 ;
-            inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 180)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)), fixItArray10  COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)) ;
+      }else if (kBoolFalse == test_8) {
+        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 178)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
+        if (kBoolTrue == test_9) {
+          const enumGalgasBool test_10 = var_hasTabViewTitle_7501.boolEnum () ;
+          if (kBoolTrue == test_10) {
+            TC_Array <C_FixItDescription> fixItArray11 ;
+            inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 180)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)), fixItArray11  COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)) ;
           }
           var_hasTabViewTitle_7501 = GALGAS_bool (true) ;
           var_tabViewTitle_7568 = enumerator_7638.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 183)) ;
-        }else if (kBoolFalse == test_8) {
-          const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 184)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
-          if (kBoolTrue == test_11) {
-            const enumGalgasBool test_12 = var_hasBlockComment_7535.boolEnum () ;
-            if (kBoolTrue == test_12) {
-              TC_Array <C_FixItDescription> fixItArray13 ;
-              inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 186)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)), fixItArray13  COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)) ;
+        }else if (kBoolFalse == test_9) {
+          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 184)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
+          if (kBoolTrue == test_12) {
+            const enumGalgasBool test_13 = var_hasBlockComment_7535.boolEnum () ;
+            if (kBoolTrue == test_13) {
+              TC_Array <C_FixItDescription> fixItArray14 ;
+              inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 186)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)), fixItArray14  COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)) ;
             }
             var_hasBlockComment_7535 = GALGAS_bool (true) ;
             var_blockComment_7598 = enumerator_7638.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-          }else if (kBoolFalse == test_11) {
-            TC_Array <C_FixItDescription> fixItArray14 ;
-            inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 191)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)), fixItArray14  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
+          }else if (kBoolFalse == test_12) {
+            TC_Array <C_FixItDescription> fixItArray15 ;
+            inCompiler->emitSemanticError (enumerator_7638.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 191)), GALGAS_string ("the '").add_operation (enumerator_7638.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)), fixItArray15  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
           }
         }
       }
       enumerator_7638.gotoNextObject () ;
     }
-    const enumGalgasBool test_15 = var_hasAssociatedExtension_7467.operator_not (SOURCE_FILE ("guiCompilation.galgas", 195)).boolEnum () ;
-    if (kBoolTrue == test_15) {
-      TC_Array <C_FixItDescription> fixItArray16 ;
-      inCompiler->emitSemanticError (enumerator_6479.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 196)), GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray16  COMMA_SOURCE_FILE ("guiCompilation.galgas", 196)) ;
+    const enumGalgasBool test_16 = var_hasAssociatedExtension_7467.operator_not (SOURCE_FILE ("guiCompilation.galgas", 195)).boolEnum () ;
+    if (kBoolTrue == test_16) {
+      TC_Array <C_FixItDescription> fixItArray17 ;
+      inCompiler->emitSemanticError (enumerator_6479.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 196)), GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray17  COMMA_SOURCE_FILE ("guiCompilation.galgas", 196)) ;
     }
-    const enumGalgasBool test_17 = var_hasTabViewTitle_7501.operator_not (SOURCE_FILE ("guiCompilation.galgas", 199)).boolEnum () ;
-    if (kBoolTrue == test_17) {
-      TC_Array <C_FixItDescription> fixItArray18 ;
-      inCompiler->emitSemanticError (enumerator_6479.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 200)), GALGAS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray18  COMMA_SOURCE_FILE ("guiCompilation.galgas", 200)) ;
+    const enumGalgasBool test_18 = var_hasTabViewTitle_7501.operator_not (SOURCE_FILE ("guiCompilation.galgas", 199)).boolEnum () ;
+    if (kBoolTrue == test_18) {
+      TC_Array <C_FixItDescription> fixItArray19 ;
+      inCompiler->emitSemanticError (enumerator_6479.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 200)), GALGAS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 200)) ;
     }
     var_context_5462.mAttribute_mWithLexiqueList.addAssign_operation (enumerator_6479.current_mLexiqueFileName (HERE).mAttribute_string, var_blockComment_7598, var_tabViewTitle_7568, var_textMacroList_7132, enumerator_6479.current_mLabels (HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas", 203)) ;
     enumerator_6479.gotoNextObject () ;

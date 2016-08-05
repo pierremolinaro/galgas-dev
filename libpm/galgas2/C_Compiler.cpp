@@ -419,7 +419,8 @@ void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLoc
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
-                                      const GALGAS_string & inWarningMessage
+                                      const GALGAS_string & inWarningMessage,
+                                      const TC_Array <C_FixItDescription> & inFixItArray
                                       COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid () && inWarningMessage.isValid ()) {
     const C_String warningMessage = inWarningMessage.stringValue () ;
@@ -427,7 +428,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
       signalRunTimeWarning (warningMessage COMMA_THERE) ;
     }else{
       signalSemanticWarning (inWarningLocation.sourceText (),
-                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), TC_Array <C_FixItDescription> ()),
+                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation (), inFixItArray),
                              warningMessage
                              COMMA_THERE) ;
     }

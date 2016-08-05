@@ -152,7 +152,8 @@ class C_Compiler : public C_SharedObject {
 
 //--- Emit a warning
   public : void emitSemanticWarning (const GALGAS_location & inWarningLocation,
-                                     const GALGAS_string & inWarningMessage
+                                     const GALGAS_string & inWarningMessage,
+                                     const TC_Array <C_FixItDescription> & inFixItArray
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Emit an error

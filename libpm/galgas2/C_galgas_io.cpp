@@ -158,7 +158,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
     ioMessage << errorOrWarningLocationString (inIssue, inSourceTextPtr) ;
     if (verboseOutput ()) {
       ioMessage << "\n" << textLine << "\n" ;
-    //--- Point out column error
+    //--- Underline issue
       for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
         ioMessage << "-" ;
       }
@@ -166,6 +166,17 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
         ioMessage << "^" ;
       }
       ioMessage << "\n" ;
+    //--- Add fix it suggestions
+      for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
+        const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
+        switch (d.kind()) {
+        case kFixItRemove :
+          ioMessage << "Fix-it: remove\n" ;
+          break ;
+        case kFixItReplace :
+          break ;
+        }
+      }
     }
   }
 }
