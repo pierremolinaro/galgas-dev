@@ -76,8 +76,7 @@ mTemplateStringLocation (),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
 mStartLocationForHere (),
-mEndLocationForHere (),
-mCheckedVariableList () {
+mEndLocationForHere () {
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
 }
 
@@ -555,42 +554,6 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
       }
     }
   }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void C_Compiler::enterPragma (const GALGAS_lstring & inPragmaName,
-                              const GALGAS_lstring & inPragmaArgument
-                              COMMA_LOCATION_ARGS) {
-  if (inPragmaName.isValid () && inPragmaArgument.isValid ()) {
-    const C_String pragmaName = inPragmaName.getter_string (THERE).stringValue () ;
-    const C_String pragmaArgument = inPragmaArgument.getter_string (THERE).stringValue () ;
-    if (pragmaName == "traceVariableState") {
-      if (pragmaArgument.length () == 0) {
-        mCheckedVariableList.free () ;
-      }else{
-        mCheckedVariableList.addObject (pragmaArgument) ;
-      }
-    }else{
-      semanticErrorAtLocation (inPragmaName.getter_location (THERE),
-                               "invalid name: only 'traceVariableState' is allowed here",
-                               TC_Array <C_FixItDescription> ()
-                               COMMA_HERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-int32_t C_Compiler::checkedVariableListEntryCount (void) const {
-  return mCheckedVariableList.count () ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_String C_Compiler::checkedVariableAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-  return mCheckedVariableList (inIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -4493,7 +4493,7 @@ GALGAS_variableMap GALGAS_variableMap::constructor_emptyMap (LOCATION_ARGS) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton states                                                       *
+//  Map automaton states                                                                                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -4525,7 +4525,7 @@ static const uint32_t kMapState_variableMap_usedInputOutputFormalArgument = 11 ;
 static const uint32_t kMapState_variableMap_usedLocalVariable = 6 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton state names                                                  *
+//  Map automaton state names                                                                                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const char * kMapStateNames_variableMap [24] = {
@@ -4556,7 +4556,7 @@ static const char * kMapStateNames_variableMap [24] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton actions                                                    *
+//  Map automaton actions                                                                                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const uint32_t kMapActionCount_variableMap = 5 ;
@@ -4567,19 +4567,7 @@ static const uint32_t kMapAction_variableMap_readWriteAccess = 2 ;
 static const uint32_t kMapAction_variableMap_writeAccess = 1 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton action names                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static const char * kMapActionNames_variableMap [5] = {
-  "dropAccess",
-  "neutralAccess",
-  "readAccess",
-  "readWriteAccess",
-  "writeAccess"
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton transitions                                                  *
+//  Map automaton transitions                                                                                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const cMapAutomatonTransition kMapTransitions_variableMap [24 * 5] = {
@@ -4730,7 +4718,7 @@ static const cMapAutomatonTransition kMapTransitions_variableMap [24 * 5] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  Map automaton final state issues                                           *
+//  Map automaton final state issues                                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_variableMap [24] = {
@@ -5306,8 +5294,6 @@ void GALGAS_variableMap::setter_searchForReadAccess (GALGAS_lstring inKey,
                                                                                          kMapAction_variableMap_readAccess,
                                                                                          kMapTransitions_variableMap,
                                                                                          kMapActionCount_variableMap,
-                                                                                         kMapStateNames_variableMap,
-                                                                                         kMapActionNames_variableMap,
                                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                                            kMapStateCount_variableMap,
                                                                                          #endif
@@ -5342,8 +5328,6 @@ void GALGAS_variableMap::setter_searchForWriteAccess (GALGAS_lstring inKey,
                                                                                          kMapAction_variableMap_writeAccess,
                                                                                          kMapTransitions_variableMap,
                                                                                          kMapActionCount_variableMap,
-                                                                                         kMapStateNames_variableMap,
-                                                                                         kMapActionNames_variableMap,
                                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                                            kMapStateCount_variableMap,
                                                                                          #endif
@@ -5378,8 +5362,6 @@ void GALGAS_variableMap::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
                                                                                          kMapAction_variableMap_readWriteAccess,
                                                                                          kMapTransitions_variableMap,
                                                                                          kMapActionCount_variableMap,
-                                                                                         kMapStateNames_variableMap,
-                                                                                         kMapActionNames_variableMap,
                                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                                            kMapStateCount_variableMap,
                                                                                          #endif
@@ -5414,8 +5396,6 @@ void GALGAS_variableMap::setter_searchForDropAccess (GALGAS_lstring inKey,
                                                                                          kMapAction_variableMap_dropAccess,
                                                                                          kMapTransitions_variableMap,
                                                                                          kMapActionCount_variableMap,
-                                                                                         kMapStateNames_variableMap,
-                                                                                         kMapActionNames_variableMap,
                                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                                            kMapStateCount_variableMap,
                                                                                          #endif
@@ -5450,8 +5430,6 @@ void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
                                                                                          kMapAction_variableMap_neutralAccess,
                                                                                          kMapTransitions_variableMap,
                                                                                          kMapActionCount_variableMap,
-                                                                                         kMapStateNames_variableMap,
-                                                                                         kMapActionNames_variableMap,
                                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                                            kMapStateCount_variableMap,
                                                                                          #endif
