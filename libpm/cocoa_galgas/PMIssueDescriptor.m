@@ -189,7 +189,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) storeItemsToMenu: (NSMenu *) inMenu
-         displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextView {
+         displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
 //--- Extract
   NSString * title = @"???" ;
   NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
@@ -220,16 +220,37 @@
     menuItem = nil ;
     if ([title hasPrefix:@"Fix-it: remove "]) {
       menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
-      menuItem.representedObject = inTextView ;
+      menuItem.representedObject = inDisplayDescriptor ;
     }else if ([title hasPrefix:@"Fix-it: replace "]) {
-      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
-      menuItem.representedObject = inTextView ;
-      
+      components = [title componentsSeparatedByString:@"\" with \""] ;
+      if (components.count > 1) {
+        NSString * s = [components objectAtIndex:1] ;
+        if (s.length > 0) {
+          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
+          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+        }
+      }
     }else if ([title hasPrefix:@"Fix-it: after "]) {
-      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItAfter:) keyEquivalent:@""] ;
+      components = [title componentsSeparatedByString:@"\" insert \""] ;
+      if (components.count > 1) {
+        NSString * s = [components objectAtIndex:1] ;
+        if (s.length > 0) {
+          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
+          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertAfter:) keyEquivalent:@""] ;
+          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+        }
+      }
     }else if ([title hasPrefix:@"Fix-it: before "]) {
-      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItBefore:) keyEquivalent:@""] ;
-      menuItem.representedObject = inTextView ;
+      components = [title componentsSeparatedByString:@"\" insert \""] ;
+      if (components.count > 1) {
+        NSString * s = [components objectAtIndex:1] ;
+        if (s.length > 0) {
+          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
+          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertBefore:) keyEquivalent:@""] ;
+          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+        }
+      }
     }
     if (menuItem != nil) {
       menuItem.target = self ;
@@ -248,15 +269,19 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) actionFixItReplace: (NSMenuItem *) inSender {
-  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
-  [textViewDescriptor removeSelectedRange] ;
+  NSArray * array = inSender.representedObject ;
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
+  NSString * replacementString = [array objectAtIndex:1] ;
+  [textViewDescriptor replaceSelectedRangeWithString:replacementString] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) actionFixItInsertBefore: (NSMenuItem *) inSender {
-  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
-  [textViewDescriptor removeSelectedRange] ;
+  NSArray * array = inSender.representedObject ;
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
+  NSString * s = [array objectAtIndex:1] ;
+  [textViewDescriptor insertBeforeSelectedRange:s] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

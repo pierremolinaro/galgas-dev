@@ -675,4 +675,108 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#pragma mark Replace selected range by string
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) replaceSelectedRangeWithString: (NSString *) inReplacement {
+  const NSRange r = [mTextView selectedRange] ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  NSString * removedString = [ts.string substringWithRange:r] ;
+  [ts replaceCharactersInRange:r withString: inReplacement] ;
+//--- Register undo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoReplaceSelectedRange:)
+    object:[NSArray arrayWithObjects:removedString, [NSValue valueWithRange:NSMakeRange (r.location, inReplacement.length)], nil]
+  ] ;
+
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) undoReplaceSelectedRange : (NSArray *) inObject {
+  NSString * s = [inObject objectAtIndex:0] ;
+  NSValue * value = [inObject objectAtIndex:1] ;
+  const NSRange r = value.rangeValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  NSString * removedString = [ts.string substringWithRange:r] ;
+  [ts replaceCharactersInRange:r withString:s] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (redoReplaceSelectedRange:)
+    object:[NSArray arrayWithObjects:removedString, [NSValue valueWithRange:NSMakeRange (r.location, s.length)], nil]
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) redoReplaceSelectedRange : (NSArray *) inObject {
+  NSString * s = [inObject objectAtIndex:0] ;
+  NSValue * value = [inObject objectAtIndex:1] ;
+  const NSRange r = value.rangeValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  NSString * removedString = [ts.string substringWithRange:r] ;
+  [ts replaceCharactersInRange:r withString:s] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoReplaceSelectedRange:)
+    object:[NSArray arrayWithObjects:removedString, [NSValue valueWithRange:NSMakeRange (r.location, s.length)], nil]
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#pragma mark Insert before selected range
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) insertBeforeSelectedRange: (NSString *) inString {
+  const NSRange r = [mTextView selectedRange] ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  [ts replaceCharactersInRange:NSMakeRange (r.location, 0) withString: inString] ;
+//--- Register undo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoInsertBeforeSelectedRange:)
+    object:[NSArray arrayWithObjects:inString, [NSNumber numberWithUnsignedInteger:r.location], nil]
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) undoInsertBeforeSelectedRange : (NSArray *) inObject {
+  NSString * s = [inObject objectAtIndex:0] ;
+  NSNumber * number = [inObject objectAtIndex:1] ;
+  const NSUInteger location = number.unsignedIntegerValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  [ts replaceCharactersInRange:NSMakeRange (location, s.length) withString:@""] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (redoInsertBeforeSelectedRange:)
+    object:inObject
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) redoInsertBeforeSelectedRange : (NSArray *) inObject {
+  NSString * s = [inObject objectAtIndex:0] ;
+  NSNumber * number = [inObject objectAtIndex:1] ;
+  const NSUInteger location = number.unsignedIntegerValue ;
+  NSTextStorage * ts = mTextView.textStorage ;
+  [ts replaceCharactersInRange:NSMakeRange (location, 0) withString:s] ;
+//--- Register redo
+  [documentData.textSyntaxColoring.undoManager
+    registerUndoWithTarget:self
+    selector:@selector (undoInsertBeforeSelectedRange:)
+    object:inObject
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 @end
