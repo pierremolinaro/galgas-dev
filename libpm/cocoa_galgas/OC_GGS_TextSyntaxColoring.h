@@ -88,8 +88,9 @@
 
 - (void) documentHasBeenSaved ;
 
-- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
-             textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
+- (void) appendIndexingToMenu: (NSMenu *) inMenu
+         forRange: (NSRange) inSelectedRange
+         textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
 
 - (NSUInteger) displayDescriptorCount ;
 

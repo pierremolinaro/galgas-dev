@@ -1168,8 +1168,9 @@ static NSInteger numericSort (NSString * inOperand1,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
-             textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor {
+- (void) appendIndexingToMenu: (NSMenu *) inMenu
+         forRange: (NSRange) inSelectedRange
+         textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1208,17 +1209,16 @@ static NSInteger numericSort (NSString * inOperand1,
     [a addObject:descriptor] ;
   }
 //--- Build Menu
-  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
   if (! hasAtomicSelection) {
-    NSMenuItem * item = [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
+    NSMenuItem * item = [inMenu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
     [item setTarget:inTextDisplayDescriptor.textView] ;
     [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
   }
 //---
-  [menu addItem:[NSMenuItem separatorItem]] ;
+  [inMenu addItem:[NSMenuItem separatorItem]] ;
   if ([kindDictionary count] == 0) {
     NSString * title = [NSString stringWithFormat:@"No index for '%@'", token] ;
-    [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+    [inMenu addItemWithTitle:title action:nil keyEquivalent:@""] ;
   }else{
     NSArray * indexingTitles = [mTokenizer indexingTitles] ;
     NSArray * allKeys = [[kindDictionary allKeys] sortedArrayUsingFunction:numericSort context:NULL] ;
@@ -1227,7 +1227,7 @@ static NSInteger numericSort (NSString * inOperand1,
       if (first) {
         first = NO ;
       }else{
-        [menu addItem:[NSMenuItem separatorItem]] ;
+        [inMenu addItem:[NSMenuItem separatorItem]] ;
       }
       const NSInteger kind = [kindObject integerValue] ;
       NSArray * references = [kindDictionary objectForKey:kindObject] ;
@@ -1237,19 +1237,17 @@ static NSInteger numericSort (NSString * inOperand1,
         [references count],
         (([references count] > 1) ? @"s" : @"")
       ] ;
-      [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+      [inMenu addItemWithTitle:title action:nil keyEquivalent:@""] ;
       for (NSString * descriptor in references) {
         NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
         NSString * filePath = [components objectAtIndex:4] ;
         title = [NSString stringWithFormat:@"%@, line %@", filePath.lastPathComponent, [components objectAtIndex:1]] ;
-        NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
+        NSMenuItem * item = [inMenu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
         [item setTarget:inTextDisplayDescriptor.textView] ;
         [item setRepresentedObject:descriptor] ;
       }
     }
   }
-//---
-  return menu ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

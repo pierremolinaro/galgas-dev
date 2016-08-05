@@ -1100,23 +1100,27 @@
   NSArray * components = [inIssueMessage componentsSeparatedByString:@"\n"] ;
   NSString * issuePath = nil ;
   NSInteger issueLine = 0 ;
-  NSInteger issueColumn = 0 ;
+  NSInteger issueStartColumn = 0 ;
+  NSInteger issueEndColumn = 0 ;
   if (components.count > 1) {
     NSArray * issueLocationArray = [[components objectAtIndex:0] componentsSeparatedByString:@":"] ;
-    if (issueLocationArray.count > 3) {
+    if (issueLocationArray.count > 4) {
       issuePath = [issueLocationArray objectAtIndex:0] ;
       // NSLog (@"issuePath '%@'", issuePath) ;
       issueLine = [[issueLocationArray objectAtIndex:1] integerValue] ;
       // NSLog (@"issueLine '%ld'", issueLine) ;
-      issueColumn = [[issueLocationArray objectAtIndex:2] integerValue] ;
-      // NSLog (@"issueColumn '%ld'", issueColumn) ;
+      issueStartColumn = [[issueLocationArray objectAtIndex:2] integerValue] ;
+      // NSLog (@"issueStartColumn '%ld'", issueStartColumn) ;
+      issueEndColumn = [[issueLocationArray objectAtIndex:3] integerValue] ;
+      // NSLog (@"issueEndColumn '%ld'", issueEndColumn) ;
     }
   }
   PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
     initWithMessage:inIssueMessage
     URL:(nil == issuePath) ? nil : [NSURL fileURLWithPath:issuePath]
     line:issueLine
-    column:issueColumn
+    startColumn:issueStartColumn
+    endColumn:issueEndColumn
     isError:inIsError
     rangeInOutputData:inRangeInOutputData
     buildOutputRuler:mRulerViewForBuildOutput
