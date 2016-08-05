@@ -164,8 +164,10 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
       for (int32_t i=1 ; i<inIssue.mStartLocation.columnNumber () ; i++) {
         result << "-" ;
       }
+      C_String token ;
       for (int32_t i=inIssue.mStartLocation.columnNumber () ; i <= inIssue.mEndLocation.columnNumber () ; i++) {
         result << "^" ;
+        token << cStringWithUnicodeCharacter (textLine (i-1 COMMA_HERE)) ;
       }
       result << "\n" ;
     //--- Add fix it suggestions
@@ -173,9 +175,28 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
         case kFixItRemove :
-          result << "Fix-it: remove\n" ;
+          result << "Fix-it: remove \"" << token << "\"\n" ;
           break ;
         case kFixItReplace :
+          result << "Fix-it: replace \"" << token << "\" with \"" << d.actionString() << "\"" ;
+          if (d.commentString().length () > 0) {
+            result << " (" << d.commentString() << ")" ;
+          }
+          result << "\n" ;
+          break ;
+        case kFixItInsertBefore :
+          result << "Fix-it: before \"" << token << "\", insert \"" << d.actionString() << "\"" ;
+          if (d.commentString().length () > 0) {
+            result << " (" << d.commentString() << ")" ;
+          }
+          result << "\n" ;
+          break ;
+        case kFixItInsertAfter :
+          result << "Fix-it: after \"" << token << "\", insert \"" << d.actionString() << "\"" ;
+          if (d.commentString().length () > 0) {
+            result << " (" << d.commentString() << ")" ;
+          }
+          result << "\n" ;
           break ;
         }
       }

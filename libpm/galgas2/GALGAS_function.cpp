@@ -170,7 +170,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
                  << ((argumentsArray.count () > 1) ? "s" : "")
                  << ", but its header requires "
                  << cStringWithUnsigned (mFunctionDescriptor->mParameterCount) ;
-    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_THERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Check parameters
   for (uint32_t i=0 ; (i<mFunctionDescriptor->mParameterCount) && ok ; i++) {
@@ -192,7 +192,7 @@ GALGAS_object GALGAS_function::getter_invoke (const GALGAS_objectlist & inObject
                      << "', but the function header requires an instance of '@"
                      << mFunctionDescriptor->mFormalParameterTypeList [i]->mGalgasTypeName
                      << "'" ;
-        inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
     }
   }

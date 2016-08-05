@@ -255,14 +255,15 @@ void C_Compiler::castError (const C_String & inTargetTypeName,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
-                                          const C_String & inErrorMessage
+                                          const C_String & inErrorMessage,
+                                          const TC_Array <C_FixItDescription> & inFixItArray
                                           COMMA_LOCATION_ARGS) {
   if (inErrorLocation.isValid ()) { // No error raised if not built
     if (NULL == inErrorLocation.sourceText ()) {
       onTheFlyRunTimeError (inErrorMessage COMMA_THERE) ;
     }else{
       signalSemanticError (inErrorLocation.sourceText (),
-                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), TC_Array <C_FixItDescription> ()),
+                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation (), inFixItArray),
                            inErrorMessage
                            COMMA_THERE) ;
     }
@@ -314,19 +315,13 @@ void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     }
   }
 //--- Add nearest keys, if any
-  if (ioNearestKeyArray.count () > 0) {
-    message << " (do you mean '" << ioNearestKeyArray (0 COMMA_HERE) << "'" ;
-    for (int32_t i=2 ; i<ioNearestKeyArray.count () ; i++) {
-      message << ", '" << ioNearestKeyArray (i-1 COMMA_HERE) << "'" ;
-    }
-    if (ioNearestKeyArray.count () > 1) {
-      message << " or '" << ioNearestKeyArray.lastObject (HERE) << "'" ;
-    }
-    message << " ?)" ;
+  TC_Array <C_FixItDescription> fixItArray ;
+  for (int32_t i=0 ; i<ioNearestKeyArray.count () ; i++) {
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, ioNearestKeyArray (i COMMA_HERE), "")) ;
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mAttribute_location ;
-  semanticErrorAtLocation (key_location, message COMMA_THERE) ;
+  semanticErrorAtLocation (key_location, message, fixItArray COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -358,7 +353,7 @@ void C_Compiler::semanticErrorWith_K_L_message (const GALGAS_lstring & inKey,
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mAttribute_location ;
-  semanticErrorAtLocation (key_location, message COMMA_THERE) ;
+  semanticErrorAtLocation (key_location, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -577,7 +572,10 @@ void C_Compiler::enterPragma (const GALGAS_lstring & inPragmaName,
         mCheckedVariableList.addObject (pragmaArgument) ;
       }
     }else{
-      semanticErrorAtLocation (inPragmaName.getter_location (THERE), "invalid name: only 'traceVariableState' is allowed here" COMMA_HERE) ;
+      semanticErrorAtLocation (inPragmaName.getter_location (THERE),
+                               "invalid name: only 'traceVariableState' is allowed here",
+                               TC_Array <C_FixItDescription> ()
+                               COMMA_HERE) ;
     }
   }
 }

@@ -21,6 +21,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "galgas2/C_IssueWithFixIt.h"
+#include "all-predefined-types.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -57,5 +58,20 @@ mStartLocation (inStartLocation),
 mEndLocation (inEndLocation),
 mFixItArray (inFixItArray) {
 }
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+                         const EnumFixItKind inKind,
+                         const GALGAS__32_stringlist & inList) {
+  cEnumerator__32_stringlist enumerator (inList, kEnumeration_up) ;
+  while (enumerator.hasCurrentObject ()) {
+    const C_String s0 = enumerator.current_mValue_30_ (HERE).stringValue () ;
+    const C_String s1 = enumerator.current_mValue_31_ (HERE).stringValue () ;
+    ioArray.addObject (C_FixItDescription (inKind, s0, s1)) ;
+    enumerator.gotoNextObject () ;
+  }
+}
+
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -202,12 +202,12 @@
   }
 //--- Title Attributes
   NSDictionary * issueAttributes = [NSDictionary
-    dictionaryWithObject:self.isError ? [NSColor orangeColor] : [NSColor redColor]
+    dictionaryWithObject:self.isError ? [NSColor redColor] : [NSColor orangeColor]
     forKey:NSForegroundColorAttributeName
   ] ;
 //--- Title
   NSAttributedString * as = [[NSAttributedString alloc]
-    initWithString:title
+    initWithString:[@"\u27A4 " stringByAppendingString:title] // ➤
     attributes:issueAttributes
   ] ;
   NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:NULL keyEquivalent:@""] ;
@@ -226,6 +226,27 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) actionFixItRemove: (NSMenuItem *) inSender {
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
+  [textViewDescriptor removeSelectedRange] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) actionFixItReplace: (NSMenuItem *) inSender {
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
+  [textViewDescriptor removeSelectedRange] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) actionFixItInsertBefore: (NSMenuItem *) inSender {
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
+  [textViewDescriptor removeSelectedRange] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) actionFixItInsertAfter: (NSMenuItem *) inSender {
   OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
   [textViewDescriptor removeSelectedRange] ;
 }

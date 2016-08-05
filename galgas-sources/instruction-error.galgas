@@ -5,6 +5,8 @@
 enum @fixitElementAST {
   case fixItRemove
   case fixItReplace (@semanticExpressionAST exp @location errorLocation)
+  case fixItInsertAfter (@semanticExpressionAST exp @location errorLocation)
+  case fixItInsertBefore (@semanticExpressionAST exp @location errorLocation)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -49,8 +51,19 @@ syntax extension galgas3InstructionsSyntax {
         end
       while
         $replace$
+        let errorLocation = @location.here
         <expression> ?let @semanticExpressionAST expression
-        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:.here}
+        outFixitListAST += !.fixItReplace {!exp:expression !errorLocation:errorLocation}
+      while
+        $after$
+        let errorLocation = @location.here
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItInsertAfter {!exp:expression !errorLocation:errorLocation}
+      while
+        $before$
+        let errorLocation = @location.here
+        <expression> ?let @semanticExpressionAST expression
+        outFixitListAST += !.fixItInsertBefore {!exp:expression !errorLocation:errorLocation}
       end
       $}$
     end
@@ -107,6 +120,10 @@ method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap
     case fixItRemove :
     case fixItReplace (@semanticExpressionAST exp *) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
+    case fixItInsertBefore (@semanticExpressionAST exp *) :
+      [exp enterExpressionInSemanticContext !?ioTypeMap]
+    case fixItInsertAfter (@semanticExpressionAST exp *) :
+      [exp enterExpressionInSemanticContext !?ioTypeMap]
     end
   end
 }
@@ -118,6 +135,8 @@ method @fixitListAST enterFixItListInSemanticContext ?!@unifiedTypeMap ioTypeMap
 enum @fixitElementForGeneration {
   case fixItRemove
   case fixItReplace (@semanticExpressionForGeneration exp)
+  case fixItInsertBefore (@semanticExpressionForGeneration exp)
+  case fixItInsertAfter (@semanticExpressionForGeneration exp)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -219,6 +238,28 @@ proc analyzeErrorOrWarningInstruction
         error errorLocation : "this expression should be an @2stringlist instance"
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
+    case fixItInsertBefore (exp errorLocation) :
+      [exp analyzeSemanticExpression
+        !twoStringListType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let expression
+      ]
+      if [expression mResultType] != twoStringListType then
+        error errorLocation : "this expression should be an @2stringlist instance"
+      end
+      outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
+    case fixItInsertAfter (exp errorLocation) :
+      [exp analyzeSemanticExpression
+        !twoStringListType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let expression
+      ]
+      if [expression mResultType] != twoStringListType then
+        error errorLocation : "this expression should be an @2stringlist instance"
+      end
+      outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
     end
   end
 #--- Check message expression type is @string
@@ -270,9 +311,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @fixitListForGeneration generateFixIt
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
   !@string outFixItArrayCppName
@@ -284,7 +325,33 @@ method @fixitListForGeneration generateFixIt
     switch (element)
     case fixItRemove :
       ioGeneratedCode += outFixItArrayCppName + ".addObject (C_FixItDescription (kFixItRemove, \"\", \"\")) ;\n"
-    case fixItReplace (@semanticExpressionForGeneration unused exp) :
+    case fixItReplace (@semanticExpressionForGeneration exp) :
+      [exp generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let receiverCppVarName
+      ]
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItReplace, " + receiverCppVarName + ") ;\n"
+    case fixItInsertBefore (@semanticExpressionForGeneration exp) :
+      [exp generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let receiverCppVarName
+      ]
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItInsertBefore, " + receiverCppVarName + ") ;\n"
+    case fixItInsertAfter (@semanticExpressionForGeneration exp) :
+      [exp generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let receiverCppVarName
+      ]
+      ioGeneratedCode += "appendFixItActions (" + outFixItArrayCppName + ", kFixItInsertAfter, " + receiverCppVarName + ") ;\n"
     end
   end
 }

@@ -885,6 +885,37 @@ void extensionMethod_generateFixIt (const class GALGAS_fixitListForGeneration in
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                   Abstract extension method '@semanticExpressionForGeneration generateExpression'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef void (*extensionMethodSignature_semanticExpressionForGeneration_generateExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
+                                                                                             class GALGAS_string & ioArgument0,
+                                                                                             class GALGAS_stringset & ioArgument1,
+                                                                                             class GALGAS_uint & ioArgument2,
+                                                                                             class GALGAS_stringset & ioArgument3,
+                                                                                             class GALGAS_string & outArgument4,
+                                                                                             class C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionMethod_generateExpression (const int32_t inClassIndex,
+                                              extensionMethodSignature_semanticExpressionForGeneration_generateExpression inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callExtensionMethod_generateExpression (const class cPtr_semanticExpressionForGeneration * inObject,
+                                             GALGAS_string & io_ioGeneratedCode,
+                                             GALGAS_stringset & io_ioInclusionSet,
+                                             GALGAS_uint & io_ioTemporaryVariableIndex,
+                                             GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                             GALGAS_string & out_outCppExpression,
+                                             C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                 Abstract extension method '@abstractEnumeratedCollectionAST enterInSemanticContext'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

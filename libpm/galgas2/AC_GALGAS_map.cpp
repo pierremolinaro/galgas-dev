@@ -1395,7 +1395,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
       }
     //--- Emit error message
       const GALGAS_location key_location = inKey.mAttribute_location ;
-      inCompiler->semanticErrorAtLocation (key_location, message COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (key_location, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }else{ // Ok, found
       outResult = node->mAttributes ;
       macroMyDelete (node) ;
