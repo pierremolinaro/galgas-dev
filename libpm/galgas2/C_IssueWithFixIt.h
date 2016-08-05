@@ -31,9 +31,15 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+class GALGAS__32_stringlist ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 typedef enum {
   kFixItRemove,
-  kFixItReplace
+  kFixItReplace,
+  kFixItInsertBefore,
+  kFixItInsertAfter
 } EnumFixItKind ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -74,6 +80,12 @@ class C_IssueWithFixIt {
   public : const C_LocationInSource mEndLocation ;
   public : const TC_Array <C_FixItDescription> mFixItArray ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+                         const EnumFixItKind inKind,
+                         const GALGAS__32_stringlist & inList) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

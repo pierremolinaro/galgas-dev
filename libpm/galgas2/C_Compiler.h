@@ -133,7 +133,8 @@ class C_Compiler : public C_SharedObject {
 
 //--- Print semantic error
   public : void semanticErrorAtLocation (const GALGAS_location & inErrorLocation,
-                                         const C_String & inErrorMessage
+                                         const C_String & inErrorMessage,
+                                         const TC_Array <C_FixItDescription> & inFixItArray
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Print semantic warning

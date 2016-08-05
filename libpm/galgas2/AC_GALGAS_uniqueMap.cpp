@@ -1208,7 +1208,7 @@ static void emitErrorMessageForKey (const GALGAS_lstring & inKey,
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mAttribute_location ;
-  inCompiler->semanticErrorAtLocation (key_location, message COMMA_THERE) ;
+  inCompiler->semanticErrorAtLocation (key_location, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1367,7 +1367,7 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
         macroValidSharedObject (node->mAttributes.ptr (), cMapElement) ;
         const GALGAS_location loc = inKey.mAttribute_location ;
         const C_String errorMessage = buildIssueMessage (transition.mIssueMessage, inKey.mAttribute_string.stringValue ()) ;
-        inCompiler->semanticErrorAtLocation (loc, errorMessage COMMA_THERE) ;
+        inCompiler->semanticErrorAtLocation (loc, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
         result = NULL ; // All output arguments will not be built
         }
         break ;
@@ -1707,7 +1707,7 @@ static void printIssueMessage (C_Compiler * inCompiler,
       break ;
     case kMapAutomatonIssueError : {
       const C_String errorMessage = buildIssueMessage (inIssueMessage, inKey) ;
-      inCompiler->semanticErrorAtLocation (inIssueLocation, errorMessage COMMA_THERE) ;
+      inCompiler->semanticErrorAtLocation (inIssueLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
       }
       break ;
     case kMapAutomatonNoIssue : break ;
@@ -1895,11 +1895,11 @@ void cSharedUniqueMapRoot::closeOverride (const GALGAS_location & inErrorLocatio
     m << "Illegal invocation of 'closeOverride' modifier: the '"
       << mOverrideName
       << "' override is still running" ;
-    inCompiler->semanticErrorAtLocation (inErrorLocation, m COMMA_THERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, m, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }else if (mOverridenMap->mBeginBranchCount != mOverridenMap->mEndBranchCount) {
     C_String m ;
     m << "Illegal invocation of 'closeOverride' modifier: openBranch / closeBranch invocations should be balanced" ;
-    inCompiler->semanticErrorAtLocation (inErrorLocation, m COMMA_THERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, m, TC_Array <C_FixItDescription> () COMMA_THERE) ;
   }
 //--- Decrement level of overriden maps
   macroValidSharedObject (mOverridenMap, cSharedUniqueMapRoot) ;
@@ -1964,7 +1964,7 @@ static void recursiveCheckAutomatonStates (const cUniqueMapNode * inNode,
           const C_String errorMessage = buildIssueMessage (issue.mIssueMessage, inNode->mKey) ;
           macroValidSharedObject (inNode->mAttributes.ptr (), cMapElement) ;
           const GALGAS_location loc = ((const cMapElement *) inNode->mAttributes.ptr ())->mAttribute_lkey.mAttribute_location ;
-          inCompiler->semanticErrorAtLocation (loc, errorMessage COMMA_THERE) ;
+          inCompiler->semanticErrorAtLocation (loc, errorMessage, TC_Array <C_FixItDescription> () COMMA_THERE) ;
           }
           break ;
         case kMapAutomatonNoIssue : break ;

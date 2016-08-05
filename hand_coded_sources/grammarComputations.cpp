@@ -318,7 +318,11 @@ analyzeGrammar (C_Compiler * inCompiler,
   }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class" COMMA_HERE) ;
+    TC_Array <C_FixItDescription> fixItArray ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LL1", "")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "SLR", "")) ;
+    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LR1", "")) ;
+    inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 
 //--- Error flag
@@ -623,7 +627,7 @@ analyzeGrammar (C_Compiler * inCompiler,
       errorMessage << "errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
     }
-    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage, TC_Array <C_FixItDescription> () COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
