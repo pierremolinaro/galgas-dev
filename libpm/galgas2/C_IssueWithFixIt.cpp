@@ -44,7 +44,8 @@ mCommentString (inCommentString) {
 
 C_IssueWithFixIt::C_IssueWithFixIt (void) :
 mStartLocation (),
-mEndLocation () {
+mEndLocation (),
+mFixItArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

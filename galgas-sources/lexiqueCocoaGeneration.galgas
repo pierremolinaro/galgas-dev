@@ -19,7 +19,7 @@
 
 abstract getter @lexicalExpressionAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string resyulty
+  -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
