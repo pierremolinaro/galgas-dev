@@ -254,8 +254,6 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                                                          const uint32_t inActionIndex,
                                                                          const cMapAutomatonTransition inTransitionArray [],
                                                                          const uint32_t inAutomatonActionCount,
-                                                                         const char * inAutomatonStateNames [],
-                                                                         const char * inAutomatonActionNames [],
                                                                          #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                            const uint32_t inAutomatonStateCount,
                                                                          #endif

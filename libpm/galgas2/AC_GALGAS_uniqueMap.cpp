@@ -1321,8 +1321,6 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
                                                                const uint32_t inActionIndex,
                                                                const cMapAutomatonTransition inTransitionArray [],
                                                                const uint32_t inAutomatonActionCount,
-                                                               const char * inAutomatonStateNames [],
-                                                               const char * inAutomatonActionNames [],
                                                                #ifndef DO_NOT_GENERATE_CHECKINGS
                                                                  const uint32_t inAutomatonStateCount,
                                                                #endif
@@ -1338,18 +1336,6 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
       MF_Assert (inActionIndex < inAutomatonActionCount, "inActionIndex (%lld) >= inAutomatonActionCount (%lld)", (int64_t) inActionIndex, (int64_t) inAutomatonActionCount) ;
       const cMapAutomatonTransition & transition = inTransitionArray [node->mCurrentState * inAutomatonActionCount + inActionIndex] ;
       // printf ("NODE '%s' : %d -> %d\n", inKey.getter_string (HERE).stringValue ().cString (HERE), node->mCurrentState, transition.mTargetStateIndex) ;
-      const int32_t checkedVariableListEntryCount = inCompiler->checkedVariableListEntryCount () ;
-      for (int32_t i=0 ; i<checkedVariableListEntryCount ; i++) {
-        const C_String variableName = inCompiler->checkedVariableAtIndex (i COMMA_HERE) ;
-        if (variableName == inKey.getter_string (HERE).stringValue ()) {
-          printf ("[traceVariableState '%s' at line %d : %s |- %s -> %s]\n",
-                  variableName.cString (HERE),
-                  inKey.getter_location (HERE).startLocation ().lineNumber (),
-                  inAutomatonStateNames [node->mCurrentState],
-                  inAutomatonActionNames [inActionIndex],
-                  inAutomatonStateNames [transition.mTargetStateIndex]) ;
-        }
-      }
       node->mCurrentState = transition.mTargetStateIndex ;
       MF_Assert (node->mCurrentState < inAutomatonStateCount, "node->mCurrentState (%lld) >= inAutomatonStateCount (%lld)", (int64_t) node->mCurrentState, (int64_t) inAutomatonStateCount) ;
     //--- Issue ?

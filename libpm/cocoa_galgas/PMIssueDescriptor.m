@@ -201,9 +201,10 @@
     }
   }
 //--- Title Attributes
-  NSDictionary * issueAttributes = [NSDictionary
-    dictionaryWithObject:self.isError ? [NSColor redColor] : [NSColor orangeColor]
-    forKey:NSForegroundColorAttributeName
+  NSDictionary * issueAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+    self.isError ? [NSColor redColor] : [NSColor orangeColor], NSForegroundColorAttributeName,
+    [NSFont boldSystemFontOfSize:[NSFont smallSystemFontSize]], NSFontAttributeName,
+    nil
   ] ;
 //--- Title
   NSAttributedString * as = [[NSAttributedString alloc]
@@ -215,11 +216,25 @@
   [inMenu addItem:menuItem] ;
 //--- Suggestions
   for (NSUInteger i=4 ; i<components.count ; i++) {
-    NSString * t = [components objectAtIndex:i] ;
-    menuItem = [[NSMenuItem alloc] initWithTitle:t action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
-    menuItem.target = self ;
-    menuItem.representedObject = inTextView ;
-    [inMenu addItem:menuItem] ;
+    title = [components objectAtIndex:i] ;
+    menuItem = nil ;
+    if ([title hasPrefix:@"Fix-it: remove "]) {
+      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
+      menuItem.representedObject = inTextView ;
+    }else if ([title hasPrefix:@"Fix-it: replace "]) {
+      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+      menuItem.representedObject = inTextView ;
+      
+    }else if ([title hasPrefix:@"Fix-it: after "]) {
+      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItAfter:) keyEquivalent:@""] ;
+    }else if ([title hasPrefix:@"Fix-it: before "]) {
+      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItBefore:) keyEquivalent:@""] ;
+      menuItem.representedObject = inTextView ;
+    }
+    if (menuItem != nil) {
+      menuItem.target = self ;
+      [inMenu addItem:menuItem] ;
+    }
   }
 }
 

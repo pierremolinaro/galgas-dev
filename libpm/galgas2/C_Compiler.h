@@ -186,14 +186,6 @@ class C_Compiler : public C_SharedObject {
                            const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
                            COMMA_LOCATION_ARGS) ;
 
-//--- enterPragma
-  private : TC_UniqueArray <C_String> mCheckedVariableList ;
-  public : int32_t checkedVariableListEntryCount (void) const ;
-  public : C_String checkedVariableAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-  public : void enterPragma (const GALGAS_lstring & inPragmaName,
-                             const GALGAS_lstring & inPragmaArgument
-                             COMMA_LOCATION_ARGS) ;
-
 //--- File read logging
   public : static bool performLogFileRead (void) ;
   
