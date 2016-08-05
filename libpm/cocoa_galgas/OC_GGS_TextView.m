@@ -422,23 +422,9 @@
     [self setSelectedRange:r] ;
     NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
   //--- Add issues
-    NSDictionary * issueErrorAttributes = [NSDictionary
-      dictionaryWithObject:[NSColor redColor]
-      forKey:NSForegroundColorAttributeName
-    ] ;
-    NSDictionary * warningIssueAttributes = [NSDictionary
-      dictionaryWithObject:[NSColor orangeColor]
-      forKey:NSForegroundColorAttributeName
-    ] ;
     for (PMIssueDescriptor * issue in mIssueArray) {
       if ([issue intersectWithRange:r]) {
-        NSAttributedString * as = [[NSAttributedString alloc]
-          initWithString:issue.reasonMessage
-          attributes:issue.isError ? issueErrorAttributes : warningIssueAttributes
-        ] ;
-        NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:NULL keyEquivalent:@""] ;
-        menuItem.attributedTitle = as ;
-        [menu addItem:menuItem] ;
+        [issue storeItemsToMenu:menu] ;
       }
     }
   //--- Source indexing

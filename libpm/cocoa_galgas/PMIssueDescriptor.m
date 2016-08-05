@@ -79,21 +79,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSString *) reasonMessage {
-  NSString * result = @"???" ;
-  NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
-  if (components.count > 3) {
-    NSString * s = [components objectAtIndex:3] ;
-    components = [s componentsSeparatedByString:@": "] ;
-    if (components.count > 1) {
-      result = [components objectAtIndex:1] ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 - (NSURL *) issueStandardizedURL {
   return mURL ;
 }
@@ -198,6 +183,39 @@
     result = start < end ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) storeItemsToMenu: (NSMenu *) inMenu {
+//--- Extract
+  NSString * title = @"???" ;
+  NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
+  if (components.count > 1) {
+    NSString * s = [components objectAtIndex:1] ;
+    NSArray * c = [s componentsSeparatedByString:@": "] ;
+    if (c.count > 1) {
+      title = [c objectAtIndex:1] ;
+    }
+  }
+//--- Title Attributes
+  NSDictionary * issueAttributes = [NSDictionary
+    dictionaryWithObject:self.isError ? [NSColor orangeColor] : [NSColor redColor]
+    forKey:NSForegroundColorAttributeName
+  ] ;
+//--- Title
+  NSAttributedString * as = [[NSAttributedString alloc]
+    initWithString:title
+    attributes:issueAttributes
+  ] ;
+  NSMenuItem * menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:NULL keyEquivalent:@""] ;
+  menuItem.attributedTitle = as ;
+  [inMenu addItem:menuItem] ;
+//--- Suggestions
+  for (NSUInteger i=4 ; i<components.count ; i++) {
+    NSString * t = [components objectAtIndex:i] ;
+    [inMenu addItemWithTitle:t action:NULL keyEquivalent:@""] ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
