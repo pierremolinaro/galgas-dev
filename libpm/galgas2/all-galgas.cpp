@@ -9,6 +9,7 @@
 #include "C_galgas_function_descriptor.cpp"
 #include "C_galgas_io.cpp"
 #include "C_galgas_class_inspector.cpp"
+#include "C_IssueWithFixIt.cpp"
 #include "cObjectArray.cpp"
 #include "cCollectionElement.cpp"
 #include "capCollectionElement.cpp"

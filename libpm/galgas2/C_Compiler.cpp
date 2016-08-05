@@ -159,7 +159,7 @@ void C_Compiler::resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTe
 void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
                                         COMMA_LOCATION_ARGS) {
   signalSemanticError (sourceText (),
-                       mCurrentLocation,
+                       C_IssueWithFixIt (mCurrentLocation, mCurrentLocation),
                        inErrorMessage
                        COMMA_THERE) ;
 }
@@ -175,7 +175,7 @@ void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
 void C_Compiler::onTheFlySemanticWarning (const C_String & inWarningMessage
                                           COMMA_LOCATION_ARGS) {
   signalSemanticWarning (sourceText (), 
-                         mCurrentLocation,
+                         C_IssueWithFixIt (mCurrentLocation, mCurrentLocation),
                          inWarningMessage
                          COMMA_THERE) ;
 }
@@ -262,7 +262,7 @@ void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocatio
       onTheFlyRunTimeError (inErrorMessage COMMA_THERE) ;
     }else{
       signalSemanticError (inErrorLocation.sourceText (),
-                           inErrorLocation.startLocation (),
+                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation ()),
                            inErrorMessage
                            COMMA_THERE) ;
     }
@@ -280,7 +280,7 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
       onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
       signalSemanticError (inErrorLocation.sourceText (),
-                           inErrorLocation.endLocation (),
+                           C_IssueWithFixIt (inErrorLocation.startLocation (), inErrorLocation.endLocation ()),
                            errorMessage
                            COMMA_THERE) ;
     }
@@ -408,9 +408,9 @@ void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLoc
       signalRunTimeWarning (inWarningMessage COMMA_THERE) ;
     }else{
       signalSemanticWarning (inWarningLocation.sourceText (),
-                                               inWarningLocation.startLocation (),
-                                               inWarningMessage
-                                               COMMA_THERE) ;
+                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation ()),
+                             inWarningMessage
+                             COMMA_THERE) ;
     }
   }
 }
@@ -426,7 +426,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
       signalRunTimeWarning (warningMessage COMMA_THERE) ;
     }else{
       signalSemanticWarning (inWarningLocation.sourceText (),
-                             inWarningLocation.endLocation (),
+                             C_IssueWithFixIt (inWarningLocation.startLocation (), inWarningLocation.endLocation ()),
                              warningMessage
                              COMMA_THERE) ;
     }
@@ -535,7 +535,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
         ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
     }else{
-      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (NULL, C_IssueWithFixIt (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     const C_String previousContents = C_FileManager::stringWithContentOfFile (fullPathName) ;
@@ -554,7 +554,7 @@ void C_Compiler::generateFileFromPathes (const C_String & inStartPath,
           }
         }
       }else{
-        ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+        ggs_printWarning (NULL, C_IssueWithFixIt (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
     }
   }
@@ -644,6 +644,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       if (verboseOptionOn) {
         ggs_printFileCreationSuccess (C_String ("Created '") + fileName + "'.\n") ;
       }
+      
       f.close () ;
       if (inMakeExecutable) {
         #if COMPILE_FOR_WINDOWS == 0
@@ -654,7 +655,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (NULL, C_IssueWithFixIt (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     C_String firstUserPart ;
@@ -688,7 +689,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
       secondGeneratedPart = stringArray (1 COMMA_HERE) ;
     }
     if (! ok) {
-      ggs_printError (NULL, C_LocationInSource (), C_String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printError (NULL, C_IssueWithFixIt (), C_String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
     }else if (performGeneration ()) {
       C_TextFileWrite f (fullPathName) ;
@@ -716,7 +717,7 @@ void C_Compiler::generateFileWithPatternFromPathes (
         #endif
       }
     }else{
-      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
+      ggs_printWarning (NULL, C_IssueWithFixIt (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
 }

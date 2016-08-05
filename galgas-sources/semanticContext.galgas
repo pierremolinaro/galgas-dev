@@ -303,7 +303,7 @@ map @extensionGetterMapForBuildingContext {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @semanticDeclarationAST keyRepresentation -> @string outString
+abstract getter @semanticDeclarationAST keyRepresentation -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 

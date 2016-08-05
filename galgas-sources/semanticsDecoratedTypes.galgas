@@ -466,19 +466,19 @@ method @semanticDeclarationForGeneration appendPrimitiveTypePreDeclaration ?!@st
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string outName
+abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader
+abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @semanticDeclarationForGeneration isPredefined -> @bool outResult
+abstract getter @semanticDeclarationForGeneration isPredefined -> @bool
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind outHeaderKind
+abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 
 #----------------------------------------------------------------------------------------------------------------------*
 

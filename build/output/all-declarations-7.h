@@ -1175,26 +1175,26 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i13_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i15_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i14_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i14_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_ (GALGAS_actualOutputExpressionList & outArgument0,
+                                                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i17_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1203,26 +1203,26 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i17_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_ (GALGAS_actualOutputExpressionList & outArgument0,
-                                                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i19_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i18_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i19_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i19_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i20_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i19_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i19_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i19_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i21_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1231,19 +1231,19 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i21_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i22_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i22_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i22_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i22_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i22_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i22_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i24_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
                                                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1252,19 +1252,19 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i24_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i25_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i25_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i25_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i27_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1280,12 +1280,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i28_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i29_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i29_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i29_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i30_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1294,12 +1294,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i30_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i31_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i31_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_branch_i31_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i32_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1329,40 +1329,40 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i35_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i37_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i37_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i37_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i38_ (GALGAS_matchEntryListAST & ioArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i36_ (GALGAS_matchEntryListAST & ioArgument0,
                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i38_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i36_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i38_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i36_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i39_ (GALGAS_matchEntryListAST & ioArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i37_ (GALGAS_matchEntryListAST & ioArgument0,
                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i39_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i37_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i39_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i37_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i40_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i38_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i40_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i38_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i40_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i38_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i39_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i39_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i39_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i41_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1468,20 +1468,6 @@ class cParser_galgas_33_InstructionsSyntax {
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i55_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i55_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i57_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i57_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i57_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
@@ -1627,6 +1613,12 @@ class cParser_galgas_33_InstructionsSyntax {
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_69 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_70 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_71 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_72 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_73 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;
@@ -7708,6 +7700,14 @@ class cParser_galgas_33_DeclarationsSyntax {
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_43 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_44 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_45 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_46 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_47 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_48 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;

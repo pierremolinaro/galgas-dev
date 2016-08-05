@@ -19,7 +19,7 @@
 
 abstract getter @lexicalExpressionAST generateConditionCode
   ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -95,7 +95,7 @@ override getter @lexicalCharacterSetMatchAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -141,7 +141,7 @@ override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgume
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -163,7 +163,7 @@ override getter @lexicalFormalInputArgumentAST generateRoutineArgument
 
 abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
   ?@string inScannerClassName
-  -> @string outGeneratedCode
+  -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -188,7 +188,7 @@ override getter @lexicalErrorByDefaultAST generateDefaultSendCode
 abstract getter @lexicalInstructionAST generateInstructionCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -370,7 +370,7 @@ override getter @lexicalLogInstructionAST generateInstructionCode
 abstract getter @abstractLexicalRuleAST generateCode
   ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
-  -> @string outGeneratedCode
+  -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 

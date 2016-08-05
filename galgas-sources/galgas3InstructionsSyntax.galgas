@@ -139,7 +139,12 @@ rule  <declaration_with_private>
   end
   $->$
   $@type$ ?let resultTypeName
-  $identifier$ ?let resultVariableName
+  @lstring resultVariableName
+  select
+    $identifier$ ?resultVariableName
+  or
+    resultVariableName = .new {!"result" !.here}
+  end
   ${$
   <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
   $}$
@@ -176,8 +181,7 @@ rule  <declaration_with_private>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
+rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $extern$
   $func$
   $identifier$ ?let mActionName indexing functionDefinition
@@ -185,13 +189,19 @@ rule <declaration>
   <formal_input_parameter_list> ? formalInputParameterList
   $->$
   $@type$ ?let resultTypeName
-  $identifier$ ?let resultVariableName
+  @lstring resultVariableName
+  select
+    $identifier$ ?resultVariableName
+  or
+    resultVariableName = .new {!"result" !.here}
+  end
   ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
     !false # Is not predefined
     !mActionName
     !formalInputParameterList
     !resultTypeName
-    !resultVariableName}
+    !resultVariableName
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -28,7 +28,12 @@ syntax extension galgas3DeclarationsSyntax {
     <formal_input_parameter_list> ? mFormalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
-    $identifier$ ?var  @lstring mReturnedVariableName
+    @lstring resultVariableName
+    select
+      $identifier$ ?resultVariableName
+    or
+      resultVariableName = .new {!"result" !.here}
+    end
     ${$
     <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
     let @location endOfInstructionList = @location.here
@@ -39,7 +44,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mMethodName
       !mFormalInputParameterList
       !mReturnedTypeName
-      !mReturnedVariableName
+      !resultVariableName
       !routineInstructionList
       !endOfInstructionList
     }

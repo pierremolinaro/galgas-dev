@@ -37,6 +37,15 @@ func produit ?@uint a ?@uint b -> @uint resultat {
 }
 \end{galgas}
 
+Mentionner la variable \ggs=resultat= est optionnel. Par défaut, en son absence, une variable nommée \ggs=result= est implictement déclarée :
+
+\begin{galgas}
+func produit ?@uint a ?@uint b -> @uint {
+  result = a * b
+}
+\end{galgas}
+
+
 
 
 \subsection{Fonction interne à un fichier}
@@ -51,8 +60,8 @@ En préfixant la déclaration d'une fonction par \ggs+private+, on limite son ap
 Une fonction sans argument accepte le qualificatif \ggs+%once+ :
 
 \begin{galgas}
-func %once masque-> @uint resultat {
-  resultat = 1 << 16
+func %once masque -> @uint {
+  result = 1 << 16
 }
 \end{galgas}
 
@@ -61,8 +70,8 @@ Le qualificatif \ggs+%once+ organise le cache du résultat : celui-ci est calcul
 Une fonction \ggs+%once+ peut être déclarée interne en la préfixant par \ggs+private+.
 
 \begin{galgas}
-private func %once masque-> @uint resultat {
-  resultat = 1 << 16
+private func %once masque -> @uint {
+  result = 1 << 16
 }
 \end{galgas}
 
