@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var  @lstring mReturnedTypeName
     select
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here: remove it"
+      warning idf : "an identifier is no longer required here" fixit { remove }
     or
     end
     ioDeclarations.mDeclarationList += !@overridingAbstractExtensionGetterAST.new {

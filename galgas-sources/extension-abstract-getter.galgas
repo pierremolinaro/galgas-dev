@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     select
     or
       $identifier$ ? let idf
-      warning idf : "an identifier is no longer required here: remove it"
+      warning idf : "an identifier is no longer required here" fixit { remove }
     end
     ioDeclarations.mDeclarationList += !@abstractExtensionGetterAST.new {
       !false # Is not predefined

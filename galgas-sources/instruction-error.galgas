@@ -42,10 +42,11 @@ syntax extension galgas3InstructionsSyntax {
         let errorLocation = @location.here
         $remove$
         if hasFixItRemove then
-          warning errorLocation : "duplicated action" fixit { remove  }
+          warning errorLocation : "duplicated action" fixit { remove }
+        else
+          outFixitListAST += !.fixItRemove
+          hasFixItRemove = true
         end
-        outFixitListAST += !.fixItRemove
-        hasFixItRemove = true
       while
         $replace$
         <expression> ?let @semanticExpressionAST expression
@@ -269,9 +270,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @fixitListForGeneration generateFixIt
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@stringset unused ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
   !@string outFixItArrayCppName
@@ -283,7 +284,7 @@ method @fixitListForGeneration generateFixIt
     switch (element)
     case fixItRemove :
       ioGeneratedCode += outFixItArrayCppName + ".addObject (C_FixItDescription (kFixItRemove, \"\", \"\")) ;\n"
-    case fixItReplace (@semanticExpressionForGeneration exp) :
+    case fixItReplace (@semanticExpressionForGeneration unused exp) :
     end
   end
 }
