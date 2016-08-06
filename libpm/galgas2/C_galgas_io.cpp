@@ -171,6 +171,7 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
       }
       result << "\n" ;
     //--- Add fix it suggestions
+      const C_String ZeroWidthSpace = cStringWithUnicodeCharacter (TO_UNICODE (0x200B)) ;
       for (int32_t i=0 ; i<inIssue.mFixItArray.count () ; i++) {
         const C_FixItDescription d = inIssue.mFixItArray (i COMMA_HERE) ;
         switch (d.kind()) {
@@ -178,13 +179,13 @@ static C_String constructErrorOrWarningLocationMessage (const C_String & inMessa
           result << "Fix-it: remove \"" << token << "\"\n" ;
           break ;
         case kFixItReplace :
-          result << "Fix-it: replace \"" << token << "\" with \"" << d.actionString() << "\"\n" ;
+          result << "Fix-it: replace \"" << token << "\" with \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
           break ;
         case kFixItInsertBefore :
-          result << "Fix-it: before \"" << token << "\", insert \"" << d.actionString() << "\"\n" ;
+          result << "Fix-it: before \"" << token << "\", insert \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
           break ;
         case kFixItInsertAfter :
-          result << "Fix-it: after \"" << token << "\", insert \"" << d.actionString() << "\"\n" ;
+          result << "Fix-it: after \"" << token << "\", insert \"" << ZeroWidthSpace << d.actionString() << ZeroWidthSpace << "\"\n" ;
           break ;
         }
       }
