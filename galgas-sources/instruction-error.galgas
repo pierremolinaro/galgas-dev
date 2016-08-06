@@ -230,8 +230,9 @@ proc analyzeErrorOrWarningInstruction
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
-        error errorLocation : "this expression should be an @stringlist instance"
+      if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
+        error errorLocation : "this expression should be an @string or an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
@@ -241,8 +242,9 @@ proc analyzeErrorOrWarningInstruction
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
-        error errorLocation : "this expression should be an @stringlist instance"
+      if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
+        error errorLocation : "this expression should be an @string or an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
@@ -252,8 +254,9 @@ proc analyzeErrorOrWarningInstruction
         !?ioVariableMap
         ?let expression
       ]
-      if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType then
-        error errorLocation : "this expression should be an @stringlist instance"
+      if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
+        error errorLocation : "this expression should be an @string or an @stringlist instance"
       end
       outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
     end

@@ -73,7 +73,7 @@ override getter @lexicalCharacterMatchAST generateCocoaConditionCode
   outGeneratedCode += "]"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#-----------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext

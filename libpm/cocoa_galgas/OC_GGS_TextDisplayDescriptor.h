@@ -85,6 +85,8 @@
 
 - (void) insertBeforeSelectedRange: (NSString *) inString ;
 
+- (void) insertAfterSelectedRange: (NSString *) inString ;
+
 @end
 
 //---------------------------------------------------------------------------------------------------------------------*

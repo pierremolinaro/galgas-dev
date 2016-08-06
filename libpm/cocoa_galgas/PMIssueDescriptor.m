@@ -193,6 +193,7 @@
 //--- Extract
   NSString * title = @"???" ;
   NSArray * components = [mFullMessage componentsSeparatedByString:@"\n"] ;
+  // NSLog (@"%@", components) ;
   if (components.count > 1) {
     NSString * s = [components objectAtIndex:1] ;
     NSArray * c = [s componentsSeparatedByString:@": "] ;
@@ -222,9 +223,9 @@
       menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
       menuItem.representedObject = inDisplayDescriptor ;
     }else if ([title hasPrefix:@"Fix-it: replace "]) {
-      components = [title componentsSeparatedByString:@"\" with \""] ;
-      if (components.count > 1) {
-        NSString * s = [components objectAtIndex:1] ;
+      NSArray * array = [title componentsSeparatedByString:@"\" with \""] ;
+      if (array.count > 1) {
+        NSString * s = [array objectAtIndex:1] ;
         if (s.length > 0) {
           s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
           menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
@@ -232,9 +233,9 @@
         }
       }
     }else if ([title hasPrefix:@"Fix-it: after "]) {
-      components = [title componentsSeparatedByString:@"\" insert \""] ;
-      if (components.count > 1) {
-        NSString * s = [components objectAtIndex:1] ;
+      NSArray * array = [title componentsSeparatedByString:@"\", insert \""] ;
+      if (array.count > 1) {
+        NSString * s = [array objectAtIndex:1] ;
         if (s.length > 0) {
           s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
           menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertAfter:) keyEquivalent:@""] ;
@@ -242,9 +243,9 @@
         }
       }
     }else if ([title hasPrefix:@"Fix-it: before "]) {
-      components = [title componentsSeparatedByString:@"\" insert \""] ;
-      if (components.count > 1) {
-        NSString * s = [components objectAtIndex:1] ;
+      NSArray * array = [title componentsSeparatedByString:@"\", insert \""] ;
+      if (array.count > 1) {
+        NSString * s = [array objectAtIndex:1] ;
         if (s.length > 0) {
           s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
           menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertBefore:) keyEquivalent:@""] ;
@@ -287,8 +288,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) actionFixItInsertAfter: (NSMenuItem *) inSender {
-  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
-  [textViewDescriptor removeSelectedRange] ;
+  NSArray * array = inSender.representedObject ;
+  OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
+  NSString * s = [array objectAtIndex:1] ;
+  [textViewDescriptor insertAfterSelectedRange:s] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
