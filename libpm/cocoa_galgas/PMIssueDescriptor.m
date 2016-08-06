@@ -216,6 +216,7 @@
   menuItem.attributedTitle = as ;
   [inMenu addItem:menuItem] ;
 //--- Suggestions
+  NSString * ZeroWidthSpace = @"\u200B" ;
   for (NSUInteger i=4 ; i<components.count ; i++) {
     title = [components objectAtIndex:i] ;
     menuItem = nil ;
@@ -223,34 +224,26 @@
       menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
       menuItem.representedObject = inDisplayDescriptor ;
     }else if ([title hasPrefix:@"Fix-it: replace "]) {
-      NSArray * array = [title componentsSeparatedByString:@"\" with \""] ;
-      if (array.count > 1) {
+      NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
+      if (array.count == 3) {
         NSString * s = [array objectAtIndex:1] ;
-        if (s.length > 0) {
-          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
-          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
-          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
-        }
+        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
       }
     }else if ([title hasPrefix:@"Fix-it: after "]) {
-      NSArray * array = [title componentsSeparatedByString:@"\", insert \""] ;
-      if (array.count > 1) {
+      NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
+      if (array.count == 3) {
         NSString * s = [array objectAtIndex:1] ;
-        if (s.length > 0) {
-          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
-          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertAfter:) keyEquivalent:@""] ;
-          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
-        }
+        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertAfter:) keyEquivalent:@""] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
       }
     }else if ([title hasPrefix:@"Fix-it: before "]) {
-      NSArray * array = [title componentsSeparatedByString:@"\", insert \""] ;
-      if (array.count > 1) {
+      NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
+      if (array.count == 3) {
         NSString * s = [array objectAtIndex:1] ;
-        if (s.length > 0) {
-          s = [s substringWithRange:NSMakeRange (0, s.length - 1)] ;
-          menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertBefore:) keyEquivalent:@""] ;
-          menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
-        }
+        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertBefore:) keyEquivalent:@""] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+
       }
     }
     if (menuItem != nil) {
