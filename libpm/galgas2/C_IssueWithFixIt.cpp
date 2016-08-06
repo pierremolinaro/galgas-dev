@@ -69,5 +69,13 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
   }
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
+                         const EnumFixItKind inKind,
+                         const GALGAS_string & inString) {
+  const C_String s = inString.stringValue () ;
+  ioArray.addObject (C_FixItDescription (inKind, s)) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
