@@ -4,7 +4,7 @@ abstract class @A_A {}
 
 class @B_B : @A_A {}
 
-abstract getter @A_A aReader ?@uint inA ?let@string inB -> @string outResult
+abstract getter @A_A aReader ?@uint inA ?let@string inB -> @string
 
 override getter @B_B aReader ?@uint inA ?let@string inB -> @string outResult {
   inA ++
@@ -18,9 +18,9 @@ getter @B_B otherReader ?@uint inA ?let@string inB -> @string outResult {
 
 abstract class @C_C : @B_B {}
 
-override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string outResult
+override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string
 
-abstract getter @A_A location -> @location outLocation
+abstract getter @A_A location -> @location
 
 override getter @B_B location -> @location outLocation { outLocation = .here}
 

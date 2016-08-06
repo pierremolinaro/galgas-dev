@@ -95,10 +95,10 @@ class @toto3 : @toto2 { }
 #override abstract method @toto2 m ;
 #abstract method @toto m ;
 
-override abstract getter @toto2 r -> @uint result
+override abstract getter @toto2 r -> @uint
 override getter @toto3 r -> @uint result { result = 0 }
 override getter @toto1 r -> @uint result { result = 0 }
 getter @toto1 rr -> @uint result { result = 0 }
-abstract getter @toto r -> @uint result
+abstract getter @toto r -> @uint
 
 
