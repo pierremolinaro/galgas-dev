@@ -22,7 +22,7 @@ private filewrapper cCodeGeneration in "." {
 
 #---------------------------------------------------------------------------*
 
-abstract getter @instructionForGeneration generateCcode -> @string outGeneratedCode
+abstract getter @instructionForGeneration generateCcode -> @string
 
 #---------------------------------------------------------------------------*
 
@@ -48,7 +48,7 @@ override getter @printVariableForGeneration generateCcode
 #---------------------------------------------------------------------------*
 
 abstract getter @expressionForGeneration generateExpCode
-  -> @string outGeneratedCode
+  -> @string
 
 #---------------------------------------------------------------------------*
 
