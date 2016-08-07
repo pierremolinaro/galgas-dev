@@ -681,14 +681,15 @@ fixit {
 \end{galgas}
 
 
-La suite présente trois exemples :
+La suite présente plusieurs exemples :
 \begin{itemize}
   \item un premier exemple \ggs=remove= sur un identificateur (\refSubsubsectionPage {premierExempleFixit}) ;
   \item un exemple  \ggs=remove= sur un mot réservé (\refSubsubsectionPage {deuxiemeExempleFixit}) ;
-  \item un exemple \ggs=replace= (\refSubsubsectionPage {troisiemeExempleFixIt}).
+  \item un exemple \ggs=replace= (\refSubsubsectionPage {troisiemeExempleFixIt}) ;
+  \item un second exemple \ggs=replace=, qui met en évidence un piège qui existe avec des chaînes de caractères (\refSubsubsectionPage {quatriemeExempleFixIt}).
 \end{itemize}
 
-Le fonctionnement de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=replace= : on se reportera à l'exemple \ggs=replace= \refSubsubsectionPage {troisiemeExempleFixIt} pour ceux-ci.
+L'utilisation de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=replace= : on se reportera aux exemples \ggs=replace= pour ceux-ci.
 
 
 \subsubsectionLabel{Premier exemple \texttt{fixit remove}}{premierExempleFixit}
@@ -775,7 +776,7 @@ rule <règle> ... {
 
 \subsubsectionLabel{Exemple \texttt{fixit replace}}{troisiemeExempleFixIt}
 
-Supposons qu'un identificateur ou qu'une chaîne ne puisse prendre qu'un ensemble de valeurs possibles. C'est le rôle des écritures sémantiques de vérifier que la valeur est l'une de celles autorisées.
+Supposons qu'un identificateur ne puisse prendre qu'un ensemble de valeurs possibles. C'est le rôle des écritures sémantiques de vérifier que la valeur est l'une de celles autorisées.
 
 Ainsi, la règle syntaxique peut être :
 \begin{galgas}
@@ -786,22 +787,13 @@ rule <règle> ... {
 }
 \end{galgas}
 
-Ou encore :
-\begin{galgas}
-rule <règle> ... {
-  ...
-  $literat_string$ ?let valeurÀVérifier
-  ...
-}
-\end{galgas}
-
 Maintenant, la sémantique. Sans clause \ggs=fixit=, elle a l'allure suivante :
 \begin{galgas}
   let @stringset valeursPossibles = ...
   if [valeursPossibles hasKey !valeurÀVérifier] then
     ...
   else
-    error valeurÀVérifier : "valeur interdite"
+    error valeurÀVérifier : "valeur invalide"
   end
 }
 \end{galgas}
@@ -813,8 +805,37 @@ On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des va
   if [valeursPossibles hasKey !valeurÀVérifier] then
     ...
   else
-    error valeurÀVérifier : "valeur interdite" fixit {
+    error valeurÀVérifier : "valeur invalide" fixit {
       replace [valeursPossibles stringList]
+    }
+  end
+}
+\end{galgas}
+
+\subsubsectionLabel{Exemple \texttt{fixit replace}, chaîne de caractères}{quatriemeExempleFixIt}
+
+Reprenons l'exemple précédent, mais en supposant \ggs=valeurÀVérifier= est obtenue à partir d'une chaîne de caractères.
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $literal_string$ ?let valeurÀVérifier
+  ...
+}
+\end{galgas}
+
+On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identificateur ne change rien. Mais lorsque le terminal est une chaîne,  la valeur \ggs=valeurÀVérifier= ne contient pas les « \textquotedbl~» qui délimitent la constante chaîne de caractères. Si l'on fait le remplacement tel quel, les valeurs suggérées n'ont pas ces délimiteurs : lors du remplacement, ils sont perdus. Aussi, il faut explicitement les rajouter avant de soumettre les suggestions :
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    @stringlist suggestions = {}
+    for (s) in valeursPossibles do
+      suggestions += !"\"" + s + "\""
+    end
+    error valeurÀVérifier : "valeur invalide" fixit {
+      replace suggestions
     }
   end
 }
