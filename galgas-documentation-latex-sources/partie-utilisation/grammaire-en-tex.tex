@@ -5,7 +5,9 @@
 \chapterLabel{Diagrammes syntaxiques des grammaires en TeX}{chapitreDiagrammesSyntaxiques}
 %-------------------------------------------------------------
 
-Le compilateur GALGAS implémente l'option \tpp{-{}-emit-syntax-diagrams} qui permet d'obtenir les diagrammes syntaxiques de chaque grammaire de votre langage. Ceux-ci sont décrits en \LaTeX en utilisant le paquetage \texttt{tikz}\label{tikz}.C'est ainsi que les diagrammes des langages GALGAS présentés au \refChapterPage{grammaireProjet}, \refChapterPage{grammaireSource} et \refChapterPage{grammaireTemplate} ont été obtenus..
+Le compilateur GALGAS implémente l'option \tpp{-{}-emit-syntax-diagrams} qui permet d'obtenir les diagrammes syntaxiques de chaque grammaire de votre langage. Ceux-ci sont décrits en \LaTeX en utilisant le paquetage \texttt{tikz}\label{tikz}.C'est ainsi que les diagrammes des langages GALGAS présentés au \refChapterPage{grammaireProjet}, \refChapterPage{grammaireSource} et \refChapterPage{grammaireTemplate} ont été obtenus.
+
+Il n'y a pas de miracle, les diagrammes syntaxiques peuvent être tronqués parce qu'ils débordent dans la marge droite ou dans le bas de la page : d'ailleurs vouloir exploiter ces diagrammes peut être l'occasion de revisiter la forme des règles de production.
 
 {\bf Note.} La compilation \LaTeX des diagrammes syntaxiques est très lente !
 
@@ -29,7 +31,7 @@ Les fichiers \LaTeX produits sont rangés dans le répertoire \tpp{chezmoi/build
 
 Le fichier \tpp{chezmoi/build/logo\_grammar.document.tex} contient un document \LaTeX~ di-rectement compilable qui vous permet d'obtenir immédiatement un document PDF contenant les diagrammes syntaxiques de votre langage ; il inclut le fichier \tpp{chezmoi/build/lo-} \tpp{go\_grammar.tex} qui contient les diagrammes syntaxiques.
 
-Ce fichier sert d'exemple de configuration de \texttt{tikz} et de l'affichage des diagrammes. Il contient plusieurs définitions de commandes qui permettent de paramétrer l'affichage des diagrammes, et qui sont donc appelées dans \tpp{chezmoi/build/logo\_grammar.tex}.
+Ce fichier sert d'exemple de configuration de \texttt{tikz} et de l'affichage des diagrammes. Pour donner une chance aux règles de production de s'afficher complètement, le format du document est \emph{paysage A3}. Ce fichier contient plusieurs définitions de commandes qui permettent de paramétrer l'affichage des diagrammes, et qui sont donc appelées dans \tpp{chezmoi/build/logo\_grammar.tex}.
 
 
 

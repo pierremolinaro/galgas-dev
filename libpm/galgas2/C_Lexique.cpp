@@ -280,6 +280,8 @@ void C_Lexique::resetForSecondPass (void) {
   if (mCurrentTokenPtr != NULL) {
     mStartLocationForHere = mCurrentTokenPtr->mStartLocation ;
     mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
+    mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
+    mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
     mTemplateString << mCurrentTokenPtr->mTemplateStringBeforeToken ;
     mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
   }
@@ -1484,11 +1486,13 @@ void C_Lexique::acceptTerminal (FORMAL_ARG_ACCEPT_TERMINAL COMMA_LOCATION_ARGS) 
     #ifndef DO_NOT_GENERATE_CHECKINGS
       currentTokenCode = mCurrentTokenPtr->mTokenCode ;
     #endif
+    mStartLocationForHere = mCurrentTokenPtr->mStartLocation ;
+    mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
     mCurrentTokenPtr = mCurrentTokenPtr->mNextToken ;
     if (mCurrentTokenPtr != NULL) {
       macroValidPointer (mCurrentTokenPtr) ;
-      mStartLocationForHere = mCurrentTokenPtr->mStartLocation ;
-      mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
+      mStartLocationForNext = mCurrentTokenPtr->mStartLocation ;
+      mEndLocationForNext = mCurrentTokenPtr->mEndLocation ;
       mTemplateString << mCurrentTokenPtr->mTemplateStringBeforeToken ;
       mTemplateStringLocation = mCurrentTokenPtr->mStartLocation ;
       mCurrentLocation = mCurrentTokenPtr->mEndLocation ;

@@ -97,6 +97,13 @@ GALGAS_location GALGAS_location::constructor_here (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_location GALGAS_location::constructor_next (C_Compiler * inCompiler
+                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  return inCompiler->next () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 bool GALGAS_location::isValidAndNotNowhere (void) const {
   return mIsValid && (NULL != mSourceText) ;
 }

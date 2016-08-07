@@ -76,7 +76,9 @@ mTemplateStringLocation (),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
 mStartLocationForHere (),
-mEndLocationForHere () {
+mEndLocationForHere (),
+mStartLocationForNext (),
+mEndLocationForNext () {
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
 }
 
@@ -445,13 +447,20 @@ void C_Compiler::onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark here
+  #pragma mark here, next
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location C_Compiler::here (void) const {
   return GALGAS_location (mStartLocationForHere, mEndLocationForHere, mSourceTextPtr) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location C_Compiler::next (void) const {
+  return GALGAS_location (mStartLocationForNext, mEndLocationForNext, mSourceTextPtr) ;
 }
 
 

@@ -111,6 +111,9 @@ class GALGAS_location : public AC_GALGAS_root {
   public : static class GALGAS_location constructor_here (C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
+  public : static class GALGAS_location constructor_next (C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_location constructor_nowhere (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
