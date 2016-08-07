@@ -101,6 +101,11 @@ class C_Compiler : public C_SharedObject {
   protected : C_LocationInSource mEndLocationForHere ; // Set by lexique
   public : GALGAS_location here (void) const ;
 
+//--- Handle 'next' in GALGAS
+  protected : C_LocationInSource mStartLocationForNext ; // Set by lexique
+  protected : C_LocationInSource mEndLocationForNext ; // Set by lexique
+  public : GALGAS_location next (void) const ;
+
 //--- Source file name
   public : C_String sourceFilePath (void) const ;
 

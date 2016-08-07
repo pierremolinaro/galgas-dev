@@ -571,7 +571,15 @@ error localisation : message_erreur : variable1, ..., variableN
 
 
 
-Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+ : c'est le cas de tous les types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+. Le \ggs+message_erreur+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+. Enfin, le troisième champ liste les variables \ggs+variable1+, ..., \ggs+variableN+ qui ne peuvent être construites du fait de l'erreur. Si il n'y a pas de variable à citer, l'instruction s'écrit :
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+~: c'est le cas des types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbigint+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+.
+
+Le \ggs+message_erreur+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+.
+
+Le troisième champ liste les variables \ggs+variable1+, ..., \ggs+variableN+ qui sont détruites du fait de l'erreur (\refSubsectionPage{listVarDetruitesInstructionError}).
+
+Il y a un quatrième champ, optionnel, qui permet de transmettre à l'utilisateur des suggestions de corrections : il commence par le mot réservé \ggs=fixit= et est décrit à la \refSubsectionPage{clauseFixItInstructionErreur}.
+
+Si il n'y a pas de variable à citer, l'instruction s'écrit :
 \begin{galgas}
 error localisation : message_erreur
 \end{galgas}
@@ -592,29 +600,147 @@ error nom : message_erreur
 \end{galgas}
 
 
+\subsectionLabel{Liste de variables détruites}{listVarDetruitesInstructionError}
+
 Lister des variables qui ne peuvent pas être construites est indispensable dans certains cas. Examinons le code suivant (\underline{qui ne compile pas}) :
 \begin{galgas}
 $identifier$ ?@lstring nom
-@unType resultat
+@unType résultat
 if ok then
-  resultat = ...
+  résultat = ...
 else
   error nom : message_erreur
-end # Erreur : 'resultat' est valué par une branche
+end # Erreur : 'résultat' est valué par une branche
 \end{galgas}
 
-En effet, une des branches du \ggs+if+ donne une valeur à \ggs+resultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+resultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
+En effet, une des branches du \ggs+if+ donne une valeur à \ggs+résultat+, et l'autre pas. Or, en cas d'erreur, on veut que \ggs+résultat+ ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
 \begin{galgas}
 $identifier$ ?@lstring nom
-@unType resultat
+@unType résultat
 if ok then
-  resultat = ...
+  résultat = ...
 else
-  error nom : message_erreur : resultat
+  error nom : message_erreur : résultat
 end
 \end{galgas}
 
-Mentionner \ggs+resultat+ à la fin de l'instruction \ggs+error+ permet de faire croire au compilateur que \ggs+resultat+ est valué.
+Mentionner \ggs+résultat+ à la fin de l'instruction \ggs+error+ permet de faire croire au compilateur que \ggs+résultat+ est valué.
+
+
+\subsectionLabel{Clause \texttt{fixit}}{clauseFixItInstructionErreur}
+
+La clause \ggs=fixit= est optionnelle et permet de transmettre à l'utilisateur des suggestions de corrections : il peut apparaître à la fin d'une instruction \ggs=error= et d'une instruction \ggs=warning= (\refSectionPage{instructionWarning}).
+
+Si vous utilisez l'application Cocoa engendrée par GALGAS, la liste des suggestions apparaît au début du menu contextuel \texttt{cmd-clic} : il suffit donc d'effectuer un \texttt{cmd-clic} sur un token souligné par un trait rouge (qui signale une erreur) ou orange (une alerte) pour voir apparaître la liste des suggestions. Les suggestions concernent le token désigné par l'expression \ggs=localisation= de l'erreur ou de l'alerte.
+
+Sa syntaxe est la suivante :
+
+\begin{galgas}
+fixit {
+  remove
+  replace expression
+  after expression
+  before expression
+}
+\end{galgas}
+
+La clause \ggs=fixit= contient une séquence de suggestions ; il existe quatre types de suggestions :
+\begin{itemize}
+\item \ggs=remove=, qui suggère d'éliminer le token désigné ;
+\item \ggs=replace=, qui suggère de remplacer le token désigné par l'\ggs=expression= indiquée~;
+\item \ggs=after=, qui suggère d'insérer l'\ggs=expression= indiquée après le token désigné~;
+\item \ggs=before=, qui suggère d'insérer l'\ggs=expression= indiquée avant le token désigné.
+\end{itemize}
+
+Deux types sont acceptés pour l'\ggs=expression= :
+\begin{itemize}
+  \item \ggs=@string=, elle représente une suggestion unique ;
+  \item \ggs=@stringlist=, elle représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'odre de la liste.
+\end{itemize}
+
+L'\ggs=expression= n'est pas limitée aux constructions statiques, mais accepte des expressions calculées à l'exécution : la liste des suggestions peut donc être calculée dynamiquement.
+
+La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=replace=, \ggs=after=, \ggs=before= ; par contre, la suggestion \ggs=remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elle apparaissent dans la clause \ggs=fixit=.
+
+
+\subsubsection{Premier exemple \texttt{fixit remove}}
+
+Supposons que votre langage contient une règle de production où un identificateur apparaît :
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $identifier$ ?let idf
+  ...
+}
+\end{galgas}
+
+Le langage change, l'identificateur n'est plus utile ; sans utiliser la clause \ggs=fixit=, on écrit alors :
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $identifier$ ?let idf
+    warning idf : "the identifier is no longer needed: remove it"
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+
+Et en utilisant la clause \ggs=fixit= :
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $identifier$ ?let idf
+    warning idf : "the identifier is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+
+\subsubsection{Second exemple \texttt{fixit remove}}
+
+Reprenons l'exemple précédent, mais en considérant que c'est un mot réservé qui devient inutile ; on écrit :
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    $mot-réservé$
+    warning .here : "this keyword is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
+
+La différence est que l'on ne dispose pas d'une localisation explicite de l'alerte : on est obligé d'utiliser le \refConstructorPage{location}{here} ou le \refConstructorPage{location}{next}. Utiliser à bon escient ces constructeurs est indispensable pour bien localiser le signalement.
+
+Dans l'exemple ci-dessus, on utilise \ggs=here=, qui désigne le token qui précède, c'est-à-dire \ggs=$mot-réservé$=. On peut utiliser \ggs=next=, qui désigne le token suivant, en écrivant :
+
+\begin{galgas}
+rule <règle> ... {
+  ...
+  select
+    let loc = @location.next
+    $mot-réservé$
+    warning loc : "this keyword is no longer needed" fixit { remove }
+  or
+  end
+  ...
+  
+}
+\end{galgas}
 
 
 %---------------------------------------------------------------------------------------------------------------------------
@@ -1595,14 +1721,14 @@ Les parenthèses sont obligatoires. La déclaration d'un procédure est présent
 
 Par exemple, la procedure suivante :
 \begin{galgas}
-proc produit ?@uint a ?@uint b !@uint resultat {
-  resultat = a * b
+proc produit ?@uint a ?@uint b !@uint résultat {
+  résultat = a * b
 }
 \end{galgas}
 
 Peut être appelée par :
 \begin{galgas}
-produit (!2 !3 ?@uint resultat)
+produit (!2 !3 ?@uint résultat)
 \end{galgas}
 
 
@@ -1891,7 +2017,7 @@ end
 
 
 
-\section{L'instruction \texttt{warning}}
+\sectionLabel{L'instruction \texttt{warning}}{instructionWarning}
 
 L'instruction \ggs+warning+ permet de signaler une alerte à l'utilisateur. Elle est constituée de deux champs séparés par un double-point (\ggs+:+) :
 
@@ -1901,9 +2027,14 @@ warning localisation : message_alerte
 
 
 
-Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+ : c'est le cas de tous les types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+. Le \ggs+message_alerte+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+.
+Le champ \ggs+localisation+ signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \ggs+@location+, ou d'un type possédant un \emph{getter} sans argument nommé \ggs+location+ et renvoyant un objet de type \ggs+@location+ : c'est le cas dses types prédéfinis \ggs+@luint+, \ggs+@luint64+, \ggs+@lsint+, \ggs+@lsint64+, \ggs+@lbigint+, \ggs+@lbool+, \ggs+@lchar+ et \ggs+@lstring+.
 
-Par exemple :
+
+Le \ggs+message_alerte+ est le message affiché à l'utilisateur : c'est donc une expression de type \ggs+@string+.
+
+Il y a un troisième champ, optionnel, qui permet de transmettre à l'utilisateur des suggestions de corrections : il commence par le mot réservé \ggs=fixit= et est décrit à la \refSubsectionPage{clauseFixItInstructionErreur}.
+
+Exemple d'instruction \ggs=warning= :
 
 \begin{galgas}
 $identifier$ ?@lstring nom

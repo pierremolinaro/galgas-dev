@@ -7,9 +7,9 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper libpmFileWrapper in "../libpm" {
- "h", "cpp", "c", "m", "mak", "py"
+ "h", "cpp", "c", "m", "mak", "py" # Text files
 }{
- "tiff", "png", "xib", "gif"
+ "tiff", "png", "xib", "gif" # Binary files
 }{
 }
 
@@ -24,7 +24,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     [actualDirectory makeDirectory]
   end
 #--- Update text files
-  var allNeededFileSet =@stringset {}
+  @stringset allNeededFileSet = {}
   for () in [fw allTextFilePathes] do
     let @string contents = [fw textFileContentsAtPath !mValue]
     let @string actualFilePath = inLIBPMPath + mValue

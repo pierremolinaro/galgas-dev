@@ -41,10 +41,9 @@ syntax extension galgas3InstructionsSyntax {
       var hasFixItRemove = false
       repeat
       while
-        let errorLocation = @location.here
         $remove$
         if hasFixItRemove then
-          warning errorLocation : "duplicated action" fixit { remove }
+          warning .here : "duplicated action" fixit { remove }
         else
           outFixitListAST += !.fixItRemove
           hasFixItRemove = true

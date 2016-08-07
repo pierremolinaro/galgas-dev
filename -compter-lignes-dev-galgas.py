@@ -35,6 +35,9 @@ print ("Templates GALGAS : " + str (compterLignes (scriptDir + "/generation_temp
 n = compterLignes (scriptDir + "/hand_coded_sources", "cpp") + compterLignes (scriptDir + "/hand_coded_sources", "h")
 print ("Sources C++ compilateur GALGAS : " + str (n) + " lignes")
 
+n = compterLignes (scriptDir + "/libpm", "py")
+print ("Sources Python compilateur GALGAS : " + str (n) + " lignes")
+
 n = compterLignes (scriptDir + "/libpm/cocoa_galgas", "m") + compterLignes (scriptDir + "/libpm/cocoa_utilities", "m")
 nh_oc = compterLignes (scriptDir + "/libpm/cocoa_galgas", "h") + compterLignes (scriptDir + "/libpm/cocoa_utilities", "h")
 

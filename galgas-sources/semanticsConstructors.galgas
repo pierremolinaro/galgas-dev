@@ -137,6 +137,13 @@ override method @locationPredefinedTypeAST getConstructorMap
     !resultTypeName:"location"
     !hasLexiqueAndLocationArgs:true
   )
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"next"
+    !resultTypeName:"location"
+    !hasLexiqueAndLocationArgs:true
+  )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
