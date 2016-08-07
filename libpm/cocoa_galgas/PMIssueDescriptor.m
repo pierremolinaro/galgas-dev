@@ -221,29 +221,48 @@
     title = [components objectAtIndex:i] ;
     menuItem = nil ;
     if ([title hasPrefix:@"Fix-it: remove "]) {
-      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItRemove:) keyEquivalent:@""] ;
-      menuItem.representedObject = inDisplayDescriptor ;
+      const NSRange issueRange = NSMakeRange (
+        self.startLocationInSourceString,
+        self.endLocationInSourceString - self.startLocationInSourceString + 1
+      ) ;
+      NSValue * issueRangeValue = [NSValue valueWithRange:issueRange] ;
+      menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+      menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, @"", issueRangeValue, nil] ;
     }else if ([title hasPrefix:@"Fix-it: replace "]) {
+      const NSRange issueRange = NSMakeRange (
+        self.startLocationInSourceString,
+        self.endLocationInSourceString - self.startLocationInSourceString + 1
+      ) ;
+      NSValue * issueRangeValue = [NSValue valueWithRange:issueRange] ;
       NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
       if (array.count == 3) {
-        NSString * s = [array objectAtIndex:1] ;
+        NSString * replacement = [array objectAtIndex:1] ;
         menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
-        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, replacement, issueRangeValue, nil] ;
       }
     }else if ([title hasPrefix:@"Fix-it: after "]) {
+      const NSRange issueRange = NSMakeRange (
+        self.endLocationInSourceString + 1,
+        0
+      ) ;
+      NSValue * issueRangeValue = [NSValue valueWithRange:issueRange] ;
       NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
       if (array.count == 3) {
-        NSString * s = [array objectAtIndex:1] ;
-        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertAfter:) keyEquivalent:@""] ;
-        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
+        NSString * replacement = [array objectAtIndex:1] ;
+        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, replacement, issueRangeValue, nil] ;
       }
     }else if ([title hasPrefix:@"Fix-it: before "]) {
+      const NSRange issueRange = NSMakeRange (
+        self.startLocationInSourceString,
+        0
+      ) ;
+      NSValue * issueRangeValue = [NSValue valueWithRange:issueRange] ;
       NSArray * array = [title componentsSeparatedByString:ZeroWidthSpace] ;
       if (array.count == 3) {
-        NSString * s = [array objectAtIndex:1] ;
-        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItInsertBefore:) keyEquivalent:@""] ;
-        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, s, nil] ;
-
+        NSString * replacement = [array objectAtIndex:1] ;
+        menuItem = [[NSMenuItem alloc] initWithTitle:title action:@selector (actionFixItReplace:) keyEquivalent:@""] ;
+        menuItem.representedObject = [NSArray arrayWithObjects:inDisplayDescriptor, replacement, issueRangeValue, nil] ;
       }
     }
     if (menuItem != nil) {
@@ -255,37 +274,32 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) actionFixItRemove: (NSMenuItem *) inSender {
-  OC_GGS_TextDisplayDescriptor * textViewDescriptor = inSender.representedObject ;
-  [textViewDescriptor removeSelectedRange] ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 - (void) actionFixItReplace: (NSMenuItem *) inSender {
   NSArray * array = inSender.representedObject ;
   OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
   NSString * replacementString = [array objectAtIndex:1] ;
-  [textViewDescriptor replaceSelectedRangeWithString:replacementString] ;
+  NSValue * issueRangeValue = [array objectAtIndex:2] ;
+  const NSRange issueRange = issueRangeValue.rangeValue ;
+  [textViewDescriptor replaceRange:issueRange withString:replacementString] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) actionFixItInsertBefore: (NSMenuItem *) inSender {
+/* - (void) actionFixItInsertBefore: (NSMenuItem *) inSender {
   NSArray * array = inSender.representedObject ;
   OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
   NSString * s = [array objectAtIndex:1] ;
   [textViewDescriptor insertBeforeSelectedRange:s] ;
-}
+} */
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) actionFixItInsertAfter: (NSMenuItem *) inSender {
+/* - (void) actionFixItInsertAfter: (NSMenuItem *) inSender {
   NSArray * array = inSender.representedObject ;
   OC_GGS_TextDisplayDescriptor * textViewDescriptor = [array objectAtIndex:0] ;
   NSString * s = [array objectAtIndex:1] ;
   [textViewDescriptor insertAfterSelectedRange:s] ;
-}
+}*/
 
 //---------------------------------------------------------------------------------------------------------------------*
 
