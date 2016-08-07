@@ -394,7 +394,9 @@
 \newcommand\subsubsectionLabel[2]{\subsubsection{#1}\label{subsubsec:#2}}
 
 % \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
-\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
+%\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
+%--- Les sub sub sections ne sont pas numérotées, on indique que le numéro de page
+\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{page \pageref{subsubsec:#1}}}
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE FIGURE
 % La référence au tableau "nom-de-la-figure" est définie par \labelFigure{nom-de-la-figure}

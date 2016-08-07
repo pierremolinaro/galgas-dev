@@ -27,6 +27,15 @@ Creates and returns an \ggs+@stringset+ object that contains the value of the \e
 
 \section{Getters}
 
+
+
+\subsectionGetter{anyString}{stringset}
+
+\begin{galgas}
+getter anyString -> @string
+\end{galgas}
+
+Retourne une des chaînes de caractères contenue dans le récepteur. Si le récepteur est vide, une erreur d'exécution est déclenchée.
 \subsectionGetter{count}{stringset}
 
 \begin{galgas}
@@ -46,14 +55,15 @@ getter hasKey ?@string inString -> @bool
 Returns a boolean value that indicates whether the value of \emph{inString} argument is present in the set: \ggs+true+ if the value of \emph{inString} argument is present in the set, \ggs+false+ otherwise.
 
 
-\subsectionGetter{anyString}{stringset}
+
+
+\subsectionGetter{stringList}{stringset}
 
 \begin{galgas}
-getter anyString -> @string
+getter stringList -> @stringlist
 \end{galgas}
 
-Retourne une des chaînes de caractères contenue dans le récepteur. Si le récepteur est vide, une erreur d'exécution est déclenchée.
-
+Retourne la valeur du récepteur sous la forme d'une liste. L'ordre de la liste est l'ordre alphabétique.
 
 
 
