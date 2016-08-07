@@ -655,15 +655,43 @@ La clause \ggs=fixit= contient une séquence de suggestions ; il existe quatre t
 Deux types sont acceptés pour l'\ggs=expression= :
 \begin{itemize}
   \item \ggs=@string=, elle représente une suggestion unique ;
-  \item \ggs=@stringlist=, elle représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'odre de la liste.
+  \item \ggs=@stringlist=, elle représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste.
 \end{itemize}
+
+Ainsi, on peut écrire (et de même avec \ggs=after= et \ggs=before=) :
+\begin{galgas}
+fixit { replace "toto" } # Suggère de remplacer le token par toto
+fixit { replace "toto" replace "tata" } # Deux suggestions
+fixit { replace @stringlist {!"toto" !"tata"} } # Identique au précédent
+fixit { replace {!"toto" !"tata"} } # Le type @stringlist est inféré
+\end{galgas}
+
 
 L'\ggs=expression= n'est pas limitée aux constructions statiques, mais accepte des expressions calculées à l'exécution : la liste des suggestions peut donc être calculée dynamiquement.
 
-La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=replace=, \ggs=after=, \ggs=before= ; par contre, la suggestion \ggs=remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elle apparaissent dans la clause \ggs=fixit=.
+La clause \ggs=fixit= contient une séquence de suggestions, qui peut être vide. Une séquence peut contenir plusieurs suggestions \ggs=replace=, \ggs=after=, \ggs=before= ; par contre, la suggestion \ggs=remove= ne peut apparaître qu'au plus une fois. Les suggestions sont présentées à l'utilisateur dans l'ordre où elles apparaissent dans la clause \ggs=fixit=. Il est parfaitement légal d'écrire par exemple :
+\begin{galgas}
+fixit {
+  replace "toto"
+  after "tata"
+  before "tutu"
+  replace "titi"
+  remove
+}
+\end{galgas}
 
 
-\subsubsection{Premier exemple \texttt{fixit remove}}
+La suite présente trois exemples :
+\begin{itemize}
+  \item un premier exemple \ggs=remove= sur un identificateur (\refSubsubsectionPage {premierExempleFixit}) ;
+  \item un exemple  \ggs=remove= sur un mot réservé (\refSubsubsectionPage {deuxiemeExempleFixit}) ;
+  \item un exemple \ggs=replace= (\refSubsubsectionPage {troisiemeExempleFixIt}).
+\end{itemize}
+
+Le fonctionnement de \ggs=before= et de \ggs=after= est analogue à celui de \ggs=replace= : on se reportera à l'exemple \ggs=replace= \refSubsubsectionPage {troisiemeExempleFixIt} pour ceux-ci.
+
+
+\subsubsectionLabel{Premier exemple \texttt{fixit remove}}{premierExempleFixit}
 
 Supposons que votre langage contient une règle de production où un identificateur apparaît :
 
@@ -706,8 +734,10 @@ rule <règle> ... {
 }
 \end{galgas}
 
+Dans l'application Cocoa, le menu contextuel activé sur l'identificateur présentera la suggestion de supprimer l'identificateur.
 
-\subsubsection{Second exemple \texttt{fixit remove}}
+
+\subsubsectionLabel{Second exemple \texttt{fixit remove}}{deuxiemeExempleFixit}
 
 Reprenons l'exemple précédent, mais en considérant que c'est un mot réservé qui devient inutile ; on écrit :
 
@@ -739,6 +769,54 @@ rule <règle> ... {
   end
   ...
   
+}
+\end{galgas}
+
+
+\subsubsectionLabel{Exemple \texttt{fixit replace}}{troisiemeExempleFixIt}
+
+Supposons qu'un identificateur ou qu'une chaîne ne puisse prendre qu'un ensemble de valeurs possibles. C'est le rôle des écritures sémantiques de vérifier que la valeur est l'une de celles autorisées.
+
+Ainsi, la règle syntaxique peut être :
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $identifier$ ?let valeurÀVérifier
+  ...
+}
+\end{galgas}
+
+Ou encore :
+\begin{galgas}
+rule <règle> ... {
+  ...
+  $literat_string$ ?let valeurÀVérifier
+  ...
+}
+\end{galgas}
+
+Maintenant, la sémantique. Sans clause \ggs=fixit=, elle a l'allure suivante :
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    error valeurÀVérifier : "valeur interdite"
+  end
+}
+\end{galgas}
+
+On pourrait améliorer le message d'erreur ci-dessus en ajoutant la liste des valeurs possibles. Ajouter une clause \ggs=fixit replace= permet de le faire très simplement. Après le mot réservé \ggs=replace= est attendue une expression de type \ggs=@string= ou \ggs=@stringlist=, or la variable \ggs=valeursPossibles= est du type \ggs=@stringset= : on utilise donc le getter \refGetterPage{stringset}{stringList}. D'où :
+
+\begin{galgas}
+  let @stringset valeursPossibles = ...
+  if [valeursPossibles hasKey !valeurÀVérifier] then
+    ...
+  else
+    error valeurÀVérifier : "valeur interdite" fixit {
+      replace [valeursPossibles stringList]
+    }
+  end
 }
 \end{galgas}
 
