@@ -112,7 +112,7 @@
   NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
   NSData * data = [df valueForKey:GGS_editor_background_color] ;
   // NSLog (@"DATA %@", data) ;
-  NSColor * color = [NSUnarchiver unarchiveObjectWithData:data] ;
+  NSColor * color = [[NSUnarchiver unarchiveObjectWithData:data] colorUsingColorSpace:[NSColorSpace genericRGBColorSpace]] ;
   if ([color brightnessComponent] > 0.5) {
     self.insertionPointColor = [color blendedColorWithFraction:0.5 ofColor:[NSColor blackColor]] ;
   }else{
