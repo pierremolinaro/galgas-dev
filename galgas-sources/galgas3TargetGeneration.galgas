@@ -483,6 +483,11 @@ proc updateGalgas3Targets
       error mValue: "unknown '" + mValue + "' feature" fixit { replace s }
     end
   end
+#--- Generation of Xcode project given by command line opition ?
+  if [option galgas_cli_options.macosxSDK value] != 0 then
+    SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
+    MACOSX_DEPLOYMENT_TARGET = "10." + [option galgas_cli_options.macosxSDK value]
+  end
 #--- Check Cocoa features
   if (SDK != "") & not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
