@@ -388,6 +388,7 @@ proc updateGalgas3Targets
   availableGenerationFeatures += !"Mavericks"
   availableGenerationFeatures += !"Yosemite"
   availableGenerationFeatures += !"ElCapitanYosemite"
+  availableGenerationFeatures += !"SierraElCapitan"
   availableGenerationFeatures += !"ElCapitan"
   availableGenerationFeatures += !"Sierra"
   availableGenerationFeatures += !"LatestMacOS"
@@ -401,7 +402,7 @@ proc updateGalgas3Targets
         error mValue: "duplicate '" + mValue + "' feature"
       end
       let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
-          " \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"Sierra\", \"LatestMacOS\" are exclusive"
+          " \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"ElCapitanSierra\", \"Sierra\", \"LatestMacOS\" are exclusive"
     #--- SnowLeopard
       if mValue.string == "SnowLeopard" then
         if (SDK != "") then
@@ -451,6 +452,13 @@ proc updateGalgas3Targets
         end
         SDK = "macosx10.11"
         MACOSX_DEPLOYMENT_TARGET = "10.11"
+    #--- ElCapitan Sierra
+      elsif mValue.string == "SierraElCapitan" then
+        if (SDK != "") then
+          error mValue: macOsDuplicateMessage
+        end
+        SDK = "macosx10.12"
+        MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- Sierra
       elsif mValue.string == "Sierra" then
         if (SDK != "") then
@@ -468,11 +476,11 @@ proc updateGalgas3Targets
         generationFeatures += !mValue.string
       end
     else
-      @string s = ""
+      @stringlist s = {}
       for () in availableGenerationFeatures do
-        s += "\n  - '" + key + "'"
+        s += !"%" + key
       end
-      error mValue: "unknown '" + mValue + "' feature; available features are:" + s
+      error mValue: "unknown '" + mValue + "' feature" fixit { replace s }
     end
   end
 #--- Check Cocoa features
@@ -592,15 +600,15 @@ proc updateGalgas3Targets
     end
 
     [dir + "/English.lproj" makeDirectory]
-    let @string InfoPlist_strings_path = dir +"/English.lproj/InfoPlist.strings"
+    let InfoPlist_strings_path = dir + "/English.lproj/InfoPlist.strings"
     [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*]
-    let @string Credits_rtf_path = dir +"/English.lproj/Credits.rtf"
+    let Credits_rtf_path = dir + "/English.lproj/Credits.rtf"
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
     end
   #--- Application update files
     with "repositoryURL" in inProjectQualifiedFeatureMap  do
-      let @string applicationUpdateDir = projectDirectory + "/xcode-project/cocoa-application-update/application"
+      let applicationUpdateDir = projectDirectory + "/xcode-project/cocoa-application-update/application"
       [applicationUpdateDir makeDirectory]
       [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMApplicationUpdate.h" ?*]
       [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_implementation
@@ -677,11 +685,10 @@ proc updateGalgas3Targets
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
     [userResourceDir makeDirectory]
-    var extensionList =@stringlist {}
-    extensionList += !"icns"
-    let @stringlist resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
+    @stringlist extensionList = {!"icns"}
+    let resourceFiles = [userResourceDir regularFilesWithExtensions !false !extensionList]
   #--- Build pathes
-    let @string newIntermediateFilePath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list-for-xcode-project.txt"
+    let newIntermediateFilePath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list-for-xcode-project.txt"
     ioAllProductFileSet += !"file-list-for-xcode-project.txt"
   #-------------------------------------------------------- New Xcode project generation
     var xcodeProject = @XcodeProjectDescriptor.default
@@ -1495,7 +1502,8 @@ proc updateGalgas3Targets
   #--- Generate project
     [xcodeProject generateAtPath
       !xcodeprojPath:dir + "/" + inTargetName + ".xcodeproj"
-      !cacheFilePath:newIntermediateFilePath]
+      !cacheFilePath:newIntermediateFilePath
+    ]
   end
 }
 

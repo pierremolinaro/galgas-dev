@@ -26,7 +26,6 @@ project (3:2:4) -> "galgas" {
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
-  %codeblocks-mac
 
 #--- Command Line Options
   "galgas-sources/galgas_cli_options.galgas"
