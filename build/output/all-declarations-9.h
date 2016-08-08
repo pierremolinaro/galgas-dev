@@ -38,6 +38,8 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+extern C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              String options                                                                         *

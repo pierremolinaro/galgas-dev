@@ -365,6 +365,13 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_options",
+                                         "macosxSDK",
+                                         0,
+                                         "macosx",
+                                         "Generate an Xcode project for OS X 10.n",
+                                         0) ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                              String options                                                                         *

@@ -38,6 +38,8 @@ option galgas_cli_options {
   @bool check_gmp : '\0', "check-gmp" -> "Run a GMP check"
 
   @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams" -> "Emit grammar syntax diagrams in TEX files"
+
+  @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X 10.n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
