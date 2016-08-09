@@ -17,7 +17,7 @@ Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contien
 
 
 
-\section{Paramétrage du projet GALGAS}
+\sectionLabel{Paramétrage du projet GALGAS}{parametrageProjetGALGAS}
 
 Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggs+%Lion+ dans votre fichier projet (d'extension \tpp{.galgasProject}, voir \refChapterPage{composantProjet}). Par exemple~:
 
@@ -27,6 +27,8 @@ project (0:0:1) -> "logo" {
   %applicationBundleBase : "fr.what"
   ...
 \end{galgas}
+
+Vous pouvez aussi utiliser l'option \texttt{-{-}macosx=$n$} (\refSectionPage{optionsGeneration}). Attention, cette option ne vous dispense pas de préciser \ggs=%applicationBundleBase=.
 
 Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé~: ainsi, \ggs+%Lion+ définit la version \texttt{Lion} (10.7). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggs+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré. Quand \ggs+%SnowLeopard+ est sélectionné, l'application Cocoa engendrée utilise le \emph{garbage collector}. Sinon, elle adopte l'\emph{Automatic Reference Counting} (\emph{ARC}).
 
