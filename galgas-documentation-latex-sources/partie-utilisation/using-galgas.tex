@@ -94,6 +94,9 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 \optionGGS{-{-}compile=$nom$} Enchaîne une compilation C++ après une compilation GALGAS sans erreur. Le $nom$ est le nom d'une cible de type \emph{makefile} ; par exemple, \texttt{-{-}compile=makefile-macosx} enchaîne la compilation C++ de la cible \emph{makefile-macosx}.
 
 
+\optionGGS{-{-}macosx=$n$} Force la génération d'un projet Xcode dont le SDK et le \emph{macos Deployement Target} sont fixés à 10.$n$.  Attention, cette option ne vous dispense pas de préciser \ggs=%applicationBundleBase= (\refSectionPage{parametrageProjetGALGAS}).
+
+
 
 
 \section{Options de débogage du compilateur}
