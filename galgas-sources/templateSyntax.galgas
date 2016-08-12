@@ -262,8 +262,7 @@ rule <factor>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $identifier$ ?var  @lstring identifier
   outExpression = @templateVarInExpressionAST.new {!identifier}
 }
@@ -274,8 +273,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $($
   <expression> ?outExpression
   $)$
@@ -287,8 +285,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $true$
   outExpression = @templateTrueBoolAST.new {!@location.here}
 }
@@ -299,8 +296,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $false$
   outExpression = @templateFalseBoolAST.new {!@location.here}
 }
@@ -311,8 +307,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @luint literalInt
   $uint32$ ?literalInt
   outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
@@ -324,8 +319,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @lsint literalInt
   $sint32_S$ ?literalInt
   outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
@@ -337,8 +331,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @luint64 literalInt
   $uint64_L$ ?literalInt
   outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
@@ -350,8 +343,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @lsint64 literalInt
   $sint64_LS$ ?literalInt
   outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
@@ -363,8 +355,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @ldouble literalDouble
   $double.xxx$ ? literalDouble ?*
   outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
@@ -376,8 +367,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $'char'$ ?var @lchar literalChar
   outExpression = @templateLiteralCharExpressionAST.new {!literalChar}
 }
@@ -388,8 +378,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   @stringlist literalStringList = {}
   repeat
     @lstring literalString
@@ -412,8 +401,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $[$
   select
   #--------------------------------- Template
@@ -478,8 +466,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary>
-  !@templateExpressionAST outExpression {
+rule <primary> !@templateExpressionAST outExpression {
   $identifier$ ?let @lstring functionName
   $($
   <output_expression_list> ?let @templateExpressionListAST expressionList
@@ -493,8 +480,7 @@ rule <primary>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <output_expression_list>
-  !@templateExpressionListAST outExpressionList {
+rule <output_expression_list> !@templateExpressionListAST outExpressionList {
   outExpressionList = @templateExpressionListAST.emptyList
   repeat
   while
@@ -511,8 +497,7 @@ rule <output_expression_list>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!$ ?let selector
   if selector.string != "" then
     error selector : "the selector should be '!'"
@@ -523,35 +508,31 @@ rule <template_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $?^$
   ioResultingInstructionList += !@templateInstructionGetColumnLocationAST.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $!^$
   ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $block$
   @templateExpressionAST expression
   <expression> ?expression
   $:$
 #--- Instruction list
   var blockInstructionList =@templateInstructionListAST {}
-  enterTemplateString ( !? blockInstructionList )
   repeat
+    enterTemplateString (!?blockInstructionList)
   while
     <template_instruction> !?blockInstructionList
-    enterTemplateString ( !?blockInstructionList )
   end
 #---
   $end$
@@ -563,8 +544,7 @@ rule <template_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $for$
   @bool ascending
   select
@@ -589,15 +569,14 @@ rule <template_instruction>
     foreachPrefix = [prefixString string]
   end
 #--- before block
-  var beforeInstructionList =@templateInstructionListAST {}
+  @templateInstructionListAST beforeInstructionList = {}
   select
   or
     $before$
-    enterTemplateString ( !? beforeInstructionList )
     repeat
+      enterTemplateString (!?beforeInstructionList)
     while
       <template_instruction> !?beforeInstructionList
-      enterTemplateString ( !? beforeInstructionList )
     end
   end
 #--- Do block
@@ -609,35 +588,32 @@ rule <template_instruction>
     $index$
     $identifier$ ? indexIdentifier
   end
-  var doInstructionList =@templateInstructionListAST {}
-  enterTemplateString ( !?doInstructionList )
+  @templateInstructionListAST doInstructionList = {}
   repeat
+    enterTemplateString (!?doInstructionList)
   while
     <template_instruction> !?doInstructionList
-    enterTemplateString ( !?doInstructionList )
   end
 #--- between block
-  var betweenInstructionList =@templateInstructionListAST {}
+  @templateInstructionListAST betweenInstructionList = {}
   select
   or
     $between$
-    enterTemplateString ( !? betweenInstructionList )
     repeat
+      enterTemplateString (!?betweenInstructionList)
     while
       <template_instruction> !?betweenInstructionList
-      enterTemplateString ( !?betweenInstructionList )
     end
   end
 #--- after block
-  var afterInstructionList =@templateInstructionListAST {}
+  @templateInstructionListAST afterInstructionList = {}
   select
   or
     $after$
-    enterTemplateString ( !?afterInstructionList )
     repeat
+      enterTemplateString (!?afterInstructionList)
     while
       <template_instruction> !?beforeInstructionList
-      enterTemplateString ( !?afterInstructionList )
     end
   end
 #---
@@ -655,35 +631,31 @@ rule <template_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $if$
   var templateInstructionIfBranchList =@templateInstructionIfBranchListAST {}
   repeat
-    @templateExpressionAST expression
-    <expression> ?expression
+    <expression> ?let expression
     $then$
-    var instructionList =@templateInstructionListAST {}
-    enterTemplateString ( !? instructionList )
+    @templateInstructionListAST instructionList = {}
     repeat
+      enterTemplateString (!?instructionList)
     while
       <template_instruction> !?instructionList
-      enterTemplateString ( !? instructionList )
     end
     templateInstructionIfBranchList += !expression !instructionList
   while
     $elsif$
   end
 #--- else
-  var elseInstructionList =@templateInstructionListAST {}
+  @templateInstructionListAST elseInstructionList = {}
   select
   or
     $else$
-    enterTemplateString ( !?elseInstructionList )
     repeat
+      enterTemplateString (!?elseInstructionList)
     while
       <template_instruction> !?elseInstructionList
-      enterTemplateString ( !?elseInstructionList )
     end
   end
 #---
@@ -695,18 +667,17 @@ rule <template_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList {
+rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
   $switch$
 #--- Switch expression
   <expression> ?let @templateExpressionAST switchExpression
   let @location endOfSwitchExpression = @location.here
 #--- Loop on "when' clauses
-  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListAST {}
+  @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}
   repeat
   while
     $case$
-    var constantList =@lstringlist {}
+    @lstringlist constantList = {}
     repeat
       $identifier$ ?var @lstring constantName
       constantList += !constantName
@@ -714,12 +685,11 @@ rule <template_instruction>
       $,$
     end
     $:$
-    var instructionList =@templateInstructionListAST {}
-    enterTemplateString ( !? instructionList )
+    @templateInstructionListAST instructionList = {}
     repeat
+      enterTemplateString (!?instructionList)
     while
       <template_instruction> !?instructionList
-      enterTemplateString ( !? instructionList )
     end
     templateInstructionSwitchBranchList += !constantList !instructionList
   end
@@ -728,23 +698,32 @@ rule <template_instruction>
   ioResultingInstructionList += !@templateInstructionSwitchAST.new {
     !switchExpression
     !endOfSwitchExpression
-    !templateInstructionSwitchBranchList}
+    !templateInstructionSwitchBranchList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_parser_start_symbol>
-  !@templateInstructionListAST outResultingInstructionList {
-  outResultingInstructionList = @templateInstructionListAST.emptyList
-  enterTemplateString ( !?outResultingInstructionList )
+rule <template_parser_start_symbol> !@templateInstructionListAST outResultingInstructionList {
+  outResultingInstructionList = {}
   repeat
+    enterTemplateString (!?outResultingInstructionList)
   while
-    <template_instruction>
-      !?outResultingInstructionList
-    enterTemplateString ( !?outResultingInstructionList )
+    <template_instruction> !?outResultingInstructionList
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+private proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
+  let s = @string.retrieveAndResetTemplateString
+  if [s length] > 0 then
+    outResultingInstructionList += !@templateInstructionStringAST.new {!s}
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

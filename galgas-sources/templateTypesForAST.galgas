@@ -437,13 +437,3 @@ class @templateInstructionSwitchAST : @templateInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc enterTemplateString
-  ?!@templateInstructionListAST outResultingInstructionList {
-  let @string s = @string. retrieveAndResetTemplateString
-  if [s length] > 0 then
-    outResultingInstructionList += !@templateInstructionStringAST.new {!s}
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
