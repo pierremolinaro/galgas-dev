@@ -270,7 +270,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_galgasTemplateScanner & inToken) ;
+  protected : void enterToken (cTokenFor_galgasTemplateScanner & ioToken) ;
 
 //--- Style name for Latex
   protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
