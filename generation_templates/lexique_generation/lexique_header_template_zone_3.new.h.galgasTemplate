@@ -51,7 +51,7 @@
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) ;
+  protected : void enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) ;
 
 //--- Style name for Latex
   protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;

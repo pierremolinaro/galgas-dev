@@ -300,16 +300,17 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 //                         E N T E R    T O K E N                                                                      *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) {
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
   macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
-  ptr->mTokenCode = inToken.mTokenCode ;
+  ptr->mTokenCode = ioToken.mTokenCode ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
-  ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
+  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
+  ioToken.mTemplateStringBeforeToken = "" ;
 %
   for () in LEXICAL_ATTRIBUTE_MAP do
-    %  ptr->mLexicalAttribute_%![lkey identifierRepresentation]% = inToken.mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
+    %  ptr->mLexicalAttribute_%![lkey identifierRepresentation]% = ioToken.mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end
 %  enterTokenFromPointer (ptr) ;
 }
