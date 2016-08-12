@@ -850,10 +850,10 @@ void routine_projectCreation (const GALGAS_string constinArgument_inProjectPath,
 void routine_enterTemplateString (GALGAS_templateInstructionListAST & ioArgument_outResultingInstructionList,
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_20751 = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 442)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s_20751.getter_length (SOURCE_FILE ("templateTypesForAST.galgas", 443)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_string var_s_34658 = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 723)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s_34658.getter_length (SOURCE_FILE ("templateSyntax.galgas", 724)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s_20751  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 444))  COMMA_SOURCE_FILE ("templateTypesForAST.galgas", 444)) ;
+    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s_34658  COMMA_SOURCE_FILE ("templateSyntax.galgas", 725))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 725)) ;
   }
 }
 
@@ -2754,8 +2754,6 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "  }\n"
     "  return result ;\n"
     "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
