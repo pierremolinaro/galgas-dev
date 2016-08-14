@@ -681,10 +681,12 @@ void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractCollec
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_abstractCollectionValueElement_analyze) (const class cPtr_abstractCollectionValueElement * inObject,
-                                                                                 const class GALGAS_analysisContext constinArgument0,
-                                                                                 const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
-                                                                                 class GALGAS_variableMap & ioArgument2,
-                                                                                 class GALGAS_collectionValueElementListForGeneration & ioArgument3,
+                                                                                 const class GALGAS_lstring constinArgument0,
+                                                                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                 const class GALGAS_analysisContext constinArgument2,
+                                                                                 const class GALGAS_unifiedTypeMap_2D_proxy constinArgument3,
+                                                                                 class GALGAS_variableMap & ioArgument4,
+                                                                                 class GALGAS_collectionValueElementListForGeneration & ioArgument5,
                                                                                  class C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -696,6 +698,8 @@ void enterExtensionMethod_analyze (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_analyze (const class cPtr_abstractCollectionValueElement * inObject,
+                                  const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                  GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                   const GALGAS_analysisContext constin_inAnalysisContext,
                                   const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
                                   GALGAS_variableMap & io_ioVariableMap,
@@ -944,11 +948,13 @@ void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractEnumer
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_abstractEnumeratedCollectionAST_analyzeEnumeration) (const class cPtr_abstractEnumeratedCollectionAST * inObject,
-                                                                                             const class GALGAS_analysisContext constinArgument0,
-                                                                                             class GALGAS_variableMap & ioArgument1,
-                                                                                             class GALGAS_localInitializedVariableList & ioArgument2,
-                                                                                             class GALGAS_string & outArgument3,
-                                                                                             class GALGAS_semanticExpressionForGeneration & outArgument4,
+                                                                                             const class GALGAS_lstring constinArgument0,
+                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                             const class GALGAS_analysisContext constinArgument2,
+                                                                                             class GALGAS_variableMap & ioArgument3,
+                                                                                             class GALGAS_localInitializedVariableList & ioArgument4,
+                                                                                             class GALGAS_string & outArgument5,
+                                                                                             class GALGAS_semanticExpressionForGeneration & outArgument6,
                                                                                              class C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -960,6 +966,8 @@ void enterExtensionMethod_analyzeEnumeration (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumeratedCollectionAST * inObject,
+                                             const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                             GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                              const GALGAS_analysisContext constin_inAnalysisContext,
                                              GALGAS_variableMap & io_ioVariableMap,
                                              GALGAS_localInitializedVariableList & io_ioLocalConstantListForDoBranch,

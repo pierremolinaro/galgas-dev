@@ -51,6 +51,8 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #--- Analyze source expression
   @semanticExpressionForGeneration expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap

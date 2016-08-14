@@ -142,6 +142,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Expression
   @semanticExpressionForGeneration castExpression
   [mCastExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap

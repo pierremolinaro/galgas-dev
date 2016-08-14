@@ -317,6 +317,8 @@ override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifi
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
@@ -326,12 +328,16 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
 #·····················································································································*
 
 override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression {
   [mEnumeratedExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -355,6 +361,8 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
 #·····················································································································*
 
 override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
@@ -362,6 +370,8 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 {
   [mEnumeratedExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -420,6 +430,8 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
 #·····················································································································*
 
 override method @enumeratedCollectionVarInExpAST analyzeEnumeration
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ?!@localInitializedVariableList ioLocalConstantListForDoBranch
@@ -427,6 +439,8 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 {
   [mEnumeratedExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -513,6 +527,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   @forInstructionEnumeratedObjectListForGeneration enumerationList = {}
   for () in mEnumeratedObjectList do
     [mEnumeratedCollection analyzeEnumeration
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?ioVariableMap
       !?localConstantListForDoBranch
@@ -539,6 +555,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   end
 #---
   [mWhileExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap

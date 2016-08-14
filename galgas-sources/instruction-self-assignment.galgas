@@ -53,6 +53,8 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
 {
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mSelfTypeProxy
     !inAnalysisContext
     !?ioVariableMap

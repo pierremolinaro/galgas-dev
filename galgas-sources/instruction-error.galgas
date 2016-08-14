@@ -147,6 +147,8 @@ list @fixitListForGeneration {
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeErrorOrWarningInstruction
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @semanticExpressionAST inLocationExpression
   ?let @semanticExpressionAST inMessageExpression
@@ -160,6 +162,8 @@ proc analyzeErrorOrWarningInstruction
 {
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mLocationType
     !inAnalysisContext
     !?ioVariableMap
@@ -211,6 +215,8 @@ proc analyzeErrorOrWarningInstruction
   end
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !.null
     !inAnalysisContext
     !?ioVariableMap
@@ -224,6 +230,8 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItRemove
     case fixItReplace (exp errorLocation) :
       [exp analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
@@ -236,6 +244,8 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
       [exp analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
@@ -248,6 +258,8 @@ proc analyzeErrorOrWarningInstruction
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
       [exp analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !inAnalysisContext.mPredefinedTypes.mStringListType
         !inAnalysisContext
         !?ioVariableMap
@@ -279,6 +291,8 @@ override method @errorInstructionAST analyzeSemanticInstruction
 {
 #---
   analyzeErrorOrWarningInstruction (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mLocationExpression
     !mMessageExpression

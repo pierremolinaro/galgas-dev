@@ -614,6 +614,8 @@ struct @analysisContext {
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -632,6 +634,8 @@ override method @selfCopyInExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfCopyInExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -655,6 +659,8 @@ override method @trueExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @trueExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -673,6 +679,8 @@ override method @falseExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @falseExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -691,6 +699,8 @@ override method @literalCharExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalCharExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -713,6 +723,8 @@ override method @literalStringExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalStringExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -735,6 +747,8 @@ override method @literalDoubleExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -753,6 +767,8 @@ override method @literalUIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -775,6 +791,8 @@ override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -796,6 +814,8 @@ override method @literalSIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -821,6 +841,8 @@ override method @literalBigIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -836,6 +858,8 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalBigIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -851,6 +875,8 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeConstructorInvocation
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -860,7 +886,8 @@ proc analyzeConstructorInvocation
   !@unifiedTypeMap-proxy outReturnedType
   !@unifiedTypeMap-proxy outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
-  !@bool outHasCompilerArgument {
+  !@bool outHasCompilerArgument
+{
   outConstructorType = inType
   if inTypeName.string != "" then
     outConstructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
@@ -907,6 +934,8 @@ proc analyzeConstructorInvocation
     outConstructorEffectiveParameterList = {}
     for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -935,6 +964,8 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -974,12 +1005,16 @@ override method @constructorExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @constructorExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   analyzeConstructorInvocation (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inType
     !inAnalysisContext
     !?ioVariableMap
@@ -1013,6 +1048,8 @@ override method @getterCallExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @getterCallExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1020,6 +1057,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
 {
 #--- Expression analysis
   [mReceiver analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1114,6 +1153,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     var constructorEffectiveParameterList =@semanticExpressionListForGeneration {}
     for () in mExpressions, () in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -1169,6 +1210,8 @@ override method @optionExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -1257,12 +1300,16 @@ override method @orExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @orExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1270,6 +1317,8 @@ override method @orExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1305,12 +1354,16 @@ override method @orShortExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @orShortExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1318,6 +1371,8 @@ override method @orShortExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1353,12 +1408,16 @@ override method @andExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @andExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1366,6 +1425,8 @@ override method @andExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1401,12 +1462,16 @@ override method @andShortExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @andShortExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1414,6 +1479,8 @@ override method @andShortExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1449,12 +1516,16 @@ override method @xorExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @xorExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1462,6 +1533,8 @@ override method @xorExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1498,6 +1571,8 @@ override method @closedSliceExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @closedSliceExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1505,6 +1580,8 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -1512,6 +1589,8 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -1547,6 +1626,8 @@ override method @openedSliceExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @openedSliceExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1554,6 +1635,8 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -1561,6 +1644,8 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -1596,6 +1681,8 @@ override method @equalExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @equalExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1603,6 +1690,8 @@ override method @equalExpressionAST analyzeSemanticExpression
  {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1611,6 +1700,8 @@ override method @equalExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap 
@@ -1661,12 +1752,16 @@ override method @notEqualExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @notEqualExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1675,6 +1770,8 @@ override method @notEqualExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap
@@ -1725,12 +1822,16 @@ override method @lowerOrEqualExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @lowerOrEqualExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1739,6 +1840,8 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap
@@ -1793,12 +1896,16 @@ override method @greaterOrEqualExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @greaterOrEqualExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1807,6 +1914,8 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap
@@ -1860,12 +1969,16 @@ override method @strictGreaterExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @strictGreaterExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1874,6 +1987,8 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap
@@ -1927,12 +2042,16 @@ override method @strictLowerExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @strictLowerExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -1941,6 +2060,8 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !leftType
     !inAnalysisContext
     !?ioVariableMap
@@ -1997,6 +2118,8 @@ override method @rightShiftExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2004,6 +2127,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2011,6 +2136,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -2050,6 +2177,8 @@ override method @leftShiftExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2057,6 +2186,8 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2064,6 +2195,8 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mUIntType
     !inAnalysisContext
     !?ioVariableMap
@@ -2103,6 +2236,8 @@ override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @addExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2110,6 +2245,8 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2117,6 +2254,8 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2153,12 +2292,16 @@ override method @addExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @addExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2166,6 +2309,8 @@ override method @addExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2202,6 +2347,8 @@ override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @subExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2209,6 +2356,8 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
 {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2216,6 +2365,8 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2252,12 +2403,16 @@ override method @subExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @subExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2265,6 +2420,8 @@ override method @subExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2301,12 +2458,16 @@ override method @multiplicationExpressionNoOverflowAST enterExpressionInSemantic
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2314,6 +2475,8 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2349,12 +2512,16 @@ override method @multiplicationExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @multiplicationExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2362,6 +2529,8 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2397,12 +2566,16 @@ override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContex
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2410,6 +2583,8 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2446,12 +2621,16 @@ override method @divisionExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @divisionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2459,6 +2638,8 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2494,12 +2675,16 @@ override method @moduloExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @moduloExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2507,6 +2692,8 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ]
 #--- Right expression analysis
   [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
@@ -2541,13 +2728,22 @@ override method @unaryMinusNoOverflowExpressionAST enterExpressionInSemanticCont
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @unaryMinusNoOverflowExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixMinusOperatorNoOVF ()) == 0 then
@@ -2574,13 +2770,22 @@ override method @unaryMinusExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @unaryMinusExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixMinusOperator ()) == 0 then
@@ -2607,12 +2812,21 @@ override method @unaryPlusExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @unaryPlusExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  [mExpression analyzeSemanticExpression !.null !inAnalysisContext !?ioVariableMap ?outExpression]
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [outExpression mResultType]
   if ([type mHandledOperatorFlags] & prefixPlusOperator ()) == 0 then
@@ -2633,13 +2847,22 @@ override method @notExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @notExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixNotOperator ()) == 0 then
@@ -2666,12 +2889,16 @@ override method @structFieldAccessExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @structFieldAccessExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -2708,13 +2935,22 @@ override method @complementExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @complementExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixTildeOperator ()) == 0 then
@@ -2743,6 +2979,8 @@ override method @ifExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @ifExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2750,6 +2988,8 @@ override method @ifExpressionAST analyzeSemanticExpression
 {
 #--- 'if' expression analysis
   [mIfExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mBoolType
     !inAnalysisContext
     !?ioVariableMap
@@ -2757,10 +2997,24 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'then' expression analysis
   @semanticExpressionForGeneration then_expression
-  [mThenExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?then_expression]
+  [mThenExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?then_expression
+  ]
 #--- 'else' expression analysis
   @semanticExpressionForGeneration else_expression
-  [mElseExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?else_expression]
+  [mElseExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?else_expression
+  ]
 #--- Check 'if' expression is boolean
   if [[if_expression mResultType] key] != "bool" then
     error mOperatorLocation
@@ -2795,6 +3049,8 @@ override method @functionCallExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionCallExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2825,6 +3081,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
     for () in functionSignature, () in mExpressionList do
       [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -2854,6 +3112,8 @@ override method @varInExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @varInExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext unused inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2884,11 +3144,15 @@ override method @literalTypeInExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+  let usefullnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
@@ -2911,6 +3175,8 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2918,7 +3184,14 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   @semanticExpressionForGeneration expression
-  [mReceiverExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+  [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
 #--- Get type information
    let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- This type is either a class
@@ -2959,6 +3232,8 @@ override method @castInExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @castInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -2966,6 +3241,8 @@ override method @castInExpressionAST analyzeSemanticExpression
 {
 #--- Receiver expression analysis
   [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext 
     !?ioVariableMap
@@ -3025,11 +3302,15 @@ override method @filewrapperObjectInstanciationInExpressionAST enterExpressionIn
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+ let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -3065,6 +3346,8 @@ override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticCon
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -3101,6 +3384,8 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
       [mExpression analyzeSemanticExpression 
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -3129,11 +3414,15 @@ override method @filewrapperInExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #--- Parse filewrapper path
   @stringlist directoryList
   @string fileName
@@ -3212,11 +3501,15 @@ override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticCont
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+ let usefullnessName = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #--- Check  lexique is declared
   [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueComponentName
@@ -3255,6 +3548,8 @@ override method @expressionListCollectionValue enterInSemanticContext ?!@unified
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractCollectionValueElement analyze
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-proxy inElementType
   ?!@variableMap ioVariableMap
@@ -3263,12 +3558,16 @@ abstract method @abstractCollectionValueElement analyze
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @expressionCollectionValue analyze
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-proxy inElementType
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inElementType
     !inAnalysisContext
     !?ioVariableMap
@@ -3283,6 +3582,8 @@ override method @expressionCollectionValue analyze
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @expressionListCollectionValue analyze
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @unifiedTypeMap-proxy inElementType
   ?!@variableMap ioVariableMap
@@ -3297,6 +3598,8 @@ override method @expressionListCollectionValue analyze
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
     for expression in mExpressionList, () in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -3356,6 +3659,8 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @collectionValueAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -3382,6 +3687,8 @@ override method @collectionValueAST analyzeSemanticExpression
       var collectionValueElementListForGeneration = @collectionValueElementListForGeneration {}
       for () in mElementList do
         [mElement analyze
+          !inUsefulnessCallerEntityName
+          !?ioUsefulEntitiesGraph
           !inAnalysisContext
           !targetType
           !?ioVariableMap

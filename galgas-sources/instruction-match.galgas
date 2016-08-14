@@ -154,6 +154,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
   for () in mMatchedExpressionList do
   #--- Analyze expression
     [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap

@@ -61,6 +61,8 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #--- Analyze receiver expression
   [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -77,6 +79,8 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   end
 #--- Check effective parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mMethodName
     !"'" + mMethodName + "' instance method header"

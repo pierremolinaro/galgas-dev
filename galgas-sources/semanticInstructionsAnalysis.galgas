@@ -88,6 +88,8 @@ proc analyzeSemanticInstructionList
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @actualParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -112,6 +114,8 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputActualParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -133,6 +137,8 @@ override method @outputActualParameterAST checkAgainstFormalArgument
         : "the selector should be '!" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
      end
     [mOutputActualParameterExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !inFormalArgumentType
       !inAnalysisContext
       !?ioVariableMap
@@ -150,6 +156,8 @@ override method @outputActualParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -204,6 +212,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -240,6 +250,8 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -274,6 +286,8 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -316,6 +330,8 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -373,6 +389,8 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -440,6 +458,8 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -466,6 +486,8 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?let @lstring unused inFormalSelector
   ?let @unifiedTypeMap-proxy inFormalArgumentType
@@ -541,6 +563,8 @@ override method @outputInputSingleJokerParameterAST enterParameterInSemanticCont
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeRoutineArguments
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @lstring inRoutineName
   ?let @string inInvokedEntityName
@@ -561,6 +585,8 @@ proc analyzeRoutineArguments
     var exclusiveVariableSet =@stringset {}
     for () in inRoutineSignature, () in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !inAnalysisContext
         !mFormalSelector
         !mFormalArgumentType

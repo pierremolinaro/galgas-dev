@@ -188,6 +188,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #--- Analyze receiver expression
   [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -206,6 +208,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze key expression
   [mKeyExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -279,6 +283,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #--- Analyze source expression
   [mKeyExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap

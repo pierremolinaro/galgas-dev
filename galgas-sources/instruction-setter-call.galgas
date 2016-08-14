@@ -157,6 +157,8 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   end
 #--- Check effective parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mSetterName
     !"'" + mSetterName + "' setter header"
@@ -222,6 +224,8 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   [[selfTypeProxy mSetterMap] searchKey !mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
 #--- Check effective parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mSetterName
     !"'" + mSetterName + "' setter header"

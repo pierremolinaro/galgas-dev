@@ -140,6 +140,8 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   ?!@variableMap ioVariableMap {
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -168,6 +170,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !targetType
     !inAnalysisContext
     !?ioVariableMap

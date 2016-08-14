@@ -126,6 +126,8 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- When expression
   @semanticExpressionForGeneration when_expression
   [mWhenExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
