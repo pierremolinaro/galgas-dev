@@ -81,7 +81,8 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
   let key = @lstring.new {!"@" + mClassTypeName ![mClassTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if mSuperClassName.string != "" then
@@ -100,7 +101,8 @@ override method @classDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
   @unifiedTypeMap-proxy uintType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
 #---
@@ -336,6 +338,10 @@ override method @classDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mClassTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  if [mSuperClassName string] != "" then
+    let superClassNameForUsefullness = typeNameForUsefulEntitiesGraph (!mSuperClassName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !superClassNameForUsefullness]
+  end
 #------ Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
 #------ Super type, and class features
@@ -372,6 +378,8 @@ override method @classDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
+    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = false
     @bool hasGetter = true

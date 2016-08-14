@@ -975,6 +975,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   @typedPropertyList typedAttributeList = {}
   @attributeIndexMap attributeMap = {}
   for () in mPropertyList do
+    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasGetter = true

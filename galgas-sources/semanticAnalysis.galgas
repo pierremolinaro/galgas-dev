@@ -719,8 +719,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
 #--- Useful entities graph
-  let nameForUsefullness = grammarNameForUsefulEntitiesGraph (!mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let grammarNameForUsefullness = grammarNameForUsefulEntitiesGraph (!mGrammarComponentName)
+  [!?ioUsefulEntitiesGraph addNode !grammarNameForUsefullness !grammarNameForUsefullness]
 #---------------------------------------------------------- Parse syntax components
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = {}
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis ={}
@@ -728,11 +728,12 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis = {}
   @nonTerminalToAddList nonTerminalToAddList = {}
   @uint addedNonTerminalCount = 0
-  for () in mSyntaxComponents do
+  for (syntaxComponentName) in mSyntaxComponents do
+    let syntaxNameForUsefullness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
+    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefullness !syntaxNameForUsefullness]
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
-    let syntaxComponentName = mValue.string
     [inSemanticContext.mSyntaxComponentMapForSemanticAnalysis searchKey
-      !mValue
+      !syntaxComponentName
       ?let @lstring lexiqueName
       ?let @nonterminalDeclarationListAST nonterminalDeclarationList
       ?let @syntaxRuleListAST ruleList
@@ -740,15 +741,15 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     ]
   #--- Check translate feature
     if mHasTranslateFeature & not hasTranslateFeature then
-      error mValue : "as '" + mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
+      error syntaxComponentName : "as '" + mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
     elsif hasTranslateFeature & not mHasTranslateFeature then
-      error mGrammarComponentName : "as '" + mValue + "' syntax component declares 'translate' feature, this grammar should do so"
+      error mGrammarComponentName : "as '" + syntaxComponentName + "' syntax component declares 'translate' feature, this grammar should do so"
     end
   #--- Handle lexique component
     if lexiqueComponentName.string == "" then
       lexiqueComponentName = lexiqueName
     elsif lexiqueName.string != lexiqueComponentName.string then
-      error mValue : "this syntax component uses '"
+      error syntaxComponentName : "this syntax component uses '"
         + lexiqueName + "' lexique component, but the first syntax component uses the '"
         + lexiqueComponentName + "' lexique component (they should be the same)"
     end
@@ -765,7 +766,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   #--- Handle syntax rules
     buildRuleList (
       !nonTerminalMapForGrammarAnalysis
-      !mValue
+      !syntaxComponentName
       !ruleList
       !?actuallyUsedTerminalSymbolMap
       !?syntaxComponentListForGrammarAnalysis

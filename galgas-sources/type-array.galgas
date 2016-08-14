@@ -214,6 +214,8 @@ override method @arrayDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mArrayTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mElementTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
 #---
   ioSemanticDeclarationListForGeneration +=
     !"array " + mArrayTypeName

@@ -216,6 +216,8 @@ override method @listmapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mListmapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let associatedTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !associatedTypeNameForUsefullness]
 #--- Check associated list is actually a list
   [inSemanticContext.mTypeMap searchKey
     !mAssociatedListTypeName

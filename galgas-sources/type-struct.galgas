@@ -189,8 +189,8 @@ override method @structDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mStructTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let structNameForUsefullness = typeNameForUsefulEntitiesGraph (!mStructTypeName)
+  [!?ioUsefulEntitiesGraph addNode !structNameForUsefullness !structNameForUsefullness]
 #---
   if [mAttributeList length] == 0 then
     error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
@@ -198,6 +198,8 @@ override method @structDeclarationAST semanticAnalysis
   var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
+    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !structNameForUsefullness !propertyTypeNameForUsefullness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     for () in mFeatureList do
       error mValue : "a struct attribute does not accept any feature"

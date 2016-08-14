@@ -261,12 +261,14 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mSortedListTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let sortedListNameForUsefullness = typeNameForUsefulEntitiesGraph (!mSortedListTypeName)
+  [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefullness !sortedListNameForUsefullness]
 #--- Attribute
   var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}
   for () in mAttributeList do
+    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefullness !propertyTypeNameForUsefullness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true

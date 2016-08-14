@@ -2317,7 +2317,7 @@ void routine_checkUsefulEntities (const class GALGAS_usefulEntitiesGraph constin
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lstring function_getterNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+class GALGAS_lstring function_getterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
@@ -2328,7 +2328,7 @@ class GALGAS_lstring function_getterNameForUsefulEntitiesGraph (const class GALG
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
@@ -2339,7 +2339,7 @@ class GALGAS_lstring function_setterNameForUsefulEntitiesGraph (const class GALG
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+class GALGAS_lstring function_methodNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
                                                                 const class GALGAS_lstring & constinArgument1,
                                                                 class C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
