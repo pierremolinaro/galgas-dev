@@ -91,6 +91,8 @@ override method @terminalCheckInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @terminalCheckInstruction analyzeSyntaxInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap

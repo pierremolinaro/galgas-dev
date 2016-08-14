@@ -301,11 +301,16 @@ override method @externTypeDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externTypeDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mExternTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + mExternTypeName
     !@externTypeDeclarationForGeneration.new {

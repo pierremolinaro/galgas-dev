@@ -81,10 +81,14 @@ override method @overridingExtensionSetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingExtensionSetterAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Useful entities graph
+  let nameForUsefullness = setterNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionSetterName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
@@ -121,6 +125,8 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !selfType
   }
   analyzeRoutineBody (
+    !nameForUsefullness
+    !?ioUsefulEntitiesGraph
     !analysisContext
     !mOverridingExtensionSetterFormalParameterList
     !@localConstantList.emptyList

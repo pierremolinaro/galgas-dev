@@ -74,6 +74,8 @@ override method @nonterminalCallInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap

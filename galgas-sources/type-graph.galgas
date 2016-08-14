@@ -414,10 +414,16 @@ override method @graphDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @graphDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mGraphTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
   let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
   let associatedListElementTypeProxy = @unifiedTypeMap-proxy.searchKey { 

@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  metamodel that defines expression                                                                                   *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2016 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -20,6 +20,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -44,6 +46,8 @@ list @localInitializedVariableList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeSemanticInstructionList
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @localConstantList inLocalConstantList
   ?let @localInitializedVariableList inLocalInitializedVariableList
@@ -70,6 +74,8 @@ proc analyzeSemanticInstructionList
 #--- Instruction list
   for () in inSemanticInstructionListAST do
     [mInstruction analyzeSemanticInstruction
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outInstructionListForGeneration
       !?ioVariableMap

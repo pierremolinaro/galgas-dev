@@ -134,6 +134,8 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @structuredCastInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -180,6 +182,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   #--- Analyze instruction list
     @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !localConstantList
       !@localInitializedVariableList.emptyList
@@ -193,6 +197,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- else or default branch
   @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList

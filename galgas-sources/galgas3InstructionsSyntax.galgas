@@ -98,7 +98,7 @@ rule <declaration_with_private>
   <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
   $}$
   let endOfInstructionList = @location.here
-  ioDeclarations.mDeclarationList += !@routineDeclarationAST.new {
+  ioDeclarations.mDeclarationList += !@procDeclarationAST.new {
     !false # Is not predefined
     !inIsPrivate
     !mRoutineName

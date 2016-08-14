@@ -1,0 +1,151 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  Computation of useful entities                                                                                      *
+#                                                                                                                      *
+#  Copyright (C) 2016, ..., 2016 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+graph @usefulEntitiesGraph (@lstringlist) {
+  insert addNode error message "the '%K' entity is already declared at %L"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc checkUsefulEntities
+  ?let @usefulEntitiesGraph inUsefulEntitiesGraph
+  ?let @lstringlist inRootEntities
+  ?let @string inProductDirectory
+{
+  if [option galgas_cli_options.checkEntityUsefulness value] then
+    let helperDirectory = inProductDirectory + "/../usefulness"
+    let helperFile = helperDirectory + "/useful-entity-graph.dot"
+    let s = [inUsefulEntitiesGraph graphviz]
+    [helperDirectory makeDirectory]
+    [s writeToFileWhenDifferentContents !helperFile ?*]
+  #--- Undefined nodes
+    let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
+    if [undefinedNodeList length] > 0 then
+      var s = "usefullness computation, undefined nodes:"
+      for (name) in undefinedNodeList do
+        s += "\n  - " + name
+      end
+      error .nowhere : s
+    else
+    #--- No undefined node, compute usefull entities
+      let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFromNodes !inRootEntities]
+      let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
+      let allEntitySet = @stringset.setWithStringList {![inUsefulEntitiesGraph keyList]}
+      let unusedEntities = allEntitySet - usefullEntitySet
+      if [unusedEntities count] == 1 then
+        warning .nowhere : "1 unused entity"
+      elsif [unusedEntities count] > 1 then
+        warning .nowhere : [[unusedEntities count] string] + " unused entities"
+      end
+#      for (unusedEntity) in unusedEntities do
+#        warning .nowhere : "unused entity is declared here"
+#      end
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func getterNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inGetterName -> @lstring {
+  result = .new {!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func setterNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inSetterName -> @lstring {
+  result = .new {!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func methodNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inMethodName -> @lstring {
+  result = .new {!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func lexiqueNameForUsefulEntitiesGraph ?let @lstring inLexiqueName -> @lstring {
+  result = .new {!"lexique " + inLexiqueName !inLexiqueName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func grammarNameForUsefulEntitiesGraph ?let @lstring inGrammarName -> @lstring {
+  result = .new {!"grammar " + inGrammarName !inGrammarName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
+  result = .new {!"syntax " + inSyntaxName !inSyntaxName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func ruleNameForUsefulEntitiesGraph ?let @string inSyntaxName ?let @lstring inRuleName -> @lstring {
+  result = .new {!"rule " + inSyntaxName + " <" + inRuleName + ">" !inRuleName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func optionNameForUsefulEntitiesGraph ?let @lstring inOptionName -> @lstring {
+  result = .new {!"option " + inOptionName !inOptionName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @lstring {
+  result = .new {!"filewrapper " + inFilewrapperName !inFilewrapperName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
+  result = .new {!"function " + inFunctionName !inFunctionName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func procedureNameForUsefulEntitiesGraph ?let @lstring inProcName -> @lstring {
+  result = .new {!"procedure " + inProcName !inProcName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func typeNameForUsefulEntitiesGraph ?let @lstring inTypeName -> @lstring {
+  result = .new {!"type @" + inTypeName !inTypeName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func afterNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
+  result = .new {!"after" !inLocation}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func beforeNameForUsefulEntitiesGraph ?let @location inLocation -> @lstring {
+  result = .new {!"before" !inLocation}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func rootRuleNameForUsefulEntitiesGraph ?let @lstring inFileExtension -> @lstring {
+  result = .new {!"rule ." + inFileExtension !inFileExtension}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

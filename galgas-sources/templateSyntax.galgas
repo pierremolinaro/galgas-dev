@@ -200,8 +200,7 @@ rule <term>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <factor>
-  !@templateExpressionAST outExpression {
+rule <factor> !@templateExpressionAST outExpression {
   <primary> ?outExpression
   repeat
   while

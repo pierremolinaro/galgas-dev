@@ -86,6 +86,8 @@ override method @loopInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @loopInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -120,6 +122,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- First branch
   @semanticInstructionListForGeneration first_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
@@ -131,6 +135,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Second branch
   @semanticInstructionListForGeneration second_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList

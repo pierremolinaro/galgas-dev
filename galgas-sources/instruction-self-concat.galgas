@@ -142,6 +142,8 @@ override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticC
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -195,6 +197,8 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -236,6 +240,8 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #·····················································································································*
 
 override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -277,6 +283,8 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
 #·····················································································································*
 
 override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -318,6 +326,8 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {

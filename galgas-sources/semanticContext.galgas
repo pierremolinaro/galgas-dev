@@ -894,7 +894,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @routineDeclarationAST enterInSemanticContext
+override method @procDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext

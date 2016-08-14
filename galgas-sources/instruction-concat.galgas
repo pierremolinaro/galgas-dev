@@ -158,6 +158,8 @@ override method @plusEqualElementsInstructionAST enterInstructionInSemanticConte
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -205,6 +207,8 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction # -= exp
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -252,6 +256,8 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *= exp
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -299,6 +305,8 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /= exp
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -346,6 +354,8 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 #·····················································································································*
 
 override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {

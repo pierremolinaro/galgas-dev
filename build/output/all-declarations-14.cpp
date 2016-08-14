@@ -482,10 +482,10 @@ GALGAS_externRoutineDeclarationAST GALGAS_externRoutineDeclarationAST::extractOb
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cPtr_routineDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+typeComparisonResult cPtr_procDeclarationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
-  const cPtr_routineDeclarationAST * p = (const cPtr_routineDeclarationAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_routineDeclarationAST) ;
+  const cPtr_procDeclarationAST * p = (const cPtr_procDeclarationAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_procDeclarationAST) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
   }
@@ -510,7 +510,7 @@ typeComparisonResult cPtr_routineDeclarationAST::dynamicObjectCompare (const acP
 //---------------------------------------------------------------------------------------------------------------------*
 
 
-typeComparisonResult GALGAS_routineDeclarationAST::objectCompare (const GALGAS_routineDeclarationAST & inOperand) const {
+typeComparisonResult GALGAS_procDeclarationAST::objectCompare (const GALGAS_procDeclarationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
@@ -528,52 +528,52 @@ typeComparisonResult GALGAS_routineDeclarationAST::objectCompare (const GALGAS_r
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineDeclarationAST::GALGAS_routineDeclarationAST (void) :
+GALGAS_procDeclarationAST::GALGAS_procDeclarationAST (void) :
 GALGAS_externRoutineDeclarationAST () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineDeclarationAST GALGAS_routineDeclarationAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_routineDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                        GALGAS_bool::constructor_default (HERE),
-                                                        GALGAS_lstring::constructor_default (HERE),
-                                                        GALGAS_formalParameterListAST::constructor_emptyList (HERE),
-                                                        GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                                        GALGAS_location::constructor_nowhere (HERE)
-                                                        COMMA_THERE) ;
+GALGAS_procDeclarationAST GALGAS_procDeclarationAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_procDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_bool::constructor_default (HERE),
+                                                     GALGAS_lstring::constructor_default (HERE),
+                                                     GALGAS_formalParameterListAST::constructor_emptyList (HERE),
+                                                     GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
+                                                     GALGAS_location::constructor_nowhere (HERE)
+                                                     COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineDeclarationAST::GALGAS_routineDeclarationAST (const cPtr_routineDeclarationAST * inSourcePtr) :
+GALGAS_procDeclarationAST::GALGAS_procDeclarationAST (const cPtr_procDeclarationAST * inSourcePtr) :
 GALGAS_externRoutineDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_routineDeclarationAST) ;
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_procDeclarationAST) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineDeclarationAST GALGAS_routineDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                            const GALGAS_bool & inAttribute_mIsInternal,
-                                                                            const GALGAS_lstring & inAttribute_mRoutineName,
-                                                                            const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentList,
-                                                                            const GALGAS_semanticInstructionListAST & inAttribute_mRoutineInstructionList,
-                                                                            const GALGAS_location & inAttribute_mEndOfRoutineInstructionList
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_routineDeclarationAST result ;
+GALGAS_procDeclarationAST GALGAS_procDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                      const GALGAS_bool & inAttribute_mIsInternal,
+                                                                      const GALGAS_lstring & inAttribute_mRoutineName,
+                                                                      const GALGAS_formalParameterListAST & inAttribute_mFormalArgumentList,
+                                                                      const GALGAS_semanticInstructionListAST & inAttribute_mRoutineInstructionList,
+                                                                      const GALGAS_location & inAttribute_mEndOfRoutineInstructionList
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_procDeclarationAST result ;
   if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsInternal.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mRoutineInstructionList.isValid () && inAttribute_mEndOfRoutineInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_routineDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsInternal, inAttribute_mRoutineName, inAttribute_mFormalArgumentList, inAttribute_mRoutineInstructionList, inAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
+    macroMyNew (result.mObjectPtr, cPtr_procDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsInternal, inAttribute_mRoutineName, inAttribute_mFormalArgumentList, inAttribute_mRoutineInstructionList, inAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST GALGAS_routineDeclarationAST::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST GALGAS_procDeclarationAST::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
-    const cPtr_routineDeclarationAST * p = (const cPtr_routineDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routineDeclarationAST) ;
+    const cPtr_procDeclarationAST * p = (const cPtr_procDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_procDeclarationAST) ;
     result = p->mAttribute_mRoutineInstructionList ;
   }
   return result ;
@@ -581,17 +581,17 @@ GALGAS_semanticInstructionListAST GALGAS_routineDeclarationAST::getter_mRoutineI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST cPtr_routineDeclarationAST::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_semanticInstructionListAST cPtr_procDeclarationAST::getter_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mRoutineInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location GALGAS_routineDeclarationAST::getter_mEndOfRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location GALGAS_procDeclarationAST::getter_mEndOfRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
-    const cPtr_routineDeclarationAST * p = (const cPtr_routineDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routineDeclarationAST) ;
+    const cPtr_procDeclarationAST * p = (const cPtr_procDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_procDeclarationAST) ;
     result = p->mAttribute_mEndOfRoutineInstructionList ;
   }
   return result ;
@@ -599,21 +599,21 @@ GALGAS_location GALGAS_routineDeclarationAST::getter_mEndOfRoutineInstructionLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_location cPtr_routineDeclarationAST::getter_mEndOfRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
+GALGAS_location cPtr_procDeclarationAST::getter_mEndOfRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEndOfRoutineInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                   Pointer class for @routineDeclarationAST class                                    *
+//                                     Pointer class for @procDeclarationAST class                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_routineDeclarationAST::cPtr_routineDeclarationAST (const GALGAS_bool & in_mIsPredefined,
-                                                        const GALGAS_bool & in_mIsInternal,
-                                                        const GALGAS_lstring & in_mRoutineName,
-                                                        const GALGAS_formalParameterListAST & in_mFormalArgumentList,
-                                                        const GALGAS_semanticInstructionListAST & in_mRoutineInstructionList,
-                                                        const GALGAS_location & in_mEndOfRoutineInstructionList
-                                                        COMMA_LOCATION_ARGS) :
+cPtr_procDeclarationAST::cPtr_procDeclarationAST (const GALGAS_bool & in_mIsPredefined,
+                                                  const GALGAS_bool & in_mIsInternal,
+                                                  const GALGAS_lstring & in_mRoutineName,
+                                                  const GALGAS_formalParameterListAST & in_mFormalArgumentList,
+                                                  const GALGAS_semanticInstructionListAST & in_mRoutineInstructionList,
+                                                  const GALGAS_location & in_mEndOfRoutineInstructionList
+                                                  COMMA_LOCATION_ARGS) :
 cPtr_externRoutineDeclarationAST (in_mIsPredefined, in_mIsInternal, in_mRoutineName, in_mFormalArgumentList COMMA_THERE),
 mAttribute_mRoutineInstructionList (in_mRoutineInstructionList),
 mAttribute_mEndOfRoutineInstructionList (in_mEndOfRoutineInstructionList) {
@@ -621,13 +621,13 @@ mAttribute_mEndOfRoutineInstructionList (in_mEndOfRoutineInstructionList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * cPtr_routineDeclarationAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routineDeclarationAST ;
+const C_galgas_type_descriptor * cPtr_procDeclarationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_procDeclarationAST ;
 }
 
-void cPtr_routineDeclarationAST::description (C_String & ioString,
-                                              const int32_t inIndentation) const {
-  ioString << "[@routineDeclarationAST:" ;
+void cPtr_procDeclarationAST::description (C_String & ioString,
+                                           const int32_t inIndentation) const {
+  ioString << "[@procDeclarationAST:" ;
   mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mIsInternal.description (ioString, inIndentation+1) ;
@@ -644,51 +644,51 @@ void cPtr_routineDeclarationAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-acPtr_class * cPtr_routineDeclarationAST::duplicate (LOCATION_ARGS) const {
+acPtr_class * cPtr_procDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_routineDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsInternal, mAttribute_mRoutineName, mAttribute_mFormalArgumentList, mAttribute_mRoutineInstructionList, mAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_procDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsInternal, mAttribute_mRoutineName, mAttribute_mFormalArgumentList, mAttribute_mRoutineInstructionList, mAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             @routineDeclarationAST type                                             *
+//                                              @procDeclarationAST type                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_routineDeclarationAST ("routineDeclarationAST",
-                                              & kTypeDescriptor_GALGAS_externRoutineDeclarationAST) ;
+kTypeDescriptor_GALGAS_procDeclarationAST ("procDeclarationAST",
+                                           & kTypeDescriptor_GALGAS_externRoutineDeclarationAST) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_routineDeclarationAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routineDeclarationAST ;
+const C_galgas_type_descriptor * GALGAS_procDeclarationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_procDeclarationAST ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_routineDeclarationAST::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_procDeclarationAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_routineDeclarationAST (*this)) ;
+    macroMyNew (result, GALGAS_procDeclarationAST (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineDeclarationAST GALGAS_routineDeclarationAST::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_routineDeclarationAST result ;
-  const GALGAS_routineDeclarationAST * p = (const GALGAS_routineDeclarationAST *) inObject.embeddedObject () ;
+GALGAS_procDeclarationAST GALGAS_procDeclarationAST::extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_procDeclarationAST result ;
+  const GALGAS_procDeclarationAST * p = (const GALGAS_procDeclarationAST *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_routineDeclarationAST *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_procDeclarationAST *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("routineDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("procDeclarationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

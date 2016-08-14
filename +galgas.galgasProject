@@ -111,6 +111,7 @@ project (3:2:5) -> "galgas" {
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/semanticsCompilation.galgas"
   "galgas-sources/predefinedTypes.galgas"
+  "galgas-sources/useful-entities-computation.galgas"
 
 #--- Instructions
   "galgas-sources/instruction-assignment.galgas"
