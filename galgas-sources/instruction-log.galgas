@@ -75,6 +75,8 @@ override method @logInstructionAST analyzeSemanticInstruction
   #--- Analyze source expression
     @semanticExpressionForGeneration expression
     [mLogExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap

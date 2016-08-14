@@ -171,6 +171,8 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
     var effectiveParameterList =@semanticExpressionListForGeneration {}
     for () in mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
         !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
@@ -218,6 +220,8 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   end
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
@@ -261,6 +265,8 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   end
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
@@ -304,6 +310,8 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
@@ -347,6 +355,8 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap

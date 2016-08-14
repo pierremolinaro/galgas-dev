@@ -205,6 +205,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   ]
 #--- Check actual parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mLabelName
     !"label of the " + mGrammarComponentName + " grammar"
@@ -216,6 +218,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
   )
 #--- Parse source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap
@@ -272,6 +276,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     ]
   #--- Check actual parameters
     analyzeRoutineArguments (
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !mLabelName
       !"label of the " + mGrammarComponentName + " grammar"
@@ -283,6 +289,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     )
   #--- Parse source expression
     [mSourceExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap
@@ -296,6 +304,8 @@ override method @grammarInFileInstructionAST analyzeSemanticInstruction
     end
   #--- Parse name expression
     [mNameExpression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap

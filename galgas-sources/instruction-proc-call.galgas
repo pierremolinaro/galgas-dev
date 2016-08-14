@@ -68,6 +68,8 @@ override method @procCallInstructionAST analyzeSemanticInstruction
   end
 #--- Check effective parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mRoutineName
     !"'" + mRoutineName + "' routine header"

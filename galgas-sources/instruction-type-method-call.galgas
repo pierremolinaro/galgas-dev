@@ -62,6 +62,8 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument]
 #--- Check effective parameters
   analyzeRoutineArguments (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mMethodName
     !"'" + mMethodName + "' type proc header"

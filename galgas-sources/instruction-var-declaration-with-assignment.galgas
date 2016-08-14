@@ -53,6 +53,8 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   ?!@variableMap ioVariableMap {
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap

@@ -58,6 +58,8 @@ override method @warningInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #---
   analyzeErrorOrWarningInstruction (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !mLocationExpression
     !mMessageExpression

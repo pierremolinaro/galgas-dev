@@ -44,8 +44,8 @@ override method @syntaxSendInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @syntaxSendInstruction analyzeSyntaxInstruction
-  ?let @lstring unused inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
@@ -61,6 +61,8 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   end
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy. null
     !inAnalysisContext
     !?ioVariableMap

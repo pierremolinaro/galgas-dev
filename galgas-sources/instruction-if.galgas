@@ -86,6 +86,8 @@ syntax extension galgas3InstructionsSyntax {
   {
   #--- Test expression
     [m_if_expression analyzeSemanticExpression
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap

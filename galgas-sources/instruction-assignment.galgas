@@ -86,6 +86,8 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   end
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
     !targetType
     !inAnalysisContext
     !?ioVariableMap
