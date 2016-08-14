@@ -80,6 +80,11 @@ class cSharedGraph : public C_SharedObject {
 //--- isNodeDefined
   public : bool isNodeDefined (const C_String & inKey) const ;
 
+//--- locationForKey
+  public : GALGAS_location locationForKey (const C_String & inKey,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const ;
+
 //--- Internal methods
   public : void description (C_String & ioString,
                              const int32_t inIndentation) const ;
@@ -365,6 +370,49 @@ bool cSharedGraph::isNodeDefined (const C_String & inKey) const {
   for (int32_t i=0 ; (i<mNodeArray.count ()) && !result ; i++) {
     const cGraphNode * p = mNodeArray (i COMMA_HERE) ;
     result = p->mIsDefined && (p->mKey == inKey) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark getter_locationForKey
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location AC_GALGAS_graph::getter_locationForKey (const GALGAS_string & inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (isValid () && inKey.isValid ()) {
+    result = mSharedGraph->locationForKey (inKey.stringValue (), inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cSharedGraph::locationForKey (const C_String & inKey,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  bool found = false ;
+  bool ok = false ;
+  for (int32_t i=0 ; (i<mNodeArray.count ()) && !found ; i++) {
+    const cGraphNode * p = mNodeArray (i COMMA_HERE) ;
+    found = p->mKey == inKey ;
+    if (found && p->mIsDefined) {
+      ok = true ;
+      result = p->mDefinitionLocation ;
+    }
+  }
+  if (!ok) {
+    inCompiler->emitSemanticError (GALGAS_location (),
+                                   C_String ("graph locationForKey: node '") + inKey + "' is undefined",
+                                   TC_Array <C_FixItDescription> ()
+                                   COMMA_THERE) ;
   }
   return result ;
 }

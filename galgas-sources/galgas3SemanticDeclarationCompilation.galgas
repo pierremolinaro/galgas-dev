@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2016, ..., 2016 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -26,38 +26,38 @@ proc compileSemanticDeclarationsGalgas3
   end
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
-  appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
+  appendPredefinedTypesASTs (!?semanticDeclarationListWithPredefinedTypes)
 #---- Add predefined option component
   @commandLineOptionListAST options = {}
   for () in @application.boolOptionNameList do
     options +=
       !["bool" nowhere]
-      !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application.boolOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      !.new {!mValue1 !.here}
+      !.new {!@application.boolOptionInvocationCharacter {!mValue0 !mValue1} !.nowhere}
       ![@application.boolOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application.boolOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
-      !@optionDefaultValueEnumAST. noDefaultValue
+      !.noDefaultValue
   end
   for () in @application.uintOptionNameList do
     options +=
       !["uint" nowhere]
-      !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application.uintOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      !.new {!mValue1 !.here}
+      !@lchar.new {!@application.uintOptionInvocationCharacter {!mValue0 !mValue1} !.nowhere}
       ![@application.uintOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application.uintOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
-      !@optionDefaultValueEnumAST. noDefaultValue
+      !.noDefaultValue
   end
   for () in @application.stringOptionNameList do
     options +=
       !["string" nowhere]
-      !@lstring.new {!mValue1 !@location.here}
-      !@lchar.new {!@application.stringOptionInvocationCharacter {!mValue0 !mValue1} !@location. nowhere}
+      !.new {!mValue1 !.here}
+      !@lchar.new {!@application.stringOptionInvocationCharacter {!mValue0 !mValue1} !.nowhere}
       ![@application.stringOptionInvocationString {!mValue0 !mValue1} nowhere]
       ![@application.stringOptionCommentString {!mValue0 !mValue1} nowhere]
       !["" nowhere]
-      !@optionDefaultValueEnumAST.noDefaultValue
+      !.noDefaultValue
   end
   semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST.new {
     !true # Is predefined
@@ -91,6 +91,49 @@ proc compileSemanticDeclarationsGalgas3
         !predefinedTypes
         !?outSemanticDeclarationSortedListForGeneration
       ]
+    end
+  end
+#------ 
+  if @uint.errorCount == 0 then
+    for (typeName) in [outSemanticContext.mTypeMap allKeyList] do
+      let type = @unifiedTypeMap-proxy.searchKey {!outSemanticContext.mTypeMap !typeName}
+      let usefullnessNameForType = typeNameForUsefulEntitiesGraph (!typeName)
+      for aGetter in [type mGetterMap] do
+        let usefullnessNameForGetter = getterNameForUsefulEntitiesGraph (![type key] !aGetter.lkey)
+        switch [aGetter mQualifier]
+        case isAbstract, isBasicFinal, isInherited :
+        case isBasic :
+          if [aGetter mKind] == .definedAsExtension then
+            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForGetter]
+          end
+        case isOverriding, isOverridingAbstract :
+          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForGetter]
+        end
+      end
+      for aSetter in [type mSetterMap] do
+        let usefullnessNameForSetter = setterNameForUsefulEntitiesGraph (![type key] !aSetter.lkey)
+        switch [aSetter mQualifier]
+        case isAbstract, isBasicFinal, isInherited :
+        case isBasic :
+          if [aSetter mKind] == .definedAsExtension then
+            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForSetter]
+          end
+        case isOverriding, isOverridingAbstract :
+          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForSetter]
+        end
+      end
+      for aMethod in [type mInstanceMethodMap] do
+        let usefullnessNameForMethod = methodNameForUsefulEntitiesGraph (![type key] !aMethod.lkey)
+        switch [aMethod mQualifier]
+        case isAbstract, isBasicFinal, isInherited :
+        case isBasic :
+          if [aMethod mKind] == .definedAsExtension then
+            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForMethod]
+         end
+        case isOverriding, isOverridingAbstract :
+          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForMethod]
+        end
+      end
     end
   end
 }
@@ -152,7 +195,7 @@ proc buildGalgas3SemanticContext
       ?var @lstringlist unsortedNodeKeyList
     ]
     if [unsortedSemanticDeclarationListAST length] > 0 then
-      @string s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
+      var s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
       for () in unsortedSemanticDeclarationListAST do
         s += "\n-  " + [mSemanticDeclaration keyRepresentation]
       end

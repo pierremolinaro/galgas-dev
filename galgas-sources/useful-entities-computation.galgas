@@ -51,28 +51,28 @@ proc checkUsefulEntities
       elsif [unusedEntities count] > 1 then
         warning .nowhere : [[unusedEntities count] string] + " unused entities"
       end
-#      for (unusedEntity) in unusedEntities do
-#        warning .nowhere : "unused entity is declared here"
-#      end
+      for (unusedEntity) in unusedEntities do
+        warning [inUsefulEntitiesGraph locationForKey !unusedEntity] : "unused entity is declared here"
+      end
     end
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func getterNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inGetterName -> @lstring {
+func getterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inGetterName -> @lstring {
   result = .new {!"getter @" + inTypeName + " " + inGetterName !inGetterName.location}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func setterNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inSetterName -> @lstring {
+func setterNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inSetterName -> @lstring {
   result = .new {!"setter @" + inTypeName + " " + inSetterName !inSetterName.location}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func methodNameForUsefulEntitiesGraph ?let @lstring inTypeName ?let @lstring inMethodName -> @lstring {
+func methodNameForUsefulEntitiesGraph ?let @string inTypeName ?let @lstring inMethodName -> @lstring {
   result = .new {!"method @" + inTypeName + " " + inMethodName !inMethodName.location}
 }
 

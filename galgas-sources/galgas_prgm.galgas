@@ -208,8 +208,8 @@ proc compileProject
   @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
-  var appProductFileList = @stringlist.emptyList
-  var semanticContext = @semanticContext.default
+  @stringlist appProductFileList = {}
+  @semanticContext semanticContext = .default
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (

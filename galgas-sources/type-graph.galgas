@@ -242,6 +242,16 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:"bool"
     !false # No compiler argument
   )
+#--- Getter 'locationForKey'
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"locationForKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"location"
+    !true # Compiler argument
+  )
 #--- Getter 'keyList'
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -423,6 +433,8 @@ override method @graphDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mGraphTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let associatedTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !associatedTypeNameForUsefullness]
 #---
   let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
   let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
@@ -433,9 +445,7 @@ override method @graphDeclarationAST semanticAnalysis
     error mAssociatedListTypeName: "the '@" + mAssociatedListTypeName + "' type should be a list"
   end
 #--- Analyze insert methods
-  var reservedModifierNames =@stringset {}
-  reservedModifierNames += !"noteNode"
-  reservedModifierNames += !"addArc"
+  @stringset reservedModifierNames = {!"noteNode", !"addArc"}
   for () in mInsertModifierList do
     if [reservedModifierNames hasKey ![mInsertModifierName string]] then
       error mInsertModifierName : "the '" + mInsertModifierName + "' setter name is reserved for a graph type"

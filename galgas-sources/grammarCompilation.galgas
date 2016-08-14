@@ -18,9 +18,9 @@ func transformLabelMap
   ?let @nonTerminalLabelListAST inLabels
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 {
-  outNonterminalSymbolLabelMapForGrammarAnalysis = @nonterminalSymbolLabelMapForGrammarAnalysis. emptyMap
+  outNonterminalSymbolLabelMapForGrammarAnalysis = {}
   for () in inLabels do
-    var formalParametersList =@signatureForGrammarAnalysis {}
+    @signatureForGrammarAnalysis formalParametersList = {}
     for () in mFormalArgumentList do
       formalParametersList += !mFormalArgumentPassingMode !mFormalArgumentTypeName
     end
@@ -31,15 +31,15 @@ func transformLabelMap
   end
 }
 
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc checkLabelMap
   ?let @location inNonTerminalLocation
   ?let @nonTerminalLabelListAST inLabels
   ?let @location inOriginalNonTerminalLocation
-  ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis {
-  var labelStringSet =@stringset {}
+  ?let @nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
+{
+  @stringset labelStringSet = {}
   for () in inLabels do
     labelStringSet += ![mLabelName string]
     @signatureForGrammarAnalysis formalParametersList

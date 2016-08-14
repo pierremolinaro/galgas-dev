@@ -960,7 +960,8 @@ override method @galgas3SyntaxComponentAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
     !mSyntaxComponentName
     !mLexiqueName
@@ -976,14 +977,15 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
 #--- Analyze start symbol labels
-  var grammarLabelMap =@grammarLabelMap.emptyMap{}
+  @grammarLabelMap grammarLabelMap = {}
   for () in mStartSymbolLabelList do
   #--- Analyze signature
-    var formalArgumentList =@formalParameterSignature {}
+    @formalParameterSignature formalArgumentList = {}
     for () in mFormalArgumentList do
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let @unifiedTypeMap-proxy argumentType]
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let argumentType]
       formalArgumentList +=
         !mFormalSelector
         !argumentType

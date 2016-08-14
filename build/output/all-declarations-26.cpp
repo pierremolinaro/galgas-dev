@@ -10,6 +10,137 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                     Overriding extension method '@forInstructionAST analyzeSemanticInstruction'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void extensionMethod_forInstructionAST_analyzeSemanticInstruction (const cPtr_semanticInstructionAST * inObject,
+                                                                          const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                          GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                          const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                          GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
+                                                                          GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_forInstructionAST * object = (const cPtr_forInstructionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_forInstructionAST) ;
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForSelectBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 479)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openBranch (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 480)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 482)) ;
+  }
+  GALGAS_semanticInstructionListForGeneration var_before_5F_instructionList_18905 ;
+  {
+  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 488)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 489)), object->mAttribute_mBeforeInstructionList, object->mAttribute_mEndOf_5F_before_5F_branch, ioArgument_ioVariableMap, var_before_5F_instructionList_18905, inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 484)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_before_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 495)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 497)) ;
+  }
+  GALGAS_semanticInstructionListForGeneration var_between_5F_instructionList_19399 ;
+  {
+  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 503)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 504)), object->mAttribute_mBetweenInstructionList, object->mAttribute_mEndOf_5F_between_5F_branch, ioArgument_ioVariableMap, var_between_5F_instructionList_19399, inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 499)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_between_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 510)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 512)) ;
+  }
+  GALGAS_semanticInstructionListForGeneration var_after_5F_instructionList_20171 ;
+  {
+  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 517)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 518)), object->mAttribute_mAfterInstructionList, object->mAttribute_mEndOf_5F_after_5F_branch, ioArgument_ioVariableMap, var_after_5F_instructionList_20171, inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 513)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_after_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 524)) ;
+  }
+  GALGAS_localInitializedVariableList var_localConstantListForDoBranch_20323 = GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 526)) ;
+  GALGAS_forInstructionEnumeratedObjectListForGeneration var_enumerationList_20395 = GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 527)) ;
+  cEnumerator_forInstructionEnumeratedObjectListAST enumerator_20434 (object->mAttribute_mEnumeratedObjectList, kEnumeration_up) ;
+  while (enumerator_20434.hasCurrentObject ()) {
+    GALGAS_string var_enumeratorCppName_20670 ;
+    GALGAS_semanticExpressionForGeneration var_enumerationExpression_20736 ;
+    callExtensionMethod_analyzeEnumeration ((const cPtr_abstractEnumeratedCollectionAST *) enumerator_20434.current_mEnumeratedCollection (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_localConstantListForDoBranch_20323, var_enumeratorCppName_20670, var_enumerationExpression_20736, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 529)) ;
+    GALGAS_string temp_0 ;
+    const enumGalgasBool test_1 = enumerator_20434.current_mAscending (HERE).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      temp_0 = GALGAS_string ("up") ;
+    }else if (kBoolFalse == test_1) {
+      temp_0 = GALGAS_string ("down") ;
+    }
+    var_enumerationList_20395.addAssign_operation (temp_0, var_enumerationExpression_20736, var_enumeratorCppName_20670  COMMA_SOURCE_FILE ("instruction-for.galgas", 539)) ;
+    enumerator_20434.gotoNextObject () ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 545)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openBranch (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 546)) ;
+  }
+  cEnumerator_localInitializedVariableList enumerator_21060 (var_localConstantListForDoBranch_20323, kEnumeration_up) ;
+  while (enumerator_21060.hasCurrentObject ()) {
+    {
+    ioArgument_ioVariableMap.setter_insertUsedLocalConstant (enumerator_21060.current (HERE).mAttribute_mName, enumerator_21060.current (HERE).mAttribute_mType, enumerator_21060.current (HERE).mAttribute_mCppName, enumerator_21060.current (HERE).mAttribute_mCppName, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 549)) ;
+    }
+    enumerator_21060.gotoNextObject () ;
+  }
+  GALGAS_semanticExpressionForGeneration var_uncheckedWhileExpression_21483 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mAttribute_mWhileExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-for.galgas", 560)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_uncheckedWhileExpression_21483, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 557)) ;
+  GALGAS_semanticExpressionForGeneration var_whileExpression_21656 ;
+  {
+  routine_checkExpressionIsBoolean (constinArgument_inAnalysisContext, object->mAttribute_mEndOf_5F_while_5F_expression, var_uncheckedWhileExpression_21483, var_whileExpression_21656, inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 565)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeBranch (object->mAttribute_mEndOf_5F_while_5F_expression, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 572)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_while_5F_expression, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 573)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 575)) ;
+  }
+  GALGAS_string var_indexCppName_21869 = GALGAS_string::makeEmptyString () ;
+  GALGAS_localConstantList var_indexDeclaration_21897 = GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-for.galgas", 577)) ;
+  const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, object->mAttribute_mIndexVariableName.getter_string (SOURCE_FILE ("instruction-for.galgas", 578)).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_2) {
+    var_indexCppName_21869 = GALGAS_string ("index_").add_operation (object->mAttribute_mInstructionLocation.getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 579)).getter_string (SOURCE_FILE ("instruction-for.galgas", 579)), inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 579)) ;
+    var_indexDeclaration_21897.addAssign_operation (constinArgument_inAnalysisContext.mAttribute_mPredefinedTypes.mAttribute_mUIntType, object->mAttribute_mIndexVariableName, GALGAS_bool (false), var_indexCppName_21869  COMMA_SOURCE_FILE ("instruction-for.galgas", 580)) ;
+  }
+  GALGAS_semanticInstructionListForGeneration var_do_5F_instructionList_22266 ;
+  {
+  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, var_indexDeclaration_21897, var_localConstantListForDoBranch_20323, object->mAttribute_mDoInstructionList, object->mAttribute_mEndOf_5F_do_5F_branch, ioArgument_ioVariableMap, var_do_5F_instructionList_22266, inCompiler  COMMA_SOURCE_FILE ("instruction-for.galgas", 588)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_foreach_5F_instruction, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 600)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeBranch (object->mAttribute_mEndOf_5F_foreach_5F_instruction, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 602)) ;
+  }
+  {
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOf_5F_foreach_5F_instruction, inCompiler COMMA_SOURCE_FILE ("instruction-for.galgas", 603)) ;
+  }
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_forInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_enumerationList_20395, var_indexCppName_21869, var_whileExpression_21656, var_before_5F_instructionList_18905, var_between_5F_instructionList_19399, var_do_5F_instructionList_22266, var_after_5F_instructionList_20171  COMMA_SOURCE_FILE ("instruction-for.galgas", 605))  COMMA_SOURCE_FILE ("instruction-for.galgas", 605)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionMethod_forInstructionAST_analyzeSemanticInstruction (void) {
+  enterExtensionMethod_analyzeSemanticInstruction (kTypeDescriptor_GALGAS_forInstructionAST.mSlotID,
+                                                   extensionMethod_forInstructionAST_analyzeSemanticInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_forInstructionAST_analyzeSemanticInstruction (defineExtensionMethod_forInstructionAST_analyzeSemanticInstruction, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                   Overriding extension method '@forInstructionForGeneration generateInstruction'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3684,13 +3815,13 @@ static void extensionMethod_localVariableDeclarationWithAssignmentAST_analyzeSem
                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_localVariableDeclarationWithAssignmentAST * object = (const cPtr_localVariableDeclarationWithAssignmentAST *) inObject ;
   macroValidSharedObject (object, cPtr_localVariableDeclarationWithAssignmentAST) ;
-  GALGAS_semanticExpressionForGeneration var_expression_2587 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mAttribute_mSourceExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 58)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_expression_2587, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 55)) ;
-  GALGAS_string var_targetVariableCppName_2646 = GALGAS_string ("var_").add_operation (object->mAttribute_mVariableName.mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)).add_operation (object->mAttribute_mVariableName.mAttribute_location.getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)).getter_string (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 64)) ;
+  GALGAS_semanticExpressionForGeneration var_expression_2586 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mAttribute_mSourceExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 59)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_expression_2586, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 56)) ;
+  GALGAS_string var_targetVariableCppName_2645 = GALGAS_string ("var_").add_operation (object->mAttribute_mVariableName.mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)).add_operation (object->mAttribute_mVariableName.mAttribute_location.getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)).getter_string (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)), inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)) ;
   {
-  ioArgument_ioVariableMap.setter_insertDefinedLocalVariable (object->mAttribute_mVariableName, var_expression_2587.getter_mResultType (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 67)), var_targetVariableCppName_2646, var_targetVariableCppName_2646, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 65)) ;
+  ioArgument_ioVariableMap.setter_insertDefinedLocalVariable (object->mAttribute_mVariableName, var_expression_2586.getter_mResultType (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 68)), var_targetVariableCppName_2645, var_targetVariableCppName_2645, inCompiler COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 66)) ;
   }
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::constructor_new (var_expression_2587.getter_mResultType (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 73)), GALGAS_bool (false), var_targetVariableCppName_2646, var_expression_2587  COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 72))  COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 72)) ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::constructor_new (var_expression_2586.getter_mResultType (SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 74)), GALGAS_bool (false), var_targetVariableCppName_2645, var_expression_2586  COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 73))  COMMA_SOURCE_FILE ("instruction-var-declaration-with-assignment.galgas", 73)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

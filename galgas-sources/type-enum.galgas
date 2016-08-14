@@ -234,6 +234,8 @@ override method @enumDeclarationAST semanticAnalysis
     @unifiedTypeMapProxyList associatedTypeList = {}
     @stringset associatedValueNameSet = {}
     for () in mAssociatedValueDefinitionList do
+      let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mValue0)
+      [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
       let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
       associatedTypeList += !associatedTypeProxy
       if [associatedValueNameSet hasKey !mValue1.string] then
