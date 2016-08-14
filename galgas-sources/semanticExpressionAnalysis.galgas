@@ -985,6 +985,9 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
       error mTypeName: "this class does not support the default constructor"
     end
   #---
+    let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !mTypeName})
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  #---
     outExpression = @defaultConstructorExpressionForGeneration.new {
       !type
       !mTypeName.location}
@@ -1026,6 +1029,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
+  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !mTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   outExpression = @constructorExpressionForGeneration.new {
     !returnedType
@@ -1217,6 +1222,9 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+  let usefullnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+#---
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?let @bool optionComponentIsPredefined
@@ -3056,6 +3064,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+  let usefulnessName = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Retrieve function features
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !mFunctionName

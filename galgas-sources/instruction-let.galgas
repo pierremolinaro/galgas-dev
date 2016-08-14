@@ -109,8 +109,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
