@@ -45,7 +45,7 @@ override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @selfAssignmentInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

@@ -111,7 +111,7 @@ override method @parseWhenInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @parseWhenInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -137,7 +137,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @uint localSelectMethodCount = ioSelectMethodCount
   @semanticInstructionListForGeneration when_instructionListForGeneration
   analyzeSyntaxInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !inHasTranslateFeature
@@ -155,7 +155,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- 'else' branch
   @semanticInstructionListForGeneration else_instructionListForGeneration
   analyzeSyntaxInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !inHasTranslateFeature

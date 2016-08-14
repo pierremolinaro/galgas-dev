@@ -20,7 +20,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -46,7 +46,7 @@ list @localInitializedVariableList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeSemanticInstructionList
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @localConstantList inLocalConstantList
@@ -74,7 +74,7 @@ proc analyzeSemanticInstructionList
 #--- Instruction list
   for () in inSemanticInstructionListAST do
     [mInstruction analyzeSemanticInstruction
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outInstructionListForGeneration

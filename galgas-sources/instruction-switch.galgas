@@ -123,7 +123,7 @@ override method @switchInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @switchInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -196,7 +196,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
       firstConstant = false
     end
     analyzeSemanticInstructionList (
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@localConstantList.emptyList

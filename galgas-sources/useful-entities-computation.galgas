@@ -96,9 +96,9 @@ func syntaxNameForUsefulEntitiesGraph ?let @lstring inSyntaxName -> @lstring {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func ruleNameForUsefulEntitiesGraph ?let @string inSyntaxName ?let @lstring inRuleName -> @lstring {
-  result = .new {!"rule " + inSyntaxName + " <" + inRuleName + ">" !inRuleName.location}
-}
+#func ruleNameForUsefulEntitiesGraph ?let @string inSyntaxName ?let @lstring inRuleName -> @lstring {
+#  result = .new {!"rule " + inSyntaxName + " <" + inRuleName + ">" !inRuleName.location}
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

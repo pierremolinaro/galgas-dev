@@ -77,7 +77,7 @@ override method @parseLoopInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @parseLoopInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -121,7 +121,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- 'or' blocks
   @semanticInstructionListForGeneration instructionList
   analyzeSyntaxInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !inHasTranslateFeature

@@ -74,8 +74,8 @@ override method @nonterminalCallInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
@@ -85,7 +85,11 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?let @stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
-  ?!@uint unused ioSelectMethodCount {
+  ?!@uint unused ioSelectMethodCount
+{
+#  let usefullnessName = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
+#  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+#---
   @nonterminalLabelMap labelMap
   [inNonterminalMap searchKey !mNonterminalName ?labelMap]
   @formalParameterSignature signature

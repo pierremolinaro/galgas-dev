@@ -142,7 +142,7 @@ override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticC
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -197,7 +197,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -240,7 +240,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #·····················································································································*
 
 override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -283,7 +283,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
 #·····················································································································*
 
 override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -326,7 +326,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

@@ -46,7 +46,7 @@ override method @localVariableDeclarationWithAssignmentAST enterInstructionInSem
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

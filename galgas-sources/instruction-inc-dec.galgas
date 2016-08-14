@@ -151,7 +151,7 @@ override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @incDecInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -185,7 +185,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -219,7 +219,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -251,7 +251,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfIncDecInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

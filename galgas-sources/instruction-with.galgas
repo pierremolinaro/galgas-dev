@@ -181,7 +181,7 @@ override method @readWriteAccessWithInstructionAST enterInstructionInSemanticCon
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -235,7 +235,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !true # Do not warn if unused
     !objectArrayCppName + "->mAttribute_lkey"
   analyzeSemanticInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !localConstantList
@@ -247,7 +247,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   )
 #--- else branch
   analyzeSemanticInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
@@ -272,7 +272,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #······················································································································*
 
 override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -343,7 +343,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !objectArrayCppName + "->mAttribute_lkey"
   }
   analyzeSemanticInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !localConstantList
@@ -356,7 +356,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- else branch
   @semanticInstructionListForGeneration else_instructionList
   analyzeSemanticInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList

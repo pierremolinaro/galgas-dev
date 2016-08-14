@@ -175,7 +175,7 @@ proc buildLocalVariableMapAndSignature
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeRoutineBody
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalParameterListAST inRoutineSignatureAST
@@ -226,7 +226,7 @@ proc analyzeRoutineBody
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
@@ -354,7 +354,7 @@ override method @procDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeFunctionBody
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalInputParameterListAST inFunctionSignature
@@ -418,7 +418,7 @@ proc analyzeFunctionBody
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
@@ -665,7 +665,6 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
-  let componentName = mSyntaxComponentName.string
 #--- Useful entities graph
   let nameForUsefullness = syntaxNameForUsefulEntitiesGraph (!mSyntaxComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
@@ -686,10 +685,11 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   if @uint. errorCount == 0 then
     let lexiqueName = mLexiqueName.string
     semanticAnalysisOfSyntaxComponent (
+      !nameForUsefullness
       !?ioUsefulEntitiesGraph
       !mNonterminalDeclarationList
       !mRuleList
-      !componentName
+      !mSyntaxComponentName.string
       !lexiqueName
       !inSemanticContext
       !inPredefinedTypes
@@ -1374,7 +1374,7 @@ proc buildNonterminalDeclarationsMap
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -1390,7 +1390,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool unused inHasTranslateFeature
@@ -1404,7 +1404,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?!@uint unused ioSelectMethodCount
 {
   [self analyzeSemanticInstruction
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioInstructionListForGeneration
@@ -1689,7 +1689,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeSyntaxInstructionList
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -1709,7 +1709,7 @@ proc analyzeSyntaxInstructionList
 #--- Instruction list
   for () in inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature
@@ -1734,7 +1734,7 @@ proc analyzeSyntaxInstructionList
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfRuleLabel
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @formalParameterListAST inFormalArguments
   ?let @syntaxInstructionList inSyntaxInstructionList
@@ -1767,7 +1767,7 @@ proc semanticAnalysisOfRuleLabel
   var localVariableCppNameList =@stringlist {}
   for () in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature
@@ -1792,10 +1792,11 @@ proc semanticAnalysisOfRuleLabel
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfSyntaxComponent
+  ?let @lstring inSyntaxComponentUsefulnessName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
   ?let @syntaxRuleListAST inRuleList
-  ?let @string inComponentName
+  ?let @string inSyntaxComponentName
   ?let @string inLexiqueName
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
@@ -1806,21 +1807,25 @@ proc semanticAnalysisOfSyntaxComponent
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 {
 #------------ Build nonterminal map
-  var nonterminalMap =@nonterminalMap.emptyMap{}
   buildNonterminalDeclarationsMap (
     !inNonterminalDeclarationList
     !inSemanticContext
-    ?nonterminalMap
+    ?var @nonterminalMap nonterminalMap
   )
 #------------ Build nonterminal map from rule headers
   for () in inRuleList do
-    var nonterminalLabelMap =@nonterminalLabelMap.emptyMap{}
+    @nonterminalLabelMap nonterminalLabelMap = {}
     for () in mLabelList do
-      var signatureForGeneration =@formalParameterListForGeneration {}
-      var signature =@formalParameterSignature {}
+      @formalParameterListForGeneration signatureForGeneration = {}
+      @formalParameterSignature signature = {}
       for () in mFormalArguments do
         let type = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
-        signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" + mFormalArgumentName
+        signatureForGeneration +=
+          !mFormalSelector
+          !mFormalArgumentPassingMode
+          !type
+          !mFormalArgumentName
+          !"argument_" + mFormalArgumentName
         signature += !mFormalSelector !type !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation]
@@ -1831,19 +1836,21 @@ proc semanticAnalysisOfSyntaxComponent
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null
+  }
 #--- Rule list
   @uint selectMethodCount = 0
   @ruleDeclarationList ruleDeclarationList = {}
   @uint newRuleIndex = 0
   for () in inRuleList do
   #--- Useful entities graph
-    let nameForUsefullness = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
-    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefullness] then
-      [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-    end
+#    let nameForUsefullness = ruleNameForUsefulEntitiesGraph (!inSyntaxComponentName !mNonterminalName)
+#    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefullness] then
+#      [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#      [!?ioUsefulEntitiesGraph addEdge !inSyntaxComponentUsefulnessName !nameForUsefullness]
+#    end
   #---
     @ruleLabelImplementationList ruleLabelImplementationList = {}
     @uint localSelectMethodCount = selectMethodCount
@@ -1854,7 +1861,7 @@ proc semanticAnalysisOfSyntaxComponent
       @formalParameterSignature signature
       @semanticInstructionListForGeneration instructionListForGeneration
       semanticAnalysisOfRuleLabel (
-        !nameForUsefullness
+        !inSyntaxComponentUsefulnessName
         !?ioUsefulEntitiesGraph
         !mFormalArguments
         !mSyntaxInstructionList
@@ -1863,7 +1870,7 @@ proc semanticAnalysisOfSyntaxComponent
         !inHasTranslateFeature
         ![inLexiqueName identifierRepresentation]
         !nonterminalMap
-        !inComponentName
+        !inSyntaxComponentName
         !mEndOfInstructionList
         !inIndexNameSet
         !?localSelectMethodCount
@@ -1888,7 +1895,7 @@ proc semanticAnalysisOfSyntaxComponent
   end
 #---
   outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration.new {
-    !inComponentName
+    !inSyntaxComponentName
     !inLexiqueName
     !nonterminalMap
     !ruleDeclarationList

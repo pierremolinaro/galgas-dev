@@ -49,7 +49,7 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
