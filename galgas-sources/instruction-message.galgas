@@ -43,7 +43,7 @@ override method @messageInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @messageInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

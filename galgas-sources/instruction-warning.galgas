@@ -51,7 +51,7 @@ override method @warningInstructionAST enterInstructionInSemanticContext ?!@unif
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @warningInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

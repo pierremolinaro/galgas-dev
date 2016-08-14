@@ -44,7 +44,7 @@ override method @dropInstructionAST enterInstructionInSemanticContext ?!@unified
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @dropInstructionAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration

@@ -3228,6 +3228,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -3235,6 +3236,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-developer-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
 			};
 			name = Default;
 		};

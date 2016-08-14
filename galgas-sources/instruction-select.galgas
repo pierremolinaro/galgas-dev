@@ -85,7 +85,7 @@ override method @selectInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @selectInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -106,7 +106,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   for () in mSelectBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature

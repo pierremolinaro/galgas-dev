@@ -109,7 +109,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstru
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -133,7 +133,7 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
 #······················································································································*
 
 override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -159,7 +159,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 #······················································································································*
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

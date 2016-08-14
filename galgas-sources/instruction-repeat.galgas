@@ -98,7 +98,7 @@ override method @repeatInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @repeatInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
+  ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
@@ -118,7 +118,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- Repeated instructions
   @semanticInstructionListForGeneration repeated_instructionList
   analyzeSyntaxInstructionList (
-    !inCallerEntity
+    !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !inHasTranslateFeature
@@ -137,7 +137,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = {}
   for () in mRepeatBranchList do
     analyzeSyntaxInstructionList (
-      !inCallerEntity
+      !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature

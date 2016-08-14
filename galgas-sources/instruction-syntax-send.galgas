@@ -44,8 +44,8 @@ override method @syntaxSendInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @syntaxSendInstruction analyzeSyntaxInstruction
-  ?let @lstring inCallerEntity
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
