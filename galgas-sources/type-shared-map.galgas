@@ -86,9 +86,9 @@ class @sharedMapDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  rule <declaration>
-    ?!@galgas3DeclarationAST ioDeclarations
-  {
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $sharedmap$
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
@@ -110,55 +110,7 @@ syntax extension galgas3DeclarationsSyntax {
     @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
     repeat
     while
-      $state$
-      $identifier$ ?let @lstring stateName
-      @mapAutomatonMessageKind stateMessageKind
-      @lstring stateMessage
-      select
-        stateMessageKind = @mapAutomatonMessageKind.noMessage
-        stateMessage = @lstring.new {!"" !@location.here}
-      or
-        $warning$
-        $"string"$ ? stateMessage
-        stateMessageKind = @mapAutomatonMessageKind.warningMessage
-      or
-        $error$
-        $"string"$ ? stateMessage
-        stateMessageKind = @mapAutomatonMessageKind.errorMessage
-      end
-      ${$
-      var transitionList =@mapStateTransitionList {}
-      repeat
-      while
-        $identifier$ ?var  @lstring actionName
-        $->$
-        $identifier$ ?var  @lstring targetStateName
-        @mapAutomatonMessageKind transitionMessageKind
-        @lstring transitionMessage
-        select
-          transitionMessageKind = @mapAutomatonMessageKind.noMessage
-          transitionMessage = @lstring.new {!"" !@location.here}
-        or
-          $warning$
-          $"string"$ ? transitionMessage
-          transitionMessageKind = @mapAutomatonMessageKind.warningMessage
-        or
-          $error$
-          $"string"$ ? transitionMessage
-          transitionMessageKind = @mapAutomatonMessageKind.errorMessage
-        end
-        transitionList +=
-          !actionName
-          !targetStateName
-          !transitionMessageKind
-          !transitionMessage
-      end
-      mapStateList +=
-        !stateName
-        !stateMessageKind
-        !stateMessage
-        !transitionList
-      $}$
+      <sharedmap_state_list> !?mapStateList
     while
       @bool isError
       select
@@ -172,27 +124,11 @@ syntax extension galgas3DeclarationsSyntax {
       $"string"$ ?let messageText
       sharedMapAttributeListAST += !attributeName !isError !messageText
     while
-      <property_declaration> !? propertyList
+      <property_declaration> !?propertyList
     while
-      $insert$
-      <insert_method_declaration> !? mInsertMethodList
+      <map_insert_setter_declaration> !?mInsertMethodList
     while
-      $search$
-      $identifier$ ?var  @lstring mMethodName
-      @lstring actionName
-      select
-        actionName = @lstring.new {!"" !@location.here}
-      or
-        $do$
-        $identifier$ ? actionName
-      end
-      $error$
-      $message$
-      $"string"$ ?var  @lstring mErrorMessage
-      mSearchMethodList +=
-        !mMethodName
-        !mErrorMessage
-        !actionName
+      <sharedmap_search_method_declaration> !?mSearchMethodList
     while
       $override$
       $identifier$ ?var  @lstring overrideBlockName
@@ -272,6 +208,89 @@ syntax extension galgas3DeclarationsSyntax {
       !mMapTypeName
     }
   }
+
+  #·····················································································································
+
+  rule <sharedmap_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+    $search$
+    $identifier$ ?let @lstring mMethodName
+    @lstring actionName
+    select
+      actionName = @lstring.new {!"" !@location.here}
+    or
+      $do$
+      $identifier$ ? actionName
+    end
+    $error$
+    $message$
+    $"string"$ ?var  @lstring mErrorMessage
+    ioMapSearchMethodListAST +=
+      !mMethodName
+      !mErrorMessage
+      !actionName
+  }
+  
+  #·····················································································································
+
+  rule <sharedmap_state_list> ?!@mapStateList ioMapStateList {
+    $state$
+    $identifier$ ?let @lstring stateName
+    @mapAutomatonMessageKind stateMessageKind
+    @lstring stateMessage
+    select
+      stateMessageKind = .noMessage
+      stateMessage = @lstring.new {!"" !@location.here}
+    or
+      $warning$
+      $"string"$ ? stateMessage
+      stateMessageKind = .warningMessage
+    or
+      $error$
+      $"string"$ ? stateMessage
+      stateMessageKind = .errorMessage
+    end
+    ${$
+    @mapStateTransitionList transitionList = {}
+    repeat
+    while
+      <sharedmap_state_transition> !?transitionList
+    end
+    ioMapStateList +=
+      !stateName
+      !stateMessageKind
+      !stateMessage
+      !transitionList
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <sharedmap_state_transition> ?!@mapStateTransitionList ioTransitionList {
+    $identifier$ ?let @lstring actionName
+    $->$
+    $identifier$ ?let @lstring targetStateName
+    @mapAutomatonMessageKind transitionMessageKind
+    @lstring transitionMessage
+    select
+      transitionMessageKind = .noMessage
+      transitionMessage = .new {!"" !.here}
+    or
+      $warning$
+      $"string"$ ? transitionMessage
+      transitionMessageKind = .warningMessage
+    or
+      $error$
+      $"string"$ ? transitionMessage
+      transitionMessageKind = .errorMessage
+    end
+    ioTransitionList +=
+      !actionName
+      !targetStateName
+      !transitionMessageKind
+      !transitionMessage
+  }
+
+  #·····················································································································
 
 }
 

@@ -622,13 +622,11 @@ rule <primary_between_brackets> !@semanticExpressionAST outExpression {
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <optional_type> !@lstring outTypeName {
-  outTypeName = @lstring.new {!"" !@location.here}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <optional_type> !@lstring outTypeName {
-  $@type$ ?outTypeName indexing typeReferenceInConstructor
+  select
+    outTypeName = .new {!"" !.here}
+  or
+    $@type$ ?outTypeName indexing typeReferenceInConstructor
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
