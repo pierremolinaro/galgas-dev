@@ -6495,27 +6495,27 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
 void routine_check_5F_K_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_stringlist enumerator_18785 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 510)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 510)), kEnumeration_up) ;
-  while (enumerator_18785.hasCurrentObject ()) {
-    GALGAS_stringlist var_explodedArray_18818 = enumerator_18785.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 511)) ;
+  cEnumerator_stringlist enumerator_19558 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 523)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 523)), kEnumeration_up) ;
+  while (enumerator_19558.hasCurrentObject ()) {
+    GALGAS_stringlist var_explodedArray_19591 = enumerator_19558.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 524)) ;
     {
-    GALGAS_string joker_18905 ; // Joker input parameter
-    var_explodedArray_18818.setter_popFirst (joker_18905, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 512)) ;
+    GALGAS_string joker_19678 ; // Joker input parameter
+    var_explodedArray_19591.setter_popFirst (joker_19678, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 525)) ;
     }
-    cEnumerator_stringlist enumerator_18935 (var_explodedArray_18818, kEnumeration_up) ;
-    while (enumerator_18935.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_18935.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 514)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_stringlist enumerator_19708 (var_explodedArray_19591, kEnumeration_up) ;
+    while (enumerator_19708.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_19708.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 527)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_char var_c_18992 = enumerator_18935.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 515)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_18992.objectCompare (GALGAS_char (TO_UNICODE (75)))).boolEnum () ;
+        GALGAS_char var_c_19765 = enumerator_19708.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 528)) ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19765.objectCompare (GALGAS_char (TO_UNICODE (75)))).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 517)), GALGAS_string ("only '%K' and '%%' escape sequences are allowed in this error message"), fixItArray2  COMMA_SOURCE_FILE ("type-map.galgas", 517)) ;
+          inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 530)), GALGAS_string ("only '%K' and '%%' escape sequences are allowed in this error message"), fixItArray2  COMMA_SOURCE_FILE ("type-map.galgas", 530)) ;
         }
       }
-      enumerator_18935.gotoNextObject () ;
+      enumerator_19708.gotoNextObject () ;
     }
-    enumerator_18785.gotoNextObject () ;
+    enumerator_19558.gotoNextObject () ;
   }
 }
 
@@ -6529,27 +6529,27 @@ void routine_check_5F_K_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
 void routine_check_5F_K_5F_L_5F_escapeCharacters (GALGAS_lstring inArgument_inString,
                                                   C_Compiler * inCompiler
                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_stringlist enumerator_19483 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 527)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 527)), kEnumeration_up) ;
-  while (enumerator_19483.hasCurrentObject ()) {
-    GALGAS_stringlist var_explodedArray_19516 = enumerator_19483.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 528)) ;
+  cEnumerator_stringlist enumerator_20256 (inArgument_inString.getter_string (SOURCE_FILE ("type-map.galgas", 540)).getter_componentsSeparatedByString (GALGAS_string ("%%") COMMA_SOURCE_FILE ("type-map.galgas", 540)), kEnumeration_up) ;
+  while (enumerator_20256.hasCurrentObject ()) {
+    GALGAS_stringlist var_explodedArray_20289 = enumerator_20256.current (HERE).mAttribute_mValue.getter_componentsSeparatedByString (GALGAS_string ("%") COMMA_SOURCE_FILE ("type-map.galgas", 541)) ;
     {
-    GALGAS_string joker_19603 ; // Joker input parameter
-    var_explodedArray_19516.setter_popFirst (joker_19603, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 529)) ;
+    GALGAS_string joker_20376 ; // Joker input parameter
+    var_explodedArray_20289.setter_popFirst (joker_20376, inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 542)) ;
     }
-    cEnumerator_stringlist enumerator_19633 (var_explodedArray_19516, kEnumeration_up) ;
-    while (enumerator_19633.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_19633.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 531)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    cEnumerator_stringlist enumerator_20406 (var_explodedArray_20289, kEnumeration_up) ;
+    while (enumerator_20406.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_20406.current_mValue (HERE).getter_length (SOURCE_FILE ("type-map.galgas", 544)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        GALGAS_char var_c_19690 = enumerator_19633.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 532)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_19690.objectCompare (GALGAS_char (TO_UNICODE (75)))).operator_and (GALGAS_bool (kIsNotEqual, var_c_19690.objectCompare (GALGAS_char (TO_UNICODE (76)))) COMMA_SOURCE_FILE ("type-map.galgas", 533)).boolEnum () ;
+        GALGAS_char var_c_20463 = enumerator_20406.current_mValue (HERE).getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("type-map.galgas", 545)) ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_c_20463.objectCompare (GALGAS_char (TO_UNICODE (75)))).operator_and (GALGAS_bool (kIsNotEqual, var_c_20463.objectCompare (GALGAS_char (TO_UNICODE (76)))) COMMA_SOURCE_FILE ("type-map.galgas", 546)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
-          inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 534)), GALGAS_string ("only '%K', '%L' and '%%' escape sequences are allowed in this error message"), fixItArray2  COMMA_SOURCE_FILE ("type-map.galgas", 534)) ;
+          inCompiler->emitSemanticError (inArgument_inString.getter_location (SOURCE_FILE ("type-map.galgas", 547)), GALGAS_string ("only '%K', '%L' and '%%' escape sequences are allowed in this error message"), fixItArray2  COMMA_SOURCE_FILE ("type-map.galgas", 547)) ;
         }
       }
-      enumerator_19633.gotoNextObject () ;
+      enumerator_20406.gotoNextObject () ;
     }
-    enumerator_19483.gotoNextObject () ;
+    enumerator_20256.gotoNextObject () ;
   }
 }
 
@@ -6563,10 +6563,10 @@ void routine_check_5F_K_5F_L_5F_escapeCharacters (GALGAS_lstring inArgument_inSt
 static GALGAS_stringset onceFunction_forbiddenKeysForMap (C_Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringset result_outResult ; // Returned variable
-  result_outResult = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-map.galgas", 550)) ;
-  result_outResult.addAssign_operation (GALGAS_string ("lkey")  COMMA_SOURCE_FILE ("type-map.galgas", 551)) ;
-  result_outResult.addAssign_operation (GALGAS_string ("description")  COMMA_SOURCE_FILE ("type-map.galgas", 552)) ;
-  result_outResult.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("type-map.galgas", 553)) ;
+  result_outResult = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-map.galgas", 563)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("lkey")  COMMA_SOURCE_FILE ("type-map.galgas", 564)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("description")  COMMA_SOURCE_FILE ("type-map.galgas", 565)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("type-map.galgas", 566)) ;
 //---
   return result_outResult ;
 }

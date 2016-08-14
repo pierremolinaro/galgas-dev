@@ -365,36 +365,52 @@ rule <lexical_output_effective_argument>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <lexical_output_effective_argument>
-  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
-  $identifier$ ?var @lstring idf
-  <function_call_or_attribute> !idf ?outEffectiveArgument
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
-  outArgument = @lexicalAttributeInputArgumentAST.new {!inIdf}
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
-  $($
-  var functionActualArgumentList =@lexicalFunctionCallActualArgumentListAST {}
-  repeat
-  while
-    $!$ ?let selector
-    if selector.string != "" then
-      error selector : "the selector should be '!'"
+rule <lexical_output_effective_argument> !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+  $identifier$ ?let idf
+  select
+    outEffectiveArgument = @lexicalAttributeInputArgumentAST.new {!idf}
+  or
+    $($
+    @lexicalFunctionCallActualArgumentListAST functionActualArgumentList = {}
+    repeat
+    while
+      $!$ ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '!'"
+      end
+      <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+      functionActualArgumentList += !arg
     end
-    @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-    <lexical_output_effective_argument> ?arg
-    functionActualArgumentList += !arg
+    $)$
+    outEffectiveArgument = @lexicalFunctionInputArgumentAST.new {!idf !functionActualArgumentList}
   end
-  $)$
-  outArgument = @lexicalFunctionInputArgumentAST.new {!inIdf !functionActualArgumentList}
 }
+
+##----------------------------------------------------------------------------------------------------------------------*
+#
+#rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
+#  outArgument = @lexicalAttributeInputArgumentAST.new {!inIdf}
+#}
+#
+##----------------------------------------------------------------------------------------------------------------------*
+#
+#rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
+#
+#  $($
+#  var functionActualArgumentList =@lexicalFunctionCallActualArgumentListAST {}
+#  repeat
+#  while
+#    $!$ ?let selector
+#    if selector.string != "" then
+#      error selector : "the selector should be '!'"
+#    end
+#    @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+#    <lexical_output_effective_argument> ?arg
+#    functionActualArgumentList += !arg
+#  end
+#  $)$
+#  outArgument = @lexicalFunctionInputArgumentAST.new {!inIdf !functionActualArgumentList}
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
