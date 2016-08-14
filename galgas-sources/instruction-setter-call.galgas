@@ -115,6 +115,8 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @setterCallInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -199,6 +201,8 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
 #·····················································································································*
 
 override method @selfSetterCallInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {

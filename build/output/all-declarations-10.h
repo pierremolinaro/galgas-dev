@@ -720,13 +720,15 @@ class GALGAS_string function_checkReaderImplementationInSuperClasses (const clas
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_analyzeSemanticInstructionList (const class GALGAS_analysisContext constinArgument0,
-                                             const class GALGAS_localConstantList constinArgument1,
-                                             const class GALGAS_localInitializedVariableList constinArgument2,
-                                             const class GALGAS_semanticInstructionListAST constinArgument3,
-                                             const class GALGAS_location constinArgument4,
-                                             class GALGAS_variableMap & ioArgument5,
-                                             class GALGAS_semanticInstructionListForGeneration & outArgument6,
+void routine_analyzeSemanticInstructionList (const class GALGAS_lstring constinArgument0,
+                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                             const class GALGAS_analysisContext constinArgument2,
+                                             const class GALGAS_localConstantList constinArgument3,
+                                             const class GALGAS_localInitializedVariableList constinArgument4,
+                                             const class GALGAS_semanticInstructionListAST constinArgument5,
+                                             const class GALGAS_location constinArgument6,
+                                             class GALGAS_variableMap & ioArgument7,
+                                             class GALGAS_semanticInstructionListForGeneration & outArgument8,
                                              class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
@@ -737,9 +739,11 @@ void routine_analyzeSemanticInstructionList (const class GALGAS_analysisContext 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_semanticInstructionAST_analyzeSemanticInstruction) (const class cPtr_semanticInstructionAST * inObject,
-                                                                                            const class GALGAS_analysisContext constinArgument0,
-                                                                                            class GALGAS_semanticInstructionListForGeneration & ioArgument1,
-                                                                                            class GALGAS_variableMap & ioArgument2,
+                                                                                            const class GALGAS_lstring constinArgument0,
+                                                                                            class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                            const class GALGAS_analysisContext constinArgument2,
+                                                                                            class GALGAS_semanticInstructionListForGeneration & ioArgument3,
+                                                                                            class GALGAS_variableMap & ioArgument4,
                                                                                             class C_Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) ;
 
@@ -751,6 +755,8 @@ void enterExtensionMethod_analyzeSemanticInstruction (const int32_t inClassIndex
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticInstructionAST * inObject,
+                                                     const GALGAS_lstring constin_inCallerEntity,
+                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_analysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                      GALGAS_variableMap & io_ioVariableMap,
@@ -993,16 +999,18 @@ void routine_buildLocalVariableMapAndSignature (const class GALGAS_semanticConte
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_analyzeRoutineBody (const class GALGAS_analysisContext constinArgument0,
-                                 const class GALGAS_formalParameterListAST constinArgument1,
-                                 const class GALGAS_localConstantList constinArgument2,
-                                 const class GALGAS_typedPropertyList constinArgument3,
-                                 const class GALGAS_typedPropertyList constinArgument4,
-                                 const class GALGAS_string constinArgument5,
-                                 const class GALGAS_semanticInstructionListAST constinArgument6,
-                                 const class GALGAS_location constinArgument7,
-                                 class GALGAS_semanticInstructionListForGeneration & outArgument8,
-                                 class GALGAS_formalParameterListForGeneration & outArgument9,
+void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
+                                 class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                 const class GALGAS_analysisContext constinArgument2,
+                                 const class GALGAS_formalParameterListAST constinArgument3,
+                                 const class GALGAS_localConstantList constinArgument4,
+                                 const class GALGAS_typedPropertyList constinArgument5,
+                                 const class GALGAS_typedPropertyList constinArgument6,
+                                 const class GALGAS_string constinArgument7,
+                                 const class GALGAS_semanticInstructionListAST constinArgument8,
+                                 const class GALGAS_location constinArgument9,
+                                 class GALGAS_semanticInstructionListForGeneration & outArgument10,
+                                 class GALGAS_formalParameterListForGeneration & outArgument11,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
@@ -1012,18 +1020,20 @@ void routine_analyzeRoutineBody (const class GALGAS_analysisContext constinArgum
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_analyzeFunctionBody (const class GALGAS_analysisContext constinArgument0,
-                                  const class GALGAS_formalInputParameterListAST constinArgument1,
-                                  const class GALGAS_typedPropertyList constinArgument2,
-                                  const class GALGAS_string constinArgument3,
-                                  const class GALGAS_semanticInstructionListAST constinArgument4,
-                                  const class GALGAS_lstring constinArgument5,
-                                  const class GALGAS_lstring constinArgument6,
-                                  const class GALGAS_location constinArgument7,
-                                  class GALGAS_formalInputParameterListForGeneration & outArgument8,
-                                  class GALGAS_unifiedTypeMap_2D_proxy & outArgument9,
-                                  class GALGAS_string & outArgument10,
-                                  class GALGAS_semanticInstructionListForGeneration & outArgument11,
+void routine_analyzeFunctionBody (const class GALGAS_lstring constinArgument0,
+                                  class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                  const class GALGAS_analysisContext constinArgument2,
+                                  const class GALGAS_formalInputParameterListAST constinArgument3,
+                                  const class GALGAS_typedPropertyList constinArgument4,
+                                  const class GALGAS_string constinArgument5,
+                                  const class GALGAS_semanticInstructionListAST constinArgument6,
+                                  const class GALGAS_lstring constinArgument7,
+                                  const class GALGAS_lstring constinArgument8,
+                                  const class GALGAS_location constinArgument9,
+                                  class GALGAS_formalInputParameterListForGeneration & outArgument10,
+                                  class GALGAS_unifiedTypeMap_2D_proxy & outArgument11,
+                                  class GALGAS_string & outArgument12,
+                                  class GALGAS_semanticInstructionListForGeneration & outArgument13,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -1036,48 +1046,6 @@ void routine_analyzeFunctionBody (const class GALGAS_analysisContext constinArgu
 class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
                                                             class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          Routine 'performSemanticAnalysis'                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_performSemanticAnalysis (const class GALGAS_string constinArgument0,
-                                      const class GALGAS_semanticDeclarationListAST constinArgument1,
-                                      const class GALGAS_semanticContext constinArgument2,
-                                      class GALGAS_semanticDeclarationSortedListForGeneration & outArgument3,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Abstract extension method '@semanticDeclarationAST semanticAnalysis'                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typedef void (*extensionMethodSignature_semanticDeclarationAST_semanticAnalysis) (const class cPtr_semanticDeclarationAST * inObject,
-                                                                                  const class GALGAS_string constinArgument0,
-                                                                                  const class GALGAS_semanticContext constinArgument1,
-                                                                                  const class GALGAS_predefinedTypes constinArgument2,
-                                                                                  class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument3,
-                                                                                  class C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_semanticAnalysis (const int32_t inClassIndex,
-                                            extensionMethodSignature_semanticDeclarationAST_semanticAnalysis inMethod) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_semanticAnalysis (const class cPtr_semanticDeclarationAST * inObject,
-                                           const GALGAS_string constin_inProductDirectory,
-                                           const GALGAS_semanticContext constin_inSemanticContext,
-                                           const GALGAS_predefinedTypes constin_inPredefinedTypes,
-                                           GALGAS_semanticDeclarationSortedListForGeneration & io_ioSemanticDeclarationListForGeneration,
-                                           C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1163,18 +1131,20 @@ void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDecl
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_analyzeSyntaxInstructionList (const class GALGAS_analysisContext constinArgument0,
-                                           const class GALGAS_bool constinArgument1,
-                                           const class GALGAS_terminalMap constinArgument2,
-                                           const class GALGAS_string constinArgument3,
-                                           const class GALGAS_nonterminalMap constinArgument4,
+void routine_analyzeSyntaxInstructionList (const class GALGAS_lstring constinArgument0,
+                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                           const class GALGAS_analysisContext constinArgument2,
+                                           const class GALGAS_bool constinArgument3,
+                                           const class GALGAS_terminalMap constinArgument4,
                                            const class GALGAS_string constinArgument5,
-                                           const class GALGAS_syntaxInstructionList constinArgument6,
-                                           const class GALGAS_location constinArgument7,
-                                           const class GALGAS_stringset constinArgument8,
-                                           class GALGAS_variableMap & ioArgument9,
-                                           class GALGAS_uint & ioArgument10,
-                                           class GALGAS_semanticInstructionListForGeneration & outArgument11,
+                                           const class GALGAS_nonterminalMap constinArgument6,
+                                           const class GALGAS_string constinArgument7,
+                                           const class GALGAS_syntaxInstructionList constinArgument8,
+                                           const class GALGAS_location constinArgument9,
+                                           const class GALGAS_stringset constinArgument10,
+                                           class GALGAS_variableMap & ioArgument11,
+                                           class GALGAS_uint & ioArgument12,
+                                           class GALGAS_semanticInstructionListForGeneration & outArgument13,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
@@ -1185,16 +1155,18 @@ void routine_analyzeSyntaxInstructionList (const class GALGAS_analysisContext co
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction) (const class cPtr_syntaxInstructionAST * inObject,
-                                                                                        const class GALGAS_analysisContext constinArgument0,
-                                                                                        const class GALGAS_bool constinArgument1,
-                                                                                        const class GALGAS_terminalMap constinArgument2,
-                                                                                        const class GALGAS_string constinArgument3,
-                                                                                        const class GALGAS_nonterminalMap constinArgument4,
+                                                                                        const class GALGAS_lstring constinArgument0,
+                                                                                        class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                        const class GALGAS_analysisContext constinArgument2,
+                                                                                        const class GALGAS_bool constinArgument3,
+                                                                                        const class GALGAS_terminalMap constinArgument4,
                                                                                         const class GALGAS_string constinArgument5,
-                                                                                        const class GALGAS_stringset constinArgument6,
-                                                                                        class GALGAS_semanticInstructionListForGeneration & ioArgument7,
-                                                                                        class GALGAS_variableMap & ioArgument8,
-                                                                                        class GALGAS_uint & ioArgument9,
+                                                                                        const class GALGAS_nonterminalMap constinArgument6,
+                                                                                        const class GALGAS_string constinArgument7,
+                                                                                        const class GALGAS_stringset constinArgument8,
+                                                                                        class GALGAS_semanticInstructionListForGeneration & ioArgument9,
+                                                                                        class GALGAS_variableMap & ioArgument10,
+                                                                                        class GALGAS_uint & ioArgument11,
                                                                                         class C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -1206,6 +1178,8 @@ void enterExtensionMethod_analyzeSyntaxInstruction (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstructionAST * inObject,
+                                                   const GALGAS_lstring constin_inCallerEntity,
+                                                   GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
                                                    const GALGAS_bool constin_inHasTranslateFeature,
                                                    const GALGAS_terminalMap constin_inTerminalMap,
@@ -1225,20 +1199,22 @@ void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstru
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_semanticAnalysisOfRuleLabel (const class GALGAS_formalParameterListAST constinArgument0,
-                                          const class GALGAS_syntaxInstructionList constinArgument1,
-                                          const class GALGAS_analysisContext constinArgument2,
-                                          const class GALGAS_terminalMap constinArgument3,
-                                          const class GALGAS_bool constinArgument4,
-                                          const class GALGAS_string constinArgument5,
-                                          const class GALGAS_nonterminalMap constinArgument6,
+void routine_semanticAnalysisOfRuleLabel (const class GALGAS_lstring constinArgument0,
+                                          class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                          const class GALGAS_formalParameterListAST constinArgument2,
+                                          const class GALGAS_syntaxInstructionList constinArgument3,
+                                          const class GALGAS_analysisContext constinArgument4,
+                                          const class GALGAS_terminalMap constinArgument5,
+                                          const class GALGAS_bool constinArgument6,
                                           const class GALGAS_string constinArgument7,
-                                          const class GALGAS_location constinArgument8,
-                                          const class GALGAS_stringset constinArgument9,
-                                          class GALGAS_uint & ioArgument10,
-                                          class GALGAS_formalParameterListForGeneration & outArgument11,
-                                          class GALGAS_formalParameterSignature & outArgument12,
-                                          class GALGAS_semanticInstructionListForGeneration & outArgument13,
+                                          const class GALGAS_nonterminalMap constinArgument8,
+                                          const class GALGAS_string constinArgument9,
+                                          const class GALGAS_location constinArgument10,
+                                          const class GALGAS_stringset constinArgument11,
+                                          class GALGAS_uint & ioArgument12,
+                                          class GALGAS_formalParameterListForGeneration & outArgument13,
+                                          class GALGAS_formalParameterSignature & outArgument14,
+                                          class GALGAS_semanticInstructionListForGeneration & outArgument15,
                                           class C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) ;
 
@@ -1248,19 +1224,31 @@ void routine_semanticAnalysisOfRuleLabel (const class GALGAS_formalParameterList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_semanticAnalysisOfSyntaxComponent (const class GALGAS_nonterminalDeclarationListAST constinArgument0,
-                                                const class GALGAS_syntaxRuleListAST constinArgument1,
-                                                const class GALGAS_string constinArgument2,
+void routine_semanticAnalysisOfSyntaxComponent (class GALGAS_usefulEntitiesGraph & ioArgument0,
+                                                const class GALGAS_nonterminalDeclarationListAST constinArgument1,
+                                                const class GALGAS_syntaxRuleListAST constinArgument2,
                                                 const class GALGAS_string constinArgument3,
-                                                const class GALGAS_semanticContext constinArgument4,
-                                                const class GALGAS_predefinedTypes constinArgument5,
-                                                const class GALGAS_terminalMap constinArgument6,
-                                                const class GALGAS_stringset constinArgument7,
-                                                const class GALGAS_bool constinArgument8,
+                                                const class GALGAS_string constinArgument4,
+                                                const class GALGAS_semanticContext constinArgument5,
+                                                const class GALGAS_predefinedTypes constinArgument6,
+                                                const class GALGAS_terminalMap constinArgument7,
+                                                const class GALGAS_stringset constinArgument8,
                                                 const class GALGAS_bool constinArgument9,
-                                                class GALGAS_syntaxDeclarationForGeneration & outArgument10,
+                                                const class GALGAS_bool constinArgument10,
+                                                class GALGAS_syntaxDeclarationForGeneration & outArgument11,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Function 'ruleNameForUsefulEntitiesGraph'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lstring function_ruleNameForUsefulEntitiesGraph (const class GALGAS_string & constinArgument0,
+                                                              const class GALGAS_lstring & constinArgument1,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

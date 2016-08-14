@@ -207,11 +207,15 @@ override method @listmapDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mListmapTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Check associated list is actually a list
   [inSemanticContext.mTypeMap searchKey
     !mAssociatedListTypeName

@@ -183,6 +183,8 @@ syntax extension galgas3InstructionsSyntax {
 #----------------------------------------------------------------------------------------------------------------------*
 
   override method @grammarInFileInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @analysisContext inAnalysisContext
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
     ?!@variableMap ioVariableMap {
@@ -248,6 +250,8 @@ syntax extension galgas3InstructionsSyntax {
   #····················································································································*
 
   override method @grammarInStringInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @analysisContext inAnalysisContext
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
     ?!@variableMap ioVariableMap {

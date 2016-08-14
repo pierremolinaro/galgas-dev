@@ -74,6 +74,8 @@ override method @parseRewindInstruction transformInstruction
 #----------------------------------------------------------------------------------------------------------------------*
   
 override method @parseRewindInstruction analyzeSyntaxInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap  inTerminalMap
@@ -93,6 +95,8 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     var instructionList =@semanticInstructionListForGeneration {}
     for () in mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
+        !inCallerEntity
+        !?ioUsefulEntitiesGraph
         !inAnalysisContext
         !inHasTranslateFeature
         !inTerminalMap

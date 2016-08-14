@@ -78,6 +78,8 @@ syntax extension galgas3InstructionsSyntax {
 #----------------------------------------------------------------------------------------------------------------------*
   
   override method @ifInstructionAST analyzeSemanticInstruction
+    ?let @lstring inCallerEntity
+    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
     ?let @analysisContext inAnalysisContext
     ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
     ?!@variableMap ioVariableMap
@@ -99,6 +101,8 @@ syntax extension galgas3InstructionsSyntax {
     )
   #--- Then branch
     analyzeSemanticInstructionList (
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@localConstantList.emptyList
       !@localInitializedVariableList.emptyList
@@ -109,6 +113,8 @@ syntax extension galgas3InstructionsSyntax {
     )
   #--- else branch
     analyzeSemanticInstructionList (
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@localConstantList.emptyList
       !@localInitializedVariableList.emptyList

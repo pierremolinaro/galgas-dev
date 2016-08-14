@@ -205,6 +205,7 @@ proc compileProject
     !?declarationAST.mDeclarationList
   )
 #---------------------------------- Compile semantic declarations
+  @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
   var appProductFileList = @stringlist.emptyList
@@ -212,6 +213,7 @@ proc compileProject
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
+      !?usefulEntitiesGraph
       !productDirectory
       !inProjectComponentAST.mEndOfSourceFile
       !declarationAST.mDeclarationList
@@ -233,11 +235,14 @@ proc compileProject
     optionComponentMapForGeneration = {}
   end
 #---------------------------------- Compile program declarations
+  @lstringlist usefulnessRootEntities = {}
   if @uint.errorCount == 0 then
     let projectVersionString = [[inProjectComponentAST.mMajorVersion uint] string]
       + "." + [inProjectComponentAST.mMinorVersion uint]
       + "." + [inProjectComponentAST.mRevisionVersion uint]
     compileProgramComponentGalgas3 (
+      !?usefulnessRootEntities
+      !?usefulEntitiesGraph
       !declarationAST.mPrologueDeclarationList
       !declarationAST.mSourceRuleList
       !declarationAST.mEpilogueDeclarationList
@@ -250,6 +255,8 @@ proc compileProject
       !programComponentForGeneration
       !"z"
   end
+#------------ Check entity usefulness
+  checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 #------------------------------------ Build an HTML file that contains all declared types
   let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then

@@ -456,6 +456,8 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
 #·····················································································································*
 
 override method @forInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -466,6 +468,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   @semanticInstructionListForGeneration before_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
@@ -479,6 +483,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   @semanticInstructionListForGeneration between_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
@@ -491,6 +497,8 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- 'after' branch
   [!?ioVariableMap openOverrideForRepeatBlock]
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
@@ -560,6 +568,8 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- 'do' branch
   @semanticInstructionListForGeneration do_instructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !indexDeclaration
     !localConstantListForDoBranch

@@ -715,11 +715,15 @@ list @mapOverrideList {
 #·······················································································································
 
 override method @sharedMapDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
   var shadowMessage = ""

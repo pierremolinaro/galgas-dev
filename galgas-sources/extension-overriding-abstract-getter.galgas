@@ -106,11 +106,15 @@ override method @overridingAbstractExtensionGetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractExtensionGetterAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterReturnedTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type

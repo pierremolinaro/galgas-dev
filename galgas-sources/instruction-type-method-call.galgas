@@ -49,6 +49,8 @@ override method @typeMethodCallInstructionAST enterInstructionInSemanticContext 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {

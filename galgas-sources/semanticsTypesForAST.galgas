@@ -502,7 +502,7 @@ class @externRoutineDeclarationAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @routineDeclarationAST : @externRoutineDeclarationAST {
+class @procDeclarationAST : @externRoutineDeclarationAST {
   @semanticInstructionListAST mRoutineInstructionList
   @location mEndOfRoutineInstructionList
 }

@@ -216,10 +216,15 @@ override method @enumDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mEnumTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Constant list
   var constantList =@stringlist {}
   @enumConstantListForGeneration enumConstantListForGeneration = {}

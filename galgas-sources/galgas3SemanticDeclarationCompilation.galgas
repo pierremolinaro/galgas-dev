@@ -14,6 +14,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc compileSemanticDeclarationsGalgas3
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @location inEndOfProjectSourceFile
   ?let @semanticDeclarationListAST inSemanticDeclarationList
@@ -84,6 +85,7 @@ proc compileSemanticDeclarationsGalgas3
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
     for () in sortedSemanticDeclarationListAST do
       [mSemanticDeclaration semanticAnalysis
+        !?ioUsefulEntitiesGraph
         !inProductDirectory
         !outSemanticContext
         !predefinedTypes

@@ -115,10 +115,15 @@ override method @overridingExtensionGetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingExtensionGetterAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = getterNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionGetterName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
@@ -161,6 +166,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !"object"
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
+    !nameForUsefullness
+    !?ioUsefulEntitiesGraph
     !analysisContext
     !mOverridingExtensionGetterFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)

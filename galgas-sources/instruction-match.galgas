@@ -145,6 +145,8 @@ override method @matchInstructionAST enterInstructionInSemanticContext ?!@unifie
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @matchInstructionAST analyzeSemanticInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
@@ -220,6 +222,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
   #--- Instruction list
     @semanticInstructionListForGeneration instructionList
     analyzeSemanticInstructionList (
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !localConstantList
       !@localInitializedVariableList.emptyList
@@ -234,6 +238,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #--- 'else' branch
   @semanticInstructionListForGeneration elseInstructionList
   analyzeSemanticInstructionList (
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList

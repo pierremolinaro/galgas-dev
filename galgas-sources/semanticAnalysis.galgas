@@ -93,6 +93,7 @@ proc checkReaderSignatures
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext unused inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -101,18 +102,23 @@ abstract method @semanticDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @predefinedTypeAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + mPredefinedTypeName
     !@primitiveTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mPredefinedTypeName !@location.here}}
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!mPredefinedTypeName !.here}}
       !mPredefinedTypeName
       !mKind}
     !""
-
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -169,6 +175,8 @@ proc buildLocalVariableMapAndSignature
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeRoutineBody
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalParameterListAST inRoutineSignatureAST
   ?let @localConstantList inLocalConstantList
@@ -178,7 +186,8 @@ proc analyzeRoutineBody
   ?let @semanticInstructionListAST inInstructionList
   ?let @location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
-  !@formalParameterListForGeneration outRoutineSignature {
+  !@formalParameterListForGeneration outRoutineSignature
+{
   var variableMap =@variableMap.emptyMap{}
 #--- Declare local constants
   for () in inLocalConstantList do
@@ -217,6 +226,8 @@ proc analyzeRoutineBody
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
       !?variableMap
@@ -229,10 +240,16 @@ proc analyzeRoutineBody
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   var formalArgumentList =@formalInputParameterListForGeneration {}
   for () in mFormalArgumentList do
     formalArgumentList +=
@@ -256,10 +273,16 @@ override method @externFunctionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   var formalArgumentList =@formalParameterListForGeneration {}
   for () in mFormalArgumentList do
     formalArgumentList +=
@@ -281,12 +304,16 @@ override method @externRoutineDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @routineDeclarationAST semanticAnalysis
+override method @procDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Instruction list
   var formalArgumentList =@formalParameterListForGeneration {}
   @semanticInstructionListForGeneration instructionList
@@ -297,6 +324,8 @@ override method @routineDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeRoutineBody (
+    !nameForUsefullness
+    !?ioUsefulEntitiesGraph
     !analysisContext
     !mFormalArgumentList
     !@localConstantList.emptyList
@@ -325,6 +354,8 @@ override method @routineDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeFunctionBody
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @formalInputParameterListAST inFunctionSignature
   ?let @typedPropertyList inTypedAttributeList
@@ -387,6 +418,8 @@ proc analyzeFunctionBody
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
       !?variableMap
@@ -399,10 +432,15 @@ proc analyzeFunctionBody
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @formalInputParameterListForGeneration formalInputParameterList
@@ -415,6 +453,8 @@ override method @functionDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
+    !nameForUsefullness
+    !?ioUsefulEntitiesGraph
     !analysisContext
     !mFormalArgumentList
     !@typedPropertyList.emptyList
@@ -445,10 +485,15 @@ override method @functionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @unifiedTypeMap-proxy returnType
@@ -460,6 +505,8 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
+    !nameForUsefullness
+    !?ioUsefulEntitiesGraph
     !analysisContext
     !@formalInputParameterListAST.emptyList
     !@typedPropertyList.emptyList
@@ -493,10 +540,15 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefullness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Get filewrapper features
   [inSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -570,11 +622,16 @@ override method @filewrapperDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentDeclarationAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Useful entities graph
+  let nameForUsefullness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#---
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?let @bool isPredefined
@@ -602,11 +659,16 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3SyntaxComponentAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
   let componentName = mSyntaxComponentName.string
+#--- Useful entities graph
+  let nameForUsefullness = syntaxNameForUsefulEntitiesGraph (!mSyntaxComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--------------------------------------- Build terminal map
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueName
@@ -624,6 +686,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   if @uint. errorCount == 0 then
     let lexiqueName = mLexiqueName.string
     semanticAnalysisOfSyntaxComponent (
+      !?ioUsefulEntitiesGraph
       !mNonterminalDeclarationList
       !mRuleList
       !componentName
@@ -646,6 +709,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3GrammarComponentAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
@@ -654,6 +718,9 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   if @application.verboseOutput then
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
+#--- Useful entities graph
+  let nameForUsefullness = grammarNameForUsefulEntitiesGraph (!mGrammarComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #---------------------------------------------------------- Parse syntax components
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = {}
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis ={}
@@ -824,171 +891,15 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#list @rowList {
-#  @2stringlist columns %setter # Node name, node definition
-#}
-#
-#setter @rowList append
-#  ?nodeDefinition:let @string inNodeDefinition
-#  ?row:let @uint inRow
-#  !nodeName:@string outNodeName
-#{
-#  var cols = [self columnsAtIndex !inRow]
-#  outNodeName = "p" + inRow + "-" + [cols length]
-#  cols += !outNodeName !inNodeDefinition
-#  [!?self setColumnsAtIndex !cols !inRow]
-#}
-#
-#setter @rowList appendEmpty
-#  ?row:let @uint inRow
-#{
-#  var cols = [self columnsAtIndex !inRow]
-#  cols += !"" !""
-#  [!?self setColumnsAtIndex !cols !inRow]
-#}
-#
-#setter @rowList appendEmpties
-#  ?row:let @uint inRow
-#  ?column:let @uint inColumn
-#{
-#  var cols = [self columnsAtIndex !inRow]
-#  if [cols length] < inColumn then
-#    for i in [cols length] ..< inColumn do
-#      cols += !"" !""
-#    end
-#  end
-#  [!?self setColumnsAtIndex !cols !inRow]
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#abstract method @abstractSyntaxInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-#  ?!@rowList ioRowList
-#  ?fromRow:let @uint inRow
-#  ?column:let @uint inColumn
-#  ?!node: @string ioCurrentNode
-#  ?!arrowStyle: @string ioArrowStyle
-#  ?!currentArrows:@string ioCurrentArrows
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#override method @terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-#  ?!@rowList ioRowList
-#  ?fromRow:let @uint inRow
-#  ?column:let @uint inColumn
-#  ?!node: @string ioCurrentNode
-#  ?!arrowStyle: @string ioArrowStyle
-#  ?!currentArrows:@string ioCurrentArrows
-#{
-#  [!?ioRowList append
-#    !nodeDefinition:"[terminal] {" + escapeForTex (!mTerminalSymbolName) + "}"
-#    !row:inRow
-#    ?nodeName:let nodeName
-#  ]
-#  ioCurrentArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
-#  ioCurrentNode = nodeName
-#  ioArrowStyle = "--"
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-#  ?!@rowList ioRowList
-#  ?fromRow:let @uint inRow
-#  ?column:let @uint inColumn
-#  ?!node: @string ioCurrentNode
-#  ?!arrowStyle: @string ioArrowStyle
-#  ?!currentArrows:@string ioCurrentArrows
-#{
-#  [!?ioRowList append
-#    !nodeDefinition:"[nonterminal] {" + escapeForTex (!mNonterminalSymbolName) + "}"
-#    !row:inRow
-#    ?nodeName:let nodeName
-#  ]
-#  ioCurrentArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
-#  ioCurrentNode = nodeName
-#  ioArrowStyle = "--"
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-#  ?!@rowList ioRowList
-#  ?fromRow:let @uint inRow
-#  ?column:let @uint inColumn
-#  ?!node: @string ioCurrentNode
-#  ?!arrowStyle: @string ioArrowStyle
-#  ?!currentArrows:@string ioCurrentArrows
-#{
-#  [!?ioRowList append
-#    !nodeDefinition:"[nonterminal] {repeat" + [mRepeatBranchList length] + "}"
-#    !row:inRow
-#    ?nodeName:let nodeName
-#  ]
-#  ioCurrentArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowStyle + " (" + nodeName + ") ;\n"
-#  ioCurrentNode = nodeName
-#  ioArrowStyle = "--"
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstruction
-#  ?!@rowList ioRowList
-#  ?fromRow:let @uint inRow
-#  ?column:let @uint inColumn
-#  ?!node: @string ioCurrentNode
-#  ?!arrowStyle: @string ioArrowStyle
-#  ?!currentArrows:@string ioArrows
-#{
-##--- Enter start point
-#  [!?ioRowList appendEmpties !row:inRow !column:inColumn]
-#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let startNodeName]
-##--- Add rows
-#  if [ioRowList length] < (inRow + [mSelectBranchList length]) then
-#    for i in [ioRowList length] ..< (inRow + [mSelectBranchList length]) do
-#      ioRowList += {!{}}
-#    end
-#  end
-##--- Enter branch zero
-#  var branches = mSelectBranchList
-#  [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
-#  for (instruction) in brancheZero do
-#    [instruction tikzNodeForSyntaxInstruction
-#      !?ioRowList
-#      !fromRow:inRow
-#      !?node:ioCurrentNode
-#      !?arrowStyle:ioArrowStyle
-#      !?currentArrows:ioArrows
-#    ]
-#  end
-##--- Enter following branches
-#  for branch in branches do (idx)
-#    var currentNode = startNodeName
-#    var arrowStyle = "|-"
-#    for (instruction) in branch.mSyntaxInstructionList do
-#      [instruction tikzNodeForSyntaxInstruction
-#        !?ioRowList
-#        !fromRow:inRow + idx + 1
-#        !?node:currentNode
-#        !?arrowStyle:arrowStyle
-#        !?currentArrows:ioArrows
-#      ]
-#    end
-#  end
-##--- Enter end point
-#  [!?ioRowList append !nodeDefinition:"[point] {}" !row:inRow ?nodeName:let endNodeName]
-#  [!?ioRowList appendEmpty !row:0]
-#  ioCurrentNode = endNodeName
-#  ioArrowStyle = "--"
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @lexiqueComponentAST semanticAnalysis
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+#--- Useful entities graph
+  let nameForUsefullness = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 #--------------------------------------- Build lexical routine map
@@ -1298,41 +1209,6 @@ func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefined
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    P E R F O R M     S E M A N T I C     A N A L Y S I S                                                             *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc performSemanticAnalysis
-  ?let @string inProductDirectory
-  ?let @semanticDeclarationListAST inDeclarationList
-  ?let @semanticContext inSemanticContext
-  !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration {
-#------ Check there is no undefined types
-  for () in [inSemanticContext.mTypeMap unsolvedProxyList] do
-    error mValue : "the '@" + mValue + "' type is undefined"
-  end
-#------ Create associated type (@TYPE:element) for lists, maps, ...
-  @semanticDeclarationListAST semanticDeclarationList = inDeclarationList
-  for () in inDeclarationList do
-    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
-  end
-#---
-  outDecoratedDeclarationListForGeneration = {}
-  if @uint.errorCount == 0 then
-    let @predefinedTypes predefinedTypes = buildPredefinedTypes (!inSemanticContext)
-    for () in semanticDeclarationList do
-      [mSemanticDeclaration semanticAnalysis
-        !inProductDirectory
-        !inSemanticContext
-        !predefinedTypes
-        !?outDecoratedDeclarationListForGeneration
-      ]
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    S Y N T A X    D E C L A R A T I O N S                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1498,6 +1374,8 @@ proc buildNonterminalDeclarationsMap
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap
@@ -1512,6 +1390,8 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool unused inHasTranslateFeature
   ?let @terminalMap unused inTerminalMap
@@ -1521,8 +1401,11 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?let @stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
-  ?!@uint unused ioSelectMethodCount {
+  ?!@uint unused ioSelectMethodCount
+{
   [self analyzeSemanticInstruction
+    !inCallerEntity
+    !?ioUsefulEntitiesGraph
     !inAnalysisContext
     !?ioInstructionListForGeneration
     !?ioVariableMap
@@ -1806,6 +1689,8 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeSyntaxInstructionList
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?let @terminalMap inTerminalMap
@@ -1824,6 +1709,8 @@ proc analyzeSyntaxInstructionList
 #--- Instruction list
   for () in inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature
       !inTerminalMap
@@ -1847,6 +1734,8 @@ proc analyzeSyntaxInstructionList
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfRuleLabel
+  ?let @lstring inCallerEntity
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @formalParameterListAST inFormalArguments
   ?let @syntaxInstructionList inSyntaxInstructionList
   ?let @analysisContext inAnalysisContext
@@ -1878,6 +1767,8 @@ proc semanticAnalysisOfRuleLabel
   var localVariableCppNameList =@stringlist {}
   for () in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
+      !inCallerEntity
+      !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !inHasTranslateFeature
       !inTerminalMap
@@ -1901,6 +1792,7 @@ proc semanticAnalysisOfRuleLabel
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfSyntaxComponent
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
   ?let @syntaxRuleListAST inRuleList
   ?let @string inComponentName
@@ -1911,7 +1803,8 @@ proc semanticAnalysisOfSyntaxComponent
   ?let @stringset inIndexNameSet
   ?let @bool inHasIndexing
   ?let @bool inHasTranslateFeature
-  !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration {
+  !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
+{
 #------------ Build nonterminal map
   var nonterminalMap =@nonterminalMap.emptyMap{}
   buildNonterminalDeclarationsMap (
@@ -1943,10 +1836,16 @@ proc semanticAnalysisOfSyntaxComponent
     !@unifiedTypeMap-proxy. null}
 #--- Rule list
   @uint selectMethodCount = 0
-  var ruleDeclarationList =@ruleDeclarationList {}
+  @ruleDeclarationList ruleDeclarationList = {}
   @uint newRuleIndex = 0
   for () in inRuleList do
-    var ruleLabelImplementationList =@ruleLabelImplementationList {}
+  #--- Useful entities graph
+    let nameForUsefullness = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
+    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefullness] then
+      [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+    end
+  #---
+    @ruleLabelImplementationList ruleLabelImplementationList = {}
     @uint localSelectMethodCount = selectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
     for () in mLabelList do
@@ -1955,6 +1854,8 @@ proc semanticAnalysisOfSyntaxComponent
       @formalParameterSignature signature
       @semanticInstructionListForGeneration instructionListForGeneration
       semanticAnalysisOfRuleLabel (
+        !nameForUsefullness
+        !?ioUsefulEntitiesGraph
         !mFormalArguments
         !mSyntaxInstructionList
         !analysisContext

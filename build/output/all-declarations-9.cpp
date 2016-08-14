@@ -311,6 +311,12 @@ GALGAS_fixitElementForGeneration GALGAS_fixitElementForGeneration::extractObject
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_checkEntityUsefulness ("galgas_cli_options",
+                                         "checkEntityUsefulness",
+                                         0,
+                                         "check-usefulness",
+                                         "Check Entity Usefulness") ;
+
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_check_5F_gmp ("galgas_cli_options",
                                          "check_gmp",
                                          0,
@@ -850,10 +856,10 @@ void routine_projectCreation (const GALGAS_string constinArgument_inProjectPath,
 void routine_enterTemplateString (GALGAS_templateInstructionListAST & ioArgument_outResultingInstructionList,
                                   C_Compiler * inCompiler
                                   COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_s_34658 = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 723)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s_34658.getter_length (SOURCE_FILE ("templateSyntax.galgas", 724)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_string var_s_34656 = GALGAS_string::constructor_retrieveAndResetTemplateString (inCompiler  COMMA_SOURCE_FILE ("templateSyntax.galgas", 722)) ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, var_s_34656.getter_length (SOURCE_FILE ("templateSyntax.galgas", 723)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s_34658  COMMA_SOURCE_FILE ("templateSyntax.galgas", 725))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 725)) ;
+    ioArgument_outResultingInstructionList.addAssign_operation (GALGAS_templateInstructionStringAST::constructor_new (var_s_34656  COMMA_SOURCE_FILE ("templateSyntax.galgas", 724))  COMMA_SOURCE_FILE ("templateSyntax.galgas", 724)) ;
   }
 }
 
