@@ -87,8 +87,8 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 {
-#  let usefullnessName = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
-#  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+#  let usefulnessName = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
+#  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   @nonterminalLabelMap labelMap
   [inNonterminalMap searchKey !mNonterminalName ?labelMap]

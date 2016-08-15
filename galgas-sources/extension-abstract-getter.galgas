@@ -112,8 +112,8 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefullness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterName)
+#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class

@@ -65,6 +65,8 @@ proc compileSemanticDeclarationsGalgas3
     !["galgas_builtin_options" nowhere]
     !options
   }
+  let galgas_builtin_optionsUsefulnessName = optionNameForUsefulEntitiesGraph (!["galgas_builtin_options" nowhere])
+  ioUsefulnessRootEntities += !galgas_builtin_optionsUsefulnessName
 #------ Build semantic context
   buildGalgas3SemanticContext (
     !semanticDeclarationListWithPredefinedTypes
@@ -94,49 +96,6 @@ proc compileSemanticDeclarationsGalgas3
       ]
     end
   end
-#------ 
-#  if @uint.errorCount == 0 then
-#    for (typeName) in [outSemanticContext.mTypeMap allKeyList] do
-#      let type = @unifiedTypeMap-proxy.searchKey {!outSemanticContext.mTypeMap !typeName}
-#      let usefullnessNameForType = typeNameForUsefulEntitiesGraph (!typeName)
-#      for aGetter in [type mGetterMap] do
-#        let usefullnessNameForGetter = getterNameForUsefulEntitiesGraph (![type key] !aGetter.lkey)
-#        switch [aGetter mQualifier]
-#        case isAbstract, isInherited :
-#        case isBasic, isBasicFinal :
-#          if [aGetter mKind] == .definedAsExtension then
-#            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForGetter]
-#          end
-#        case isOverriding, isOverridingAbstract :
-#          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForGetter]
-#        end
-#      end
-#      for aSetter in [type mSetterMap] do
-#        let usefullnessNameForSetter = setterNameForUsefulEntitiesGraph (![type key] !aSetter.lkey)
-#        switch [aSetter mQualifier]
-#        case isAbstract, isInherited :
-#        case isBasic, isBasicFinal :
-#          if [aSetter mKind] == .definedAsExtension then
-#            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForSetter]
-#          end
-#        case isOverriding, isOverridingAbstract :
-#          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForSetter]
-#        end
-#      end
-#      for aMethod in [type mInstanceMethodMap] do
-#        let usefullnessNameForMethod = methodNameForUsefulEntitiesGraph (![type key] !aMethod.lkey)
-#        switch [aMethod mQualifier]
-#        case isAbstract, isInherited :
-#        case isBasic, isBasicFinal :
-#          if [aMethod mKind] == .definedAsExtension then
-#            [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForMethod]
-#         end
-#        case isOverriding, isOverridingAbstract :
-#          [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForMethod]
-#        end
-#      end
-#    end
-#  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

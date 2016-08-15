@@ -113,8 +113,8 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefullness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterReturnedTypeName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterReturnedTypeName)
+#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type

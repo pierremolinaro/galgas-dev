@@ -223,8 +223,8 @@ override method @enumDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mEnumTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mEnumTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Constant list
   var constantList =@stringlist {}
   @enumConstantListForGeneration enumConstantListForGeneration = {}
@@ -234,8 +234,8 @@ override method @enumDeclarationAST semanticAnalysis
     @unifiedTypeMapProxyList associatedTypeList = {}
     @stringset associatedValueNameSet = {}
     for () in mAssociatedValueDefinitionList do
-      let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mValue0)
-      [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
+      let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mValue0)
+      [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
       let associatedTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mValue0}
       associatedTypeList += !associatedTypeProxy
       if [associatedValueNameSet hasKey !mValue1.string] then

@@ -214,12 +214,12 @@ override method @listmapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mListmapTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let associatedTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !associatedTypeNameForUsefullness]
-  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mListmapTypeName.string + "-element" !mListmapTypeName})
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mListmapTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mListmapTypeName.string + "-element" !mListmapTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
   [inSemanticContext.mTypeMap searchKey
     !mAssociatedListTypeName

@@ -212,10 +212,10 @@ override method @arrayDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mArrayTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mElementTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mArrayTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mElementTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   ioSemanticDeclarationListForGeneration +=
     !"array " + mArrayTypeName

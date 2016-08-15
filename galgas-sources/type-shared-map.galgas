@@ -722,10 +722,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
   var shadowMessage = ""
@@ -977,8 +977,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   @typedPropertyList typedAttributeList = {}
   @attributeIndexMap attributeMap = {}
   for () in mPropertyList do
-    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasGetter = true
