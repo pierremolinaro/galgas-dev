@@ -89,15 +89,15 @@ override method @abstractExtensionSetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractExtensionSetterAST semanticAnalysis
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = setterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionSetterName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+#  let nameForUsefullness = setterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionSetterName)
+#  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is an abstract class

@@ -994,7 +994,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 {
   var type = inType
   if mTypeName.string != "" then
-    type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   end
   if [type isNull] then
     error mTypeName : "cannot infer type" : outExpression
@@ -1011,7 +1011,8 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   #---
     outExpression = @defaultConstructorExpressionForGeneration.new {
       !type
-      !mTypeName.location}
+      !mTypeName.location
+    }
   end
 }
 
@@ -3694,12 +3695,15 @@ override method @collectionValueAST analyzeSemanticExpression
   elsif not [targetType mSupportCollectionValue] then
     error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
   else
+    let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
     if [mElementList length] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
-        !mTypeName.location}
+        !mTypeName.location
+      }
     else
-      var collectionValueElementListForGeneration = @collectionValueElementListForGeneration {}
+      @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
       for () in mElementList do
         [mElement analyze
           !inUsefulnessCallerEntityName
@@ -3713,12 +3717,11 @@ override method @collectionValueAST analyzeSemanticExpression
       outExpression = @expressionCollectionForGeneration.new {
         !targetType
         !mEndOfCollectionValue
-        !collectionValueElementListForGeneration}
+        !collectionValueElementListForGeneration
+      }
     end
   end
 #---
-  let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

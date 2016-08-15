@@ -32,7 +32,7 @@ before { #--- Print predefined lexical action
 
 before { #--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
-    updateLIBPMatPath ( ![option galgas_cli_options.extractLIBPMOption value] )
+    updateLIBPMatPath (![option galgas_cli_options.extractLIBPMOption value] )
   end  
 }
 
