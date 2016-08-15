@@ -70,12 +70,13 @@ Ce constructeur renvoie le nombre d'arguments de la ligne de commande.
 \subsectionConstructor{commandLineArgumentAtIndex}{application}
 
 \begin{galgasbox}
-constructor @application commandLineArgumentAtIndex ?@uint inIndex -> @string
+constructor @application commandLineArgumentAtIndex ?@uint inIndex
+  -> @string
 \end{galgasbox}
 
 Ce constructeur renvoie l'argument d'indice \ggs+inIndex+ de la ligne de commande. Les arguments sont indexés à partir de zéro, aussi la valeur de \ggs+inIndex+ doit être strictement inférieur à la valeur retournée par \ggs+@application.commandLineArgumentCount+. Une erreur d'exécution est déclenchée dans le cas contraire.
 
-À titre d'exemple, voici comment imprimer tous les arguments de la ligne de commande :
+À titre d'exemple, voici comment imprimer tous les arguments de la ligne de commande~:
 \begin{galgas}
 for idx in 0 ..< @application.commandLineArgumentCount do
   message "Argument " + idx + ": '"

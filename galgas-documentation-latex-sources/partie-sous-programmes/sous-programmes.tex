@@ -21,6 +21,7 @@ En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur u
 
 \begin{table}[t]
   \centering
+  \small
     \begin{tabular}{lll}
       \textbf{Sous-programme} & \textbf{Construction}  & \textbf{Référence} \\
       \emph{routine} & Instruction d'appel de routine & \refSectionPage{appelRoutine} \\
@@ -56,12 +57,13 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
 
 \begin{table}[t]
   \centering
+  \small
   \begin{tabular}{lll}
     \textbf{Argument formel  en entrée} & \textbf{Remarque} & \textbf{Paramètre effectif en sortie} \\
-    \ggs+?selector: @T variable+ & Variable (modifiable) & \ggs+!selector:expression+ \\
-    \ggs+?selector: @T unused variable+ & Variable inutilisée &  \\
-    \ggs+?selector: let @T constante+ & Constante & \\
-    \ggs+?selector: let @T unused constante+ & Constante inutilisée & \\
+    \ggs+?selector:@T variable+ & Variable (modifiable) & \ggs+!selector:expression+ \\
+    \ggs+?selector:@T unused variable+ & Variable inutilisée &  \\
+    \ggs+?selector:let @T constante+ & Constante & \\
+    \ggs+?selector:let @T unused constante+ & Constante inutilisée & \\
   \end{tabular}
   \caption{Argument formel en entrée, paramètre effectif en sortie}
   \labelTableau{ArgumentFormelEntree}
@@ -75,10 +77,12 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
 
 \begin{table}[t]
   \centering
+  \small
   \begin{tabular}{lll}
-    \textbf{Argument formel en entrée/sortie} & \textbf{Paramètre effectif en sortie/entrée} & \textbf{Remarque}\\
-    \ggs+?!selector: @T variable+ & \ggs+!?selector:cible+ & \\
-    \ggs+?!selector: @T unused variable+ & \ggs+!?selector:*+ & Variable anonyme\\
+    \textbf{Argument formel en entrée/sortie} & \textbf{Paramètre effectif} & \textbf{Remarque}\\
+                                              & \textbf{en sortie/entrée} & \\
+    \ggs+?!selector:@T variable+ & \ggs+!?selector:cible+ & \\
+    \ggs+?!selector:@T unused variable+ & \ggs+!?selector:*+ & Variable anonyme\\
     & \ggs+!?n*+ & $n$ variables anonymes\\
   \end{tabular}
   \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
@@ -90,6 +94,7 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
 
 \begin{table}[t]
   \centering
+  \small
     \begin{tabular}{lll}
       \textbf{Argument formel en sortie} & \textbf{Paramètre effectif en entrée} & \textbf{Remarque} \\
         \ggs+!selector:@T variable+ & \ggs+?selector:variable+ & Affectation \\
