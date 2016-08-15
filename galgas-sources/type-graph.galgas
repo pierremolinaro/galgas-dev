@@ -288,13 +288,13 @@ override method @graphDeclarationAST enterInSemanticContext
     !returnedTypeName:mGraphTypeName.string
     !true # has compiler argument
   )
-#--- Getter 'accessibleNodesFromNodes'
-  enterBaseGetterWithArgument (
+#--- Getter 'accessibleNodesFrom'
+  enterBaseGetterWith2Arguments (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"accessibleNodesFromNodes"
-    !"lstringlist"
-    !"inStartNodeStringList"
+    !"accessibleNodesFrom"
+    !"lstringlist" !"inStartNodeStringList"
+    !"stringset" !"inNodesToExclude"
     !returnedTypeName:"lstringlist"
     !true # has compiler argument
   )

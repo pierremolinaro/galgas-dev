@@ -127,14 +127,15 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
+GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GALGAS_lstringlist & inStartKeyList,
+                                        %!^%const GALGAS_stringset & inNodesToExclude,
                                         %!^%C_Compiler * inCompiler
                                         %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   GALGAS_%!TYPE_IDENTIFIER% resultingGraph ;
   subGraph (resultingGraph,
             inStartKeyList,
-            GALGAS_stringset::constructor_emptySet (HERE),
+            inNodesToExclude,
             inCompiler
             COMMA_THERE) ;
   if (resultingGraph.isValid ()) {

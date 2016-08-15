@@ -4248,9 +4248,12 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
     "\n"
     "GALGAS_lstringlist GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << "::getter_accessibleNodesFromNodes (" ;
+  result << "::getter_accessibleNodesFrom (" ;
   columnMarker = result.currentColumn () ;
   result << "const GALGAS_lstringlist & inStartKeyList,\n"
+    "                                        " ;
+  result.appendSpacesUntilColumn (columnMarker) ;
+  result << "const GALGAS_stringset & inNodesToExclude,\n"
     "                                        " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "C_Compiler * inCompiler\n"
@@ -4263,7 +4266,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplem
   result << " resultingGraph ;\n"
     "  subGraph (resultingGraph,\n"
     "            inStartKeyList,\n"
-    "            GALGAS_stringset::constructor_emptySet (HERE),\n"
+    "            inNodesToExclude,\n"
     "            inCompiler\n"
     "            COMMA_THERE) ;\n"
     "  if (resultingGraph.isValid ()) {\n"

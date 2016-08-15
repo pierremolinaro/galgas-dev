@@ -26,7 +26,7 @@ proc checkUsefulEntities
   ?let @lstringlist inRootEntities
   ?let @string inProductDirectory
 {
-  if [option galgas_cli_options.checkEntityUsefulness value] then
+  if [option galgas_cli_options.checkEntityUsefulness value] && (@uint.errorCount == 0) then
     let helperDirectory = inProductDirectory + "/../usefulness"
     let helperFile = helperDirectory + "/useful-entity-graph.dot"
     let s = [inUsefulEntitiesGraph graphviz]
@@ -42,7 +42,7 @@ proc checkUsefulEntities
       error .nowhere : s
     else
     #--- No undefined node, compute usefull entities
-      let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFromNodes !inRootEntities]
+      let usefullEntityList = [inUsefulEntitiesGraph accessibleNodesFrom !inRootEntities !{}]
       let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
       let allEntitySet = @stringset.setWithStringList {![inUsefulEntitiesGraph keyList]}
       let unusedEntities = allEntitySet - usefullEntitySet
