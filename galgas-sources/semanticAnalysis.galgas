@@ -593,7 +593,13 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !inSemanticContext
         !inPredefinedTypes
         !templateVariableMap}
-      templateInstructionListAnalysis ( !templateAnalysisContext !resultingInstructionList !?templateInstructionListForGeneration )
+      templateInstructionListAnalysis (
+        !nameForUsefulness
+        !?ioUsefulEntitiesGraph
+        !templateAnalysisContext
+        !resultingInstructionList
+        !?templateInstructionListForGeneration
+      )
     #--- Enter in generation list
       filewrapperTemplateListForGeneration +=
         ![mFilewrapperTemplateName string]

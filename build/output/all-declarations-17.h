@@ -730,8 +730,10 @@ class cPtr_templateInstructionSwitchForGeneration : public cPtr_templateInstruct
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_templateExpressionAST_templateExpressionAnalysis) (const class cPtr_templateExpressionAST * inObject,
-                                                                                           const class GALGAS_templateAnalysisContext constinArgument0,
-                                                                                           class GALGAS_semanticExpressionForGeneration & outArgument1,
+                                                                                           const class GALGAS_lstring constinArgument0,
+                                                                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                           const class GALGAS_templateAnalysisContext constinArgument2,
+                                                                                           class GALGAS_semanticExpressionForGeneration & outArgument3,
                                                                                            class C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) ;
 
@@ -743,6 +745,8 @@ void enterExtensionMethod_templateExpressionAnalysis (const int32_t inClassIndex
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_templateExpressionAnalysis (const class cPtr_templateExpressionAST * inObject,
+                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                      C_Compiler * inCompiler

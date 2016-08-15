@@ -269,9 +269,11 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_templateInstructionListAnalysis (const class GALGAS_templateAnalysisContext constinArgument0,
-                                              const class GALGAS_templateInstructionListAST constinArgument1,
-                                              class GALGAS_templateInstructionListForGeneration & ioArgument2,
+void routine_templateInstructionListAnalysis (const class GALGAS_lstring constinArgument0,
+                                              class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                              const class GALGAS_templateAnalysisContext constinArgument2,
+                                              const class GALGAS_templateInstructionListAST constinArgument3,
+                                              class GALGAS_templateInstructionListForGeneration & ioArgument4,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
@@ -282,8 +284,10 @@ void routine_templateInstructionListAnalysis (const class GALGAS_templateAnalysi
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis) (const class cPtr_templateInstructionAST * inObject,
-                                                                                             const class GALGAS_templateAnalysisContext constinArgument0,
-                                                                                             class GALGAS_templateInstructionListForGeneration & ioArgument1,
+                                                                                             const class GALGAS_lstring constinArgument0,
+                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                             const class GALGAS_templateAnalysisContext constinArgument2,
+                                                                                             class GALGAS_templateInstructionListForGeneration & ioArgument3,
                                                                                              class C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -295,6 +299,8 @@ void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassInde
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateInstructionAST * inObject,
+                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                       GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
                                                       C_Compiler * inCompiler

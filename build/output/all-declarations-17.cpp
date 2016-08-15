@@ -13575,6 +13575,8 @@ C_PrologueEpilogue gMethod_templateExpressionAST_templateExpressionAnalysis (NUL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
+                                                     const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                     GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                      GALGAS_semanticExpressionForGeneration & out_outExpression,
                                                      C_Compiler * inCompiler
@@ -13603,7 +13605,7 @@ void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressi
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -13637,6 +13639,8 @@ C_PrologueEpilogue gMethod_templateInstructionAST_templateInstructionAnalysis (N
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
+                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                                       const GALGAS_templateAnalysisContext constin_inAnalysisContext,
                                                       GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
                                                       C_Compiler * inCompiler
@@ -13664,7 +13668,7 @@ void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstruc
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
     }
   }
 }
