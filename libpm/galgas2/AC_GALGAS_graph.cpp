@@ -544,8 +544,22 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     }
     enumerator2.gotoNextObject () ;
   }
+//--- Build node names
+  #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
+    TC_UniqueArray <C_String> nodeNames ;
+    for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+      const cGraphNode * nodePtr = mNodeArray (i COMMA_THERE) ;
+      nodeNames.addObject (nodePtr->mKey) ;
+    }
+  #endif
 //--- Build sub graph
-  const C_DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (startNodeSet, nodesToExcludeSet) ;
+  const C_DirectedGraph theSubGraph = mDirectedGraph.subGraphFromNodes (
+    startNodeSet,
+    #ifdef USE_NODE_NAMES_WITH_SUBGRAPH_COMPUTATION
+      nodeNames,
+    #endif
+    nodesToExcludeSet
+  ) ;
 //--- Enter nodes
   TC_UniqueArray <uint32_t> nodeArray ; theSubGraph.getNodeValueArray (nodeArray) ;
   for (int32_t i=0 ; i<nodeArray.count () ; i++) {
@@ -553,6 +567,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_string = nodePtr->mKey ;
+    // printf ("ADDING %s\n", nodePtr->mKey.cString (HERE)) ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
     outResultingGraph.internalAddNode (lkey,
                                        "subgraphFromNodes Internal error",

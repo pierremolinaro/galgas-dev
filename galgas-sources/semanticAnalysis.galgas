@@ -739,6 +739,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       ?let @syntaxRuleListAST ruleList
       ?let @bool hasTranslateFeature
     ]
+    let lexiqueNameForUsefullness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
+    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefullness !lexiqueNameForUsefullness]
   #--- Check translate feature
     if mHasTranslateFeature & not hasTranslateFeature then
       error syntaxComponentName : "as '" + mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
@@ -1246,14 +1248,6 @@ list @ruleDeclarationList {
   @string mNonterminalName
   @uint mRuleIndex
   @ruleLabelImplementationList mLabelImplementationList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @syntaxListForGeneration {
-  @galgas3SyntaxComponentListAST-element mSyntaxComponentRoot
-  @syntaxDeclarationForGeneration mSyntaxGeneration
-  @bool mHasIndexing
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

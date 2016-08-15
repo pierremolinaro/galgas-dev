@@ -34,13 +34,6 @@ list @unifiedTypeMapProxyList {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-list @unifiedTypeMapProxyAndParameterList {
-  @unifiedTypeMap-proxy mType
-  @string mFormalArgumentName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #  C O N S T R U C T O R    M A P                                                                                      *
 #                                                                                                                      *

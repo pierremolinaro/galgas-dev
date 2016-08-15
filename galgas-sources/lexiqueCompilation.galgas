@@ -746,16 +746,4 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                         compileLexiqueComponentGalgas3                                                               *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @lexiqueComponentGenerationList {
-  @string mLexiqueComponentName
-  @string mCppHeaderContents
-  @string mCppContents
-  @string mCocoaHeaderContents
-  @string mCocoaContents
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 

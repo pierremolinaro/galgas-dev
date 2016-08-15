@@ -245,28 +245,6 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
     !hasCompilerArgument}
 }
 
-#·····················································································································*
-
-private func checksetterImplementationInSuperClasses
-  ?let @lstring inSetterName
-  ?let @unifiedTypeMap-proxy inSuperClass
-  -> @string outResult {
-  if [inSuperClass isNull] then
-    outResult = ""
-  else
-    @methodQualifier qualifier
-    [[inSuperClass mSetterMap] searchKey !inSetterName ?3* ?qualifier ?*]
-    switch qualifier
-    case isAbstract :
-      outResult = ""
-    case isBasic, isBasicFinal, isOverriding : # Ok
-      outResult = [inSuperClass key]
-    case isInherited, isOverridingAbstract :
-      outResult = checksetterImplementationInSuperClasses (!inSetterName ![inSuperClass mSuperType])
-    end
-  end
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 #! GENERATION
 #----------------------------------------------------------------------------------------------------------------------*

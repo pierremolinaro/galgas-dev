@@ -17,7 +17,9 @@
 
 private proc appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?let @string inElementTypeName {
+  ?let @string inElementTypeName
+  ?!@lstringlist ioUsefulnessRootEntities 
+ {
   var attributeList =@propertyInCollectionListAST {}
   var attributeFeatureList =@lstringlist {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
@@ -28,13 +30,17 @@ private proc appendPredefinedListTypeAST
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!inElementTypeName + "list" !@location.here}
-    !attributeList}
+    !attributeList
+  }
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !inElementTypeName + "list")
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 private proc appendPredefined2StringListTypeAST
-  ?!@semanticDeclarationListAST ioDeclarationListASTs {
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ?!@lstringlist ioUsefulnessRootEntities 
+{
   var attributeList =@propertyInCollectionListAST {}
   var attributeFeatureList =@lstringlist {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
@@ -50,15 +56,19 @@ private proc appendPredefined2StringListTypeAST
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!"2stringlist" !@location.here}
-    !attributeList}
+    !attributeList
+  }
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2stringlist")
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 private proc appendPredefined2LStringListTypeAST
-  ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  var attributeList =@propertyInCollectionListAST {}
-  var attributeFeatureList =@lstringlist {}
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ?!@lstringlist ioUsefulnessRootEntities 
+{
+  @propertyInCollectionListAST attributeList = {}
+  @lstringlist attributeFeatureList = {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!"lstring" !@location.here}
@@ -72,14 +82,18 @@ private proc appendPredefined2LStringListTypeAST
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!"2lstringlist" !@location.here}
-    !attributeList}
+    !attributeList
+  }
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2lstringlist")
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 private proc appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
-  ?let @string inElementTypeName {
+  ?let @string inElementTypeName
+  ?!@lstringlist ioUsefulnessRootEntities 
+{
   var featureList =@lstringlist {}
   var attributeList =@propertyInCollectionListAST {}
   attributeList += 
@@ -94,13 +108,16 @@ private proc appendStructASTForTypeWithLocation
     !true # Is prefined
     !@lstring.new {!"l" + inElementTypeName !@location.here}
     !attributeList
-    !""}
+    !""
+  }
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 private proc appendStructASTForRangeType
   ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ?!@lstringlist ioUsefulnessRootEntities 
 {
   @propertyInCollectionListAST attributeList = {}
   attributeList +=
@@ -117,297 +134,86 @@ private proc appendStructASTForRangeType
     !attributeList
     !"uint"
   }
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"range")
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+private proc insertInUsefulnessEntities ?!@lstringlist ioUsefulnessRootEntities ?let @string inTypeName {
+  let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{!inTypeName !.nowhere})
+  ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
+  ?!@lstringlist ioUsefulnessRootEntities 
 {
   ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !.predefined_application}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"application")
   ioDeclarationListASTs += !@bigintPredefinedTypeAST.new {!true !"bigint" !.predefined_bigint}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"bigint")
   ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !.predefined_binaryset}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"binaryset")
   ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !.predefined_bool}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"bool")
   ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !.predefined_char}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"char")
   ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !.predefined_data}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"data")
   ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !.predefined_double}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"double")
   ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !.predefined_filewrapper}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"filewrapper")
   ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !.predefined_function}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"function")
   ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !.predefined_location}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"location")
   ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !.predefined_object}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"object")
   ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!true !"sint" !.predefined_sint}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"sint")
   ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!true !"sint64" !.predefined_sint64}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"sint64")
   ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!true !"string" !.predefined_string}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"string")
   ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!true !"stringset" !.predefined_stringset}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"stringset")
   ioDeclarationListASTs += !@timerPredefinedTypeAST.new {!true !"timer" !.predefined_timer}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"timer")
   ioDeclarationListASTs += !@typePredefinedTypeAST.new {!true !"type" !.predefined_type}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"type")
   ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !.predefined_uint}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"uint")
   ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !.predefined_uint64}
+  insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"uint64")
 
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"luint" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lstring" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"object" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"string" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint64" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"bigint" )
-  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lbigint" )
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"function" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"luint" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lstring" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"object" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"string" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"type" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"uint64" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"bigint" !?ioUsefulnessRootEntities)
+  appendPredefinedListTypeAST (!?ioDeclarationListASTs !"lbigint" !?ioUsefulnessRootEntities)
 
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bool" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"char" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"double" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint64" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"string" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint" )
-  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" )
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bool" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"bigint" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"char" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"double" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"sint64" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"string" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint" !?ioUsefulnessRootEntities)
+  appendStructASTForTypeWithLocation (!?ioDeclarationListASTs !"uint64" !?ioUsefulnessRootEntities)
 
-  appendPredefined2StringListTypeAST (!?ioDeclarationListASTs )
-  appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs )
+  appendPredefined2StringListTypeAST (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
+  appendPredefined2LStringListTypeAST (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 
-  appendStructASTForRangeType (!?ioDeclarationListASTs )
-#--- Enumeration predefined type (used only for testing type generation)
-#  @lstringlist constantList [emptyList] ;
-#  constantList += ![@lstring new !"zero" !here] ;
-#  constantList += ![@lstring new !"un" !here] ;
-#  constantList += ![@lstring new !"deux" !here] ;
-#  @enumMessageAssociationListAST enumMessageAssociationListAST [emptyList] ;
-#  enumMessageAssociationListAST += ![@lstring new !"deux" !here] ![@lstring new !"message deux" !here] ;
-#  enumMessageAssociationListAST += ![@lstring new !"un" !here] ![@lstring new !"message un" !here] ;
-#  enumMessageAssociationListAST += ![@lstring new !"zero" !here] ![@lstring new !"message zero" !here]  ;
-#  @enumMessageListAST enumMessageListAST [emptyList] ;
-#  enumMessageListAST += ![@lstring new !"test" !here] !enumMessageAssociationListAST ;
-#  ioDeclarationListASTs += ![@enumDeclarationAST new
-#    ![@lstring new !"0enum" !here]
-#    !constantList
-#    !enumMessageListAST
-#  ] ;
-
-#--- Sorted list predefined type (used only for testing type generation)
-#  @propertyInCollectionListAST sortedListAttributeList [emptyList] ;
-#  sortedListAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
-#  sortedListAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
-#  sortedListAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
-#  @sortedListSortDescriptorListAST sortDescriptorList [emptyList] ;
-#  sortDescriptorList += ![@lstring new !"mThird" !here] !true ;
-#  sortDescriptorList += ![@lstring new !"mFirst" !here] !false ;
-#  ioDeclarationListASTs += ![@sortedListDeclarationAST new
-#    ![@lstring new !"0sortedlist" !here]
-#    !sortedListAttributeList
-#    !sortDescriptorList
-#  ] ;
-
-#--- Map predefined type (used only for testing type generation)
-#  @propertyInCollectionListAST mapAttributeList [emptyList] ;
-#  mapAttributeList += ![@lstring new !"uint" !here] ![@lstring new !"mFirst" !here] ;
-#  mapAttributeList += ![@lstring new !"char" !here]  ![@lstring new !"mSecond" !here] ;
-#  mapAttributeList += ![@lstring new !"string" !here]  ![@lstring new !"mThird" !here] ;
-#  @insertMethodListAST insertMethodList [emptyList] ;
-#  insertMethodList +=
-#    ![@lstring new !"insert" !here]
-#    ![@lstring new !"insert error message" !here]
-#    ![@lstring new !"shadow error message" !here]
-#    ![@lstring new !"" !here]
-#  ;
-#  @mapSearchMethodListAST mapSearchMethodListAST [emptyList] ;
-#  mapSearchMethodListAST +=
-#    ![@lstring new !"search" !here]
-#    ![@lstring new !"search error message" !here]
-#    ![@lstring new !"" !here]
-#  ;
-#  @mapRemoveMethodListAST mapRemoveMethodListAST [emptyList] ;
-#  mapRemoveMethodListAST +=
-#    ![@lstring new !"remove" !here]
-#    ![@lstring new !"remove error message" !here]
-#  ;
-#  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [listWithValue !here] ;
-#  ioDeclarationListASTs += ![@mapDeclarationAST new
-#    ![@lstring new !"0map" !here]
-#    !mapAttributeList
-#    !insertMethodList
-#    !mapSearchMethodListAST
-#    !mapRemoveMethodListAST
-#    !insertOrReplaceDeclarationListAST
-#    ![@mapStateList emptyList]
-#  ] ;
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc printFeaturesOfType
-  ?let @string inTypeName
-  ?let @typeKindEnum inTypeKindEnum
-  ?let @typedPropertyList inAllTypedAttributeList
-  ?let @constructorMap inConstructorMap
-  ?let @getterMap inGetterMap
-  ?let @setterMap inSetterMap
-  ?let @instanceMethodMap inInstanceMethodMap
-  ?let @classMethodMap inClassMethodMap
-  ?let @uint inHandledOperatorFlags
-  ?let @unifiedTypeMapProxyAndParameterList inAddAssignOperatorArguments {
-  @string s = "Features of @" + inTypeName + " type:\n"
-  s += " - kind: " + [inTypeKindEnum kind] +";\n"
-#---
-  for () in inAllTypedAttributeList
-  before
-    s += " - attribute(s):\n"
-  do
-    s += "    @" + [mAttributeTypeProxy key] + " " + mAttributeName + "\n"
-  end
-#---
-  for () in inConstructorMap
-  before
-    s += " - constructor(s):\n"
-  do
-    s += "    " + lkey
-    for () in mArgumentTypeList do
-      s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
-    end
-    s += " -> @" + [mReturnedType key] + "\n"
-  end
-#---
-  for () in inGetterMap
-  before
-    s += " - getters(s):\n"
-  do
-    s += "    " + lkey
-    for () in mArgumentTypeList do
-      s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
-    end
-    s += " -> @" + [mReturnedType key] + "\n"
-  end
-#---
-  for () in inSetterMap
-  before
-    s += " - setter(s):\n"
-  do
-    s += "    " + lkey
-    for () in mParameterList do
-      s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
-    end
-    s += "\n"
-  end
-#---
-  for () in inInstanceMethodMap
-  before
-    s += " - method(s):\n"
-  do
-    s += "    " + lkey
-    for () in mParameterList do
-      s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
-    end
-    s += "\n"
-  end
-#---
-  for () in inClassMethodMap
-  before
-    s += " - type proc(s):\n"
-  do
-    s += "    " + lkey
-    for () in mParameterList do
-      s += " " + [mFormalArgumentPassingMode string] + "@" + [mFormalArgumentType key]
-    end
-    s += "\n"
-  end
-#---
-  s += " - operators(s):\n"
-  if (inHandledOperatorFlags & infixAddOperator ()) != 0 then
-    s += "    @" + inTypeName + " + @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixAddOperatorNoOVF ()) != 0 then
-    s += "    @" + inTypeName + " &+ @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixSubOperator ()) != 0 then
-    s += "    @" + inTypeName + " - @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixSubOperatorNoOVF ()) != 0 then
-    s += "    @" + inTypeName + " &- @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixMulOperator ()) != 0 then
-    s += "    @" + inTypeName + " * @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixMulOperatorNoOVF ()) != 0 then
-    s += "    @" + inTypeName + " &* @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixDivOperator ()) != 0 then
-    s += "    @" + inTypeName + " / @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixDivOperatorNoOVF ()) != 0 then
-    s += "    @" + inTypeName + " &/ @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixModOperator ()) != 0 then
-    s += "    @" + inTypeName + " mod @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixAndOperator ()) != 0 then
-    s += "    @" + inTypeName + " & @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixOrOperator ()) != 0 then
-    s += "    @" + inTypeName + " | @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixXorOperator ()) != 0 then
-    s += "    @" + inTypeName + " ^ @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & infixShiftOperator ()) != 0 then
-    s += "    @" + inTypeName + " >> @uint -> @" + inTypeName + "\n"
-    s += "    @" + inTypeName + " << @uint -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & prefixPlusOperator ()) != 0 then
-    s += "    + @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & prefixMinusOperator ()) != 0 then
-    s += "    - @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & prefixMinusOperatorNoOVF ()) != 0 then
-    s += "    &- @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & prefixTildeOperator ()) != 0 then
-    s += "    ~ @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & prefixNotOperator ()) != 0 then
-    s += "    not @" + inTypeName + " -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & incDecOperator ()) != 0 then
-    s += "    @" + inTypeName + " ++ -> @" + inTypeName + "\n"
-    s += "    @" + inTypeName + " -- -> @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & incDecOperatorNoOVF ()) != 0 then
-    s += "    @" + inTypeName + " &++ -> @" + inTypeName + "\n"
-    s += "    @" + inTypeName + " &-- -> @" + inTypeName + "\n"
-  end
-  for () in inAddAssignOperatorArguments
-  before
-    s += "    @" + inTypeName + " +="
-  do
-    s += " !@" + [mType key]
-  after
-    s += "\n"
-  end
-  if (inHandledOperatorFlags & plusEqualOperatorWithExpression ()) != 0 then
-    s += "    @" + inTypeName + " .= @" + inTypeName + "\n"
-  end
-  if (inHandledOperatorFlags & isComparable ()) != 0 then
-    s += "    @" + inTypeName + " <  @" + inTypeName + " -> @bool\n"
-    s += "    @" + inTypeName + " <= @" + inTypeName + " -> @bool\n"
-    s += "    @" + inTypeName + " >  @" + inTypeName + " -> @bool\n"
-    s += "    @" + inTypeName + " >= @" + inTypeName + " -> @bool\n"
-  end
-  s += "    @" + inTypeName + " =  @" + inTypeName + " -> @bool\n"
-  s += "    @" + inTypeName + " != @" + inTypeName + " -> @bool\n"
-#---
-  if (inHandledOperatorFlags & supportWithAccessor ()) != 0 then
-    s += " - 'with' accessor\n"
-  end
-#  foreach inWithAccessorMap
-#  before
-#    s .= " - 'with' accessor method(s):\n" ;
-#  do
-#    s .= "    " . lkey . "?@" . [mArgumentType key] . "\n" ;
-#  end foreach ;
-#---
-  message s
+  appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

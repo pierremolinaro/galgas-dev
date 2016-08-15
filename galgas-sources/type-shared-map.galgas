@@ -724,6 +724,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
   var shadowMessage = ""

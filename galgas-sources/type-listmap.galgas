@@ -228,7 +228,7 @@ override method @listmapDeclarationAST semanticAnalysis
     ?20*
   ]
 #---
-  if typeKindEnum != @typeKindEnum. listType then
+  if typeKindEnum != .listType then
     error mAssociatedListTypeName : "associated type should be a list type"
   end
 #---

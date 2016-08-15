@@ -83,6 +83,8 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = methodNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionMethodName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let typeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class

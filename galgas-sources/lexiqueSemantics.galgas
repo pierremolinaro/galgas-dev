@@ -2,12 +2,6 @@
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @lexicalTypeList {
-  @lexicalTypeEnum mLexicalType 
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @terminalList {
   @lstring mTerminalName
   @lexicalSentValueList mSentAttributeList

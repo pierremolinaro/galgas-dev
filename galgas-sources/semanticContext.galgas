@@ -182,18 +182,6 @@ map @optionComponentMapForSemanticAnalysis {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-
-map @optionMapForSemanticAnalysis {
-  @unifiedTypeMap-proxy mOptionType
-  @char mOptionChar
-  @string mOptionString
-  @string mComment
-  @string mDefaultValue
-  insert insertKey error message "the '%K' command line option has been already declared in %L"
-  search searchKey error message "the '%K' command line option is not declared"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #  L E X I Q U E   M A P                                                                                               *
 #                                                                                                                      *
@@ -1200,73 +1188,3 @@ method @semanticDeclarationAST addAssociatedElement
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#    B U I L D    S E M A N T I C    C O N T E X T                                                                     *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc buildSemanticContext
-  ?let @semanticDeclarationListAST inSemanticDeclarationList
-  !@semanticContext outSemanticContext
-{
-#------ Create associated type (@TYPE.element) for lists, maps, ...
-  @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
-  for () in inSemanticDeclarationList do
-    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
-  end
-#------ Build ordered types list, so that
-#  - a class appears after its super class
-#  - a map index appears after its associated map
-#  - a list map appears after its associated list
-  var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
-  var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
-  var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
-  var extensionSetterMapForBuildingContext = @extensionSetterMapForBuildingContext.emptyMap{}
-  var extensionOverrideDefinitionList = @semanticDeclarationListAST {}
-  for () in semanticDeclarationList do
-    [mSemanticDeclaration enterDeclarationInGraph
-      !?semanticTypePrecedenceGraph
-      !?extensionMethodMapForBuildingContext
-      !?extensionGetterMapForBuildingContext
-      !?extensionSetterMapForBuildingContext
-      !?extensionOverrideDefinitionList
-    ]  
-  end
-  if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
-    outSemanticContext = @semanticContext.default
-    for () in [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
-      error mValue : "the '" + mValue + "' type is not defined" : outSemanticContext
-    end
-  else
-    [semanticTypePrecedenceGraph topologicalSort
-      ?var @semanticDeclarationListAST sortedSemanticDeclarationListAST
-      ?*
-      ?var @semanticDeclarationListAST unsortedSemanticDeclarationListAST
-      ?var @lstringlist unsortedNodeKeyList
-    ]
-    if [unsortedSemanticDeclarationListAST length] > 0 then
-      @string s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
-      for () in unsortedSemanticDeclarationListAST do
-        s += "\n-  " + [mSemanticDeclaration keyRepresentation]
-      end
-      error ["" nowhere] : s : outSemanticContext
-    else
-    #--- Add extension override
-      sortedSemanticDeclarationListAST += extensionOverrideDefinitionList
-    #--- Build initial semantic context
-      outSemanticContext = @semanticContext.default
-    #--- Loop throught all declarations
-      for () in sortedSemanticDeclarationListAST do
-        [mSemanticDeclaration enterInSemanticContext
-          !extensionMethodMapForBuildingContext
-          !extensionGetterMapForBuildingContext
-          !extensionSetterMapForBuildingContext
-          !?outSemanticContext
-        ]
-      end
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-

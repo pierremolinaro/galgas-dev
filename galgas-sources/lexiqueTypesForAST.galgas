@@ -440,23 +440,6 @@ class @lexiqueComponentAST : @semanticDeclarationAST {
   @lstring mIndexingDirectory
 }
 
-list @galgas3LexiqueComponentListAST {
-  @lstring mLexiqueComponentName
-  @bool mIsTemplate
-  @metamodelTemplateDelimitorListAST mTemplateDelimitorList
-  @templateReplacementListAST mTemplateReplacementList
-  @lexicalAttributeListAST mLexicalAttributeList
-  @lexicalStyleListAST mLexicalStyleList
-  @terminalDeclarationListAST mTerminalDeclarationList
-  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
-  @lexicalListDeclarationListAST mLexicalListDeclarationList
-  @lexicalRuleListAST mLexicalRuleList
-  @externRoutineListAST mExternRoutineList
-  @externFunctionListAST mExternFunctionList
-  @indexingListAST mIndexingListAST
-  @lstring mIndexingDirectory
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #           B U I L D    T E R M I N A L    M A P                                                                      *
@@ -546,44 +529,6 @@ proc buildLexicalAttributeMap
         m += ","
       end
       error mTypeName: m
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc buildTerminalMap
-  ?let @galgas3LexiqueComponentListAST-element inLexiqueComponentRoot
-  !@terminalMap outTerminalMap {
-#--------------------------------------- Build lexical attribute map
-  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
-  @lexicalAttributeMap lexicalAttributeMap = {}
-  buildLexicalAttributeMap (
-   !lexicalTypeMap
-   !inLexiqueComponentRoot.mLexicalAttributeList
-   !?lexicalAttributeMap
-  )
-#--------------------------------------- 
-  outTerminalMap = @terminalMap. emptyMap
-  for () in [inLexiqueComponentRoot mTerminalDeclarationList] do
-    var argumentTypeList =@lexicalSentValueList {}
-    for () in mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType
-      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
-    end
-    [!?outTerminalMap insertKey !mName !argumentTypeList]
-  end
-#---
-  for () in [inLexiqueComponentRoot mLexicalListDeclarationList] do
-    var argumentTypeList =@lexicalSentValueList {}
-    for () in mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType
-      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
-      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
-    end
-    for () in mEntryList do
-      [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
     end
   end
 }

@@ -195,8 +195,8 @@ override method @structDeclarationAST semanticAnalysis
   if [mAttributeList length] == 0 then
     error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
   end
-  var typedAttributeList =@typedPropertyList {}
-  var attributeMap =@attributeIndexMap.emptyMap{}
+  @typedPropertyList typedAttributeList = {}
+  @attributeIndexMap attributeMap = {}
   for () in mAttributeList do
     let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefullness !propertyTypeNameForUsefullness]
@@ -204,8 +204,8 @@ override method @structDeclarationAST semanticAnalysis
     for () in mFeatureList do
       error mValue : "a struct attribute does not accept any feature"
     end
-    let @bool hasSetter = false
-    let @bool hasGetter = false
+    let hasSetter = false
+    let hasGetter = false
     typedAttributeList +=
       !t
       !mPropertyName

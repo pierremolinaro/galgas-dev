@@ -85,17 +85,6 @@ map @extensionGetterMapForGlobalCheckings {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func outputDirectory ?let @lstring inSourceFile ->  @string outOuputDirectory {
-  if [inSourceFile characterAtIndex !0] == '/' then
-    outOuputDirectory = [inSourceFile stringByDeletingLastPathComponent]
-    outOuputDirectory += "/GALGAS_OUTPUT"
-  else
-    outOuputDirectory = "GALGAS_OUTPUT"
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc checkextensionSetterDefinitionForClass
   ?let @string inClassNameForErrorSignaling
   ?let @string inClassName
@@ -216,7 +205,7 @@ proc performGalgas3ProjectGlobalCheckings
   end
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
-  var descendantClassListMap =@descendantClassListMap.emptyMap{}
+  @descendantClassListMap descendantClassListMap = {}
   for () in inSemanticContext.mTypeMap do
      if not [mSuperType isNull] then
        descendantClassListMap +=

@@ -553,12 +553,6 @@ proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequence
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @declaredMethodMap { # This map is used for checking a method is declared once within a class
-  insert insertKey error message "the '%K' method is already declared in %L for this class"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 private func %once forbiddenKeysForMap -> @stringset outResult {
   outResult = {}
   outResult += !"lkey"
@@ -578,6 +572,8 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-element" !mMapTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
 #------ Enter attributes
   var typedAttributeList =@typedPropertyList {}
   var attributeMap =@attributeIndexMap.emptyMap{}

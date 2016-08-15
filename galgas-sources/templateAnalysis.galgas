@@ -223,16 +223,6 @@ override method @templateConstructorAST templateExpressionAnalysis
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H                                                         *
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @templateFileWrapperWithStaticPathAST templateExpressionAnalysis
-  ?let @templateAnalysisContext unused inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
-  error mFileWrapperName:"unhandled @templateFileWrapperWithStaticPathAST templateExpressionAnalysis":outExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -425,40 +415,6 @@ override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
     ![mLiteralDouble double]}
 }
  
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @templateIfThenElseExpressionAST templateExpressionAnalysis
-  ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
-#--- 'if' expression analysis
-  @semanticExpressionForGeneration if_expression
-  [mIfExpression templateExpressionAnalysis !inAnalysisContext ?if_expression]
-#--- 'then' expression analysis
-  @semanticExpressionForGeneration then_expression
-  [mThenExpression templateExpressionAnalysis !inAnalysisContext ?then_expression]
-#--- 'else' expression analysis
-  @semanticExpressionForGeneration else_expression
-  [mElseExpression templateExpressionAnalysis !inAnalysisContext ?else_expression]
-#--- Check 'if' expression is boolean
-  if [[if_expression mResultType] key] != "bool" then
-    error mOperatorLocation
-    :"the test expression type is '@" + [[if_expression mResultType] key] + "', it should be '@bool'"
-    :outExpression
-  elsif [then_expression mResultType] != [else_expression mResultType] then
-    error mOperatorLocation
-    :"operand expression types are '@" + [[then_expression mResultType] key] + "' and '@"+ [[else_expression mResultType] key] + "': they should be the same"
-    :outExpression
-  else
-  #--- Generate expression
-    outExpression = @ifExpressionForGeneration.new {
-      ![then_expression mResultType]
-      !mOperatorLocation
-      !if_expression
-      !then_expression
-      !else_expression}
-  end
-}
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateNotOperatorAST templateExpressionAnalysis
@@ -1120,23 +1076,6 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
       !leftExpression
       !rightExpression}
   end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @templateClassToTypeOperandAST templateExpressionAnalysis
-  ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression
-{
-#--- Get constructor map from type map
-  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mTypeName ?26*]
-#---
-  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
-  outExpression = @literalTypeInExpressionForGeneration.new {
-    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
-    ![mTypeName location]
-    !type
-  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
