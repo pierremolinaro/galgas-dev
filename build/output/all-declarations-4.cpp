@@ -5959,14 +5959,15 @@ GALGAS_semanticTypePrecedenceGraph GALGAS_semanticTypePrecedenceGraph::getter_su
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_semanticTypePrecedenceGraph::getter_accessibleNodesFromNodes (const GALGAS_lstringlist & inStartKeyList,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_semanticTypePrecedenceGraph::getter_accessibleNodesFrom (const GALGAS_lstringlist & inStartKeyList,
+                                                                                   const GALGAS_stringset & inNodesToExclude,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   GALGAS_semanticTypePrecedenceGraph resultingGraph ;
   subGraph (resultingGraph,
             inStartKeyList,
-            GALGAS_stringset::constructor_emptySet (HERE),
+            inNodesToExclude,
             inCompiler
             COMMA_THERE) ;
   if (resultingGraph.isValid ()) {

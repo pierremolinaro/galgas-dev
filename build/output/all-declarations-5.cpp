@@ -1703,14 +1703,15 @@ GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::getter_subgraphFromNodes 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_usefulEntitiesGraph::getter_accessibleNodesFromNodes (const GALGAS_lstringlist & inStartKeyList,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_usefulEntitiesGraph::getter_accessibleNodesFrom (const GALGAS_lstringlist & inStartKeyList,
+                                                                           const GALGAS_stringset & inNodesToExclude,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   GALGAS_usefulEntitiesGraph resultingGraph ;
   subGraph (resultingGraph,
             inStartKeyList,
-            GALGAS_stringset::constructor_emptySet (HERE),
+            inNodesToExclude,
             inCompiler
             COMMA_THERE) ;
   if (resultingGraph.isValid ()) {
