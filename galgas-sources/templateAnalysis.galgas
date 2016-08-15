@@ -41,6 +41,8 @@ struct @templateAnalysisContext {
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @templateExpressionAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
  
@@ -49,11 +51,19 @@ abstract method @templateExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateGetterCallInExpressionAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
   @semanticExpressionForGeneration receiverExpression
-  [mReceiverExpression templateExpressionAnalysis !inAnalysisContext ?receiverExpression]
+  [mReceiverExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?receiverExpression
+  ]
   let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
 #--- Get getter map
   let @getterMap getterMap = [receiverType mGetterMap]
@@ -137,7 +147,12 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration exp]
+      [mExpression templateExpressionAnalysis
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inAnalysisContext
+        ?@semanticExpressionForGeneration exp
+      ]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp
     end
@@ -158,8 +173,11 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateConstructorAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   let @unifiedTypeMap-proxy constructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- Get constructor map from type map
   let @constructorMap constructorMap = [constructorType mConstructorMap]
@@ -207,7 +225,12 @@ override method @templateConstructorAST templateExpressionAnalysis
         error mActualSelector
           : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration exp]
+      [mExpression templateExpressionAnalysis
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inAnalysisContext
+        ?@semanticExpressionForGeneration exp
+      ]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
       constructorEffectiveParameterList += !exp
     end
@@ -227,8 +250,11 @@ override method @templateConstructorAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   error mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis":outExpression
 }
  
@@ -237,14 +263,25 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateAndOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -266,14 +303,25 @@ override method @templateAndOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateOrOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -295,14 +343,25 @@ override method @templateOrOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateXorOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -324,24 +383,33 @@ override method @templateXorOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateTrueBoolAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFalseBoolAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralStringExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   @string s = ""
   for () in mLiteralStringList do
     s += mValue
@@ -352,8 +420,11 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalUIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUIntType
     ![mLiteralInt location]
@@ -363,8 +434,11 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalSIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSIntType
     ![mLiteralInt location]
@@ -374,8 +448,11 @@ override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
     ![mLiteralInt location]
@@ -385,8 +462,11 @@ override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalSInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSInt64Type
     ![mLiteralInt location]
@@ -396,8 +476,11 @@ override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralCharExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   outExpression = @literalCharExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mCharType
     ![mLiteralChar location]
@@ -407,9 +490,12 @@ override method @templateLiteralCharExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalDoubleExpressionForGeneration.new {
+  outExpression = @literalDoubleExpressionForGeneration.new
+{
     !inAnalysisContext.mPredefinedTypes.mDoubleType
     ![mLiteralDouble location]
     ![mLiteralDouble double]}
@@ -418,11 +504,19 @@ override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateNotOperatorAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis 
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixNotOperator ()) == 0 then
@@ -441,11 +535,19 @@ override method @templateNotOperatorAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLogicalNegateAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixTildeOperator ()) == 0 then
@@ -464,9 +566,13 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateOptionAccessAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 {
+  let usefulnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
     ?var @bool optionComponentIsPredefined
@@ -547,8 +653,13 @@ override method @templateOptionAccessAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateFunctionCallAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Retrieve function features
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
     !mFunctionName
@@ -573,7 +684,12 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
     for () in functionSignature, () in mExpressionList do
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?@semanticExpressionForGeneration expression]
+      [mExpression templateExpressionAnalysis
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !inAnalysisContext
+        ?@semanticExpressionForGeneration expression
+      ]
       checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
       semanticExpressionListForGeneration += !expression
       if mFormalSelector.string != mActualSelector.string then
@@ -589,12 +705,15 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   T E M P L A T E    E X T E N S I O N                                                                                 *
+#   T E M P L A T E    E X T E N S I O N                                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateExtensionTemplateCallAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   error mTemplateName
   :"INTERNAL ERROR: @templateExtensionTemplateCallAST templateExpressionAnalysis not implemented yet"
   :outExpression
@@ -605,8 +724,11 @@ override method @templateExtensionTemplateCallAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateVarInExpressionAST templateExpressionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
   @unifiedTypeMap-proxy type
   @string sourceVariableCppName
   [inAnalysisContext.mTemplateVariableMap searchKey !mVarName ?type ?sourceVariableCppName]
@@ -622,14 +744,25 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateAddOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -653,14 +786,25 @@ override method @templateAddOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateSubOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -684,14 +828,25 @@ override method @templateSubOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateMultiplyOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -715,14 +870,25 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateDivideOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -746,14 +912,25 @@ override method @templateDivideOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateModuloOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?@semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -777,11 +954,19 @@ override method @templateModuloOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateUnaryMinusOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if ([type mHandledOperatorFlags] & prefixMinusOperator ()) == 0 then
@@ -802,10 +987,18 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Expression analysis
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?let @semanticExpressionForGeneration expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration expression
+  ]
 #--- Check field access availability
   @unifiedTypeMap-proxy type = [expression mResultType]
   if [type mTypeKindEnum] != @typeKindEnum. structType then
@@ -833,14 +1026,25 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateEqualTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -861,14 +1065,25 @@ override method @templateEqualTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateNonEqualTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -889,14 +1104,25 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateStrictInfTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -921,14 +1147,25 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInfOrEqualTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -953,14 +1190,25 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateStrictSupTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -985,14 +1233,25 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateSupOrEqualTestAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1017,14 +1276,25 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateLeftShiftOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1049,14 +1319,25 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateRightShiftOperationAST templateExpressionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression {
+  !@semanticExpressionForGeneration outExpression
+{
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression]
+  [mLeftExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression]
+  [mRightExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?let @semanticExpressionForGeneration rightExpression
+   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1085,35 +1366,56 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @templateInstructionAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc templateInstructionListAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
   ?let @templateInstructionListAST inInstructionList
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   for () in inInstructionList do
-    [mInstruction templateInstructionAnalysis !inAnalysisContext !?ioInstructionList]
+    [mInstruction templateInstructionAnalysis
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !?ioInstructionList
+    ]
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionStringAST templateInstructionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   ioInstructionList += !@templateInstructionStringForGeneration.new {!mTemplateString}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionExpressionAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
   if [[expression mResultType] key] != "string" then
     error mLocation:"expression type should be '@string' (it is '@" + [[expression mResultType] key] + "')"
   end
@@ -1123,42 +1425,70 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateBlockInstructionAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
   if [[expression mResultType] key] != "uint" then
     error mLocation:"expression type should be '@uint' (it is '@" + [[expression mResultType] key] + "')"
   end
   var blockInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !inAnalysisContext !mBlockInstructionList !?blockInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !mBlockInstructionList
+    !?blockInstructionList
+  )
   ioInstructionList += !@templateBlockInstructionForGeneration.new {!expression !mLocation !blockInstructionList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionGetColumnLocationAST templateInstructionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   ioInstructionList += !@templateInstructionGetColumnLocationForGeneration.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionGotoColumnLocationAST templateInstructionAnalysis
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @templateAnalysisContext unused inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   ioInstructionList += !@templateInstructionGotoColumnLocationForGeneration.new
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionForeachAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
 #--- Foreach expression
   @semanticExpressionForGeneration expression
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+  [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?expression
+  ]
 #--- Check expression is enumerable
   let @enumerationDescriptorList enumerationDescriptor = [[expression mResultType] mEnumerationDescriptor] # Empty List if cannot be enumerated
   if [enumerationDescriptor length] == 0 then
@@ -1166,7 +1496,13 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   end
 #--- Before instructions
   var beforeInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !inAnalysisContext !mBeforeInstructionList !?beforeInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !mBeforeInstructionList
+    !?beforeInstructionList
+  )
 #--- Do instructions
   let @string enumeratorCppName = "enumerator_" + [[[mIndexIdentifier location] locationIndex] string]
   @templateVariableMap doVariableMap = inAnalysisContext.mTemplateVariableMap
@@ -1186,13 +1522,31 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !inAnalysisContext.mPredefinedTypes
     !doVariableMap}
   var doInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !doAnalysisContext !mDoInstructionList !?doInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !doAnalysisContext
+    !mDoInstructionList
+    !?doInstructionList
+  )
 #--- Between instructions
   var betweenInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !inAnalysisContext !mBetweenInstructionList !?betweenInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !mBetweenInstructionList
+    !?betweenInstructionList
+  )
 #--- After instructions
   var afterInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !inAnalysisContext !mAfterInstructionList !?afterInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !mAfterInstructionList
+    !?afterInstructionList
+  )
 #---
   ioInstructionList += !@templateInstructionForeachForGeneration.new {
     !mIsAscending
@@ -1202,28 +1556,49 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !doInstructionList
     !cppIndexVarName
     !betweenInstructionList
-    !afterInstructionList}
+    !afterInstructionList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionIfAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
   var templateInstructionIfBranchList =@templateInstructionIfBranchListForGeneration {}
   for () in mTemplateInstructionIfBranchList do
     @semanticExpressionForGeneration expression
-    [mExpression templateExpressionAnalysis !inAnalysisContext ?expression]
+    [mExpression templateExpressionAnalysis
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      ?expression
+    ]
     if [[expression mResultType] key] != "bool" then
       error [expression mLocation] : "'if' expression type should be '@bool' (it is '@" + [[expression mResultType] key] + "')"
     end
     var instructionList =@templateInstructionListForGeneration {}
-    templateInstructionListAnalysis ( !inAnalysisContext !mInstructionList !?instructionList )
+    templateInstructionListAnalysis (
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !mInstructionList
+      !?instructionList
+    )
     templateInstructionIfBranchList += !expression !instructionList
   end
 #---
   var elseInstructionList =@templateInstructionListForGeneration {}
-  templateInstructionListAnalysis ( !inAnalysisContext !mElseInstructionList !?elseInstructionList )
+  templateInstructionListAnalysis (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !mElseInstructionList
+    !?elseInstructionList
+  )
 #---
   ioInstructionList += !@templateInstructionIfForGeneration.new {
     !templateInstructionIfBranchList
@@ -1233,13 +1608,22 @@ override method @templateInstructionIfAST templateInstructionAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @templateInstructionSwitchAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @templateAnalysisContext inAnalysisContext
-  ?!@templateInstructionListForGeneration ioInstructionList {
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
 #---
   @semanticExpressionForGeneration switchExpression
-  [mSwitchExpression templateExpressionAnalysis !inAnalysisContext ?switchExpression]
+  [mSwitchExpression templateExpressionAnalysis 
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?switchExpression
+  ]
   if [[switchExpression mResultType] mTypeKindEnum] != @typeKindEnum. enumType then
-    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a " + [[[switchExpression mResultType] mTypeKindEnum] kind] + " type)"
+    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a "
+       + [[[switchExpression mResultType] mTypeKindEnum] kind] + " type)"
   end
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
 #---
@@ -1256,7 +1640,13 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
       namedConstantSet += ![mValue string]
     end
     var instructionList =@templateInstructionListForGeneration {}
-    templateInstructionListAnalysis ( !inAnalysisContext !mInstructionList !?instructionList )
+    templateInstructionListAnalysis (
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !inAnalysisContext
+      !mInstructionList
+      !?instructionList
+    )
     templateInstructionSwitchBranchList += !mConstantList !instructionList
   end
 #--- Check every constant is named

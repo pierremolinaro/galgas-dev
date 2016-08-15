@@ -870,15 +870,17 @@ void routine_enterTemplateString (GALGAS_templateInstructionListAST & ioArgument
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_templateInstructionListAnalysis (const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
+void routine_templateInstructionListAnalysis (const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                              GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                              const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
                                               const GALGAS_templateInstructionListAST constinArgument_inInstructionList,
                                               GALGAS_templateInstructionListForGeneration & ioArgument_ioInstructionList,
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_templateInstructionListAST enumerator_50876 (constinArgument_inInstructionList, kEnumeration_up) ;
-  while (enumerator_50876.hasCurrentObject ()) {
-    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_50876.current_mInstruction (HERE).ptr (), constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1098)) ;
-    enumerator_50876.gotoNextObject () ;
+  cEnumerator_templateInstructionListAST enumerator_57482 (constinArgument_inInstructionList, kEnumeration_up) ;
+  while (enumerator_57482.hasCurrentObject ()) {
+    callExtensionMethod_templateInstructionAnalysis ((const cPtr_templateInstructionAST *) enumerator_57482.current_mInstruction (HERE).ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, ioArgument_ioInstructionList, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1384)) ;
+    enumerator_57482.gotoNextObject () ;
   }
 }
 
