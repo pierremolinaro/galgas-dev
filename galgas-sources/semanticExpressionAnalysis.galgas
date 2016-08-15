@@ -659,16 +659,14 @@ override method @trueExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @trueExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"bool" !mLocation})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -681,16 +679,14 @@ override method @falseExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @falseExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"bool" !mLocation})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -703,8 +699,8 @@ override method @literalCharExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalCharExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -715,8 +711,6 @@ override method @literalCharExpressionAST analyzeSemanticExpression
     ![mCharacter location]
     ![mCharacter char]
   }
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"char" !mCharacter})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -729,8 +723,8 @@ override method @literalStringExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalStringExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -741,8 +735,6 @@ override method @literalStringExpressionAST analyzeSemanticExpression
     s += mValue
   end
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"string" !mLocation})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -755,16 +747,14 @@ override method @literalDoubleExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalDoubleExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"double" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -777,8 +767,8 @@ override method @literalUIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUIntExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -789,8 +779,6 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
     !mValue # [mValue location]
     !mValue # [mValue uint]
   }
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"uint" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -803,8 +791,8 @@ override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -815,8 +803,6 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
     ![mValue location]
     ![mValue uint64]
   }
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"uint64" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -829,16 +815,14 @@ override method @literalSIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSIntExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
   outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"sint" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -858,8 +842,8 @@ override method @literalBigIntExpressionAST enterExpressionInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -870,15 +854,13 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
     ![mValue location]
     ![mValue sint64]
   }
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"sint64" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalBigIntExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
@@ -889,8 +871,6 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
     ![mValue location]
     ![mValue bigint]
   }
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{!"bigint" !mValue})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
