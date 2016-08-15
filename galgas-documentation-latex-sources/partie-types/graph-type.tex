@@ -257,15 +257,16 @@ Ce getter retourne le graphe défini par la partie accessible du receveur à par
 
 
 
-\subsection{Getter \texttt{accessibleNodesFromNodes}}
+\subsection{Getter \texttt{accessibleNodesFrom}}
 
 \begin{galgas}
-getter accessibleNodesFromNodes
+getter accessibleNodesFrom
   ?@lstringlist inStartNodes
+  ?@stringset inNodesToExclude
   -> @lstringlist 
 \end{galgas}
 
-Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \ggs+inStartNodes+.
+Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \ggs+inStartNodes+, en excluant les nœuds cités dans \ggs+inNodesToExclude+.
 
 
 
@@ -324,7 +325,7 @@ method depthFirstTopologicalSort
   !@lstringlist outUnsortedKeyList
 \end{galgas}
 
-Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
+Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie~:
 \begin{itemize}
   \item le premier argument \ggs+outSortedInformationList+ est la liste triée des informations utilisateur liées aux nœuds ;
   \item le deuxième \ggs+outSortedKeyList+ est la liste triée des noms de nœuds ;
@@ -418,7 +419,7 @@ method topologicalSort
   !@lstringlist outUnsortedKeyList
 \end{galgas}
 
-Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
+Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie~:
 \begin{itemize}
   \item le premier argument \ggs+outSortedInformationList+ est la liste triée des informations utilisateur liées aux nœuds ;
   \item le deuxième \ggs+outSortedKeyList+ est la liste triée des noms de nœuds ;
