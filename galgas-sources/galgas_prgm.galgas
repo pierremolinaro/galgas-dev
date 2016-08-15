@@ -144,7 +144,7 @@ proc compileProject
   ?let @string inSourceToAnalyze
   ?let @galgas3ProjectComponentAST inProjectComponentAST
 {
-  var declarationAST = @galgas3DeclarationAST.default 
+  @galgas3DeclarationAST declarationAST = .default 
   for () in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
@@ -154,9 +154,9 @@ proc compileProject
     end
   end
 #---------------------------------- Hand coded source files
-  var handCodedLinkAppFileList = @stringlist.emptyList
-  var handCodedSourceAppFileList = @stringlist.emptyList
-  var handCodedSourceToolFileList = @stringlist.emptyList
+  @stringlist handCodedLinkAppFileList = {}
+  @stringlist handCodedSourceAppFileList = {}
+  @stringlist handCodedSourceToolFileList = {}
   @stringlist frameworkToolFileList = {}
   var handCodedSourceDirectorySet = @stringset. emptySet
   for () in inProjectComponentAST.mQualifiedFeatureList do
@@ -206,6 +206,7 @@ proc compileProject
   )
 #---------------------------------- Compile semantic declarations
   @usefulEntitiesGraph usefulEntitiesGraph = .emptyGraph
+  @lstringlist usefulnessRootEntities = {}
   let buildDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build"
   let productDirectory = buildDirectory + "/output"
   @stringlist appProductFileList = {}
@@ -213,6 +214,7 @@ proc compileProject
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
+      !?usefulnessRootEntities
       !?usefulEntitiesGraph
       !productDirectory
       !inProjectComponentAST.mEndOfSourceFile
@@ -235,7 +237,6 @@ proc compileProject
     optionComponentMapForGeneration = {}
   end
 #---------------------------------- Compile program declarations
-  @lstringlist usefulnessRootEntities = {}
   if @uint.errorCount == 0 then
     let projectVersionString = [[inProjectComponentAST.mMajorVersion uint] string]
       + "." + [inProjectComponentAST.mMinorVersion uint]
@@ -258,9 +259,10 @@ proc compileProject
 #------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
 #------------------------------------ Build an HTML file that contains all declared types
-  let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
+  let typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent]
+         + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    var firstLetterSet =@stringset {}
+    @stringset firstLetterSet = {}
     for () in semanticContext.mTypeMap do
       firstLetterSet += ![[lkey.string characterAtIndex!0] string]
     end
@@ -273,7 +275,7 @@ proc compileProject
       end
       tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
     end
-    let @string typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
+    let typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
       ![inProjectSourceFile lastPathComponent]
       !semanticContext.mTypeMap
       !firstLetterSet

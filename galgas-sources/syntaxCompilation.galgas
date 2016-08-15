@@ -17,7 +17,8 @@
 proc groupSyntaxComponentsGalgas3
   ?let @galgas3SyntaxComponentListAST inAllSyntaxComponents
   ?let @syntaxExtensions inSyntaxExtensions
-  ?!@semanticDeclarationListAST ioDeclarationList {
+  ?!@semanticDeclarationListAST ioDeclarationList
+{
 #--- Add extensions to syntax list
   @stringset componentNameSet = {}
   for component in inAllSyntaxComponents do

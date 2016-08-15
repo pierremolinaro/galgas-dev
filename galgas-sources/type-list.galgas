@@ -320,9 +320,11 @@ override method @listDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mListTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mListTypeName.string + "-element" !mListTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
 #---
-  var typedAttributeList =@typedPropertyList {}
-  var attributeMap =@attributeIndexMap.emptyMap{}
+  @typedPropertyList typedAttributeList = {}
+  @attributeIndexMap attributeMap = {}
   for () in mAttributeList do
     let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]

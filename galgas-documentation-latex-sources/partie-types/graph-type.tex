@@ -7,7 +7,7 @@
 
 Le type \ggs+graph+ permet de faire des opérations sur les graphes orientés.
 
-Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \ggs+@string+) ; à chaque nœud sont associées types d'informations :
+Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \ggs+@string+)~; à chaque nœud sont associées les informations :
 \begin{itemize}
   \item une liste de positions dans des textes sources (liste de \ggs+@location+) ;
   \item une information utilisateur dont le type est défini par la déclaration du type graphe.
@@ -118,7 +118,7 @@ setter addEdge ?@lstring inSourceNode ?@lstring inTargetNode
 
 Pour entrer un arc, appeler le setter prédéfini \ggs+addEdge+. Celui-ci possède deux arguments d'entrée de type \ggs+@lstring+ :
 \begin{itemize}
-  \item le premier spécifie le nœud origine de l'arc ; la composante \ggs+@string+ est le nom du nœud origine, et la composante \ggs+@location+ est ajoutée à la liste du nœud origine ;
+  \item le premier spécifie le nœud origine de l'arc ; la composante \ggs+@string+ est le nom du nœud origine, et la composante \ggs+@location+ est ajoutée à la liste du nœud origine~;
   \item le second spécifie le nœud destination de l'arc ; la composante \ggs+@string+ est le nom du nœud destination, et la composante \ggs+@location+ est ajoutée à la liste du nœud destination.
 \end{itemize}
 
@@ -193,7 +193,7 @@ Ce getter retourne une chaîne de caractères contenant une description compatib
 getter isNodeDefined ?@string inNodeName -> @bool 
 \end{galgas}
 
-Ce getter retourne\ggs+true+ si le nœud \texttt{inNodeName} est défini, et \ggs=false= dans le cas contraire..
+Ce getter retourne \ggs+true+ si le nœud \texttt{inNodeName} est défini, et \ggs=false= dans le cas contraire.
 
 
 \subsection{Getter \texttt{keyList}}
@@ -212,7 +212,20 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 getter lkeyList -> @stringlist 
 \end{galgas}
 
-Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \ggs+nowhere+).
+Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est-à-dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \ggs+nowhere+).
+
+
+
+
+
+
+\subsection{Getter \texttt{locationForKey}}
+
+\begin{galgas}
+getter locationForKey ?@string inNodeName -> @location
+\end{galgas}
+
+Ce getter retourne la localisation de la définition du nœud \texttt{inNodeName} ; si il n'est pas défini, une erreur d'exécution est déclenchée et une valeur \emph{poison} est retournée.
 
 
 

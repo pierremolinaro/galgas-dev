@@ -105,6 +105,8 @@ override method @extensionMethodAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefullness = methodNameForUsefulEntitiesGraph (!mTypeName !mExtensionMethodName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let typeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefullness !nameForUsefullness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
   @string selfObjectName

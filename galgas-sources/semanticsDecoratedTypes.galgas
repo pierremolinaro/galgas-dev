@@ -716,27 +716,6 @@ abstract class @syntaxInstructionForGeneration : @semanticInstructionForGenerati
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C L A S S    D E C L A R A T I O N                                                                                *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @abstractMethodDefinitionListForGeneration {
-  @bool mIsOverriding
-  @lstring mMethodName
-  @formalParameterListForGeneration mSignature
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @methodDefinitionListForGeneration {
-  @bool mIsOverriding
-  @lstring mMethodName
-  @formalParameterListForGeneration mSignature
-  @semanticInstructionListForGeneration mInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    P R I M I T I V E    T Y P E                                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

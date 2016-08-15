@@ -1050,8 +1050,10 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !mTypeName})
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !mTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
+  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType key] !mTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
 #---
   outExpression = @constructorExpressionForGeneration.new {
     !returnedType
@@ -1059,7 +1061,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !constructorType
     ![mConstructorName string]
     !constructorEffectiveParameterList
-    !hasCompilerArgument}
+    !hasCompilerArgument
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1201,28 +1204,6 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       ![mGetterName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument}
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-func checkReaderImplementationInSuperClasses
-  ?let @lstring inGetterName
-  ?let @unifiedTypeMap-proxy inSuperClass
-  -> @string outResult {
-  if [inSuperClass isNull] then
-    outResult = ""
-  else
-    @methodQualifier qualifier
-    [[inSuperClass mGetterMap] searchKey !inGetterName ?5* ?qualifier ?*]
-    switch qualifier
-    case isAbstract :
-      outResult = ""
-    case isBasic, isBasicFinal, isOverriding : # Ok
-      outResult = [inSuperClass key]
-    case isInherited, isOverridingAbstract :
-      outResult = checkReaderImplementationInSuperClasses (!inGetterName ![inSuperClass mSuperType])
-    end
   end
 }
 
@@ -3341,7 +3322,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
- let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
@@ -3385,6 +3366,8 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
+  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 #---
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
      !mFilewrapperName
@@ -3733,6 +3716,9 @@ override method @collectionValueAST analyzeSemanticExpression
         !collectionValueElementListForGeneration}
     end
   end
+#---
+  let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

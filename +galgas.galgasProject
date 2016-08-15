@@ -61,9 +61,6 @@ project (3:2:5) -> "galgas" {
   "galgas-sources/guiTypesForAST.galgas"
   "galgas-sources/guiCompilation.galgas"
 
-#--- All AST types
-  "galgas-sources/allASTTypes.galgas"
-
 #--- Type declaration
   "galgas-sources/type-array.galgas"
   "galgas-sources/type-class.galgas"

@@ -602,27 +602,6 @@ proc analyzeRoutineArguments
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func checkMethodImplementationInSuperClasses
-  ?let @lstring inMethodName
-  ?let @unifiedTypeMap-proxy inSuperClass
-  -> @string outResult {
-  if [inSuperClass isNull] then
-    outResult = ""
-  else
-    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?let @methodQualifier qualifier ?*]
-    switch qualifier
-    case isAbstract :
-      outResult = ""
-    case isBasic, isBasicFinal, isOverriding : # Ok
-      outResult = [inSuperClass key]
-    case isInherited, isOverridingAbstract :
-      outResult = checkMethodImplementationInSuperClasses (!inMethodName ![inSuperClass mSuperType])
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc checkExpressionIsBoolean
   ?let @analysisContext inAnalysisContext
   ?let @location inErrorLocation

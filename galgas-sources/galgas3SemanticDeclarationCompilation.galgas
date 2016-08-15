@@ -14,6 +14,7 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc compileSemanticDeclarationsGalgas3
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @location inEndOfProjectSourceFile
@@ -26,7 +27,7 @@ proc compileSemanticDeclarationsGalgas3
   end
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
-  appendPredefinedTypesASTs (!?semanticDeclarationListWithPredefinedTypes)
+  appendPredefinedTypesASTs (!?semanticDeclarationListWithPredefinedTypes !?ioUsefulnessRootEntities)
 #---- Add predefined option component
   @commandLineOptionListAST options = {}
   for () in @application.boolOptionNameList do
@@ -101,8 +102,8 @@ proc compileSemanticDeclarationsGalgas3
       for aGetter in [type mGetterMap] do
         let usefullnessNameForGetter = getterNameForUsefulEntitiesGraph (![type key] !aGetter.lkey)
         switch [aGetter mQualifier]
-        case isAbstract, isBasicFinal, isInherited :
-        case isBasic :
+        case isAbstract, isInherited :
+        case isBasic, isBasicFinal :
           if [aGetter mKind] == .definedAsExtension then
             [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForGetter]
           end
@@ -113,8 +114,8 @@ proc compileSemanticDeclarationsGalgas3
       for aSetter in [type mSetterMap] do
         let usefullnessNameForSetter = setterNameForUsefulEntitiesGraph (![type key] !aSetter.lkey)
         switch [aSetter mQualifier]
-        case isAbstract, isBasicFinal, isInherited :
-        case isBasic :
+        case isAbstract, isInherited :
+        case isBasic, isBasicFinal :
           if [aSetter mKind] == .definedAsExtension then
             [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForSetter]
           end
@@ -125,8 +126,8 @@ proc compileSemanticDeclarationsGalgas3
       for aMethod in [type mInstanceMethodMap] do
         let usefullnessNameForMethod = methodNameForUsefulEntitiesGraph (![type key] !aMethod.lkey)
         switch [aMethod mQualifier]
-        case isAbstract, isBasicFinal, isInherited :
-        case isBasic :
+        case isAbstract, isInherited :
+        case isBasic, isBasicFinal :
           if [aMethod mKind] == .definedAsExtension then
             [!?ioUsefulEntitiesGraph addEdge !usefullnessNameForType !usefullnessNameForMethod]
          end
@@ -159,11 +160,11 @@ proc buildGalgas3SemanticContext
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
-  var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
-  var extensionMethodMapForBuildingContext = @extensionMethodMapForBuildingContext.emptyMap{}
-  var extensionGetterMapForBuildingContext = @extensionGetterMapForBuildingContext.emptyMap{}
-  var extensionSetterMapForBuildingContext = @extensionSetterMapForBuildingContext.emptyMap{}
-  var extensionOverrideDefinitionList = @semanticDeclarationListAST {}
+  @semanticTypePrecedenceGraph semanticTypePrecedenceGraph = .emptyGraph
+  @extensionMethodMapForBuildingContext extensionMethodMapForBuildingContext = {}
+  @extensionGetterMapForBuildingContext extensionGetterMapForBuildingContext = {}
+  @extensionSetterMapForBuildingContext extensionSetterMapForBuildingContext = {}
+  @semanticDeclarationListAST extensionOverrideDefinitionList = {}
   for () in semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph

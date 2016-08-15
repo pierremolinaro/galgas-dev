@@ -62,15 +62,6 @@ class @templateConstructorAST : @templateExpressionAST {
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
-#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H                                                         *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @templateFileWrapperWithStaticPathAST : @templateExpressionAST {
-  @lstring mFileWrapperName
-  @uint mFileIndex
-}
- 
-#----------------------------------------------------------------------------------------------------------------------*
 #   F I L E W R A P P E R    T E M P L A T E     C A L L                                                               *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -169,15 +160,6 @@ class @templateLiteralCharExpressionAST : @templateExpressionAST {
 
 class @templateLiteralDoubleExpressionAST : @templateExpressionAST {
   @ldouble mLiteralDouble
-}
- 
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @templateIfThenElseExpressionAST : @templateExpressionAST {
-  @location mOperatorLocation
-  @templateExpressionAST mIfExpression
-  @templateExpressionAST mThenExpression
-  @templateExpressionAST mElseExpression
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
@@ -350,12 +332,6 @@ class @templateRightShiftOperationAST : @templateExpressionAST {
   @location mOperatorLocation
   @templateExpressionAST mLeftExpression
   @templateExpressionAST mRightExpression
-}
- 
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @templateClassToTypeOperandAST : @templateExpressionAST {
-  @lstring mTypeName
 }
  
 #----------------------------------------------------------------------------------------------------------------------*

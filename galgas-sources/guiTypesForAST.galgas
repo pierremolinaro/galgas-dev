@@ -58,13 +58,3 @@ list @withLexiqueListAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-struct @guiComponentAST {
-  @lstring mGUIName
-  @lstring mGUIClass
-  @lstringlist mImportedOptionList
-  @guiSimpleAttributeListAST mGlobalSimpleAttributeList
-  @withLexiqueListAST mWithLexiqueList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-

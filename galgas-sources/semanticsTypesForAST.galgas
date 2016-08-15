@@ -13,12 +13,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-func %once generateGalgas3InstructionTerminator -> @bool outResult {
-  outResult = false
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 abstract class @semanticExpressionAST {
 }
 
@@ -594,15 +588,6 @@ class @filewrapperDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @semanticsComponentAST {
-  @lstring mSemanticsComponentName
-  @lstringlist mImportedComponentFileNameList
-  @semanticDeclarationListAST mSemanticDeclarationList
-  @location mEndOfSourceFile
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @syntaxInstructionList {
   @syntaxInstructionAST mInstruction %nogetter
 }
@@ -750,19 +735,6 @@ listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST)
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @galgas3GrammarComponentListAST {
-  @lbool mHasIndexing
-  @lstring mGrammarComponentName
-  @lstring mGrammarClass
-  @lstringlist mSyntaxComponents
-  @lstring mStartSymbolName
-  @nonTerminalLabelListAST mStartSymbolLabelList
-  @lstringlist mUnusedNonterminalList
-  @bool mHasTranslateFeature
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @prologueEpilogueList {
   @semanticInstructionListAST mInstructionList
   @location mEndOfInstructionList
@@ -778,17 +750,6 @@ list @programRuleList {
   @lstring mReferenceGrammar # Empty string if no grammar
   @semanticInstructionListAST mInstructionList
   @location mEndOfInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-struct @programComponentAST {
-  @lstring mProgramComponentName
-  @lstringlist mImportedComponentFileNameList
-  @prologueEpilogueList mPrologueList
-  @prologueEpilogueList mEpilogueList
-  @programRuleList mProgramRules
-  @semanticDeclarationListAST mSemanticDeclarationList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
