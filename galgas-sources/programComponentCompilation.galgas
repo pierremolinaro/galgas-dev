@@ -48,14 +48,14 @@ proc compileBeforeClauseGalgas3
   ?let @prologueEpilogueList inPrologueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
-  let usefullnessName = beforeNameForUsefulEntitiesGraph (!.here)
-  [!?ioUsefulEntitiesGraph addNode !usefullnessName !usefullnessName]
-  ioUsefulnessRootEntities += !usefullnessName
+  let usefulnessName = beforeNameForUsefulEntitiesGraph (!.here)
+  [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
+  ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration = @semanticInstructionListForGeneration.emptyList
   for () in inPrologueList do
     analyzeRoutineBody (
-      !usefullnessName
+      !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@formalParameterListAST.emptyList # Routine signature : no argument
@@ -98,9 +98,9 @@ private proc compileProgramRulesGalgas3
 {
   @uint ruleIndex = 0
   for () in inProgramRules do
-    let usefullnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
-    [!?ioUsefulEntitiesGraph addNode !usefullnessName !usefullnessName]
-    ioUsefulnessRootEntities += !usefullnessName
+    let usefulnessName = rootRuleNameForUsefulEntitiesGraph (!mSourceFileExtension)
+    [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
+    ioUsefulnessRootEntities += !usefulnessName
     let @formalParameterListAST argumentList = {
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
@@ -111,7 +111,7 @@ private proc compileProgramRulesGalgas3
     @semanticInstructionListForGeneration semanticInstructionListForGeneration
     @formalParameterListForGeneration routineSignature
     analyzeRoutineBody (
-      !usefullnessName
+      !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !argumentList
@@ -149,14 +149,14 @@ proc compileAfterClauseGalgas3
   ?let @prologueEpilogueList inEpilogueList
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
 {
-  let usefullnessName = afterNameForUsefulEntitiesGraph (!.here)
-  [!?ioUsefulEntitiesGraph addNode !usefullnessName !usefullnessName]
-  ioUsefulnessRootEntities += !usefullnessName
+  let usefulnessName = afterNameForUsefulEntitiesGraph (!.here)
+  [!?ioUsefulEntitiesGraph addNode !usefulnessName !usefulnessName]
+  ioUsefulnessRootEntities += !usefulnessName
 #--- Compile 'after' routines
   @semanticInstructionListForGeneration semanticInstructionListForGeneration = {}
   for () in inEpilogueList do
     analyzeRoutineBody (
-      !usefullnessName
+      !usefulnessName
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !@formalParameterListAST.emptyList # Routine signature : no argument

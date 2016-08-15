@@ -109,8 +109,8 @@ override method @predefinedTypeAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + mPredefinedTypeName
@@ -247,8 +247,8 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   var formalArgumentList =@formalInputParameterListForGeneration {}
   for () in mFormalArgumentList do
@@ -280,8 +280,8 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   var formalArgumentList =@formalParameterListForGeneration {}
   for () in mFormalArgumentList do
@@ -312,8 +312,8 @@ override method @procDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Instruction list
   var formalArgumentList =@formalParameterListForGeneration {}
   @semanticInstructionListForGeneration instructionList
@@ -324,7 +324,7 @@ override method @procDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeRoutineBody (
-    !nameForUsefullness
+    !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mFormalArgumentList
@@ -439,8 +439,8 @@ override method @functionDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @formalInputParameterListForGeneration formalInputParameterList
@@ -453,7 +453,7 @@ override method @functionDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
-    !nameForUsefullness
+    !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mFormalArgumentList
@@ -492,8 +492,8 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = functionNameForUsefulEntitiesGraph (!mFunctionName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @unifiedTypeMap-proxy returnType
@@ -505,7 +505,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !""
     !@unifiedTypeMap-proxy. null}
   analyzeFunctionBody (
-    !nameForUsefullness
+    !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !@formalInputParameterListAST.emptyList
@@ -547,8 +547,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Get filewrapper features
   [inSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -629,8 +629,8 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
@@ -666,8 +666,8 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = syntaxNameForUsefulEntitiesGraph (!mSyntaxComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = syntaxNameForUsefulEntitiesGraph (!mSyntaxComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--------------------------------------- Build terminal map
   [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueName
@@ -685,7 +685,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   if @uint. errorCount == 0 then
     let lexiqueName = mLexiqueName.string
     semanticAnalysisOfSyntaxComponent (
-      !nameForUsefullness
+      !nameForUsefulness
       !?ioUsefulEntitiesGraph
       !mNonterminalDeclarationList
       !mRuleList
@@ -719,8 +719,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
   end
 #--- Useful entities graph
-  let grammarNameForUsefullness = grammarNameForUsefulEntitiesGraph (!mGrammarComponentName)
-  [!?ioUsefulEntitiesGraph addNode !grammarNameForUsefullness !grammarNameForUsefullness]
+  let grammarNameForUsefulness = grammarNameForUsefulEntitiesGraph (!mGrammarComponentName)
+  [!?ioUsefulEntitiesGraph addNode !grammarNameForUsefulness !grammarNameForUsefulness]
 #---------------------------------------------------------- Parse syntax components
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap = {}
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis ={}
@@ -729,8 +729,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   @nonTerminalToAddList nonTerminalToAddList = {}
   @uint addedNonTerminalCount = 0
   for (syntaxComponentName) in mSyntaxComponents do
-    let syntaxNameForUsefullness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
-    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefullness !syntaxNameForUsefullness]
+    let syntaxNameForUsefulness = syntaxNameForUsefulEntitiesGraph (!syntaxComponentName)
+    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefulness !syntaxNameForUsefulness]
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     [inSemanticContext.mSyntaxComponentMapForSemanticAnalysis searchKey
       !syntaxComponentName
@@ -739,8 +739,8 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       ?let @syntaxRuleListAST ruleList
       ?let @bool hasTranslateFeature
     ]
-    let lexiqueNameForUsefullness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
-    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefullness !lexiqueNameForUsefullness]
+    let lexiqueNameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!lexiqueName)
+    [!?ioUsefulEntitiesGraph addEdge !grammarNameForUsefulness !lexiqueNameForUsefulness]
   #--- Check translate feature
     if mHasTranslateFeature & not hasTranslateFeature then
       error syntaxComponentName : "as '" + mGrammarComponentName + "' grammar declares 'translate' feature, this syntax component should do so"
@@ -901,8 +901,8 @@ override method @lexiqueComponentAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
-  let nameForUsefullness = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--------------------------------------- Lexical attribute type name map
   let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
 #--------------------------------------- Build lexical routine map
@@ -1841,10 +1841,10 @@ proc semanticAnalysisOfSyntaxComponent
   @uint newRuleIndex = 0
   for () in inRuleList do
   #--- Useful entities graph
-#    let nameForUsefullness = ruleNameForUsefulEntitiesGraph (!inSyntaxComponentName !mNonterminalName)
-#    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefullness] then
-#      [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-#      [!?ioUsefulEntitiesGraph addEdge !inSyntaxComponentUsefulnessName !nameForUsefullness]
+#    let nameForUsefulness = ruleNameForUsefulEntitiesGraph (!inSyntaxComponentName !mNonterminalName)
+#    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefulness] then
+#      [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#      [!?ioUsefulEntitiesGraph addEdge !inSyntaxComponentUsefulnessName !nameForUsefulness]
 #    end
   #---
     @ruleLabelImplementationList ruleLabelImplementationList = {}

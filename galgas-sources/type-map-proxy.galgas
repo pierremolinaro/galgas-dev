@@ -225,8 +225,8 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mMapProxyTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapProxyTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Get attribute list of associated map
   [inSemanticContext.mTypeMap searchKey
     !mAssociatedMapTypeName

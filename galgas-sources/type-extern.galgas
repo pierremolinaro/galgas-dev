@@ -308,8 +308,8 @@ override method @externTypeDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mExternTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mExternTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + mExternTypeName

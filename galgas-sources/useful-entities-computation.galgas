@@ -21,6 +21,13 @@ graph @usefulEntitiesGraph (@lstringlist) {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+map @uselessEntityLocationMap {
+  @location mLocation
+  insert insertKey error message "--- %K INTERNAL ERROR ---"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 proc checkUsefulEntities
   ?let @usefulEntitiesGraph inUsefulEntitiesGraph
   ?let @lstringlist inRootEntities
@@ -35,7 +42,7 @@ proc checkUsefulEntities
   #--- Undefined nodes
     let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
     if [undefinedNodeList length] > 0 then
-      var s = "usefullness computation, undefined nodes:"
+      var s = "usefulness computation, undefined nodes:"
       for (name) in undefinedNodeList do
         s += "\n  - " + name
       end
@@ -46,13 +53,23 @@ proc checkUsefulEntities
       let usefullEntitySet = @stringset.setWithLStringList {!usefullEntityList}
       let allEntitySet = @stringset.setWithStringList {![inUsefulEntitiesGraph keyList]}
       let unusedEntities = allEntitySet - usefullEntitySet
-      if [unusedEntities count] == 1 then
-        warning .nowhere : "1 unused entity"
-      elsif [unusedEntities count] > 1 then
-        warning .nowhere : [[unusedEntities count] string] + " unused entities"
-      end
+      @uselessEntityLocationMap uselessEntityLocationMap = {}
       for (unusedEntity) in unusedEntities do
-        warning [inUsefulEntitiesGraph locationForKey !unusedEntity] : "unused entity is declared here"
+        let l = [inUsefulEntitiesGraph locationForKey !unusedEntity]
+        if l == .nowhere then
+          warning .nowhere : "unused entity, '" + unusedEntity 
+            + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
+        elsif not [uselessEntityLocationMap hasKey ![l locationString]] then
+          [!?uselessEntityLocationMap insertKey ![[l locationString] nowhere] !l]
+        end
+      end
+#      if [uselessEntityLocationMap count] == 1 then
+#        warning .nowhere : "1 unused entity"
+#      elsif [uselessEntityLocationMap count] > 1 then
+#        warning .nowhere : [[uselessEntityLocationMap count] string] + " unused entities"
+#      end
+      for (* loc) in uselessEntityLocationMap do
+        warning loc : "unused entity, due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
       end
     end
   end

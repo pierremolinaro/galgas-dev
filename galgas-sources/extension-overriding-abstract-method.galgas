@@ -81,10 +81,10 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefullness = methodNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionMethodName)
-#  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-#  let typeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mTypeName)
-#  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefullness !nameForUsefullness]
+#  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionMethodName)
+#  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
+#  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check type is an abstract class

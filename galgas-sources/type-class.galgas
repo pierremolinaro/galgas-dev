@@ -336,11 +336,11 @@ override method @classDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let classTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mClassTypeName)
-  [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefullness !classTypeNameForUsefullness]
+  let classTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mClassTypeName)
+  [!?ioUsefulEntitiesGraph addNode !classTypeNameForUsefulness !classTypeNameForUsefulness]
   if [mSuperClassName string] != "" then
-    let superClassNameForUsefullness = typeNameForUsefulEntitiesGraph (!mSuperClassName)
-    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefullness !superClassNameForUsefullness]
+    let superClassNameForUsefulness = typeNameForUsefulEntitiesGraph (!mSuperClassName)
+    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !superClassNameForUsefulness]
   end
 #------ Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
@@ -378,8 +378,8 @@ override method @classDeclarationAST semanticAnalysis
   @typedPropertyList typedAttributeList = {}
   @attributeIndexMap attributeMap = {}
   for () in mAttributeList do
-    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefullness !propertyTypeNameForUsefullness]
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = false
     @bool hasGetter = true

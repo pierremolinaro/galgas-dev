@@ -318,16 +318,16 @@ override method @listDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mListTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let elementTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!.new{!mListTypeName.string + "-element" !mListTypeName})
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !elementTypeNameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mListTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mListTypeName.string + "-element" !mListTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @typedPropertyList typedAttributeList = {}
   @attributeIndexMap attributeMap = {}
   for () in mAttributeList do
-    let propertyTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-    [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !propertyTypeNameForUsefullness]
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasGetter = true
     var hasSetter = false

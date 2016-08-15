@@ -431,10 +431,10 @@ override method @graphDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = typeNameForUsefulEntitiesGraph (!mGraphTypeName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let associatedTypeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefullness !associatedTypeNameForUsefullness]
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mGraphTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
 #---
   let graphTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mGraphTypeName}
   let associatedListTypeProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}

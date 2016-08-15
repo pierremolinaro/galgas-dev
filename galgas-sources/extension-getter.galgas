@@ -140,10 +140,10 @@ override method @extensionGetterAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefullness = getterNameForUsefulEntitiesGraph (!mTypeName !mExtensionGetterName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefullness !nameForUsefullness]
-  let typeNameForUsefullness = typeNameForUsefulEntitiesGraph (!mTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefullness !nameForUsefullness]
+  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mExtensionGetterName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
   @string selfObjectName
@@ -171,7 +171,7 @@ override method @extensionGetterAST semanticAnalysis
   @formalInputParameterListForGeneration formalParameterListForGeneration
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   analyzeFunctionBody (
-    !nameForUsefullness
+    !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mExtensionGetterFormalInputParameterList

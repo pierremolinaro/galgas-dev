@@ -1006,8 +1006,8 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
       error mTypeName: "this class does not support the default constructor"
     end
   #---
-    let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !mTypeName})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !mTypeName})
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   #---
     outExpression = @defaultConstructorExpressionForGeneration.new {
       !type
@@ -1225,8 +1225,8 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefullnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  let usefulnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
@@ -3165,8 +3165,8 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefullnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  let usefulnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
@@ -3323,8 +3323,8 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Search for filewrapper name in filewrapper map
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -3367,8 +3367,8 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
      !mFilewrapperName
@@ -3437,8 +3437,8 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefullnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Parse filewrapper path
   @stringlist directoryList
   @string fileName
@@ -3524,8 +3524,8 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
- let usefullnessName = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
-  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+ let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Check  lexique is declared
   [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueComponentName
@@ -3695,8 +3695,8 @@ override method @collectionValueAST analyzeSemanticExpression
   elsif not [targetType mSupportCollectionValue] then
     error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
   else
-    let usefullnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
-    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefullnessName]
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
     if [mElementList length] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
