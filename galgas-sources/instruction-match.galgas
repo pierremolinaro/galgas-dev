@@ -83,36 +83,35 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $match$
-    var matchedExpressionNameList =@semanticExpressionListAST {}
+    @semanticExpressionListAST matchedExpressionNameList = {}
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST receiverExpression
     matchedExpressionNameList += !receiverExpression !@location.here
-    $,$
     repeat
+      $,$
       <expression> ?let @semanticExpressionAST expression
       matchedExpressionNameList += !expression !@location.here
     while
-      $,$
     end
-    var matchInstructionBranchList =@matchInstructionBranchListAST {}
+    @matchInstructionBranchListAST matchInstructionBranchList = {}
     repeat
       <match_instruction_branch> !? matchInstructionBranchList
     while
     end
     @semanticInstructionListAST elseInstructionList
     select
-      elseInstructionList = @semanticInstructionListAST.emptyList
+      elseInstructionList = {}
     or
       $else$
       <semantic_instruction_list> ? elseInstructionList
     end
     $end$
-    let @location endOf_match_instruction = @location.here
+    let endOf_match_instruction = @location.here
     select
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "match" then
-        error terminator : "the terminator attribute should be '%match'"
+        error terminator : "the terminator attribute should be '%match'" fixit { replace "%match" }
       end
     end
     outInstruction = @matchInstructionAST.new {

@@ -34,7 +34,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "select" then
-        error terminator : "the terminator attribute should be '%select'"
+        error terminator : "the terminator attribute should be '%select'" fixit { replace "%select" }
       end
     end
     outInstruction = @selectInstruction.new {

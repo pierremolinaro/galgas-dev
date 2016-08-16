@@ -36,7 +36,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "repeat" then
-        error terminator : "the terminator attribute should be '%repeat'"
+        error terminator : "the terminator attribute should be '%repeat'" fixit { replace "%repeat" }
       end
     end
     outInstruction = @repeatInstruction.new {

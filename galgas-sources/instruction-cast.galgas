@@ -99,7 +99,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "cast" then
-        error terminator : "the terminator attribute should be '%cast'"
+        error terminator : "the terminator attribute should be '%cast'" fixit { replace "%cast" }
       end
     end
     let endOfInstructionLocation = @location.here

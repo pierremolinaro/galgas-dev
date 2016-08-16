@@ -42,42 +42,9 @@ syntax extension galgas3InstructionsSyntax {
     var switchBranches =@switchBranchesAST {}
     repeat
       $case$
-      var constantNameList =@lstringlist {}
-      repeat
-        $identifier$ ?let @lstring constantName
-        constantNameList += !constantName
-      while
-        $,$
-      end
-      @switchExtractedValuesListAST associatedValuesExtraction = {}
-      select
-      or
-        $($
-        repeat
-          select
-            $*$
-            associatedValuesExtraction += !["" nowhere] !["" nowhere] !false
-           or
-            @lstring typeName
-            select
-              $@type$ ?typeName
-            or
-              typeName = ["" nowhere]
-            end
-            @bool constantMarkedAsUnused
-            select
-              constantMarkedAsUnused = false
-            or
-              $unused$
-              constantMarkedAsUnused = true
-            end
-            $identifier$ ?let @lstring constantName
-            associatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
-          end
-        while
-        end
-        $)$
-      end
+      <switch_case>
+        ?let @lstringlist constantNameList
+        ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
       <semantic_instruction_list> ?let @semanticInstructionListAST instructions
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
@@ -89,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "switch" then
-        error terminator : "the terminator attribute should be '%switch'"
+        error terminator : "the terminator attribute should be '%switch'" fixit { replace "%switch" }
       end
     end
     outInstruction = @switchInstructionAST.new {
@@ -99,6 +66,50 @@ syntax extension galgas3InstructionsSyntax {
       !switchBranches
       !endOfSwitchInstruction
     }
+  }
+
+  #····················································································································*
+
+  rule <switch_case>
+    !@lstringlist outConstantNameList
+    !@switchExtractedValuesListAST outAssociatedValuesExtraction
+  {
+    outConstantNameList = {}
+    repeat
+      $identifier$ ?let @lstring constantName
+      outConstantNameList += !constantName
+    while
+      $,$
+    end
+    outAssociatedValuesExtraction = {}
+    select
+    or
+      $($
+      repeat
+        select
+          $*$
+          outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+         or
+          @lstring typeName
+          select
+            $@type$ ?typeName
+          or
+            typeName = ["" nowhere]
+          end
+          @bool constantMarkedAsUnused
+          select
+            constantMarkedAsUnused = false
+          or
+            $unused$
+            constantMarkedAsUnused = true
+          end
+          $identifier$ ?let @lstring constantName
+          outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+        end
+      while
+      end
+      $)$
+    end
   }
 
   #····················································································································*

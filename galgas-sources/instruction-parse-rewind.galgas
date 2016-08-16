@@ -34,7 +34,7 @@ syntax extension galgas3SyntaxComponentSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "parse" then
-        error terminator : "the terminator attribute should be '%parse'"
+        error terminator : "the terminator attribute should be '%parse'" fixit { replace "%parse" }
       end
     end
     outInstruction = @parseRewindInstruction.new {

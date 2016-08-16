@@ -21,23 +21,7 @@ syntax extension galgas3SyntaxComponentSyntax {
   rule <syntax_instruction> !@syntaxInstructionAST outInstruction {
     $\$terminal\$$ ?let @lstring terminalName indexing terminalReference
     <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
-    var indexNameList =@2lstringlist {}
-    select
-    or
-      $indexing$
-      repeat
-        $identifier$ ?let @lstring indexName indexing indexingNameReference
-        @lstring postfixName
-        select
-          postfixName = ["" nowhere]
-        or
-          $"string"$ ?postfixName
-        end
-        indexNameList += !indexName !postfixName
-      while
-        $,$
-      end
-    end
+    <terminal_instruction_indexing> ?let indexNameList
   #--- Get syntax directed translation result string
     @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
     @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
@@ -57,6 +41,28 @@ syntax extension galgas3SyntaxComponentSyntax {
       !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
       !grammarInstructionSyntaxDirectedTranslationPreceedingToken
     }
+  }
+
+  #····················································································································*
+
+  rule <terminal_instruction_indexing> !@2lstringlist outIndexNameList {
+    outIndexNameList = {}
+    select
+    or
+      $indexing$
+      repeat
+        $identifier$ ?let @lstring indexName indexing indexingNameReference
+        @lstring postfixName
+        select
+          postfixName = ["" nowhere]
+        or
+          $"string"$ ?postfixName
+        end
+        outIndexNameList += !indexName !postfixName
+      while
+        $,$
+      end
+    end
   }
 
   #····················································································································*

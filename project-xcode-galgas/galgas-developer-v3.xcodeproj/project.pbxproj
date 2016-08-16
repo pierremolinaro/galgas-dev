@@ -732,6 +732,9 @@
 		CFB02C8419F3FC2F0011D03D /* all-declarations-24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */; };
 		CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */; };
 		CFB02CA119F3FCE70011D03D /* NSString+identifierRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */; };
+		CFB2EC701D637AEA00A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
+		CFB2EC711D637B0300A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
+		CFB2EC721D637B0500A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
 		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
@@ -1230,6 +1233,7 @@
 		CFB02C9E19F3FC570011D03D /* all-declarations-24.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-24.h"; sourceTree = "<group>"; };
 		CFB02C9F19F3FCE70011D03D /* NSString+identifierRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+identifierRepresentation.h"; sourceTree = "<group>"; };
 		CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+identifierRepresentation.m"; sourceTree = "<group>"; };
+		CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-26.cpp"; sourceTree = "<group>"; };
 		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_DirectedGraph.h; sourceTree = "<group>"; };
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
 		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
@@ -1467,6 +1471,7 @@
 				CFB02C7A19F3FC2F0011D03D /* all-declarations-23.cpp */,
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
+				CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 			);
 			name = "C++ files";
@@ -2405,6 +2410,7 @@
 				CF2C85BE1CC3B0890008D960 /* FIRST_computations.cpp in Sources */,
 				CF2C85BF1CC3B0890008D960 /* follow_by_empty_computation.cpp in Sources */,
 				CF2C85C01CC3B0890008D960 /* mpz-clear.c in Sources */,
+				CFB2EC721D637B0500A023DE /* all-declarations-26.cpp in Sources */,
 				CF2C85C11CC3B0890008D960 /* check-gmp.cpp in Sources */,
 				CF2C85C21CC3B0890008D960 /* all-declarations-8.cpp in Sources */,
 				CF2C85C31CC3B0890008D960 /* C_BigInt.cpp in Sources */,
@@ -2665,6 +2671,7 @@
 				CF985CFD1B99F46C006ACAD5 /* C_BigInt.cpp in Sources */,
 				CFD94ADE1290635400864538 /* FOLLOW_computations.cpp in Sources */,
 				CF9234131BADBFF6001032DA /* mpz-tdiv_qr.c in Sources */,
+				CFB2EC701D637AEA00A023DE /* all-declarations-26.cpp in Sources */,
 				CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF9E75351BADD83300DBEFEE /* mpn-toom_interpolate_16pts.c in Sources */,
 				CFB02C8219F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
@@ -2925,6 +2932,7 @@
 				CFD94AE81290635400864538 /* FIRST_computations.cpp in Sources */,
 				CFD94AE91290635400864538 /* follow_by_empty_computation.cpp in Sources */,
 				CF92341D1BADC11B001032DA /* mpz-clear.c in Sources */,
+				CFB2EC711D637B0300A023DE /* all-declarations-26.cpp in Sources */,
 				CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF23745D19967C4F0061D2D8 /* all-declarations-8.cpp in Sources */,
 				CF985CFE1B99F46C006ACAD5 /* C_BigInt.cpp in Sources */,

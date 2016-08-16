@@ -39,8 +39,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #····················································································································*
 
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $with$
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST keyExpression
@@ -53,101 +52,123 @@ syntax extension galgas3InstructionsSyntax {
       $identifier$ ? withPrefix
     end
     $in$
-    select
-       <expression> ?let @semanticExpressionAST receiverExpression
-      let endOfReceiverExpression = @location.here
-      @lstring searchMethodNameForErrorSignaling
-      select
-        searchMethodNameForErrorSignaling = ["" nowhere]
-      or
-        $error$
-        $message$
-        $identifier$ ?searchMethodNameForErrorSignaling
-      end
-      $do$
-      <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
-      let endOfDoInstructions = @location.here
-      @semanticInstructionListAST mElseBranchInstructions
-      select
-        mElseBranchInstructions = {}
-      or
-        $else$
-        if searchMethodNameForErrorSignaling.string != "" then
-          error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
-        end
-        <semantic_instruction_list> ?mElseBranchInstructions
-      end
-      outInstruction = @readAccessWithInstructionAST.new {
-        !instructionLocation
-        !withPrefix
-        !receiverExpression
-        !endOfReceiverExpression
-        !keyExpression
-        !endOfKeyExpression
-        !searchMethodNameForErrorSignaling
-        !mDoBranchInstructions
-        !endOfDoInstructions
-        !mElseBranchInstructions
-        !@location.here}
-    or
-      $!?$ ?let selector
-      if selector.string != "" then
-        error selector : "an empty selector '!?' is required here"
-      end
-      $identifier$ ?let mTargetObjectName
-      var structAttributeList =@lstringlist {}
-      repeat
-      while
-        $.$
-        $identifier$ ?let mStructFieldName
-        structAttributeList += !mStructFieldName
-      end
-      let endOfReceiverExpression = @location.here
-      @lstring searchMethodNameForErrorSignaling
-      select
-        searchMethodNameForErrorSignaling = ["" nowhere]
-      or
-        $error$
-        $message$
-        $identifier$ ?searchMethodNameForErrorSignaling
-      end
-      $do$
-      <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
-      let endOf_do_instructions = @location.here
-      @semanticInstructionListAST mElseBranchInstructions
-      select
-        mElseBranchInstructions = @semanticInstructionListAST.emptyList
-      or
-        $else$
-        if searchMethodNameForErrorSignaling.string != "" then
-          error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
-        end
-        <semantic_instruction_list> ? mElseBranchInstructions
-      end
-      let endOf_else_instructions = @location.here
-      outInstruction = @readWriteAccessWithInstructionAST.new {
-        !instructionLocation
-        !withPrefix
-        !mTargetObjectName
-        !structAttributeList
-        !endOfReceiverExpression
-        !keyExpression
-        !endOfKeyExpression
-        !searchMethodNameForErrorSignaling
-        !mDoBranchInstructions
-        !endOf_do_instructions
-        !mElseBranchInstructions
-        !endOf_else_instructions}
-    end
+    <with_instruction_core> !instructionLocation !keyExpression !endOfKeyExpression !withPrefix ?outInstruction
     $end$
     select
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "with" then
-        error terminator : "the terminator attribute should be '%with'"
+        error terminator : "the terminator attribute should be '%with'" fixit { replace "%with" }
       end
     end
-  }
+   }
+
+  #····················································································································*
+
+  rule <with_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @semanticExpressionAST inKeyExpression
+    ?let @location inEndOfKeyExpression
+    ?let @lstring inWithPrefix
+    !@semanticInstructionAST outInstruction
+  {
+    <expression> ?let @semanticExpressionAST receiverExpression
+    let endOfReceiverExpression = @location.here
+    @lstring searchMethodNameForErrorSignaling
+    select
+      searchMethodNameForErrorSignaling = ["" nowhere]
+    or
+      $error$
+      $message$
+      $identifier$ ?searchMethodNameForErrorSignaling
+    end
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    let endOfDoInstructions = @location.here
+    @semanticInstructionListAST mElseBranchInstructions
+    select
+      mElseBranchInstructions = {}
+    or
+      $else$
+      if searchMethodNameForErrorSignaling.string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+      end
+      <semantic_instruction_list> ?mElseBranchInstructions
+    end
+    outInstruction = @readAccessWithInstructionAST.new {
+      !inInstructionLocation
+      !inWithPrefix
+      !receiverExpression
+      !endOfReceiverExpression
+      !inKeyExpression
+      !inEndOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOfDoInstructions
+      !mElseBranchInstructions
+      !@location.here
+    }
+ }
+
+  #····················································································································*
+
+  rule <with_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @semanticExpressionAST inKeyExpression
+    ?let @location inEndOfKeyExpression
+    ?let @lstring inWithPrefix
+    !@semanticInstructionAST outInstruction
+  {
+    $!?$ ?let selector
+    if selector.string != "" then
+      error selector : "an empty selector '!?' is required here"
+    end
+    $identifier$ ?let mTargetObjectName
+    var structAttributeList =@lstringlist {}
+    repeat
+    while
+      $.$
+      $identifier$ ?let mStructFieldName
+      structAttributeList += !mStructFieldName
+    end
+    let endOfReceiverExpression = @location.here
+    @lstring searchMethodNameForErrorSignaling
+    select
+      searchMethodNameForErrorSignaling = ["" nowhere]
+    or
+      $error$
+      $message$
+      $identifier$ ?searchMethodNameForErrorSignaling
+    end
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    let endOf_do_instructions = @location.here
+    @semanticInstructionListAST mElseBranchInstructions
+    select
+      mElseBranchInstructions = @semanticInstructionListAST.emptyList
+    or
+      $else$
+      if searchMethodNameForErrorSignaling.string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+      end
+      <semantic_instruction_list> ? mElseBranchInstructions
+    end
+    let endOf_else_instructions = @location.here
+    outInstruction = @readWriteAccessWithInstructionAST.new {
+      !inInstructionLocation
+      !inWithPrefix
+      !mTargetObjectName
+      !structAttributeList
+      !endOfReceiverExpression
+      !inKeyExpression
+      !inEndOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOf_do_instructions
+      !mElseBranchInstructions
+      !endOf_else_instructions
+    }
+ }
 
   #····················································································································*
 

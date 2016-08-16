@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "loop" then
-        error terminator : "the terminator attribute should be '%loop'"
+        error terminator : "the terminator attribute should be '%loop'" fixit { replace "%loop" }
       end
     end
     let mEndOfLoopInstruction = @location.here
