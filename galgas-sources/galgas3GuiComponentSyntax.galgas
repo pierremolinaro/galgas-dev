@@ -21,100 +21,20 @@ syntax galgas3GuiComponentSyntax (galgas3Scanner) {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations {
+rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $gui$
-  $identifier$ ?var @lstring mGUIName
+  $identifier$ ?let @lstring mGUIName
   ${$
-  var importedOptionList =@lstringlist {}
-  var simpleGlobalAttributes =@guiSimpleAttributeListAST {}
-  var withLexiqueList =@withLexiqueListAST {}
+  @lstringlist importedOptionList = {}
+  @guiSimpleAttributeListAST simpleGlobalAttributes = {}
+  @withLexiqueListAST withLexiqueList = {}
   repeat
   while
-    $identifier$ ?var @lstring mKey
-    $:$
-    var mValue =@lstring.new{!"" !@location.here}
-    repeat
-      $"string"$ ?var @lstring value
-      mValue = @lstring.new {![mValue string] + [value string] ![value location]}
-    while
-    end
-    simpleGlobalAttributes += !mKey !mValue
+    <gui_attributes> !?simpleGlobalAttributes
   while
-    $with$
-    select
-      $option$
-      $identifier$ ?var @lstring optionReference
-      importedOptionList += !optionReference
-    or
-      $lexique$
-      $identifier$ ?var @lstring lexiqueReference
-      var labels =@guiLabelListAST {}
-      var simpleAttributes =@guiSimpleAttributeListAST {}
-      var compoundAttributes =@guiCompoundAttributeListAST {}
-      ${$
-      repeat
-      while
-        $label$
-        @uint displayStyle
-        select
-          displayStyle = 0
-        or
-          $*$
-          displayStyle = 1
-        end
-        var terminalList =@terminalLabelListAST {}
-        repeat
-          $\$terminal\$$ ?var  @lstring terminal
-          @uint displayFlags
-          select
-            displayFlags = 0 # Default
-          or
-            $-$
-            displayFlags = 0xFFFF # Do not diplay
-          or
-            $($
-            $uint32$ ?var @luint leadingStrip
-            if leadingStrip.uint >= 15 then
-              error leadingStrip:"leading strip should be < 15"
-            end
-            $,$
-            $uint32$ ?var @luint endingStrip
-            if endingStrip.uint >= 15 then
-              error endingStrip:"tail strip should be < 15"
-            end
-            displayFlags = (leadingStrip.uint << 4) | endingStrip
-           $)$
-          end
-          terminalList += !terminal !displayFlags
-        while
-          $,$
-        end
-        labels += !displayStyle !terminalList !@location.here
-      while
-        $identifier$ ?var @lstring key
-        $"string"$ ?var @lstring name
-        $:$
-        var value =@lstring.new{!"" !@location.here}
-        repeat
-          $"string"$ ?var @lstring v
-          value = @lstring.new {![value string] + [v string] ![v location]}
-        while
-        end
-        compoundAttributes += !key !name !value
-      while
-        $identifier$ ?var @lstring name
-        $:$
-        $"string"$ ?var @lstring value
-        simpleAttributes += !name !value
-      end
-      $}$
-      withLexiqueList += 
-        !lexiqueReference
-        !labels
-        !simpleAttributes
-        !compoundAttributes
-    end
+    <gui_with_option_declaration> !?importedOptionList
+  while
+    <gui_with_lexique_declaration> !?withLexiqueList
   end
 #---
   $}$
@@ -123,6 +43,97 @@ rule <declaration>
     !importedOptionList
     !simpleGlobalAttributes
     !withLexiqueList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <gui_with_lexique_declaration> ?!@withLexiqueListAST ioWithLexiqueList {
+  $with$
+  $lexique$
+  $identifier$ ?var @lstring lexiqueReference
+  @guiLabelListAST labels = {}
+  @guiSimpleAttributeListAST simpleAttributes = {}
+  @guiCompoundAttributeListAST compoundAttributes = {}
+  ${$
+  repeat
+  while
+    $label$
+    @uint displayStyle
+    select
+      displayStyle = 0
+    or
+      $*$
+      displayStyle = 1
+    end
+    @terminalLabelListAST terminalList = {}
+    repeat
+      $\$terminal\$$ ?let  @lstring terminal
+      @uint displayFlags
+      select
+        displayFlags = 0 # Default
+      or
+        $-$
+        displayFlags = 0xFFFF # Do not diplay
+      or
+        $($
+        $uint32$ ?let @luint leadingStrip
+        if leadingStrip.uint >= 15 then
+          error leadingStrip:"leading strip should be < 15"
+        end
+        $,$
+        $uint32$ ?let @luint endingStrip
+        if endingStrip.uint >= 15 then
+          error endingStrip:"tail strip should be < 15"
+        end
+        displayFlags = (leadingStrip.uint << 4) | endingStrip
+       $)$
+      end
+      terminalList += !terminal !displayFlags
+    while
+      $,$
+    end
+    labels += !displayStyle !terminalList !@location.here
+  while
+    $identifier$ ?var @lstring key
+    $"string"$ ?var @lstring name
+    $:$
+    var value =@lstring.new{!"" !@location.here}
+    repeat
+      $"string"$ ?var @lstring v
+      value = @lstring.new {![value string] + [v string] ![v location]}
+    while
+    end
+    compoundAttributes += !key !name !value
+  while
+    $identifier$ ?var @lstring name
+    $:$
+    $"string"$ ?var @lstring value
+    simpleAttributes += !name !value
+  end
+  $}$
+  ioWithLexiqueList +=  !lexiqueReference !labels !simpleAttributes !compoundAttributes
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <gui_with_option_declaration> ?!@lstringlist ioImportedOptionList {
+  $with$
+  $option$
+  $identifier$ ?var @lstring optionReference
+  ioImportedOptionList += !optionReference
+}
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <gui_attributes> ?!@guiSimpleAttributeListAST ioSimpleGlobalAttributes {
+  $identifier$ ?let @lstring mKey
+  $:$
+  var mValue = @lstring.new {!"" !.here}
+  repeat
+    $"string"$ ?var @lstring value
+    mValue = @lstring.new {![mValue string] + [value string] ![value location]}
+  while
+  end
+  ioSimpleGlobalAttributes += !mKey !mValue
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

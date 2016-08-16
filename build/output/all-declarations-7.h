@@ -27,12 +27,12 @@ class cParser_galgas_33_OptionComponentSyntax {
 
   protected : virtual void nt_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_option_ (class GALGAS_commandLineOptionListAST & ioArgument0,
-                                       class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+  protected : virtual void nt_option_5F_declaration_ (class GALGAS_commandLineOptionListAST & ioArgument0,
+                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_option_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+  protected : virtual void nt_option_5F_declaration_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_option_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+  protected : virtual void nt_option_5F_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
 
 //--- Rule declarations
@@ -43,12 +43,12 @@ class cParser_galgas_33_OptionComponentSyntax {
 
   protected : void rule_galgas_33_OptionComponentSyntax_declaration_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_OptionComponentSyntax_option_i1_ (GALGAS_commandLineOptionListAST & ioArgument0,
-                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_ (GALGAS_commandLineOptionListAST & ioArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_OptionComponentSyntax_option_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_OptionComponentSyntax_option_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
@@ -172,6 +172,27 @@ class cParser_galgas_33_GuiComponentSyntax {
 
   protected : virtual void nt_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
+  protected : virtual void nt_gui_5F_attributes_ (class GALGAS_guiSimpleAttributeListAST & ioArgument0,
+                                                  class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_attributes_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_attributes_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_ (class GALGAS_withLexiqueListAST & ioArgument0,
+                                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_option_5F_declaration_ (class GALGAS_lstringlist & ioArgument0,
+                                                                     class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_option_5F_declaration_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_gui_5F_with_5F_option_5F_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
 
 //--- Rule declarations
   protected : void rule_galgas_33_GuiComponentSyntax_declaration_i0_ (GALGAS_galgas_33_DeclarationAST & ioArgument0,
@@ -180,6 +201,27 @@ class cParser_galgas_33_GuiComponentSyntax {
   protected : void rule_galgas_33_GuiComponentSyntax_declaration_i0_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_GuiComponentSyntax_declaration_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_ (GALGAS_withLexiqueListAST & ioArgument0,
+                                                                                                C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GALGAS_lstringlist & ioArgument0,
+                                                                                               C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_ (GALGAS_guiSimpleAttributeListAST & ioArgument0,
+                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
@@ -197,8 +239,6 @@ class cParser_galgas_33_GuiComponentSyntax {
   protected : virtual int32_t select_galgas_33_GuiComponentSyntax_5 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected : virtual int32_t select_galgas_33_GuiComponentSyntax_6 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_galgas_33_GuiComponentSyntax_7 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;
@@ -263,14 +303,6 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
   protected : virtual void nt_nonterminal_5F_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_nonterminal_5F_label_5F_declaration_ (const class GALGAS_lstring constinArgument0,
-                                                                    class GALGAS_nonTerminalLabelListAST & ioArgument1,
-                                                                    class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_nonterminal_5F_label_5F_declaration_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
-
-  protected : virtual void nt_nonterminal_5F_label_5F_declaration_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
-
   protected : virtual void nt_semantic_5F_instruction_ (class GALGAS_semanticInstructionAST & outArgument0,
                                                         class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
@@ -330,42 +362,41 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_label_5F_declaration_i2_ (const GALGAS_lstring constinArgument0,
-                                                                                                 GALGAS_nonTerminalLabelListAST & ioArgument1,
-                                                                                                 C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_label_5F_declaration_i2_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_label_5F_declaration_i2_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i3_ (GALGAS_nonterminalDeclarationListAST & ioArgument0,
+  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_ (GALGAS_nonterminalDeclarationListAST & ioArgument0,
                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i3_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i3_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_nonterminal_5F_declaration_i2_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i4_ (const GALGAS_lstring constinArgument0,
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_ (const GALGAS_lstring constinArgument0,
                                                                                      GALGAS_syntaxRuleLabelListAST & ioArgument1,
                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i4_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i4_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_label_i3_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i5_ (GALGAS_syntaxRuleListAST & ioArgument0,
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_ (GALGAS_syntaxRuleListAST & ioArgument0,
                                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i5_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i5_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_rule_5F_declaration_i4_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i6_ (GALGAS_syntaxInstructionList & outArgument0,
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i5_ (GALGAS_syntaxInstructionList & outArgument0,
                                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i6_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i5_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i6_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_5F_list_i5_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i6_ (GALGAS_syntaxInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i6_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i6_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i7_ (GALGAS_syntaxInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -402,12 +433,12 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i11_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i12_ (GALGAS_syntaxInstructionAST & outArgument0,
-                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i12_ (GALGAS_syntaxInstructionList & outArgument0,
+                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i12_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i12_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i12_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i12_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i13_ (GALGAS_syntaxInstructionList & outArgument0,
                                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -416,12 +447,12 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i13_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_ (GALGAS_syntaxInstructionList & outArgument0,
-                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i14_ (GALGAS_syntaxInstructionAST & outArgument0,
+                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i14_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_ (GALGAS_syntaxInstructionAST & outArgument0,
                                                                                     C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -429,13 +460,6 @@ class cParser_galgas_33_SyntaxComponentSyntax {
   protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i16_ (GALGAS_syntaxInstructionAST & outArgument0,
-                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i16_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
@@ -3901,6 +3925,39 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_factor_ (GALGAS_semanticExpressionAST & outArgument0,
                                     C_Lexique_galgas_33_Scanner * inCompiler) ;
 
+//------------------------------------- 'filewrapper_binary_files' non terminal
+//--- 'parse' label
+  public : virtual void nt_filewrapper_5F_binary_5F_files_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_filewrapper_5F_binary_5F_files_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_filewrapper_5F_binary_5F_files_ (GALGAS_lstringlist & outArgument0,
+                                                            C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'filewrapper_templates' non terminal
+//--- 'parse' label
+  public : virtual void nt_filewrapper_5F_templates_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_filewrapper_5F_templates_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_filewrapper_5F_templates_ (GALGAS_filewrapperTemplateListAST & outArgument0,
+                                                      C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'filewrapper_text_files' non terminal
+//--- 'parse' label
+  public : virtual void nt_filewrapper_5F_text_5F_files_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_filewrapper_5F_text_5F_files_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_filewrapper_5F_text_5F_files_ (GALGAS_lstringlist & outArgument0,
+                                                          C_Lexique_galgas_33_Scanner * inCompiler) ;
+
 //------------------------------------- 'for_instruction_element' non terminal
 //--- 'parse' label
   public : virtual void nt_for_5F_instruction_5F_element_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
@@ -3957,16 +4014,49 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
                                                                  GALGAS_nonTerminalLabelListAST & ioArgument1,
                                                                  C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'if_branch' non terminal
+//------------------------------------- 'gui_attributes' non terminal
 //--- 'parse' label
-  public : virtual void nt_if_5F_branch_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_gui_5F_attributes_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //--- indexing
-  public : virtual void nt_if_5F_branch_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_gui_5F_attributes_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_if_5F_branch_ (GALGAS_semanticInstructionAST & outArgument0,
-                                          C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_gui_5F_attributes_ (GALGAS_guiSimpleAttributeListAST & ioArgument0,
+                                               C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'gui_with_lexique_declaration' non terminal
+//--- 'parse' label
+  public : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_gui_5F_with_5F_lexique_5F_declaration_ (GALGAS_withLexiqueListAST & ioArgument0,
+                                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'gui_with_option_declaration' non terminal
+//--- 'parse' label
+  public : virtual void nt_gui_5F_with_5F_option_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_gui_5F_with_5F_option_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_gui_5F_with_5F_option_5F_declaration_ (GALGAS_lstringlist & ioArgument0,
+                                                                  C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'if_instruction_core' non terminal
+//--- 'parse' label
+  public : virtual void nt_if_5F_instruction_5F_core_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_if_5F_instruction_5F_core_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_if_5F_instruction_5F_core_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                       C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'insert_or_replace_declaration' non terminal
 //--- 'parse' label
@@ -4056,6 +4146,17 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 //----------- '' label
   public : virtual void nt_lexical_5F_implicit_5F_rule_ (GALGAS_lexicalRuleListAST & ioArgument0,
                                                          C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'lexical_indexing_declaration' non terminal
+//--- 'parse' label
+  public : virtual void nt_lexical_5F_indexing_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_lexical_5F_indexing_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_lexical_5F_indexing_5F_declaration_ (GALGAS_indexingListAST & ioArgument0,
+                                                                C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'lexical_instruction' non terminal
 //--- 'parse' label
@@ -4189,28 +4290,16 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_nonterminal_5F_declaration_ (GALGAS_nonterminalDeclarationListAST & ioArgument0,
                                                         C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'nonterminal_label_declaration' non terminal
+//------------------------------------- 'option_declaration' non terminal
 //--- 'parse' label
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_option_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //--- indexing
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_option_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_nonterminal_5F_label_5F_declaration_ (const GALGAS_lstring inArgument0,
-                                                                 GALGAS_nonTerminalLabelListAST & ioArgument1,
-                                                                 C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//------------------------------------- 'option' non terminal
-//--- 'parse' label
-  public : virtual void nt_option_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_option_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_option_ (GALGAS_commandLineOptionListAST & ioArgument0,
-                                    C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_option_5F_declaration_ (GALGAS_commandLineOptionListAST & ioArgument0,
+                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'optional_type' non terminal
 //--- 'parse' label
@@ -4343,6 +4432,28 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 //----------- '' label
   public : virtual void nt_semantic_5F_instruction_5F_list_ (GALGAS_semanticInstructionListAST & outArgument0,
                                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'sharedmap_attribute' non terminal
+//--- 'parse' label
+  public : virtual void nt_sharedmap_5F_attribute_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_sharedmap_5F_attribute_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_sharedmap_5F_attribute_ (GALGAS_sharedMapAttributeListAST & ioArgument0,
+                                                    C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'sharedmap_override' non terminal
+//--- 'parse' label
+  public : virtual void nt_sharedmap_5F_override_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_sharedmap_5F_override_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_sharedmap_5F_override_ (GALGAS_mapOverrideBlockListAST & ioArgument0,
+                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'sharedmap_search_method_declaration' non terminal
 //--- 'parse' label
@@ -4921,12 +5032,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 
   public : virtual int32_t select_galgas_33_LexiqueComponentSyntax_32 (C_Lexique_galgas_33_Scanner *) ;
 
-  public : virtual int32_t select_galgas_33_LexiqueComponentSyntax_33 (C_Lexique_galgas_33_Scanner *) ;
-
-  public : virtual int32_t select_galgas_33_LexiqueComponentSyntax_34 (C_Lexique_galgas_33_Scanner *) ;
-
-  public : virtual int32_t select_galgas_33_LexiqueComponentSyntax_35 (C_Lexique_galgas_33_Scanner *) ;
-
   public : virtual int32_t select_galgas_33_OptionComponentSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_OptionComponentSyntax_1 (C_Lexique_galgas_33_Scanner *) ;
@@ -4946,8 +5051,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual int32_t select_galgas_33_GuiComponentSyntax_5 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_GuiComponentSyntax_6 (C_Lexique_galgas_33_Scanner *) ;
-
-  public : virtual int32_t select_galgas_33_GuiComponentSyntax_7 (C_Lexique_galgas_33_Scanner *) ;
 
   public : virtual int32_t select_galgas_33_SyntaxComponentSyntax_0 (C_Lexique_galgas_33_Scanner *) ;
 

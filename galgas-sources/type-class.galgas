@@ -110,7 +110,7 @@ override method @classDeclarationAST enterInSemanticContext
   @setterMap setterMap
   @instanceMethodMap instanceMethodMap
   @typedPropertyList inheritedTypedAttributeList
-  var attributeMap =@attributeMap.emptyMap{}
+  @attributeMap attributeMap = {}
 #--- Handle super class
   @unifiedTypeMap-proxy superClassIndex
   @bool generateHeaderInSeparateFile
@@ -193,7 +193,7 @@ override method @classDeclarationAST enterInSemanticContext
     end
   end
 #--- Build attribute Map and constructor argument list
-  var constructorAttributeTypeList =@functionSignature {}
+  @functionSignature constructorAttributeTypeList = {}
   for () in inheritedTypedAttributeList do
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
@@ -203,7 +203,6 @@ override method @classDeclarationAST enterInSemanticContext
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     [!?attributeMap insertKey
       !mPropertyName
-#      !mIsPrivate
       !attributeTypeIndex
     ]
     if [getterMap hasKey ![mPropertyName string]] then
@@ -216,8 +215,8 @@ override method @classDeclarationAST enterInSemanticContext
      !mClassTypeName
      ?var @unifiedTypeMap-proxy classIndex
   ]
-#--- Constructor
-  var constructorMap =@constructorMap.emptyMap{}
+#--- Constructors
+  @constructorMap constructorMap = {}
   if not mIsAbstract then
     [!?constructorMap insertKey
       !@lstring.new {!"new" !@location.here}
@@ -227,7 +226,7 @@ override method @classDeclarationAST enterInSemanticContext
     ]
   end
 #--- Typed attribute list
-  var currentClassTypedAttributeList =@typedPropertyList {}
+  @typedPropertyList currentClassTypedAttributeList = {}
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mAttributeList do
     @unifiedTypeMap-proxy attributeTypeIndex

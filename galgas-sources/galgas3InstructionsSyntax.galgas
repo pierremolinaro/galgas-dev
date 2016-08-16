@@ -74,7 +74,8 @@ rule <declaration>
     !false # Is not predefined
     !false # Is not internal
     !mActionName
-    !mFormalParameterList}
+    !mFormalParameterList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
