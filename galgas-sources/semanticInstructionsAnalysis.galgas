@@ -663,19 +663,10 @@ proc checkExpressionIsBoolean
         : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter"
         : outExpression
       else
-        @string s = ""
-        for () in [expressionType mGetterMap] do
-          s += "\n  - " + lkey
-          for () in mArgumentTypeList do
-            s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
-          end
-          s += " -> @" + [mReturnedType key]
-        end
         error inErrorLocation
-        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter; available "
-        + if [[expressionType mGetterMap] count] > 1 then "getters are" else "getter is" end
-        + ":" + s
+        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' getter "
         : outExpression
+        fixit { replace [[expressionType mGetterMap] keyList] }
       end
     end
   end

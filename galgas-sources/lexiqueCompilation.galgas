@@ -194,13 +194,10 @@ override method @lexicalCharacterMatchAST checkLexicalExpression
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexicalCharacterSetMatchAST checkLexicalExpression
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+{
   if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![mCharacterSetName string]] then
-    @string s = "undefined test function; available functions are:"
-    for () in ioLexiqueAnalysisContext.mExternUnicodeTestFunctions do
-      s += "\n-  " + key
-    end
-    error mCharacterSetName : s
+    error mCharacterSetName : "undefined test function" fixit { replace ioLexiqueAnalysisContext.mExternUnicodeTestFunctions }
   end
 }
 

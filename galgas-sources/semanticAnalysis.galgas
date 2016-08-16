@@ -1232,6 +1232,8 @@ func buildPredefinedTypes ?let @semanticContext inSemanticContext -> @predefined
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"stringlist" !.here}}
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lbigint"    !.here}}
     !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"bigint"     !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"stringset"  !.here}}
+    !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !.new {!"lstringlist"!.here}}
   }
 }
 

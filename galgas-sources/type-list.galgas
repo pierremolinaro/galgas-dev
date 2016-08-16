@@ -335,16 +335,16 @@ override method @listDeclarationAST semanticAnalysis
     for () in mFeatureList do
       if mValue.string == "nogetter" then
         if not hasGetter then
-          error mValue:"duplicate feature"
+          error mValue:"duplicate attribute" fixit { remove }
         end
         hasGetter = false
       elsif mValue.string == "setter" then
         if hasSetter then
-          error mValue:"duplicate feature"
+          error mValue:"duplicate attribute" fixit { remove }
         end
         hasSetter = true
       else
-        error mValue:"unknown feature; the features available here are: 'nogetter', 'setter'"
+        error mValue:"unknown feature" fixit { replace {!"nogetter", !"setter"} }
       end
     end
     typedAttributeList +=

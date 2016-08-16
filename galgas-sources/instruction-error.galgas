@@ -238,8 +238,11 @@ proc analyzeErrorOrWarningInstruction
         ?let expression
       ]
       if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "this expression should be an @string or an @stringlist instance"
+        error errorLocation : "expression type is @" + [[expression mResultType] key]
+         + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItReplace {!exp:expression}
     case fixItInsertBefore (exp errorLocation) :
@@ -252,8 +255,11 @@ proc analyzeErrorOrWarningInstruction
         ?let expression
       ]
       if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "this expression should be an @string or an @stringlist instance"
+        error errorLocation : "expression type is @" + [[expression mResultType] key]
+         + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItInsertBefore {!exp:expression}
     case fixItInsertAfter (exp errorLocation) :
@@ -266,8 +272,11 @@ proc analyzeErrorOrWarningInstruction
         ?let expression
       ]
       if ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringListType)
+       && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringSetType)
        && ([expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType) then
-        error errorLocation : "this expression should be an @string or an @stringlist instance"
+        error errorLocation : "expression type is @" + [[expression mResultType] key]
+         + ", it should be an @string, @stringset, @stringlist or @lstringlist"
       end
       outFixitListForGeneration += !.fixItInsertAfter {!exp:expression}
     end

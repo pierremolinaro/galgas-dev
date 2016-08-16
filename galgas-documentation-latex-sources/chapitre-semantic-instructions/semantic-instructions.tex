@@ -652,10 +652,12 @@ La clause \ggs=fixit= contient une séquence de suggestions ; il existe quatre t
 \item \ggs=before=, qui suggère d'insérer l'\ggs=expression= indiquée avant le token désigné.
 \end{itemize}
 
-Deux types sont acceptés pour l'\ggs=expression= :
+Quatre types sont acceptés pour l'\ggs=expression= :
 \begin{itemize}
-  \item \ggs=@string=, elle représente une suggestion unique ;
-  \item \ggs=@stringlist=, elle représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste.
+  \item \ggs=@string=, l'expression représente une suggestion unique~;
+  \item \ggs=@stringlist=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste~;
+  \item \ggs=@lstringlist=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre de la liste (les information de localisation sont ignorées)~;
+  \item \ggs=@stringset=, l'expression représente une liste de suggestions, qui seront présentées à l'utilisateur dans l'ordre alphabétique des chaînes.
 \end{itemize}
 
 Ainsi, on peut écrire (et de même avec \ggs=after= et \ggs=before=) :
