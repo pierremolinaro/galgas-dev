@@ -131,11 +131,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #---
   for () in mIndexingKeyList do
     if not [inIndexNameSet hasKey ![mValue0 string]] then
-      var s = ""
-      for () in inIndexNameSet do
-        s += "\n  - " + key
-      end
-      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique; available names are:" + s
+      error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end
   end
 #--- Check syntax directed translation destination variable

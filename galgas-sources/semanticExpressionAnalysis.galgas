@@ -591,6 +591,8 @@ struct @predefinedTypes {
   @unifiedTypeMap-proxy mStringListType
   @unifiedTypeMap-proxy mLBigIntType
   @unifiedTypeMap-proxy mBigIntType
+  @unifiedTypeMap-proxy mStringSetType
+  @unifiedTypeMap-proxy mLStringListType
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -910,19 +912,10 @@ proc analyzeConstructorInvocation
         : "the '@"+ [outConstructorType key] + "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
-        @string s = ""
-        for () in constructorMap do
-          s += "\n  - " + lkey
-          for () in mArgumentTypeList do
-            s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
-          end
-          s += " -> @" + [mReturnedType key]
-        end
         error inConstructorName
-        : "the '@"+ inTypeName + "' type does not define the '" + inConstructorName + "' constructor; "
-        + if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
-        + ":" + s
+        : "the '@"+ inTypeName + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        fixit { replace [constructorMap keyList] }
       end
     end
   #--- Analysis arguments
@@ -1139,19 +1132,10 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       : "the '@"+ [receiverType key] + "' type does not define any getter"
       : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
-      @string s = ""
-      for () in getterMap do
-        s += "\n  - " + lkey
-        for () in mArgumentTypeList do
-          s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
-        end
-        s += " -> @" + [mReturnedType key]
-      end
       error mGetterName
-      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter; available "
-      + if [getterMap count] > 1 then "getters are" else "getter is" end
-      + ":" + s
+      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter "
       : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      fixit { replace [getterMap keyList] }
     end
   end
 #--- Analysis arguments
@@ -1263,19 +1247,20 @@ override method @optionExpressionAST analyzeSemanticExpression
       error mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
-    @string s = ""
+    @stringlist s = {}
     for () in boolOptionMap do
-      s += "\n-  '" + lkey + "' @bool option;"
+      s += !lkey
     end
     for () in uintOptionMap do
-      s += "\n-  '" + lkey + "' @uint option;"
+      s += !lkey
     end
     for () in stringOptionMap do
-      s += "\n-  '" + lkey + "' @string option;"
+      s += !lkey
     end
     error mOptionEntryName
-    : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option; available options:" + s
+    : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option"
     : outExpression
+    fixit { replace s }
   end
 }
 
