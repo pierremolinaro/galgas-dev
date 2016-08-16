@@ -311,6 +311,7 @@ override method @listDeclarationAST addAssociatedElement
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @listDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

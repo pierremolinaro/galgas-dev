@@ -207,6 +207,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

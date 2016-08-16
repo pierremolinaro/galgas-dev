@@ -26,11 +26,12 @@ void routine_updateLIBPMatPath (const class GALGAS_string constinArgument0,
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*extensionMethodSignature_semanticDeclarationAST_semanticAnalysis) (const class cPtr_semanticDeclarationAST * inObject,
-                                                                                  class GALGAS_usefulEntitiesGraph & ioArgument0,
-                                                                                  const class GALGAS_string constinArgument1,
-                                                                                  const class GALGAS_semanticContext constinArgument2,
-                                                                                  const class GALGAS_predefinedTypes constinArgument3,
-                                                                                  class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument4,
+                                                                                  class GALGAS_lstringlist & ioArgument0,
+                                                                                  class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                  const class GALGAS_string constinArgument2,
+                                                                                  const class GALGAS_semanticContext constinArgument3,
+                                                                                  const class GALGAS_predefinedTypes constinArgument4,
+                                                                                  class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument5,
                                                                                   class C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
@@ -42,6 +43,7 @@ void enterExtensionMethod_semanticAnalysis (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callExtensionMethod_semanticAnalysis (const class cPtr_semanticDeclarationAST * inObject,
+                                           GALGAS_lstringlist & io_ioUsefulnessRootEntities,
                                            GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
                                            const GALGAS_string constin_inProductDirectory,
                                            const GALGAS_semanticContext constin_inSemanticContext,

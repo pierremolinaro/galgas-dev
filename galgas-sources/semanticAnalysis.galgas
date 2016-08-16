@@ -93,6 +93,7 @@ proc checkReaderSignatures
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST semanticAnalysis
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext unused inSemanticContext
@@ -102,6 +103,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @predefinedTypeAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -137,7 +139,8 @@ proc buildLocalVariableMapAndSignature
   ?let @semanticContext inSemanticContext
   ?let @formalParameterListAST inRoutineSignatureAST
   ?!@variableMap ioVariableMap
-  !@formalParameterListForGeneration outRoutineSignature {
+  !@formalParameterListForGeneration outRoutineSignature
+{
   outRoutineSignature = @formalParameterListForGeneration.emptyList
   for () in inRoutineSignatureAST do
     let type = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -240,6 +243,7 @@ proc analyzeRoutineBody
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -273,6 +277,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -305,6 +310,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @procDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -432,6 +438,7 @@ proc analyzeFunctionBody
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionDeclarationAST semanticAnalysis
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -441,6 +448,9 @@ override method @functionDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if mIsUsefull then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @formalInputParameterListForGeneration formalInputParameterList
@@ -485,6 +495,7 @@ override method @functionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST semanticAnalysis
+  ?!@lstringlist ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -494,6 +505,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  if mIsUsefull then
+    ioUsefulnessRootEntities += !nameForUsefulness
+  end
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @unifiedTypeMap-proxy returnType
@@ -540,6 +554,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -628,6 +643,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -665,6 +681,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3SyntaxComponentAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -715,6 +732,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3GrammarComponentAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
@@ -901,6 +919,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueComponentAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext

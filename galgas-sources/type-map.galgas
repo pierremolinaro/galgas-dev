@@ -563,6 +563,7 @@ private func %once forbiddenKeysForMap -> @stringset outResult {
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

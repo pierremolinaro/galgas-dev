@@ -74,6 +74,7 @@ override method @overridingAbstractExtensionSetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractExtensionSetterAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

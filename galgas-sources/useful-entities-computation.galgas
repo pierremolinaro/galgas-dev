@@ -31,14 +31,14 @@ map @uselessEntityLocationMap {
 proc checkUsefulEntities
   ?let @usefulEntitiesGraph inUsefulEntitiesGraph
   ?let @lstringlist inRootEntities
-  ?let @string inProductDirectory
+  ?let @string unused inProductDirectory
 {
   if [option galgas_cli_options.checkEntityUsefulness value] && (@uint.errorCount == 0) then
-    let helperDirectory = inProductDirectory + "/../usefulness"
-    let helperFile = helperDirectory + "/useful-entity-graph.dot"
-    let s = [inUsefulEntitiesGraph graphviz]
-    [helperDirectory makeDirectory]
-    [s writeToFileWhenDifferentContents !helperFile ?*]
+#    let helperDirectory = inProductDirectory + "/../usefulness"
+#    let helperFile = helperDirectory + "/useful-entity-graph.dot"
+#    let s = [inUsefulEntitiesGraph graphviz]
+#    [helperDirectory makeDirectory]
+#    [s writeToFileWhenDifferentContents !helperFile ?*]
   #--- Undefined nodes
     let undefinedNodeList = [inUsefulEntitiesGraph undefinedNodeKeyList]
     if [undefinedNodeList length] > 0 then
