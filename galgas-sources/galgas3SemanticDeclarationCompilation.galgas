@@ -88,6 +88,7 @@ proc compileSemanticDeclarationsGalgas3
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
     for () in sortedSemanticDeclarationListAST do
       [mSemanticDeclaration semanticAnalysis
+        !?ioUsefulnessRootEntities 
         !?ioUsefulEntitiesGraph
         !inProductDirectory
         !outSemanticContext

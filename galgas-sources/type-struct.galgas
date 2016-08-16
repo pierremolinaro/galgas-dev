@@ -182,6 +182,7 @@ private func %once forbiddenKeysForStruct -> @stringset outResult {
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
 
 override method @structDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

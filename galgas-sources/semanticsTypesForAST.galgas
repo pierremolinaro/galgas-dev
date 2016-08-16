@@ -524,6 +524,7 @@ class @functionDeclarationAST : @externFunctionDeclarationAST {
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
   @bool mIsInternal
+  @bool mIsUsefull
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -539,6 +540,7 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
   @bool mIsInternal
+  @bool mIsUsefull
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

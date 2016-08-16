@@ -205,6 +205,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @arrayDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

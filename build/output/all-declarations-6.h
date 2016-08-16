@@ -8798,7 +8798,8 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
                                                                        const class GALGAS_lstring & inOperand4,
                                                                        const class GALGAS_semanticInstructionListAST & inOperand5,
                                                                        const class GALGAS_location & inOperand6,
-                                                                       const class GALGAS_bool & inOperand7
+                                                                       const class GALGAS_bool & inOperand7,
+                                                                       const class GALGAS_bool & inOperand8
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8815,6 +8816,8 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mFunctionInstructionList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsInternal (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsUsefull (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -8838,6 +8841,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
   public : GALGAS_semanticInstructionListAST mAttribute_mFunctionInstructionList ;
   public : GALGAS_location mAttribute_mEndOfFunctionInstructionList ;
   public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_bool mAttribute_mIsUsefull ;
 
 //--- Constructor
   public : cPtr_functionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -8847,7 +8851,8 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
                                         const GALGAS_lstring & in_mResultVariableName,
                                         const GALGAS_semanticInstructionListAST & in_mFunctionInstructionList,
                                         const GALGAS_location & in_mEndOfFunctionInstructionList,
-                                        const GALGAS_bool & in_mIsInternal
+                                        const GALGAS_bool & in_mIsInternal,
+                                        const GALGAS_bool & in_mIsUsefull
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -8857,6 +8862,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsInternal (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsUsefull (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -11174,7 +11180,8 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                                            const class GALGAS_lstring & inOperand3,
                                                                            const class GALGAS_semanticInstructionListAST & inOperand4,
                                                                            const class GALGAS_location & inOperand5,
-                                                                           const class GALGAS_bool & inOperand6
+                                                                           const class GALGAS_bool & inOperand6,
+                                                                           const class GALGAS_bool & inOperand7
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -11193,6 +11200,8 @@ class GALGAS_onceFunctionDeclarationAST : public GALGAS_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFunctionName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsInternal (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsUsefull (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mResultTypeName (LOCATION_ARGS) const ;
 
@@ -11223,6 +11232,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public : GALGAS_semanticInstructionListAST mAttribute_mFunctionInstructionList ;
   public : GALGAS_location mAttribute_mEndOfFunctionInstructionList ;
   public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_bool mAttribute_mIsUsefull ;
 
 //--- Constructor
   public : cPtr_onceFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -11231,7 +11241,8 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
                                             const GALGAS_lstring & in_mResultVariableName,
                                             const GALGAS_semanticInstructionListAST & in_mFunctionInstructionList,
                                             const GALGAS_location & in_mEndOfFunctionInstructionList,
-                                            const GALGAS_bool & in_mIsInternal
+                                            const GALGAS_bool & in_mIsInternal,
+                                            const GALGAS_bool & in_mIsUsefull
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -11244,6 +11255,7 @@ class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsInternal (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsUsefull (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

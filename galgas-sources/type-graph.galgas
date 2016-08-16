@@ -424,6 +424,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @graphDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

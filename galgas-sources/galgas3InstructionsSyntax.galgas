@@ -120,16 +120,26 @@ rule <declaration_with_private>
 
 rule  <declaration_with_private>
   ?let @bool inIsPrivate
-  ?!@galgas3DeclarationAST ioDeclarations {
+  ?!@galgas3DeclarationAST ioDeclarations
+{
   $func$
   var isOnce = false
-  select
-  or
-    $%attribute$ ?let @lstring onceQualifier
-    if onceQualifier.string != "once" then
-      error onceQualifier : "the only attribute allowed here is '%once'"
-    else
+  var isUsefull = false
+  repeat
+  while
+    $%attribute$ ?let @lstring attribute
+    if attribute.string == "once" then
+      if isOnce then
+        error attribute : "duplicate attribute" fixit { remove }
+      end
       isOnce = true
+    elsif attribute.string == "usefull" then
+      if isUsefull then
+        error attribute : "duplicate attribute" fixit { remove }
+      end
+      isUsefull = true
+    else
+      error attribute : "invalid attribute" fixit { replace "%once" replace "%usefull" }
     end
   end
   $identifier$ ?let functionName indexing functionDefinition
@@ -157,7 +167,9 @@ rule  <declaration_with_private>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
-      !inIsPrivate}
+      !inIsPrivate
+      !isUsefull
+    }
   else
     ioDeclarations.mDeclarationList += !@functionDeclarationAST.new {
       !false # Is not predefined
@@ -167,7 +179,9 @@ rule  <declaration_with_private>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
-      !inIsPrivate}
+      !inIsPrivate
+      !isUsefull
+    }
   end
 }
 

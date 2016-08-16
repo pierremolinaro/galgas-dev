@@ -301,6 +301,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @externTypeDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

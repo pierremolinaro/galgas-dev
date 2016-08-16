@@ -715,6 +715,7 @@ list @mapOverrideList {
 #·······················································································································
 
 override method @sharedMapDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext

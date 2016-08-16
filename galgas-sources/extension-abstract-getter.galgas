@@ -105,6 +105,7 @@ override method @abstractExtensionGetterAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractExtensionGetterAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext

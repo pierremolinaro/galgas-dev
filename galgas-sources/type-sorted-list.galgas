@@ -254,6 +254,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
