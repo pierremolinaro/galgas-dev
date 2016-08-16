@@ -82,43 +82,72 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
 
 rule <declaration_with_private>
   ?let @bool inIsInternal
-  ?!@galgas3DeclarationAST ioDeclarations {
+  ?!@galgas3DeclarationAST ioDeclarations
+{
   $filewrapper$
   $identifier$ ?var  @lstring mFilewrapperName indexing filewrapperDefinition
   $in$
   $"string"$ ?var  @lstring mFilewrapperPath
+  <filewrapper_text_files> ?let filewrapperTextFileExtensionList
+  <filewrapper_binary_files> ?let filewrapperBinaryFileExtensionList
+  <filewrapper_templates> ?let filewrapperTemplateList
+  ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
+    !false # Is not predefined
+    !inIsInternal
+    !@string.stringWithSourceFilePath
+    !mFilewrapperName
+    !mFilewrapperPath
+    !filewrapperTextFileExtensionList
+    !filewrapperBinaryFileExtensionList
+    !filewrapperTemplateList
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <filewrapper_text_files> !@lstringlist outFilewrapperTextFileExtensionList {
+  outFilewrapperTextFileExtensionList = {}
   ${$
-  var filewrapperTextFileExtensionList =@lstringlist {}
   select
   or
     repeat
       $"string"$ ?var @lstring pathExtension
-      filewrapperTextFileExtensionList += !pathExtension
+      outFilewrapperTextFileExtensionList += !pathExtension
     while
       $,$
     end
   end
   $}$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <filewrapper_binary_files> !@lstringlist outFilewrapperBinaryFileExtensionList {
+  outFilewrapperBinaryFileExtensionList = {}
   ${$
-  var filewrapperBinaryFileExtensionList =@lstringlist {}
   select
   or
     repeat
       $"string"$ ?var @lstring pathExtension
-      filewrapperBinaryFileExtensionList += !pathExtension
+      outFilewrapperBinaryFileExtensionList += !pathExtension
     while
       $,$
     end
   end
   $}$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <filewrapper_templates> !@filewrapperTemplateListAST outFilewrapperTemplateList {
   ${$
-  var mFilewrapperTemplateList =@filewrapperTemplateListAST {}
+  outFilewrapperTemplateList = {}
   repeat
   while
     $template$
-    $identifier$ ?var  @lstring mFilewrapperTemplateName
-    $"string"$ ?var  @lstring mFilewrapperTemplatePath
-    var filewrapperTemplateFormalInputParameters =@formalTemplateInputParameterListAST {}
+    $identifier$ ?let mFilewrapperTemplateName
+    $"string"$ ?let mFilewrapperTemplatePath
+    @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters = {}
     repeat
     while
       $?$ ?let selector
@@ -130,24 +159,15 @@ rule <declaration_with_private>
         $unused$
         isUnused = true
       end
-      $identifier$ ?var  @lstring argumentName
+      $identifier$ ?let argumentName
       filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
     end
-    mFilewrapperTemplateList +=
+    outFilewrapperTemplateList +=
       !mFilewrapperTemplateName
       !mFilewrapperTemplatePath
       !filewrapperTemplateFormalInputParameters
   end
   $}$
-  ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
-    !false # Is not predefined
-    !inIsInternal
-    !@string. stringWithSourceFilePath
-    !mFilewrapperName
-    !mFilewrapperPath
-    !filewrapperTextFileExtensionList
-    !filewrapperBinaryFileExtensionList
-    !mFilewrapperTemplateList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

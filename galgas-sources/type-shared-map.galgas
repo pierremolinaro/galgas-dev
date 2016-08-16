@@ -112,17 +112,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <sharedmap_state_list> !?mapStateList
     while
-      @bool isError
-      select
-        $error$
-        isError = true
-      or
-        $warning$
-        isError = false
-      end
-      $%attribute$ ?let attributeName
-      $"string"$ ?let messageText
-      sharedMapAttributeListAST += !attributeName !isError !messageText
+      <sharedmap_attribute> !?sharedMapAttributeListAST
     while
       <property_declaration> !?propertyList
     while
@@ -130,61 +120,7 @@ syntax extension galgas3DeclarationsSyntax {
     while
       <sharedmap_search_method_declaration> !?mSearchMethodList
     while
-      $override$
-      $identifier$ ?var  @lstring overrideBlockName
-      var mapOverrideBlockDescriptor1AST =@mapOverrideBlockDescriptorAST {}
-      ${$
-      repeat
-      while
-        $identifier$ ?var  @lstring sourceState1
-        $:$
-        $identifier$ ?var  @lstring sourceState2
-        $->$
-        $identifier$ ?var  @lstring targetState
-        @mapAutomatonMessageKind messageKind
-        @lstring messageText
-        select
-          messageKind = @mapAutomatonMessageKind.noMessage
-          messageText = @lstring.new {!"" !@location.here}
-        or
-          $warning$
-          messageKind = @mapAutomatonMessageKind.warningMessage
-          $"string"$ ? messageText
-        or
-          $error$
-          messageKind = @mapAutomatonMessageKind.errorMessage
-          $"string"$ ? messageText
-        end
-        mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
-      end
-      $}$
-      var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
-      ${$
-      repeat
-      while
-        $identifier$ ?var  @lstring sourceState1
-        $:$
-        $identifier$ ?var  @lstring sourceState2
-        $->$
-        $identifier$ ?var  @lstring targetState
-        @mapAutomatonMessageKind messageKind
-        @lstring messageText
-        select
-          messageKind = @mapAutomatonMessageKind.noMessage
-          messageText = @lstring.new {!"" !@location.here}
-        or
-          $warning$
-          messageKind = @mapAutomatonMessageKind.warningMessage
-          $"string"$ ? messageText
-        or
-          $error$
-          messageKind = @mapAutomatonMessageKind.errorMessage
-          $"string"$ ? messageText
-        end
-        mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
-      end
-      $}$
-      mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+      <sharedmap_override> !?mapOverrideBlockListAST
     while
       $;$
     end
@@ -207,6 +143,82 @@ syntax extension galgas3DeclarationsSyntax {
       !mapProxyTypeName
       !mMapTypeName
     }
+  }
+
+  #·····················································································································
+
+  rule <sharedmap_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
+    $override$
+    $identifier$ ?var  @lstring overrideBlockName
+    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
+    ${$
+    repeat
+    while
+      $identifier$ ?var  @lstring sourceState1
+      $:$
+      $identifier$ ?var  @lstring sourceState2
+      $->$
+      $identifier$ ?var  @lstring targetState
+      @mapAutomatonMessageKind messageKind
+      @lstring messageText
+      select
+        messageKind = @mapAutomatonMessageKind.noMessage
+        messageText = @lstring.new {!"" !@location.here}
+      or
+        $warning$
+        messageKind = @mapAutomatonMessageKind.warningMessage
+        $"string"$ ? messageText
+      or
+        $error$
+        messageKind = @mapAutomatonMessageKind.errorMessage
+        $"string"$ ? messageText
+      end
+      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+    end
+    $}$
+    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST {}
+    ${$
+    repeat
+    while
+      $identifier$ ?var  @lstring sourceState1
+      $:$
+      $identifier$ ?var  @lstring sourceState2
+      $->$
+      $identifier$ ?var  @lstring targetState
+      @mapAutomatonMessageKind messageKind
+      @lstring messageText
+      select
+        messageKind = @mapAutomatonMessageKind.noMessage
+        messageText = @lstring.new {!"" !@location.here}
+      or
+        $warning$
+        messageKind = @mapAutomatonMessageKind.warningMessage
+        $"string"$ ? messageText
+      or
+        $error$
+        messageKind = @mapAutomatonMessageKind.errorMessage
+        $"string"$ ? messageText
+      end
+      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+    end
+    $}$
+    ioMapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+  }
+
+  #·····················································································································
+
+  rule <sharedmap_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
+    @bool isError
+    select
+      $error$
+      isError = true
+    or
+      $warning$
+      isError = false
+    end
+    $%attribute$ ?let attributeName
+    $"string"$ ?let messageText
+    ioSharedMapAttributeListAST += !attributeName !isError !messageText
   }
 
   #·····················································································································

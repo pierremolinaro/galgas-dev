@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'option' component parser, as model builder                              *
+#  'option' component parser, as model builder                                                                         *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2016 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -27,7 +27,7 @@ rule <declaration>
   var options =@commandLineOptionListAST {}
   repeat
   while 
-    <option> !?options
+    <option_declaration> !?options
   end
   $}$
   ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
@@ -38,7 +38,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
+rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
   $@type$ ?var @lstring mOptionTypeName
   $identifier$ ?var @lstring mOptionInternalName
   $:$

@@ -121,30 +121,22 @@ rule <declaration>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <nonterminal_label_declaration> ?let @lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList {
-  <formal_parameter_list> ?let @formalParameterListAST mFormalParameters
-  ioNonTerminalLabelList +=
-    !inLabelName
-    !mFormalParameters
-    !@location.here
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
   $rule$
   $<non_terminal>$ ?let @lstring mNonterminalName indexing ruleDefinition
-  var mLabels =@nonTerminalLabelListAST {}
-  <nonterminal_label_declaration> !@lstring.new {!"" !@location.here} !?mLabels
+  @nonTerminalLabelListAST labels = {}
+  <formal_parameter_list> ?let @formalParameterListAST firstBranchFormalParameters
+  labels += !.new {!"" !.here} !firstBranchFormalParameters !.here
+#  <nonterminal_label_declaration> !@lstring.new {!"" !@location.here} !?labels
   repeat
   while
     $label$
     $identifier$ ?let @lstring labelName
-    <nonterminal_label_declaration> !labelName !?mLabels
+#    <nonterminal_label_declaration> !labelName !?labels
+    <formal_parameter_list> ?let @formalParameterListAST formalParameters
+    labels += !labelName !formalParameters !.here
   end
-  ioNonterminalDeclarationList +=
-    !mNonterminalName
-    !mLabels
+  ioNonterminalDeclarationList += !mNonterminalName !labels
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
