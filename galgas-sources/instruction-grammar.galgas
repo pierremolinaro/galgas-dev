@@ -76,78 +76,97 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $grammar$
     let instructionLocation = @location.here
-    $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
-    @lstring mLabelName
+    $identifier$ ?let @lstring grammarComponentName indexing grammarComponentReference
+    @lstring labelName
     select
-      mLabelName = @lstring.new {!"" !@location.here}
+      labelName = @lstring.new {!"" !@location.here}
     or
       $label$
-      $identifier$ ?mLabelName
+      $identifier$ ?labelName
     end
+    <grammar_instruction_core> !instructionLocation !grammarComponentName !labelName ?outInstruction
+  }
+  
+  #····················································································································*
+
+  rule <grammar_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @lstring inGrammarComponentName
+    ?let @lstring inLabelName
+    !@semanticInstructionAST outInstruction
+  {
+    $in$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    let endOfSourceExpression = @location.here
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  #--- Get syntax directed translation result string
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
     select
-      $in$
-      <expression> ?let @semanticExpressionAST mSourceExpression
-      let endOfSourceExpression = @location.here
-      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-    #--- Get syntax directed translation result string
-      @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-      select
-        grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-      or
-        $:>$
-        <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
-      end
-      outInstruction = @grammarInFileInstructionAST.new {
-        !instructionLocation
-        !mGrammarComponentName
-        !mLabelName
-        !mSourceExpression
-        !endOfSourceExpression
-        !actualParameterList
-        !grammarInstructionSyntaxDirectedTranslationResult}
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
     or
-      $on$
-      @semanticExpressionAST sourceExpression
-      @location endOfSourceExpression
-      @semanticExpressionAST nameExpression
-      @location endOfNameExpression
-      select
-        <expression> ?sourceExpression
-        endOfSourceExpression = .here
-        nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
-        endOfNameExpression = .here
-        warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
-          + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
-      or
-        $($
-        <expression> ?sourceExpression
-        endOfSourceExpression = .here
-        $,$
-        <expression> ?nameExpression
-        endOfNameExpression = .here
-        $)$
-      end
-      <actual_parameter_list> ?let @actualParameterListAST actualParameterList
-    #--- Get syntax directed translation result string
-      @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
-      select
-        grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
-      or
-        $:>$
-        <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
-      end
-      outInstruction = @grammarInStringInstructionAST.new {
-        !instructionLocation
-        !mGrammarComponentName
-        !mLabelName
-        !sourceExpression
-        !endOfSourceExpression
-        !nameExpression
-        !endOfNameExpression
-        !actualParameterList
-        !grammarInstructionSyntaxDirectedTranslationResult
-      }
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
     end
+    outInstruction = @grammarInFileInstructionAST.new {
+      !inInstructionLocation
+      !inGrammarComponentName
+      !inLabelName
+      !mSourceExpression
+      !endOfSourceExpression
+      !actualParameterList
+      !grammarInstructionSyntaxDirectedTranslationResult
+    }
+  }
+
+  #····················································································································*
+
+  rule <grammar_instruction_core>
+    ?let @location inInstructionLocation
+    ?let @lstring inGrammarComponentName
+    ?let @lstring inLabelName
+    !@semanticInstructionAST outInstruction
+  {
+    $on$
+    @semanticExpressionAST sourceExpression
+    @location endOfSourceExpression
+    @semanticExpressionAST nameExpression
+    @location endOfNameExpression
+    select
+      <expression> ?sourceExpression
+      endOfSourceExpression = .here
+      nameExpression = @literalStringExpressionAST.new {!.here !{!""}}
+      endOfNameExpression = .here
+      warning .here : "obsolete syntax, use '... on (source_string, name_string) ...'"
+        + " instead of '... on source_string ...' ; you can use empty string \"\" for name_string"
+    or
+      $($
+      <expression> ?sourceExpression
+      endOfSourceExpression = .here
+      $,$
+      <expression> ?nameExpression
+      endOfNameExpression = .here
+      $)$
+    end
+    <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  #--- Get syntax directed translation result string
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+    select
+      grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone.new
+    or
+      $:>$
+      <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+    end
+    outInstruction = @grammarInStringInstructionAST.new {
+      !inInstructionLocation
+      !inGrammarComponentName
+      !inLabelName
+      !sourceExpression
+      !endOfSourceExpression
+      !nameExpression
+      !endOfNameExpression
+      !actualParameterList
+      !grammarInstructionSyntaxDirectedTranslationResult
+    }
   }
 
   #····················································································································*

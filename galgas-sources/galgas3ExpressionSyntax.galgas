@@ -544,53 +544,57 @@ rule <primary> !@semanticExpressionAST outExpression {
 
 rule <primary> !@semanticExpressionAST outExpression {
   $[$
-  <primary_between_brackets> ?outExpression
-  $]$
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <primary_between_brackets> !@semanticExpressionAST outExpression {
 #--- Get source identity characteristics
   <expression> ?let @semanticExpressionAST receiverExpression
 #--- Get getter name
   $identifier$ ?let @lstring getterName
 #--- Actual parameters
   <output_expression_list> ?let @actualOutputExpressionList expressionList
+  $]$
   outExpression = @getterCallExpressionAST.new {!receiverExpression !getterName !expressionList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_between_brackets> !@semanticExpressionAST outExpression {
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
   $option$
-  select
-    $.$
-    $identifier$ ?let optionName
-    $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
-  or
-    $identifier$ ?let optionComponentName indexing optionComponentReference
-    $.$
-    $identifier$ ?let optionName
-    $identifier$ ?let getterName
-    outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
-  end
+  $identifier$ ?let optionComponentName indexing optionComponentReference
+  $.$
+  $identifier$ ?let optionName
+  $identifier$ ?let getterName
+  outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
+  $]$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_between_brackets> !@semanticExpressionAST outExpression {
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
+  $option$
+  $.$
+  $identifier$ ?let optionName
+  $identifier$ ?let getterName
+  outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
+  $]$
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
   $lexique$
   $identifier$ ?let lexiqueName
   $:$
   $identifier$ ?let getterName
   outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !getterName}
+  $]$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <primary_between_brackets> !@semanticExpressionAST outExpression {
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
   $filewrapper$
   $identifier$ ?let filewrapperName indexing filewrapperReference
   select
@@ -615,6 +619,7 @@ rule <primary_between_brackets> !@semanticExpressionAST outExpression {
       }
     end
   end
+  $]$
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

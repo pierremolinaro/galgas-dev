@@ -248,7 +248,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "for" then
-        error terminator : "the terminator attribute should be '%for'"
+        error terminator : "the terminator attribute should be '%for'" fixit { replace "%for" }
       end
     end
     let endof_foreach_instruction = @location.here

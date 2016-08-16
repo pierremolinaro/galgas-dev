@@ -55,7 +55,7 @@ syntax extension galgas3InstructionsSyntax {
     or
       $%attribute$ ?let @lstring terminator
       if terminator.string != "if" then
-        error terminator : "the terminator attribute should be '%if'"
+        error terminator : "the terminator attribute should be '%if'" fixit { replace "%if" }
       end
     end
   }
