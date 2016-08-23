@@ -4204,8 +4204,8 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i13_ (GALGAS_syntaxInstructionList & outArgument_outElseInstructionList,
-                                                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i13_ (GALGAS_syntaxInstructionList & outArgument_outElseInstructionList,
+                                                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outElseInstructionList.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_else) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 23)) ;
   nt_syntax_5F_instruction_5F_list_ (outArgument_outElseInstructionList, inCompiler) ;
@@ -4213,7 +4213,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i13_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i13_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_else) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 23)) ;
   nt_syntax_5F_instruction_5F_list_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -4221,51 +4221,51 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i13_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i13_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_else) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 23)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_ (GALGAS_syntaxInstructionList & outArgument_outElseInstructionList,
-                                                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i14_ (GALGAS_syntaxInstructionList & outArgument_outElseInstructionList,
+                                                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outElseInstructionList.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 30)) ;
-  GALGAS_location var_instructionLocation_1383 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 31)) ;
-  GALGAS_semanticExpressionAST var_whenExpression_1442 ;
-  nt_expression_ (var_whenExpression_1442, inCompiler) ;
-  GALGAS_location var_endOfWhenExpression_1504 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 34)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 35)) ;
-  GALGAS_syntaxInstructionList var_whenInstructionList_1576 ;
-  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList_1576, inCompiler) ;
-  GALGAS_location var_endOfWhenInstructions_1658 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 38)) ;
-  GALGAS_syntaxInstructionList var_elseInstructionList_1739 ;
-  nt_branchOfParseWhenInstruction_ (var_elseInstructionList_1739, inCompiler) ;
-  GALGAS_location var_endOfElseInstructions_1826 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 42)) ;
-  outArgument_outElseInstructionList = GALGAS_syntaxInstructionList::constructor_emptyList (SOURCE_FILE ("instruction-parse-when.galgas", 43)) ;
-  outArgument_outElseInstructionList.addAssign_operation (GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation_1383, var_whenExpression_1442, var_endOfWhenExpression_1504, var_whenInstructionList_1576, var_endOfWhenInstructions_1658, var_elseInstructionList_1739, var_endOfElseInstructions_1826  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 44))  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 44)) ;
+  GALGAS_location var_instructionLocation_1385 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 31)) ;
+  GALGAS_semanticExpressionAST var_whenExpression_1439 ;
+  nt_expression_ (var_whenExpression_1439, inCompiler) ;
+  GALGAS_location var_endOfWhenExpression_1467 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 33)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 34)) ;
+  GALGAS_syntaxInstructionList var_whenInstructionList_1547 ;
+  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList_1547, inCompiler) ;
+  GALGAS_location var_endOfWhenInstructions_1577 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 36)) ;
+  GALGAS_syntaxInstructionList var_elseInstructionList_1672 ;
+  nt_branchOfParseWhithInstruction_ (var_elseInstructionList_1672, inCompiler) ;
+  GALGAS_location var_endOfElseInstructions_1702 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 39)) ;
+  outArgument_outElseInstructionList = GALGAS_syntaxInstructionList::constructor_emptyList (SOURCE_FILE ("instruction-parse-when.galgas", 40)) ;
+  outArgument_outElseInstructionList.addAssign_operation (GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation_1385, var_whenExpression_1439, var_endOfWhenExpression_1467, var_whenInstructionList_1547, var_endOfWhenInstructions_1577, var_elseInstructionList_1672, var_endOfElseInstructions_1702  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 41))  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 41)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i14_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 30)) ;
   nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 34)) ;
   nt_syntax_5F_instruction_5F_list_parse (inCompiler) ;
-  nt_branchOfParseWhenInstruction_parse (inCompiler) ;
+  nt_branchOfParseWhithInstruction_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhenInstruction_i14_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_branchOfParseWhithInstruction_i14_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 30)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 34)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  nt_branchOfParseWhenInstruction_indexing (inCompiler) ;
+  nt_branchOfParseWhithInstruction_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4273,54 +4273,54 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
 void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_ (GALGAS_syntaxInstructionAST & outArgument_outInstruction,
                                                                                                                C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
-  GALGAS_location var_instructionLocation_2392 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 58)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 59)) ;
-  GALGAS_semanticExpressionAST var_whenExpression_2480 ;
-  nt_expression_ (var_whenExpression_2480, inCompiler) ;
-  GALGAS_location var_endOfWhenExpression_2508 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 61)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 62)) ;
-  GALGAS_syntaxInstructionList var_whenInstructionList_2611 ;
-  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList_2611, inCompiler) ;
-  GALGAS_location var_endOfWhenInstructions_2641 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 64)) ;
-  GALGAS_syntaxInstructionList var_elseInstructionList_2758 ;
-  nt_branchOfParseWhenInstruction_ (var_elseInstructionList_2758, inCompiler) ;
-  GALGAS_location var_endOfElseInstructions_2788 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 67)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 68)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 55)) ;
+  GALGAS_location var_instructionLocation_2243 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 56)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
+  GALGAS_semanticExpressionAST var_whenExpression_2331 ;
+  nt_expression_ (var_whenExpression_2331, inCompiler) ;
+  GALGAS_location var_endOfWhenExpression_2359 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 59)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 60)) ;
+  GALGAS_syntaxInstructionList var_whenInstructionList_2462 ;
+  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList_2462, inCompiler) ;
+  GALGAS_location var_endOfWhenInstructions_2492 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 62)) ;
+  GALGAS_syntaxInstructionList var_elseInstructionList_2610 ;
+  nt_branchOfParseWhithInstruction_ (var_elseInstructionList_2610, inCompiler) ;
+  GALGAS_location var_endOfElseInstructions_2640 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 65)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 66)) ;
   switch (select_galgas_33_SyntaxComponentSyntax_20 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    GALGAS_lstring var_terminator_2877 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 71)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2877.mAttribute_string.objectCompare (GALGAS_string ("parse"))).boolEnum () ;
+    GALGAS_lstring var_terminator_2729 = inCompiler->synthetizedAttribute_tokenString () ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 69)) ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2729.mAttribute_string.objectCompare (GALGAS_string ("parse"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("%parse")) ;
-      inCompiler->emitSemanticError (var_terminator_2877.getter_location (SOURCE_FILE ("instruction-parse-when.galgas", 73)), GALGAS_string ("the terminator attribute should be '%parse'"), fixItArray1  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 73)) ;
+      inCompiler->emitSemanticError (var_terminator_2729.getter_location (SOURCE_FILE ("instruction-parse-when.galgas", 71)), GALGAS_string ("the terminator attribute should be '%parse'"), fixItArray1  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 71)) ;
     }
   } break ;
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation_2392, var_whenExpression_2480, var_endOfWhenExpression_2508, var_whenInstructionList_2611, var_endOfWhenInstructions_2641, var_elseInstructionList_2758, var_endOfElseInstructions_2788  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 76)) ;
+  outArgument_outInstruction = GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation_2243, var_whenExpression_2331, var_endOfWhenExpression_2359, var_whenInstructionList_2462, var_endOfWhenInstructions_2492, var_elseInstructionList_2610, var_endOfElseInstructions_2640  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 74)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 59)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 55)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
   nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 62)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 60)) ;
   nt_syntax_5F_instruction_5F_list_parse (inCompiler) ;
-  nt_branchOfParseWhenInstruction_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 68)) ;
+  nt_branchOfParseWhithInstruction_parse (inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 66)) ;
   switch (select_galgas_33_SyntaxComponentSyntax_20 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 71)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 69)) ;
   } break ;
   default:
     break ;
@@ -4331,18 +4331,18 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_syntax_5F_instruction_i15_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 59)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_parse) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 55)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 57)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 62)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 60)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  nt_branchOfParseWhenInstruction_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 68)) ;
+  nt_branchOfParseWhithInstruction_indexing (inCompiler) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_end) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 66)) ;
   switch (select_galgas_33_SyntaxComponentSyntax_20 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 71)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 69)) ;
   } break ;
   default:
     break ;

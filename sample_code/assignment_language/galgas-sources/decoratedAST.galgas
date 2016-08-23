@@ -33,10 +33,6 @@ class @assignmentForGeneration : @instructionForGeneration {
   @expressionForGeneration mSourceExpression
 }
 
-struct @programForGeneration {
-  @instructionListForGeneration mProgramInstructionList
-}
-
 class @varDeclarationForGeneration : @instructionForGeneration {
   @string mVarCppName
 }

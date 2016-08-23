@@ -312,15 +312,53 @@ rule <syntax_directed_translation_result>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <actual_input_parameter>
-  !@lstring outSelector
-  !@abstractInputParameter outActualInputParameter {
-  select
-    $?$ ?outSelector
+#rule <actual_input_parameter>
+#  !@lstring outSelector
+#  !@abstractInputParameter outActualInputParameter {
+#  select
+#    $?$ ?outSelector
+#    $*$
+#    outActualInputParameter = @inputParameterAnonymousVariable.new
+#  or
+#    $?$ ?outSelector
+#    $var$
+#    @lstring actualParameterTypeName
+#    select
+#      actualParameterTypeName = ["" nowhere]
+#    or
+#      $@type$ ?actualParameterTypeName
+#    end
+#    $identifier$ ?let actualParameterName
+#    outActualInputParameter = @inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+#  or
+#    $?$ ?outSelector
+#    $let$
+#    @lstring actualParameterTypeName
+#    select
+#      actualParameterTypeName = ["" nowhere]
+#    or
+#      $@type$ ?actualParameterTypeName
+#    end
+#    $identifier$ ?let actualParameterName
+#    outActualInputParameter = @inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
+#  or
+#    $?$ ?outSelector
+#    $identifier$ ?let actualParameterName
+#    outActualInputParameter = @inputParameterVariable.new {!actualParameterName}
+#  end
+#}  
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+rule <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList {
+  outActualInputParameterList = @actualInputParameterListAST.emptyList
+  repeat
+  while
+    $?$ ?let selector
     $*$
-    outActualInputParameter = @inputParameterAnonymousVariable.new
-  or
-    $?$ ?outSelector
+    outActualInputParameterList += !selector !@inputParameterAnonymousVariable.new
+  while
+    $?$ ?let selector
     $var$
     @lstring actualParameterTypeName
     select
@@ -329,9 +367,11 @@ rule <actual_input_parameter>
       $@type$ ?actualParameterTypeName
     end
     $identifier$ ?let actualParameterName
-    outActualInputParameter = @inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
-  or
-    $?$ ?outSelector
+    outActualInputParameterList +=
+      !selector
+      !@inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
+  while
+    $?$ ?let selector
     $let$
     @lstring actualParameterTypeName
     select
@@ -340,23 +380,13 @@ rule <actual_input_parameter>
       $@type$ ?actualParameterTypeName
     end
     $identifier$ ?let actualParameterName
-    outActualInputParameter = @inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
-  or
-    $?$ ?outSelector
-    $identifier$ ?let actualParameterName
-    outActualInputParameter = @inputParameterVariable.new {!actualParameterName}
-  end
-}  
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-rule <actual_input_parameter_list>
-  !@actualInputParameterListAST outActualInputParameterList {
-  outActualInputParameterList = @actualInputParameterListAST.emptyList
-  repeat
+    outActualInputParameterList +=
+      !selector
+      !@inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
   while
-    <actual_input_parameter> ?let actualSelector ?let @abstractInputParameter actualInputParameter
-    outActualInputParameterList += !actualSelector !actualInputParameter
+    $?$ ?let selector
+    $identifier$ ?let actualParameterName
+    outActualInputParameterList += !selector !@inputParameterVariable.new {!actualParameterName}
   end
 }  
 

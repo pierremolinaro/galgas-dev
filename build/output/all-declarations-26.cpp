@@ -4091,7 +4091,7 @@ static void extensionMethod_parseWhenInstruction_transformInstruction (const cPt
   const cPtr_parseWhenInstruction * object = (const cPtr_parseWhenInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_parseWhenInstruction) ;
   {
-  routine_transformInstructionList (object->mAttribute_mElseInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 100)) ;
+  routine_transformInstructionList (object->mAttribute_mElseInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 99)) ;
   }
 }
 
@@ -4129,27 +4129,27 @@ static void extensionMethod_parseWhenInstruction_analyzeSyntaxInstruction (const
                                                                            COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_parseWhenInstruction * object = (const cPtr_parseWhenInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_parseWhenInstruction) ;
-  GALGAS_semanticExpressionForGeneration var_when_5F_expression_5137 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mAttribute_mWhenExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-parse-when.galgas", 131)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_when_5F_expression_5137, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 128)) ;
+  GALGAS_semanticExpressionForGeneration var_when_5F_expression_4994 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mAttribute_mWhenExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-parse-when.galgas", 130)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_when_5F_expression_4994, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 127)) ;
   {
-  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 137)) ;
+  ioArgument_ioVariableMap.setter_openOverrideForRepeatBlock (inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 136)) ;
   }
-  GALGAS_uint var_localSelectMethodCount_5459 = ioArgument_ioSelectMethodCount ;
-  GALGAS_semanticInstructionListForGeneration var_when_5F_instructionListForGeneration_5555 ;
+  GALGAS_uint var_localSelectMethodCount_5316 = ioArgument_ioSelectMethodCount ;
+  GALGAS_semanticInstructionListForGeneration var_when_5F_instructionListForGeneration_5412 ;
   {
-  routine_analyzeSyntaxInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, object->mAttribute_mWhenInstructionList, object->mAttribute_mEndOfWhenInstructionList, constinArgument_inIndexNameSet, ioArgument_ioVariableMap, var_localSelectMethodCount_5459, var_when_5F_instructionListForGeneration_5555, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 141)) ;
+  routine_analyzeSyntaxInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, object->mAttribute_mWhenInstructionList, object->mAttribute_mEndOfWhenInstructionList, constinArgument_inIndexNameSet, ioArgument_ioVariableMap, var_localSelectMethodCount_5316, var_when_5F_instructionListForGeneration_5412, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 140)) ;
   }
-  GALGAS_semanticInstructionListForGeneration var_else_5F_instructionListForGeneration_6043 ;
+  GALGAS_semanticInstructionListForGeneration var_else_5F_instructionListForGeneration_5900 ;
   {
-  routine_analyzeSyntaxInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, object->mAttribute_mElseInstructionList, object->mAttribute_mEndOfElseInstructionList, constinArgument_inIndexNameSet, ioArgument_ioVariableMap, ioArgument_ioSelectMethodCount, var_else_5F_instructionListForGeneration_6043, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 159)) ;
+  routine_analyzeSyntaxInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, constinArgument_inHasTranslateFeature, constinArgument_inTerminalMap, constinArgument_inLexiqueName, constinArgument_inNonterminalMap, constinArgument_inComponentName, object->mAttribute_mElseInstructionList, object->mAttribute_mEndOfElseInstructionList, constinArgument_inIndexNameSet, ioArgument_ioVariableMap, ioArgument_ioSelectMethodCount, var_else_5F_instructionListForGeneration_5900, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 158)) ;
   }
   {
-  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOfElseInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 176)) ;
+  ioArgument_ioVariableMap.setter_closeOverride (object->mAttribute_mEndOfElseInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 175)) ;
   }
-  GALGAS_bool var_ok_6554 = function_compareSyntaxSignature (function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), var_when_5F_instructionListForGeneration_5555, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 179)), function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), var_else_5F_instructionListForGeneration_6043, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 180)), object->mAttribute_mEndOfElseInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 178)) ;
-  const enumGalgasBool test_0 = var_ok_6554.boolEnum () ;
+  GALGAS_bool var_ok_6411 = function_compareSyntaxSignature (function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), var_when_5F_instructionListForGeneration_5412, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 178)), function_syntaxSignatureOfInstructionList (GALGAS_string ("parse"), var_else_5F_instructionListForGeneration_5900, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 179)), object->mAttribute_mEndOfElseInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 177)) ;
+  const enumGalgasBool test_0 = var_ok_6411.boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_parseWhenInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_when_5F_expression_5137, var_when_5F_instructionListForGeneration_5555, var_else_5F_instructionListForGeneration_6043  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 185))  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 185)) ;
+    ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_parseWhenInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, var_when_5F_expression_4994, var_when_5F_instructionListForGeneration_5412, var_else_5F_instructionListForGeneration_5900  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 184))  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 184)) ;
   }
 }
 
@@ -4177,7 +4177,7 @@ static void extensionMethod_parseWhenInstructionForGeneration_appendSyntaxSignat
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_parseWhenInstructionForGeneration * object = (const cPtr_parseWhenInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_parseWhenInstructionForGeneration) ;
-  ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_mInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 210)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 210)) ;
+  ioArgument_ioInstructionListForGeneration.plusAssign_operation(function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_mInstructionList, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 209)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 209)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4207,17 +4207,17 @@ static void extensionMethod_parseWhenInstructionForGeneration_generateInstructio
                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_parseWhenInstructionForGeneration * object = (const cPtr_parseWhenInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_parseWhenInstructionForGeneration) ;
-  GALGAS_string var_sourceVar_8640 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mWhenExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_sourceVar_8640, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 225)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_sourceVar_8640, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 226)).add_operation (GALGAS_string (".isValidAndTrue ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 226)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 226)) ;
+  GALGAS_string var_sourceVar_8497 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mAttribute_mWhenExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_sourceVar_8497, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 224)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (").add_operation (var_sourceVar_8497, inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 225)).add_operation (GALGAS_string (".isValidAndTrue ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 225)), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 225)) ;
   {
-  routine_generateInstructionList (ioArgument_ioInclusionSet, object->mAttribute_mInstructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 227)) ;
+  routine_generateInstructionList (ioArgument_ioInclusionSet, object->mAttribute_mInstructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 226)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 235)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}else{\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 234)) ;
   {
-  routine_generateInstructionList (ioArgument_ioInclusionSet, object->mAttribute_mElseInstructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 236)) ;
+  routine_generateInstructionList (ioArgument_ioInclusionSet, object->mAttribute_mElseInstructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 235)) ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 244)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 243)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

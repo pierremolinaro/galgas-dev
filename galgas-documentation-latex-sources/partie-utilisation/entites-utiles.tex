@@ -30,21 +30,22 @@ Les constructions qui sont évaluées sont :
   \item les types ;
   \item les routines \ggs=after= ;
   \item les routines \ggs=before= ;
-  \item les routines d'analyse \ggs=.fileExtension=.
+  \item les routines d'analyse \ggs=case .fileExtension=.
 \end{itemize}
 
 Le compilateur GALGAS calcule l'utilité des constructions en se partant des nœuds racines :
 \begin{itemize}
   \item les routines \ggs=after= sont utiles ;
   \item les routines \ggs=before= sont utiles ;
-  \item les routines d'analyse \ggs=.fileExtension= sont utiles ;
-  \item tous les types prédéfinis sont utiles.
+  \item les routines d'analyse \ggs=case .fileExtension= sont utiles ;
+  \item tous les types prédéfinis sont utiles ;
+  \item toutes les fonctions marquées \ggs=%usefull= sont utiles (\refSectionPage{utiliteFonctionIndirectes}).
 \end{itemize}
 
 Les relations d'utilité sont :
 \begin{itemize}
   \item une routine \ggs=extension getter=, \ggs=extension setter=, \ggs=extension method= est utile si son type est utile~;
-  \item un composant \ggs=grammar= est utile si il apparaît dans une instruction utile \ggs=grammar=~;
+  \item un composant \ggs=grammar= est utile si il apparaît dans une instruction \ggs=grammar= utile~;
   \item un composant \ggs=syntax= est utile si il est nommé par un composant \ggs=grammar= utile~;
   \item un composant \ggs=lexique= est utile si il est nommé par un composant \ggs=syntax= utile~;
   \item un composant \ggs=option= est utile si il est nommé dans les instructions d'une routine utile~;
@@ -58,7 +59,7 @@ Les relations d'utilité sont :
 
 \section{Trucs et astuces}
 
-Supprimer une construction inutile n'est toujours élémentaire : par exemple, un type qui n'est jamais instancié est inutile, mais il peut apparaître comme type d'une propriété d'un type structure lui aussi inutile. Supprimer un type inutile peut entraîner des erreurs de compilation.
+Supprimer une construction inutile n'est pas toujours élémentaire : par exemple, un type qui n'est jamais instancié est inutile, mais il peut apparaître comme type d'une propriété d'un type structure lui aussi inutile. Aussi, supprimer un type inutile peut entraîner des erreurs de compilation.
 
 De plus, le calcul d'utilité a été récemment implémenté dans GALGAS, et un \emph{faux positif} est possible.
 
