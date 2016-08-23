@@ -19,28 +19,25 @@ syntax extension galgas3SyntaxComponentSyntax {
 
   #····················································································································*
   
-  rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $else$
     <syntax_instruction_list> ? outElseInstructionList
   }
   
   #····················································································································*
   
-  rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+  rule <branchOfParseWhithInstruction> !@syntaxInstructionList outElseInstructionList {
     $case$
     let instructionLocation = @location.here
-    @semanticExpressionAST whenExpression
-    <expression> ? whenExpression
+    <expression> ?let whenExpression
     let endOfWhenExpression = @location.here
     $:$
-    @syntaxInstructionList whenInstructionList
-    <syntax_instruction_list> ? whenInstructionList
+    <syntax_instruction_list> ?let whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    @syntaxInstructionList elseInstructionList
-    <branchOfParseWhenInstruction> ? elseInstructionList
+    <branchOfParseWhithInstruction> ?let elseInstructionList
     let endOfElseInstructions = @location.here
-    outElseInstructionList = @syntaxInstructionList.emptyList
+    outElseInstructionList = {}
     outElseInstructionList += !@parseWhenInstruction.new {
       !instructionLocation
       !whenExpression
@@ -48,7 +45,8 @@ syntax extension galgas3SyntaxComponentSyntax {
       !whenInstructionList
       !endOfWhenInstructions
       !elseInstructionList
-      !endOfElseInstructions}
+      !endOfElseInstructions
+    }
   }
   
   #····················································································································*
@@ -57,13 +55,13 @@ syntax extension galgas3SyntaxComponentSyntax {
     $parse$
     let instructionLocation = @location.here
     $with$
-    <expression> ?var @semanticExpressionAST whenExpression
+    <expression> ?let @semanticExpressionAST whenExpression
     let endOfWhenExpression = @location.here
     $:$
     <syntax_instruction_list> ?let @syntaxInstructionList whenInstructionList
     let endOfWhenInstructions = @location.here
   #--- Else part
-    <branchOfParseWhenInstruction> ?let @syntaxInstructionList elseInstructionList
+    <branchOfParseWhithInstruction> ?let @syntaxInstructionList elseInstructionList
     let endOfElseInstructions = @location.here
     $end$
     select
@@ -80,7 +78,8 @@ syntax extension galgas3SyntaxComponentSyntax {
       !whenInstructionList
       !endOfWhenInstructions
       !elseInstructionList
-      !endOfElseInstructions}
+      !endOfElseInstructions
+    }
   }
   
   #····················································································································*

@@ -71,12 +71,3 @@ proc logXMLNodes ?let @xmlNodeList inNodeList {
 
 #------------------------------------------------------------*
 
-extern proc parseXMLFile
-  ?let @lstring inFileName
-  !@xmlNodeList outRootNodeList
-  ?let @bool inIncludeComments
-  ?let @bool inDoNotCondenseWhiteSpaces
-  ?let @bool inPrintDuringParsing
-
-#------------------------------------------------------------*
-
