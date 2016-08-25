@@ -58,14 +58,14 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cP
       f = gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-           f = gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+      while ((NULL == f) && (NULL != p)) {
+        if (p->mSlotID < gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
+          f = gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+        }
+        p = p->mSuperclassDescriptor ;
+      }
+      gExtensionMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;

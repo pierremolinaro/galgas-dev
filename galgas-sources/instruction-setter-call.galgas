@@ -310,8 +310,12 @@ override method @setterCallInstructionForGeneration generateInstruction
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [mMethodBaseType key]+ "-" + mSetterName
     if [mReceiverType mTypeKindEnum] == @typeKindEnum.classType then
-      if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
-        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
+      if ([[mReceiverType mAllTypedAttributeList] length] > 0) then #  & [mReceiverType mIsConcrete] then
+        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;"
+        if not [mReceiverType mIsConcrete] then
+          ioGeneratedCode += " // §ABSTRACT"
+        end
+        ioGeneratedCode += "\n"
       end
       let pointerUniqueName = "ptr_" + [mInstructionLocation locationIndex]
       ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
