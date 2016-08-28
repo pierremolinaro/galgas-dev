@@ -18,10 +18,7 @@ syntax extension galgas3InstructionsSyntax {
     $message$
     let instructionLocation = @location.here
     <expression> ?let @semanticExpressionAST expression
-    outInstruction = @messageInstructionAST.new {
-      !instructionLocation
-      !expression
-    }
+    outInstruction = @messageInstructionAST.new {!instructionLocation !expression}
   }
 
   #····················································································································*
