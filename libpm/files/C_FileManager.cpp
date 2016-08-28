@@ -780,8 +780,7 @@ C_String C_FileManager::currentDirectory (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_FileManager::makeDirectoryIfDoesNotExist (const C_String & inDirectoryPath) {
-  const C_String s = inDirectoryPath.stringByStandardizingPath () ;
-  bool ok = directoryExists (s) ;
+  bool ok = directoryExists (inDirectoryPath) ;
   // co << "TEST '" << s << "' '" << inDirectoryPath << "' " << (ok ? "yes" : "no") << "\n" ;
   if (! ok) {
     ok = makeDirectoryIfDoesNotExist (inDirectoryPath.stringByDeletingLastPathComponent ()) ;
