@@ -4,14 +4,9 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cSharedStringsetRoot ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_stringset : public AC_GALGAS_root
- {
+class GALGAS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : cSharedStringsetRoot * mSharedRoot ;
+  private : class cSharedStringsetRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedRoot != NULL ; }
@@ -24,9 +19,7 @@ class GALGAS_stringset : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG ~ GALGAS_stringset (void) ;
 
 //--------------------------------- In debug mode : check method
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected : void checkStringset (LOCATION_ARGS) const ;
-  #endif
+  protected : void checkStringset (LOCATION_ARGS) const ;
 
 //--------------------------------- Insulate
   protected : void insulate (LOCATION_ARGS) ;

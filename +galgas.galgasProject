@@ -54,11 +54,9 @@ project (3:2:7) -> "galgas" {
   "galgas-sources/lexiqueCompilation.galgas"
 
 #--- Option Component
-  "galgas-sources/optionTypesForAST.galgas"
   "galgas-sources/optionCompilation.galgas"
 
 #--- GUI component
-  "galgas-sources/guiTypesForAST.galgas"
   "galgas-sources/guiCompilation.galgas"
 
 #--- Type declaration
@@ -178,9 +176,7 @@ project (3:2:7) -> "galgas" {
   "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
   "galgas-sources/galgas3InstructionsSyntax.galgas"
   "galgas-sources/galgas3DeclarationsSyntax.galgas"
-  "galgas-sources/galgas3OptionComponentSyntax.galgas"
   "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
-  "galgas-sources/galgas3GuiComponentSyntax.galgas"
   "galgas-sources/galgas3SyntaxComponentSyntax.galgas"
   "galgas-sources/galgas3GrammarComponentSyntax.galgas"
   "galgas-sources/galgas3ProgramDeclarations.galgas"

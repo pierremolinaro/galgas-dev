@@ -105,6 +105,19 @@ Returns an \ggs+@char+ object corresponding to Unicode replacement character (\g
 
 
 
+\subsectionConstructor{unicodeCharacterFromRawKeyboard}{char}
+
+\begin{galgas}
+constructor unicodeCharacterFromRawKeyboard -> @char
+\end{galgas}
+
+
+Retourne un objet \ggs+@char+ obtenu en lisant le clavier. Tout caractère Unicode entré est retourné immédiatement.
+
+{\bf Note.} Sous windows, ce constructeur renvoie toujours le caractère \texttt{NUL}.
+
+
+
 
 
 

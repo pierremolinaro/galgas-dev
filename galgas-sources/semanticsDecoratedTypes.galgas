@@ -749,21 +749,6 @@ class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGe
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    O P T I O N    D E C L A R A T I O N                                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
-  @bool mIsPredefined
-  @string mOptionComponentName
-  @commandLineOptionMap mBoolOptionMap
-  @commandLineOptionMap mUIntOptionMap
-  @commandLineOptionMap mStringOptionMap
-  @commandLineOptionMap mStringListOptionMap
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #    P R O G R A M    D E C L A R A T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*

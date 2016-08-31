@@ -4057,6 +4057,193 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                   Routine 'compileAllGuiComponentFromASTGalgas3'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_compileAllGuiComponentFromASTGalgas_33_ (const GALGAS_galgas_33_GUIComponentListAST constinArgument_inGuiComponentListAST,
+                                                      const GALGAS_semanticContext constinArgument_inSemanticContext,
+                                                      GALGAS_optionComponentMapForGeneration & outArgument_outOptionComponentMapForGeneration,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outOptionComponentMapForGeneration.drop () ; // Release 'out' argument
+  outArgument_outOptionComponentMapForGeneration = GALGAS_optionComponentMapForGeneration::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 240)) ;
+  cEnumerator_galgas_33_GUIComponentListAST enumerator_7911 (constinArgument_inGuiComponentListAST, kEnumeration_up) ;
+  while (enumerator_7911.hasCurrentObject ()) {
+    {
+    routine_guiComponentSemanticAnalysis (enumerator_7911.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 242)) ;
+    }
+    enumerator_7911.gotoNextObject () ;
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Routine 'guiComponentSemanticAnalysis'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_guiComponentSemanticAnalysis (const GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument_inGUIComponentAST,
+                                           const GALGAS_semanticContext constinArgument_inSemanticContext,
+                                           GALGAS_optionComponentMapForGeneration & ioArgument_ioOptionComponentMapForGeneration,
+                                           C_Compiler * inCompiler
+                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.mAttribute_string.objectCompare (GALGAS_string ("cocoa"))).boolEnum () ;
+  if (kBoolTrue == test_0) {
+    TC_Array <C_FixItDescription> fixItArray1 ;
+    inCompiler->emitSemanticError (constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.getter_location (SOURCE_FILE ("guiCompilation.galgas", 258)), GALGAS_string ("the gui name should be 'cocoa'"), fixItArray1  COMMA_SOURCE_FILE ("guiCompilation.galgas", 258)) ;
+  }
+  GALGAS_guiAnalysisContext var_context_8573 = GALGAS_guiAnalysisContext::constructor_new (GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 262)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 263)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 264)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 265)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 266)), GALGAS_extensionMap::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 267)), GALGAS_importedLexiqueList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 268))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 261)) ;
+  cEnumerator_lstringlist enumerator_8963 (constinArgument_inGUIComponentAST.mAttribute_mImportedOptionList, kEnumeration_up) ;
+  while (enumerator_8963.hasCurrentObject ()) {
+    GALGAS_bool joker_9060_5 ; // Joker input parameter
+    GALGAS_commandLineOptionMap joker_9060_4 ; // Joker input parameter
+    GALGAS_commandLineOptionMap joker_9060_3 ; // Joker input parameter
+    GALGAS_commandLineOptionMap joker_9060_2 ; // Joker input parameter
+    GALGAS_commandLineOptionMap joker_9060_1 ; // Joker input parameter
+    constinArgument_inSemanticContext.mAttribute_mOptionComponentMapForSemanticAnalysis.method_searchKey (enumerator_8963.current_mValue (HERE), joker_9060_5, joker_9060_4, joker_9060_3, joker_9060_2, joker_9060_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 272)) ;
+    var_context_8573.mAttribute_mImportedOptionComponentList.addAssign_operation (enumerator_8963.current_mValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("guiCompilation.galgas", 276)) ;
+    enumerator_8963.gotoNextObject () ;
+  }
+  cEnumerator_guiSimpleAttributeListAST enumerator_9216 (constinArgument_inGUIComponentAST.mAttribute_mGlobalSimpleAttributeList, kEnumeration_up) ;
+  while (enumerator_9216.hasCurrentObject ()) {
+    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, enumerator_9216.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 280)).objectCompare (GALGAS_string ("nibAndMainClass"))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticWarning (enumerator_9216.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 281)), GALGAS_string ("the '").add_operation (enumerator_9216.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 281)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 281)), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 281)) ;
+    }else if (kBoolFalse == test_2) {
+      cEnumerator_stringlist enumerator_9420 (enumerator_9216.current_mValue (HERE).mAttribute_string.getter_componentsSeparatedByString (GALGAS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 283)), kEnumeration_up) ;
+      while (enumerator_9420.hasCurrentObject ()) {
+        var_context_8573.mAttribute_mNibAndClassList.addAssign_operation (enumerator_9420.current (HERE).mAttribute_mValue  COMMA_SOURCE_FILE ("guiCompilation.galgas", 284)) ;
+        enumerator_9420.gotoNextObject () ;
+      }
+    }
+    enumerator_9216.gotoNextObject () ;
+  }
+  cEnumerator_withLexiqueListAST enumerator_9587 (constinArgument_inGUIComponentAST.mAttribute_mWithLexiqueList, kEnumeration_up) ;
+  while (enumerator_9587.hasCurrentObject ()) {
+    GALGAS_terminalMap var_terminalMap_9744 ;
+    GALGAS_indexingListAST joker_9752_2 ; // Joker input parameter
+    GALGAS_lstring joker_9752_1 ; // Joker input parameter
+    constinArgument_inSemanticContext.mAttribute_mLexiqueComponentMapForSemanticAnalysis.method_searchKey (enumerator_9587.current_mLexiqueFileName (HERE), var_terminalMap_9744, joker_9752_2, joker_9752_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 291)) ;
+    GALGAS_stringset var_terminalSymbolSet_9819 = var_terminalMap_9744.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 297)) ;
+    cEnumerator_guiLabelListAST enumerator_9884 (enumerator_9587.current_mLabels (HERE), kEnumeration_up) ;
+    while (enumerator_9884.hasCurrentObject ()) {
+      cEnumerator_terminalLabelListAST enumerator_9917 (enumerator_9884.current_mTerminalList (HERE), kEnumeration_up) ;
+      while (enumerator_9917.hasCurrentObject ()) {
+        const enumGalgasBool test_4 = var_terminalSymbolSet_9819.getter_hasKey (enumerator_9917.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 301)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 301)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 301)).boolEnum () ;
+        if (kBoolTrue == test_4) {
+          TC_Array <C_FixItDescription> fixItArray5 ;
+          inCompiler->emitSemanticError (enumerator_9917.current_mTerminal (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 302)), GALGAS_string ("the '$").add_operation (enumerator_9917.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 302)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 302)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 303)).add_operation (enumerator_9587.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 304)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 304)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 305)), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 302)) ;
+        }
+        enumerator_9917.gotoNextObject () ;
+      }
+      enumerator_9884.gotoNextObject () ;
+    }
+    GALGAS_textMacroList var_textMacroList_10243 = GALGAS_textMacroList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 311)) ;
+    cEnumerator_guiCompoundAttributeListAST enumerator_10296 (enumerator_9587.current_mCompoundAttributes (HERE), kEnumeration_up) ;
+    while (enumerator_10296.hasCurrentObject ()) {
+      const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_10296.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 313)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
+      if (kBoolTrue == test_6) {
+        TC_Array <C_FixItDescription> fixItArray7 ;
+        inCompiler->emitSemanticError (enumerator_10296.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 314)), GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray7  COMMA_SOURCE_FILE ("guiCompilation.galgas", 314)) ;
+      }else if (kBoolFalse == test_6) {
+        var_textMacroList_10243.addAssign_operation (enumerator_10296.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 316)), enumerator_10296.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 316))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 316)) ;
+      }
+      enumerator_10296.gotoNextObject () ;
+    }
+    GALGAS_bool var_hasAssociatedExtension_10578 = GALGAS_bool (false) ;
+    GALGAS_bool var_hasTabViewTitle_10612 = GALGAS_bool (false) ;
+    GALGAS_bool var_hasBlockComment_10646 = GALGAS_bool (false) ;
+    GALGAS_string var_tabViewTitle_10679 = GALGAS_string::makeEmptyString () ;
+    GALGAS_string var_blockComment_10709 = GALGAS_string::makeEmptyString () ;
+    cEnumerator_guiSimpleAttributeListAST enumerator_10746 (enumerator_9587.current_mSimpleAttributes (HERE), kEnumeration_up) ;
+    while (enumerator_10746.hasCurrentObject ()) {
+      const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 326)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
+      if (kBoolTrue == test_8) {
+        {
+        var_context_8573.mAttribute_mExtensionMap.setter_insertKey (enumerator_10746.current_mValue (HERE), enumerator_9587.current_mLexiqueFileName (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 327)) ;
+        }
+        var_hasAssociatedExtension_10578 = GALGAS_bool (true) ;
+      }else if (kBoolFalse == test_8) {
+        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 329)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
+        if (kBoolTrue == test_9) {
+          const enumGalgasBool test_10 = var_hasTabViewTitle_10612.boolEnum () ;
+          if (kBoolTrue == test_10) {
+            TC_Array <C_FixItDescription> fixItArray11 ;
+            inCompiler->emitSemanticError (enumerator_10746.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 331)), GALGAS_string ("the '").add_operation (enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 331)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 331)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 331)), fixItArray11  COMMA_SOURCE_FILE ("guiCompilation.galgas", 331)) ;
+          }
+          var_hasTabViewTitle_10612 = GALGAS_bool (true) ;
+          var_tabViewTitle_10679 = enumerator_10746.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 334)) ;
+        }else if (kBoolFalse == test_9) {
+          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 335)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
+          if (kBoolTrue == test_12) {
+            const enumGalgasBool test_13 = var_hasBlockComment_10646.boolEnum () ;
+            if (kBoolTrue == test_13) {
+              TC_Array <C_FixItDescription> fixItArray14 ;
+              inCompiler->emitSemanticError (enumerator_10746.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 337)), GALGAS_string ("the '").add_operation (enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 337)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 337)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 337)), fixItArray14  COMMA_SOURCE_FILE ("guiCompilation.galgas", 337)) ;
+            }
+            var_hasBlockComment_10646 = GALGAS_bool (true) ;
+            var_blockComment_10709 = enumerator_10746.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 340)) ;
+          }else if (kBoolFalse == test_12) {
+            TC_Array <C_FixItDescription> fixItArray15 ;
+            inCompiler->emitSemanticError (enumerator_10746.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 342)), GALGAS_string ("the '").add_operation (enumerator_10746.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 342)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 342)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 342)), fixItArray15  COMMA_SOURCE_FILE ("guiCompilation.galgas", 342)) ;
+          }
+        }
+      }
+      enumerator_10746.gotoNextObject () ;
+    }
+    const enumGalgasBool test_16 = var_hasAssociatedExtension_10578.operator_not (SOURCE_FILE ("guiCompilation.galgas", 346)).boolEnum () ;
+    if (kBoolTrue == test_16) {
+      TC_Array <C_FixItDescription> fixItArray17 ;
+      inCompiler->emitSemanticError (enumerator_9587.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 347)), GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray17  COMMA_SOURCE_FILE ("guiCompilation.galgas", 347)) ;
+    }
+    const enumGalgasBool test_18 = var_hasTabViewTitle_10612.operator_not (SOURCE_FILE ("guiCompilation.galgas", 350)).boolEnum () ;
+    if (kBoolTrue == test_18) {
+      TC_Array <C_FixItDescription> fixItArray19 ;
+      inCompiler->emitSemanticError (enumerator_9587.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 351)), GALGAS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 351)) ;
+    }
+    var_context_8573.mAttribute_mWithLexiqueList.addAssign_operation (enumerator_9587.current_mLexiqueFileName (HERE).mAttribute_string, var_blockComment_10709, var_tabViewTitle_10679, var_textMacroList_10243, enumerator_9587.current_mLabels (HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas", 354)) ;
+    enumerator_9587.gotoNextObject () ;
+  }
+  {
+  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName, var_context_8573, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 362)) ;
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'generateAllGuiComponentsGalgas3'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateAllGuiComponentsGalgas_33_ (const GALGAS_optionComponentMapForGeneration constinArgument_inOptionComponentMapForGeneration,
+                                                 const GALGAS_string constinArgument_inOutputDirectory,
+                                                 const GALGAS_bool constinArgument_inQuietOutputByDefault,
+                                                 GALGAS_stringlist & ioArgument_ioApplicationSourceSet,
+                                                 GALGAS_stringset & ioArgument_ioAllProductFileSet,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  cEnumerator_optionComponentMapForGeneration enumerator_12698 (constinArgument_inOptionComponentMapForGeneration, kEnumeration_up) ;
+  while (enumerator_12698.hasCurrentObject ()) {
+    GALGAS_string var_fileName_12718 = GALGAS_string ("gui-").add_operation (enumerator_12698.current_lkey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 380)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 380)).add_operation (GALGAS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 380)) ;
+    ioArgument_ioApplicationSourceSet.addAssign_operation (var_fileName_12718  COMMA_SOURCE_FILE ("guiCompilation.galgas", 381)) ;
+    ioArgument_ioAllProductFileSet.addAssign_operation (var_fileName_12718  COMMA_SOURCE_FILE ("guiCompilation.galgas", 382)) ;
+    {
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_fileName_12718, GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n"
+      "\n"), GALGAS_string (filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (inCompiler, enumerator_12698.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 389))), GALGAS_string ("\n"
+      "\n"), GALGAS_string ("\n"
+      "\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 383)) ;
+    }
+    enumerator_12698.gotoNextObject () ;
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                        Filewrapper 'guiGenerationTemplates'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4471,193 +4658,6 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
     "\n" ;
   return GALGAS_string (result) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Routine 'compileAllGuiComponentFromASTGalgas3'                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_compileAllGuiComponentFromASTGalgas_33_ (const GALGAS_galgas_33_GUIComponentListAST constinArgument_inGuiComponentListAST,
-                                                      const GALGAS_semanticContext constinArgument_inSemanticContext,
-                                                      GALGAS_optionComponentMapForGeneration & outArgument_outOptionComponentMapForGeneration,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outOptionComponentMapForGeneration.drop () ; // Release 'out' argument
-  outArgument_outOptionComponentMapForGeneration = GALGAS_optionComponentMapForGeneration::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 89)) ;
-  cEnumerator_galgas_33_GUIComponentListAST enumerator_4804 (constinArgument_inGuiComponentListAST, kEnumeration_up) ;
-  while (enumerator_4804.hasCurrentObject ()) {
-    {
-    routine_compileGuiComponentGalgas_33_ (enumerator_4804.current (HERE), constinArgument_inSemanticContext, outArgument_outOptionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 91)) ;
-    }
-    enumerator_4804.gotoNextObject () ;
-  }
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'compileGuiComponentGalgas3'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_compileGuiComponentGalgas_33_ (const GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument_inGUIComponentAST,
-                                            const GALGAS_semanticContext constinArgument_inSemanticContext,
-                                            GALGAS_optionComponentMapForGeneration & ioArgument_ioOptionComponentMapForGeneration,
-                                            C_Compiler * inCompiler
-                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.mAttribute_string.objectCompare (GALGAS_string ("cocoa"))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    TC_Array <C_FixItDescription> fixItArray1 ;
-    inCompiler->emitSemanticError (constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName.getter_location (SOURCE_FILE ("guiCompilation.galgas", 107)), GALGAS_string ("the gui name should be 'cocoa'"), fixItArray1  COMMA_SOURCE_FILE ("guiCompilation.galgas", 107)) ;
-  }
-  GALGAS_guiAnalysisContext var_context_5462 = GALGAS_guiAnalysisContext::constructor_new (GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 111)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 112)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 113)), GALGAS_guiCommandLineOptionList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 114)), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 115)), GALGAS_extensionMap::constructor_emptyMap (SOURCE_FILE ("guiCompilation.galgas", 116)), GALGAS_importedLexiqueList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 117))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 110)) ;
-  cEnumerator_lstringlist enumerator_5852 (constinArgument_inGUIComponentAST.mAttribute_mImportedOptionList, kEnumeration_up) ;
-  while (enumerator_5852.hasCurrentObject ()) {
-    GALGAS_bool joker_5949_5 ; // Joker input parameter
-    GALGAS_commandLineOptionMap joker_5949_4 ; // Joker input parameter
-    GALGAS_commandLineOptionMap joker_5949_3 ; // Joker input parameter
-    GALGAS_commandLineOptionMap joker_5949_2 ; // Joker input parameter
-    GALGAS_commandLineOptionMap joker_5949_1 ; // Joker input parameter
-    constinArgument_inSemanticContext.mAttribute_mOptionComponentMapForSemanticAnalysis.method_searchKey (enumerator_5852.current_mValue (HERE), joker_5949_5, joker_5949_4, joker_5949_3, joker_5949_2, joker_5949_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 121)) ;
-    var_context_5462.mAttribute_mImportedOptionComponentList.addAssign_operation (enumerator_5852.current_mValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("guiCompilation.galgas", 125)) ;
-    enumerator_5852.gotoNextObject () ;
-  }
-  cEnumerator_guiSimpleAttributeListAST enumerator_6105 (constinArgument_inGUIComponentAST.mAttribute_mGlobalSimpleAttributeList, kEnumeration_up) ;
-  while (enumerator_6105.hasCurrentObject ()) {
-    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 129)).objectCompare (GALGAS_string ("nibAndMainClass"))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticWarning (enumerator_6105.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 130)), GALGAS_string ("the '").add_operation (enumerator_6105.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)).add_operation (GALGAS_string ("' key is invalid and has no effect"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 130)) ;
-    }else if (kBoolFalse == test_2) {
-      cEnumerator_stringlist enumerator_6309 (enumerator_6105.current_mValue (HERE).mAttribute_string.getter_componentsSeparatedByString (GALGAS_string (".") COMMA_SOURCE_FILE ("guiCompilation.galgas", 132)), kEnumeration_up) ;
-      while (enumerator_6309.hasCurrentObject ()) {
-        var_context_5462.mAttribute_mNibAndClassList.addAssign_operation (enumerator_6309.current (HERE).mAttribute_mValue  COMMA_SOURCE_FILE ("guiCompilation.galgas", 133)) ;
-        enumerator_6309.gotoNextObject () ;
-      }
-    }
-    enumerator_6105.gotoNextObject () ;
-  }
-  cEnumerator_withLexiqueListAST enumerator_6476 (constinArgument_inGUIComponentAST.mAttribute_mWithLexiqueList, kEnumeration_up) ;
-  while (enumerator_6476.hasCurrentObject ()) {
-    GALGAS_terminalMap var_terminalMap_6633 ;
-    GALGAS_indexingListAST joker_6641_2 ; // Joker input parameter
-    GALGAS_lstring joker_6641_1 ; // Joker input parameter
-    constinArgument_inSemanticContext.mAttribute_mLexiqueComponentMapForSemanticAnalysis.method_searchKey (enumerator_6476.current_mLexiqueFileName (HERE), var_terminalMap_6633, joker_6641_2, joker_6641_1, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 140)) ;
-    GALGAS_stringset var_terminalSymbolSet_6708 = var_terminalMap_6633.getter_keySet (SOURCE_FILE ("guiCompilation.galgas", 146)) ;
-    cEnumerator_guiLabelListAST enumerator_6773 (enumerator_6476.current_mLabels (HERE), kEnumeration_up) ;
-    while (enumerator_6773.hasCurrentObject ()) {
-      cEnumerator_terminalLabelListAST enumerator_6806 (enumerator_6773.current_mTerminalList (HERE), kEnumeration_up) ;
-      while (enumerator_6806.hasCurrentObject ()) {
-        const enumGalgasBool test_4 = var_terminalSymbolSet_6708.getter_hasKey (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 150)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 150)).operator_not (SOURCE_FILE ("guiCompilation.galgas", 150)).boolEnum () ;
-        if (kBoolTrue == test_4) {
-          TC_Array <C_FixItDescription> fixItArray5 ;
-          inCompiler->emitSemanticError (enumerator_6806.current_mTerminal (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 151)), GALGAS_string ("the '$").add_operation (enumerator_6806.current_mTerminal (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)).add_operation (GALGAS_string ("$' terminal symbol is not declared by the '"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)).add_operation (enumerator_6476.current_mLexiqueFileName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 153)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 153)).add_operation (GALGAS_string ("' lexique"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
-        }
-        enumerator_6806.gotoNextObject () ;
-      }
-      enumerator_6773.gotoNextObject () ;
-    }
-    GALGAS_textMacroList var_textMacroList_7132 = GALGAS_textMacroList::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 160)) ;
-    cEnumerator_guiCompoundAttributeListAST enumerator_7185 (enumerator_6476.current_mCompoundAttributes (HERE), kEnumeration_up) ;
-    while (enumerator_7185.hasCurrentObject ()) {
-      const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, enumerator_7185.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 162)).objectCompare (GALGAS_string ("textMacro"))).boolEnum () ;
-      if (kBoolTrue == test_6) {
-        TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticError (enumerator_7185.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 163)), GALGAS_string ("for a compound attribute, only the 'textMacro' key is valid"), fixItArray7  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
-      }else if (kBoolFalse == test_6) {
-        var_textMacroList_7132.addAssign_operation (enumerator_7185.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165)), enumerator_7185.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 165))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
-      }
-      enumerator_7185.gotoNextObject () ;
-    }
-    GALGAS_bool var_hasAssociatedExtension_7467 = GALGAS_bool (false) ;
-    GALGAS_bool var_hasTabViewTitle_7501 = GALGAS_bool (false) ;
-    GALGAS_bool var_hasBlockComment_7535 = GALGAS_bool (false) ;
-    GALGAS_string var_tabViewTitle_7568 = GALGAS_string::makeEmptyString () ;
-    GALGAS_string var_blockComment_7598 = GALGAS_string::makeEmptyString () ;
-    cEnumerator_guiSimpleAttributeListAST enumerator_7635 (enumerator_6476.current_mSimpleAttributes (HERE), kEnumeration_up) ;
-    while (enumerator_7635.hasCurrentObject ()) {
-      const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 175)).objectCompare (GALGAS_string ("fileExtension"))).boolEnum () ;
-      if (kBoolTrue == test_8) {
-        {
-        var_context_5462.mAttribute_mExtensionMap.setter_insertKey (enumerator_7635.current_mValue (HERE), enumerator_6476.current_mLexiqueFileName (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
-        }
-        var_hasAssociatedExtension_7467 = GALGAS_bool (true) ;
-      }else if (kBoolFalse == test_8) {
-        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 178)).objectCompare (GALGAS_string ("title"))).boolEnum () ;
-        if (kBoolTrue == test_9) {
-          const enumGalgasBool test_10 = var_hasTabViewTitle_7501.boolEnum () ;
-          if (kBoolTrue == test_10) {
-            TC_Array <C_FixItDescription> fixItArray11 ;
-            inCompiler->emitSemanticError (enumerator_7635.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 180)), GALGAS_string ("the '").add_operation (enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 180)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)), fixItArray11  COMMA_SOURCE_FILE ("guiCompilation.galgas", 180)) ;
-          }
-          var_hasTabViewTitle_7501 = GALGAS_bool (true) ;
-          var_tabViewTitle_7568 = enumerator_7635.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 183)) ;
-        }else if (kBoolFalse == test_9) {
-          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 184)).objectCompare (GALGAS_string ("blockComment"))).boolEnum () ;
-          if (kBoolTrue == test_12) {
-            const enumGalgasBool test_13 = var_hasBlockComment_7535.boolEnum () ;
-            if (kBoolTrue == test_13) {
-              TC_Array <C_FixItDescription> fixItArray14 ;
-              inCompiler->emitSemanticError (enumerator_7635.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 186)), GALGAS_string ("the '").add_operation (enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 186)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)).add_operation (GALGAS_string ("' key should be defined once"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)), fixItArray14  COMMA_SOURCE_FILE ("guiCompilation.galgas", 186)) ;
-            }
-            var_hasBlockComment_7535 = GALGAS_bool (true) ;
-            var_blockComment_7598 = enumerator_7635.current_mValue (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-          }else if (kBoolFalse == test_12) {
-            TC_Array <C_FixItDescription> fixItArray15 ;
-            inCompiler->emitSemanticError (enumerator_7635.current_mKey (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 191)), GALGAS_string ("the '").add_operation (enumerator_7635.current_mKey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 191)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)).add_operation (GALGAS_string ("' key is not valid (valid keys: 'blockComment,', 'fileExtension', 'title')"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)), fixItArray15  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
-          }
-        }
-      }
-      enumerator_7635.gotoNextObject () ;
-    }
-    const enumGalgasBool test_16 = var_hasAssociatedExtension_7467.operator_not (SOURCE_FILE ("guiCompilation.galgas", 195)).boolEnum () ;
-    if (kBoolTrue == test_16) {
-      TC_Array <C_FixItDescription> fixItArray17 ;
-      inCompiler->emitSemanticError (enumerator_6476.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 196)), GALGAS_string ("one or more file extensions should be associated with a lexique (fileExtension : \"...\")"), fixItArray17  COMMA_SOURCE_FILE ("guiCompilation.galgas", 196)) ;
-    }
-    const enumGalgasBool test_18 = var_hasTabViewTitle_7501.operator_not (SOURCE_FILE ("guiCompilation.galgas", 199)).boolEnum () ;
-    if (kBoolTrue == test_18) {
-      TC_Array <C_FixItDescription> fixItArray19 ;
-      inCompiler->emitSemanticError (enumerator_6476.current_mLexiqueFileName (HERE).getter_location (SOURCE_FILE ("guiCompilation.galgas", 200)), GALGAS_string ("the 'title' key should be defined once (it is not defined)"), fixItArray19  COMMA_SOURCE_FILE ("guiCompilation.galgas", 200)) ;
-    }
-    var_context_5462.mAttribute_mWithLexiqueList.addAssign_operation (enumerator_6476.current_mLexiqueFileName (HERE).mAttribute_string, var_blockComment_7598, var_tabViewTitle_7568, var_textMacroList_7132, enumerator_6476.current_mLabels (HERE)  COMMA_SOURCE_FILE ("guiCompilation.galgas", 203)) ;
-    enumerator_6476.gotoNextObject () ;
-  }
-  {
-  ioArgument_ioOptionComponentMapForGeneration.setter_insertKey (constinArgument_inGUIComponentAST.mAttribute_mGUIComponentName, var_context_5462, inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 211)) ;
-  }
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Routine 'generateAllGuiComponentsGalgas3'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateAllGuiComponentsGalgas_33_ (const GALGAS_optionComponentMapForGeneration constinArgument_inOptionComponentMapForGeneration,
-                                                 const GALGAS_string constinArgument_inOutputDirectory,
-                                                 const GALGAS_bool constinArgument_inQuietOutputByDefault,
-                                                 GALGAS_stringlist & ioArgument_ioApplicationSourceSet,
-                                                 GALGAS_stringset & ioArgument_ioAllProductFileSet,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_optionComponentMapForGeneration enumerator_9447 (constinArgument_inOptionComponentMapForGeneration, kEnumeration_up) ;
-  while (enumerator_9447.hasCurrentObject ()) {
-    GALGAS_string var_fileName_9467 = GALGAS_string ("gui-").add_operation (enumerator_9447.current_lkey (HERE).getter_string (SOURCE_FILE ("guiCompilation.galgas", 227)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 227)).add_operation (GALGAS_string (".m"), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 227)) ;
-    ioArgument_ioApplicationSourceSet.addAssign_operation (var_fileName_9467  COMMA_SOURCE_FILE ("guiCompilation.galgas", 228)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (var_fileName_9467  COMMA_SOURCE_FILE ("guiCompilation.galgas", 229)) ;
-    {
-    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_fileName_9467, GALGAS_string ("//"), GALGAS_string::makeEmptyString (), GALGAS_string ("\n"
-      "\n"), GALGAS_string (filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (inCompiler, enumerator_9447.current_mGuiComponentContext (HERE), constinArgument_inQuietOutputByDefault COMMA_SOURCE_FILE ("guiCompilation.galgas", 236))), GALGAS_string ("\n"
-      "\n"), GALGAS_string ("\n"
-      "\n"), GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 230)) ;
-    }
-    enumerator_9447.gotoNextObject () ;
-  }
-}
-
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -8828,9 +8828,9 @@ GALGAS_string filewrapperTemplate_sortedListGenerationTemplate_sortedlistTypeSpe
 static GALGAS_stringset onceFunction_forbiddenKeysForStruct (C_Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringset result_outResult ; // Returned variable
-  result_outResult = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-struct.galgas", 176)) ;
-  result_outResult.addAssign_operation (GALGAS_string ("description")  COMMA_SOURCE_FILE ("type-struct.galgas", 177)) ;
-  result_outResult.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("type-struct.galgas", 178)) ;
+  result_outResult = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("type-struct.galgas", 177)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("description")  COMMA_SOURCE_FILE ("type-struct.galgas", 178)) ;
+  result_outResult.addAssign_operation (GALGAS_string ("object")  COMMA_SOURCE_FILE ("type-struct.galgas", 179)) ;
 //---
   return result_outResult ;
 }

@@ -484,7 +484,8 @@ override method @applicationPredefinedTypeAST getConstructorMap
 
 override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@constructorMap outMap
+{
   outMap = {}
   enterConstructorWithoutArgument (
     !?outMap
@@ -499,6 +500,13 @@ override method @charPredefinedTypeAST getConstructorMap
     !name:"unicodeCharacterWithUnsigned"
     !argTypeName:"uint"
     !argName:"inValue"
+    !resultTypeName:"char"
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"unicodeCharacterFromRawKeyboard"
     !resultTypeName:"char"
     !hasLexiqueAndLocationArgs:false
   )
