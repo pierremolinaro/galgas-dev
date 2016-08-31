@@ -125,6 +125,13 @@ func filewrapperNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName -> @l
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+func filewrapperTemplateNameForUsefulEntitiesGraph ?let @lstring inFilewrapperName  ?let @lstring inTemplateName
+-> @lstring {
+  result = .new {!"filewrapper template " + inFilewrapperName + "." + inTemplateName !inTemplateName.location}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 func functionNameForUsefulEntitiesGraph ?let @lstring inFunctionName -> @lstring {
   result = .new {!"function " + inFunctionName !inFunctionName.location}
 }

@@ -640,7 +640,8 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
 #--- Templates
   var filewrapperTemplateMap =@filewrapperTemplateMap.emptyMap{}
   for () in mFilewrapperTemplateList do

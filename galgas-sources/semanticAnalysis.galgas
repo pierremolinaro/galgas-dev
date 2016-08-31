@@ -539,8 +539,8 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let filewrapperNameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addNode !filewrapperNameForUsefulness !filewrapperNameForUsefulness]
 #--- Get filewrapper features
   [inSemanticContext.mFilewrapperMap searchKey
     !mFilewrapperName
@@ -561,18 +561,25 @@ override method @filewrapperDeclarationAST semanticAnalysis
     error mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist"
   else
   #---- Analyze filewrapper templates
-    var filewrapperTemplateListForGeneration =@filewrapperTemplateListForGeneration {}
+    @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration = {}
     for () in mFilewrapperTemplateList do
+      let filewrapperTemplateNameForUsefulness = filewrapperTemplateNameForUsefulEntitiesGraph (
+        !mFilewrapperName
+        !mFilewrapperTemplateName
+      )
+      [!?ioUsefulEntitiesGraph addNode !filewrapperTemplateNameForUsefulness !filewrapperTemplateNameForUsefulness]
+      [!?ioUsefulEntitiesGraph addEdge !filewrapperTemplateNameForUsefulness !filewrapperNameForUsefulness]
       if [[mFilewrapperTemplatePath string] firstCharacterOrNul] == '/' then
-        error mFilewrapperTemplatePath : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
+        error mFilewrapperTemplatePath
+         : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
-      let @string absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
-      @templateInstructionListAST resultingInstructionList
+      let absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
     #--- Parse template
-      grammar templateGrammar in @lstring.new {!absoluteTemplatePath ![mFilewrapperTemplatePath location]} ?resultingInstructionList
+      grammar templateGrammar in @lstring.new {!absoluteTemplatePath ![mFilewrapperTemplatePath location]}
+        ?let @templateInstructionListAST resultingInstructionList
     #--- Build template variable map
       @templateVariableMap templateVariableMap = {}
-      var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration {}
+      @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters = {}
       for () in mFilewrapperTemplateFormalInputParameters do
         var type =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
@@ -586,7 +593,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !inPredefinedTypes
         !templateVariableMap}
       templateInstructionListAnalysis (
-        !nameForUsefulness
+        !filewrapperNameForUsefulness
         !?ioUsefulEntitiesGraph
         !templateAnalysisContext
         !resultingInstructionList
@@ -1233,10 +1240,6 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
 }{
 }{
-  template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.galgasTemplate"
-    ?@string COMPONENT_NAME
-    ?@stringset INCLUSION_SET
-
   template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.galgasTemplate"
     ?@stringset INCLUSION_SET
 

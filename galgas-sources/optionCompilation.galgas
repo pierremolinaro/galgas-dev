@@ -350,9 +350,6 @@ map @commandLineOptionMap { # the key is the option identifier
 filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
 }{
 }{
-  template optionHeaderZone2 "option-header-zone2.galgasTemplate"
-    ?@string OPTION_COMPONENT_NAME
-
   template optionHeaderZone3 "option-header-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP

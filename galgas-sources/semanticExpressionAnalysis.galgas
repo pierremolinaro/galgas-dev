@@ -3332,7 +3332,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!mFilewrapperName !mFilewrapperTemplateName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
