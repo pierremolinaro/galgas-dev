@@ -237,17 +237,6 @@ extern const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     Filewrapper template 'syntaxFileGenerationTemplate syntaxFileHeaderGalgas3'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileHeaderGalgas_33_ (class C_Compiler * inCompiler,
-                                                                                           const class GALGAS_string & in_COMPONENT_5F_NAME,
-                                                                                           const class GALGAS_stringset & in_INCLUSION_5F_SET
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                 Filewrapper template 'syntaxFileGenerationTemplate syntaxFileImplementationGalgas3'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

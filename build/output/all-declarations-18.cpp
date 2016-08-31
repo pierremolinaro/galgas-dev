@@ -392,35 +392,6 @@ const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates (
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Filewrapper template 'optionGenerationTemplates optionHeaderZone2'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_32_ (C_Compiler * /* inCompiler */,
-                                                                                  const GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "#ifndef " ;
-  result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
-  result << "_0_DEFINED\n"
-    "#define " ;
-  result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
-  result << "_0_DEFINED\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#include \"command_line_interface/C_BoolCommandLineOption.h\"\n"
-    "#include \"command_line_interface/C_UIntCommandLineOption.h\"\n"
-    "#include \"command_line_interface/C_StringCommandLineOption.h\"\n"
-    "#include \"command_line_interface/C_StringListCommandLineOption.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         Filewrapper template 'optionGenerationTemplates optionHeaderZone3'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

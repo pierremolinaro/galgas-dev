@@ -1485,7 +1485,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList = ""
     @uint temporaryVariableIndex = 0
-    var unusedVariableCppNameSet =@stringset {}
+    @stringset unusedVariableCppNameSet = {}
     unusedVariableCppNameSet += !compilerCppName ()
     for () in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName
@@ -1627,6 +1627,7 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!@string ioHeader {
+#  message "PREDEFINED @" + mPredefinedTypeName + "\n"
   ioHeader += "class GALGAS_" + mPredefinedTypeName + " ;\n"
 }
 
@@ -1640,32 +1641,32 @@ override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!
 
 proc generatePredefinedTypeFiles
   ?let @string inDirectory
-  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationListForGeneration
   ?!@stringlist ioToolHeaderFileList
   ?!@stringlist ioToolCppFileList
   ?!@stringset ioAllProductFileSet
 {
 #------------------------------------------------------------------ Generate header file
   var generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue]
-  for () in inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendPrimitiveTypePreDeclaration !?generatedCode]
     end
   end
   generatedCode += "\n"
-  for () in inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendPrimitiveTypeDeclaration]
     end
   end
-  for () in inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendDeclaration1 !?* ?let @string code]
       generatedCode += code
     end
   end
   generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
-  for () in inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       [mDeclaration appendDeclaration2 !inDirectory !?* ?let @string headerString2]
       generatedCode += headerString2
@@ -1688,7 +1689,7 @@ proc generatePredefinedTypeFiles
   end
 #------------------------------------------------------------------ Generate implementation file
   generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
-  for () in inSemanticDeclarationSortedListForGeneration do
+  for () in inSemanticDeclarationListForGeneration do
     if [mDeclaration isPredefined] then
       generatedCode += [mDeclaration appendTypeGenericImplementation]
       [mDeclaration appendSpecificImplementation !@unifiedTypeMap.emptyMap !?* ?let @string code]

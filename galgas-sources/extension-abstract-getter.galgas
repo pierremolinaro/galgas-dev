@@ -163,7 +163,8 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap ioAbstractExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
-  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
+  ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
+{
   ioAbstractExtensionGetterListMap +=
     ![mTypeName string]
     !mAbstractExtensionGetterName

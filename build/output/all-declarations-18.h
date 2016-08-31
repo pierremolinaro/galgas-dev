@@ -28,16 +28,6 @@ extern const cDirectoryWrapper gWrapperDirectory_0_optionGenerationTemplates ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Filewrapper template 'optionGenerationTemplates optionHeaderZone2'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_32_ (class C_Compiler * inCompiler,
-                                                                                  const class GALGAS_string & in_OPTION_5F_COMPONENT_5F_NAME
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         Filewrapper template 'optionGenerationTemplates optionHeaderZone3'                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

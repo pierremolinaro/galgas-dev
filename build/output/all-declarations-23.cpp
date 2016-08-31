@@ -607,6 +607,59 @@ C_galgas_function_descriptor functionDescriptor_filewrapperNameForUsefulEntities
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                              Function 'filewrapperTemplateNameForUsefulEntitiesGraph'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const GALGAS_lstring & constinArgument_inFilewrapperName,
+                                                                       const GALGAS_lstring & constinArgument_inTemplateName,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_lstring result_result ; // Returned variable
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("filewrapper template ").add_operation (constinArgument_inFilewrapperName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 130)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 130)).add_operation (constinArgument_inTemplateName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 130)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 130)), constinArgument_inTemplateName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 130)) ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//  Function introspection                                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const C_galgas_type_descriptor * functionArgs_filewrapperTemplateNameForUsefulEntitiesGraph [3] = {
+  & kTypeDescriptor_GALGAS_lstring,
+  & kTypeDescriptor_GALGAS_lstring,
+  NULL
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_object functionWithGenericHeader_filewrapperTemplateNameForUsefulEntitiesGraph (C_Compiler * inCompiler,
+                                                                                              const cObjectArray & inEffectiveParameterArray,
+                                                                                              const GALGAS_location & /* inErrorLocation */
+                                                                                              COMMA_LOCATION_ARGS) {
+  const GALGAS_lstring operand0 = GALGAS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (0 COMMA_HERE),
+                                                                 inCompiler
+                                                                 COMMA_THERE) ;
+  const GALGAS_lstring operand1 = GALGAS_lstring::extractObject (inEffectiveParameterArray.objectAtIndex (1 COMMA_HERE),
+                                                                 inCompiler
+                                                                 COMMA_THERE) ;
+  return function_filewrapperTemplateNameForUsefulEntitiesGraph (operand0,
+                                                                 operand1,
+                                                                 inCompiler
+                                                                 COMMA_THERE).getter_object (THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_galgas_function_descriptor functionDescriptor_filewrapperTemplateNameForUsefulEntitiesGraph ("filewrapperTemplateNameForUsefulEntitiesGraph",
+                                                                                               functionWithGenericHeader_filewrapperTemplateNameForUsefulEntitiesGraph,
+                                                                                               & kTypeDescriptor_GALGAS_lstring,
+                                                                                               2,
+                                                                                               functionArgs_filewrapperTemplateNameForUsefulEntitiesGraph) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                    Function 'functionNameForUsefulEntitiesGraph'                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -615,7 +668,7 @@ GALGAS_lstring function_functionNameForUsefulEntitiesGraph (const GALGAS_lstring
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("function ").add_operation (constinArgument_inFunctionName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 129)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 129)), constinArgument_inFunctionName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 129)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("function ").add_operation (constinArgument_inFunctionName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 136)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 136)), constinArgument_inFunctionName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 136)) ;
 //---
   return result_result ;
 }
@@ -662,7 +715,7 @@ GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const GALGAS_lstrin
                                                              C_Compiler * inCompiler
                                                              COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("procedure ").add_operation (constinArgument_inProcName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 135)), constinArgument_inProcName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 135)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("procedure ").add_operation (constinArgument_inProcName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 142)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 142)), constinArgument_inProcName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 142)) ;
 //---
   return result_result ;
 }
@@ -709,7 +762,7 @@ GALGAS_lstring function_typeNameForUsefulEntitiesGraph (const GALGAS_lstring & c
                                                         C_Compiler * inCompiler
                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("type @").add_operation (constinArgument_inTypeName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 141)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 141)), constinArgument_inTypeName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 141)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("type @").add_operation (constinArgument_inTypeName.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 148)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 148)), constinArgument_inTypeName.mAttribute_location  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 148)) ;
 //---
   return result_result ;
 }
@@ -756,7 +809,7 @@ GALGAS_lstring function_afterNameForUsefulEntitiesGraph (const GALGAS_location &
                                                          C_Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("after"), constinArgument_inLocation  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 147)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("after"), constinArgument_inLocation  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 154)) ;
 //---
   return result_result ;
 }
@@ -803,7 +856,7 @@ GALGAS_lstring function_beforeNameForUsefulEntitiesGraph (const GALGAS_location 
                                                           C_Compiler * /* inCompiler */
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("before"), constinArgument_inLocation  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 153)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("before"), constinArgument_inLocation  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 160)) ;
 //---
   return result_result ;
 }
@@ -850,7 +903,7 @@ GALGAS_lstring function_rootRuleNameForUsefulEntitiesGraph (const GALGAS_lstring
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lstring result_result ; // Returned variable
-  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("rule .").add_operation (constinArgument_inFileExtension.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 159)), constinArgument_inFileExtension.getter_location (SOURCE_FILE ("useful-entities-computation.galgas", 159))  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 159)) ;
+  result_result = GALGAS_lstring::constructor_new (GALGAS_string ("rule .").add_operation (constinArgument_inFileExtension.getter_string (SOURCE_FILE ("useful-entities-computation.galgas", 166)), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 166)), constinArgument_inFileExtension.getter_location (SOURCE_FILE ("useful-entities-computation.galgas", 166))  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 166)) ;
 //---
   return result_result ;
 }
@@ -7045,38 +7098,4 @@ static void defineExtensionMethod_repeatInstruction_analyzeSyntaxInstruction (vo
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_repeatInstruction_analyzeSyntaxInstruction (defineExtensionMethod_repeatInstruction_analyzeSyntaxInstruction, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                 Overriding extension method '@repeatInstructionForGeneration appendSyntaxSignature'                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_repeatInstructionForGeneration_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                                  const GALGAS_string constinArgument_inPosfix,
-                                                                                  GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_repeatInstructionForGeneration * object = (const cPtr_repeatInstructionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_repeatInstructionForGeneration) ;
-  GALGAS_semanticInstructionListForGeneration var_repeated_5F_instructionList_7194 = function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_m_5F_repeated_5F_instructionList, inCompiler COMMA_SOURCE_FILE ("instruction-repeat.galgas", 190)) ;
-  GALGAS_listOfSemanticInstructionListForGeneration var_listOfSemanticInstructionListForGeneration_7318 = GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-repeat.galgas", 191)) ;
-  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_7422 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
-  while (enumerator_7422.hasCurrentObject ()) {
-    var_listOfSemanticInstructionListForGeneration_7318.addAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, enumerator_7422.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("instruction-repeat.galgas", 194)), enumerator_7422.current_mEndOfInstructionList (HERE)  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 193)) ;
-    enumerator_7422.gotoNextObject () ;
-  }
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_repeatInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mSyntaxComponentName, object->mAttribute_mChoiceIndex, var_repeated_5F_instructionList_7194, object->mAttribute_mEndOfRepeatedInstructions, var_listOfSemanticInstructionListForGeneration_7318  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 198))  COMMA_SOURCE_FILE ("instruction-repeat.galgas", 198)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_repeatInstructionForGeneration_appendSyntaxSignature (void) {
-  enterExtensionMethod_appendSyntaxSignature (kTypeDescriptor_GALGAS_repeatInstructionForGeneration.mSlotID,
-                                              extensionMethod_repeatInstructionForGeneration_appendSyntaxSignature) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_repeatInstructionForGeneration_appendSyntaxSignature (defineExtensionMethod_repeatInstructionForGeneration_appendSyntaxSignature, NULL) ;
 
