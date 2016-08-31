@@ -102,29 +102,6 @@ abstract method @semanticDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @predefinedTypeAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
-{
-#--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#---
-  ioSemanticDeclarationListForGeneration +=
-    !"Predefined type " + mPredefinedTypeName
-    !@primitiveTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!mPredefinedTypeName !.here}}
-      !mPredefinedTypeName
-      !mKind}
-    !""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 map @attributeIndexMap {
   @unifiedTypeMap-proxy mAttributeTypeIndex
   insert insertKey error message "the '%K' attribute is already declared"
@@ -634,48 +611,6 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !filewrapperTemplateListForGeneration}
     !""
   end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#     O P T I O N    C O M P O N E N T    A N A L Y S I S                                                              *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @optionComponentDeclarationAST semanticAnalysis
-  ?!@lstringlist unused ioUsefulnessRootEntities 
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @string unused inProductDirectory
-  ?let @semanticContext inSemanticContext
-  ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
-{
-#--- Useful entities graph
-  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
-  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#---
-  [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-    !mOptionComponentName
-    ?let @bool isPredefined
-    ?let @commandLineOptionMap boolOptionMap
-    ?let @commandLineOptionMap uintOptionMap
-    ?let @commandLineOptionMap stringOptionMap
-    ?let @commandLineOptionMap stringListOptionMap
-  ] 
-#---- Enter filewrapper in generated list
-  ioSemanticDeclarationListForGeneration +=
-    !"option " + mOptionComponentName
-    !@optionComponentForGeneration.new {
-      !true # Generate Cpp header file
-      !"option-" + mOptionComponentName
-      !isPredefined
-      !mOptionComponentName.string
-      !boolOptionMap
-      !uintOptionMap
-      !stringOptionMap
-      !stringListOptionMap
-    }
-    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

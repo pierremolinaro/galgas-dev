@@ -83,7 +83,7 @@ proc compileSemanticDeclarationsGalgas3
     error mValue : "the '@" + mValue + "' type is undefined"
   end
 #------ Semantic Analysis
-  outSemanticDeclarationSortedListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
+  outSemanticDeclarationSortedListForGeneration = {}
   if @uint.errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
     for () in sortedSemanticDeclarationListAST do

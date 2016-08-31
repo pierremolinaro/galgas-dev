@@ -45,7 +45,8 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
   let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in mAttributeList do

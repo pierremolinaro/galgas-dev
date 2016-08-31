@@ -683,13 +683,6 @@ class @collectionValueAST : @semanticExpressionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-class @optionComponentDeclarationAST : @semanticDeclarationAST {
-  @lstring mOptionComponentName
-  @commandLineOptionListAST mOptions
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   @lstring mSyntaxComponentName
   @lstring mLexiqueName 
@@ -752,15 +745,6 @@ list @programRuleList {
   @lstring mReferenceGrammar # Empty string if no grammar
   @semanticInstructionListAST mInstructionList
   @location mEndOfInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @galgas3GUIComponentListAST {
-  @lstring mGUIComponentName
-  @lstringlist mImportedOptionList
-  @guiSimpleAttributeListAST mGlobalSimpleAttributeList
-  @withLexiqueListAST mWithLexiqueList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

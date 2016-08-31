@@ -1251,6 +1251,44 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                   Routine 'compileAllGuiComponentFromASTGalgas3'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgas_33_GUIComponentListAST constinArgument0,
+                                                      const class GALGAS_semanticContext constinArgument1,
+                                                      class GALGAS_optionComponentMapForGeneration & outArgument2,
+                                                      class C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Routine 'guiComponentSemanticAnalysis'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_guiComponentSemanticAnalysis (const class GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument0,
+                                           const class GALGAS_semanticContext constinArgument1,
+                                           class GALGAS_optionComponentMapForGeneration & ioArgument2,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'generateAllGuiComponentsGalgas3'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_generateAllGuiComponentsGalgas_33_ (const class GALGAS_optionComponentMapForGeneration constinArgument0,
+                                                 const class GALGAS_string constinArgument1,
+                                                 const class GALGAS_bool constinArgument2,
+                                                 class GALGAS_stringlist & ioArgument3,
+                                                 class GALGAS_stringset & ioArgument4,
+                                                 class C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                        Filewrapper 'guiGenerationTemplates'                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1276,44 +1314,6 @@ GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (
                                                                                 const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
                                                                                 const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
                                                                                 COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Routine 'compileAllGuiComponentFromASTGalgas3'                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_compileAllGuiComponentFromASTGalgas_33_ (const class GALGAS_galgas_33_GUIComponentListAST constinArgument0,
-                                                      const class GALGAS_semanticContext constinArgument1,
-                                                      class GALGAS_optionComponentMapForGeneration & outArgument2,
-                                                      class C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'compileGuiComponentGalgas3'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_compileGuiComponentGalgas_33_ (const class GALGAS_galgas_33_GUIComponentListAST_2D_element constinArgument0,
-                                            const class GALGAS_semanticContext constinArgument1,
-                                            class GALGAS_optionComponentMapForGeneration & ioArgument2,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Routine 'generateAllGuiComponentsGalgas3'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_generateAllGuiComponentsGalgas_33_ (const class GALGAS_optionComponentMapForGeneration constinArgument0,
-                                                 const class GALGAS_string constinArgument1,
-                                                 const class GALGAS_bool constinArgument2,
-                                                 class GALGAS_stringlist & ioArgument3,
-                                                 class GALGAS_stringset & ioArgument4,
-                                                 class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

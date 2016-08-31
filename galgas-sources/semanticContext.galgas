@@ -559,80 +559,6 @@ getter @predefinedTypeKindEnum defaultConstructorName
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @predefinedTypeAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
-  [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
-  [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
-  [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]
-  [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
-  [self getClassMethodMap !?ioSemanticContext.mTypeMap ?var @classMethodMap classMethodMap]
-  [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?var @functionSignature addAssignArgumentList]
-  [self getEnumerationList
-    !?ioSemanticContext.mTypeMap
-    ?var @enumerationDescriptorList enumerationList
-    ?var @stringlist enumerationVariants
-    ?var @string enumeratedTypeName
-  ]
-  [@unifiedTypeMap-proxy makeProxyFromString
-    !?ioSemanticContext.mTypeMap
-    !mPredefinedTypeName
-    ?var @unifiedTypeMap-proxy selfTypeProxy
-  ]
-#--- Enumeration
-  @unifiedTypeMap-proxy enumeratedTypeProxy
-  if enumeratedTypeName == "" then
-    enumeratedTypeProxy = @unifiedTypeMap-proxy. null
-  else
-    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeProxy]
-  end
-#--- Add Categories
-  addExtensions (
-    !inExtensionMethodMapForBuildingContext
-    !inExtensionGetterMapForBuildingContext
-    !inExtensionSetterMapForBuildingContext
-    !?ioSemanticContext
-    !@lstring.new {!mPredefinedTypeName !@location.here}
-    !?getterMap
-    !?setterMap
-    !?instanceMethodMap
-  )
-#---
-  [!?ioSemanticContext.mTypeMap insertKey
-    !@lstring.new {!mPredefinedTypeName !@location.here}
-    !mIsPredefined
-    !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
-    !@typeKindEnum. predefinedType
-    !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
-    !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
-    !@typedPropertyList.emptyList
-    !constructorMap
-    !getterMap
-    !setterMap
-    !instanceMethodMap
-    !classMethodMap
-    !enumerationList
-    !enumerationVariants
-    ![self getSupportedOperatorFlags]
-    !addAssignArgumentList
-    !{}
-    !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
-    !false # Do not generate header in separate file
-    !enumeratedTypeProxy
-    ![mKind defaultConstructorName]
-    !"galgas2/predefined-types"
-    !@headerKind.twoHeaders
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 func %once elementTypeNameSuffix -> @string outResult {
   outResult = "-element"
 }
@@ -780,82 +706,6 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     !wrapperDirectoryMap
     !filewrapperTemplateMap
     !mIsInternal
-  ]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @optionComponentDeclarationAST enterInSemanticContext
-  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
-  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
-  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext
-{
-  @commandLineOptionMap boolOptionMap = {}
-  @commandLineOptionMap uintOptionMap = {}
-  @commandLineOptionMap stringOptionMap = {}
-  @commandLineOptionMap stringListOptionMap = {}
-  var optionNameSet = @stringset.emptySet
-  for () in mOptions do
-    if [optionNameSet hasKey ![mOptionInternalName string]] then
-      error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
-    elsif [mOptionTypeName string] == "bool" then
-      [!?boolOptionMap insertKey
-        !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        !"false"
-      ]
-      if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
-        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)"      
-      end
-    elsif [mOptionTypeName string] == "uint" then
-      [!?uintOptionMap insertKey
-        !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
-      ]
-      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
-        error mOptionDefaultValue:"an @uint option default value cannot be an @string value"      
-      end
-    elsif [mOptionTypeName string] == "string" then
-      [!?stringOptionMap insertKey
-        !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        ![mOptionDefaultValue string]
-      ]
-      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
-        error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
-      end
-    elsif [mOptionTypeName string] == "stringlist" then
-      [!?stringListOptionMap insertKey
-        !mOptionInternalName
-        ![mOptionInvocationLetter char]
-        ![mOptionInvocationString string]
-        ![mOptionComment string]
-        ![mOptionDefaultValue string]
-      ]
-      if mOptionDefaultValueKind != .noDefaultValue then
-        error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
-      end
-    else
-      error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
-    end
-    optionNameSet += ![mOptionInternalName string]
-  end
-#--- Insert option
-  [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
-    !mOptionComponentName
-    !mIsPredefined
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-    !stringListOptionMap
   ]
 }
 
@@ -1066,18 +916,6 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @predefinedTypeAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mPredefinedTypeName !@location.here}
-  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
@@ -1162,17 +1000,6 @@ override method @externRoutineDeclarationAST enterDeclarationInGraph
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
-  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
-  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList {
-  ioExtensionOverrideDefinitionList += !self
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @optionComponentDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext

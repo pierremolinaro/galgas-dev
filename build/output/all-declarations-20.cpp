@@ -8594,6 +8594,177 @@ GALGAS_extensionMap_2D_element GALGAS_extensionMap_2D_element::extractObject (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (void) :
+mAttribute_mGUIComponentName (),
+mAttribute_mImportedOptionList (),
+mAttribute_mGlobalSimpleAttributeList (),
+mAttribute_mWithLexiqueList () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_GUIComponentListAST_2D_element::~ GALGAS_galgas_33_GUIComponentListAST_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
+                                                                                                  const GALGAS_lstringlist & inOperand1,
+                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
+                                                                                                  const GALGAS_withLexiqueListAST & inOperand3) :
+mAttribute_mGUIComponentName (inOperand0),
+mAttribute_mImportedOptionList (inOperand1),
+mAttribute_mGlobalSimpleAttributeList (inOperand2),
+mAttribute_mWithLexiqueList (inOperand3) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_galgas_33_GUIComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                          GALGAS_guiSimpleAttributeListAST::constructor_emptyList (HERE),
+                                                          GALGAS_withLexiqueListAST::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                                                  const GALGAS_lstringlist & inOperand1,
+                                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
+                                                                                                                  const GALGAS_withLexiqueListAST & inOperand3 
+                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_galgas_33_GUIComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_galgas_33_GUIComponentListAST_2D_element::objectCompare (const GALGAS_galgas_33_GUIComponentListAST_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mGUIComponentName.objectCompare (inOperand.mAttribute_mGUIComponentName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mImportedOptionList.objectCompare (inOperand.mAttribute_mImportedOptionList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mGlobalSimpleAttributeList.objectCompare (inOperand.mAttribute_mGlobalSimpleAttributeList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mWithLexiqueList.objectCompare (inOperand.mAttribute_mWithLexiqueList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_galgas_33_GUIComponentListAST_2D_element::isValid (void) const {
+  return mAttribute_mGUIComponentName.isValid () && mAttribute_mImportedOptionList.isValid () && mAttribute_mGlobalSimpleAttributeList.isValid () && mAttribute_mWithLexiqueList.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_galgas_33_GUIComponentListAST_2D_element::drop (void) {
+  mAttribute_mGUIComponentName.drop () ;
+  mAttribute_mImportedOptionList.drop () ;
+  mAttribute_mGlobalSimpleAttributeList.drop () ;
+  mAttribute_mWithLexiqueList.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_galgas_33_GUIComponentListAST_2D_element::description (C_String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString << "<struct @galgas3GUIComponentListAST-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mGUIComponentName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mImportedOptionList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mGlobalSimpleAttributeList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mWithLexiqueList.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mGUIComponentName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGUIComponentName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mImportedOptionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mImportedOptionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_guiSimpleAttributeListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mGlobalSimpleAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGlobalSimpleAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_withLexiqueListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mWithLexiqueList ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @galgas3GUIComponentListAST-element type                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ("galgas3GUIComponentListAST-element",
+                                                                 NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_galgas_33_GUIComponentListAST_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_galgas_33_GUIComponentListAST_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_galgas_33_GUIComponentListAST_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
+  const GALGAS_galgas_33_GUIComponentListAST_2D_element * p = (const GALGAS_galgas_33_GUIComponentListAST_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_galgas_33_GUIComponentListAST_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("galgas3GUIComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_optionComponentMapForGeneration_2D_element::GALGAS_optionComponentMapForGeneration_2D_element (void) :
 mAttribute_lkey (),
 mAttribute_mGuiComponentContext () {
@@ -14172,177 +14343,6 @@ GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::extractObje
       result = *p ;
     }else{
       inCompiler->castError ("programRuleList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (void) :
-mAttribute_mGUIComponentName (),
-mAttribute_mImportedOptionList (),
-mAttribute_mGlobalSimpleAttributeList (),
-mAttribute_mWithLexiqueList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::~ GALGAS_galgas_33_GUIComponentListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                  const GALGAS_lstringlist & inOperand1,
-                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                  const GALGAS_withLexiqueListAST & inOperand3) :
-mAttribute_mGUIComponentName (inOperand0),
-mAttribute_mImportedOptionList (inOperand1),
-mAttribute_mGlobalSimpleAttributeList (inOperand2),
-mAttribute_mWithLexiqueList (inOperand3) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgas_33_GUIComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                          GALGAS_guiSimpleAttributeListAST::constructor_emptyList (HERE),
-                                                          GALGAS_withLexiqueListAST::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                  const GALGAS_lstringlist & inOperand1,
-                                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                                  const GALGAS_withLexiqueListAST & inOperand3 
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_galgas_33_GUIComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_galgas_33_GUIComponentListAST_2D_element::objectCompare (const GALGAS_galgas_33_GUIComponentListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mGUIComponentName.objectCompare (inOperand.mAttribute_mGUIComponentName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mImportedOptionList.objectCompare (inOperand.mAttribute_mImportedOptionList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mGlobalSimpleAttributeList.objectCompare (inOperand.mAttribute_mGlobalSimpleAttributeList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mWithLexiqueList.objectCompare (inOperand.mAttribute_mWithLexiqueList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_galgas_33_GUIComponentListAST_2D_element::isValid (void) const {
-  return mAttribute_mGUIComponentName.isValid () && mAttribute_mImportedOptionList.isValid () && mAttribute_mGlobalSimpleAttributeList.isValid () && mAttribute_mWithLexiqueList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GUIComponentListAST_2D_element::drop (void) {
-  mAttribute_mGUIComponentName.drop () ;
-  mAttribute_mImportedOptionList.drop () ;
-  mAttribute_mGlobalSimpleAttributeList.drop () ;
-  mAttribute_mWithLexiqueList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GUIComponentListAST_2D_element::description (C_String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString << "<struct @galgas3GUIComponentListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mGUIComponentName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mImportedOptionList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mGlobalSimpleAttributeList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mWithLexiqueList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mGUIComponentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGUIComponentName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mImportedOptionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mImportedOptionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mGlobalSimpleAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGlobalSimpleAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_withLexiqueListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mWithLexiqueList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @galgas3GUIComponentListAST-element type                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ("galgas3GUIComponentListAST-element",
-                                                                 NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_GUIComponentListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_galgas_33_GUIComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_GUIComponentListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
-  const GALGAS_galgas_33_GUIComponentListAST_2D_element * p = (const GALGAS_galgas_33_GUIComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_GUIComponentListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3GUIComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

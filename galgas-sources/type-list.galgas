@@ -61,9 +61,10 @@ override method @listDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
 #--- Handle attributes
-  var typedAttributeList =@typedPropertyList {}
+  @typedPropertyList typedAttributeList = {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     @bool hasGetter = true
@@ -262,13 +263,13 @@ override method @listDeclarationAST enterInSemanticContext
     !@typeKindEnum. listType
     !true # Support collection value
     !typedAttributeList
-    !@attributeMap. emptyMap
-    !@typedPropertyList.emptyList
+    !{}
+    !{}
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !{}
     !enumerationDescriptor
     !enumerationVariants
     !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | infixAddOperator ()
@@ -395,7 +396,8 @@ filewrapper listGenerationTemplate in "../generation_templates/type_generation" 
 
 override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   outHeader = [filewrapper listGenerationTemplate.listTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]

@@ -1,17 +1,338 @@
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
-#                                                                                                                      *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
-#                                                                                                                      *
-#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
-#  License as published by the Free Software Foundation.                                                               *
-#                                                                                                                      *
-#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
-#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
-#  details.                                                                                                            *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+enum @optionDefaultValueEnumAST {
+  case noDefaultValue  case unsignedDefaultValue  case stringDefaultValue
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @commandLineOptionListAST {
+  @lstring mOptionTypeName
+  @lstring mOptionInternalName
+  @lchar mOptionInvocationLetter
+  @lstring mOptionInvocationString
+  @lstring mOptionComment
+  @lstring mOptionDefaultValue
+  @optionDefaultValueEnumAST mOptionDefaultValueKind
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionComponentDeclarationAST : @semanticDeclarationAST {
+  @lstring mOptionComponentName
+  @commandLineOptionListAST mOptions
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+syntax galgas3OptionComponentSyntax (galgas3Scanner) {
+
+  #·····················································································································
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $option$
+    $identifier$ ?let @lstring optionComponentName
+    ${$
+    @commandLineOptionListAST options = {}
+    repeat
+    while 
+      <option_declaration> !?options
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
+      !false
+      !optionComponentName
+      !options
+    }
+  }
+
+  #·····················································································································
+
+  rule <option_declaration> ?!@commandLineOptionListAST ioCommandLineOptionList {
+    $@type$ ?var @lstring mOptionTypeName
+    $identifier$ ?var @lstring mOptionInternalName
+    $:$
+    $'char'$ ?var @lchar mOptionInvocationLetter
+    $,$
+    $"string"$ ?var @lstring mOptionInvocationString
+    $->$
+    $"string"$ ?var @lstring mOptionComment
+    var defaultValue =@lstring.new{!"" !@location.here}
+    @optionDefaultValueEnumAST optionDefaultValueKind
+    select
+      optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
+    or
+      $default$
+      select
+        $"string"$ ? defaultValue
+        optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
+      or
+        $uint32$ ?var  @luint v
+        defaultValue = @lstring.new {![[v uint] string] ![v location]}
+        optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
+      end
+    end
+    ioCommandLineOptionList +=
+      !mOptionTypeName
+      !mOptionInternalName
+      !mOptionInvocationLetter
+      !mOptionInvocationString
+      !mOptionComment
+      !defaultValue
+      !optionDefaultValueKind
+  }
+
+  #·····················································································································
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! ENTER IN GRAPH
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST ioExtensionOverrideDefinitionList
+{
+  ioExtensionOverrideDefinitionList += !self
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! ENTER IN CONTEXT
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext unused inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext unused inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+  @commandLineOptionMap boolOptionMap = {}
+  @commandLineOptionMap uintOptionMap = {}
+  @commandLineOptionMap stringOptionMap = {}
+  @commandLineOptionMap stringListOptionMap = {}
+  var optionNameSet = @stringset.emptySet
+  for () in mOptions do
+    if [optionNameSet hasKey ![mOptionInternalName string]] then
+      error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
+    elsif [mOptionTypeName string] == "bool" then
+      [!?boolOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        !"false"
+      ]
+      if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
+        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)"      
+      end
+    elsif [mOptionTypeName string] == "uint" then
+      [!?uintOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
+      ]
+      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. stringDefaultValue then
+        error mOptionDefaultValue:"an @uint option default value cannot be an @string value"      
+      end
+    elsif [mOptionTypeName string] == "string" then
+      [!?stringOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        ![mOptionDefaultValue string]
+      ]
+      if mOptionDefaultValueKind == @optionDefaultValueEnumAST. unsignedDefaultValue then
+        error mOptionDefaultValue:"an @string option default value cannot be an @uint value"      
+      end
+    elsif [mOptionTypeName string] == "stringlist" then
+      [!?stringListOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        ![mOptionDefaultValue string]
+      ]
+      if mOptionDefaultValueKind != .noDefaultValue then
+        error mOptionDefaultValue:"an @stringlist option cannot accept default value"      
+      end
+    else
+      error mOptionTypeName: "only the @bool, @uint or @string types are allowed here"
+    end
+    optionNameSet += ![mOptionInternalName string]
+  end
+#--- Insert option
+  [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
+    !mOptionComponentName
+    !mIsPredefined
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+    !stringListOptionMap
+  ]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTIC ANALYSIS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#---
+  [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
+    !mOptionComponentName
+    ?let @bool isPredefined
+    ?let @commandLineOptionMap boolOptionMap
+    ?let @commandLineOptionMap uintOptionMap
+    ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
+  ] 
+#---- Enter filewrapper in generated list
+  ioSemanticDeclarationListForGeneration +=
+    !"option " + mOptionComponentName
+    !@optionComponentForGeneration.new {
+      !true # Generate Cpp header file
+      !"option-" + mOptionComponentName
+      !isPredefined
+      !mOptionComponentName.string
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+      !stringListOptionMap
+    }
+    !""
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @bool mIsPredefined
+  @string mOptionComponentName
+  @commandLineOptionMap mBoolOptionMap
+  @commandLineOptionMap mUIntOptionMap
+  @commandLineOptionMap mStringOptionMap
+  @commandLineOptionMap mStringListOptionMap
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @optionComponentForGeneration isPredefined -> @bool outResult {
+  outResult = mIsPredefined
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override getter @optionComponentForGeneration headerKind -> @headerKind outResult {
+  outResult = if mIsPredefined then .noHeader else .oneHeader end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  if mIsPredefined then
+    outHeader = ""
+  else
+    outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
+      !mOptionComponentName
+      !mBoolOptionMap
+      !mUIntOptionMap
+      !mStringOptionMap
+      !mStringListOptionMap
+    ]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  if mIsPredefined then
+    outImplementation = ""
+  else
+    ioInclusionSet += !"option-" + mOptionComponentName
+    outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
+      !mOptionComponentName
+      !mBoolOptionMap
+      !mUIntOptionMap
+      !mStringOptionMap
+      !mStringListOptionMap
+    ]
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionComponentForGeneration appendSpecificFiles
+  ?let @string inProductDirectory
+  ?!@stringset ioAllProductFileSet {
+#--- Generate Cocoa header
+  if @uint. errorCount == 0 && not mIsPredefined then
+    ioAllProductFileSet += !"option-" + mOptionComponentName + "-cocoa.h"
+    [@string generateFileWithPattern
+      !startPath:inProductDirectory
+      !fileName:"option-" + mOptionComponentName + "-cocoa.h"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+        !mOptionComponentName
+      ]
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+        !mOptionComponentName
+      ]
+      !makeExecutable:false
+    ]
+  #--- Generate Cocoa Implementation
+    ioAllProductFileSet += !"option-" + mOptionComponentName + "-cocoa.m"
+    [@string generateFileWithPattern
+      !startPath:inProductDirectory
+      !fileName:"option-" + mOptionComponentName + "-cocoa.m"
+      !lineComment:"//"
+      !header:"" # Header
+      !defaultUserZone1:"\n\n" # Defaut user zone1
+      !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
+        !"option-" + mOptionComponentName + "-cocoa"
+        !mOptionComponentName
+        !mBoolOptionMap
+        !mUIntOptionMap
+        !mStringOptionMap
+        !mStringListOptionMap
+      ]
+      !defaultUserZone2:"\n\n" # Defaut user zone2
+      !generatedZone3:"\n\n" # User Zone 3
+      !makeExecutable:false
+    ]
+ end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @commandLineOptionMap { # the key is the option identifier
   @char mOptionChar
@@ -22,9 +343,9 @@ map @commandLineOptionMap { # the key is the option identifier
   search searchKey error message "the '%K' command line option is not declared"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S                                                                     *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
 }{
@@ -61,5 +382,5 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
     ?@commandLineOptionMap STRING_LIST_OPTION_MAP
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

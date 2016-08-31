@@ -217,4 +217,121 @@ proc appendPredefinedTypesASTs
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @predefinedTypeAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {!"@" + mPredefinedTypeName !@location.here}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @predefinedTypeAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+  [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
+  [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
+  [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]
+  [self getInstanceMethodMap !?ioSemanticContext.mTypeMap ?var @instanceMethodMap instanceMethodMap]
+  [self getClassMethodMap !?ioSemanticContext.mTypeMap ?var @classMethodMap classMethodMap]
+  [self getAddAssignArgumentList !?ioSemanticContext.mTypeMap ?var @functionSignature addAssignArgumentList]
+  [self getEnumerationList
+    !?ioSemanticContext.mTypeMap
+    ?var @enumerationDescriptorList enumerationList
+    ?var @stringlist enumerationVariants
+    ?var @string enumeratedTypeName
+  ]
+  [@unifiedTypeMap-proxy makeProxyFromString
+    !?ioSemanticContext.mTypeMap
+    !mPredefinedTypeName
+    ?var @unifiedTypeMap-proxy selfTypeProxy
+  ]
+#--- Enumeration
+  @unifiedTypeMap-proxy enumeratedTypeProxy
+  if enumeratedTypeName == "" then
+    enumeratedTypeProxy = @unifiedTypeMap-proxy. null
+  else
+    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeProxy]
+  end
+#--- Add Categories
+  addExtensions (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !@lstring.new {!mPredefinedTypeName !@location.here}
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+  )
+#---
+  [!?ioSemanticContext.mTypeMap insertKey
+    !@lstring.new {!mPredefinedTypeName !@location.here}
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy. null
+    !@typeKindEnum. predefinedType
+    !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
+    !@typedPropertyList.emptyList
+    !@attributeMap. emptyMap
+    !@typedPropertyList.emptyList
+    !constructorMap
+    !getterMap
+    !setterMap
+    !instanceMethodMap
+    !classMethodMap
+    !enumerationList
+    !enumerationVariants
+    ![self getSupportedOperatorFlags]
+    !addAssignArgumentList
+    !{}
+    !{}
+    !@mapSearchMethodListAST.emptyList
+    !@mapSearchMethodListAST.emptyList
+    !false # Do not generate header in separate file
+    !enumeratedTypeProxy
+    ![mKind defaultConstructorName]
+    !"galgas2/predefined-types"
+    !@headerKind.twoHeaders
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @predefinedTypeAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !"Predefined type " + mPredefinedTypeName
+    !@primitiveTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!mPredefinedTypeName !.here}}
+      !mPredefinedTypeName
+      !mKind
+    }
+    !"Predefined type " + mPredefinedTypeName
+#    !if mPredefinedTypeName == "stringset" then "Predefined type stringlist" else "" end
+#    !""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 
