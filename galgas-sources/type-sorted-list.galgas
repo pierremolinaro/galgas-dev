@@ -259,7 +259,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!mSortedListTypeName)
@@ -298,11 +298,11 @@ override method @sortedListDeclarationAST semanticAnalysis
     !"sorted list " + mSortedListTypeName
     !@sortedListTypeForGeneration.new {
       !.searchKey {!inSemanticContext.mTypeMap !mSortedListTypeName}
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName}}
       !typedAttributeList
-      !sortDescriptorList}
-    !""
-
+      !sortDescriptorList
+    }
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

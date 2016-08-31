@@ -20,7 +20,7 @@ proc compileSemanticDeclarationsGalgas3
   ?let @location inEndOfProjectSourceFile
   ?let @semanticDeclarationListAST inSemanticDeclarationList
   !@semanticContext outSemanticContext
-  !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
+  !@semanticDeclarationListForGeneration outSemanticDeclarationSortedListForGeneration
 {
   if @application.verboseOutput then
     message "*** Building semantic context\n"
@@ -190,7 +190,7 @@ proc buildGalgas3SemanticContext
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
@@ -277,7 +277,7 @@ proc generateSemanticDeclarationsGalgas3
 
 private proc generateManyHeaders
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList {
 #--- Header files
@@ -390,7 +390,7 @@ private proc generateManyHeaders
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList {
   var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
@@ -484,7 +484,7 @@ private func %once definitionGroupAmount -> @uint outResult {
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 {
@@ -549,7 +549,7 @@ private proc generateFewImplementationFiles
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList
@@ -688,7 +688,7 @@ private proc generateFewImplementationFilesWithFewHeaders
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet {
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]

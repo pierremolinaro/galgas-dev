@@ -482,12 +482,10 @@ abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-sortedlist @semanticDeclarationSortedListForGeneration {
+list @semanticDeclarationListForGeneration {
   @string mMessage
   @semanticDeclarationForGeneration mDeclaration
-  @string mSortKey
-}{
-  mSortKey <
+#  @string mSortKey
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

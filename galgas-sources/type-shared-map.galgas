@@ -732,7 +732,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
@@ -1071,7 +1071,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !shadowBehaviour
       !shadowMessage
     }
-    !""
+#    !""
 #--- Build graph for graphviz 
   let graphFile = inProductDirectory + "/../helpers/shared-map-" + mMapTypeName + ".dot"
   if [option galgas_cli_options.generateSharedMapAutomatonDotFiles value] then

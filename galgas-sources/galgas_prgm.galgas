@@ -211,7 +211,7 @@ proc compileProject
   let productDirectory = buildDirectory + "/output"
   @stringlist appProductFileList = {}
   @semanticContext semanticContext = .default
-  @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
+  @semanticDeclarationListForGeneration semanticDeclarationSortedListForGeneration
   if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
       !?usefulnessRootEntities
@@ -254,7 +254,7 @@ proc compileProject
     semanticDeclarationSortedListForGeneration +=
       !"zprogram"
       !programComponentForGeneration
-      !"z"
+#      !"z"
   end
 #------------ Check entity usefulness
   checkUsefulEntities (!usefulEntitiesGraph !usefulnessRootEntities !productDirectory)
@@ -323,7 +323,7 @@ proc projectGeneration
   ?let @string inBuildDirectory
   ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
   ?let @stringlist inAppProductFileList
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?let @programRuleList inSourceRuleList
   ?let @galgas3ProjectComponentAST inProjectComponentAST
   ?let @string inProjectSourceFile

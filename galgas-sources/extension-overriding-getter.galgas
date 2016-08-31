@@ -120,7 +120,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionGetterName)
@@ -214,7 +214,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration
     }
-    !"~"
+#    !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

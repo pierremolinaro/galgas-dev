@@ -315,7 +315,7 @@ override method @predefinedTypeAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!.new {!mPredefinedTypeName !.here})
@@ -328,7 +328,7 @@ override method @predefinedTypeAST semanticAnalysis
       !mPredefinedTypeName
       !mKind
     }
-    !"Predefined type " + mPredefinedTypeName
+#    !"Predefined type " + mPredefinedTypeName
 #    !if mPredefinedTypeName == "stringset" then "Predefined type stringlist" else "" end
 #    !""
 }

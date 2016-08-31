@@ -210,7 +210,7 @@ override method @arrayDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mArrayTypeName)
@@ -223,8 +223,9 @@ override method @arrayDeclarationAST semanticAnalysis
     !@arrayTypeForGeneration.new {
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mArrayTypeName}
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mElementTypeName}
-      ![mDimension uint]}
-    !""
+      ![mDimension uint]
+    }
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
