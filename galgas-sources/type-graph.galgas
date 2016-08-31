@@ -429,7 +429,7 @@ override method @graphDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mGraphTypeName)
@@ -461,7 +461,7 @@ override method @graphDeclarationAST semanticAnalysis
       !associatedListTypeProxy
       !associatedListElementTypeProxy
       !mInsertModifierList}
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -1640,7 +1640,7 @@ override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!
 
 proc generatePredefinedTypeFiles
   ?let @string inDirectory
-  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolHeaderFileList
   ?!@stringlist ioToolCppFileList
   ?!@stringset ioAllProductFileSet

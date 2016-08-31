@@ -98,7 +98,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
   ?let @string inProductDirectory
   ?let @semanticContext unused inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -225,7 +225,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
@@ -248,7 +248,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
       ![mFunctionName string]
       !formalArgumentList
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mResultTypeName}}
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -259,7 +259,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
@@ -281,7 +281,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
       !"proc-" + mRoutineName
       ![mRoutineName string]
       !formalArgumentList}
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -292,7 +292,7 @@ override method @procDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = procedureNameForUsefulEntitiesGraph (!mRoutineName)
@@ -331,7 +331,7 @@ override method @procDeclarationAST semanticAnalysis
       !false # Do not generate static
       !instructionList
     }
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -420,7 +420,7 @@ override method @functionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
@@ -466,7 +466,7 @@ override method @functionDeclarationAST semanticAnalysis
       !returnType
       !resultVariableCppName
       !semanticInstructionListForGeneration}
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -477,7 +477,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = functionNameForUsefulEntitiesGraph (!mFunctionName)
@@ -521,7 +521,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
       !returnType
       !resultVariableCppName
       !semanticInstructionListForGeneration}
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -536,7 +536,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
@@ -609,7 +609,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         !wrapperFileMap
         !wrapperDirectoryMap
         !filewrapperTemplateListForGeneration}
-    !""
+#    !""
   end
 }
 
@@ -621,7 +621,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = syntaxNameForUsefulEntitiesGraph (!mSyntaxComponentName)
@@ -660,7 +660,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ioSemanticDeclarationListForGeneration +=
       !""
       !syntaxDeclarationForGeneration
-      !""
+#      !""
   end
 }
 
@@ -672,7 +672,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   ?let @string inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
   if @application.verboseOutput then
     message "*** Analyzing '" + mGrammarComponentName + "' grammar\n"
@@ -848,7 +848,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !mHasTranslateFeature
       !grammarCppFile
     }
-    !""
+#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -859,7 +859,7 @@ override method @lexiqueComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext unused inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Useful entities graph
   let nameForUsefulness = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
@@ -1135,7 +1135,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !cppContents
         !cocoaHeader
         !cocoaImplementation}
-      !""  
+#      !""  
   end
 }
 

@@ -568,7 +568,7 @@ override method @mapDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
@@ -641,7 +641,7 @@ override method @mapDeclarationAST semanticAnalysis
       !mSearchMethodList
       !mRemoveMethodList
       !hasInsertOrReplaceModifier}
-    !""
+#    !""
 }
   
 #----------------------------------------------------------------------------------------------------------------------*
