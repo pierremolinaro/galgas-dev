@@ -28,7 +28,7 @@
 
 #include <ctype.h>
 
-#ifndef COMPILE_FOR_WINDOWS
+#if COMPILE_FOR_WINDOWS == 0
   #include <termios.h>
   #include <string.h>
   #include <unistd.h>
@@ -51,7 +51,7 @@ GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WINDOWS
+#if COMPILE_FOR_WINDOWS == 1
   GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (UNUSED_LOCATION_ARGS) {
     return GALGAS_char (TO_UNICODE (0)) ;
   }
@@ -59,7 +59,7 @@ GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-#ifndef COMPILE_FOR_WINDOWS
+#if COMPILE_FOR_WINDOWS == 0
   static void waitForRawInput (void) {
     bool waiting = true ;
     while (waiting) {
@@ -73,7 +73,7 @@ GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WINDOWS
+#if COMPILE_FOR_WINDOWS == 0
   GALGAS_char GALGAS_char::constructor_unicodeCharacterFromRawKeyboard (UNUSED_LOCATION_ARGS) {
   //--- Save current configuration
     struct termios termios_orig ;
@@ -82,8 +82,9 @@ GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
     struct termios raw ;
     tcgetattr (STDIN_FILENO, &raw) ;
     cfmakeraw (& raw) ;
-    raw.c_oflag = ONLCR ;
+    raw.c_oflag = OPOST | OCRNL ;
     raw.c_iflag = 0 ;
+    raw.c_lflag = 0 ;
     tcsetattr (STDIN_FILENO, TCSANOW, & raw);
   //--- Wait for input character
     waitForRawInput () ;

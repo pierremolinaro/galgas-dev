@@ -15,6 +15,17 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+#after {
+#  var looping = true
+#  for i in 0 ..< 1000 while looping do
+#    let c = @char.unicodeCharacterFromRawKeyboard
+#    looping = c != 'q'
+#    if looping then
+#      message "[" + [c unicodeName]  + "]"
+#    end
+#  end
+#}
+
 before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )
