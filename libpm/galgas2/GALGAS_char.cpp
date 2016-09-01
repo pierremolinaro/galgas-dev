@@ -82,7 +82,8 @@ GALGAS_char GALGAS_char::constructor_default (UNUSED_LOCATION_ARGS) {
     struct termios raw ;
     tcgetattr (STDIN_FILENO, &raw) ;
     cfmakeraw (& raw) ;
-    raw.c_oflag = ONLCR | OPOST ;
+    raw.c_oflag = ONLCR ;
+    raw.c_iflag = 0 ;
     tcsetattr (STDIN_FILENO, TCSANOW, & raw);
   //--- Wait for input character
     waitForRawInput () ;
