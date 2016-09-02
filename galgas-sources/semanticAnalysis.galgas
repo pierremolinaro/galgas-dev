@@ -50,11 +50,11 @@ proc checkMethodSignatures
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C H E C K    R E A D E R    S I G N A T U R E                                                                     *
+#    C H E C K    G E T T E R    S I G N A T U R E                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc checkReaderSignatures
+proc checkGetterSignatures
   ?let @formalInputParameterListForGeneration inTestedSignature
   ?let @unifiedTypeMap-proxy inReturnType
   ?let @location inErrorLocation
@@ -74,7 +74,9 @@ proc checkReaderSignatures
   else
     for () ref_ in inReferenceSignature, () in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
-        error mFormalSelector : "the selector should be '?" + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
+        error mFormalSelector
+        : "the selector should be '?" + ref_mFormalSelector
+          + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
       if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter has the '@"

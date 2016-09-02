@@ -5083,6 +5083,9 @@ typeComparisonResult cPtr_castInExpressionForGeneration::dynamicObjectCompare (c
   if (kOperandEqual == result) {
     result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
   }
+  if (kOperandEqual == result) {
+    result = mAttribute_mCastType.objectCompare (p->mAttribute_mCastType) ;
+  }
   return result ;
 }
 
@@ -5123,11 +5126,12 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
-                                                                                            const GALGAS_string & inAttribute_mTypeName
+                                                                                            const GALGAS_string & inAttribute_mTypeName,
+                                                                                            const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mCastType
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_castInExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_castInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeName COMMA_THERE)) ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mCastType.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_castInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeName, inAttribute_mCastType COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5169,17 +5173,37 @@ GALGAS_string cPtr_castInExpressionForGeneration::getter_mTypeName (UNUSED_LOCAT
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_castInExpressionForGeneration::getter_mCastType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_castInExpressionForGeneration * p = (const cPtr_castInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_castInExpressionForGeneration) ;
+    result = p->mAttribute_mCastType ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy cPtr_castInExpressionForGeneration::getter_mCastType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCastType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                               Pointer class for @castInExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                         const GALGAS_location & in_mLocation,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                                                        const GALGAS_string & in_mTypeName
+                                                                        const GALGAS_string & in_mTypeName,
+                                                                        const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
 mAttribute_mReceiverExpression (in_mReceiverExpression),
-mAttribute_mTypeName (in_mTypeName) {
+mAttribute_mTypeName (in_mTypeName),
+mAttribute_mCastType (in_mCastType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5198,6 +5222,8 @@ void cPtr_castInExpressionForGeneration::description (C_String & ioString,
   mAttribute_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mCastType.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5205,7 +5231,7 @@ void cPtr_castInExpressionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_castInExpressionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_castInExpressionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mReceiverExpression, mAttribute_mTypeName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_castInExpressionForGeneration (mAttribute_mResultType, mAttribute_mLocation, mAttribute_mReceiverExpression, mAttribute_mTypeName, mAttribute_mCastType COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13632,63 +13658,6 @@ void routine_performProjectCreation (const GALGAS_string constinArgument_inProje
   GALGAS_string (filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_semantics (inCompiler, var_projectName_3422 COMMA_SOURCE_FILE ("projectCreation.galgas", 50))).method_writeToFile (var_galgas_5F_sources_5F_DIR_3507.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 50)).add_operation (var_projectName_3422, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 50)).add_operation (GALGAS_string ("-semantics.galgas"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 50)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 50)) ;
   GALGAS_string (filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (inCompiler, var_projectName_3422 COMMA_SOURCE_FILE ("projectCreation.galgas", 51))).method_writeToFile (var_galgas_5F_sources_5F_DIR_3507.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 51)).add_operation (var_projectName_3422, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 51)).add_operation (GALGAS_string ("-syntax.galgas"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 51)), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 51)) ;
   inCompiler->printMessage (GALGAS_string ("*** DONE ***\n")  COMMA_SOURCE_FILE ("projectCreation.galgas", 53)) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              Routine 'projectCreation'                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_projectCreation (const GALGAS_string constinArgument_inProjectPath,
-                              C_Compiler * inCompiler
-                              COMMA_UNUSED_LOCATION_ARGS) {
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, constinArgument_inProjectPath.getter_length (SOURCE_FILE ("projectCreation.galgas", 60)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    inCompiler->printMessage (GALGAS_string ("*** PERFORM PROJECT CREATION (--create-project=").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 61)).add_operation (GALGAS_string (" option) ***\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 61))  COMMA_SOURCE_FILE ("projectCreation.galgas", 61)) ;
-    GALGAS_string var_projectName_5176 = constinArgument_inProjectPath.getter_lastPathComponent (SOURCE_FILE ("projectCreation.galgas", 63)) ;
-    GALGAS_bool var_ok_5225 = var_projectName_5176.getter_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 64)).getter_isalpha (SOURCE_FILE ("projectCreation.galgas", 64)) ;
-    GALGAS_uint var_idx_5285 = GALGAS_uint ((uint32_t) 1U) ;
-    if (var_projectName_5176.getter_length (SOURCE_FILE ("projectCreation.galgas", 66)).isValid ()) {
-      uint32_t variant_5298 = var_projectName_5176.getter_length (SOURCE_FILE ("projectCreation.galgas", 66)).uintValue () ;
-      bool loop_5298 = true ;
-      while (loop_5298) {
-        loop_5298 = GALGAS_bool (kIsStrictInf, var_idx_5285.objectCompare (var_projectName_5176.getter_length (SOURCE_FILE ("projectCreation.galgas", 67)))).operator_and (var_ok_5225 COMMA_SOURCE_FILE ("projectCreation.galgas", 67)).isValid () ;
-        if (loop_5298) {
-          loop_5298 = GALGAS_bool (kIsStrictInf, var_idx_5285.objectCompare (var_projectName_5176.getter_length (SOURCE_FILE ("projectCreation.galgas", 67)))).operator_and (var_ok_5225 COMMA_SOURCE_FILE ("projectCreation.galgas", 67)).boolValue () ;
-        }
-        if (loop_5298 && (0 == variant_5298)) {
-          loop_5298 = false ;
-          inCompiler->loopRunTimeVariantError (SOURCE_FILE ("projectCreation.galgas", 66)) ;
-        }
-        if (loop_5298) {
-          variant_5298 -- ;
-          GALGAS_char var_c_5382 = var_projectName_5176.getter_characterAtIndex (var_idx_5285, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 68)) ;
-          var_ok_5225 = var_c_5382.getter_isalnum (SOURCE_FILE ("projectCreation.galgas", 69)).operator_or (GALGAS_bool (kIsEqual, var_c_5382.objectCompare (GALGAS_char (TO_UNICODE (95)))) COMMA_SOURCE_FILE ("projectCreation.galgas", 69)) ;
-          var_idx_5285.increment_operation (inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 70)) ;
-        }
-      }
-    }
-    const enumGalgasBool test_1 = var_ok_5225.operator_not (SOURCE_FILE ("projectCreation.galgas", 72)).boolEnum () ;
-    if (kBoolTrue == test_1) {
-      inCompiler->printMessage (GALGAS_string ("** Cannot create GALGAS project: the project name '").add_operation (var_projectName_5176, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 73)).add_operation (GALGAS_string ("' should begin by a letter followed by zero, one or more letters, digits and underscore character.\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 74))  COMMA_SOURCE_FILE ("projectCreation.galgas", 73)) ;
-    }
-    const enumGalgasBool test_2 = var_ok_5225.boolEnum () ;
-    if (kBoolTrue == test_2) {
-      var_ok_5225 = constinArgument_inProjectPath.getter_directoryExists (SOURCE_FILE ("projectCreation.galgas", 78)).operator_not (SOURCE_FILE ("projectCreation.galgas", 78)) ;
-      const enumGalgasBool test_3 = var_ok_5225.operator_not (SOURCE_FILE ("projectCreation.galgas", 79)).boolEnum () ;
-      if (kBoolTrue == test_3) {
-        inCompiler->printMessage (GALGAS_string ("*** Cannot create GALGAS project: '").add_operation (constinArgument_inProjectPath, inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 80)).add_operation (GALGAS_string ("' directory already exists.***\n"), inCompiler COMMA_SOURCE_FILE ("projectCreation.galgas", 80))  COMMA_SOURCE_FILE ("projectCreation.galgas", 80)) ;
-      }
-    }
-    const enumGalgasBool test_4 = var_ok_5225.boolEnum () ;
-    if (kBoolTrue == test_4) {
-      {
-      routine_performProjectCreation (constinArgument_inProjectPath, inCompiler  COMMA_SOURCE_FILE ("projectCreation.galgas", 84)) ;
-      }
-    }
-  }
 }
 
 

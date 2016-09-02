@@ -119,9 +119,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Return type
-  let @unifiedTypeMap-proxy returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+  let returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
 #--- Check type is an abstract class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+  if [selfType mTypeKindEnum] != .classType then
     error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
     error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
@@ -130,9 +130,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   @string baseTypeName = ""
   @unifiedTypeMap-proxy superType = [selfType mSuperType]
   @functionSignature inheritedSignature = {}
-  var inheritedReturnType =@unifiedTypeMap-proxy.null{}
+  @unifiedTypeMap-proxy inheritedReturnType = .null{}
   @location inheritedDeclarationLocation = @location.here
-  loop( [inSemanticContext.mTypeMap count] + 1)
+  loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mGetterMap] hasKey ![mAbstractExtensionGetterName string]] then
       [[superType mGetterMap] searchKey
@@ -165,7 +165,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
         !mFormalArgumentName
         !mIsConstant
     end
-    checkReaderSignatures (
+    checkGetterSignatures (
       !formalParameterListForGeneration
       !returnType
       ![mAbstractExtensionGetterName location]

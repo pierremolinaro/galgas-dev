@@ -3230,7 +3230,8 @@ override method @castInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let type = @unifiedTypeMap-proxy. searchKey {
      !inAnalysisContext.mSemanticContext.mTypeMap
-     !mTypeName}
+     !mTypeName
+   }
 #--- This type is an @object type
   if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
   #--- Check expression type is a descendant of named type
@@ -3267,7 +3268,9 @@ override method @castInExpressionAST analyzeSemanticExpression
       !type
       ![mTypeName location]
       !expression
-      ![mTypeName string]}
+      ![mTypeName string]
+      !type
+    }
   end
 }
 

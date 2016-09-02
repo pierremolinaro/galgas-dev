@@ -206,7 +206,7 @@ rule <actual_parameter_list>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
-  outFormalInputParameterList = @formalInputParameterListAST.emptyList
+  outFormalInputParameterList = {}
   repeat
   while
     @bool isConstant

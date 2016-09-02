@@ -278,9 +278,14 @@ override method @extensionGetterForGeneration appendDeclaration1
 override method @extensionGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
+  for () in mExtensionGetterFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  end
+  [mResultType addHeaderFileName !?ioInclusionSet] 
   if mImplementedAsFunction then
-    @formalInputParameterListForGeneration extensionReaderFormalParameterList = mExtensionGetterFormalParameterList
+    var extensionReaderFormalParameterList = mExtensionGetterFormalParameterList
     [!?extensionReaderFormalParameterList insertAtIndex
       !["" nowhere]
       !mReceiverType
@@ -307,11 +312,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !code
     ] 
   else
-    [mResultType addHeaderFileName !?ioInclusionSet] 
     [mReceiverType addHeaderFileName !?ioInclusionSet]
-    for () in mExtensionGetterFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-    end
     @unifiedTypeMap-proxy baseType = mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
