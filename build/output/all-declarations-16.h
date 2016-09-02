@@ -2481,7 +2481,8 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
   public : static class GALGAS_castInExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                               const class GALGAS_location & inOperand1,
                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                              const class GALGAS_string & inOperand3
+                                                                              const class GALGAS_string & inOperand3,
+                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2493,6 +2494,8 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mCastType (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mTypeName (LOCATION_ARGS) const ;
@@ -2518,12 +2521,14 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
 //--- Attributes
   public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
   public : GALGAS_string mAttribute_mTypeName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
 
 //--- Constructor
   public : cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                const GALGAS_location & in_mLocation,
                                                const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
-                                               const GALGAS_string & in_mTypeName
+                                               const GALGAS_string & in_mTypeName,
+                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -2532,6 +2537,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string getter_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mCastType (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -5739,15 +5745,5 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (
 void routine_performProjectCreation (const class GALGAS_string constinArgument0,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              Routine 'projectCreation'                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_projectCreation (const class GALGAS_string constinArgument0,
-                              class C_Compiler * inCompiler
-                              COMMA_LOCATION_ARGS) ;
 
 #endif

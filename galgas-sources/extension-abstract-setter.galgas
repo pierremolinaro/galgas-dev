@@ -190,6 +190,9 @@ override method @abstractExtensionSetterForGeneration appendSpecificImplementati
 {
   ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mAbstractExtensionSetterName
   [mReceiverType addHeaderFileName !?ioInclusionSet]
+  for () in mAbstractExtensionSetterFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionSetterImplementation
     ![mReceiverType key]
     !mAbstractExtensionSetterName

@@ -230,7 +230,8 @@ override method @extensionMethodForGeneration appendDeclaration1
 override method @extensionMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   if mImplementedAsFunction then
     @formalParameterListForGeneration extensionMethodFormalParameterList = mExtensionMethodFormalParameterList
     [!?extensionMethodFormalParameterList insertAtIndex

@@ -79,7 +79,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy uintType
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
 #---
-  var uintArgs =@functionSignature {}
+  @functionSignature uintArgs = {}
   @uint idx = 0
   loop( [mDimension uint]) while idx < [mDimension uint] do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx

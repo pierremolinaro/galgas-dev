@@ -287,6 +287,7 @@ class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
 class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
+  @unifiedTypeMap-proxy mCastType
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

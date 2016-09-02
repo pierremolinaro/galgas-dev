@@ -190,7 +190,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
   )
 #--- Check Signature
   if baseTypeName != "" then
-    checkReaderSignatures (
+    checkGetterSignatures (
       !formalParameterListForGeneration
       !returnType
       ![mOverridingExtensionGetterName location]
@@ -265,7 +265,8 @@ override getter @overrideExtensionGetterForGeneration headerKind ->@headerKind o
 override method @overrideExtensionGetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   generateExtensionGetter (
     !mReceiverType
     !mBaseTypeName

@@ -227,7 +227,11 @@ override method @extensionSetterForGeneration appendDeclaration1
 override method @extensionSetterForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
+  for () in mExtensionSetterFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  end
   if mImplementedAsFunction then
     var extensionSetterFormalParameterList = mExtensionSetterFormalParameterList
     [!?extensionSetterFormalParameterList insertAtIndex

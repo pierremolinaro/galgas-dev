@@ -648,11 +648,11 @@ void routine_generateExtensionSetter (const class GALGAS_string constinArgument0
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           Routine 'checkReaderSignatures'                                           *
+//                                           Routine 'checkGetterSignatures'                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkReaderSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
+void routine_checkGetterSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
                                     const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                     const class GALGAS_location constinArgument2,
                                     const class GALGAS_functionSignature constinArgument3,

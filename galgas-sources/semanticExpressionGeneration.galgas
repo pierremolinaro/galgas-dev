@@ -1066,7 +1066,9 @@ override method @castInExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
+  [mCastType addHeaderFileName !?ioInclusionSet] 
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex ++
 #--- Receiver expression
@@ -1125,7 +1127,8 @@ override method @getterCallExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
 #--- Add return type header
   [mResultType addHeaderFileName !?ioInclusionSet]
 #--- Receiver expression
