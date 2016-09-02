@@ -114,7 +114,7 @@ constructor unicodeCharacterFromRawKeyboard -> @char
 
 Retourne un objet \ggs+@char+ obtenu en lisant le clavier. Tout caractère Unicode entré est retourné immédiatement.
 
-{\bf Note.} Sous windows, ce constructeur renvoie toujours le caractère \texttt{NUL}.
+{\bf Note.} Ce constructeur n'est pas implémenté pour Windows. L'appel engendre l'erreur «~\emph{@char unicodeCharacterFromRawKeyboard constructor is not implemented for Windows}~», et renvoie une valeur poison.
 
 
 

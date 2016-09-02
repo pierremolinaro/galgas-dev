@@ -1435,6 +1435,24 @@ Lorsqu'un retour à la ligne est inséré, des espaces sont automatiquement ins�
 
 
 
+\subsectionSetter{insertCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter insertCharacterAtIndex
+   ?@char inChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} insère le caractère caractère \ggs!inChar! à l'indice \ggs!inIndex!. Si \ggs!inIndex! doit être inférieur ou égal au nombre de caractères du récepteur. Si \ggs!inIndex! est égal au nombre de caractères, \ggs!inChar! est inséré après le dernier caractère. 
+
+
+
+
+
+
+
+
 \subsectionSetter{setCapacity}{string}
 
 \begin{galgasbox}
@@ -1442,11 +1460,23 @@ setter setCapacity ?@uint inCapacity
 \end{galgasbox}
 
 
-Ce \emph{setter} ajuste la zone mémoire allouée au buffer de la chaîne de caractères. Si \ggs!inCapacity! est strictemement inférieur au nombre de caractères, ce \emph{setter} n'a pas d'effet.
+Ce \emph{setter} ajuste la zone mémoire allouée au buffer de la chaîne de caractères. Si \ggs!inCapacity! est strictement inférieur au nombre de caractères, ce \emph{setter} n'a pas d'effet.
 
 
 
 
+
+
+\subsectionSetter{removeCharacterAtIndex}{string}
+
+\begin{galgasbox}
+setter removeCharacterAtIndex
+   !@char outChar
+   ?@uint inIndex
+\end{galgasbox}
+
+
+Ce \emph{setter} retire de la chaîne le caractère à l'indice \ggs!inIndex!. Le caractère retiré est renvoyé dans \ggs!outChar!. \ggs!inIndex! doit être strictement inférieur au nombre de caractères~; sinon, une erreur d'exécution est déclenchée, et une valeur poison est retournée dans \ggs!outChar!. 
 
 
 
