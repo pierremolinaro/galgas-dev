@@ -1683,7 +1683,7 @@ void GALGAS_string::setter_appendSpacesUntilColumn (GALGAS_uint inColumnIndex,
 void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) {
-  if (inNewCapacity.isValid ()) {
+  if (isValid () && inNewCapacity.isValid ()) {
     if (inNewCapacity.uintValue () <= ((uint32_t) INT32_MAX)) {
       mString.setCapacity (inNewCapacity.uintValue ()) ; 
     }else{
@@ -1701,7 +1701,7 @@ void GALGAS_string::setter_setCapacity (GALGAS_uint inNewCapacity,
 void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
                                            C_Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (inIndentation.isValid ()) {
+  if (isValid () && inIndentation.isValid ()) {
     mString.incIndentation ((int32_t) inIndentation.uintValue ()) ; 
   }
 }
@@ -1711,7 +1711,7 @@ void GALGAS_string::setter_incIndentation (GALGAS_uint inIndentation,
 void GALGAS_string::setter_decIndentation (GALGAS_uint inIndentation,
                                            C_Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  if (inIndentation.isValid ()) {
+  if (isValid () && inIndentation.isValid ()) {
     mString.incIndentation (- ((int32_t) inIndentation.uintValue ())) ; 
   }
 }
@@ -1722,7 +1722,7 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
                                                 GALGAS_uint inIndex,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  if ((inCharacter.isValid ()) && (inIndex.isValid ())) {
+  if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
     const int32_t idx = (int32_t) inIndex.uintValue () ;
     const int32_t stringLength = mString.length () ;
     if (idx >= stringLength) {
@@ -1731,6 +1731,46 @@ void GALGAS_string::setter_setCharacterAtIndex (GALGAS_char inCharacter,
       inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
       mString.setUnicodeCharacterAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_string::setter_insertCharacterAtIndex (GALGAS_char inCharacter,
+                                                   GALGAS_uint inIndex,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && (inCharacter.isValid ()) && (inIndex.isValid ())) {
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
+    const int32_t stringLength = mString.length () ;
+    if (idx > stringLength) {
+      C_String message ;
+      message << "string index (" << cStringWithSigned (idx) << ") too large (string length: " << cStringWithSigned (stringLength) << ")" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      mString.insertCharacterAtIndex (inCharacter.charValue (), idx COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_string::setter_removeCharacterAtIndex (GALGAS_char & outChar,
+                                                   GALGAS_uint inIndex,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  outChar.drop () ;
+  if (isValid () && (inIndex.isValid ())) {
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
+    const int32_t stringLength = mString.length () ;
+    if (idx >= stringLength) {
+      C_String message ;
+      message << "string index (" << cStringWithSigned (idx) << ") too large (string length: " << cStringWithSigned (stringLength) << ")" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+    }else{
+      outChar = GALGAS_char (mString (idx COMMA_HERE)) ;
+      mString.suppress (idx, 1 COMMA_THERE) ;
     }
   }
 }

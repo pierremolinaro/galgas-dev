@@ -23,16 +23,42 @@ proc enterModifierWithInputArgument
   ?setterName:let @string inSetterName
   ?compilerArg:let @bool inHasCompilerArgument
 {
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
-  var argList =@formalParameterSignature {}
-  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !argumentTypeIndex !.argumentConstantIn !inInputArgumentName
   [!?ioSetterMap insertOrReplace
     !@lstring.new {!inSetterName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !inHasCompilerArgument
     !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc enterModifierWithOutputAndInputArguments
+  ?!@setterMap ioSetterMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?outputArgTypeName:let @string inOutputArgumentTypeName
+  ?outputArgName:let @string inOutputArgumentName
+  ?inputArgTypeName:let @string inInputArgumentTypeName
+  ?inputArgName:let @string inInputArgumentName
+  ?setterName:let @string inSetterName
+  ?compilerArg:let @bool inHasCompilerArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?let outputArgumentTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let inputArgumentTypeIndex]
+  @formalParameterSignature argList = {}
+  argList += !["" nowhere] !outputArgumentTypeIndex !.argumentOut !inOutputArgumentName
+  argList += !["" nowhere] !inputArgumentTypeIndex !.argumentConstantIn !inInputArgumentName
+  [!?ioSetterMap insertOrReplace
+    !@lstring.new {!inSetterName !@location.here}
+    !@methodKind.definedAsMember
+    !argList
+    !inHasCompilerArgument
+    !@methodQualifier.isBasic
     !""
   ]
 }
@@ -183,6 +209,26 @@ override method @stringPredefinedTypeAST getSetterMap
     !arg2TypeName:"uint"
     !arg2Name:"inIndex"
     !setterName:"setCharacterAtIndex"
+    !compilerArg:true
+  )
+  enterModifierWith2InputArguments (
+    !?outSetterMap
+    !?ioUnifiedTypeMap
+    !arg1TypeName:"char"
+    !arg1Name:"inChar"
+    !arg2TypeName:"uint"
+    !arg2Name:"inIndex"
+    !setterName:"insertCharacterAtIndex"
+    !compilerArg:true
+  )
+  enterModifierWithOutputAndInputArguments (
+    !?outSetterMap
+    !?ioUnifiedTypeMap
+    !outputArgTypeName:"char"
+    !outputArgName:"outChar"
+    !inputArgTypeName:"uint"
+    !inputArgName:"inIndex"
+    !setterName:"removeCharacterAtIndex"
     !compilerArg:true
   )
 }

@@ -508,7 +508,7 @@ override method @charPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"unicodeCharacterFromRawKeyboard"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueAndLocationArgs:true
   )
 }
 
