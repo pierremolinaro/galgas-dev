@@ -197,7 +197,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
-    !"listmap-" + mListmapTypeName
+    !"listmap-" + [mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -241,8 +241,8 @@ override method @listmapDeclarationAST semanticAnalysis
       !.searchKey {!inSemanticContext.mTypeMap !mListmapTypeName}
       !.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
       !listTypeAttributeList
-      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
-#    !""
+      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}
+    }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

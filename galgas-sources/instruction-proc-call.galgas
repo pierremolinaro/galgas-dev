@@ -103,7 +103,7 @@ override method @procCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  ioInclusionSet += !"proc-" + mRoutineName
+  ioInclusionSet += !"proc-" + [mRoutineName fileNameRepresentation]
   ioGeneratedCode += "{\n"
 #--- Parameters
   @stringlist parameterCppNameList = {}

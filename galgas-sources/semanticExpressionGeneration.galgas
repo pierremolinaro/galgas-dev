@@ -238,7 +238,7 @@ override method @optionValueExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + mOptionComponentName
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
   end
   outCppExpression = "GALGAS_" + [mResultType identifierRepresentation] + " (gOption_" + [mOptionComponentName identifierRepresentation]
                    + "_" + [mOptionEntryName identifierRepresentation] + ".getter_value ())"
@@ -253,7 +253,7 @@ override method @optionCharExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + mOptionComponentName
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
   end
   outCppExpression = "GALGAS_char (gOption_" + [mOptionComponentName identifierRepresentation]
                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_char ())"
@@ -268,7 +268,7 @@ override method @optionStringExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + mOptionComponentName
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
   end
   outCppExpression = "GALGAS_string (gOption_" + [mOptionComponentName identifierRepresentation]
                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_string ())"
@@ -283,7 +283,7 @@ override method @optionCommentExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
   if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + mOptionComponentName
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
   end
   outCppExpression = "gOption_" + [mOptionComponentName identifierRepresentation]
                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_comment ()"
@@ -1157,7 +1157,7 @@ override method @getterCallExpressionForGeneration generateExpression
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [baseType key] + "-" + mGetterName
+    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mGetterName fileNameRepresentation]
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[mReceiverExpression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
       outCppExpression = "callExtensionGetter_" + [mGetterName identifierRepresentation]
@@ -1203,7 +1203,7 @@ override method @functionCallExpressionForGeneration generateExpression
 #--- Add return type header
   [mResultType addHeaderFileName !?ioInclusionSet]
 #--- Add function header
-  ioInclusionSet += !"func-" + mFunctionName
+  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
 #---
   var parameterList =@stringlist {}
   for () in mExpressions do
@@ -1290,7 +1290,7 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
 #---
-  ioInclusionSet += !"lexique-" + mLexiqueComponentName
+  ioInclusionSet += !"lexique-" + [mLexiqueComponentName fileNameRepresentation]
   outCppExpression = "C_Lexique_" + [mLexiqueComponentName identifierRepresentation] + "::"
   + [mLexiqueGetterName identifierRepresentation]
   + "(" + [mLocation sourceFile] + ")"

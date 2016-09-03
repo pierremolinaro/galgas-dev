@@ -206,7 +206,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
-    !"enum-" + mEnumTypeName
+    !"enum-" + [mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   ]
 }
@@ -255,7 +255,6 @@ override method @enumDeclarationAST semanticAnalysis
       !selfType
       !enumConstantListForGeneration
     }
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

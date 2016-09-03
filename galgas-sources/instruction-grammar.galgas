@@ -385,8 +385,9 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?!@uint ioTemporaryVariableIndex
     ?!@stringset ioUnusedVariableCppNameSet
     ?let @bool unused inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
-    ioInclusionSet += !"grammar-" + mGrammarName
+    ?!@string ioGeneratedCode
+  {
+    ioInclusionSet += !"grammar-" + [mGrammarName fileNameRepresentation]
   #--- Source string
     [mSourceFileExpression generateExpression
       !?ioGeneratedCode
@@ -457,7 +458,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
     ?!@stringset ioUnusedVariableCppNameSet
     ?let @bool unused inGenerateSyntaxDirectedTranslationString
     ?!@string ioGeneratedCode {
-    ioInclusionSet += !"grammar-" + mGrammarName
+    ioInclusionSet += !"grammar-" + [mGrammarName fileNameRepresentation]
   #--- Source string
     [mSourceStringExpression generateExpression
       !?ioGeneratedCode

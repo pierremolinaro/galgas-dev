@@ -9373,6 +9373,264 @@ GALGAS_headerRepartitionMap GALGAS_headerRepartitionMap::extractObject (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+cMapElement_declarationIndexMap::cMapElement_declarationIndexMap (const GALGAS_lstring & inKey,
+                                                                  const GALGAS_uint & in_mIndex
+                                                                  COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mAttribute_mIndex (in_mIndex) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cMapElement_declarationIndexMap::isValid (void) const {
+  return mAttribute_lkey.isValid () && mAttribute_mIndex.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cMapElement * cMapElement_declarationIndexMap::copy (void) {
+  cMapElement * result = NULL ;
+  macroMyNew (result, cMapElement_declarationIndexMap (mAttribute_lkey, mAttribute_mIndex COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cMapElement_declarationIndexMap::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIndex" ":" ;
+  mAttribute_mIndex.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cMapElement_declarationIndexMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_declarationIndexMap * operand = (cMapElement_declarationIndexMap *) inOperand ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mIndex.objectCompare (operand->mAttribute_mIndex) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap::GALGAS_declarationIndexMap (void) :
+AC_GALGAS_map () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap::GALGAS_declarationIndexMap (const GALGAS_declarationIndexMap & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap & GALGAS_declarationIndexMap::operator = (const GALGAS_declarationIndexMap & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap GALGAS_declarationIndexMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_declarationIndexMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap GALGAS_declarationIndexMap::constructor_mapWithMapToOverride (const GALGAS_declarationIndexMap & inMapToOverride
+                                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_declarationIndexMap result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap GALGAS_declarationIndexMap::getter_overriddenMap (C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  GALGAS_declarationIndexMap result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_declarationIndexMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                                      const GALGAS_uint & inArgument0,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  cMapElement_declarationIndexMap * p = NULL ;
+  macroMyNew (p, cMapElement_declarationIndexMap (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@declarationIndexMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_declarationIndexMap::setter_insertKey (GALGAS_lstring inKey,
+                                                   GALGAS_uint inArgument0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_declarationIndexMap * p = NULL ;
+  macroMyNew (p, cMapElement_declarationIndexMap (inKey, inArgument0 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' key is already declared in %L" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const char * kSearchErrorMessage_declarationIndexMap_searchKey = "there is no '%K' key" ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_declarationIndexMap::method_searchKey (GALGAS_lstring inKey,
+                                                   GALGAS_uint & outArgument0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  const cMapElement_declarationIndexMap * p = (const cMapElement_declarationIndexMap *) performSearch (inKey,
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_declarationIndexMap_searchKey
+                                                                                                         COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_declarationIndexMap) ;
+    outArgument0 = p->mAttribute_mIndex ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_declarationIndexMap::getter_mIndexForKey (const GALGAS_string & inKey,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_declarationIndexMap * p = (const cMapElement_declarationIndexMap *) attributes ;
+  GALGAS_uint result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_declarationIndexMap) ;
+    result = p->mAttribute_mIndex ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_declarationIndexMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
+                                                         GALGAS_string inKey,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_declarationIndexMap * p = (cMapElement_declarationIndexMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_declarationIndexMap) ;
+    p->mAttribute_mIndex = inAttributeValue ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cMapElement_declarationIndexMap * GALGAS_declarationIndexMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                                 const GALGAS_string & inKey
+                                                                                                 COMMA_LOCATION_ARGS) {
+  cMapElement_declarationIndexMap * result = (cMapElement_declarationIndexMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_declarationIndexMap) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_declarationIndexMap::cEnumerator_declarationIndexMap (const GALGAS_declarationIndexMap & inEnumeratedObject,
+                                                                  const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap_2D_element cEnumerator_declarationIndexMap::current (LOCATION_ARGS) const {
+  const cMapElement_declarationIndexMap * p = (const cMapElement_declarationIndexMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_declarationIndexMap) ;
+  return GALGAS_declarationIndexMap_2D_element (p->mAttribute_lkey, p->mAttribute_mIndex) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_declarationIndexMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mAttribute_lkey ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cEnumerator_declarationIndexMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_declarationIndexMap * p = (const cMapElement_declarationIndexMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_declarationIndexMap) ;
+  return p->mAttribute_mIndex ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @declarationIndexMap type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_declarationIndexMap ("declarationIndexMap",
+                                            NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_declarationIndexMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_declarationIndexMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_declarationIndexMap::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_declarationIndexMap (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_declarationIndexMap GALGAS_declarationIndexMap::extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_declarationIndexMap result ;
+  const GALGAS_declarationIndexMap * p = (const GALGAS_declarationIndexMap *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_declarationIndexMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("declarationIndexMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 cMapElement_projectQualifiedFeatureMap::cMapElement_projectQualifiedFeatureMap (const GALGAS_lstring & inKey,
                                                                                 const GALGAS_lstring & in_mFeatureValue
                                                                                 COMMA_LOCATION_ARGS) :

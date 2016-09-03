@@ -211,7 +211,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     !"option " + mOptionComponentName
     !@optionComponentForGeneration.new {
       !true # Generate Cpp header file
-      !"option-" + mOptionComponentName
+      !"option-" + [mOptionComponentName fileNameRepresentation]
       !isPredefined
       !mOptionComponentName.string
       !boolOptionMap
@@ -275,7 +275,7 @@ override method @optionComponentForGeneration appendSpecificImplementation
   if mIsPredefined then
     outImplementation = ""
   else
-    ioInclusionSet += !"option-" + mOptionComponentName
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
     outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
       !mOptionComponentName
       !mBoolOptionMap
@@ -293,10 +293,10 @@ override method @optionComponentForGeneration appendSpecificFiles
   ?!@stringset ioAllProductFileSet {
 #--- Generate Cocoa header
   if @uint. errorCount == 0 && not mIsPredefined then
-    ioAllProductFileSet += !"option-" + mOptionComponentName + "-cocoa.h"
+    ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.h"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
-      !fileName:"option-" + mOptionComponentName + "-cocoa.h"
+      !fileName:"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.h"
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
@@ -310,15 +310,15 @@ override method @optionComponentForGeneration appendSpecificFiles
       !makeExecutable:false
     ]
   #--- Generate Cocoa Implementation
-    ioAllProductFileSet += !"option-" + mOptionComponentName + "-cocoa.m"
+    ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
-      !fileName:"option-" + mOptionComponentName + "-cocoa.m"
+      !fileName:"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
-        !"option-" + mOptionComponentName + "-cocoa"
+        !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa"
         !mOptionComponentName
         !mBoolOptionMap
         !mUIntOptionMap

@@ -138,7 +138,7 @@ override method @abstractExtensionGetterAST semanticAnalysis
     !"abstract extension getter " + mAbstractExtensionGetterName
     !@abstractExtensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + mTypeName + "-" + mAbstractExtensionGetterName
+      !"getter-" + [mTypeName fileNameRepresentation] + "-" + [mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
       ![mAbstractExtensionGetterName string]
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
@@ -208,7 +208,7 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mAbstractExtensionGetterName
+  ioInclusionSet += !"getter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mAbstractExtensionGetterName fileNameRepresentation]
   [mResultType addHeaderFileName !?ioInclusionSet]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
   for () in mAbstractExtensionGetterFormalParameterList do

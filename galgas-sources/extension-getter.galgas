@@ -195,7 +195,7 @@ override method @extensionGetterAST semanticAnalysis
     !"extension getter " + mExtensionGetterName
     !@extensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [selfType key] + "-" + mExtensionGetterName
+      !"getter-" + [[selfType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
       !selfType
       ![mExtensionGetterName string]
       !implementedAsFunction
@@ -294,7 +294,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [mReceiverType key] + "-" + mExtensionGetterName
+    ioInclusionSet += !"getter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
     generateFunction (
       !"extensionGetter_" + [mExtensionGetterName identifierRepresentation]
       !?ioInclusionSet
@@ -326,7 +326,7 @@ override method @extensionGetterForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [baseType key]+ "-" + mExtensionGetterName
+    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
     generateExtensionGetter (
       !mReceiverType
       !""

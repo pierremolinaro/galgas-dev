@@ -155,7 +155,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !" overriding extension setter " + mOverridingExtensionSetterName
     !@overridingExtensionSetterForGeneration.new {
       !false # Do not generate Cpp header file
-      !"setter-" + mTypeName + "-" + mOverridingExtensionSetterName
+      !"setter-" + [mTypeName fileNameRepresentation] + "-" + [mOverridingExtensionSetterName fileNameRepresentation]
       !selfType
       !baseTypeName
       ![mOverridingExtensionSetterName string]
@@ -236,7 +236,7 @@ override method @overridingExtensionSetterForGeneration appendSpecificImplementa
       searching = false
     end  
   end
-  ioInclusionSet += !"setter-" + [baseType key]+ "-" + mExtensionSetterName
+  ioInclusionSet += !"setter-" + [[baseType key] fileNameRepresentation]+ "-" + [mExtensionSetterName fileNameRepresentation]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper semanticComponentGenerationTemplate.overridingExtensionSetterImplementation
     ![mReceiverType key]
