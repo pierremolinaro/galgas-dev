@@ -121,7 +121,7 @@ override method @abstractExtensionMethodAST semanticAnalysis
     !"abstract extension method " + mAbstractExtensionMethodName
     !@abstractExtensionMethodForGeneration.new {
       !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mAbstractExtensionMethodName
+      !"method-" + [[selfType key] fileNameRepresentation] + "-" + [mAbstractExtensionMethodName fileNameRepresentation]
       !selfType
       ![mAbstractExtensionMethodName string]
       !formalParameterListForGeneration}
@@ -184,7 +184,7 @@ override method @abstractExtensionMethodForGeneration appendSpecificImplementati
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mAbstractExtensionMethodName
+  ioInclusionSet += !"method-" + [[mReceiverType key] fileNameRepresentation]+ "-" + [mAbstractExtensionMethodName fileNameRepresentation]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
   for () in mAbstractExtensionMethodFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

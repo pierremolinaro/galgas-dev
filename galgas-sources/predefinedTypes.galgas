@@ -20,8 +20,8 @@ private proc appendPredefinedListTypeAST
   ?let @string inElementTypeName
   ?!@lstringlist ioUsefulnessRootEntities 
  {
-  var attributeList =@propertyInCollectionListAST {}
-  var attributeFeatureList =@lstringlist {}
+  @propertyInCollectionListAST attributeList = {}
+  @lstringlist attributeFeatureList = {}
   attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!inElementTypeName !@location.here}

@@ -244,7 +244,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
-    !"sortedlist-" + mSortedListTypeName
+    !"-sortedlist-" + [mSortedListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -302,7 +302,6 @@ override method @sortedListDeclarationAST semanticAnalysis
       !typedAttributeList
       !sortDescriptorList
     }
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

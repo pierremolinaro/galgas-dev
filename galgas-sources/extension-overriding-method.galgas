@@ -157,14 +157,13 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !"override extension method " + mOverridingExtensionMethodName
     !@overridingExtensionMethodForGeneration.new {
       !false # Do not generate Cpp header file
-      !"method-" + [selfType key] + "-" + mOverridingExtensionMethodName
+      !"method-" + [[selfType key] fileNameRepresentation] + "-" + [mOverridingExtensionMethodName fileNameRepresentation]
       !selfType
       !baseTypeName
       ![mOverridingExtensionMethodName string]
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration}
-#    !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

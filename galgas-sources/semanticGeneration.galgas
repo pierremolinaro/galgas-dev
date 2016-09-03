@@ -21,7 +21,7 @@ override method @grammarForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
   for (s) in mSyntaxComponents do
-    ioInclusionSet += !"syntax-" + s
+    ioInclusionSet += !"syntax-" + [s fileNameRepresentation]
   end
   outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
     ![mLexiqueName identifierRepresentation]
@@ -40,8 +40,9 @@ override method @grammarForGeneration appendDeclaration1
 override method @grammarForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  ioInclusionSet += !"grammar-" + mGrammarName
+  !@string outImplementation
+{
+  ioInclusionSet += !"grammar-" + [mGrammarName fileNameRepresentation]
   for nonTerminal in mNonTerminalMapForGrammarAnalysis do
     for () in nonTerminal.mNonterminalSymbolParametersMap do
       for () in mFormalParametersList do
@@ -60,7 +61,7 @@ override method @grammarForGeneration appendSpecificImplementation
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration implementationCppFileName -> @string outName {
-  outName = "grammar-" + mGrammarName
+  outName = "grammar-" + [mGrammarName fileNameRepresentation]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -86,7 +87,7 @@ override getter @grammarForGeneration isPredefined -> @bool outResult {
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string outName {
-  outName = "syntax-" + mSyntaxComponentName
+  outName = "syntax-" + [mSyntaxComponentName fileNameRepresentation]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -112,7 +113,7 @@ override getter @syntaxDeclarationForGeneration isPredefined -> @bool outResult 
 override method @syntaxDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  ioInclusionSet += !"lexique-" + mLexiqueName
+  ioInclusionSet += !"lexique-" + [mLexiqueName fileNameRepresentation]
   var selectMethodList =@uintlist {}
   @uint idx = 0
   loop( mSelectMethodCount + 1)
@@ -136,8 +137,9 @@ override method @syntaxDeclarationForGeneration appendDeclaration1
 override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
-  ioInclusionSet += !"syntax-" + mSyntaxComponentName
+  !@string outImplementation
+{
+  ioInclusionSet += !"syntax-" + [mSyntaxComponentName fileNameRepresentation]
   outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
     !{}
   ]
@@ -565,7 +567,7 @@ proc generateExtensionMethod
       searching = false
     end  
   end
-  ioInclusionSet += !"method-" + [baseType key] + "-" + inMethodName
+  ioInclusionSet += !"method-" + [[baseType key] fileNameRepresentation] + "-" + [inMethodName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -685,7 +687,7 @@ proc generateExtensionGetter
       searching = false
     end  
   end
-  ioInclusionSet += !"getter-" + [baseType key] + "-" + inGetterName
+  ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [inGetterName fileNameRepresentation]
   [inReceiverType addHeaderFileName !?ioInclusionSet]
   for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
@@ -1148,7 +1150,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   if mHasHeader then
-    ioInclusionSet += !"proc-" + mRoutineName
+    ioInclusionSet += !"proc-" + [mRoutineName fileNameRepresentation]
   end
   generateProcedure (
     !static:mGenerateStatic
@@ -1175,7 +1177,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"func-" + mFunctionName
+  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
   generateFunction (
     !"function_" + [mFunctionName identifierRepresentation]
     !?ioInclusionSet
@@ -1202,7 +1204,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"func-" + mFunctionName
+  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
   generateFunction (
     !"onceFunction_" + [mFunctionName identifierRepresentation]
     !?ioInclusionSet
@@ -1244,7 +1246,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  ioInclusionSet += !"lexique-" + mLexiqueName
+  ioInclusionSet += !"lexique-" + [mLexiqueName fileNameRepresentation]
   outHeader = mCppContents
 }
 
@@ -1254,10 +1256,10 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
   ?!@stringset ioAllProductFileSet {
 #--- Generate cocoa header file
-  ioAllProductFileSet += !"lexique-" + mLexiqueName + "-cocoa.h"
+  ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
-    !fileName:"lexique-" + mLexiqueName + "-cocoa.h"
+    !fileName:"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.h"
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1
@@ -1267,11 +1269,10 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
     !makeExecutable:false
   ]
 #--- Generate Cocoa implementation file
-#      ioAppProductFileList += !"lexique-" + mLexiqueName + "-cocoa.m" ;
-  ioAllProductFileSet += !"lexique-" + mLexiqueName + "-cocoa.m"
+  ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
-    !fileName:"lexique-" + mLexiqueName + "-cocoa.m"
+    !fileName:"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1

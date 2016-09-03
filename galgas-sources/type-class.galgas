@@ -318,7 +318,7 @@ override method @classDeclarationAST enterInSemanticContext
     !generateHeaderInSeparateFile
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
-    !"class-" + mClassTypeName
+    !"class-" + [mClassTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   ]
 }
@@ -410,14 +410,6 @@ override method @classDeclarationAST semanticAnalysis
       !hasGetter
     [!?attributeMap insertKey !mPropertyName !t]
   end
-#------ Compute sort string (used for sorting generated code)
-#  @string sortString = [selfType key]
-#  @unifiedTypeMap-proxy t = [selfType mSuperType]
-#  loop( [inSemanticContext.mTypeMap count] + 1)
-#  while not [t isNull] do
-#    sortString = [t key] + "." + sortString
-#    t = [t mSuperType]
-#  end
 #------
   ioSemanticDeclarationListForGeneration +=
     !"class " + mClassTypeName
@@ -430,7 +422,6 @@ override method @classDeclarationAST semanticAnalysis
       !typedAttributeList
       ![selfType mGenerateHeaderInSeparateFile]
     }
-#    !sortString
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

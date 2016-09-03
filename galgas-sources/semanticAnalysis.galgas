@@ -246,11 +246,10 @@ override method @externFunctionDeclarationAST semanticAnalysis
     !"extern func " + mFunctionName
     !@functionPrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
-      !"func-" + mFunctionName
+      !"func-" + [mFunctionName fileNameRepresentation]
       ![mFunctionName string]
       !formalArgumentList
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mResultTypeName}}
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -280,10 +279,9 @@ override method @externRoutineDeclarationAST semanticAnalysis
     !"extern proc " + mRoutineName
     !@routinePrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
-      !"proc-" + mRoutineName
+      !"proc-" + [mRoutineName fileNameRepresentation]
       ![mRoutineName string]
       !formalArgumentList}
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -327,13 +325,12 @@ override method @procDeclarationAST semanticAnalysis
     !"proc " + mRoutineName
     !@routineImplementationForGeneration.new {
       !true # Generate Cpp header file
-      !"proc-" + mRoutineName
+      !"proc-" + [mRoutineName fileNameRepresentation]
       ![mRoutineName string]
       !formalArgumentList
       !false # Do not generate static
       !instructionList
     }
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -462,7 +459,7 @@ override method @functionDeclarationAST semanticAnalysis
     !"function " + mFunctionName
     !@functionImplementationForGeneration.new {
       !true # Generate Cpp header file
-      !"func-" + mFunctionName
+      !"func-" + [mFunctionName fileNameRepresentation]
       ![mFunctionName string]
       !formalInputParameterList
       !returnType
@@ -518,7 +515,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !"once function " + mFunctionName
     !@onceFunctionDeclarationForGeneration.new {
       !true # Generate Cpp header file
-      !"func-" + mFunctionName
+      !"func-" + [mFunctionName fileNameRepresentation]
       ![mFunctionName string]
       !returnType
       !resultVariableCppName
@@ -846,7 +843,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
     !""   
     !@grammarForGeneration.new {
       !true # has header
-      !"grammar-" + mGrammarComponentName    
+      !"grammar-" + [mGrammarComponentName fileNameRepresentation]   
       !mGrammarComponentName.string
       !lexiqueComponentName.string
       !nonTerminalMapForGrammarAnalysis
@@ -857,7 +854,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       !mHasTranslateFeature
       !grammarCppFile
     }
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1119,7 +1115,7 @@ override method @lexiqueComponentAST semanticAnalysis
     ]
   #--- Cocoa implementation
     let cocoaImplementation = [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
-      !"lexique-" + lexiqueClassName + "-cocoa"
+      !"lexique-" + [lexiqueClassName fileNameRepresentation] + "-cocoa"
       !lexiqueClassName
       ![lexiqueAnalysisContext mLexicalAttributeMap]
       ![lexiqueAnalysisContext mLexicalMessageMap]
@@ -1138,13 +1134,13 @@ override method @lexiqueComponentAST semanticAnalysis
       !""
       !@lexiqueDeclarationForGeneration.new {
         !true # has header
-        !"lexique-" + lexiqueClassName
+        !"lexique-" + [lexiqueClassName fileNameRepresentation]
         !lexiqueClassName
         !headerContents
         !cppContents
         !cocoaHeader
-        !cocoaImplementation}
-#      !""  
+        !cocoaImplementation
+      }
   end
 }
 

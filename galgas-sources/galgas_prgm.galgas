@@ -105,7 +105,7 @@ grammar galgas3ProjectGrammar
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc parseAndAnalyzeProject
+private proc parseAndAnalyzeProject
   ?let @lstring inProjectSourceFile
   ?let @string inSourceToAnalyze
 {
@@ -139,7 +139,7 @@ proc parseAndAnalyzeProject
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc compileProject
+private proc compileProject
   ?let @lstring inProjectSourceFile
   ?let @string inSourceToAnalyze
   ?let @galgas3ProjectComponentAST inProjectComponentAST
@@ -158,7 +158,7 @@ proc compileProject
   @stringlist handCodedSourceAppFileList = {}
   @stringlist handCodedSourceToolFileList = {}
   @stringlist frameworkToolFileList = {}
-  var handCodedSourceDirectorySet = @stringset. emptySet
+  @stringset handCodedSourceDirectorySet = {}
   for () in inProjectComponentAST.mQualifiedFeatureList do
     if "tool-source" == mFeatureName then
       handCodedSourceToolFileList += !mFeatureValue.string
@@ -318,7 +318,7 @@ proc compileProject
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc projectGeneration
+private proc projectGeneration
   ?let @unifiedTypeMap inTypeMap
   ?let @string inBuildDirectory
   ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration

@@ -2,7 +2,7 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 %for () in [GUI_CONTEXT mWithLexiqueList] do
-  %#import "lexique-%!mLexiqueClassName%-cocoa.m"\n%
+  %#import "lexique-%![mLexiqueClassName fileNameRepresentation]%-cocoa.m"\n%
 end
 for () in [GUI_CONTEXT mNibAndClassList] do
   %#import "%!mValue%.h"\n%
@@ -51,7 +51,7 @@ end
 
 %
 for () in [GUI_CONTEXT mImportedOptionComponentList] do
-  %#import "option-%!mValue%-cocoa.m"\n%
+  %#import "option-%![mValue fileNameRepresentation]%-cocoa.m"\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*

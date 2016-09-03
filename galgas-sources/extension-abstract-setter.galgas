@@ -122,12 +122,11 @@ override method @abstractExtensionSetterAST semanticAnalysis
     !" abstract extension setter " + mAbstractExtensionSetterName
     !@abstractExtensionSetterForGeneration.new {
       !true # Generate Cpp header file
-      !"setter-" + mTypeName + "-" + mAbstractExtensionSetterName
+      !"setter-" + [mTypeName fileNameRepresentation] + "-" + [mAbstractExtensionSetterName fileNameRepresentation]
       !selfType
       ![mAbstractExtensionSetterName string]
       !formalParameterListForGeneration
     }
-#    !"~"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -188,7 +187,7 @@ override method @abstractExtensionSetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mAbstractExtensionSetterName
+  ioInclusionSet += !"setter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mAbstractExtensionSetterName fileNameRepresentation]
   [mReceiverType addHeaderFileName !?ioInclusionSet]
   for () in mAbstractExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]

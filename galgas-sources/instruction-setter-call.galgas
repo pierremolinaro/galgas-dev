@@ -308,14 +308,10 @@ override method @setterCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [mMethodBaseType key]+ "-" + mSetterName
+    ioInclusionSet += !"setter-" + [[mMethodBaseType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
     if [mReceiverType mTypeKindEnum] == @typeKindEnum.classType then
       if ([[mReceiverType mAllTypedAttributeList] length] > 0) then #  & [mReceiverType mIsConcrete] then
-        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;"
-#        if not [mReceiverType mIsConcrete] then
-#          ioGeneratedCode += " // §ABSTRACT"
-#        end
-        ioGeneratedCode += "\n"
+        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
       end
       let pointerUniqueName = "ptr_" + [mInstructionLocation locationIndex]
       ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
@@ -386,7 +382,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
 #--- Generate setter call
   switch mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mSetterName
+    ioInclusionSet += !"setter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
     if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
       ioGeneratedCode += "callExtensionSetter_" + [mSetterName identifierRepresentation] + " (" + mSelfCppName + ", "
     else

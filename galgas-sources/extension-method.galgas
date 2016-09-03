@@ -154,7 +154,7 @@ override method @extensionMethodAST semanticAnalysis
     !"extension method " + mExtensionMethodName
     !@extensionMethodForGeneration.new {
       !true # Generate Cpp header file
-      !"method-" + [selfType key] + "-" + mExtensionMethodName
+      !"method-" + [[selfType key] fileNameRepresentation] + "-" + [mExtensionMethodName fileNameRepresentation]
       !selfType
       ![mExtensionMethodName string]
       !implementedAsFunction
@@ -242,7 +242,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ]
-    ioInclusionSet += !"method-" + [mReceiverType key]+ "-" + mExtensionMethodName
+    ioInclusionSet += !"method-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mExtensionMethodName fileNameRepresentation]
     generateProcedure (
       !static:false
       !"extensionMethod_" + [mExtensionMethodName identifierRepresentation]
@@ -279,7 +279,7 @@ override method @extensionMethodForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"method-" + [baseType key]+ "-" + mExtensionMethodName
+    ioInclusionSet += !"method-" + [[baseType key] fileNameRepresentation]+ "-" + [mExtensionMethodName fileNameRepresentation]
     generateExtensionMethod (
       !mReceiverType
       !""

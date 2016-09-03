@@ -5,8 +5,8 @@
 
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
-#import "lexique-galgas3Scanner-cocoa.m"
-#import "lexique-galgasTemplateScanner-cocoa.m"
+#import "lexique-galgas3-53-canner-cocoa.m"
+#import "lexique-galgas-54-emplate-53-canner-cocoa.m"
 #import "GGSUpdateCocoaGalgas.h"
 
 #ifdef USER_DEFAULT_COLORS_DEFINED
@@ -41,7 +41,7 @@ NSArray * nibsAndClasses (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#import "option-galgas_cli_options-cocoa.m"
+#import "option-galgas-5F-cli-5F-options-cocoa.m"
 
 //---------------------------------------------------------------------------------------------------------------------*
 

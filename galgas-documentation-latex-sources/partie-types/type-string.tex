@@ -543,6 +543,34 @@ Retourne \ggs!true! si la valeur du récepteur désigne un fichier existant, et 
 
 
 
+\subsectionGetter{fileNameRepresentation}{string}
+
+\begin{galgasbox}
+getter fileNameRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne de caractères qui sera toujours un nom de fichier valide :
+\begin{itemize}
+\item une lettre ASCII minuscule est inchangée ;
+\item un chiffre décimal est inchangé ;
+\item tout autre caractère est traduit en son point de code en hexadécimal, précédé et suivi par un caractère « - ».
+\end{itemize}
+
+Par exemple :
+\begin{galgas}
+let x = ["Z23" fileNameRepresentation] # "-5A-23"
+let y = [":?" fileNameRepresentation] # "-3A--3F-"
+\end{galgas}
+
+En particulier, les lettres majuscules sont remplacées ; c'est indispensable pour les systèmes de fichiers qui sont insensibles à la casse, cela permet d'obtenir des noms de fichiers différents à partir de noms ne différant que par la casse :
+
+\begin{galgas}
+let x = ["exemple" fileNameRepresentation] # "exemple"
+let y = ["Exemple" fileNameRepresentation] # "-45-xemple"
+\end{galgas}
+
+
+
 
 
 

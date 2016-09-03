@@ -685,34 +685,46 @@ private proc generateFewImplementationFilesWithFewHeaders
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+map @declarationIndexMap {
+  @uint mIndex
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "there is no '%K' key"
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet {
+  ?!@stringset ioAllProductFileSet
+{
   let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
+#--- Generation
   for () in inSemanticDeclarationSortedListForGeneration do
-    var inclusionSet = @stringset. emptySet
+    @stringset inclusionSet = {}
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]
       if [mDeclaration hasCppHeaderFile] then
-        inclusionSet += ![mDeclaration implementationCppFileName]
+       inclusionSet += ![mDeclaration implementationCppFileName]
       end
       if useOneHugeHeader then
-        inclusionSet = @stringset. setWithString {!"all-declarations"}
+        inclusionSet = {!"all-declarations"}
       end
       let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
         ![inclusionSet stringList]
       ]
       implementationString += [mDeclaration appendTypeGenericImplementation]
-      ioAllProductFileSet += ![mDeclaration implementationCppFileName] + ".cpp"
+      let fileName = [mDeclaration implementationCppFileName] + ".cpp"
+      ioAllProductFileSet += !fileName
       [@string generateFile
         !inProductDirectory
-        ![mDeclaration implementationCppFileName] + ".cpp"
+        !fileName
         !header + implementationString
       ]
-      ioToolProductFileList += ![mDeclaration implementationCppFileName] + ".cpp"
+      ioToolProductFileList += !fileName
     end
   end
 }
