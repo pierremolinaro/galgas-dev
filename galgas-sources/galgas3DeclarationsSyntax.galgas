@@ -47,7 +47,9 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
 
 rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
 
-rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+rule <formal_input_parameter_list>
+  ?letIsObsolete:let @bool inLetIsObsolete
+  !@formalInputParameterListAST outFormalInputParameterList
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *

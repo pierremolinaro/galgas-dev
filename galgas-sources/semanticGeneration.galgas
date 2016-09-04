@@ -649,7 +649,8 @@ proc generateExtensionGetter
   ?let @string inCompilerTypeName
   ?let @string inResultTypeName
   ?let @string inResultVariableCppName
-  !@string outGeneratedCode {
+  !@string outGeneratedCode
+{
   let className = [inReceiverType key]
 #--- Build unused variable set
   var unusedVariableCppNameSet =@stringset {}
@@ -712,7 +713,7 @@ proc generateExtensionGetter
 #---
   for () in inFormalArgumentList do
     if mIsConstant then
-      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
+      outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     else
       outGeneratedCode += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
     end

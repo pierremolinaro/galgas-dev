@@ -19,7 +19,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_N
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & in_%![mFormalArgumentName identifierRepresentation]
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     else
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end

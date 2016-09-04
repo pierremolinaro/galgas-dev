@@ -42596,11 +42596,12 @@ void cGrammar_galgas_33_Grammar::nt_formal_5F_input_5F_parameter_5F_list_indexin
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_formal_5F_input_5F_parameter_5F_list_ (GALGAS_formalInputParameterListAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_formal_5F_input_5F_parameter_5F_list_ (const GALGAS_bool  parameter_1,
+                                GALGAS_formalInputParameterListAST &  parameter_2,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 42 :
-      rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_(parameter_1, inLexique) ;
+      rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_(parameter_1, parameter_2, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;

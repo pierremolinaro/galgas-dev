@@ -6883,7 +6883,7 @@ C_PrologueEpilogue gMethod_nonterminalInstructionForGeneration_appendSyntaxSigna
 //---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_bool extensionGetter_nonterminalInstructionForGeneration_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                                                          const GALGAS_semanticInstructionForGeneration & constinArgument_inTestedInstruction,
+                                                                                                          const GALGAS_semanticInstructionForGeneration constinArgument_inTestedInstruction,
                                                                                                           C_Compiler * inCompiler
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outOk ; // Returned variable
