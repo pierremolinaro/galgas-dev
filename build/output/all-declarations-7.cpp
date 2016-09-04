@@ -13986,7 +13986,7 @@ void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inCla
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                   const GALGAS_semanticInstructionForGeneration & in_inTestedInstruction,
+                                                                   const GALGAS_semanticInstructionForGeneration in_inTestedInstruction,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
   GALGAS_bool result ;
@@ -14021,7 +14021,7 @@ GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_se
 //---------------------------------------------------------------------------------------------------------------------*
 
 static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
-                                                                                                       const GALGAS_semanticInstructionForGeneration & /* constinArgument_inTestedInstruction */,
+                                                                                                       const GALGAS_semanticInstructionForGeneration /* constinArgument_inTestedInstruction */,
                                                                                                        C_Compiler * /* inCompiler */
                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result_outOk ; // Returned variable

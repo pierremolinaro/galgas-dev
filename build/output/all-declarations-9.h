@@ -98,7 +98,8 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : virtual void nt_filewrapper_5F_text_5F_files_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (class GALGAS_formalInputParameterListAST & outArgument0,
+  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (const class GALGAS_bool constinArgument0,
+                                                                     class GALGAS_formalInputParameterListAST & outArgument1,
                                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
   protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;

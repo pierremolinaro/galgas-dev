@@ -9,7 +9,7 @@ typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionG
   for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then
-      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
+      %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     else
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
@@ -28,7 +28,7 @@ class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GE
   for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mIsConstant then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & constin_%![mFormalArgumentName identifierRepresentation]
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
     else
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end

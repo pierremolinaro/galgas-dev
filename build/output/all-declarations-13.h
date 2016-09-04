@@ -1539,7 +1539,8 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_formal_5F_input_5F_parameter_5F_list_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (GALGAS_formalInputParameterListAST & outArgument0,
+  public : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (const GALGAS_bool inArgument0,
+                                                                  GALGAS_formalInputParameterListAST & outArgument1,
                                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'formal_parameter_list' non terminal

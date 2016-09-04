@@ -6889,7 +6889,7 @@ void callExtensionMethod_appendSyntaxSignature (const class cPtr_semanticInstruc
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef class GALGAS_bool (*enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) (const class cPtr_semanticInstructionForGeneration * inObject,
-                                                                                                                      const class GALGAS_semanticInstructionForGeneration & constinArgument0,
+                                                                                                                      const class GALGAS_semanticInstructionForGeneration constinArgument0,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -6901,7 +6901,7 @@ void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inCla
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
-                                                                         const GALGAS_semanticInstructionForGeneration & constin_inTestedInstruction,
+                                                                         const GALGAS_semanticInstructionForGeneration constin_inTestedInstruction,
                                                                          class C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) ;
 

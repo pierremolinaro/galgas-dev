@@ -25,7 +25,7 @@ syntax extension galgas3DeclarationsSyntax {
     $@type$ ?var  @lstring className indexing typeReferenceExtensionGetter
     $identifier$ ?var  @lstring mMethodName indexing extensionGetterDefinition
     @formalInputParameterListAST mFormalInputParameterList
-    <formal_input_parameter_list> ? mFormalInputParameterList
+    <formal_input_parameter_list> !letIsObsolete:false ? mFormalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
     @lstring resultVariableName

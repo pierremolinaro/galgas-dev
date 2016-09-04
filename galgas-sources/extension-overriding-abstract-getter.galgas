@@ -21,10 +21,9 @@ syntax extension galgas3DeclarationsSyntax {
     $override$
     $abstract$
     $getter$
-    $@type$ ?var  @lstring className indexing typeReferenceOverrideAbstractExtensionGetter
-    $identifier$ ?var  @lstring mGetterName indexing overrideAbstractExtensionGetterDefinition
-    @formalInputParameterListAST mFormalInputParameterList
-    <formal_input_parameter_list> ? mFormalInputParameterList
+    $@type$ ?let className indexing typeReferenceOverrideAbstractExtensionGetter
+    $identifier$ ?let mGetterName indexing overrideAbstractExtensionGetterDefinition
+    <formal_input_parameter_list> !letIsObsolete:true ?let @formalInputParameterListAST mFormalInputParameterList
     $->$
     $@type$ ?var  @lstring mReturnedTypeName
     select

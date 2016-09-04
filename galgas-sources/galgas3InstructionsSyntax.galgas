@@ -25,7 +25,9 @@ rule <expression> !@semanticExpressionAST outExpression
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
 
-rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+rule <formal_input_parameter_list>
+  ?letIsObsolete:let @bool inLetIsObsolete
+  !@formalInputParameterListAST outFormalInputParameterList
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
@@ -144,7 +146,7 @@ rule  <declaration_with_private>
     end
   end
   $identifier$ ?let functionName indexing functionDefinition
-  <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+  <formal_input_parameter_list> !letIsObsolete:false ?let @formalInputParameterListAST formalInputParameterList
   if isOnce & ([formalInputParameterList length] > 0) then
     error functionName: "an 'once' function should has no argument"
   end
@@ -201,7 +203,7 @@ rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   $func$
   $identifier$ ?let mActionName indexing functionDefinition
   @formalInputParameterListAST formalInputParameterList
-  <formal_input_parameter_list> ? formalInputParameterList
+  <formal_input_parameter_list> !letIsObsolete:false ? formalInputParameterList
   $->$
   $@type$ ?let resultTypeName
   @lstring resultVariableName
