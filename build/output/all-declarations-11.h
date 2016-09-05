@@ -278,11 +278,10 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_classTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                        const class GALGAS_bool & inOperand1,
-                                                                       const class GALGAS_lstring & inOperand2,
-                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                                       const class GALGAS_typedPropertyList & inOperand3,
                                                                        const class GALGAS_typedPropertyList & inOperand4,
-                                                                       const class GALGAS_typedPropertyList & inOperand5,
-                                                                       const class GALGAS_bool & inOperand6
+                                                                       const class GALGAS_bool & inOperand5
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -295,8 +294,6 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList getter_mAllTypedAttributeList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mClassTypeName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mGenerateHeaderInSeparateFile (LOCATION_ARGS) const ;
 
@@ -326,7 +323,6 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGenerat
 class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
   public : GALGAS_bool mAttribute_mIsAbstract ;
-  public : GALGAS_lstring mAttribute_mClassTypeName ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSuperClass ;
   public : GALGAS_typedPropertyList mAttribute_mAllTypedAttributeList ;
   public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
@@ -335,7 +331,6 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Constructor
   public : cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                         const GALGAS_bool & in_mIsAbstract,
-                                        const GALGAS_lstring & in_mClassTypeName,
                                         const GALGAS_unifiedTypeMap_2D_proxy & in_mSuperClass,
                                         const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                         const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -347,7 +342,6 @@ class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsAbstract (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mClassTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mSuperClass (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList getter_mAllTypedAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList getter_mTypedAttributeList (LOCATION_ARGS) const ;

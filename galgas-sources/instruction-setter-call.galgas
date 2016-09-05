@@ -317,7 +317,7 @@ override method @setterCallInstructionForGeneration generateInstruction
       ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
       ioGeneratedCode += " = (cPtr_" + [mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
       if [mCastType key] != [mReceiverType key] then
-        ioInclusionSet += !"class-" + [mCastType identifierRepresentation]
+        ioInclusionSet += !"class-" + [[mCastType key] fileNameRepresentation]
         ioGeneratedCode += "if ((NULL != " + pointerUniqueName
                         + ") && (dynamic_cast <cPtr_" + [mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == NULL)) {\n"

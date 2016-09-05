@@ -2263,7 +2263,7 @@ C_PrologueEpilogue gGetter_lexicalExpressionAST_generateConditionCode (NULL,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                         GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                         const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2444,7 +2444,7 @@ C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                           GALGAS_string in_inScannerClassName,
+                                                           const GALGAS_string in_inScannerClassName,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2505,8 +2505,8 @@ C_PrologueEpilogue gGetter_lexicalInstructionAST_generateInstructionCode (NULL,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                           GALGAS_string in_inScannerClassName,
-                                                           GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                           const GALGAS_string in_inScannerClassName,
+                                                           const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2567,8 +2567,8 @@ C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCode (NULL,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
-                                                GALGAS_string in_inScannerClassName,
-                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                const GALGAS_string in_inScannerClassName,
+                                                const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2629,7 +2629,7 @@ C_PrologueEpilogue gGetter_lexicalExpressionAST_generateCocoaConditionCode (NULL
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
-                                                              GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                              const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2750,7 +2750,7 @@ C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateCocoa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
-                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2811,7 +2811,7 @@ C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
-                                                                GALGAS_string in_inScannerClassName,
+                                                                const GALGAS_string in_inScannerClassName,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2872,8 +2872,8 @@ C_PrologueEpilogue gGetter_lexicalInstructionAST_generateCocoaInstructionCode (N
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                GALGAS_string in_inScannerClassName,
-                                                                GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                                const GALGAS_string in_inScannerClassName,
+                                                                const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_string result ;
@@ -2934,8 +2934,8 @@ C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCocoaCode (NULL,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string callExtensionGetter_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
-                                                     GALGAS_string in_inScannerClassName,
-                                                     GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
+                                                     const GALGAS_string in_inScannerClassName,
+                                                     const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   GALGAS_string result ;

@@ -416,7 +416,7 @@ override method @classDeclarationAST semanticAnalysis
     !@classTypeForGeneration.new {
       !selfType
       !mIsAbstract
-      !mClassTypeName
+#      !mClassTypeName
       !superClassProxy
       !allAttributeList
       !typedAttributeList
@@ -430,7 +430,7 @@ override method @classDeclarationAST semanticAnalysis
 
 class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
-  @lstring mClassTypeName
+#  @lstring mClassTypeName
   @unifiedTypeMap-proxy mSuperClass # Null if no super class
   @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
@@ -441,7 +441,8 @@ class @classTypeForGeneration : @semanticTypeForGeneration {
 
 override method @classTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   if not [mSuperClass isNull] then
     [mSuperClass addHeaderFileName !?ioInclusionSet]
   end
@@ -475,7 +476,8 @@ override method @classTypeForGeneration appendDeclaration1
 override method @classTypeForGeneration appendDeclaration2
   ?let @string inOutputDirectory
   ?!@stringset ioInclusionSet
-  !@string outHeader {
+  !@string outHeader
+{
   for (t ...) in mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
@@ -535,7 +537,8 @@ override method @classTypeForGeneration appendDeclaration2
 override method @classTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   [mTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeProxy key]
