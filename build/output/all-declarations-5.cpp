@@ -7624,7 +7624,7 @@ static void extensionMethod_predefinedTypeAST_getConstructorMap (const cPtr_pred
                                                                  GALGAS_constructorMap & outArgument_outConstructorMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 437)) ;
+  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 435)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7700,7 +7700,7 @@ static void extensionMethod_predefinedTypeAST_getGetterMap (const cPtr_predefine
                                                             GALGAS_getterMap & outArgument_outGetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 445)) ;
+  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 443)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7776,7 +7776,7 @@ static void extensionMethod_predefinedTypeAST_getSetterMap (const cPtr_predefine
                                                             GALGAS_setterMap & outArgument_outSetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 453)) ;
+  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 451)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7852,7 +7852,7 @@ static void extensionMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_p
                                                                     GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                                     C_Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 461)) ;
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 459)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7928,7 +7928,7 @@ static void extensionMethod_predefinedTypeAST_getClassMethodMap (const cPtr_pred
                                                                  GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 469)) ;
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 467)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8083,7 +8083,7 @@ static void extensionMethod_predefinedTypeAST_getAddAssignArgumentList (const cP
                                                                         GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 484)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 482)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8165,8 +8165,8 @@ static void extensionMethod_predefinedTypeAST_getEnumerationList (const cPtr_pre
                                                                   GALGAS_string & outArgument_outEnumeratedType,
                                                                   C_Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 498)) ;
-  outArgument_outEnumerationVariant = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 499)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 496)) ;
+  outArgument_outEnumerationVariant = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 497)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*

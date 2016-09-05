@@ -10517,10 +10517,10 @@ void extensionMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inO
                                         COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
-  const enumGalgasBool test_2 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 361)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 361)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 361)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 361)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 361)).boolEnum () ;
+  const enumGalgasBool test_2 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 360)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 360)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 360)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 360)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 360)).boolEnum () ;
   if (kBoolTrue == test_2) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-    ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 362))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 362)) ;
+    ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 361))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 361)) ;
   }
 }
 
@@ -10536,10 +10536,10 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy
                                             C_Compiler * inCompiler
                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
-  const enumGalgasBool test_1 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 370)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 370)).boolEnum () ;
+  const enumGalgasBool test_1 = temp_0.getter_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 368)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 368)).boolEnum () ;
   if (kBoolTrue == test_1) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
-    switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 371)).enumValue ()) {
+    switch (temp_2.getter_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 369)).enumValue ()) {
     case GALGAS_headerKind::kNotBuilt:
       break ;
     case GALGAS_headerKind::kEnum_noHeader:
@@ -10549,13 +10549,13 @@ void extensionMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy
     case GALGAS_headerKind::kEnum_oneHeader:
       {
         const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_3.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)) ;
       }
       break ;
     case GALGAS_headerKind::kEnum_twoHeaders:
       {
         const GALGAS_unifiedTypeMap_2D_proxy temp_4 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 376)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 376))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 376)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_4.getter_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 374)) ;
       }
       break ;
     }

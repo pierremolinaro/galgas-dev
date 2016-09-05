@@ -6282,9 +6282,6 @@ typeComparisonResult cPtr_classTypeForGeneration::dynamicObjectCompare (const ac
     result = mAttribute_mIsAbstract.objectCompare (p->mAttribute_mIsAbstract) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mClassTypeName.objectCompare (p->mAttribute_mClassTypeName) ;
-  }
-  if (kOperandEqual == result) {
     result = mAttribute_mSuperClass.objectCompare (p->mAttribute_mSuperClass) ;
   }
   if (kOperandEqual == result) {
@@ -6329,7 +6326,6 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_classTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                          GALGAS_bool::constructor_default (HERE),
-                                                         GALGAS_lstring::constructor_default (HERE),
                                                          GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                          GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                          GALGAS_typedPropertyList::constructor_emptyList (HERE),
@@ -6348,15 +6344,14 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                               const GALGAS_bool & inAttribute_mIsAbstract,
-                                                                              const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                               const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mSuperClass,
                                                                               const GALGAS_typedPropertyList & inAttribute_mAllTypedAttributeList,
                                                                               const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                               const GALGAS_bool & inAttribute_mGenerateHeaderInSeparateFile
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_classTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedAttributeList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mIsAbstract, inAttribute_mClassTypeName, inAttribute_mSuperClass, inAttribute_mAllTypedAttributeList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  if (inAttribute_mTypeProxy.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mSuperClass.isValid () && inAttribute_mAllTypedAttributeList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mGenerateHeaderInSeparateFile.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mIsAbstract, inAttribute_mSuperClass, inAttribute_mAllTypedAttributeList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6377,24 +6372,6 @@ GALGAS_bool GALGAS_classTypeForGeneration::getter_mIsAbstract (UNUSED_LOCATION_A
 
 GALGAS_bool cPtr_classTypeForGeneration::getter_mIsAbstract (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIsAbstract ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_classTypeForGeneration::getter_mClassTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
-    result = p->mAttribute_mClassTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_classTypeForGeneration::getter_mClassTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mClassTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6475,7 +6452,6 @@ GALGAS_bool cPtr_classTypeForGeneration::getter_mGenerateHeaderInSeparateFile (U
 
 cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                           const GALGAS_bool & in_mIsAbstract,
-                                                          const GALGAS_lstring & in_mClassTypeName,
                                                           const GALGAS_unifiedTypeMap_2D_proxy & in_mSuperClass,
                                                           const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                                           const GALGAS_typedPropertyList & in_mTypedAttributeList,
@@ -6483,7 +6459,6 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTy
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
 mAttribute_mIsAbstract (in_mIsAbstract),
-mAttribute_mClassTypeName (in_mClassTypeName),
 mAttribute_mSuperClass (in_mSuperClass),
 mAttribute_mAllTypedAttributeList (in_mAllTypedAttributeList),
 mAttribute_mTypedAttributeList (in_mTypedAttributeList),
@@ -6503,8 +6478,6 @@ void cPtr_classTypeForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mIsAbstract.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mClassTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
   mAttribute_mSuperClass.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mAllTypedAttributeList.description (ioString, inIndentation+1) ;
@@ -6519,7 +6492,7 @@ void cPtr_classTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_classTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mIsAbstract, mAttribute_mClassTypeName, mAttribute_mSuperClass, mAttribute_mAllTypedAttributeList, mAttribute_mTypedAttributeList, mAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mIsAbstract, mAttribute_mSuperClass, mAttribute_mAllTypedAttributeList, mAttribute_mTypedAttributeList, mAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   return ptr ;
 }
 

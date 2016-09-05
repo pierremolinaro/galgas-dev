@@ -5986,8 +5986,7 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected : virtual void nt_expression_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (const class GALGAS_bool constinArgument0,
-                                                                     class GALGAS_formalInputParameterListAST & outArgument1,
+  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (class GALGAS_formalInputParameterListAST & outArgument0,
                                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
   protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
@@ -6017,8 +6016,7 @@ class cParser_galgas_33_ParameterArgumentSyntax {
 
   protected : void rule_galgas_33_ParameterArgumentSyntax_actual_5F_parameter_5F_list_i1_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_ (const GALGAS_bool constinArgument0,
-                                                                                                    GALGAS_formalInputParameterListAST & outArgument1,
+  protected : void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_ (GALGAS_formalInputParameterListAST & outArgument0,
                                                                                                     C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_ParameterArgumentSyntax_formal_5F_input_5F_parameter_5F_list_i2_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -6775,8 +6773,7 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : virtual void nt_for_5F_instruction_5F_enumerated_5F_object_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
-  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (const class GALGAS_bool constinArgument0,
-                                                                     class GALGAS_formalInputParameterListAST & outArgument1,
+  protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_ (class GALGAS_formalInputParameterListAST & outArgument0,
                                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
   protected : virtual void nt_formal_5F_input_5F_parameter_5F_list_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;

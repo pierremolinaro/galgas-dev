@@ -356,8 +356,7 @@ getter @unifiedTypeMap-proxy baseType -> @unifiedTypeMap-proxy outBaseType {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-method @unifiedTypeMap-proxy addHeaderFileName
- ?!@stringset ioInclusions {
+method @unifiedTypeMap-proxy addHeaderFileName ?!@stringset ioInclusions {
   if (not [self mIsPredefined]) & ([self mHeaderKind] != @headerKind.noHeader) then
     ioInclusions += ![self mHeaderFileName]
   end
@@ -365,8 +364,7 @@ method @unifiedTypeMap-proxy addHeaderFileName
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-method @unifiedTypeMap-proxy addHeaderFileName1
- ?!@stringset ioInclusions {
+method @unifiedTypeMap-proxy addHeaderFileName1 ?!@stringset ioInclusions {
   if not [self mIsPredefined] then
     switch [self mHeaderKind]
     case noHeader :

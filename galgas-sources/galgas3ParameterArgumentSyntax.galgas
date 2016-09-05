@@ -205,7 +205,7 @@ rule <actual_parameter_list>
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <formal_input_parameter_list> ?letIsObsolete:let @bool inLetIsObsolete !@formalInputParameterListAST outFormalInputParameterList {
+rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList {
   outFormalInputParameterList = {}
   repeat
   while
@@ -215,9 +215,6 @@ rule <formal_input_parameter_list> ?letIsObsolete:let @bool inLetIsObsolete !@fo
       isConstant = false
     or
       $let$
-      if inLetIsObsolete then
-        warning .here : "'let' in abstract getter declaration is obsolete" fixit { remove }
-      end
       isConstant = true
     end
     $@type$ ?var @lstring mFormalParameterTypeName

@@ -18,13 +18,13 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalExpressionAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalOrExpressionAST generateConditionCode
-  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = [mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext]
   outGeneratedCode += " || "
@@ -34,7 +34,7 @@ override getter @lexicalOrExpressionAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalCharacterIntervalMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   outGeneratedCode = "testForInputUTF32CharRange ("
@@ -47,7 +47,7 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalStringMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [mString identifierRepresentation]
   outGeneratedCode += ", "
@@ -58,7 +58,7 @@ override getter @lexicalStringMatchAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalStringNotMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
   outGeneratedCode += [mString identifierRepresentation]
@@ -73,7 +73,7 @@ override getter @lexicalStringNotMatchAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalCharacterMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForInputUTF32Char ("
   outGeneratedCode += [[mCharacter char] utf32CharConstantRepresentation]
@@ -83,7 +83,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalCharacterSetMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForCharWithFunction ("
   outGeneratedCode += [mCharacterSetName string]
@@ -162,13 +162,13 @@ override getter @lexicalFormalInputArgumentAST generateRoutineArgument
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
-  ?@string inScannerClassName
+  ?let @string inScannerClassName
   -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
-  ?@string unused inScannerClassName
+  ?let @string unused inScannerClassName
   -> @string outGeneratedCode {
   outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
 }
@@ -176,7 +176,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalErrorByDefaultAST generateDefaultSendCode
-  ?@string inScannerClassName
+  ?let @string inScannerClassName
   -> @string outGeneratedCode {
   outGeneratedCode = "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation] + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
@@ -186,15 +186,15 @@ override getter @lexicalErrorByDefaultAST generateDefaultSendCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @lexicalInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalStructuredSendInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   for () in mLexicalSendSearchList do
@@ -211,8 +211,8 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalDropInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
   outGeneratedCode = "enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
@@ -221,8 +221,8 @@ override getter @lexicalDropInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalSimpleSendInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
   outGeneratedCode  = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
@@ -232,8 +232,8 @@ override getter @lexicalSimpleSendInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalRepeatInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "do {\n"
   [!?outGeneratedCode incIndentation !2]
@@ -266,8 +266,8 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalSelectInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
 #---
@@ -299,8 +299,8 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalRoutineInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "::scanner_routine_" + mRoutineName + " (*this"
   for () in mActualArgumentList do
@@ -315,8 +315,8 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalErrorInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
@@ -324,8 +324,8 @@ override getter @lexicalErrorInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalWarningInstructionAST generateInstructionCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
@@ -333,8 +333,8 @@ override getter @lexicalWarningInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalTagInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "const C_LocationInSource currentLocationForTag_" + mLexicalTagName + " = mCurrentLocation ;\n"
                     + "const C_LocationInSource endLocationForTag_" + mLexicalTagName + " = mTokenEndLocation ;\n"
@@ -344,8 +344,8 @@ override getter @lexicalTagInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalRewindInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "mCurrentLocation = currentLocationForTag_" + mLexicalTagName + " ;\n"
                     + "mTokenEndLocation = endLocationForTag_" + mLexicalTagName + " ;\n"
@@ -357,8 +357,8 @@ override getter @lexicalRewindInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalLogInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string unused inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "lexicalLog (LINE_AND_SOURCE_FILE) ;\n"
 }
@@ -368,15 +368,15 @@ override getter @lexicalLogInstructionAST generateInstructionCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract getter @abstractLexicalRuleAST generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string 
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalImplicitRuleAST generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   @tokenSortedlist tokenSortedList
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
@@ -396,8 +396,8 @@ override getter @lexicalImplicitRuleAST generateCode
 #----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexicalExplicitRuleAST generateCode
-  ?@string inScannerClassName
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?let @string inScannerClassName
+  ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "if ("
   outGeneratedCode += [mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
