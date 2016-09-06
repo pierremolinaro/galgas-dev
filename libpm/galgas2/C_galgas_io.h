@@ -148,41 +148,41 @@ int32_t maxWarningCount (void) ;
 
 int32_t totalWarningCount (void) ;
  
-void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
+void signalParsingError (const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const C_String & inFoundTokenMessage,
                          const TC_UniqueArray <C_String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
-void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
+void signalExtractError (const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
                          const C_String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
 
-void signalCastError (const C_SourceTextInString * inSourceTextPtr,
+void signalCastError (const C_SourceTextInString & inSourceText,
                       const C_IssueWithFixIt & inIssue,
                       const std::type_info * inBaseClass,
                       const bool inUseKindOfClass,
                       const C_String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) ;
 
-void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
+void signalLexicalWarning (const C_SourceTextInString & inSourceText,
                            const C_IssueWithFixIt & inIssue,
                            const C_String & inLexicalWarningMessage
                            COMMA_LOCATION_ARGS) ;
 
-void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
+void signalLexicalError (const C_SourceTextInString & inSourceText,
                          const C_IssueWithFixIt & inIssue,
                          const C_String & inLexicalErrorMessage
                          COMMA_LOCATION_ARGS) ;
 
-void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
+void signalSemanticWarning (const C_SourceTextInString & inSourceText,
                             const C_IssueWithFixIt & inIssue,
                             const C_String & inWarningMessage
                             COMMA_LOCATION_ARGS) ;
 
-void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
+void signalSemanticError (const C_SourceTextInString & inSourceText,
                           const C_IssueWithFixIt & inIssue,
                           const C_String & inErrorMessage
                           COMMA_LOCATION_ARGS) ;
@@ -197,12 +197,12 @@ void fatalError (const C_String & inErrorMessage,
                  const char * inSourceFile,
                  const int inSourceLine) ;
 
-void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
+void ggs_printError (const C_SourceTextInString & inSourceText,
                      const C_IssueWithFixIt & inIssue,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
-void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
+void ggs_printWarning (const C_SourceTextInString & inSourceText,
                        const C_IssueWithFixIt & inIssue,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) ;

@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
+  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ().sourceFilePath ().cString (HERE), lineNumber ()
 #else
   #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE
 #endif
@@ -60,7 +60,6 @@ C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       COMMA_LOCATION_ARGS) :
 C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
-mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -93,22 +92,19 @@ mLatexNextCharacterToEnterIndex (0) {
     PMTextFileEncoding textFileEncoding ;
     const C_String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
     if (ok) {
-      C_SourceTextInString * sourceTextPtr = NULL ;    
-      macroMyNew (sourceTextPtr, C_SourceTextInString (sourceString,
-                                                       inSourceFileName,
-                                                       false // Do not print source string
-                                                       COMMA_HERE)) ;
-      resetAndLoadSourceFromText (sourceTextPtr) ;
-      mTokenStartLocation.resetWithSourceText (sourceTextPtr) ;
-      mTokenEndLocation.resetWithSourceText (sourceTextPtr) ;
-      macroDetachSharedObject (sourceTextPtr) ;
+      const C_SourceTextInString source (sourceString,
+                                         inSourceFileName,
+                                         false) ; // Do not print source string
+      resetAndLoadSourceFromText (source) ;
+      mTokenStartLocation.resetWithSourceText (source) ;
+      mTokenEndLocation.resetWithSourceText (source) ;
     }else if (inCallerCompiler != NULL) {
       C_String errorMessage ; 
       errorMessage << "cannot read '" << inSourceFileName << "': this file does not exist or is not encoded in UTF8" ;
       inCallerCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE)  ;
     }
   }
-  mCurrentChar = (sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (0 COMMA_HERE) ;
+  mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -119,7 +115,6 @@ C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       COMMA_LOCATION_ARGS) :
 C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
-mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -137,26 +132,17 @@ mIndexForSecondPassParsing (0),
 mLatexOutputString (),
 mLatexNextCharacterToEnterIndex (0) {
 //--- Init source string
-  C_SourceTextInString * sourceTextPtr = NULL ;    
-  macroMyNew (sourceTextPtr, C_SourceTextInString (inSourceString,
-                                                   inStringForError,
-                                                   verboseOutput ()
-                                                   COMMA_HERE)) ;
-  resetAndLoadSourceFromText (sourceTextPtr) ;
-  mTokenStartLocation.resetWithSourceText (sourceTextPtr) ;
-  mTokenEndLocation.resetWithSourceText (sourceTextPtr) ;
-  macroDetachSharedObject (sourceTextPtr) ;
-  mCurrentChar = (sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (0 COMMA_HERE) ;
+  const C_SourceTextInString source (inSourceString, inStringForError, verboseOutput ()) ;
+  resetAndLoadSourceFromText (source) ;
+  mTokenStartLocation.resetWithSourceText (source) ;
+  mTokenEndLocation.resetWithSourceText (source) ;
+  mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique::~C_Lexique (void) {
   macroMyDelete (mIndexingDictionary) ;
-  for (int32_t i=0 ; i<mTokenArray.count () ; i++) {
-    macroMyDelete (mTokenArray (i COMMA_HERE)) ;
-  }
-
   mLastToken = NULL ;
   mCurrentTokenPtr = NULL ;
   while (mFirstToken != NULL) {
@@ -177,7 +163,7 @@ C_Lexique::~C_Lexique (void) {
 void C_Lexique::appendLastSeparatorTo (C_String & ioString) const {
   if (NULL != mLastToken) {
     const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
-    const C_String lastSeparatorString = sourceText ()->mSourceString.subStringFromIndex (lastSeparatorStart) ;
+    const C_String lastSeparatorString = sourceText ().sourceString ().subStringFromIndex (lastSeparatorStart) ;
     ioString << lastSeparatorString ;
   }
 }
@@ -189,7 +175,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 //--- Append separator and comments
   const int32_t tokenStart = mTokenStartLocation.index () ;
   if (tokenStart > mLastSeparatorIndex) {
-    const C_String sep = sourceText ()->mSourceString.subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
+    const C_String sep = sourceText ().sourceString ().subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
     inToken->mSeparatorStringBeforeToken << sep ;
   }
   mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
@@ -204,7 +190,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   if (executionModeIsLexicalAnalysisOnly ()) {
     C_String s ;
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
         s.appendUnicodeCharacter (c COMMA_HERE) ;
       }
@@ -223,7 +209,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
     co << "\n" ;
   }else if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < inToken->mStartLocation.index ()) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE)) ;
+      const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
       appendCharacterToLatexFile (c) ;
       mLatexNextCharacterToEnterIndex ++ ;
     }
@@ -232,7 +218,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
       mLatexOutputString << "\\" << styleName << latexModeStyleSuffixString () << "{" ;
     }
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
         appendCharacterToLatexFile (c) ;
       }
@@ -249,7 +235,7 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
 
 void C_Lexique::resetForSecondPass (void) {
   mCurrentLocation.resetWithSourceText (sourceText ()) ;
-  mCurrentChar = (sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (0 COMMA_HERE) ;
+  mCurrentChar = sourceText ().readCharOrNul (0 COMMA_HERE) ;
   mPreviousChar = TO_UNICODE ('\0') ;
   mCurrentTokenPtr = mFirstToken ;
   if (mCurrentTokenPtr != NULL) {
@@ -327,11 +313,7 @@ void C_Lexique::advance (void) {
   mPreviousChar = mCurrentChar ;
   if (UNICODE_VALUE (mCurrentChar) != '\0') {
     mCurrentLocation.gotoNextLocation (UNICODE_VALUE (mPreviousChar) == '\n') ;
-    if (sourceText () == NULL) {
-      mCurrentChar = TO_UNICODE ('\0') ;
-    }else{
-      mCurrentChar = sourceText ()->readCharOrNul (mCurrentLocation.index () COMMA_HERE) ;
-    }
+    mCurrentChar = sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE) ;
   }
   // printf ("END ADVANCE\n") ;
 }
@@ -381,13 +363,10 @@ bool C_Lexique::testForCharWithFunction (bool (*inFunction) (const utf32 inUnico
 bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
                                          const int32_t inStringLength,
                                          const bool inAdvanceOnMatch) {
-  bool ok = sourceText () != NULL ;
 //--- Test
-  if (ok) {
-    ok = utf32_strncmp (sourceText ()->temporaryUTF32StringAtIndex (mCurrentLocation.index (), inStringLength COMMA_HERE),
-                        inTestCstring,
-                        inStringLength) == 0 ;
-  }
+  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index (), inStringLength COMMA_HERE),
+                           inTestCstring,
+                           inStringLength) == 0 ;
 //--- Avancer dans la lecture si test ok et fin de source non atteinte
   if (ok && inAdvanceOnMatch) {
     advance (inStringLength) ;
@@ -402,14 +381,14 @@ bool C_Lexique::notTestForInputUTF32String (const utf32 * inTestCstring,
                                             const int32_t inStringLength,
                                             const char * inEndOfFileErrorMessage
                                             COMMA_LOCATION_ARGS) {
-  bool ok = UNICODE_VALUE (sourceText ()->readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
+  bool ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () COMMA_HERE)) != '\0' ;
   if (! ok) { // End of input file reached
     lexicalError (inEndOfFileErrorMessage COMMA_THERE) ;
   }else{
   //--- Test
     ok = false ;
     for (int32_t i=0 ; (i<inStringLength) && ! ok ; i++) {
-      ok = UNICODE_VALUE (sourceText ()->readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* inTestCstring) ;
+      ok = UNICODE_VALUE (sourceText ().readCharOrNul (mCurrentLocation.index () + i COMMA_HERE)) != UNICODE_VALUE (* inTestCstring) ;
       inTestCstring ++ ;
     }
     if (ok) {
@@ -1430,7 +1409,7 @@ C_String C_Lexique::tokenString (void) const {
   if (mCurrentTokenPtr != NULL) {
     const int32_t tokenStart = mCurrentTokenPtr->mStartLocation.index () ;
     const int32_t tokenLength = mCurrentTokenPtr->mEndLocation.index () - tokenStart + 1 ;
-    result = sourceText ()->mSourceString.subString (tokenStart, tokenLength) ;
+    result = sourceText ().sourceString ().subString (tokenStart, tokenLength) ;
   }
   return result ;
 }
@@ -1477,14 +1456,14 @@ void C_Lexique::acceptTerminal (FORMAL_ARG_ACCEPT_TERMINAL COMMA_LOCATION_ARGS) 
 
 void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
                                const char * inIndexedKeyPosfix) {
-  if ((NULL != mIndexingDictionary) && (sourceText ()->sourceFilePath ().length () > 0)) {
+  if ((NULL != mIndexingDictionary) && (sourceText ().sourceFilePath ().length () > 0)) {
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
     const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
     const uint32_t tokenLength  = ((uint32_t) mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
-    C_String indexedKey = sourceText ()->mSourceString.subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
+    C_String indexedKey = sourceText ().sourceString ().subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
     mIndexingDictionary->addIndexedKey (inIndexingKind,
                                         indexedKey,
-                                        sourceText ()->sourceFilePath (),
+                                        sourceText ().sourceFilePath (),
                                         tokenLine,
                                         tokenStartLocation,
                                         tokenLength) ;
@@ -1501,7 +1480,7 @@ void C_Lexique::enableIndexing (void) {
 
 void C_Lexique::generateIndexFile (void) {
   if (NULL != mIndexingDictionary) {
-    const C_String source_file_path = sourceText ()->sourceFilePath () ;
+    const C_String source_file_path = sourceText ().sourceFilePath () ;
     C_String indexFilePath = C_FileManager::absolutePathFromPath (indexingDirectory (), source_file_path.stringByDeletingLastPathComponent ()) ;
     indexFilePath << "/" << source_file_path.lastPathComponent () << ".plist" ;
     mIndexingDictionary->generateIndexFile (indexFilePath) ;
@@ -1619,10 +1598,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
 void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
   if (executionModeIsLatex ()) {
     while (mLatexNextCharacterToEnterIndex < mTokenStartLocation.index ()) {
-      const utf32 c = ((sourceText () == NULL)
-        ? TO_UNICODE ('\0')
-        : sourceText ()->readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE))
-      ;
+      const utf32 c = sourceText ().readCharOrNul (mLatexNextCharacterToEnterIndex COMMA_HERE) ;
       appendCharacterToLatexFile (c) ;
       mLatexNextCharacterToEnterIndex ++ ;
     }
@@ -1631,7 +1607,7 @@ void C_Lexique::enterDroppedTerminal (const int32_t inTerminalIndex) {
       mLatexOutputString << "\\" << styleName << latexModeStyleSuffixString () << "{" ;
     }
     for (int32_t i=mTokenStartLocation.index () ; i<=mTokenEndLocation.index () ; i++) {
-      const utf32 c = ((sourceText () == NULL) ? TO_UNICODE ('\0') : sourceText ()->readCharOrNul (i COMMA_HERE)) ;
+      const utf32 c = sourceText ().readCharOrNul (i COMMA_HERE) ;
       if (UNICODE_VALUE (c) != '\0') {
         appendCharacterToLatexFile (c) ;
       }
@@ -1682,7 +1658,7 @@ void C_Lexique::signalLexicalErrorInLatexOutput (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Lexique::generateLatexFile (void) {
-  const C_String latexFilePath = sourceText ()->sourceFilePath () + ".tex" ;
+  const C_String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
   C_FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
 }
 

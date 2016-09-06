@@ -15580,7 +15580,7 @@ void cGrammar_templateGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompil
              const C_String & inSourceFilePath) {
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
   macroDetachSharedObject (scanner) ;
@@ -15590,7 +15590,7 @@ void cGrammar_templateGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompile
              const C_String & inSourceFilePath) {
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
                                      gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
                                      gProductionsTable_templateGrammar) ;
@@ -15617,7 +15617,7 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
     if (C_FileManager::fileExistsAtPath (filePath)) {
       C_Lexique_galgasTemplateScanner * scanner = NULL ;
       macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, filePath COMMA_HERE)) ;
-      if (scanner->sourceText () != NULL) {
+      if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
                                                          gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
                                                          gProductionsTable_templateGrammar) ;
@@ -15653,7 +15653,7 @@ void cGrammar_templateGrammar::_performSourceStringParsing_ (C_Compiler * inComp
     const C_String nameString = inNameString.stringValue () ;
     C_Lexique_galgasTemplateScanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
-    if (scanner->sourceText () != NULL) {
+    if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
                                                        gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
                                                        gProductionsTable_templateGrammar) ;

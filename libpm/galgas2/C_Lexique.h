@@ -73,7 +73,6 @@ class C_Lexique : public C_Compiler {
                                                    const int32_t inTemplateDelimiterArrayLength) ;
   
 //--- Token list
-  private : TC_UniqueArray <cToken *> mTokenArray ;
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
   protected : cToken * mCurrentTokenPtr ;

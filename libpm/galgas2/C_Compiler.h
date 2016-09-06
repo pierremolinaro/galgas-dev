@@ -84,11 +84,11 @@ class C_Compiler : public C_SharedObject {
   public : void resetTemplateString (void) ;
 
 //--- Handling current character and its location
-  private : C_SourceTextInString * mSourceTextPtr ;
+  private : C_SourceTextInString mSourceText ;
   protected : C_LocationInSource mCurrentLocation ;
 
-  public : inline C_SourceTextInString * sourceText (void) const {
-    return mSourceTextPtr ;
+  public : inline C_SourceTextInString sourceText (void) const {
+    return mSourceText ;
   }
 
 //--- 'loop' intruction variant run-time error
@@ -128,7 +128,7 @@ class C_Compiler : public C_SharedObject {
   }
 
 //--- Init scanner from source file (for Cocoa GALGAS)
-  public : void resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) ; 
+  public : void resetAndLoadSourceFromText (const C_SourceTextInString & inSourceText) ;
 
 //--- Print a message
   public : void printMessage (const GALGAS_string & inMessage COMMA_LOCATION_ARGS) ;
