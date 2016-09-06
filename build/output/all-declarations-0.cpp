@@ -39,7 +39,7 @@ C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * i
                                                                   const C_String & inDependencyFilePath,
                                                                   const C_String & inSourceFileName
                                                                   COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE),
+C_Scanner (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -49,7 +49,7 @@ C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * i
                                                                   const C_String & inSourceString,
                                                                   const C_String & inStringForError
                                                                   COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
+C_Scanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 

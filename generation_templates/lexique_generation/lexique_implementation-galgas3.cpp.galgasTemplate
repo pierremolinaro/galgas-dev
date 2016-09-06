@@ -26,7 +26,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler
                 %!^%const C_String & inDependencyFilePath,
                 %!^%const C_String & inSourceFileName
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)%
+C_Scanner (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)%
   if [TEMPLATE_DELIMITOR_LIST length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
@@ -39,7 +39,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (%?^%C_Compiler
                 %!^%const C_String & inSourceString,
                 %!^%const C_String & inStringForError
                 %!^%COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
+C_Scanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
   if [TEMPLATE_DELIMITOR_LIST length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end

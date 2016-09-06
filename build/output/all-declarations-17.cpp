@@ -6163,7 +6163,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_32_ (
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
-    "#include \"galgas2/C_Lexique.h\"\n"
+    "#include \"galgas2/C_Scanner.h\"\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                    E X T E R N    R O U T I N E S                                                                   *\n"
@@ -6279,7 +6279,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_32_ (
     "\n"
     "class C_Lexique_" ;
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
-  result << " : public C_Lexique {\n"
+  result << " : public C_Scanner {\n"
     "//--- Constructors\n"
     "  public : C_Lexique_" ;
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
@@ -6532,7 +6532,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) :\n"
-    "C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)" ;
+    "C_Scanner (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)" ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 30)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
     result << ",\n"
@@ -6560,7 +6560,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "                " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) :\n"
-    "C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)" ;
+    "C_Scanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)" ;
   const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 43)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     result << ",\n"

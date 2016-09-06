@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_Lexique' : an abstract lexique class ;                                                                          *
-//  Galgas generated scanner classes inherit from this class.                                                          *
+//  'cTemplateDelimiter' : a helper class for template scanner                                                         *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
@@ -30,7 +29,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_Lexique ;
+class C_Scanner ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -43,7 +42,7 @@ class cTemplateDelimiter {
   public : const int32_t mStartStringLength ;
   public : const utf32 * mEndString ;
   public : const int32_t mEndStringLength ;
-  public : void (* mReplacementFunction) (C_Lexique & inLexique, const C_String & inElementString, C_String & ioTemplateString) ;
+  public : void (* mReplacementFunction) (C_Scanner & inLexique, const C_String & inElementString, C_String & ioTemplateString) ;
   public : const bool mDiscardStartString ;
 
 //--- Constructor
@@ -51,7 +50,7 @@ class cTemplateDelimiter {
                                const int32_t inStartStringLength,
                                const utf32 * inEndString,
                                const int32_t inEndStringLength,
-                               void (* inReplacementFunction) (C_Lexique & inLexique, const C_String & inElementString, C_String & ioTemplateString),
+                               void (* inReplacementFunction) (C_Scanner & inLexique, const C_String & inElementString, C_String & ioTemplateString),
                                const bool inDiscardStartString) ;
 
 //--- Copy
