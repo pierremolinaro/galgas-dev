@@ -387,7 +387,7 @@ bool C_Lexique::testForInputUTF32String (const utf32 * inTestCstring,
                                          const int32_t inStringLength,
                                          const bool inAdvanceOnMatch) {
 //--- Test
-  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index (), inStringLength COMMA_HERE),
+  bool ok = utf32_strncmp (sourceText ().temporaryUTF32StringAtIndex (mCurrentLocation.index () COMMA_HERE),
                            inTestCstring,
                            inStringLength) == 0 ;
 //--- Avancer dans la lecture si test ok et fin de source non atteinte
