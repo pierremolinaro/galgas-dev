@@ -521,19 +521,7 @@ void C_Lexique::unknownCharacterLexicalError (LOCATION_ARGS) {
 
 void C_Lexique::lexicalError (const C_String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) {
-  signalLexicalError (sourceText (), C_IssueWithFixIt (), inLexicalErrorMessage COMMA_THERE) ;
-  if (executionModeIsLatex ()) {
-    signalLexicalErrorInLatexOutput () ;
-  }
-  throw C_lexicalErrorException () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void C_Lexique::lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
-                                        const C_LocationInSource & inErrorLocation
-                                        COMMA_LOCATION_ARGS) { // §
-  signalLexicalError (sourceText (), C_IssueWithFixIt (inErrorLocation, inErrorLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
+  signalLexicalError (sourceText (), C_IssueWithFixIt (mCurrentLocation, mCurrentLocation, TC_Array <C_FixItDescription> ()), inLexicalErrorMessage COMMA_THERE) ;
   if (executionModeIsLatex ()) {
     signalLexicalErrorInLatexOutput () ;
   }

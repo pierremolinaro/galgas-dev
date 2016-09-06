@@ -137,10 +137,6 @@ class C_Lexique : public C_Compiler {
   public : void lexicalError (const C_String & inLexicalErrorMessage
                               COMMA_LOCATION_ARGS) ;
 
-  public : void lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
-                                        const C_LocationInSource & inErrorLocation
-                                        COMMA_LOCATION_ARGS) ;
-
 //--- Signal a lexical warning
   protected : void lexicalWarning (const C_String & messageAlerte COMMA_LOCATION_ARGS) ;
 
@@ -155,8 +151,8 @@ class C_Lexique : public C_Compiler {
 //--- Static method for searching a string in an ordered list
 //    returns -1 if not found, and associated code if found
   protected : static int16_t searchInList (const C_String & inString,
-                                            const C_unicode_lexique_table_entry inTable [],
-                                            const int16_t inTableSize) ;
+                                           const C_unicode_lexique_table_entry inTable [],
+                                           const int16_t inTableSize) ;
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const = 0 ;
