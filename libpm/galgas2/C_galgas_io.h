@@ -123,7 +123,6 @@ class C_parsingContext {
   private : C_String mTemplateString ;
 
   friend class C_Lexique ;
-  friend class C_Scanner ;
   
   public : C_parsingContext (void) ;
 

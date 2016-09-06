@@ -71,7 +71,7 @@ class C_Lexique : public C_Compiler {
 //--- Template String
   protected : int32_t findTemplateDelimiterIndex (const cTemplateDelimiter inTemplateDelimiterArray [],
                                                    const int32_t inTemplateDelimiterArrayLength) ;
-  
+
 //--- Token list
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
@@ -115,8 +115,7 @@ class C_Lexique : public C_Compiler {
 
   public : void exitProduction (void) ;
 
-//--- Protected attribute used for handling lexical loops
-//    (in parseLexicalToken methods in inherited classes)
+//--- Protected attribute used for handling lexical loops (in parseLexicalToken methods in inherited classes)
   protected : bool mLoop ;
 
 //--- Reset Scanner for performing second pass

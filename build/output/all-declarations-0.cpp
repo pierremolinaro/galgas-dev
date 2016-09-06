@@ -37,7 +37,7 @@ mLexicalAttribute_uint_36__34_value () {
 C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
                                                                   const C_String & inSourceFileName
                                                                   COMMA_LOCATION_ARGS) :
-C_Scanner (inCallerCompiler, inSourceFileName COMMA_THERE),
+C_Lexique (inCallerCompiler, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -47,7 +47,7 @@ C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * i
                                                                   const C_String & inSourceString,
                                                                   const C_String & inStringForError
                                                                   COMMA_LOCATION_ARGS) :
-C_Scanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
+C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
