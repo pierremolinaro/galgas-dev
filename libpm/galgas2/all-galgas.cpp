@@ -3,6 +3,7 @@
 #include "typeComparisonResult.cpp"
 #include "C_Compiler.cpp"
 #include "C_Lexique.cpp"
+#include "C_Scanner.cpp"
 #include "C_LocationInSource.cpp"
 #include "C_SourceTextInString.cpp"
 #include "C_galgas_type_descriptor.cpp"
