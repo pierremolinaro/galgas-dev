@@ -49,35 +49,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cTemplateDelimiter::
-cTemplateDelimiter (const utf32 * inStartString,
-                    const int32_t inStartStringLength,
-                    const utf32 * inEndString,
-                    const int32_t inEndStringLength,
-                    void (* inReplacementFunction) (C_Lexique & inLexique, const C_String & inElementString, C_String & ioTemplateString),
-                    const bool inDiscardStartString) :
-mStartString (inStartString),
-mStartStringLength (inStartStringLength),
-mEndString (inEndString),
-mEndStringLength (inEndStringLength),
-mReplacementFunction (inReplacementFunction),
-mDiscardStartString (inDiscardStartString) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cTemplateDelimiter::
-cTemplateDelimiter (const cTemplateDelimiter & inOperand) :
-mStartString (inOperand.mStartString),
-mStartStringLength (inOperand.mStartStringLength),
-mEndString (inOperand.mEndString),
-mEndStringLength (inOperand.mEndStringLength),
-mReplacementFunction (inOperand.mReplacementFunction),
-mDiscardStartString (inOperand.mDiscardStartString) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Constructors, Destructor
 #endif

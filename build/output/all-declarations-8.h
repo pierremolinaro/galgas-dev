@@ -2907,7 +2907,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "galgas2/C_Lexique.h"
+#include "galgas2/C_Scanner.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                    E X T E R N    R O U T I N E S                                                                   *
@@ -2939,7 +2939,7 @@ class cTokenFor_galgas_33_Scanner : public cToken {
 //                     S C A N N E R    C L A S S                                                                      *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_Lexique_galgas_33_Scanner : public C_Lexique {
+class C_Lexique_galgas_33_Scanner : public C_Scanner {
 //--- Constructors
   public : C_Lexique_galgas_33_Scanner (C_Compiler * inCallerCompiler,
                        const C_String & inDependencyFileExtension,

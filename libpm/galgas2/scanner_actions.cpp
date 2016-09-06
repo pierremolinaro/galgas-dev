@@ -45,7 +45,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterHexDigitIntoASCIIcharacter (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoASCIIcharacter (C_Scanner & inLexique,
                                                       utf32 & ioValue,
                                                       const utf32 inChar,
                                                       const char * inErrorCodeGreaterThan255,
@@ -71,7 +71,7 @@ void scanner_routine_enterHexDigitIntoASCIIcharacter (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterDigitIntoASCIIcharacter (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoASCIIcharacter (C_Scanner & inLexique,
                                                    utf32 & ioValue,
                                                    const utf32 inChar,
                                                    const char * inErrorCodeGreaterThan255,
@@ -92,7 +92,7 @@ void scanner_routine_enterDigitIntoASCIIcharacter (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterCharacterIntoString (C_Lexique & /* inLexique */,
+void scanner_routine_enterCharacterIntoString (C_Scanner & /* inLexique */,
                                                C_String & ioString,
                                                const utf32 inChar) {
   ioString.appendUnicodeCharacter (inChar COMMA_HERE) ;
@@ -100,7 +100,7 @@ void scanner_routine_enterCharacterIntoString (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertStringToDouble (C_Lexique & inLexique,
+void scanner_routine_convertStringToDouble (C_Scanner & inLexique,
                                             const C_String & inString,
                                             double & outValue,
                                             const char * inConversionError) {
@@ -114,7 +114,7 @@ void scanner_routine_convertStringToDouble (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterCharacterIntoCharacter (C_Lexique & /* inLexique */,
+void scanner_routine_enterCharacterIntoCharacter (C_Scanner & /* inLexique */,
                                                   utf32 & outCharacter,
                                                   const utf32 inCharacter) {
   outCharacter = inCharacter ;
@@ -122,13 +122,13 @@ void scanner_routine_enterCharacterIntoCharacter (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-utf32 scanner_function_toLower (C_Lexique & /* inLexique */, const utf32 c) {
+utf32 scanner_function_toLower (C_Scanner & /* inLexique */, const utf32 c) {
   return unicodeToLower (c) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-utf32 scanner_function_toUpper (C_Lexique & /* inLexique */, const utf32 c) {
+utf32 scanner_function_toUpper (C_Scanner & /* inLexique */, const utf32 c) {
   return unicodeToUpper (c) ;
 }
 
@@ -140,7 +140,7 @@ utf32 scanner_function_toUpper (C_Lexique & /* inLexique */, const utf32 c) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_negateSInt (C_Lexique & inLexique,
+void scanner_routine_negateSInt (C_Scanner & inLexique,
                                  int32_t & ioValue,
                                  const char * inNumberTooLargeError) {
   if (ioValue == INT32_MIN) {
@@ -152,7 +152,7 @@ void scanner_routine_negateSInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_negateSInt64 (C_Lexique & inLexique,
+void scanner_routine_negateSInt64 (C_Scanner & inLexique,
                                    int64_t & ioValue,
                                    const char * inNumberTooLargeError) {
   if (ioValue == INT64_MIN) {
@@ -164,7 +164,7 @@ void scanner_routine_negateSInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertUIntToSInt (C_Lexique & inLexique,
+void scanner_routine_convertUIntToSInt (C_Scanner & inLexique,
                                         const uint32_t inValue,
                                         int32_t & outValue,
                                         const char * inNumberTooLargeError) {
@@ -177,7 +177,7 @@ void scanner_routine_convertUIntToSInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertUInt64ToSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertUInt64ToSInt64 (C_Scanner & inLexique,
                                             const uint64_t inValue,
                                             int64_t & outValue,
                                             const char * inNumberTooLargeError) {
@@ -190,7 +190,7 @@ void scanner_routine_convertUInt64ToSInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoUInt (C_Scanner & inLexique,
                                          const utf32 inCharacter,
                                          uint32_t & inValue,
                                          const char * inNumberTooLargeError,
@@ -212,7 +212,7 @@ void scanner_routine_enterDigitIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterDigitIntoUInt64 (C_Scanner & inLexique,
                                            const utf32 inCharacter,
                                            uint64_t & ioValue,
                                            const char * inNumberTooLargeError,
@@ -234,7 +234,7 @@ void scanner_routine_enterDigitIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterHexDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoUInt (C_Scanner & inLexique,
                                             const utf32 inCharacter,
                                             uint32_t & ioValue,
                                             const char * inNumberTooLargeError,
@@ -263,7 +263,7 @@ void scanner_routine_enterHexDigitIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterHexDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoUInt64 (C_Scanner & inLexique,
                                               const utf32 inCharacter,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
@@ -292,7 +292,7 @@ void scanner_routine_enterHexDigitIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertDecimalStringIntoUInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoUInt (C_Scanner & inLexique,
                                                    const C_String & inDecimalString,
                                                    uint32_t & outValue,
                                                    const char * inNumberTooLargeError,
@@ -322,7 +322,7 @@ void scanner_routine_convertDecimalStringIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertDecimalStringIntoSInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoSInt (C_Scanner & inLexique,
                                                    const C_String & inDecimalString,
                                                    int32_t & outValue,
                                                    const char * inNumberTooLargeError,
@@ -351,7 +351,7 @@ void scanner_routine_convertDecimalStringIntoSInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertDecimalStringIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoUInt64 (C_Scanner & inLexique,
                                                      const C_String & inDecimalString,
                                                      uint64_t & outValue,
                                                      const char * inNumberTooLargeError,
@@ -380,7 +380,7 @@ void scanner_routine_convertDecimalStringIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertDecimalStringIntoSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoSInt64 (C_Scanner & inLexique,
                                                      const C_String & inDecimalString,
                                                      int64_t & outValue,
                                                      const char * inNumberTooLargeError,
@@ -415,7 +415,7 @@ void scanner_routine_convertDecimalStringIntoSInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterBinDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterBinDigitIntoUInt (C_Scanner & inLexique,
                                             const utf32 inCharacter,
                                             uint32_t & inValue,
                                             const char * inNumberTooLargeError,
@@ -435,7 +435,7 @@ void scanner_routine_enterBinDigitIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterBinDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterBinDigitIntoUInt64 (C_Scanner & inLexique,
                                               const utf32 inCharacter,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
@@ -461,7 +461,7 @@ void scanner_routine_enterBinDigitIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterOctDigitIntoUInt (C_Lexique & inLexique,
+void scanner_routine_enterOctDigitIntoUInt (C_Scanner & inLexique,
                                             const utf32 inCharacter,
                                             uint32_t & inValue,
                                             const char * inNumberTooLargeError,
@@ -481,7 +481,7 @@ void scanner_routine_enterOctDigitIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterOctDigitIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_enterOctDigitIntoUInt64 (C_Scanner & inLexique,
                                               const utf32 inCharacter,
                                               uint64_t & ioValue,
                                               const char * inNumberTooLargeError,
@@ -507,7 +507,7 @@ void scanner_routine_enterOctDigitIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_multiplyUInt (C_Lexique & inLexique,
+void scanner_routine_multiplyUInt (C_Scanner & inLexique,
                                    const uint32_t inFactor,
                                    uint32_t & ioValue,
                                    const char * inResultTooLargeError) {
@@ -523,7 +523,7 @@ void scanner_routine_multiplyUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_multiplyUInt64 (C_Lexique & inLexique,
+void scanner_routine_multiplyUInt64 (C_Scanner & inLexique,
                                      const uint64_t inFactor,
                                      uint64_t & ioValue,
                                      const char * inResultTooLargeError) {
@@ -549,7 +549,7 @@ void scanner_routine_multiplyUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHexStringIntoUInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoUInt (C_Scanner & inLexique,
                                                const C_String & inHexString,
                                                uint32_t & outValue,
                                                const char * inNumberTooLargeError,
@@ -580,7 +580,7 @@ void scanner_routine_convertHexStringIntoUInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHexStringIntoUInt64 (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoUInt64 (C_Scanner & inLexique,
                                                  const C_String & inHexString,
                                                  uint64_t & outValue,
                                                  const char * inNumberTooLargeError,
@@ -611,7 +611,7 @@ void scanner_routine_convertHexStringIntoUInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHexStringIntoSInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoSInt (C_Scanner & inLexique,
                                                const C_String & inHexString,
                                                int32_t & outValue,
                                                const char * inNumberTooLargeError,
@@ -642,7 +642,7 @@ void scanner_routine_convertHexStringIntoSInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHexStringIntoSInt64 (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoSInt64 (C_Scanner & inLexique,
                                                  const C_String & inHexString,
                                                  int64_t & outValue,
                                                  const char * inNumberTooLargeError,
@@ -679,7 +679,7 @@ void scanner_routine_convertHexStringIntoSInt64 (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertUnsignedNumberToUnicodeChar (C_Lexique & inLexique,
+void scanner_routine_convertUnsignedNumberToUnicodeChar (C_Scanner & inLexique,
                                                          uint32_t & ioValue,
                                                          utf32 & outUnicodeCharacter,
                                                          const char * inUnassignedUnicodeValueError) {
@@ -692,7 +692,7 @@ void scanner_routine_convertUnsignedNumberToUnicodeChar (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHTMLSequenceToUnicodeCharacter (C_Lexique & inLexique,
+void scanner_routine_convertHTMLSequenceToUnicodeCharacter (C_Scanner & inLexique,
                                                             C_String & ioStringValue,
                                                             utf32 & outUnicodeCharacter,
                                                             const char * inUnassignedHTMLSequenceError) {
@@ -705,7 +705,7 @@ void scanner_routine_convertHTMLSequenceToUnicodeCharacter (C_Lexique & inLexiqu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_codePointToUnicode (C_Lexique & inLexique,
+void scanner_routine_codePointToUnicode (C_Scanner & inLexique,
                                          const C_String & inElementString,
                                          C_String & ioTemplateString) {
   if (inElementString.length () == 0) {
@@ -761,7 +761,7 @@ void scanner_routine_codePointToUnicode (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_resetString (C_Lexique & /* inLexique */,
+void scanner_routine_resetString (C_Scanner & /* inLexique */,
                                   C_String & ioString) {
   ioString.setLengthToZero () ;
 }
@@ -774,7 +774,7 @@ void scanner_routine_resetString (C_Lexique & /* inLexique */,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterDecimalDigitIntoBigInt (C_Scanner & inLexique,
                                                   const utf32 inCharacter,
                                                   C_BigInt & ioBigInt,
                                                   const char * inCharacterIsNotDecimalDigitError) {
@@ -789,7 +789,7 @@ void scanner_routine_enterDecimalDigitIntoBigInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterHexDigitIntoBigInt (C_Scanner & inLexique,
                                               const utf32 inCharacter,
                                               C_BigInt & ioBigInt,
                                               const char * inCharacterIsNotDecimalDigitError) {
@@ -813,7 +813,7 @@ void scanner_routine_enterHexDigitIntoBigInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertDecimalStringIntoBigInt (C_Scanner & inLexique,
                                                      const C_String & inDecimalString,
                                                      C_BigInt & outValue,
                                                      const char * inCharacterIsNotDecimalDigitError) {
@@ -826,7 +826,7 @@ void scanner_routine_convertDecimalStringIntoBigInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertHexStringIntoBigInt (C_Scanner & inLexique,
                                                  const C_String & inHexString,
                                                  C_BigInt & outValue,
                                                  const char * inCharacterIsNotHexDigitError) {
@@ -845,7 +845,7 @@ void scanner_routine_convertHexStringIntoBigInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_enterBinaryDigitIntoBigInt (C_Scanner & inLexique,
                                                  const utf32 inCharacter,
                                                  C_BigInt & ioBigInt,
                                                  const char * inCharacterIsNotBinaryDigitError) {
@@ -860,7 +860,7 @@ void scanner_routine_enterBinaryDigitIntoBigInt (C_Lexique & inLexique,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
+void scanner_routine_convertBinaryStringIntoBigInt (C_Scanner & inLexique,
                                                      const C_String & inBinaryString,
                                                      C_BigInt & outValue,
                                                      const char * inCharacterIsNotBinaryDigitError) {

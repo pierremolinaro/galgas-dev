@@ -4830,7 +4830,7 @@ C_Lexique_galgas_33_Scanner::C_Lexique_galgas_33_Scanner (C_Compiler * inCallerC
                                                           const C_String & inDependencyFilePath,
                                                           const C_String & inSourceFileName
                                                           COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE) {
+C_Scanner (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4839,7 +4839,7 @@ C_Lexique_galgas_33_Scanner::C_Lexique_galgas_33_Scanner (C_Compiler * inCallerC
                                                           const C_String & inSourceString,
                                                           const C_String & inStringForError
                                                           COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
+C_Scanner (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
