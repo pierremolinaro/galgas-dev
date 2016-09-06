@@ -44,8 +44,6 @@ class cIndexingDictionary ;
 class C_Lexique : public C_Compiler {
 //--- Constructors and destructor
   public : C_Lexique (C_Compiler * inCallerCompiler,
-                      const C_String & inDependencyFileExtension,
-                      const C_String & inDependencyFilePath,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) ;
 
@@ -75,6 +73,7 @@ class C_Lexique : public C_Compiler {
                                                    const int32_t inTemplateDelimiterArrayLength) ;
   
 //--- Token list
+  private : TC_UniqueArray <cToken *> mTokenArray ;
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
   protected : cToken * mCurrentTokenPtr ;

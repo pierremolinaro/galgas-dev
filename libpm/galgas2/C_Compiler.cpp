@@ -63,9 +63,7 @@ bool C_Compiler::performLogFileRead (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_Compiler::C_Compiler (C_Compiler * inCallerCompiler,
-                        const C_String & /* inDependencyFileExtension */,
-                        const C_String & /* inDependencyFilePath */
+C_Compiler::C_Compiler (C_Compiler * inCallerCompiler
                         COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mCallerCompiler (NULL),

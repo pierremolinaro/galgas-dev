@@ -2942,8 +2942,6 @@ class cTokenFor_galgas_33_Scanner : public cToken {
 class C_Lexique_galgas_33_Scanner : public C_Scanner {
 //--- Constructors
   public : C_Lexique_galgas_33_Scanner (C_Compiler * inCallerCompiler,
-                       const C_String & inDependencyFileExtension,
-                       const C_String & inDependencyFilePath,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 

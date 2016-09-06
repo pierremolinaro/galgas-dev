@@ -85,12 +85,11 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Scanner::C_Scanner (C_Compiler * inCallerCompiler,
-                      const C_String & inDependencyFileExtension,
-                      const C_String & inDependencyFilePath,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath COMMA_THERE),
+C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
+mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -147,8 +146,9 @@ C_Scanner::C_Scanner (C_Compiler * inCallerCompiler,
                       const C_String & inSourceString,
                       const C_String & inStringForError
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, "", "" COMMA_THERE),
+C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
+mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -182,13 +182,17 @@ mLatexNextCharacterToEnterIndex (0) {
 
 C_Scanner::~C_Scanner (void) {
   macroMyDelete (mIndexingDictionary) ;
+  for (int32_t i=0 ; i<mTokenArray.count () ; i++) {
+    macroMyDelete (mTokenArray (i COMMA_HERE)) ;
+  }
   mLastToken = NULL ;
   mCurrentTokenPtr = NULL ;
-  while (mFirstToken != NULL) {
+  mFirstToken = NULL ;
+/*  while (mFirstToken != NULL) {
     cToken * p = mFirstToken->mNextToken ;
     macroMyDelete (mFirstToken) ;
     mFirstToken = p ;
-  }
+  }*/
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -196,6 +200,12 @@ C_Scanner::~C_Scanner (void) {
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Scanner configuration
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_Scanner::swapTokenArrayWith (TC_UniqueArray <cToken *> & ioTokenArray) {
+  swap (ioTokenArray, mTokenArray) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -219,6 +229,7 @@ void C_Scanner::enterTokenFromPointer (cToken * inToken) {
   }
   mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
 //--- Enter token in token list
+  mTokenArray.addObject (inToken) ;
   if (mLastToken == NULL) {
     mFirstToken = inToken ;
   }else{
@@ -1532,40 +1543,6 @@ void C_Scanner::generateIndexFile (void) {
     mIndexingDictionary->generateIndexFile (indexFilePath) ;
   }
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Handling Parsing context
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//Handling parsing context (for parse ... rewind ... end parse ; instruction)                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//C_parsingContext C_Scanner::parsingContext (void) const {
-//  C_parsingContext context ;
-//  context.mParsingArrayIndex = mIndexForSecondPassParsing ;
-//  context.mLocation = mCurrentLocation ;
-//  context.mCurrentChar = mCurrentChar ;
-//  context.mPreviousChar = mPreviousChar ;
-//  context.mCurrentTokenPtr = mCurrentTokenPtr ;
-//  context.mTemplateString = mTemplateString ;
-//  return context ;
-//}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//void C_Scanner::setParsingContext (const C_parsingContext & inContext) {
-//  mIndexForSecondPassParsing = inContext.mParsingArrayIndex ;
-//  mCurrentTokenPtr = inContext.mCurrentTokenPtr ;
-//  mCurrentLocation = inContext.mLocation ;
-//  mCurrentChar = inContext.mCurrentChar ;
-//  mPreviousChar = inContext.mPreviousChar ;
-//  mTemplateString = inContext.mTemplateString ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

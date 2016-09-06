@@ -15579,7 +15579,7 @@ void cGrammar_templateGrammar::performIndexing (C_Compiler * /* inCompiler */,
 void cGrammar_templateGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompiler,
              const C_String & inSourceFilePath) {
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
     scanner->performLexicalAnalysis () ;
   }
@@ -15589,7 +15589,7 @@ void cGrammar_templateGrammar::performOnlyLexicalAnalysis (C_Compiler * inCompil
 void cGrammar_templateGrammar::performOnlySyntaxAnalysis (C_Compiler * inCompiler,
              const C_String & inSourceFilePath) {
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
     scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
                                      gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,
@@ -15616,7 +15616,7 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
     }
     if (C_FileManager::fileExistsAtPath (filePath)) {
       C_Lexique_galgasTemplateScanner * scanner = NULL ;
-      macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", filePath COMMA_HERE)) ;
+      macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, filePath COMMA_HERE)) ;
       if (scanner->sourceText () != NULL) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_templateGrammar, gNonTerminalNames_templateGrammar,
                                                          gActionTableIndex_templateGrammar, gSuccessorTable_templateGrammar,

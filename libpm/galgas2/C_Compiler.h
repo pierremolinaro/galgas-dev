@@ -61,9 +61,7 @@ class C_galgas_type_descriptor ;
 
 class C_Compiler : public C_SharedObject {
 //--- Constructor and destructor
-  public : C_Compiler (C_Compiler * inCallerCompiler,
-                       const C_String & inDependencyFileExtension,
-                       const C_String & inDependencyFilePath
+  public : C_Compiler (C_Compiler * inCallerCompiler
                        COMMA_LOCATION_ARGS) ;
   public : virtual ~ C_Compiler (void) ;
 

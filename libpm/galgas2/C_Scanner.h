@@ -44,8 +44,6 @@ class cIndexingDictionary ;
 class C_Scanner : public C_Compiler {
 //--- Constructors and destructor
   public : C_Scanner (C_Compiler * inCallerCompiler,
-                      const C_String & inDependencyFileExtension,
-                      const C_String & inDependencyFilePath,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) ;
 
@@ -75,12 +73,14 @@ class C_Scanner : public C_Compiler {
                                                    const int32_t inTemplateDelimiterArrayLength) ;
   
 //--- Token list
+  private : TC_UniqueArray <cToken *> mTokenArray ;
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
   protected : cToken * mCurrentTokenPtr ;
   protected : void enterTokenFromPointer (cToken * inToken) ;
   protected : int32_t mLastSeparatorIndex ;
   public : void appendLastSeparatorTo (C_String & ioString) const ;
+  public : void swapTokenArrayWith (TC_UniqueArray <cToken *> & ioTokenArray) ;
 
 //--- Syntax directed translation : accessing current token
   public : C_String preceedingSeparatorString (void) const ;
@@ -123,10 +123,6 @@ class C_Scanner : public C_Compiler {
 
 //--- Reset Scanner for performing second pass
   private : void resetForSecondPass (void) ;
-
-//--- Handling parsing context (for parse ... rewind ... end parse ; instruction)
-  public : C_parsingContext parsingContext (void) const ;
-  public : void setParsingContext (const C_parsingContext & inContext) ;
 
 //--- Internal error during bottom-up parsing
   public : void internalBottomUpParserError (LOCATION_ARGS) ;

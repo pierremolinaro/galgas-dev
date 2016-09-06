@@ -56,12 +56,11 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
-                      const C_String & inDependencyFileExtension,
-                      const C_String & inDependencyFilePath,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath COMMA_THERE),
+C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
+mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -118,8 +117,9 @@ C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       const C_String & inSourceString,
                       const C_String & inStringForError
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, "", "" COMMA_THERE),
+C_Compiler (inCallerCompiler COMMA_THERE),
 mIndexingDictionary (NULL),
+mTokenArray (),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
@@ -153,6 +153,10 @@ mLatexNextCharacterToEnterIndex (0) {
 
 C_Lexique::~C_Lexique (void) {
   macroMyDelete (mIndexingDictionary) ;
+  for (int32_t i=0 ; i<mTokenArray.count () ; i++) {
+    macroMyDelete (mTokenArray (i COMMA_HERE)) ;
+  }
+
   mLastToken = NULL ;
   mCurrentTokenPtr = NULL ;
   while (mFirstToken != NULL) {
