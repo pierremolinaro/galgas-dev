@@ -8385,13 +8385,15 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
         token.mTokenCode = kToken_ ; // Empty string code
       }else{ // Unknown input character
         unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+        token.mTokenCode = -1 ; // No token
+        advance () ; // ... go throught unknown character
       }
     }catch (const C_lexicalErrorException &) {
       token.mTokenCode = -1 ; // No token
       advance () ; // ... go throught unknown character
     }
   }
-  if (UNICODE_VALUE (mCurrentChar) == '\0') { // && (token.mTemplateStringBeforeToken.length () > 0)) {
+  if (UNICODE_VALUE (mCurrentChar) == '\0') {
     token.mTokenCode = 0 ;
     enterToken (token) ;
   }

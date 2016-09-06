@@ -42,7 +42,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class max_error_count_reached_exception : public ::std:: exception {
+class max_error_count_reached_exception : public ::std::exception {
   public : virtual const char * what (void) const throw () ;
 } ;
 
@@ -52,7 +52,7 @@ class max_error_count_reached_exception : public ::std:: exception {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class max_warning_count_reached_exception : public ::std:: exception {
+class max_warning_count_reached_exception : public ::std::exception {
   public : virtual const char * what (void) const throw () ;
 } ;
 
@@ -63,12 +63,6 @@ class max_warning_count_reached_exception : public ::std:: exception {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class C_lexicalErrorException {
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class C_UserCancelException : public ::std::exception {
-  public : C_UserCancelException (void) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -129,6 +123,7 @@ class C_parsingContext {
   private : C_String mTemplateString ;
 
   friend class C_Lexique ;
+  friend class C_Scanner ;
   
   public : C_parsingContext (void) ;
 

@@ -373,6 +373,9 @@
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
+		CF55C1DC1D7EF36800DC151B /* C_Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF55C1DA1D7EF36800DC151B /* C_Scanner.cpp */; };
+		CF55C1DD1D7EF53A00DC151B /* C_Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF55C1DA1D7EF36800DC151B /* C_Scanner.cpp */; };
+		CF55C1DE1D7EF53E00DC151B /* C_Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF55C1DA1D7EF36800DC151B /* C_Scanner.cpp */; };
 		CF560731199679270074A7B2 /* galgas-developer in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgas-developer */; };
 		CF560733199679410074A7B2 /* galgas-developer-debug in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgas-developer-debug */; };
 		CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
@@ -966,6 +969,8 @@
 		CF51F02215C9200E00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
 		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMDebug.h; sourceTree = "<group>"; };
 		CF51F02615C9201800387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMDebug.m; sourceTree = "<group>"; };
+		CF55C1DA1D7EF36800DC151B /* C_Scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Scanner.cpp; sourceTree = "<group>"; };
+		CF55C1DB1D7EF36800DC151B /* C_Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Scanner.h; sourceTree = "<group>"; };
 		CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = typeComparisonResult.cpp; sourceTree = "<group>"; };
 		CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_DocumentData.h; sourceTree = "<group>"; };
 		CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_DocumentData.m; sourceTree = "<group>"; };
@@ -1695,6 +1700,8 @@
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
 			isa = PBXGroup;
 			children = (
+				CF55C1DA1D7EF36800DC151B /* C_Scanner.cpp */,
+				CF55C1DB1D7EF36800DC151B /* C_Scanner.h */,
 				CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */,
 				CF33366F126B07C1008DA1DE /* AC_GALGAS_class.h */,
 				CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */,
@@ -2243,6 +2250,7 @@
 				CF2C85171CC3B0890008D960 /* mpn-toom_interpolate_16pts.c in Sources */,
 				CF2C85181CC3B0890008D960 /* mpn-sqr_basecase.c in Sources */,
 				CF2C85191CC3B0890008D960 /* mpn-toom63_mul.c in Sources */,
+				CF55C1DE1D7EF53E00DC151B /* C_Scanner.cpp in Sources */,
 				CF2C851A1CC3B0890008D960 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF2C851B1CC3B0890008D960 /* C_HTML_FileWrite.cpp in Sources */,
 				CF2C851D1CC3B0890008D960 /* C_TextFileWrite.cpp in Sources */,
@@ -2504,6 +2512,7 @@
 				CF6DF16B09E3F23700506859 /* C_HTML_FileWrite.cpp in Sources */,
 				CF6DF16C09E3F23700506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */,
+				CF55C1DC1D7EF36800DC151B /* C_Scanner.cpp in Sources */,
 				CF9E75291BADD83300DBEFEE /* mpn-divrem_2.c in Sources */,
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
 				CF1AA5911979A9240095B745 /* C_HTMLString.cpp in Sources */,
@@ -2765,6 +2774,7 @@
 				CF9E75361BADD83300DBEFEE /* mpn-toom_interpolate_16pts.c in Sources */,
 				CF9E752E1BADD83300DBEFEE /* mpn-sqr_basecase.c in Sources */,
 				CF9E75011BADD36200DBEFEE /* mpn-toom63_mul.c in Sources */,
+				CF55C1DD1D7EF53A00DC151B /* C_Scanner.cpp in Sources */,
 				CF6DF1E309E3F30400506859 /* F_Analyze_CLI_Options.cpp in Sources */,
 				CF6DF1E509E3F30400506859 /* C_HTML_FileWrite.cpp in Sources */,
 				CF6DF1E609E3F30400506859 /* C_TextFileWrite.cpp in Sources */,

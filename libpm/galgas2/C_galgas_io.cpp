@@ -57,11 +57,6 @@ mTokenCode (inOperand.mTokenCode) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_UserCancelException:: C_UserCancelException (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Exceptions
 #endif
