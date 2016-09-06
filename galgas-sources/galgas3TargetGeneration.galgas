@@ -1090,8 +1090,6 @@ proc updateGalgas3Targets
         !"C_Lexique.h",
         !"C_LocationInSource.cpp",
         !"C_LocationInSource.h",
-        !"C_Scanner.cpp",
-        !"C_Scanner.h",
         !"C_SourceTextInString.cpp",
         !"C_SourceTextInString.h",
         !"capCollectionElement.cpp",
