@@ -38,22 +38,34 @@ class C_LocationInSource ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_SourceTextInString : public C_SharedObject {
+class C_SourceTextInString {
+//--- Default constructor
+  public : C_SourceTextInString (void) ;
+
 //--- Constructor
   public : C_SourceTextInString (const C_String & inSourceString,
                                  const C_String & inFilePath,
-                                 const bool inShowSourceOnDetailledErrorMessage
-                                 COMMA_LOCATION_ARGS) ;
+                                 const bool inShowSourceOnDetailledErrorMessage) ;
 
 //--- Source file Name
-  private : const C_String mFilePath ;
+  private : C_String mFilePath ;
 
   public : inline C_String sourceFilePath (void) const {
     return mFilePath ;
   }
+
 //--- Source text
-  public : const C_String mSourceString ;
-  private : const bool mShowSourceOnDetailledErrorMessage ;
+  private : C_String mSourceString ;
+  public : inline C_String sourceString (void) const {
+    return mSourceString ;
+  }
+
+  private : bool mIsValid ;
+  public : inline bool isValid (void) const {
+    return mIsValid ;
+  }
+
+  private : bool mShowSourceOnDetailledErrorMessage ;
 
   public : int32_t sourceLength (void) const ;
   public : utf32 readCharOrNul (const int32_t inIndex COMMA_LOCATION_ARGS) const ;

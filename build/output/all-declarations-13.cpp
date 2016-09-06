@@ -10078,7 +10078,7 @@ void cGrammar_galgas_33_ProjectGrammar::performIndexing (C_Compiler * inCompiler
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
                                                     gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
     if (ok) {
@@ -10094,7 +10094,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (C_Compiler *
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
   macroDetachSharedObject (scanner) ;
@@ -10104,7 +10104,7 @@ void cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (C_Compiler * 
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
                                     gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
   }
@@ -10130,7 +10130,7 @@ void cGrammar_galgas_33_ProjectGrammar::_performSourceFileParsing_ (C_Compiler *
     if (C_FileManager::fileExistsAtPath (filePath)) {
     C_Lexique_galgas_33_Scanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, filePath COMMA_HERE)) ;
-    if (scanner->sourceText () != NULL) {
+    if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performTopDownParsing (gProductions_galgas3ProjectGrammar, gProductionNames_galgas3ProjectGrammar, gProductionIndexes_galgas3ProjectGrammar,
                                                       gFirstProductionIndexes_galgas3ProjectGrammar, gDecision_galgas3ProjectGrammar, gDecisionIndexes_galgas3ProjectGrammar, 28) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
@@ -44064,7 +44064,7 @@ void cGrammar_galgas_33_Grammar::performIndexing (C_Compiler * inCompiler,
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     const bool ok = scanner->performBottomUpParsing (gActionTable_galgas3Grammar, gNonTerminalNames_galgas3Grammar,
                                                      gActionTableIndex_galgas3Grammar, gSuccessorTable_galgas3Grammar,
                                                      gProductionsTable_galgas3Grammar) ;
@@ -44081,7 +44081,7 @@ void cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (C_Compiler * inComp
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performLexicalAnalysis () ;
   }
   macroDetachSharedObject (scanner) ;
@@ -44091,7 +44091,7 @@ void cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (C_Compiler * inCompi
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_33_Scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, inSourceFilePath COMMA_HERE)) ;
-  if (scanner->sourceText () != NULL) {
+  if (scanner->sourceText ().isValid ()) {
     scanner->performBottomUpParsing (gActionTable_galgas3Grammar, gNonTerminalNames_galgas3Grammar,
                                      gActionTableIndex_galgas3Grammar, gSuccessorTable_galgas3Grammar,
                                      gProductionsTable_galgas3Grammar) ;
@@ -44118,7 +44118,7 @@ void cGrammar_galgas_33_Grammar::_performSourceFileParsing_ (C_Compiler * inComp
     if (C_FileManager::fileExistsAtPath (filePath)) {
       C_Lexique_galgas_33_Scanner * scanner = NULL ;
       macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, filePath COMMA_HERE)) ;
-      if (scanner->sourceText () != NULL) {
+      if (scanner->sourceText ().isValid ()) {
         const bool ok = scanner->performBottomUpParsing (gActionTable_galgas3Grammar, gNonTerminalNames_galgas3Grammar,
                                                          gActionTableIndex_galgas3Grammar, gSuccessorTable_galgas3Grammar,
                                                          gProductionsTable_galgas3Grammar) ;
@@ -44154,7 +44154,7 @@ void cGrammar_galgas_33_Grammar::_performSourceStringParsing_ (C_Compiler * inCo
     const C_String nameString = inNameString.stringValue () ;
     C_Lexique_galgas_33_Scanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgas_33_Scanner (inCompiler, sourceString, nameString COMMA_HERE)) ;
-    if (scanner->sourceText () != NULL) {
+    if (scanner->sourceText ().isValid ()) {
       const bool ok = scanner->performBottomUpParsing (gActionTable_galgas3Grammar, gNonTerminalNames_galgas3Grammar,
                                                        gActionTableIndex_galgas3Grammar, gSuccessorTable_galgas3Grammar,
                                                        gProductionsTable_galgas3Grammar) ;

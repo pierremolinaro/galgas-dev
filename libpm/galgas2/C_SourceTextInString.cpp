@@ -25,14 +25,21 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_SourceTextInString::
-C_SourceTextInString (const C_String & inSourceString,
-                      const C_String & inFilePath,
-                      const bool inShowSourceOnDetailledErrorMessage
-                      COMMA_LOCATION_ARGS) :
-C_SharedObject (THERE),
+C_SourceTextInString::C_SourceTextInString (void) :
+mFilePath (""),
+mSourceString (""),
+mIsValid (false),
+mShowSourceOnDetailledErrorMessage (false) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_SourceTextInString::C_SourceTextInString (const C_String & inSourceString,
+                                            const C_String & inFilePath,
+                                            const bool inShowSourceOnDetailledErrorMessage) :
 mFilePath (inFilePath),
 mSourceString (inSourceString),
+mIsValid (true),
 mShowSourceOnDetailledErrorMessage (inShowSourceOnDetailledErrorMessage) {
 }
 
@@ -83,8 +90,7 @@ getLineForLocation (const C_LocationInSource & inLocation) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_SourceTextInString::
-appendSourceContents (C_String & ioMessage) const {
+void C_SourceTextInString::appendSourceContents (C_String & ioMessage) const {
   if (mShowSourceOnDetailledErrorMessage) {
     const bool insertCarriageReturn = (mSourceString.length () > 0) && (UNICODE_VALUE (mSourceString.lastCharacter (HERE)) != '\n')  ;
     ioMessage << "-- SOURCE STRING (--verbose option) --\n"

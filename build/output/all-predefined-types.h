@@ -59,11 +59,8 @@ class GALGAS_type ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_SourceTextInString ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #include "galgas2/C_LocationInSource.h"
+#include "galgas2/C_SourceTextInString.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -71,7 +68,7 @@ class GALGAS_location : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : C_LocationInSource mStartLocationInSource ;
   private : C_LocationInSource mEndLocationInSource ;
-  private : C_SourceTextInString * mSourceText ;
+  private : C_SourceTextInString mSourceText ;
   private : bool mIsValid ;
 
 //--------------------------------- Accessors
@@ -80,22 +77,15 @@ class GALGAS_location : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
   public : C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }
   public : C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }
-  public : C_SourceTextInString * sourceText (void) const { return mSourceText ; }
+  public : C_SourceTextInString sourceText (void) const { return mSourceText ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_location (void) ;
 
-//--------------------------------- Destructor (virtual in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_location (void) ;
-
-//--------------------------------- Handle copy
-  public : GALGAS_location (const GALGAS_location & inSource) ;
-  public : GALGAS_location & operator = (const GALGAS_location & inSource) ;
-
 //--------------------------------- Native constructor
   public : GALGAS_location (const C_LocationInSource & inStartLocationInSource,
                             const C_LocationInSource & inEndLocationInSource,
-                            C_SourceTextInString * inSourceText) ;
+                            const C_SourceTextInString & inSourceText) ;
 
 //-- Start of generic part --*
 

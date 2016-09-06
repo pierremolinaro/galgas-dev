@@ -73,14 +73,13 @@ class C_Scanner : public C_Compiler {
                                                    const int32_t inTemplateDelimiterArrayLength) ;
   
 //--- Token list
-  private : TC_UniqueArray <cToken *> mTokenArray ;
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
   protected : cToken * mCurrentTokenPtr ;
   protected : void enterTokenFromPointer (cToken * inToken) ;
   protected : int32_t mLastSeparatorIndex ;
   public : void appendLastSeparatorTo (C_String & ioString) const ;
-  public : void swapTokenArrayWith (TC_UniqueArray <cToken *> & ioTokenArray) ;
+  public : void swapTokenList (cToken * & ioFirstToken, cToken * & ioLastToken) ;
 
 //--- Syntax directed translation : accessing current token
   public : C_String preceedingSeparatorString (void) const ;
