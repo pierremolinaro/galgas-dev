@@ -1962,7 +1962,8 @@ static void generateFile (const C_String & inStartPath,
 //--- Current data
   const C_Data currentData = inContents.utf8Data () ;
 //--- File exists ?
-  const C_String fullPathName = C_FileManager::findFileInDirectory (inStartPath, inFileName, TC_UniqueArray <C_String> ()) ;
+  const TC_UniqueArray <C_String> directoriesToExclude ;
+  const C_String fullPathName = C_FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
   if (fullPathName.length () == 0) { // No, does not exist
     ok = writeFile ("Created", inStartPath + "/" + inFileName, currentData, inCompiler) ;
   }else{ //--- File exists: read it
