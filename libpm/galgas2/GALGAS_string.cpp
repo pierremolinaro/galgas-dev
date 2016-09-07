@@ -1917,6 +1917,20 @@ void GALGAS_string::class_method_generateFile (GALGAS_string inStartPath,
                                         inFileName.mString,
                                         inContents.mString) ;
   }
+  if (inStartPath.isValid () && inFileName.isValid () && inContents.isValid ()) {
+    bool ok = false ;
+    bool written = false ;
+    C_FileManager::updateFile (inStartPath.mString,
+                               TC_UniqueArray <C_String> (),
+                               inFileName.mString,
+                               inContents.mString,
+                               false,
+                               ok,
+                               written) ;
+    if (written) {
+      co << "WRITTEN '" << inFileName.mString << "'\n" ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

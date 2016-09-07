@@ -431,6 +431,23 @@ const char * C_String::cString (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+C_Data C_String::utf8Data (void) const {
+  C_Data result ;
+  if (NULL != mEmbeddedString) {
+    macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+    for (uint32_t i=0 ; i<mEmbeddedString->mLength ; i++) {
+      char buffer [5] ;
+      const int32_t n = UTF8StringFromUTF32Character (mEmbeddedString->mString [i], buffer) ;
+      for (int32_t j=0 ; j<n ; j++) {
+        result.appendByte ((uint8_t) buffer [j]) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const utf32 * C_String::utf32String (UNUSED_LOCATION_ARGS) const {
   const utf32 * result = kEmptyUTF32String ;
   if (NULL != mEmbeddedString) {
