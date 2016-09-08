@@ -173,9 +173,6 @@ class C_String : public AC_OutputStream {
 //--- Get a string pointer
   public : const char * cString (LOCATION_ARGS) const ;
 
-//--- Get a string pointer
-  public : C_Data utf8Data (void) const ;
-
 //--- Get a UTF32 string pointer
   public : const utf32 * utf32String (LOCATION_ARGS) const ;
 

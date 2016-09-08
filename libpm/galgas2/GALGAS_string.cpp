@@ -1960,7 +1960,7 @@ static void generateFile (const C_String & inStartPath,
                           C_Compiler * inCompiler) {
   bool ok = true ;
 //--- Current data
-  const C_Data currentData = inContents.utf8Data () ;
+  C_Data currentData ; currentData.appendString (inContents) ;
 //--- File exists ?
   const TC_UniqueArray <C_String> directoriesToExclude ;
   const C_String fullPathName = C_FileManager::findFileInDirectory (inStartPath, inFileName, directoriesToExclude) ;
