@@ -346,6 +346,8 @@ private proc projectGeneration
   let quietOutputByDefault = [@stringset.setWithLStringList {!inProjectComponentAST.mGenerationFeatureList} hasKey !"quietOutputByDefault"]
 #---------------------------------- Generate GUI components
   let productDirectory = inBuildDirectory + "/output"
+#  let cacheDirectory = inBuildDirectory + "/md5-cache"
+#  [cacheDirectory makeDirectory]
 #  message "*** Generate GUI\n" ;
   if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
@@ -370,6 +372,7 @@ private proc projectGeneration
   generateSemanticDeclarationsGalgas3 (
     !inTypeMap
     !productDirectory
+#    !cacheDirectory
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?toolHeaderFileList

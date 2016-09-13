@@ -60,20 +60,51 @@ override method @stringPredefinedTypeAST getClassMethodMap
 {
   outClassMethodMap = {}
   enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
-  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
-  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
-  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
+  enterClassMethodWithStringInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"deleteFileIfExists"
+    !"inFilePath"
+    !true
+  )
+  enterClassMethodWithStringInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"removeEmptyDirectory"
+    !"inDirectoryPath"
+    !true
+  )
+  enterClassMethodWithStringInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"removeDirectoryRecursively"
+    !"inDirectoryPath"
+    !true
+  )
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringType]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-proxy boolType]
-  var argList =@formalParameterSignature {}
+#--- Generate file
+  @formalParameterSignature argList = {}
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
   [!?outClassMethodMap insertOrReplace
-    !@lstring.new {!"generateFile" !@location.here}
+    !.new {!"generateFile" !.here}
     !argList
     !true
   ]
+#--- Generate file with cache
+#  argList = {}
+#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileDirectory"
+#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
+#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inCacheDirectory"
+#  [!?outClassMethodMap insertOrReplace
+#    !.new {!"generateFileWithCache" !.here}
+#    !argList
+#    !true
+#  ]
+#--- Generate file with pattern
   argList = {}
   argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
   argList += !["fileName" nowhere] !stringType !.argumentConstantIn !"inFileName"

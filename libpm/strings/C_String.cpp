@@ -938,7 +938,7 @@ C_String C_String::stringByReplacingCharacterByString (const utf32 inCharacter,
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_String::stringByReplacingStringByString (const C_String inSearchedString,
-                                                    const C_String & inReplacementString,
+                                                    const C_String inReplacementString,
                                                     uint32_t & outReplacementCount,
                                                     bool & outOk) const {
   C_String result ;
@@ -969,6 +969,15 @@ C_String C_String::stringByReplacingStringByString (const C_String inSearchedStr
     //printf ("RESULT STRING: '%s'\n", result.cString (HERE)) ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_String C_String::stringByReplacingStringByString (const C_String inSearchedString,
+                                                    const C_String inReplacementString) const {
+  uint32_t unusedReplacementCount = 0 ;
+  bool unusedOk = true ;
+  return stringByReplacingStringByString (inSearchedString, inReplacementString, unusedReplacementCount, unusedOk) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
