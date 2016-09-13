@@ -1141,6 +1141,28 @@ C_DateTime C_FileManager::fileModificationTime (const C_String & inFilePath) {
   return C_DateTime (modificationTime)  ;
 }
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Files Modification Time
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+uint64_t C_FileManager::fileSize (const C_String & inFilePath) {
+  uint64_t result = 0 ;
+  const C_String nativePath = nativePathWithUnixPath (inFilePath) ;
+  if (nativePath.length () > 0) {
+    struct stat fileProperties ;
+    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
+    if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
+      result = (uint64_t) fileProperties.st_size ;
+    }
+  }
+  return result ;
+}
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED

@@ -476,7 +476,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !mMapTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum.mapType
     !true # Support collection value
     !@typedPropertyList.emptyList

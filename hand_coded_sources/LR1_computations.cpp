@@ -1001,7 +1001,7 @@ class c_LR1_items_sets_collection {
 
 c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) :
 m_LR1_items_sets_array () {
-  m_LR1_items_sets_array.makeRoomUsingSwap (500) ;
+  m_LR1_items_sets_array.setCapacityUsingSwap (500) ;
   for (uint32_t i=0 ; i<kSlotCount ; i++) {
     mRoot [i] = (cLR1_items_sets_AVL_tree *) NULL ;
   }

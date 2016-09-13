@@ -87,7 +87,7 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
     if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
       getterFormalArgumentTypeList ={}
       hasCompilerArgument = true
-      returnedType = @unifiedTypeMap-proxy. null
+      returnedType = @unifiedTypeMap-proxy.null
       kind = @methodKind. definedAsMember
       for () in [receiverType mCurrentTypedAttributeList] do
         let @getterMap aMap = [mAttributeTypeProxy mGetterMap]

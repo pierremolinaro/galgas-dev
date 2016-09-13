@@ -175,7 +175,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !mListmapTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. arrayType
     !true # Support collection value
     !@typedPropertyList.emptyList

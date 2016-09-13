@@ -80,11 +80,6 @@ class @selfCopyInExpressionForGeneration : @semanticExpressionForGeneration {
 
 ##----------------------------------------------------------------------------------------------------------------------*
 
-#class @hereExpressionForGeneration : @semanticExpressionForGeneration {
-#}
-
-##----------------------------------------------------------------------------------------------------------------------*
-
 class @trueExpressionForGeneration : @semanticExpressionForGeneration {
 }
 

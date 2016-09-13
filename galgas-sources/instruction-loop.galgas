@@ -96,7 +96,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   [mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?variantExpression
@@ -111,7 +111,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   [mLoopExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?loopExpression

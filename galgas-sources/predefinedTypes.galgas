@@ -260,7 +260,7 @@ override method @predefinedTypeAST enterInSemanticContext
 #--- Enumeration
   @unifiedTypeMap-proxy enumeratedTypeProxy
   if enumeratedTypeName == "" then
-    enumeratedTypeProxy = @unifiedTypeMap-proxy. null
+    enumeratedTypeProxy = @unifiedTypeMap-proxy.null
   else
     [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !enumeratedTypeName ?enumeratedTypeProxy]
   end
@@ -280,7 +280,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !@lstring.new {!mPredefinedTypeName !@location.here}
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. predefinedType
     !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
     !@typedPropertyList.emptyList

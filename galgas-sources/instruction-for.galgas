@@ -338,7 +338,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   [mEnumeratedExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression

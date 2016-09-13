@@ -94,7 +94,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   [mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?variant_expression
@@ -109,7 +109,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   [mWhileExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?while_expression

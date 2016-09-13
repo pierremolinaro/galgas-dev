@@ -115,7 +115,7 @@ override method @classDeclarationAST enterInSemanticContext
   @unifiedTypeMap-proxy superClassIndex
   @bool generateHeaderInSeparateFile
   if [mSuperClassName string] == "" then
-    superClassIndex = @unifiedTypeMap-proxy. null
+    superClassIndex = @unifiedTypeMap-proxy.null
     commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
@@ -316,7 +316,7 @@ override method @classDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !generateHeaderInSeparateFile
-    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" + [mClassTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
@@ -350,7 +350,7 @@ override method @classDeclarationAST semanticAnalysis
   @unifiedTypeMap-proxy superClassProxy
   @typedPropertyList allAttributeList
   if [mSuperClassName string] == "" then
-    superClassProxy = @unifiedTypeMap-proxy. null
+    superClassProxy = @unifiedTypeMap-proxy.null
     allAttributeList = @typedPropertyList.emptyList
     @bool generatedInSeparateFileFeature = false
     if [mClassFeatureList length] > 0 then

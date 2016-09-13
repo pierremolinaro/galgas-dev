@@ -535,7 +535,7 @@ class c_LR0_items_sets_collection {
 c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
 m_LR0_items_sets_array (),
 mRoot (NULL) {
-  m_LR0_items_sets_array.makeRoomUsingSwap (500) ;
+  m_LR0_items_sets_array.setCapacityUsingSwap (500) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

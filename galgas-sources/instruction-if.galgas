@@ -89,7 +89,7 @@ syntax extension galgas3InstructionsSyntax {
     [m_if_expression analyzeSemanticExpression
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
-      !@unifiedTypeMap-proxy. null
+      !@unifiedTypeMap-proxy.null
       !inAnalysisContext
       !?ioVariableMap
       ?let analyzed_if_expression
