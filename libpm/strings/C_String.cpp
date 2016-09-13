@@ -1539,7 +1539,12 @@ C_String C_String::lastPathComponentWithoutExtension (void) const {
 C_String C_String::md5 (void) const {
   C_String result ;
   uint8_t digest [16] ;
-  ::md5 ((uint8_t *) cString (HERE), (uint32_t) length (), digest);
+  MD5_CTX context ;
+  MD5_Init (&context) ;
+  MD5_Update(&context, (uint8_t *) cString (HERE), (uint32_t) length ()) ;
+  MD5_Final (digest, &context);
+
+//  ::md5 ((uint8_t *) cString (HERE), (uint32_t) length (), digest);
   char s [10] ;
   for (uint32_t i=0 ; i<16 ; i++) {
     sprintf (s, "%02X", digest [i]) ;

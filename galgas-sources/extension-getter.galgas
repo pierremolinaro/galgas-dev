@@ -166,7 +166,7 @@ override method @extensionGetterAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null}
   @unifiedTypeMap-proxy returnType
   @string returnVariableCppName
   @formalInputParameterListForGeneration formalParameterListForGeneration

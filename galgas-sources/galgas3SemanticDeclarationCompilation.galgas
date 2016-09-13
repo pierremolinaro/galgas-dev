@@ -481,6 +481,40 @@ private func %once definitionGroupAmount -> @uint outResult {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#private proc generateFile
+#  ?let @string inProductDirectory
+#  ?let @string inFileName
+#  ?let @string inContents
+#{
+#  let md5CacheDirectory = inProductDirectory + "/../md5-cache"
+#  [md5CacheDirectory makeDirectory]
+#  let cacheFile = md5CacheDirectory + "/" + inFileName + ".txt"
+##--- Cache file exist ?
+#  var needsToWriteFile = not [cacheFile fileExists]
+##--- If yes, check contents of cache file
+#  let contents_md5 = [inContents md5]
+#  if not needsToWriteFile then
+#    let cacheFileContents = @string.stringWithContentsOfFile {!cacheFile}
+#    needsToWriteFile = cacheFileContents != contents_md5
+#  end
+##--- Write file if needed
+#  if needsToWriteFile then
+#    [@string generateFile
+#      !inProductDirectory
+#      !inFileName
+#      !inContents
+#    ]
+#  #--- Write cache file
+#    [@string generateFile
+#      !md5CacheDirectory
+#      !inFileName + ".txt"
+#      !contents_md5
+#    ]
+#  end
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
@@ -513,6 +547,7 @@ private proc generateFewImplementationFiles
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
+#        generateFile (!inProductDirectory !fileName !header + implementationString)
         [@string generateFile
           !inProductDirectory
           !fileName
@@ -536,6 +571,7 @@ private proc generateFewImplementationFiles
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
+#    generateFile (!inProductDirectory !fileName !header + implementationString)
     [@string generateFile
       !inProductDirectory
       !fileName
@@ -614,6 +650,7 @@ private proc generateFewImplementationFilesWithFewHeaders
         let fileName = "all-declarations-" + fileIdx + ".cpp"
         ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
         ioAllProductFileSet += !fileName
+#        generateFile (!inProductDirectory !fileName !cppHeader + implementationString)
         [@string generateFile
           !inProductDirectory
           !fileName
@@ -626,6 +663,7 @@ private proc generateFewImplementationFilesWithFewHeaders
           !headerFileName
           !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
         ]
+#        generateFile (!inProductDirectory !headerFileName + ".h" !startOfHeader + headerString + "#endif\n")
         [@string generateFile
           !inProductDirectory
           !headerFileName + ".h"
@@ -651,6 +689,7 @@ private proc generateFewImplementationFilesWithFewHeaders
     let fileName = "all-declarations-" + fileIdx + ".cpp"
     ioToolProductFileList = @stringlist {!fileName} + ioToolProductFileList
     ioAllProductFileSet += !fileName
+#    generateFile (!inProductDirectory !fileName !header + implementationString)
     [@string generateFile
       !inProductDirectory
       !fileName
@@ -663,6 +702,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       !headerFileName
       !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
     ]
+#    generateFile (!inProductDirectory !headerFileName + ".h" !startOfHeader + headerString + "#endif\n")
     [@string generateFile
       !inProductDirectory
       !headerFileName + ".h"
@@ -676,6 +716,7 @@ private proc generateFewImplementationFilesWithFewHeaders
     !"all-declarations"
     !{!"all-declarations-" + fileIdx}
   ]
+#  generateFile (!inProductDirectory !"all-declarations.h" !startOfAllDeclarationsHeader + "#endif\n")
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
@@ -719,6 +760,7 @@ private proc generateManyImplementationFiles
       implementationString += [mDeclaration appendTypeGenericImplementation]
       let fileName = [mDeclaration implementationCppFileName] + ".cpp"
       ioAllProductFileSet += !fileName
+#      generateFile (!inProductDirectory !fileName !header + implementationString)
       [@string generateFile
         !inProductDirectory
         !fileName

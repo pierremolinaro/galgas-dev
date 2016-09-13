@@ -122,7 +122,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Enumeration by "for" instruction
   @unifiedTypeMap-proxy enumeratedType
   if mEnumeratedElementTypeName == "" then
-    enumeratedType = @unifiedTypeMap-proxy. null
+    enumeratedType = @unifiedTypeMap-proxy.null
   else
    [@unifiedTypeMap-proxy makeProxyFromString
      !?ioSemanticContext.mTypeMap
@@ -142,7 +142,7 @@ override method @structDeclarationAST enterInSemanticContext
     !mStructTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. structType
     !false # Does not support collection value
     !typedAttributeList

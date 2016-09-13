@@ -392,7 +392,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !mGraphTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. graphType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
@@ -412,7 +412,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" + [mGraphTypeName fileNameRepresentation]
     !@headerKind.oneHeader

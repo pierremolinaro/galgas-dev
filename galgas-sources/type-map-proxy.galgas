@@ -186,7 +186,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !mMapProxyTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. mapProxyType
     !false # Does not support collection value
     !mapTypedAttributeList #[@typedPropertyList emptyList]
@@ -206,7 +206,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !searchMethodList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapproxy-" + [mMapProxyTypeName fileNameRepresentation]
     !@headerKind.oneHeader

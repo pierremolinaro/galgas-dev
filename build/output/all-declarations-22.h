@@ -11,6 +11,17 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                     Function 'syntaxSignatureOfInstructionList'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GALGAS_string & constinArgument0,
+                                                                                             const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
+                                                                                             class C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                      Routine 'recursivlyEnumerateRegularFile'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -328,61 +339,5 @@ void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
                                          const class GALGAS_string constinArgument1,
                                          class C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'appendPredefined2StringListTypeAST'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendPredefined_32_StringListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                    class GALGAS_lstringlist & ioArgument1,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'appendPredefined2LStringListTypeAST'                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendPredefined_32_LStringListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                     class GALGAS_lstringlist & ioArgument1,
-                                                     class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'appendStructASTForTypeWithLocation'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendStructASTForTypeWithLocation (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                                 const class GALGAS_string constinArgument1,
-                                                 class GALGAS_lstringlist & ioArgument2,
-                                                 class C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'appendStructASTForRangeType'                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendStructASTForRangeType (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                          class GALGAS_lstringlist & ioArgument1,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         Routine 'appendPredefinedTypesASTs'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendPredefinedTypesASTs (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                        class GALGAS_lstringlist & ioArgument1,
-                                        class C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
 
 #endif

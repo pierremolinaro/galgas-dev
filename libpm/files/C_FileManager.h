@@ -117,6 +117,9 @@ class C_FileManager {
 
 //--- File modification time
   public : static C_DateTime fileModificationTime (const C_String & inFilePath) ;
+
+//--- File size
+  public : static uint64_t fileSize (const C_String & inFilePath) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

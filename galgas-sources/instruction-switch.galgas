@@ -144,7 +144,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   [mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?switchExpression

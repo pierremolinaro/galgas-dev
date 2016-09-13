@@ -184,7 +184,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !mEnumTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. enumType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
@@ -204,7 +204,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
     !"enum-" + [mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end

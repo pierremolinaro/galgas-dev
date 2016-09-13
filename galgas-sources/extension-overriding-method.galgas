@@ -125,7 +125,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null}
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph

@@ -211,7 +211,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration receiverExpression
@@ -231,7 +231,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression
@@ -306,7 +306,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration keyExpression

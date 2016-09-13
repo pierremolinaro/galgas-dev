@@ -303,9 +303,9 @@ override method @procDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null}
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -435,9 +435,9 @@ override method @functionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null}
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -491,9 +491,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy. null}
+    !@unifiedTypeMap-proxy.null}
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph

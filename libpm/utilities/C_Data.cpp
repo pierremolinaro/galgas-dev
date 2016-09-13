@@ -55,7 +55,7 @@ C_Data::~C_Data (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Data::setCapacity (const int32_t inNewCapacity) {
-  mBinaryData.makeRoom (inNewCapacity) ;
+  mBinaryData.setCapacity (inNewCapacity) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

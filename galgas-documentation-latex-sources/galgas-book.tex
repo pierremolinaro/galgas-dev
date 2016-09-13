@@ -427,6 +427,22 @@
 
 \newcommand\optionGGS[1]{\colorbox{gray!10}{\small\bf\textbf{#1}}}
 
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   Titre des tableaux et des figures                                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Par défaut, le séparateur est « : », sans espace le précédent ; on obtient ainsi: « Figure 1.1: titre »
+% La définition ci-dessous fixe le séparateur à un trait d'union long : « Figure 1.1 — titre »
+% Ceci s'applique aux tableaux et aux figures
+
+\DeclareCaptionLabelSeparator{bar}{ -- }
+\captionsetup{
+  labelsep=bar
+}
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   D É B U T    D U    D O C U M E N T                                                                                 *

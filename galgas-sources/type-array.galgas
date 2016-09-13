@@ -173,7 +173,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !mArrayTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy. null
+    !@unifiedTypeMap-proxy.null
     !@typeKindEnum. listMapType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
@@ -193,7 +193,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
-    !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" + [mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
