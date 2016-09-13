@@ -201,9 +201,12 @@ class C_String : public AC_OutputStream {
 
 //--- Substitute 'inSearchedString' by 'inReplacementString'
   public : C_String stringByReplacingStringByString (const C_String inSearchedString,
-                                                     const C_String & inReplacementString,
+                                                     const C_String inReplacementString,
                                                      uint32_t & outReplacementCount,
                                                      bool & outOk) const ;
+
+  public : C_String stringByReplacingStringByString (const C_String inSearchedString,
+                                                     const C_String inReplacementString) const ;
 
 //--- Get character last occurrence (returns -1 if not found)
   public : int32_t lastOccurrenceIndexOfChar (const utf32 inChar) const ;
