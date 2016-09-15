@@ -2803,7 +2803,7 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
 //                           Template Delimiters                                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
+static const cTemplateDelimiter galgasTemplateScanner_kTemplateDefinitionArray [1] = {
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__25_, 1, kUnicodeString_galgasTemplateScanner__25_, 1, NULL, true)
 } ;
 
@@ -2811,7 +2811,7 @@ static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
 //                           Template Replacements                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cTemplateDelimiter kTemplateReplacementArray [3] = {
+static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray [3] = {
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__25_, 2, kUnicodeString_galgasTemplateScanner__25_, 1, NULL, true),
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C_n, 2, kUnicodeString_galgasTemplateScanner__A_, 1, NULL, true),
   cTemplateDelimiter (kUnicodeString_galgasTemplateScanner__5C__5C_, 2, kUnicodeString_galgasTemplateScanner__5C_, 1, NULL, true)
@@ -2821,7 +2821,7 @@ static const cTemplateDelimiter kTemplateReplacementArray [3] = {
 //            Terminal Symbols as end of script in template mark                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const bool kEndOfScriptInTemplateArray [144] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [144] = {
   false /* identifier */,
   false /* @type */,
   false /* double.xxx */,
@@ -2979,10 +2979,10 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
     if ((mMatchedTemplateDelimiterIndex >= 0)
-     && (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
+     && (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
      && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-      const bool foundEndDelimitor = testForInputUTF32String (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
-                                                              kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
+      const bool foundEndDelimitor = testForInputUTF32String (galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
+                                                              galgasTemplateScanner_kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
                                                               true) ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
@@ -2991,23 +2991,23 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, 3) ;
+        replacementIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateReplacementArray, 3) ;
         if (replacementIndex >= 0) {
-          if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
-            token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
+          if (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
+            token.mTemplateStringBeforeToken << galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString ;
           }else{
             C_String s ;
-            while (notTestForInputUTF32String (kTemplateReplacementArray [replacementIndex].mEndString,
-                                               kTemplateReplacementArray [replacementIndex].mEndStringLength,
+            while (notTestForInputUTF32String (galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndString,
+                                               galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mEndStringLength,
                                                kEndOfSourceLexicalErrorMessage
                                                COMMA_HERE)) {
               s.appendUnicodeCharacter (previousChar () COMMA_HERE) ;
             }
-            kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
+            galgasTemplateScanner_kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
           }
         }
       }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, 1) ;
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (galgasTemplateScanner_kTemplateDefinitionArray, 1) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
         advance () ;
@@ -3687,7 +3687,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
       advance () ; // ... go throught unknown character
     }
     }
-    if ((token.mTokenCode > 0) && kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
+    if ((token.mTokenCode > 0) && galgasTemplateScanner_kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
       mMatchedTemplateDelimiterIndex = -1 ;
     }
   
