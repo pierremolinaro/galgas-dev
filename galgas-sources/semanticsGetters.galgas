@@ -554,6 +554,20 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"isDoubleNumber"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"doubleNumber"
+    !returnedTypeName:"double"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"isDecimalUnsignedNumber"
     !returnedTypeName:"bool"
     !false

@@ -699,15 +699,6 @@ private proc generateFewImplementationFilesWithFewHeaders
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @declarationIndexMap {
-  @uint mIndex
-  insert insertKey error message "the '%K' key is already declared in %L"
-  search searchKey error message "there is no '%K' key"
-
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
