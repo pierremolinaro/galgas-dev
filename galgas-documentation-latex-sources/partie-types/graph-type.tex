@@ -56,7 +56,7 @@ constructor emptyGraph -> @self
 \ggs+emptyGraph+ est le seul constructeur d'un graphe. Il instancie un graphe vide.
 
 \begin{galgas}
-var gr = [@monGraphe emptyGraph] 
+var gr = @monGraphe.emptyGraph 
 \end{galgas}
 
 
@@ -103,7 +103,7 @@ Ainsi, le setter d'insertion \ggs+addNode+ du type de graphe \ggs+@monGraphe+ po
 Il est par exemple appelé comme suit :
 \begin{galgas}
 var @lstring lstr = ... 
-var gr = [@monGraphe emptyGraph] 
+var gr = @monGraphe.emptyGraph 
 [!?gr addNode !lstr !0 !"xyz"] 
 \end{galgas}
 

@@ -1682,6 +1682,11 @@ void C_Lexique::signalLexicalErrorInLatexOutput (void) {
 
 void C_Lexique::generateLatexFile (void) {
   const C_String latexFilePath = sourceText ().sourceFilePath () + ".tex" ;
+//--- Suppress last '\newline'
+  const C_String newLine = "\\newline\n" ;
+  if (mLatexOutputString.endsWithString (newLine)) {
+    mLatexOutputString = mLatexOutputString.subString (0, mLatexOutputString.length () - newLine.length ()) ;
+  }
   C_FileManager::writeStringToFile (mLatexOutputString, latexFilePath) ;
 }
 

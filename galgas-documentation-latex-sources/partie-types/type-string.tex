@@ -530,6 +530,77 @@ Retourne \ggs!true! si la valeur du récepteur nomme une variable d'environnemen
 
 
 
+\subsectionGetter{doubleNumber}{double}
+
+\begin{galgasbox}
+getter doubleNumber -> @double
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier non signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDoubleNumber}.
+
+%Un nombre flottant doit obéir à la syntaxe suivante :
+%
+%{
+%  \tikzset{
+%    nonterminal/.style={
+%      % The shape:
+%      rectangle,
+%      % The size:
+%      minimum size=6mm,
+%      % The border:
+%      very thick,
+%      draw=red!50!black!50,         % 50% red and 50% black,
+%                                    % and that mixed with 50% white
+%      % The filling:
+%      top color=white,              % a shading that is white at the top...
+%      bottom color=red!50!black!20, % and something else at the bottom
+%      % Font
+%      font=\itshape\scriptsize
+%    },
+%    terminal/.style={
+%      % The shape:
+%      rounded rectangle,
+%      minimum size=6mm,
+%      % The rest
+%      very thick,draw=black!50,
+%      top color=white,bottom color=black!20,
+%      font=\ttfamily\scriptsize
+%    },
+%    firstPoint/.style={circle,>=stealth',thick,draw=black!50},
+%    point/.style={coordinate,>=stealth',thick,draw=black!50},
+%    tip/.style={->,shorten >=0.007pt},
+%    lastPoint/.style={rectangle,>=stealth',thick,draw=black!50},
+%    every join/.style={rounded corners}
+%  }
+%  \begin{tikzpicture}
+%    \matrix[column sep=1.5mm, row sep=1mm] {
+%      & & & \node (p2-3) [terminal] {+}; &  \\
+%      & & & \node (p1-3) [terminal] {-}; & & & & & \node (p1-9) [terminal] {:>}; & \node (p1-10) [nonterminal] {syntax\_directed\_translation\_result}; & \\
+%      \node (P0start) [firstPoint] {}; & \node (p0-2) [point] {}; & \node (p0-3) [point] {}; & & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {chiffre}; & \node (p0-7) [nonterminal] {actual\_parameter\_list}; & \node (p0-8) [point] {}; & \node (p0-9) [point] {}; & & \node (p0-11) [point] {}; & \node (p0-12) [lastPoint] {}; & \\
+%    };
+%    \draw (P0start) -- (p0-3) ;
+%    \draw[->] (p0-2) |- (p1-3) ;
+%    \draw[->] (p0-2) |- (p2-3) ;
+%    \draw (p0-3) -- (p0-5) ;
+%    \draw[->] (p1-3) -| (p0-5) ;
+%    \draw[->] (p2-3) -| (p0-5) ;
+%    \draw[->] (p0-5) -- (p0-6) ;
+%    \draw[->] (p0-6) -- (p0-7) ;
+%    \draw (p0-7) -- (p0-9) ;
+%    \draw[->] (p0-8) |- (p1-9) ;
+%    \draw[->] (p1-9) -- (p1-10) ;
+%    \draw (p0-9) -- (p0-11) ;
+%    \draw[->] (p1-10) -| (p0-11) ;
+%    \draw[->] (p0-11) -- (p0-12) ;
+%  \end{tikzpicture}
+%}
+
+
+
+
+
 \subsectionGetter{fileExists}{string}
 
 \begin{galgasbox}
@@ -682,6 +753,19 @@ getter isDecimalUnsignedNumber -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur représente un entier non signé sur 32 bits, c'est-à-dire si le \refGetterPage{string}{decimalUnsignedNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDoubleNumber}{string}
+
+\begin{galgasbox}
+getter isDoubleNumber -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un nombre flottant, c'est-à-dire si le \refGetterPage{string}{doubleNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
 
 
 
