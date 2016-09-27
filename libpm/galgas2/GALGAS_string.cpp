@@ -1283,6 +1283,37 @@ GALGAS_uint GALGAS_string::getter_decimalUnsignedNumber (C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_string::getter_isDecimalUnsigned_36__34_Number (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    uint64_t r = 0 ;
+    bool ok = false ;
+    mString.convertToUInt64 (r, ok) ;
+    result = GALGAS_bool (ok) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_ GALGAS_string::getter_decimalUnsigned_36__34_Number (C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_uint_36__34_ result ;
+  if (isValid ()) {
+    uint64_t r = 0 ;
+    bool ok = false ;
+    mString.convertToUInt64 (r, ok) ;
+    if (ok) {
+      result = GALGAS_uint_36__34_ (r) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @uint64 number" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_bool GALGAS_string::getter_isDecimalSignedNumber (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
@@ -1307,6 +1338,37 @@ GALGAS_sint GALGAS_string::getter_decimalSignedNumber (C_Compiler * inCompiler
       result = GALGAS_sint (r) ;
     }else{
       inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @sint number" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_string::getter_isDecimalSigned_36__34_Number (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    int64_t r = 0 ;
+    bool ok = false ;
+    mString.convertToSInt64 (r, ok) ;
+    result = GALGAS_bool (ok) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint_36__34_ GALGAS_string::getter_decimalSigned_36__34_Number (C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
+  GALGAS_sint_36__34_ result ;
+  if (isValid ()) {
+    int64_t r = 0 ;
+    bool ok = false ;
+    mString.convertToSInt64 (r, ok) ;
+    if (ok) {
+      result = GALGAS_sint_36__34_ (r) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @sint64 number" COMMA_THERE) ;
     }
   }
   return result ;
