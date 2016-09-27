@@ -1255,12 +1255,10 @@ GALGAS_uint GALGAS_string::getter_capacity (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (isValid ()) {
-    bool isDecimalUnsignedNumber = true ;
-    for (int32_t i=0 ; (i<mString.length ()) && isDecimalUnsignedNumber ; i++) {
-      const utf32 c = mString (i COMMA_HERE) ;
-      isDecimalUnsignedNumber = (UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9') ;
-    }
-    result = GALGAS_bool (isDecimalUnsignedNumber) ;
+    uint32_t r = 0 ;
+    bool ok = false ;
+    mString.convertToUInt32 (r, ok) ;
+    result = GALGAS_bool (ok) ;
   }
   return result ;
 }
@@ -1269,32 +1267,47 @@ GALGAS_bool GALGAS_string::getter_isDecimalUnsignedNumber (UNUSED_LOCATION_ARGS)
 
 GALGAS_uint GALGAS_string::getter_decimalUnsignedNumber (C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  uint32_t decimalUnsignedValue = 0 ;
-  bool ok = true ;
+  GALGAS_uint result ;
   if (isValid ()) {
-    const uint32_t max = UINT32_MAX / 10 ;
-    for (int32_t i=0 ; (i<mString.length ()) && ok ; i++) {
-      const utf32 c = mString (i COMMA_HERE) ;
-      if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
-        inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal number: it contains a non-digit character" COMMA_THERE) ;
-        ok = false ;
-      }else{
-        const uint32_t digit = UNICODE_VALUE (c) - '0' ;
-        if (decimalUnsignedValue > max) {
-          inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal number: number is > 2**32 - 1" COMMA_THERE) ;
-          ok = false ;
-        }else if ((decimalUnsignedValue == max) && (digit > (UINT32_MAX % 10))) {
-          inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal number: number is > 2**32 - 1" COMMA_THERE) ;
-          ok = false ;
-        }else{
-          decimalUnsignedValue = decimalUnsignedValue * 10 + digit ;
-        }
-      }
+    uint32_t r = 0 ;
+    bool ok = false ;
+    mString.convertToUInt32 (r, ok) ;
+    if (ok) {
+      result = GALGAS_uint (r) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @uint number" COMMA_THERE) ;
     }
   }
-  GALGAS_uint result ;
-  if (ok) {
-    result = GALGAS_uint (decimalUnsignedValue) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_string::getter_isDecimalSignedNumber (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    int32_t r = 0 ;
+    bool ok = false ;
+    mString.convertToSInt32 (r, ok) ;
+    result = GALGAS_bool (ok) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sint GALGAS_string::getter_decimalSignedNumber (C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) const {
+  GALGAS_sint result ;
+  if (isValid ()) {
+    int32_t r = 0 ;
+    bool ok = false ;
+    mString.convertToSInt32 (r, ok) ;
+    if (ok) {
+      result = GALGAS_sint (r) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @sint number" COMMA_THERE) ;
+    }
   }
   return result ;
 }
