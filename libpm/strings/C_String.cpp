@@ -1213,11 +1213,27 @@ void C_String::convertToUInt32 (uint32_t & outResult,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void C_String::convertToUInt64 (uint64_t & outResult,
+                                bool & outOk) const {
+  outResult = 0 ;
+  outOk = length () > 0 ;
+  int32_t idx = 0 ;
+  while ((idx < length ()) && outOk) {
+    const utf32 c = (*this) (idx COMMA_HERE) ;
+    idx ++ ;
+    const uint64_t r = outResult ;
+    outResult = outResult * 10 + (UNICODE_VALUE (c) - '0') ;
+    outOk = r < outResult ;
+  }
+  if (outOk) {
+    outOk = idx == length () ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void C_String::convertToSInt32 (int32_t & outResult,
                                 bool & outOk) const {
-  uint32_t decimalUnsignedValue = 0 ;
-  outOk = length () > 0 ;
-  const uint32_t max = UINT32_MAX / 10 ;
   bool isPositive = true ;
   int32_t idx = 0 ;
   if (length () > 0) {
@@ -1229,21 +1245,14 @@ void C_String::convertToSInt32 (int32_t & outResult,
       idx = 1 ;
     }
   }
+  uint32_t decimalUnsignedValue = 0 ;
+  outOk = length () > 0 ;
   while ((idx < length ()) && outOk) {
     const utf32 c = (*this) (idx COMMA_HERE) ;
     idx ++ ;
-    if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
-      outOk = false ;
-    }else{
-      const uint32_t digit = UNICODE_VALUE (c) - '0' ;
-      if (decimalUnsignedValue > max) {
-        outOk = false ;
-      }else if ((decimalUnsignedValue == max) && (digit > (UINT32_MAX % 10))) {
-        outOk = false ;
-      }else{
-        decimalUnsignedValue = decimalUnsignedValue * 10 + digit ;
-      }
-    }
+    const uint32_t r = decimalUnsignedValue ;
+    decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
+    outOk = r < decimalUnsignedValue ;
   }
   if (outOk) {
     outOk = idx == length () ;
@@ -1258,6 +1267,48 @@ void C_String::convertToSInt32 (int32_t & outResult,
       outOk = decimalUnsignedValue <= ((uint32_t) INT32_MAX) + 1 ;
       if (outOk) {
         outResult = - (int32_t) decimalUnsignedValue ;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void C_String::convertToSInt64 (int64_t & outResult,
+                                bool & outOk) const {
+  bool isPositive = true ;
+  int32_t idx = 0 ;
+  if (length () > 0) {
+    const utf32 c = (*this) (0 COMMA_HERE) ;
+    if (UNICODE_VALUE (c) == '-') {
+      isPositive = false ;
+      idx = 1 ;
+    }else if (UNICODE_VALUE (c) == '+') {
+      idx = 1 ;
+    }
+  }
+  uint64_t decimalUnsignedValue = 0 ;
+  outOk = length () > 0 ;
+  while ((idx < length ()) && outOk) {
+    const utf32 c = (*this) (idx COMMA_HERE) ;
+    idx ++ ;
+    const uint64_t r = decimalUnsignedValue ;
+    decimalUnsignedValue = decimalUnsignedValue * 10 + (UNICODE_VALUE (c) - '0') ;
+    outOk = r < decimalUnsignedValue ;
+  }
+  if (outOk) {
+    outOk = idx == length () ;
+  }
+  if (outOk) {
+    if (isPositive) {
+      outOk = decimalUnsignedValue <= (uint64_t) INT64_MAX ;
+      if (outOk) {
+        outResult = (int64_t) decimalUnsignedValue ;
+      }
+    }else{
+      outOk = decimalUnsignedValue <= ((uint64_t) INT64_MAX) + 1 ;
+      if (outOk) {
+        outResult = - (int64_t) decimalUnsignedValue ;
       }
     }
   }

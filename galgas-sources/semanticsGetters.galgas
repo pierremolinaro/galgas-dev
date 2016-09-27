@@ -561,6 +561,20 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"decimalUnsigned64Number"
+    !returnedTypeName:"uint64"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isDecimalUnsigned64Number"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"decimalSignedNumber"
     !returnedTypeName:"sint"
     !true
@@ -569,6 +583,20 @@ override method @stringPredefinedTypeAST getGetterMap
     !?outMap
     !?ioUnifiedTypeMap
     !"isDecimalSignedNumber"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"decimalSigned64Number"
+    !returnedTypeName:"sint64"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isDecimalSigned64Number"
     !returnedTypeName:"bool"
     !false
   )

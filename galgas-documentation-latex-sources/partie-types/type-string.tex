@@ -433,9 +433,25 @@ Retourne l'indice de la colonne, c'est-à-dire :
 getter decimalSignedNumber -> @sint
 \end{galgasbox}
 
-Retourne la valeur du récepteur convertie en entier signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un « + » ou un « - ». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+Retourne la valeur du récepteur convertie en entier signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
 
 La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSignedNumber}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalSigned64Number}{string}
+
+\begin{galgasbox}
+getter decimalSigned64Number -> @sint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSigned64Number}.
 
 
 
@@ -449,9 +465,25 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 getter decimalUnsignedNumber -> @uint
 \end{galgasbox}
 
-Retourne la valeur du récepteur convertie en entier non signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+Retourne la valeur du récepteur convertie en entier non signé 32 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
 
 La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalUnsignedNumber}.
+
+
+
+
+
+
+
+\subsectionGetter{decimalUnsigned64Number}{string}
+
+\begin{galgasbox}
+getter decimalUnsignedNumber -> @uint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier non signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalUnsigned64Number}.
 
 
 
@@ -775,6 +807,19 @@ Ce \emph{getter} permet de savoir si le récepteur représente un entier signé 
 
 
 
+\subsectionGetter{isDecimalSigned64Number}{string}
+
+\begin{galgasbox}
+getter isDecimalSigned64Number -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier signé sur 64 bits, c'est-à-dire si le \refGetterPage{string}{decimalSigned64Number} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
 \subsectionGetter{isDecimalUnsignedNumber}{string}
 
 \begin{galgasbox}
@@ -782,6 +827,19 @@ getter isDecimalUnsignedNumber -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur représente un entier non signé sur 32 bits, c'est-à-dire si le \refGetterPage{string}{decimalUnsignedNumber} peut être appelé sans qu'une erreur d'exécution se déclenche.
+
+
+
+
+
+
+\subsectionGetter{isDecimalUnsigned64Number}{string}
+
+\begin{galgasbox}
+getter isDecimalUnsigned64Number -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier non signé sur 64 bits, c'est-à-dire si le \refGetterPage{string}{decimalUnsigned64Number} peut être appelé sans qu'une erreur d'exécution se déclenche.
 
 
 
