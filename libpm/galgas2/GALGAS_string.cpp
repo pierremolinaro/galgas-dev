@@ -1376,6 +1376,47 @@ GALGAS_sint_36__34_ GALGAS_string::getter_decimalSigned_36__34_Number (C_Compile
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_string::getter_isDecimalSignedBigInt (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    bool ok = mString.length () > 0 ;
+  //--- Sign
+    int32_t idx = 0 ;
+    if (ok) {
+      const utf32 c = mString (0 COMMA_HERE) ;
+      if ((UNICODE_VALUE (c) == '+') || (UNICODE_VALUE (c) == '-')) {
+        idx = 1 ;
+      }
+    }
+    while ((idx < mString.length ()) && ok) {
+      const utf32 c = mString (idx COMMA_HERE) ;
+      idx ++ ;
+      ok = (UNICODE_VALUE (c) >= '0') || (UNICODE_VALUE (c) <= '9') ;
+    }
+    result = GALGAS_bool (ok) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigint GALGAS_string::getter_decimalSignedBigInt (C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  GALGAS_bigint result ;
+  if (isValid ()) {
+    bool ok = false ;
+    C_BigInt bigint (mString.cString (HERE), 10, ok) ;
+    if (ok) {
+      result = GALGAS_bigint (bigint) ;
+    }else{
+      inCompiler->onTheFlyRunTimeError ("cannot convert a string to a decimal @bigint number" COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_string::getter_doubleNumber (C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   GALGAS_double result ;

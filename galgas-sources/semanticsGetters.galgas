@@ -603,6 +603,20 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"decimalSignedBigInt"
+    !returnedTypeName:"bigint"
+    !true
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"isDecimalSignedBigInt"
+    !returnedTypeName:"bool"
+    !false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"isDoubleNumber"
     !returnedTypeName:"bool"
     !false
