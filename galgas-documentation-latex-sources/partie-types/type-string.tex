@@ -427,6 +427,22 @@ Retourne l'indice de la colonne, c'est-à-dire :
 
 
 
+\subsectionGetter{decimalSignedBigInt}{string}
+
+\begin{galgasbox}
+getter decimalSignedBigInt -> @bigint
+\end{galgasbox}
+
+Retourne la valeur du récepteur convertie en entier signé. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
+
+La valeur du récepteur peut être testée en appelant le \refGetterPage{string}{isDecimalSignedBigInt}.
+
+
+
+
+
+
+
 \subsectionGetter{decimalSignedNumber}{string}
 
 \begin{galgasbox}
@@ -788,6 +804,19 @@ Voir aussi le \refGetterPage{string}{nameRepresentation} qui laisse inchangé un
 
 
 Pour reconstituer la chaîne d'origine, appeler le \refGetterPage{string}{decodedStringFromRepresentation}.
+
+
+
+
+
+
+\subsectionGetter{isDecimalSignedBigInt}{string}
+
+\begin{galgasbox}
+getter isDecimalSignedBigInt -> @bool
+\end{galgasbox}
+
+Ce \emph{getter} permet de savoir si le récepteur représente un entier signé, c'est-à-dire si le \refGetterPage{string}{decimalSignedBigInt} peut être appelé sans qu'une erreur d'exécution se déclenche.
 
 
 

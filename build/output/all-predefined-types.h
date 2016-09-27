@@ -394,6 +394,9 @@ class GALGAS_string : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG class GALGAS_sint_36__34_ getter_decimalSigned_36__34_Number (C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_bigint getter_decimalSignedBigInt (C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_sint getter_decimalSignedNumber (C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -435,6 +438,8 @@ class GALGAS_string : public AC_GALGAS_root
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_identifierRepresentation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDecimalSigned_36__34_Number (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDecimalSignedBigInt (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isDecimalSignedNumber (LOCATION_ARGS) const ;
 
