@@ -8947,9 +8947,9 @@ void GALGAS_headerCompositionMap::method_searchKey (GALGAS_lstring inKey,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   const cMapElement_headerCompositionMap * p = (const cMapElement_headerCompositionMap *) performSearch (inKey,
-                                                                                                           inCompiler,
-                                                                                                           kSearchErrorMessage_headerCompositionMap_searchKey
-                                                                                                           COMMA_THERE) ;
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_headerCompositionMap_searchKey
+                                                                                                         COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -9244,9 +9244,9 @@ void GALGAS_headerRepartitionMap::method_searchKey (GALGAS_lstring inKey,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   const cMapElement_headerRepartitionMap * p = (const cMapElement_headerRepartitionMap *) performSearch (inKey,
-                                                                                                           inCompiler,
-                                                                                                           kSearchErrorMessage_headerRepartitionMap_searchKey
-                                                                                                           COMMA_THERE) ;
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_headerRepartitionMap_searchKey
+                                                                                                         COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
   }else{
@@ -9502,9 +9502,9 @@ void GALGAS_projectQualifiedFeatureMap::method_searchKey (GALGAS_lstring inKey,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const {
   const cMapElement_projectQualifiedFeatureMap * p = (const cMapElement_projectQualifiedFeatureMap *) performSearch (inKey,
-                                                                                                                       inCompiler,
-                                                                                                                       kSearchErrorMessage_projectQualifiedFeatureMap_searchKey
-                                                                                                                       COMMA_THERE) ;
+                                                                                                                     inCompiler,
+                                                                                                                     kSearchErrorMessage_projectQualifiedFeatureMap_searchKey
+                                                                                                                     COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
   }else{

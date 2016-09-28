@@ -163,9 +163,9 @@ void GALGAS_lexicalRoutineMap::method_searchKey (GALGAS_lstring inKey,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) performSearch (inKey,
-                                                                                                     inCompiler,
-                                                                                                     kSearchErrorMessage_lexicalRoutineMap_searchKey
-                                                                                                     COMMA_THERE) ;
+                                                                                                   inCompiler,
+                                                                                                   kSearchErrorMessage_lexicalRoutineMap_searchKey
+                                                                                                   COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -949,9 +949,9 @@ void GALGAS_lexicalFunctionMap::method_searchKey (GALGAS_lstring inKey,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) performSearch (inKey,
-                                                                                                       inCompiler,
-                                                                                                       kSearchErrorMessage_lexicalFunctionMap_searchKey
-                                                                                                       COMMA_THERE) ;
+                                                                                                     inCompiler,
+                                                                                                     kSearchErrorMessage_lexicalFunctionMap_searchKey
+                                                                                                     COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -1799,9 +1799,9 @@ void GALGAS_styleMap::method_searchKey (GALGAS_lstring inKey,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   const cMapElement_styleMap * p = (const cMapElement_styleMap *) performSearch (inKey,
-                                                                                   inCompiler,
-                                                                                   kSearchErrorMessage_styleMap_searchKey
-                                                                                   COMMA_THERE) ;
+                                                                                 inCompiler,
+                                                                                 kSearchErrorMessage_styleMap_searchKey
+                                                                                 COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
@@ -2084,9 +2084,9 @@ void GALGAS_lexicalTagMap::method_searchKey (GALGAS_lstring inKey,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) performSearch (inKey,
-                                                                                             inCompiler,
-                                                                                             kSearchErrorMessage_lexicalTagMap_searchKey
-                                                                                             COMMA_THERE) ;
+                                                                                           inCompiler,
+                                                                                           kSearchErrorMessage_lexicalTagMap_searchKey
+                                                                                           COMMA_THERE) ;
   if (NULL == p) {
   }else{
     macroValidSharedObject (p, cMapElement_lexicalTagMap) ;
@@ -4900,9 +4900,9 @@ void GALGAS_commandLineOptionMap::method_searchKey (GALGAS_lstring inKey,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) performSearch (inKey,
-                                                                                                           inCompiler,
-                                                                                                           kSearchErrorMessage_commandLineOptionMap_searchKey
-                                                                                                           COMMA_THERE) ;
+                                                                                                         inCompiler,
+                                                                                                         kSearchErrorMessage_commandLineOptionMap_searchKey
+                                                                                                         COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;

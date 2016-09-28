@@ -162,27 +162,25 @@ for () in SEARCH_METHOD_LIST do
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-    for () in ATTRIBUTE_LIST
-      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
-    end
-    %,\n %!^%C_Compiler * inCompiler%
-    %\n %!^%COMMA_LOCATION_ARGS) const {\n%
-  block 2 :
-    %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
-    !^%inCompiler,\n%
-    !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
-    !^%COMMA_THERE) ;\n%
-    %if (NULL == p) {\n%
-    for () in ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]%.drop () ;\n%
-    end
-    %}else{\n%
-    %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-    for () in ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end
-    %}\n%
+  for () in ATTRIBUTE_LIST
+    do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
   end
+  %,\n %!^%C_Compiler * inCompiler%
+  %\n %!^%COMMA_LOCATION_ARGS) const {\n%
+  %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
+               !^%inCompiler,\n%
+               !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
+               !^%COMMA_THERE) ;\n%
+  %  if (NULL == p) {\n%
+  for () in ATTRIBUTE_LIST do index IDX
+    %    outArgument%![IDX string]%.drop () ;\n%
+  end
+  %  }else{\n%
+  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  for () in ATTRIBUTE_LIST do index IDX
+    %    outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end
+  %  }\n%
   %}\n\n%
 end
 
@@ -190,23 +188,26 @@ end
 for () in REMOVE_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-    for () in ATTRIBUTE_LIST
-      do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
-    end
-    %,\n %!^%C_Compiler * inCompiler%
-    %\n %!^%COMMA_LOCATION_ARGS) {\n%
-  block 2 :
-    %const char * kRemoveErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
-    %capCollectionElement attributes ;\n%
-    %performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
-    %cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-    %if (NULL != p) {\n%
-    %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-    for () in ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end
-    %}\n%
+  for () in ATTRIBUTE_LIST
+    do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
   end
+  %,\n %!^%C_Compiler * inCompiler%
+  %\n %!^%COMMA_LOCATION_ARGS) {\n%
+  %  const char * kRemoveErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
+  %  capCollectionElement attributes ;\n%
+  %  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
+  %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
+  %  if (NULL == p) {\n%
+  for () in ATTRIBUTE_LIST do index IDX
+    %    outArgument%![IDX string]%.drop () ;\n%
+  end
+  %  }else{\n%
+  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  for () in ATTRIBUTE_LIST do index IDX
+    %    outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end
+  %  }\n%
+
   %}\n\n%
 end
 
