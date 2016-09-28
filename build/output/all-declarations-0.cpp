@@ -14621,9 +14621,9 @@ void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) performSearch (inKey,
-                                                                                                         inCompiler,
-                                                                                                         kSearchErrorMessage_templateVariableMap_searchKey
-                                                                                                         COMMA_THERE) ;
+                                                                                                       inCompiler,
+                                                                                                       kSearchErrorMessage_templateVariableMap_searchKey
+                                                                                                       COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
     outArgument1.drop () ;
