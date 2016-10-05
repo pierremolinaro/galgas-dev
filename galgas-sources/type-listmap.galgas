@@ -97,9 +97,9 @@ override method @listmapDeclarationAST enterInSemanticContext
   var setterMap =@setterMap.emptyMap{}
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
 #--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let @unifiedTypeMap-proxy associatedListTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- Getters
   enterInheritedGetterWithoutArgument (
     !?getterMap
@@ -150,7 +150,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
 #--- Enumeration variants
-  var enumerationVariants =@stringlist {}
+  @stringlist enumerationVariants = {}
   enumerationVariants += !"up"
   enumerationVariants += !"down"
 #--- Add Categories
