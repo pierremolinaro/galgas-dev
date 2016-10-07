@@ -314,6 +314,11 @@ template <typename TYPE> void TC_Array <TYPE>::free (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE> TYPE & TC_Array <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
+  if (NULL == mSharedArray) {
+    macroMyNew (mSharedArray, cSharedArray <TYPE> ()) ;
+  }else{
+    insulate () ;
+  }
   macroValidPointer (mSharedArray) ;
   return mSharedArray->operator () (inIndex COMMA_THERE) ;
 }
