@@ -1437,8 +1437,8 @@ typeComparisonResult cSharedMapRoot::mapCompare (const cSharedMapRoot * inOperan
   }else if (count () > inOperand->count ()) {
     r = kFirstOperandGreaterThanSecond ;
   }else{
-    capCollectionElementArray array ; populateEnumerationArray (array, kEnumeration_up) ;
-    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kEnumeration_up) ;
+    capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
+    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
     for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
       r = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
@@ -1526,16 +1526,13 @@ void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnu
                                                const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
-  switch (enumerationOrderValue (inEnumerationOrder)) {
+  switch (inEnumerationOrder) {
   case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
   case kENUMERATION_DOWN :
     enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
-  case kENUMERATION_ENTER_ORDER :
-  case kENUMERATION_REVERSE_ENTER_ORDER :
-    MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
   }
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
 }

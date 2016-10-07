@@ -23,6 +23,8 @@
 #ifndef AC_GALGAS_ENUMERATOR_CLASS_DEFINED
 #define AC_GALGAS_ENUMERATOR_CLASS_DEFINED
 
+#define NEW_ENUMERATOR
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "galgas2/capCollectionElementArray.h"

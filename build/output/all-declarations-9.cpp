@@ -621,7 +621,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
     }
   }
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("type-class.galgas", 60)) ;
-  cEnumerator_lstringlist enumerator_2042 (var_classNameList_1275, kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_2042 (var_classNameList_1275, kENUMERATION_UP) ;
   while (enumerator_2042.hasCurrentObject ()) {
     ioArgument_ioDeclarations.mAttribute_mDeclarationList.addAssign_operation (GALGAS_classDeclarationAST::constructor_new (GALGAS_bool (false), var_mIsAbstract_1147, enumerator_2042.current_mValue (HERE), var_mSuperClassName_1457, var_classFeatureList_1650, var_mAttributeList_1877  COMMA_SOURCE_FILE ("type-class.galgas", 62))  COMMA_SOURCE_FILE ("type-class.galgas", 62)) ;
     enumerator_2042.gotoNextObject () ;

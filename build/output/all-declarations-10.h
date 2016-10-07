@@ -137,6 +137,7 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_BuildFileList ;
+  friend class cEnumerator_new_BuildFileList ;
  
 } ; // End of GALGAS_BuildFileList class
 
@@ -148,6 +149,7 @@ class cEnumerator_BuildFileList : public cGenericAbstractEnumerator {
   public : cEnumerator_BuildFileList (const GALGAS_BuildFileList & inEnumeratedObject,
                                       const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_string current_mFileReference (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mFileName (LOCATION_ARGS) const ;
@@ -155,6 +157,43 @@ class cEnumerator_BuildFileList : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_BuildFileList_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_BuildFileList {
+//--- Constructor
+  public : cEnumerator_new_BuildFileList (const GALGAS_BuildFileList & inEnumeratedObject,
+                                          const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_BuildFileList (void) ;
+
+//--- No copy
+  private : cEnumerator_new_BuildFileList (const cEnumerator_new_BuildFileList &) ;
+  private : cEnumerator_new_BuildFileList & operator = (const cEnumerator_new_BuildFileList &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_string current_mFileReference (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mFileName (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mBuildReference (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_BuildFileList_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_BuildFileList_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 

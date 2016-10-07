@@ -687,7 +687,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
     const GALGAS_location inErrorLocation = inTargetFileName.getter_location (HERE) ;
 
     TC_UniqueArray <C_String> implementationFileHeaderList ;
-    cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kEnumeration_up) ;
+    cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kENUMERATION_UP) ;
     while (enumerator_30239.hasCurrentObject ()) {
       implementationFileHeaderList.addObject (enumerator_30239.current_key (HERE).stringValue()) ;
       enumerator_30239.gotoNextObject () ;

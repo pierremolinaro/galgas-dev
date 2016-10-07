@@ -537,7 +537,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     ]
   #---
     enumerationList +=
-      !if mAscending then "up" else "down" end
+      !if mAscending then "UP" else "DOWN" end
       !enumerationExpression
       !enumeratorCppName
   end
@@ -646,8 +646,9 @@ override method @forInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  var enumerationVarCppNameList =@stringlist {}
+  ?!@string ioGeneratedCode
+{
+  @stringlist enumerationVarCppNameList = {}
   for () in mEnumeratedObjectList do
     @string enumerationVar
     [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar]
@@ -655,7 +656,7 @@ override method @forInstructionForGeneration generateInstruction
   end
   for () in mEnumeratedObjectList, () in enumerationVarCppNameList do
     ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation] + " " + mEnumeratorCppName + " (" + mValue
-                    + ", kEnumeration_" + mEnumerationOrder + ") ;\n"
+                    + ", kENUMERATION_" + mEnumerationOrder + ") ;\n"
   end
 #--- Analyse 'while' expression
   let @bool whileExpressionIsAllwaysTrue = [mWhileExpression isTrueExpression]

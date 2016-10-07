@@ -437,7 +437,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
                                             const typeEnumerationOrder inEnumerationOrder) const {
   const int32_t count = mData.length () ;
   inEnumerationArray.setCapacity ((uint32_t) count) ;
-  switch (enumerationOrderValue (inEnumerationOrder)) {
+  switch (inEnumerationOrder) {
   case kENUMERATION_UP:
     for (int32_t i=0 ; i<count ; i++) {
       cCollectionElement_data * p = NULL ;
@@ -458,9 +458,6 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
       inEnumerationArray.addObject (object) ;
     }
     break ;
-  case kENUMERATION_ENTER_ORDER : case kENUMERATION_REVERSE_ENTER_ORDER:
-    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
-//    break ;
   }
 }
 

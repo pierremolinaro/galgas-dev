@@ -61,7 +61,7 @@ mFixItArray (inFixItArray) {
 void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringlist & inList) {
-  cEnumerator_stringlist enumerator (inList, kEnumeration_up) ;
+  cEnumerator_stringlist enumerator (inList, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
     const C_String s = enumerator.current_mValue (HERE).stringValue () ;
     ioArray.addObject (C_FixItDescription (inKind, s)) ;
@@ -74,7 +74,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
 void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_lstringlist & inList) {
-  cEnumerator_lstringlist enumerator (inList, kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator (inList, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
     const C_String s = enumerator.current_mValue (HERE).mAttribute_string.stringValue () ;
     ioArray.addObject (C_FixItDescription (inKind, s)) ;
@@ -87,7 +87,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
 void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const EnumFixItKind inKind,
                          const GALGAS_stringset & inStringSet) {
-  cEnumerator_stringset enumerator (inStringSet, kEnumeration_up) ;
+  cEnumerator_stringset enumerator (inStringSet, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
     const C_String s = enumerator.current_key (HERE).stringValue () ;
     ioArray.addObject (C_FixItDescription (inKind, s)) ;

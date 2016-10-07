@@ -321,7 +321,7 @@ GALGAS_string GALGAS_string::constructor_componentsJoinedByString (const GALGAS_
   if ((inComponents.isValid ()) && (inSeparator.isValid ())) {
     bool first = true ;
     C_String s ;
-    cEnumerator_stringlist current (inComponents, kEnumeration_up) ;
+    cEnumerator_stringlist current (inComponents, kENUMERATION_UP) ;
     while (current.hasCurrentObject ()) {
       if (first) {
         first = false ;
@@ -1131,7 +1131,7 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
         }else if (C_FileManager::fileExistsAtPath (name)) {
           const C_String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, kEnumeration_up) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, kENUMERATION_UP) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;
@@ -1186,7 +1186,7 @@ static void recursiveSearchForDirectories (const C_String & inUnixStartPath,
         //--- Look for extension
           const C_String extension = name.pathExtension () ;
           bool extensionFound = false ;
-          cEnumerator_stringlist currentExtension (inExtensionList, kEnumeration_up) ;
+          cEnumerator_stringlist currentExtension (inExtensionList, kENUMERATION_UP) ;
           while (currentExtension.hasCurrentObject () && ! extensionFound) {
             extensionFound = currentExtension.current_mValue (HERE).stringValue () == extension ;
             currentExtension.gotoNextObject () ;

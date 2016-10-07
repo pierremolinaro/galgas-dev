@@ -8363,7 +8363,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanti
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
-  cEnumerator_semanticInstructionListAST enumerator_3573 (temp_0, kEnumeration_up) ;
+  cEnumerator_semanticInstructionListAST enumerator_3573 (temp_0, kENUMERATION_UP) ;
   while (enumerator_3573.hasCurrentObject ()) {
     callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3573.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
     enumerator_3573.gotoNextObject () ;
@@ -8382,7 +8382,7 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_3880 (temp_0, kEnumeration_up) ;
+  cEnumerator_actualOutputExpressionList enumerator_3880 (temp_0, kENUMERATION_UP) ;
   while (enumerator_3880.hasCurrentObject ()) {
     callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_3880.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 68)) ;
     enumerator_3880.gotoNextObject () ;

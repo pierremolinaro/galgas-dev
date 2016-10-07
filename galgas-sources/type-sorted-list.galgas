@@ -202,8 +202,8 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ]
 #--- Enumeration variants
   var enumerationVariants =@stringlist {}
-  enumerationVariants += !"up"
-  enumerationVariants += !"down"
+  enumerationVariants += !"UP"
+  enumerationVariants += !"DOWN"
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
