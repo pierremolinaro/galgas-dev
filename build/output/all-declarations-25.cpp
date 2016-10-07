@@ -18,14 +18,14 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
                                 C_Compiler * inCompiler
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_filewrapper var_fw_1237 = GALGAS_filewrapper (gWrapperDirectory_0_libpmFileWrapper) ;
-  cEnumerator_stringlist enumerator_1330 (var_fw_1237.getter_allDirectoryPathes (SOURCE_FILE ("libpmHandling.galgas", 22)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1330 (var_fw_1237.getter_allDirectoryPathes (SOURCE_FILE ("libpmHandling.galgas", 22)), kENUMERATION_UP) ;
   while (enumerator_1330.hasCurrentObject ()) {
     GALGAS_string var_actualDirectory_1365 = constinArgument_inLIBPMPath.add_operation (enumerator_1330.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 23)) ;
     var_actualDirectory_1365.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 24)) ;
     enumerator_1330.gotoNextObject () ;
   }
   GALGAS_stringset var_allNeededFileSet_1483 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("libpmHandling.galgas", 27)) ;
-  cEnumerator_stringlist enumerator_1523 (var_fw_1237.getter_allTextFilePathes (SOURCE_FILE ("libpmHandling.galgas", 28)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1523 (var_fw_1237.getter_allTextFilePathes (SOURCE_FILE ("libpmHandling.galgas", 28)), kENUMERATION_UP) ;
   while (enumerator_1523.hasCurrentObject ()) {
     GALGAS_string var_contents_1551 = var_fw_1237.getter_textFileContentsAtPath (enumerator_1523.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 29)) ;
     GALGAS_string var_actualFilePath_1620 = constinArgument_inLIBPMPath.add_operation (enumerator_1523.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 30)) ;
@@ -40,7 +40,7 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
     var_allNeededFileSet_1483.addAssign_operation (enumerator_1523.current_mValue (HERE)  COMMA_SOURCE_FILE ("libpmHandling.galgas", 36)) ;
     enumerator_1523.gotoNextObject () ;
   }
-  cEnumerator_stringlist enumerator_1959 (var_fw_1237.getter_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_1959 (var_fw_1237.getter_allBinaryFilePathes (SOURCE_FILE ("libpmHandling.galgas", 39)), kENUMERATION_UP) ;
   while (enumerator_1959.hasCurrentObject ()) {
     GALGAS_data var_contents_1985 = var_fw_1237.getter_binaryFileContentsAtPath (enumerator_1959.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 40)) ;
     GALGAS_string var_actualFilePath_2056 = constinArgument_inLIBPMPath.add_operation (enumerator_1959.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 41)) ;
@@ -50,13 +50,13 @@ void routine_updateLIBPMatPath (const GALGAS_string constinArgument_inLIBPMPath,
     enumerator_1959.gotoNextObject () ;
   }
   GALGAS_stringset var_allActualFileSet_2233 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("libpmHandling.galgas", 46)) ;
-  cEnumerator_stringlist enumerator_2293 (constinArgument_inLIBPMPath.getter_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_2293 (constinArgument_inLIBPMPath.getter_regularFiles (GALGAS_bool (true) COMMA_SOURCE_FILE ("libpmHandling.galgas", 47)), kENUMERATION_UP) ;
   while (enumerator_2293.hasCurrentObject ()) {
     var_allActualFileSet_2233.addAssign_operation (GALGAS_string ("/").add_operation (enumerator_2293.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 48))  COMMA_SOURCE_FILE ("libpmHandling.galgas", 48)) ;
     enumerator_2293.gotoNextObject () ;
   }
   GALGAS_stringset var_uselessFileSet_2361 = var_allActualFileSet_2233.substract_operation (var_allNeededFileSet_1483, inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 50)) ;
-  cEnumerator_stringset enumerator_2426 (var_uselessFileSet_2361, kEnumeration_up) ;
+  cEnumerator_stringset enumerator_2426 (var_uselessFileSet_2361, kENUMERATION_UP) ;
   while (enumerator_2426.hasCurrentObject ()) {
     {
     GALGAS_string::class_method_deleteFile (constinArgument_inLIBPMPath.add_operation (enumerator_2426.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)), inCompiler COMMA_SOURCE_FILE ("libpmHandling.galgas", 52)) ;
@@ -92,17 +92,17 @@ void routine_compileSemanticDeclarationsGalgas_33_ (GALGAS_lstringlist & ioArgum
   routine_appendPredefinedTypesASTs (var_semanticDeclarationListWithPredefinedTypes_2305, ioArgument_ioUsefulnessRootEntities, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 30)) ;
   }
   GALGAS_commandLineOptionListAST var_options_2509 = GALGAS_commandLineOptionListAST::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 32)) ;
-  cEnumerator__32_stringlist enumerator_2558 (GALGAS_application::constructor_boolOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33)), kEnumeration_up) ;
+  cEnumerator__32_stringlist enumerator_2558 (GALGAS_application::constructor_boolOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 33)), kENUMERATION_UP) ;
   while (enumerator_2558.hasCurrentObject ()) {
     var_options_2509.addAssign_operation (GALGAS_string ("bool").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 35)), GALGAS_lstring::constructor_new (enumerator_2558.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 36)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_boolOptionInvocationCharacter (enumerator_2558.current_mValue_30_ (HERE), enumerator_2558.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 37)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 37))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 37)), GALGAS_application::constructor_boolOptionInvocationString (enumerator_2558.current_mValue_30_ (HERE), enumerator_2558.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 38)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 38)), GALGAS_application::constructor_boolOptionCommentString (enumerator_2558.current_mValue_30_ (HERE), enumerator_2558.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 39)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 39)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 40)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 41))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 34)) ;
     enumerator_2558.gotoNextObject () ;
   }
-  cEnumerator__32_stringlist enumerator_2962 (GALGAS_application::constructor_uintOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43)), kEnumeration_up) ;
+  cEnumerator__32_stringlist enumerator_2962 (GALGAS_application::constructor_uintOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 43)), kENUMERATION_UP) ;
   while (enumerator_2962.hasCurrentObject ()) {
     var_options_2509.addAssign_operation (GALGAS_string ("uint").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 45)), GALGAS_lstring::constructor_new (enumerator_2962.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 46)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_uintOptionInvocationCharacter (enumerator_2962.current_mValue_30_ (HERE), enumerator_2962.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 47)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 47))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 47)), GALGAS_application::constructor_uintOptionInvocationString (enumerator_2962.current_mValue_30_ (HERE), enumerator_2962.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 48)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 48)), GALGAS_application::constructor_uintOptionCommentString (enumerator_2962.current_mValue_30_ (HERE), enumerator_2962.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 49)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 49)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 50)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 51))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 44)) ;
     enumerator_2962.gotoNextObject () ;
   }
-  cEnumerator__32_stringlist enumerator_3374 (GALGAS_application::constructor_stringOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53)), kEnumeration_up) ;
+  cEnumerator__32_stringlist enumerator_3374 (GALGAS_application::constructor_stringOptionNameList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 53)), kENUMERATION_UP) ;
   while (enumerator_3374.hasCurrentObject ()) {
     var_options_2509.addAssign_operation (GALGAS_string ("string").getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 55)), GALGAS_lstring::constructor_new (enumerator_3374.current_mValue_31_ (HERE), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 56)), GALGAS_lchar::constructor_new (GALGAS_application::constructor_stringOptionInvocationCharacter (enumerator_3374.current_mValue_30_ (HERE), enumerator_3374.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 57)), GALGAS_location::constructor_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 57))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 57)), GALGAS_application::constructor_stringOptionInvocationString (enumerator_3374.current_mValue_30_ (HERE), enumerator_3374.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 58)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 58)), GALGAS_application::constructor_stringOptionCommentString (enumerator_3374.current_mValue_30_ (HERE), enumerator_3374.current_mValue_31_ (HERE)  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 59)).getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 59)), GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 60)), GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 61))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 54)) ;
     enumerator_3374.gotoNextObject () ;
@@ -118,7 +118,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (GALGAS_lstringlist & ioArgum
   if (kBoolTrue == test_1) {
     inCompiler->printMessage (GALGAS_string ("*** Semantic analysis\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 79)) ;
   }
-  cEnumerator_lstringlist enumerator_4528 (outArgument_outSemanticContext.mAttribute_mTypeMap.getter_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 82)), kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_4528 (outArgument_outSemanticContext.mAttribute_mTypeMap.getter_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 82)), kENUMERATION_UP) ;
   while (enumerator_4528.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray2 ;
     inCompiler->emitSemanticError (enumerator_4528.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), GALGAS_string ("the '@").add_operation (enumerator_4528.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)) ;
@@ -128,7 +128,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (GALGAS_lstringlist & ioArgum
   const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 87)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_3) {
     GALGAS_predefinedTypes var_predefinedTypes_4750 = function_buildPredefinedTypes (outArgument_outSemanticContext, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 88)) ;
-    cEnumerator_semanticDeclarationListAST enumerator_4842 (var_sortedSemanticDeclarationListAST_4336, kEnumeration_up) ;
+    cEnumerator_semanticDeclarationListAST enumerator_4842 (var_sortedSemanticDeclarationListAST_4336, kENUMERATION_UP) ;
     while (enumerator_4842.hasCurrentObject ()) {
       callExtensionMethod_semanticAnalysis ((const cPtr_semanticDeclarationAST *) enumerator_4842.current_mSemanticDeclaration (HERE).ptr (), ioArgument_ioUsefulnessRootEntities, ioArgument_ioUsefulEntitiesGraph, constinArgument_inProductDirectory, outArgument_outSemanticContext, var_predefinedTypes_4750, outArgument_outSemanticDeclarationSortedListForGeneration, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 90)) ;
       enumerator_4842.gotoNextObject () ;
@@ -152,7 +152,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   outArgument_outSemanticContext.drop () ; // Release 'out' argument
   outArgument_outSortedSemanticDeclarationListAST.drop () ; // Release 'out' argument
   GALGAS_semanticDeclarationListAST var_semanticDeclarationList_6092 = constinArgument_inSemanticDeclarationList ;
-  cEnumerator_semanticDeclarationListAST enumerator_6158 (constinArgument_inSemanticDeclarationList, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListAST enumerator_6158 (constinArgument_inSemanticDeclarationList, kENUMERATION_UP) ;
   while (enumerator_6158.hasCurrentObject ()) {
     callExtensionMethod_addAssociatedElement ((const cPtr_semanticDeclarationAST *) enumerator_6158.current_mSemanticDeclaration (HERE).ptr (), var_semanticDeclarationList_6092, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 117)) ;
     enumerator_6158.gotoNextObject () ;
@@ -162,12 +162,12 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   GALGAS_extensionGetterMapForBuildingContext var_extensionGetterMapForBuildingContext_6658 = GALGAS_extensionGetterMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 125)) ;
   GALGAS_extensionSetterMapForBuildingContext var_extensionSetterMapForBuildingContext_6740 = GALGAS_extensionSetterMapForBuildingContext::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 126)) ;
   GALGAS_semanticDeclarationListAST var_extensionOverrideDefinitionList_6807 = GALGAS_semanticDeclarationListAST::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 127)) ;
-  cEnumerator_semanticDeclarationListAST enumerator_6848 (var_semanticDeclarationList_6092, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListAST enumerator_6848 (var_semanticDeclarationList_6092, kENUMERATION_UP) ;
   while (enumerator_6848.hasCurrentObject ()) {
     callExtensionMethod_enterDeclarationInGraph ((const cPtr_semanticDeclarationAST *) enumerator_6848.current_mSemanticDeclaration (HERE).ptr (), var_semanticTypePrecedenceGraph_6485, var_extensionMethodMapForBuildingContext_6576, var_extensionGetterMapForBuildingContext_6658, var_extensionSetterMapForBuildingContext_6740, var_extensionOverrideDefinitionList_6807, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 129)) ;
     enumerator_6848.gotoNextObject () ;
   }
-  cEnumerator_lstringlist enumerator_7226 (var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_7226 (var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kENUMERATION_UP) ;
   while (enumerator_7226.hasCurrentObject ()) {
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_7226.current_mValue (HERE).mAttribute_string.getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
     if (kBoolTrue == test_0) {
@@ -177,7 +177,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   }
   const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeCount (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 144)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
-    cEnumerator_lstringlist enumerator_7468 (var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 145)), kEnumeration_up) ;
+    cEnumerator_lstringlist enumerator_7468 (var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 145)), kENUMERATION_UP) ;
     while (enumerator_7468.hasCurrentObject ()) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       inCompiler->emitSemanticError (enumerator_7468.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), GALGAS_string ("the '").add_operation (enumerator_7468.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)).add_operation (GALGAS_string ("' type is not defined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 146)) ;
@@ -195,7 +195,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
     const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, var_unsortedSemanticDeclarationListAST_7898.getter_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 158)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_4) {
       GALGAS_string var_s_8020 = GALGAS_string ("semantic analysis not performed, ").add_operation (var_unsortedSemanticDeclarationListAST_7898.getter_length (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 159)).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 159)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 159)).add_operation (GALGAS_string (" declarations are involved in circular definition:"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 159)) ;
-      cEnumerator_semanticDeclarationListAST enumerator_8219 (var_unsortedSemanticDeclarationListAST_7898, kEnumeration_up) ;
+      cEnumerator_semanticDeclarationListAST enumerator_8219 (var_unsortedSemanticDeclarationListAST_7898, kENUMERATION_UP) ;
       while (enumerator_8219.hasCurrentObject ()) {
         var_s_8020.plusAssign_operation(GALGAS_string ("\n"
           "-  ").add_operation (callExtensionGetter_keyRepresentation ((const cPtr_semanticDeclarationAST *) enumerator_8219.current_mSemanticDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 161)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 161)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 161)) ;
@@ -207,7 +207,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
     }else if (kBoolFalse == test_4) {
       outArgument_outSortedSemanticDeclarationListAST.plusAssign_operation(var_extensionOverrideDefinitionList_6807, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 166)) ;
       outArgument_outSemanticContext = GALGAS_semanticContext::constructor_default (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 168)) ;
-      cEnumerator_semanticDeclarationListAST enumerator_8660 (outArgument_outSortedSemanticDeclarationListAST, kEnumeration_up) ;
+      cEnumerator_semanticDeclarationListAST enumerator_8660 (outArgument_outSortedSemanticDeclarationListAST, kENUMERATION_UP) ;
       while (enumerator_8660.hasCurrentObject ()) {
         callExtensionMethod_enterInSemanticContext ((const cPtr_semanticDeclarationAST *) enumerator_8660.current_mSemanticDeclaration (HERE).ptr (), var_extensionMethodMapForBuildingContext_6576, var_extensionGetterMapForBuildingContext_6658, var_extensionSetterMapForBuildingContext_6740, outArgument_outSemanticContext, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 171)) ;
         enumerator_8660.gotoNextObject () ;
@@ -231,7 +231,7 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const GALGAS_unifiedTypeMap
                                                      GALGAS_stringset & ioArgument_ioAllProductFileSet,
                                                      C_Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_semanticDeclarationListForGeneration enumerator_9897 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_9897 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_9897.hasCurrentObject ()) {
     callExtensionMethod_appendSpecificFiles ((const cPtr_semanticDeclarationForGeneration *) enumerator_9897.current_mDeclaration (HERE).ptr (), constinArgument_inProductDirectory, ioArgument_ioAllProductFileSet, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 201)) ;
     enumerator_9897.gotoNextObject () ;
@@ -299,7 +299,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_stringlist var_headerInclusionList_31__13014 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 295)) ;
   GALGAS_stringlist var_headerInclusionList_32__13065 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 296)) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_13146 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_13146 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_13146.hasCurrentObject ()) {
     const enumGalgasBool test_0 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_13146.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 298)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 298)).boolEnum () ;
     if (kBoolTrue == test_0) {
@@ -311,7 +311,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       if (kBoolTrue == test_1) {
         inCompiler->printMessage (GALGAS_string ("Empty inclusion in ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_13146.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 303)).add_operation (GALGAS_string ("headers 1\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 303))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 303)) ;
       }
-      cEnumerator_stringset enumerator_13530 (var_inclusionSet_31__13217, kEnumeration_up) ;
+      cEnumerator_stringset enumerator_13530 (var_inclusionSet_31__13217, kENUMERATION_UP) ;
       while (enumerator_13530.hasCurrentObject ()) {
         var_headerIncludes_31__13346.plusAssign_operation(GALGAS_string ("#include \"").add_operation (enumerator_13530.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 306)).add_operation (GALGAS_string (".h\"\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 306)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 306)) ;
         enumerator_13530.gotoNextObject () ;
@@ -325,7 +325,7 @@ void routine_generateManyHeaders (const GALGAS_string constinArgument_inProductD
       if (kBoolTrue == test_2) {
         inCompiler->printMessage (GALGAS_string ("Empty inclusion in ").add_operation (callExtensionGetter_implementationCppFileName ((const cPtr_semanticDeclarationForGeneration *) enumerator_13146.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 313)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 313)).add_operation (GALGAS_string ("headers 2\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 313))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 313)) ;
       }
-      cEnumerator_stringset enumerator_13992 (var_inclusionSet_32__13659, kEnumeration_up) ;
+      cEnumerator_stringset enumerator_13992 (var_inclusionSet_32__13659, kENUMERATION_UP) ;
       while (enumerator_13992.hasCurrentObject ()) {
         var_headerIncludes_32__13808.plusAssign_operation(GALGAS_string ("#include \"").add_operation (enumerator_13992.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 316)).add_operation (GALGAS_string (".h\"\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 316)), inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 316)) ;
         enumerator_13992.gotoNextObject () ;
@@ -458,7 +458,7 @@ void routine_generateOneBigHeader (const GALGAS_string constinArgument_inProduct
                                    C_Compiler * inCompiler
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string var_headerString_18963 = GALGAS_string (filewrapperTemplate_semanticFileGenerationTemplate_semanticFileHeader (inCompiler, GALGAS_string ("all-declarations"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 410)) COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 408))) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_19159 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_19159 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_19159.hasCurrentObject ()) {
     const enumGalgasBool test_0 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_19159.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 414)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 414)).boolEnum () ;
     if (kBoolTrue == test_0) {
@@ -469,7 +469,7 @@ void routine_generateOneBigHeader (const GALGAS_string constinArgument_inProduct
     }
     enumerator_19159.gotoNextObject () ;
   }
-  cEnumerator_semanticDeclarationListForGeneration enumerator_19462 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_19462 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_19462.hasCurrentObject ()) {
     const enumGalgasBool test_1 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_19462.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 422)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 422)).boolEnum () ;
     if (kBoolTrue == test_1) {
@@ -511,7 +511,7 @@ void routine_buildHeader (const GALGAS_headerCompositionMap constinArgument_inHe
       GALGAS_stringset var_inclusionSet_21233 ;
       GALGAS_string var_headerString_21267 ;
       constinArgument_inHeaderCompositionMap.method_searchKey (constinArgument_inDeclarationName.getter_nowhere (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 467)), var_inclusionSet_21233, var_headerString_21267, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 466)) ;
-      cEnumerator_stringset enumerator_21305 (var_inclusionSet_21233, kEnumeration_up) ;
+      cEnumerator_stringset enumerator_21305 (var_inclusionSet_21233, kENUMERATION_UP) ;
       while (enumerator_21305.hasCurrentObject ()) {
         {
         routine_buildHeader (constinArgument_inHeaderCompositionMap, constinArgument_inHeaderFileName, enumerator_21305.current_key (HERE), ioArgument_ioHeaderRepartitionMap, ioArgument_ioHeaderString, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 472)) ;
@@ -614,7 +614,7 @@ void routine_generateFewImplementationFiles (const GALGAS_unifiedTypeMap constin
   GALGAS_uint var_fileIdx_22414 = GALGAS_uint ((uint32_t) 0U) ;
   GALGAS_string var_implementationString_22445 = GALGAS_string::makeEmptyString () ;
   GALGAS_stringset var_inclusionSet_22476 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 509)) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_22538 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_22538 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_22538.hasCurrentObject ()) {
     const enumGalgasBool test_0 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_22538.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 511)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 511)).boolEnum () ;
     if (kBoolTrue == test_0) {
@@ -689,7 +689,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
                                                            COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_useOneHugeHeader_24736 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()) ;
   GALGAS_headerCompositionMap var_headerCompositionMap_24835 = GALGAS_headerCompositionMap::constructor_emptyMap (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 572)) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_24897 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_24897 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_24897.hasCurrentObject ()) {
     const enumGalgasBool test_0 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_24897.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 574)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 574)).boolEnum () ;
     if (kBoolTrue == test_0) {
@@ -730,7 +730,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
   GALGAS_string var_headerString_26003 = GALGAS_string::makeEmptyString () ;
   GALGAS_stringset var_inclusionSet_26034 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 601)) ;
   GALGAS_string var_headerFileName_26060 = GALGAS_string ("all-declarations-").add_operation (var_fileIdx_25948.getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 602)) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_26149 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_26149 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_26149.hasCurrentObject ()) {
     const enumGalgasBool test_6 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_26149.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 604)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 604)).boolEnum () ;
     if (kBoolTrue == test_6) {
@@ -755,7 +755,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const GALGAS_unifiedT
       }
       GALGAS_string var_code_26915 ;
       callExtensionMethod_appendSpecificImplementation ((const cPtr_semanticDeclarationForGeneration *) enumerator_26149.current_mDeclaration (HERE).ptr (), constinArgument_inUnifiedTypeMap, var_inclusionSet_26034, var_code_26915, inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 613)) ;
-      cEnumerator_stringset enumerator_26946 (var_inclusionSet_26034, kEnumeration_up) ;
+      cEnumerator_stringset enumerator_26946 (var_inclusionSet_26034, kENUMERATION_UP) ;
       while (enumerator_26946.hasCurrentObject ()) {
         {
         routine_buildHeader (var_headerCompositionMap_24835, var_headerFileName_26060, enumerator_26946.current_key (HERE), var_headerRepartitionMap_25929, var_headerString_26003, inCompiler  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 615)) ;
@@ -869,7 +869,7 @@ void routine_generateManyImplementationFiles (const GALGAS_unifiedTypeMap consti
                                               C_Compiler * inCompiler
                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_useOneHugeHeader_30418 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_generateOneHeader.getter_value ()) ;
-  cEnumerator_semanticDeclarationListForGeneration enumerator_30545 (constinArgument_inSemanticDeclarationSortedListForGeneration, kEnumeration_up) ;
+  cEnumerator_semanticDeclarationListForGeneration enumerator_30545 (constinArgument_inSemanticDeclarationSortedListForGeneration, kENUMERATION_UP) ;
   while (enumerator_30545.hasCurrentObject ()) {
     GALGAS_stringset var_inclusionSet_30576 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 713)) ;
     const enumGalgasBool test_0 = callExtensionGetter_isPredefined ((const cPtr_semanticDeclarationForGeneration *) enumerator_30545.current_mDeclaration (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 714)).operator_not (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 714)).boolEnum () ;
@@ -992,7 +992,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "  /*------------------------------------------------------------------ PBXBuildFile */\n" ;
   GALGAS_uint index_210_ (0) ;
   if (in_BUILD_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_BuildFileList enumerator_210 (in_BUILD_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator_BuildFileList enumerator_210 (in_BUILD_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_210.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_210.current_mBuildReference (HERE).stringValue () ;
@@ -1013,7 +1013,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   result << "  /*------------------------------------------------------------------ PBXFileReference */\n" ;
   GALGAS_uint index_498_ (0) ;
   if (in_C_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_498 (in_C_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_498 (in_C_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_498.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_498.current_mValue_30_ (HERE).stringValue () ;
@@ -1038,7 +1038,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_828_ (0) ;
   if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_828 (in_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_828 (in_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_828.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_828.current_mValue_30_ (HERE).stringValue () ;
@@ -1063,7 +1063,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_1160_ (0) ;
   if (in_M_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1160 (in_M_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_1160 (in_M_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_1160.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_1160.current_mValue_30_ (HERE).stringValue () ;
@@ -1088,7 +1088,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_1491_ (0) ;
   if (in_MM_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1491 (in_MM_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_1491 (in_MM_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_1491.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_1491.current_mValue_30_ (HERE).stringValue () ;
@@ -1113,7 +1113,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_1831_ (0) ;
   if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1831 (in_HEADER_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_1831 (in_HEADER_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_1831.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_1831.current_mValue_30_ (HERE).stringValue () ;
@@ -1138,7 +1138,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_2167_ (0) ;
   if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_2167 (in_FRAMEWORK_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_2167 (in_FRAMEWORK_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_2167.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_2167.current_mValue_30_ (HERE).stringValue () ;
@@ -1162,7 +1162,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_2477_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_2477 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_2477 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_2477.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_2477.current_mProductFileReference (HERE).stringValue () ;
@@ -1182,7 +1182,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_2771_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_2771 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_2771 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_2771.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_2771.current_mProductFileReference (HERE).stringValue () ;
@@ -1202,7 +1202,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_3065_ (0) ;
   if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3065 (in_PLIST_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_3065 (in_PLIST_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3065.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_3065.current_mValue_30_ (HERE).stringValue () ;
@@ -1225,7 +1225,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_3374_ (0) ;
   if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3374 (in_XIB_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_3374 (in_XIB_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3374.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_3374.current_mValue_30_ (HERE).stringValue () ;
@@ -1248,7 +1248,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_3685_ (0) ;
   if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3685 (in_TIFF_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_3685 (in_TIFF_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3685.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_3685.current_mValue_30_ (HERE).stringValue () ;
@@ -1270,7 +1270,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_3969_ (0) ;
   if (in_ICNS_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_3969 (in_ICNS_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator__32_stringlist enumerator_3969 (in_ICNS_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3969.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_3969.current_mValue_30_ (HERE).stringValue () ;
@@ -1294,7 +1294,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "\n" ;
   GALGAS_uint index_4357_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_4357 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_4357 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_4357.hasCurrentObject ()) {
       const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, enumerator_4357.current_mFrameworksFileRefList (HERE).getter_length (SOURCE_FILE ("project.pbxproj.galgasTemplate", 139)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_0) {
@@ -1306,7 +1306,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
           "    files = (\n" ;
         GALGAS_uint index_4591_ (0) ;
         if (enumerator_4357.current_mFrameworksFileRefList (HERE).isValid ()) {
-          cEnumerator_stringlist enumerator_4591 (enumerator_4357.current_mFrameworksFileRefList (HERE), kEnumeration_up) ;
+          cEnumerator_stringlist enumerator_4591 (enumerator_4357.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
           while (enumerator_4591.hasCurrentObject ()) {
             result << "      " ;
             result << enumerator_4591.current_mValue (HERE).stringValue () ;
@@ -1327,7 +1327,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_4747_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_4747 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_4747 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_4747.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_4747.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
@@ -1337,7 +1337,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    files = (\n" ;
       GALGAS_uint index_4925_ (0) ;
       if (enumerator_4747.current_mFrameworksFileRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_4925 (enumerator_4747.current_mFrameworksFileRefList (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_4925 (enumerator_4747.current_mFrameworksFileRefList (HERE), kENUMERATION_UP) ;
         while (enumerator_4925.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_4925.current_mValue (HERE).stringValue () ;
@@ -1357,7 +1357,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   result << "  /*------------------------------------------------------------------ PBXGroup section */\n" ;
   GALGAS_uint index_5150_ (0) ;
   if (in_GROUPS.isValid ()) {
-    cEnumerator_XCodeGroupList enumerator_5150 (in_GROUPS, kEnumeration_up) ;
+    cEnumerator_XCodeGroupList enumerator_5150 (in_GROUPS, kENUMERATION_UP) ;
     while (enumerator_5150.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_5150.current_mGroupReference (HERE).stringValue () ;
@@ -1368,7 +1368,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    children = (\n" ;
       GALGAS_uint index_5271_ (0) ;
       if (enumerator_5150.current_mChildrenRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_5271 (enumerator_5150.current_mChildrenRefs (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_5271 (enumerator_5150.current_mChildrenRefs (HERE), kENUMERATION_UP) ;
         while (enumerator_5271.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_5271.current_mValue (HERE).stringValue () ;
@@ -1398,7 +1398,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "    children = (\n" ;
   GALGAS_uint index_5577_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    cEnumerator_stringlist enumerator_5577 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_5577 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kENUMERATION_UP) ;
     while (enumerator_5577.hasCurrentObject ()) {
       result << "      " ;
       result << enumerator_5577.current_mValue (HERE).stringValue () ;
@@ -1414,7 +1414,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "  /*------------------------------------------------------------------ PBXNativeTarget */\n" ;
   GALGAS_uint index_5768_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_5768 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_5768 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_5768.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_5768.current_mTargetRef (HERE).stringValue () ;
@@ -1460,7 +1460,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_6404_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_6404 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_6404 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_6404.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_6404.current_mTargetRef (HERE).stringValue () ;
@@ -1487,7 +1487,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    dependencies = (\n" ;
       GALGAS_uint index_6778_ (0) ;
       if (enumerator_6404.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_6778 (enumerator_6404.current_mDependentTargets (HERE), kEnumeration_up) ;
+        cEnumerator__32_stringlist enumerator_6778 (enumerator_6404.current_mDependentTargets (HERE), kENUMERATION_UP) ;
         while (enumerator_6778.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_6778.current_mValue_30_ (HERE).stringValue () ;
@@ -1532,7 +1532,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "   targets = (\n" ;
   GALGAS_uint index_7539_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_7539 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_7539 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_7539.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_7539.current_mTargetRef (HERE).stringValue () ;
@@ -1543,7 +1543,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_7596_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_7596 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_7596 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_7596.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_7596.current_mTargetRef (HERE).stringValue () ;
@@ -1559,7 +1559,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "\n" ;
   GALGAS_uint index_7766_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_7766 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_7766 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_7766.hasCurrentObject ()) {
       result << "  " ;
       result << enumerator_7766.current_mResourceBuildRef (HERE).stringValue () ;
@@ -1569,7 +1569,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    files = (\n" ;
       GALGAS_uint index_7943_ (0) ;
       if (enumerator_7766.current_mResourceFileBuildRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_7943 (enumerator_7766.current_mResourceFileBuildRefs (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_7943 (enumerator_7766.current_mResourceFileBuildRefs (HERE), kENUMERATION_UP) ;
         while (enumerator_7943.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_7943.current_mValue (HERE).stringValue () ;
@@ -1589,7 +1589,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   result << "  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n" ;
   GALGAS_uint index_8170_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_8170 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_8170 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_8170.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_8170.current_mBuildPhaseRef (HERE).stringValue () ;
@@ -1599,7 +1599,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      files = (\n" ;
       GALGAS_uint index_8331_ (0) ;
       if (enumerator_8170.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_8331 (enumerator_8170.current_mBuildPhaseRefList (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_8331 (enumerator_8170.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
         while (enumerator_8331.hasCurrentObject ()) {
           result << "        " ;
           result << enumerator_8331.current_mValue (HERE).stringValue () ;
@@ -1617,7 +1617,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_8455_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_8455 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_8455 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_8455.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_8455.current_mBuildPhaseRef (HERE).stringValue () ;
@@ -1627,7 +1627,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      files = (\n" ;
       GALGAS_uint index_8616_ (0) ;
       if (enumerator_8455.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_8616 (enumerator_8455.current_mBuildPhaseRefList (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_8616 (enumerator_8455.current_mBuildPhaseRefList (HERE), kENUMERATION_UP) ;
         while (enumerator_8616.hasCurrentObject ()) {
           result << "        " ;
           result << enumerator_8616.current_mValue (HERE).stringValue () ;
@@ -1649,11 +1649,11 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     " \n" ;
   GALGAS_uint index_8841_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_8841 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_8841 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_8841.hasCurrentObject ()) {
       GALGAS_uint index_8874_ (0) ;
       if (enumerator_8841.current_mDependentTargets (HERE).isValid ()) {
-        cEnumerator__32_stringlist enumerator_8874 (enumerator_8841.current_mDependentTargets (HERE), kEnumeration_up) ;
+        cEnumerator__32_stringlist enumerator_8874 (enumerator_8841.current_mDependentTargets (HERE), kENUMERATION_UP) ;
         while (enumerator_8874.hasCurrentObject ()) {
           result << "  " ;
           result << enumerator_8874.current_mValue_30_ (HERE).stringValue () ;
@@ -1682,7 +1682,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "      buildSettings = {\n" ;
   GALGAS_uint index_9345_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_9345 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_9345 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_9345.hasCurrentObject ()) {
       result << "      " ;
       result << enumerator_9345.current_mValue (HERE).stringValue () ;
@@ -1697,7 +1697,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "\n" ;
   GALGAS_uint index_9437_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_9437 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_9437 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_9437.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_9437.current_mBuildConfigurationRef (HERE).stringValue () ;
@@ -1706,7 +1706,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      buildSettings = {\n" ;
       GALGAS_uint index_9599_ (0) ;
       if (enumerator_9437.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_9599 (enumerator_9437.current_mBuildConfigurationSettingList (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_9599 (enumerator_9437.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
         while (enumerator_9599.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_9599.current_mValue (HERE).stringValue () ;
@@ -1728,7 +1728,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_9772_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_9772 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_9772 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_9772.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_9772.current_mBuildConfigurationRef (HERE).stringValue () ;
@@ -1737,7 +1737,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "      buildSettings = {\n" ;
       GALGAS_uint index_9934_ (0) ;
       if (enumerator_9772.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_9934 (enumerator_9772.current_mBuildConfigurationSettingList (HERE), kEnumeration_up) ;
+        cEnumerator_stringlist enumerator_9934 (enumerator_9772.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
         while (enumerator_9934.hasCurrentObject ()) {
           result << "      " ;
           result << enumerator_9934.current_mValue (HERE).stringValue () ;
@@ -1775,7 +1775,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "\n" ;
   GALGAS_uint index_10567_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_10567 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeToolTargetList enumerator_10567 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_10567.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_10567.current_mBuildConfigurationListRef (HERE).stringValue () ;
@@ -1796,7 +1796,7 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   }
   GALGAS_uint index_10867_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_10867 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    cEnumerator_XCodeAppTargetList enumerator_10867 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_10867.hasCurrentObject ()) {
       result << "    " ;
       result << enumerator_10867.current_mBuildConfigurationListRef (HERE).stringValue () ;
@@ -10594,7 +10594,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
     "   <Add directory=\"../build/output\" />\n" ;
   GALGAS_uint index_2346_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_2346 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kEnumeration_up) ;
+    cEnumerator_stringset enumerator_2346 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_DIRECTORY_5F_SET, kENUMERATION_UP) ;
     while (enumerator_2346.hasCurrentObject ()) {
       result << "  <Add directory=\"" ;
       result << enumerator_2346.current_key (HERE).stringValue () ;
@@ -10630,7 +10630,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   }
   GALGAS_uint index_2848_ (0) ;
   if (in_TOOL_5F_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2848 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_2848 (in_TOOL_5F_CPP_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_2848.hasCurrentObject ()) {
       result << "  <Unit filename=\"../build/output/" ;
       result << enumerator_2848.current_mValue (HERE).stringValue () ;
@@ -10641,7 +10641,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codebloc
   }
   GALGAS_uint index_2950_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_2950 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_2950 (in_HAND_5F_CODED_5F_SOURCE_5F_TOOL_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_2950.hasCurrentObject ()) {
       result << "  <Unit filename=\"../" ;
       result << enumerator_2950.current_mValue (HERE).stringValue () ;
@@ -11052,7 +11052,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <array>\n" ;
   GALGAS_uint index_1014_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1014 (in_HANDLED_5F_EXTENSION_5F_SET, kEnumeration_up) ;
+    cEnumerator_stringset enumerator_1014 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
     while (enumerator_1014.hasCurrentObject ()) {
       result << "  <dict>\n"
         "   <key>CFBundleTypeIconFile</key>\n"
@@ -11143,7 +11143,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
   result << "\"" ;
   GALGAS_uint index_197_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_197 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kEnumeration_up) ;
+    cEnumerator_stringset enumerator_197 (in_HAND_5F_CODED_5F_SOURCE_5F_DIR_5F_SET, kENUMERATION_UP) ;
     while (enumerator_197.hasCurrentObject ()) {
       result << ",  \"" ;
       result << enumerator_197.current_key (HERE).stringValue () ;
@@ -11158,7 +11158,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
     "        \"all-libpm.cpp\",\n" ;
   GALGAS_uint index_332_ (0) ;
   if (in_MAKEFILE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_332 (in_MAKEFILE_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_332 (in_MAKEFILE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_332.hasCurrentObject ()) {
       result << "        \"" ;
       result << enumerator_332.current_mValue (HERE).stringValue () ;
@@ -11169,7 +11169,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
   }
   GALGAS_uint index_410_ (0) ;
   if (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_410 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_410 (in_HAND_5F_CODED_5F_SOURCE_5F_FILE_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_410.hasCurrentObject ()) {
       result << "        \"" ;
       result << enumerator_410.current_mValue (HERE).stringValue () ;
@@ -11296,7 +11296,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
     "    \"USER_LINK_OPTIONS\"  :  [" ;
   GALGAS_uint index_3531_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3531 (in_TOOL_5F_LINK_5F_LIST, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_3531 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
     while (enumerator_3531.hasCurrentObject ()) {
       result << "\n"
         "        \"" ;
@@ -11664,7 +11664,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   GALGAS_stringset var_generationFeatures_20125 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 395)) ;
   GALGAS_string var_SDK_20182 = GALGAS_string::makeEmptyString () ;
   GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET_20222 = GALGAS_string::makeEmptyString () ;
-  cEnumerator_lstringlist enumerator_20259 (constinArgument_inTargetFeatureList, kEnumeration_up) ;
+  cEnumerator_lstringlist enumerator_20259 (constinArgument_inTargetFeatureList, kENUMERATION_UP) ;
   while (enumerator_20259.hasCurrentObject ()) {
     const enumGalgasBool test_3 = var_availableGenerationFeatures_19048.getter_hasKey (enumerator_20259.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)).boolEnum () ;
     if (kBoolTrue == test_3) {
@@ -11787,7 +11787,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       }
     }else if (kBoolFalse == test_3) {
       GALGAS_stringlist var_s_22964 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 479)) ;
-      cEnumerator_stringset enumerator_23013 (var_availableGenerationFeatures_19048, kEnumeration_up) ;
+      cEnumerator_stringset enumerator_23013 (var_availableGenerationFeatures_19048, kENUMERATION_UP) ;
       while (enumerator_23013.hasCurrentObject ()) {
         var_s_22964.addAssign_operation (GALGAS_string ("%").add_operation (enumerator_23013.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 481))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 481)) ;
         enumerator_23013.gotoNextObject () ;
@@ -11870,7 +11870,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       var_linkOptionForLinkingFrameworkWithTool_25748.addAssign_operation (GALGAS_string ("-isysroot")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 559)) ;
       var_linkOptionForLinkingFrameworkWithTool_25748.addAssign_operation (GALGAS_string ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/").add_operation (var_SDK_20182, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 560)).add_operation (GALGAS_string (".sdk"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 560))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 560)) ;
     }
-    cEnumerator_stringlist enumerator_26085 (constinArgument_inFrameworkToolFileList, kEnumeration_up) ;
+    cEnumerator_stringlist enumerator_26085 (constinArgument_inFrameworkToolFileList, kENUMERATION_UP) ;
     while (enumerator_26085.hasCurrentObject ()) {
       var_linkOptionForLinkingFrameworkWithTool_25748.addAssign_operation (GALGAS_string ("-framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 563)) ;
       var_linkOptionForLinkingFrameworkWithTool_25748.addAssign_operation (enumerator_26085.current_mValue (HERE).getter_stringByDeletingPathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 564))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 564)) ;
@@ -11878,7 +11878,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     }
   }
   GALGAS_stringlist var_handCodedSourceToolFileList_26314 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 568)) ;
-  cEnumerator_stringlist enumerator_26362 (constinArgument_inHandCodedSourceToolFileList, kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_26362 (constinArgument_inHandCodedSourceToolFileList, kENUMERATION_UP) ;
   while (enumerator_26362.hasCurrentObject ()) {
     const enumGalgasBool test_51 = GALGAS_bool (kIsNotEqual, enumerator_26362.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 570)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
     if (kBoolTrue == test_51) {

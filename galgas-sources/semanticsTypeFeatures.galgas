@@ -29,8 +29,8 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
   outEnumerationVariant = {}
-  outEnumerationVariant += !"up"
-  outEnumerationVariant += !"down"
+  outEnumerationVariant += !"UP"
+  outEnumerationVariant += !"DOWN"
   outEnumeratedType = "string"
 }
 
@@ -46,8 +46,8 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
   outEnumerationVariant = {}
-  outEnumerationVariant += !"up"
-  outEnumerationVariant += !"down"
+  outEnumerationVariant += !"UP"
+  outEnumerationVariant += !"DOWN"
   outEnumeratedType = "uint"
 }
 

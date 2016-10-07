@@ -2875,6 +2875,7 @@ class GALGAS_grammarLabelMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_grammarLabelMap ;
+  friend class cEnumerator_new_grammarLabelMap ;
  
 } ; // End of GALGAS_grammarLabelMap class
 
@@ -2886,12 +2887,49 @@ class cEnumerator_grammarLabelMap : public cGenericAbstractEnumerator {
   public : cEnumerator_grammarLabelMap (const GALGAS_grammarLabelMap & inEnumeratedObject,
                                         const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_formalParameterSignature current_mLabelSignature (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_grammarLabelMap_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_grammarLabelMap {
+//--- Constructor
+  public : cEnumerator_new_grammarLabelMap (const GALGAS_grammarLabelMap & inEnumeratedObject,
+                                            const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_grammarLabelMap (void) ;
+
+//--- No copy
+  private : cEnumerator_new_grammarLabelMap (const cEnumerator_new_grammarLabelMap &) ;
+  private : cEnumerator_new_grammarLabelMap & operator = (const cEnumerator_new_grammarLabelMap &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_formalParameterSignature current_mLabelSignature (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_grammarLabelMap_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_grammarLabelMap_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3446,6 +3484,7 @@ class GALGAS_wrapperFileMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_wrapperFileMap ;
+  friend class cEnumerator_new_wrapperFileMap ;
  
 } ; // End of GALGAS_wrapperFileMap class
 
@@ -3457,6 +3496,7 @@ class cEnumerator_wrapperFileMap : public cGenericAbstractEnumerator {
   public : cEnumerator_wrapperFileMap (const GALGAS_wrapperFileMap & inEnumeratedObject,
                                        const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mAbsoluteFilePath (LOCATION_ARGS) const ;
@@ -3466,6 +3506,45 @@ class cEnumerator_wrapperFileMap : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_wrapperFileMap_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_wrapperFileMap {
+//--- Constructor
+  public : cEnumerator_new_wrapperFileMap (const GALGAS_wrapperFileMap & inEnumeratedObject,
+                                           const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_wrapperFileMap (void) ;
+
+//--- No copy
+  private : cEnumerator_new_wrapperFileMap (const cEnumerator_new_wrapperFileMap &) ;
+  private : cEnumerator_new_wrapperFileMap & operator = (const cEnumerator_new_wrapperFileMap &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mAbsoluteFilePath (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mIsTextFile (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mWrapperDirectoryIndex (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mWrapperFileIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_wrapperFileMap_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_wrapperFileMap_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3697,6 +3776,7 @@ class GALGAS_wrapperDirectoryMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_wrapperDirectoryMap ;
+  friend class cEnumerator_new_wrapperDirectoryMap ;
  
 } ; // End of GALGAS_wrapperDirectoryMap class
 
@@ -3708,6 +3788,7 @@ class cEnumerator_wrapperDirectoryMap : public cGenericAbstractEnumerator {
   public : cEnumerator_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inEnumeratedObject,
                                             const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_wrapperFileMap current_mRegularFileMap (LOCATION_ARGS) const ;
@@ -3716,6 +3797,44 @@ class cEnumerator_wrapperDirectoryMap : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_wrapperDirectoryMap_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_wrapperDirectoryMap {
+//--- Constructor
+  public : cEnumerator_new_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inEnumeratedObject,
+                                                const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_wrapperDirectoryMap (void) ;
+
+//--- No copy
+  private : cEnumerator_new_wrapperDirectoryMap (const cEnumerator_new_wrapperDirectoryMap &) ;
+  private : cEnumerator_new_wrapperDirectoryMap & operator = (const cEnumerator_new_wrapperDirectoryMap &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_wrapperFileMap current_mRegularFileMap (LOCATION_ARGS) const ;
+  public : class GALGAS_wrapperDirectoryMap current_mDirectoryMap (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mWrapperDirectoryIndex (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_wrapperDirectoryMap_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_wrapperDirectoryMap_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -3928,6 +4047,7 @@ class GALGAS_filewrapperTemplateMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_filewrapperTemplateMap ;
+  friend class cEnumerator_new_filewrapperTemplateMap ;
  
 } ; // End of GALGAS_filewrapperTemplateMap class
 
@@ -3939,6 +4059,7 @@ class cEnumerator_filewrapperTemplateMap : public cGenericAbstractEnumerator {
   public : cEnumerator_filewrapperTemplateMap (const GALGAS_filewrapperTemplateMap & inEnumeratedObject,
                                                const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_functionSignature current_mTemplateSignature (LOCATION_ARGS) const ;
@@ -3946,6 +4067,43 @@ class cEnumerator_filewrapperTemplateMap : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_filewrapperTemplateMap_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_filewrapperTemplateMap {
+//--- Constructor
+  public : cEnumerator_new_filewrapperTemplateMap (const GALGAS_filewrapperTemplateMap & inEnumeratedObject,
+                                                   const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_filewrapperTemplateMap (void) ;
+
+//--- No copy
+  private : cEnumerator_new_filewrapperTemplateMap (const cEnumerator_new_filewrapperTemplateMap &) ;
+  private : cEnumerator_new_filewrapperTemplateMap & operator = (const cEnumerator_new_filewrapperTemplateMap &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_functionSignature current_mTemplateSignature (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mFilewrapperTemplatePath (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_filewrapperTemplateMap_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_filewrapperTemplateMap_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4624,6 +4782,7 @@ class GALGAS_extensionMethodMapForType : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionMethodMapForType ;
+  friend class cEnumerator_new_extensionMethodMapForType ;
  
 } ; // End of GALGAS_extensionMethodMapForType class
 
@@ -4635,12 +4794,49 @@ class cEnumerator_extensionMethodMapForType : public cGenericAbstractEnumerator 
   public : cEnumerator_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_extensionMethodMapForType_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionMethodMapForType {
+//--- Constructor
+  public : cEnumerator_new_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inEnumeratedObject,
+                                                      const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionMethodMapForType (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionMethodMapForType (const cEnumerator_new_extensionMethodMapForType &) ;
+  private : cEnumerator_new_extensionMethodMapForType & operator = (const cEnumerator_new_extensionMethodMapForType &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionMethodMapForType_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionMethodMapForType_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4827,6 +5023,7 @@ class GALGAS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionMethodMapForBuildingContext ;
+  friend class cEnumerator_new_extensionMethodMapForBuildingContext ;
  
 } ; // End of GALGAS_extensionMethodMapForBuildingContext class
 
@@ -4838,12 +5035,49 @@ class cEnumerator_extensionMethodMapForBuildingContext : public cGenericAbstract
   public : cEnumerator_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inEnumeratedObject,
                                                              const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_extensionMethodMapForType current_mExtensionMethodMapForType (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_extensionMethodMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionMethodMapForBuildingContext {
+//--- Constructor
+  public : cEnumerator_new_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inEnumeratedObject,
+                                                                 const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionMethodMapForBuildingContext (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionMethodMapForBuildingContext (const cEnumerator_new_extensionMethodMapForBuildingContext &) ;
+  private : cEnumerator_new_extensionMethodMapForBuildingContext & operator = (const cEnumerator_new_extensionMethodMapForBuildingContext &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionMethodMapForType current_mExtensionMethodMapForType (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionMethodMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionMethodMapForBuildingContext_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5021,6 +5255,7 @@ class GALGAS_extensionSetterMapForType : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionSetterMapForType ;
+  friend class cEnumerator_new_extensionSetterMapForType ;
  
 } ; // End of GALGAS_extensionSetterMapForType class
 
@@ -5032,12 +5267,49 @@ class cEnumerator_extensionSetterMapForType : public cGenericAbstractEnumerator 
   public : cEnumerator_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_extensionSetterMapForType_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionSetterMapForType {
+//--- Constructor
+  public : cEnumerator_new_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inEnumeratedObject,
+                                                      const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionSetterMapForType (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionSetterMapForType (const cEnumerator_new_extensionSetterMapForType &) ;
+  private : cEnumerator_new_extensionSetterMapForType & operator = (const cEnumerator_new_extensionSetterMapForType &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_formalParameterListAST current_mFormalParameterList (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionSetterMapForType_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionSetterMapForType_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5224,6 +5496,7 @@ class GALGAS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionSetterMapForBuildingContext ;
+  friend class cEnumerator_new_extensionSetterMapForBuildingContext ;
  
 } ; // End of GALGAS_extensionSetterMapForBuildingContext class
 
@@ -5235,12 +5508,49 @@ class cEnumerator_extensionSetterMapForBuildingContext : public cGenericAbstract
   public : cEnumerator_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inEnumeratedObject,
                                                              const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_extensionSetterMapForType current_mExtensionSetterMapForType (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_extensionSetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionSetterMapForBuildingContext {
+//--- Constructor
+  public : cEnumerator_new_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inEnumeratedObject,
+                                                                 const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionSetterMapForBuildingContext (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionSetterMapForBuildingContext (const cEnumerator_new_extensionSetterMapForBuildingContext &) ;
+  private : cEnumerator_new_extensionSetterMapForBuildingContext & operator = (const cEnumerator_new_extensionSetterMapForBuildingContext &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionSetterMapForType current_mExtensionSetterMapForType (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionSetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionSetterMapForBuildingContext_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5429,6 +5739,7 @@ class GALGAS_extensionGetterMapForType : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionGetterMapForType ;
+  friend class cEnumerator_new_extensionGetterMapForType ;
  
 } ; // End of GALGAS_extensionGetterMapForType class
 
@@ -5440,6 +5751,7 @@ class cEnumerator_extensionGetterMapForType : public cGenericAbstractEnumerator 
   public : cEnumerator_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
@@ -5447,6 +5759,43 @@ class cEnumerator_extensionGetterMapForType : public cGenericAbstractEnumerator 
 //--- Current element access
   public : class GALGAS_extensionGetterMapForType_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionGetterMapForType {
+//--- Constructor
+  public : cEnumerator_new_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inEnumeratedObject,
+                                                      const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionGetterMapForType (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionGetterMapForType (const cEnumerator_new_extensionGetterMapForType &) ;
+  private : cEnumerator_new_extensionGetterMapForType & operator = (const cEnumerator_new_extensionGetterMapForType &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mResultTypeName (LOCATION_ARGS) const ;
+  public : class GALGAS_formalInputParameterListAST current_mInputFormalParameterList (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionGetterMapForType_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionGetterMapForType_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5640,6 +5989,7 @@ class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_extensionGetterMapForBuildingContext ;
+  friend class cEnumerator_new_extensionGetterMapForBuildingContext ;
  
 } ; // End of GALGAS_extensionGetterMapForBuildingContext class
 
@@ -5651,12 +6001,49 @@ class cEnumerator_extensionGetterMapForBuildingContext : public cGenericAbstract
   public : cEnumerator_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inEnumeratedObject,
                                                              const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_extensionGetterMapForType current_mExtensionGetterMapForType (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_extensionGetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_extensionGetterMapForBuildingContext {
+//--- Constructor
+  public : cEnumerator_new_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inEnumeratedObject,
+                                                                 const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_extensionGetterMapForBuildingContext (void) ;
+
+//--- No copy
+  private : cEnumerator_new_extensionGetterMapForBuildingContext (const cEnumerator_new_extensionGetterMapForBuildingContext &) ;
+  private : cEnumerator_new_extensionGetterMapForBuildingContext & operator = (const cEnumerator_new_extensionGetterMapForBuildingContext &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+  public : class GALGAS_extensionGetterMapForType current_mExtensionGetterMapForType (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_extensionGetterMapForBuildingContext_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_extensionGetterMapForBuildingContext_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5883,6 +6270,7 @@ class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_wrapperExtensionMap ;
+  friend class cEnumerator_new_wrapperExtensionMap ;
  
 } ; // End of GALGAS_wrapperExtensionMap class
 
@@ -5894,11 +6282,47 @@ class cEnumerator_wrapperExtensionMap : public cGenericAbstractEnumerator {
   public : cEnumerator_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inEnumeratedObject,
                                             const typeEnumerationOrder inOrder) ;
 
+
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_wrapperExtensionMap_2D_element current (LOCATION_ARGS) const ;
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef NEW_ENUMERATOR
+class cEnumerator_new_wrapperExtensionMap {
+//--- Constructor
+  public : cEnumerator_new_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inEnumeratedObject,
+                                                const typeEnumerationOrder inOrder) ;
+
+//--- Virtual destructor
+  public : ~ cEnumerator_new_wrapperExtensionMap (void) ;
+
+//--- No copy
+  private : cEnumerator_new_wrapperExtensionMap (const cEnumerator_new_wrapperExtensionMap &) ;
+  private : cEnumerator_new_wrapperExtensionMap & operator = (const cEnumerator_new_wrapperExtensionMap &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
+
+//--- Current element access
+  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_wrapperExtensionMap_2D_element current (LOCATION_ARGS) const ;
+
+//--- Private data members
+  private : TC_UniqueArray <GALGAS_wrapperExtensionMap_2D_element> mEnumerationArray ;
+  private : int32_t mIndex ;
+} ;
+
+#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 

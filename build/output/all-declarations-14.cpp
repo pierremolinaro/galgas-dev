@@ -750,7 +750,7 @@ void extensionSetter_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
   extensionSetter_getReferenceKey (ioObject, var_resourceBuildRef_6818, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 163)) ;
   }
   GALGAS__32_stringlist var_dependentTargets_6851 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 164)) ;
-  cEnumerator_stringlist enumerator_6896 (constinArgument_inDependentTargetRefList, kEnumeration_up) ;
+  cEnumerator_stringlist enumerator_6896 (constinArgument_inDependentTargetRefList, kENUMERATION_UP) ;
   while (enumerator_6896.hasCurrentObject ()) {
     GALGAS_string var_dependencyBuildRef_6955 ;
     {
@@ -760,7 +760,7 @@ void extensionSetter_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
     enumerator_6896.gotoNextObject () ;
   }
   GALGAS_stringlist var_resourceFileBuildRefs_7047 = constinArgument_inResourceFileBuildRefs ;
-  cEnumerator__32_stringlist enumerator_7111 (constinArgument_inProductCopyList, kEnumeration_up) ;
+  cEnumerator__32_stringlist enumerator_7111 (constinArgument_inProductCopyList, kENUMERATION_UP) ;
   while (enumerator_7111.hasCurrentObject ()) {
     GALGAS_string var_buildRef_7198 ;
     {
@@ -854,7 +854,7 @@ void extensionSetter_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject
   extensionSetter_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 233)) ;
   }
   GALGAS_stringlist var_childrenRefs_9361 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 235)) ;
-  cEnumerator_stringset enumerator_9391 (constinArgument_inFileNames, kEnumeration_up) ;
+  cEnumerator_stringset enumerator_9391 (constinArgument_inFileNames, kENUMERATION_UP) ;
   while (enumerator_9391.hasCurrentObject ()) {
     const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_9391.current_key (HERE).getter_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 237)).objectCompare (GALGAS_string ("c"))).boolEnum () ;
     if (kBoolTrue == test_3) {
@@ -14510,461 +14510,529 @@ GALGAS_constantIndexMap_2D_element GALGAS_constantIndexMap_2D_element::extractOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarLabelMap_2D_element::GALGAS_grammarLabelMap_2D_element (void) :
+GALGAS_unifiedTypeMap_2D_element::GALGAS_unifiedTypeMap_2D_element (void) :
 mAttribute_lkey (),
-mAttribute_mLabelSignature () {
+mAttribute_mIsPredefined (),
+mAttribute_mIsConcrete (),
+mAttribute_mSuperType (),
+mAttribute_mTypeKindEnum (),
+mAttribute_mSupportCollectionValue (),
+mAttribute_mAllTypedAttributeList (),
+mAttribute_mAttributeMap (),
+mAttribute_mCurrentTypedAttributeList (),
+mAttribute_mConstructorMap (),
+mAttribute_mGetterMap (),
+mAttribute_mSetterMap (),
+mAttribute_mInstanceMethodMap (),
+mAttribute_mClassMethodMap (),
+mAttribute_mEnumerationDescriptor (),
+mAttribute_mEnumeratorVariants (),
+mAttribute_mHandledOperatorFlags (),
+mAttribute_mAddAssignOperatorArguments (),
+mAttribute_mEnumConstantMap (),
+mAttribute_mEnumConstantList (),
+mAttribute_mMapSearchMethodList (),
+mAttribute_mMapProxySearchConstructorList (),
+mAttribute_mGenerateHeaderInSeparateFile (),
+mAttribute_mTypeForEnumeratedElement (),
+mAttribute_mDefaultConstructorName (),
+mAttribute_mHeaderFileName (),
+mAttribute_mHeaderKind () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarLabelMap_2D_element::~ GALGAS_grammarLabelMap_2D_element (void) {
+GALGAS_unifiedTypeMap_2D_element::~ GALGAS_unifiedTypeMap_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarLabelMap_2D_element::GALGAS_grammarLabelMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                      const GALGAS_formalParameterSignature & inOperand1) :
+GALGAS_unifiedTypeMap_2D_element::GALGAS_unifiedTypeMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                    const GALGAS_bool & inOperand1,
+                                                                    const GALGAS_bool & inOperand2,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                    const GALGAS_typeKindEnum & inOperand4,
+                                                                    const GALGAS_bool & inOperand5,
+                                                                    const GALGAS_typedPropertyList & inOperand6,
+                                                                    const GALGAS_attributeMap & inOperand7,
+                                                                    const GALGAS_typedPropertyList & inOperand8,
+                                                                    const GALGAS_constructorMap & inOperand9,
+                                                                    const GALGAS_getterMap & inOperand10,
+                                                                    const GALGAS_setterMap & inOperand11,
+                                                                    const GALGAS_instanceMethodMap & inOperand12,
+                                                                    const GALGAS_classMethodMap & inOperand13,
+                                                                    const GALGAS_enumerationDescriptorList & inOperand14,
+                                                                    const GALGAS_stringlist & inOperand15,
+                                                                    const GALGAS_uint & inOperand16,
+                                                                    const GALGAS_functionSignature & inOperand17,
+                                                                    const GALGAS_constantIndexMap & inOperand18,
+                                                                    const GALGAS_enumConstantList & inOperand19,
+                                                                    const GALGAS_mapSearchMethodListAST & inOperand20,
+                                                                    const GALGAS_mapSearchMethodListAST & inOperand21,
+                                                                    const GALGAS_bool & inOperand22,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand23,
+                                                                    const GALGAS_string & inOperand24,
+                                                                    const GALGAS_string & inOperand25,
+                                                                    const GALGAS_headerKind & inOperand26) :
 mAttribute_lkey (inOperand0),
-mAttribute_mLabelSignature (inOperand1) {
+mAttribute_mIsPredefined (inOperand1),
+mAttribute_mIsConcrete (inOperand2),
+mAttribute_mSuperType (inOperand3),
+mAttribute_mTypeKindEnum (inOperand4),
+mAttribute_mSupportCollectionValue (inOperand5),
+mAttribute_mAllTypedAttributeList (inOperand6),
+mAttribute_mAttributeMap (inOperand7),
+mAttribute_mCurrentTypedAttributeList (inOperand8),
+mAttribute_mConstructorMap (inOperand9),
+mAttribute_mGetterMap (inOperand10),
+mAttribute_mSetterMap (inOperand11),
+mAttribute_mInstanceMethodMap (inOperand12),
+mAttribute_mClassMethodMap (inOperand13),
+mAttribute_mEnumerationDescriptor (inOperand14),
+mAttribute_mEnumeratorVariants (inOperand15),
+mAttribute_mHandledOperatorFlags (inOperand16),
+mAttribute_mAddAssignOperatorArguments (inOperand17),
+mAttribute_mEnumConstantMap (inOperand18),
+mAttribute_mEnumConstantList (inOperand19),
+mAttribute_mMapSearchMethodList (inOperand20),
+mAttribute_mMapProxySearchConstructorList (inOperand21),
+mAttribute_mGenerateHeaderInSeparateFile (inOperand22),
+mAttribute_mTypeForEnumeratedElement (inOperand23),
+mAttribute_mDefaultConstructorName (inOperand24),
+mAttribute_mHeaderFileName (inOperand25),
+mAttribute_mHeaderKind (inOperand26) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_grammarLabelMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                            GALGAS_formalParameterSignature::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                      const GALGAS_formalParameterSignature & inOperand1 
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_grammarLabelMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_grammarLabelMap_2D_element (inOperand0, inOperand1) ;
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                    const GALGAS_bool & inOperand1,
+                                                                                    const GALGAS_bool & inOperand2,
+                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                                    const GALGAS_typeKindEnum & inOperand4,
+                                                                                    const GALGAS_bool & inOperand5,
+                                                                                    const GALGAS_typedPropertyList & inOperand6,
+                                                                                    const GALGAS_attributeMap & inOperand7,
+                                                                                    const GALGAS_typedPropertyList & inOperand8,
+                                                                                    const GALGAS_constructorMap & inOperand9,
+                                                                                    const GALGAS_getterMap & inOperand10,
+                                                                                    const GALGAS_setterMap & inOperand11,
+                                                                                    const GALGAS_instanceMethodMap & inOperand12,
+                                                                                    const GALGAS_classMethodMap & inOperand13,
+                                                                                    const GALGAS_enumerationDescriptorList & inOperand14,
+                                                                                    const GALGAS_stringlist & inOperand15,
+                                                                                    const GALGAS_uint & inOperand16,
+                                                                                    const GALGAS_functionSignature & inOperand17,
+                                                                                    const GALGAS_constantIndexMap & inOperand18,
+                                                                                    const GALGAS_enumConstantList & inOperand19,
+                                                                                    const GALGAS_mapSearchMethodListAST & inOperand20,
+                                                                                    const GALGAS_mapSearchMethodListAST & inOperand21,
+                                                                                    const GALGAS_bool & inOperand22,
+                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand23,
+                                                                                    const GALGAS_string & inOperand24,
+                                                                                    const GALGAS_string & inOperand25,
+                                                                                    const GALGAS_headerKind & inOperand26 
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid () && inOperand22.isValid () && inOperand23.isValid () && inOperand24.isValid () && inOperand25.isValid () && inOperand26.isValid ()) {
+    result = GALGAS_unifiedTypeMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20, inOperand21, inOperand22, inOperand23, inOperand24, inOperand25, inOperand26) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_grammarLabelMap_2D_element::objectCompare (const GALGAS_grammarLabelMap_2D_element & inOperand) const {
+typeComparisonResult GALGAS_unifiedTypeMap_2D_element::objectCompare (const GALGAS_unifiedTypeMap_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mLabelSignature.objectCompare (inOperand.mAttribute_mLabelSignature) ;
+    result = mAttribute_mIsPredefined.objectCompare (inOperand.mAttribute_mIsPredefined) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mIsConcrete.objectCompare (inOperand.mAttribute_mIsConcrete) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mSuperType.objectCompare (inOperand.mAttribute_mSuperType) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTypeKindEnum.objectCompare (inOperand.mAttribute_mTypeKindEnum) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mSupportCollectionValue.objectCompare (inOperand.mAttribute_mSupportCollectionValue) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAllTypedAttributeList.objectCompare (inOperand.mAttribute_mAllTypedAttributeList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAttributeMap.objectCompare (inOperand.mAttribute_mAttributeMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mCurrentTypedAttributeList.objectCompare (inOperand.mAttribute_mCurrentTypedAttributeList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mConstructorMap.objectCompare (inOperand.mAttribute_mConstructorMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mGetterMap.objectCompare (inOperand.mAttribute_mGetterMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mSetterMap.objectCompare (inOperand.mAttribute_mSetterMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mInstanceMethodMap.objectCompare (inOperand.mAttribute_mInstanceMethodMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mClassMethodMap.objectCompare (inOperand.mAttribute_mClassMethodMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumerationDescriptor.objectCompare (inOperand.mAttribute_mEnumerationDescriptor) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumeratorVariants.objectCompare (inOperand.mAttribute_mEnumeratorVariants) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mHandledOperatorFlags.objectCompare (inOperand.mAttribute_mHandledOperatorFlags) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAddAssignOperatorArguments.objectCompare (inOperand.mAttribute_mAddAssignOperatorArguments) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumConstantMap.objectCompare (inOperand.mAttribute_mEnumConstantMap) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mEnumConstantList.objectCompare (inOperand.mAttribute_mEnumConstantList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mMapSearchMethodList.objectCompare (inOperand.mAttribute_mMapSearchMethodList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mMapProxySearchConstructorList.objectCompare (inOperand.mAttribute_mMapProxySearchConstructorList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mGenerateHeaderInSeparateFile.objectCompare (inOperand.mAttribute_mGenerateHeaderInSeparateFile) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTypeForEnumeratedElement.objectCompare (inOperand.mAttribute_mTypeForEnumeratedElement) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mDefaultConstructorName.objectCompare (inOperand.mAttribute_mDefaultConstructorName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mHeaderFileName.objectCompare (inOperand.mAttribute_mHeaderFileName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mHeaderKind.objectCompare (inOperand.mAttribute_mHeaderKind) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_grammarLabelMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLabelSignature.isValid () ;
+bool GALGAS_unifiedTypeMap_2D_element::isValid (void) const {
+  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mGetterMap.isValid () && mAttribute_mSetterMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mEnumeratorVariants.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_grammarLabelMap_2D_element::drop (void) {
+void GALGAS_unifiedTypeMap_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
-  mAttribute_mLabelSignature.drop () ;
+  mAttribute_mIsPredefined.drop () ;
+  mAttribute_mIsConcrete.drop () ;
+  mAttribute_mSuperType.drop () ;
+  mAttribute_mTypeKindEnum.drop () ;
+  mAttribute_mSupportCollectionValue.drop () ;
+  mAttribute_mAllTypedAttributeList.drop () ;
+  mAttribute_mAttributeMap.drop () ;
+  mAttribute_mCurrentTypedAttributeList.drop () ;
+  mAttribute_mConstructorMap.drop () ;
+  mAttribute_mGetterMap.drop () ;
+  mAttribute_mSetterMap.drop () ;
+  mAttribute_mInstanceMethodMap.drop () ;
+  mAttribute_mClassMethodMap.drop () ;
+  mAttribute_mEnumerationDescriptor.drop () ;
+  mAttribute_mEnumeratorVariants.drop () ;
+  mAttribute_mHandledOperatorFlags.drop () ;
+  mAttribute_mAddAssignOperatorArguments.drop () ;
+  mAttribute_mEnumConstantMap.drop () ;
+  mAttribute_mEnumConstantList.drop () ;
+  mAttribute_mMapSearchMethodList.drop () ;
+  mAttribute_mMapProxySearchConstructorList.drop () ;
+  mAttribute_mGenerateHeaderInSeparateFile.drop () ;
+  mAttribute_mTypeForEnumeratedElement.drop () ;
+  mAttribute_mDefaultConstructorName.drop () ;
+  mAttribute_mHeaderFileName.drop () ;
+  mAttribute_mHeaderKind.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_grammarLabelMap_2D_element::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "<struct @grammarLabelMap-element:" ;
+void GALGAS_unifiedTypeMap_2D_element::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "<struct @unifiedTypeMap-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
     mAttribute_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mLabelSignature.description (ioString, inIndentation+1) ;
+    mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mIsConcrete.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mSuperType.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTypeKindEnum.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mSupportCollectionValue.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAllTypedAttributeList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAttributeMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mCurrentTypedAttributeList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mConstructorMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mGetterMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mSetterMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mInstanceMethodMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mClassMethodMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEnumerationDescriptor.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEnumeratorVariants.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mHandledOperatorFlags.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAddAssignOperatorArguments.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEnumConstantMap.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mEnumConstantList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mMapSearchMethodList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mMapProxySearchConstructorList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mGenerateHeaderInSeparateFile.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTypeForEnumeratedElement.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mDefaultConstructorName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mHeaderFileName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mHeaderKind.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_grammarLabelMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_unifiedTypeMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterSignature GALGAS_grammarLabelMap_2D_element::getter_mLabelSignature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLabelSignature ;
+GALGAS_bool GALGAS_unifiedTypeMap_2D_element::getter_mIsPredefined (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mIsPredefined ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_unifiedTypeMap_2D_element::getter_mIsConcrete (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mIsConcrete ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_element::getter_mSuperType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSuperType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typeKindEnum GALGAS_unifiedTypeMap_2D_element::getter_mTypeKindEnum (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeKindEnum ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_unifiedTypeMap_2D_element::getter_mSupportCollectionValue (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSupportCollectionValue ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_element::getter_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAllTypedAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_attributeMap GALGAS_unifiedTypeMap_2D_element::getter_mAttributeMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAttributeMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_element::getter_mCurrentTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mCurrentTypedAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_constructorMap GALGAS_unifiedTypeMap_2D_element::getter_mConstructorMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mConstructorMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_getterMap GALGAS_unifiedTypeMap_2D_element::getter_mGetterMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGetterMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_setterMap GALGAS_unifiedTypeMap_2D_element::getter_mSetterMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSetterMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_instanceMethodMap GALGAS_unifiedTypeMap_2D_element::getter_mInstanceMethodMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInstanceMethodMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_classMethodMap GALGAS_unifiedTypeMap_2D_element::getter_mClassMethodMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mClassMethodMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_element::getter_mEnumerationDescriptor (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumerationDescriptor ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_unifiedTypeMap_2D_element::getter_mEnumeratorVariants (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumeratorVariants ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_unifiedTypeMap_2D_element::getter_mHandledOperatorFlags (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mHandledOperatorFlags ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_functionSignature GALGAS_unifiedTypeMap_2D_element::getter_mAddAssignOperatorArguments (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAddAssignOperatorArguments ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_constantIndexMap GALGAS_unifiedTypeMap_2D_element::getter_mEnumConstantMap (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumConstantMap ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantList GALGAS_unifiedTypeMap_2D_element::getter_mEnumConstantList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEnumConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_element::getter_mMapSearchMethodList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapSearchMethodList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap_2D_element::getter_mMapProxySearchConstructorList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mMapProxySearchConstructorList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_unifiedTypeMap_2D_element::getter_mGenerateHeaderInSeparateFile (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGenerateHeaderInSeparateFile ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_element::getter_mTypeForEnumeratedElement (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeForEnumeratedElement ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_unifiedTypeMap_2D_element::getter_mDefaultConstructorName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDefaultConstructorName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_unifiedTypeMap_2D_element::getter_mHeaderFileName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mHeaderFileName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_headerKind GALGAS_unifiedTypeMap_2D_element::getter_mHeaderKind (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mHeaderKind ;
 }
 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            @grammarLabelMap-element type                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_grammarLabelMap_2D_element ("grammarLabelMap-element",
-                                                   NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_grammarLabelMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarLabelMap_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_grammarLabelMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_grammarLabelMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarLabelMap_2D_element GALGAS_grammarLabelMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_grammarLabelMap_2D_element result ;
-  const GALGAS_grammarLabelMap_2D_element * p = (const GALGAS_grammarLabelMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_grammarLabelMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("grammarLabelMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarMap_2D_element::GALGAS_grammarMap_2D_element (void) :
-mAttribute_lkey (),
-mAttribute_mLabelMap (),
-mAttribute_mHasIndexing (),
-mAttribute_mHasTranslateFeature () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarMap_2D_element::~ GALGAS_grammarMap_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarMap_2D_element::GALGAS_grammarMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                            const GALGAS_grammarLabelMap & inOperand1,
-                                                            const GALGAS_bool & inOperand2,
-                                                            const GALGAS_bool & inOperand3) :
-mAttribute_lkey (inOperand0),
-mAttribute_mLabelMap (inOperand1),
-mAttribute_mHasIndexing (inOperand2),
-mAttribute_mHasTranslateFeature (inOperand3) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_grammarMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                       GALGAS_grammarLabelMap::constructor_emptyMap (HERE),
-                                       GALGAS_bool::constructor_default (HERE),
-                                       GALGAS_bool::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_grammarLabelMap & inOperand1,
-                                                                            const GALGAS_bool & inOperand2,
-                                                                            const GALGAS_bool & inOperand3 
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_grammarMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_grammarMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_grammarMap_2D_element::objectCompare (const GALGAS_grammarMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mLabelMap.objectCompare (inOperand.mAttribute_mLabelMap) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasIndexing.objectCompare (inOperand.mAttribute_mHasIndexing) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (inOperand.mAttribute_mHasTranslateFeature) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_grammarMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLabelMap.isValid () && mAttribute_mHasIndexing.isValid () && mAttribute_mHasTranslateFeature.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_grammarMap_2D_element::drop (void) {
-  mAttribute_lkey.drop () ;
-  mAttribute_mLabelMap.drop () ;
-  mAttribute_mHasIndexing.drop () ;
-  mAttribute_mHasTranslateFeature.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_grammarMap_2D_element::description (C_String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString << "<struct @grammarMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mLabelMap.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasIndexing.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_grammarMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_grammarLabelMap GALGAS_grammarMap_2D_element::getter_mLabelMap (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLabelMap ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_grammarMap_2D_element::getter_mHasIndexing (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasIndexing ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_grammarMap_2D_element::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasTranslateFeature ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              @grammarMap-element type                                               *
+//                                            @unifiedTypeMap-element type                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_grammarMap_2D_element ("grammarMap-element",
-                                              NULL) ;
+kTypeDescriptor_GALGAS_unifiedTypeMap_2D_element ("unifiedTypeMap-element",
+                                                  NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_grammarMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_grammarMap_2D_element ;
+const C_galgas_type_descriptor * GALGAS_unifiedTypeMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_unifiedTypeMap_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_grammarMap_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_unifiedTypeMap_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_grammarMap_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_unifiedTypeMap_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_grammarMap_2D_element GALGAS_grammarMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_grammarMap_2D_element result ;
-  const GALGAS_grammarMap_2D_element * p = (const GALGAS_grammarMap_2D_element *) inObject.embeddedObject () ;
+GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_element result ;
+  const GALGAS_unifiedTypeMap_2D_element * p = (const GALGAS_unifiedTypeMap_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_grammarMap_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMap_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("grammarMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element::GALGAS_routineMap_2D_element (void) :
-mAttribute_lkey (),
-mAttribute_mRoutineSignature (),
-mAttribute_mIsInternal () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element::~ GALGAS_routineMap_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element::GALGAS_routineMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                            const GALGAS_formalParameterSignature & inOperand1,
-                                                            const GALGAS_bool & inOperand2) :
-mAttribute_lkey (inOperand0),
-mAttribute_mRoutineSignature (inOperand1),
-mAttribute_mIsInternal (inOperand2) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element GALGAS_routineMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_routineMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                       GALGAS_formalParameterSignature::constructor_emptyList (HERE),
-                                       GALGAS_bool::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element GALGAS_routineMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                            const GALGAS_formalParameterSignature & inOperand1,
-                                                                            const GALGAS_bool & inOperand2 
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_routineMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_routineMap_2D_element (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_routineMap_2D_element::objectCompare (const GALGAS_routineMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mRoutineSignature.objectCompare (inOperand.mAttribute_mRoutineSignature) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mIsInternal.objectCompare (inOperand.mAttribute_mIsInternal) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_routineMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mRoutineSignature.isValid () && mAttribute_mIsInternal.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_routineMap_2D_element::drop (void) {
-  mAttribute_lkey.drop () ;
-  mAttribute_mRoutineSignature.drop () ;
-  mAttribute_mIsInternal.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_routineMap_2D_element::description (C_String & ioString,
-                                                const int32_t inIndentation) const {
-  ioString << "<struct @routineMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mRoutineSignature.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mIsInternal.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_routineMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterSignature GALGAS_routineMap_2D_element::getter_mRoutineSignature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRoutineSignature ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_routineMap_2D_element::getter_mIsInternal (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mIsInternal ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              @routineMap-element type                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_routineMap_2D_element ("routineMap-element",
-                                              NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_routineMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_routineMap_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_routineMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_routineMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_routineMap_2D_element GALGAS_routineMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_routineMap_2D_element result ;
-  const GALGAS_routineMap_2D_element * p = (const GALGAS_routineMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_routineMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("routineMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("unifiedTypeMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

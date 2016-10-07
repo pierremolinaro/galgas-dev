@@ -888,14 +888,14 @@ void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & o
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 'AC_GALGAS_sortedlist::cEnumerator' class                   *
+//                 'AC_GALGAS_sortedlist::cEnumerator' class                                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                       const typeEnumerationOrder inEnumerationOrder) const {
   inEnumerationArray.setCapacity (mCount) ;
-  switch (enumerationOrderValue (inEnumerationOrder)) {
+  switch (inEnumerationOrder) {
   case kENUMERATION_UP : {
     cSortedListNode * p = mFirst ;
     while (p != NULL) {
@@ -914,10 +914,6 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
       p = p->mPreviousPtr ;
     }
   }break ;
-  case kENUMERATION_ENTER_ORDER :
-  case kENUMERATION_REVERSE_ENTER_ORDER :
-    MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
-//    break ;
   }
   MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS

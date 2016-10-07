@@ -816,7 +816,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents << "\n} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   while (nonTerminal.hasCurrentObject ()) {
     ioCppFileContents.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
@@ -879,13 +879,13 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                         "  }\n"
                         "}\n\n" ;
     }
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kEnumeration_up) ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                      << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kEnumeration_up) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
       int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
@@ -990,7 +990,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                            "  }\n"
                            "  macroDetachSharedObject (scanner) ;\n"
                            "}\n\n" ;
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kEnumeration_up) ;
+      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
@@ -1002,7 +1002,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
         }
         ioCppFileContents << "GALGAS_lstring inFilePath" ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           ioCppFileContents << ",\n                                " ;
