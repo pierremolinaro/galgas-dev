@@ -351,8 +351,7 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods ()) != 0) then
 %//--------------------------------- Enumeration helper methods
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                               const typeEnumerationOrder inOrder) const ;
-  protected :  void populateEnumerationArray (TC_UniqueArray <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> & ioEnumerationArray,
-                                                              const typeEnumerationOrder inOrder) const ;
+  protected :  TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (const typeEnumerationOrder inOrder) const ;
 
 %end
 
@@ -410,45 +409,6 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
   private : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifdef NEW_ENUMERATOR
-class cEnumerator_new_%!TYPE_IDENTIFIER% {
-//--- Constructor
-  public : cEnumerator_new_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-                                %!^%const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : ~ cEnumerator_new_%!TYPE_IDENTIFIER% (void) ;
-
-//--- No copy
-  private : cEnumerator_new_%!TYPE_IDENTIFIER% (const cEnumerator_new_%!TYPE_IDENTIFIER% &) ;
-  private : cEnumerator_new_%!TYPE_IDENTIFIER% & operator = (const cEnumerator_new_%!TYPE_IDENTIFIER% &) ;
-
-//--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-
-//--- Current element access\n%
-  for () in ENUMERATION_DESCRIPTOR_LIST do
-%  public : class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-  end
-  if not [ENUMERATED_OBJECT_TYPE isNull] then
-%//--- Current element access\n%
-%  public : class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end
-
-%
-//--- Private data members
-  private : TC_UniqueArray <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
-  private : int32_t mIndex ;
-} ;\n
-#endif
 %end%
 //---------------------------------------------------------------------------------------------------------------------*
 

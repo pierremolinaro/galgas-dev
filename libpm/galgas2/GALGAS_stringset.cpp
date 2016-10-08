@@ -1074,6 +1074,7 @@ cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumera
 mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
+//  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1088,6 +1089,7 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
+//  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1102,12 +1104,13 @@ GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
+//  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void enterAscendingEnumeration (const cStringsetNode * inNode,
-                                       TC_UniqueArray <GALGAS_string> & ioResult) {
+                                       TC_Array <GALGAS_string> & ioResult) {
   if (inNode != NULL) {
     enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
     ioResult.addObject (GALGAS_string (inNode->mKey)) ;
@@ -1118,7 +1121,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void enterDescendingEnumeration (const cStringsetNode * inNode,
-                                        TC_UniqueArray <GALGAS_string> & ioResult) {
+                                        TC_Array <GALGAS_string> & ioResult) {
   if (inNode != NULL) {
     enterDescendingEnumeration (inNode->mSupPtr, ioResult) ;
     ioResult.addObject (GALGAS_string (inNode->mKey)) ;
@@ -1128,46 +1131,25 @@ static void enterDescendingEnumeration (const cStringsetNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_stringset::populateEnumerationArray (TC_UniqueArray <GALGAS_string> & ioEnumerationArray,
-                                                 const typeEnumerationOrder inEnumerationOrder) const {
+TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (const typeEnumerationOrder inEnumerationOrder) const {
+  TC_Array <GALGAS_string> result ;
   if (isValid ()) {
-    ioEnumerationArray.setCapacity (mSharedRoot->count ()) ;
+    result.setCapacity (mSharedRoot->count ()) ;
     switch (inEnumerationOrder) {
     case kENUMERATION_UP:
-      enterAscendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
+      enterAscendingEnumeration (mSharedRoot->root (), result) ;
       break ;
     case kENUMERATION_DOWN:
-      enterDescendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
+      enterDescendingEnumeration (mSharedRoot->root (), result) ;
       break ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
-      MF_Assert (mSharedRoot->count () == (int32_t) ioEnumerationArray.count (),
+      MF_Assert (mSharedRoot->count () == (int32_t) result.count (),
                  "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
-                 mSharedRoot->count (), (int32_t) ioEnumerationArray.count ()) ;
+                 mSharedRoot->count (), (int32_t) result.count ()) ;
     #endif
   }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_new_stringset::cEnumerator_new_stringset (const GALGAS_stringset & inEnumeratedObject,
-                                                      const typeEnumerationOrder inOrder) :
-mEnumerationArray (),
-mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_new_stringset::current_key (LOCATION_ARGS) const {
-  return mEnumerationArray (mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_new_stringset::current (LOCATION_ARGS) const {
-  return mEnumerationArray (mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
