@@ -1842,9 +1842,6 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       "\n"
       "  friend class cEnumerator_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-    result << " ;\n"
-      "  friend class cEnumerator_new_" ;
-    result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " ;\n" ;
   }else if (kBoolFalse == test_61) {
   }
@@ -1853,7 +1850,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " class\n"
     "\n" ;
-  const enumGalgasBool test_62 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 372)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_62 = GALGAS_bool (kIsStrictSup, in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.getter_length (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 371)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_62) {
     result << "//---------------------------------------------------------------------------------------------------------------------*\n"
       "//   Enumerator declaration                                                                                            *\n"
@@ -1898,35 +1895,35 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       "  public : inline void rewind (void) { mIndex = 0 ; }\n"
       "  public : inline uint32_t index (void) const { return mIndex ; }\n"
       "  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }\n"
-      "  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;\n"
+      "  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // \xC2""\xA7"" \xC3""\xA0"" supprimer\n"
       "\n"
       "//--- Current element access\n" ;
-    GALGAS_uint index_18306_ (0) ;
+    GALGAS_uint index_18271_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_18306 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_18306.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_18271 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_18271.hasCurrentObject ()) {
         result << "  public : class GALGAS_" ;
-        result << enumerator_18306.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 400)).stringValue () ;
+        result << enumerator_18271.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 399)).stringValue () ;
         result << " current_" ;
-        result << enumerator_18306.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 400)).stringValue () ;
+        result << enumerator_18271.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 399)).stringValue () ;
         result << " (LOCATION_ARGS) const ;\n" ;
-        index_18306_.increment () ;
-        enumerator_18306.gotoNextObject () ;
+        index_18271_.increment () ;
+        enumerator_18271.gotoNextObject () ;
       }
     }
-    const enumGalgasBool test_63 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 402)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 402)).boolEnum () ;
+    const enumGalgasBool test_63 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).boolEnum () ;
     if (kBoolTrue == test_63) {
       result << "//--- Current element access\n"
         "  public : class GALGAS_" ;
-      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 404)).stringValue () ;
+      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 403)).stringValue () ;
       result << " current (LOCATION_ARGS) const ;\n" ;
     }else if (kBoolFalse == test_63) {
     }
     result << "\n"
       "//--- Private data members\n"
-      "  private : capCollectionElementArray mEnumerationArrayEx ;\n"
+      "  private : capCollectionElementArray mEnumerationArrayEx ; // \xC2""\xA7"" \xC3""\xA0"" supprimer\n"
       "  private : TC_Array <GALGAS_" ;
-    result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 409)).stringValue () ;
+    result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 408)).stringValue () ;
     result << "> mEnumerationArray ;\n"
       "  private : uint32_t mIndex ;\n"
       "} ;\n" ;

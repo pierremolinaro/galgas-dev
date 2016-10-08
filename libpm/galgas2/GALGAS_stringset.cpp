@@ -1074,7 +1074,7 @@ cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumera
 mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-//  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
+  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1086,25 +1086,33 @@ cEnumerator_stringset::~ cEnumerator_stringset (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
-//  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+//  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+//  macroValidSharedObject (p, cCollectionElement_stringset) ;
+//  const GALGAS_string s = p->attribute_key () ;
+//  const GALGAS_string newS = mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+//  if (s.objectCompare (newS) != kOperandEqual) {
+//    co << "ERROR '" << s << "' != new '" << newS << "'\n" ;
+//  }
+  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_stringset::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_stringset::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
-  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_stringset) ;
-  return p->attribute_key () ;
-//  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+//  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+//  macroValidSharedObject (p, cCollectionElement_stringset) ;
+//  const GALGAS_string s = p->attribute_key () ;
+//  const GALGAS_string newS = mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+//  if (s.objectCompare (newS) != kOperandEqual) {
+//    co << "ERROR '" << s << "' != new '" << newS << "'\n" ;
+//  }
+  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

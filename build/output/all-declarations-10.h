@@ -137,7 +137,6 @@ class GALGAS_BuildFileList : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_BuildFileList ;
-  friend class cEnumerator_new_BuildFileList ;
  
 } ; // End of GALGAS_BuildFileList class
 
@@ -164,7 +163,7 @@ class cEnumerator_BuildFileList {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_string current_mFileReference (LOCATION_ARGS) const ;
@@ -174,7 +173,7 @@ class cEnumerator_BuildFileList {
   public : class GALGAS_BuildFileList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_BuildFileList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
