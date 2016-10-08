@@ -1102,8 +1102,6 @@ proc updateGalgas3Targets
         !"cCollectionElement.h",
         !"cEnumerator_range.cpp",
         !"cEnumerator_range.h",
-        !"cGenericAbstractEnumerator.cpp",
-        !"cGenericAbstractEnumerator.h",
         !"cIndexingDictionary.cpp",
         !"cIndexingDictionary.h",
         !"cLexiqueIntrospection.cpp",
