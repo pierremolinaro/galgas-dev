@@ -351,7 +351,7 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods ()) != 0) then
 %//--------------------------------- Enumeration helper methods
   protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                              const typeEnumerationOrder inOrder) const ; // À supprimer
-  protected : /* VIRTUAL_IN_DEBUG */ TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (const typeEnumerationOrder inOrder) const ;
+  protected : /* VIRTUAL_IN_DEBUG */ TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (void) const ;
 
 %end
 
@@ -390,8 +390,8 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access\n%
@@ -406,7 +406,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 %end%

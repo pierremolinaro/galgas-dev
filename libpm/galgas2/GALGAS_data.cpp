@@ -436,7 +436,7 @@ void cCollectionElement_data::description (C_String & ioString, const int32_t in
 void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                             const typeEnumerationOrder inEnumerationOrder) const {
   const int32_t count = mData.length () ;
-  inEnumerationArray.setCapacity ((uint32_t) count) ;
+  inEnumerationArray.setCapacity (count) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP:
     for (int32_t i=0 ; i<count ; i++) {

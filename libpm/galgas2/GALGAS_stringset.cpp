@@ -1019,7 +1019,7 @@ mEnumerationArrayEx (), // Inutilisé
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.enumerationArray (kENUMERATION_UP) ;
+  mEnumerationArray = inEnumeratedObject.enumerationArray () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1030,21 +1030,21 @@ cEnumerator_stringset::~ cEnumerator_stringset (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_stringset::hasCurrentObject (void) const {
-  return mIndex < (uint32_t) mEnumerationArray.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_stringset::hasNextObject (void) const {
-  return (mIndex + 1) < (uint32_t)  mEnumerationArray.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? ((int32_t) mIndex)
-    : mEnumerationArray.count () - 1 - (int32_t) mIndex
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
   ;
   return mEnumerationArray (idx COMMA_THERE) ;
 }
@@ -1053,8 +1053,8 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
 
 GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? ((int32_t) mIndex)
-    : mEnumerationArray.count () - 1 - (int32_t) mIndex
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
   ;
   return mEnumerationArray (idx COMMA_THERE) ;
 }
@@ -1076,7 +1076,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (const typeEnumerationOrder /* inEnumerationOrder */) const {
+TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (void) const {
   TC_Array <GALGAS_string> result ;
   if (isValid ()) {
     result.setCapacity (mSharedRoot->count ()) ;
