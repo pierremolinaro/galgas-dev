@@ -379,7 +379,6 @@ class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalInstructionListAST ;
-  friend class cEnumerator_new_lexicalInstructionListAST ;
  
 } ; // End of GALGAS_lexicalInstructionListAST class
 
@@ -406,7 +405,7 @@ class cEnumerator_lexicalInstructionListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalInstructionAST current_mInstruction (LOCATION_ARGS) const ;
@@ -414,7 +413,7 @@ class cEnumerator_lexicalInstructionListAST {
   public : class GALGAS_lexicalInstructionListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalInstructionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -602,7 +601,6 @@ class GALGAS_metamodelTemplateDelimitorListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_metamodelTemplateDelimitorListAST ;
-  friend class cEnumerator_new_metamodelTemplateDelimitorListAST ;
  
 } ; // End of GALGAS_metamodelTemplateDelimitorListAST class
 
@@ -629,7 +627,7 @@ class cEnumerator_metamodelTemplateDelimitorListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mStartString (LOCATION_ARGS) const ;
@@ -639,7 +637,7 @@ class cEnumerator_metamodelTemplateDelimitorListAST {
   public : class GALGAS_metamodelTemplateDelimitorListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_metamodelTemplateDelimitorListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -840,7 +838,6 @@ class GALGAS_templateReplacementListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_templateReplacementListAST ;
-  friend class cEnumerator_new_templateReplacementListAST ;
  
 } ; // End of GALGAS_templateReplacementListAST class
 
@@ -867,7 +864,7 @@ class cEnumerator_templateReplacementListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mMatchString (LOCATION_ARGS) const ;
@@ -877,7 +874,7 @@ class cEnumerator_templateReplacementListAST {
   public : class GALGAS_templateReplacementListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateReplacementListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -1129,7 +1126,6 @@ class GALGAS_lexicalRuleListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalRuleListAST ;
-  friend class cEnumerator_new_lexicalRuleListAST ;
  
 } ; // End of GALGAS_lexicalRuleListAST class
 
@@ -1156,7 +1152,7 @@ class cEnumerator_lexicalRuleListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_abstractLexicalRuleAST current_mLexicalRule (LOCATION_ARGS) const ;
@@ -1164,7 +1160,7 @@ class cEnumerator_lexicalRuleListAST {
   public : class GALGAS_lexicalRuleListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalRuleListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -1430,7 +1426,6 @@ class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalMessageDeclarationListAST ;
-  friend class cEnumerator_new_lexicalMessageDeclarationListAST ;
  
 } ; // End of GALGAS_lexicalMessageDeclarationListAST class
 
@@ -1457,7 +1452,7 @@ class cEnumerator_lexicalMessageDeclarationListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mMessageName (LOCATION_ARGS) const ;
@@ -1466,7 +1461,7 @@ class cEnumerator_lexicalMessageDeclarationListAST {
   public : class GALGAS_lexicalMessageDeclarationListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalMessageDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -1653,7 +1648,6 @@ class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalAttributeListAST ;
-  friend class cEnumerator_new_lexicalAttributeListAST ;
  
 } ; // End of GALGAS_lexicalAttributeListAST class
 
@@ -1680,7 +1674,7 @@ class cEnumerator_lexicalAttributeListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mTypeName (LOCATION_ARGS) const ;
@@ -1689,7 +1683,7 @@ class cEnumerator_lexicalAttributeListAST {
   public : class GALGAS_lexicalAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -1876,7 +1870,6 @@ class GALGAS_lexicalStyleListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalStyleListAST ;
-  friend class cEnumerator_new_lexicalStyleListAST ;
  
 } ; // End of GALGAS_lexicalStyleListAST class
 
@@ -1903,7 +1896,7 @@ class cEnumerator_lexicalStyleListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -1912,7 +1905,7 @@ class cEnumerator_lexicalStyleListAST {
   public : class GALGAS_lexicalStyleListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalStyleListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -2126,7 +2119,6 @@ class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_terminalDeclarationListAST ;
-  friend class cEnumerator_new_terminalDeclarationListAST ;
  
 } ; // End of GALGAS_terminalDeclarationListAST class
 
@@ -2153,7 +2145,7 @@ class cEnumerator_terminalDeclarationListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -2165,7 +2157,7 @@ class cEnumerator_terminalDeclarationListAST {
   public : class GALGAS_terminalDeclarationListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -2289,7 +2281,6 @@ class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_sentLexicalAttributeListAST ;
-  friend class cEnumerator_new_sentLexicalAttributeListAST ;
  
 } ; // End of GALGAS_sentLexicalAttributeListAST class
 
@@ -2316,7 +2307,7 @@ class cEnumerator_sentLexicalAttributeListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
@@ -2325,7 +2316,7 @@ class cEnumerator_sentLexicalAttributeListAST {
   public : class GALGAS_sentLexicalAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_sentLexicalAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -2607,7 +2598,6 @@ class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalListEntryListAST ;
-  friend class cEnumerator_new_lexicalListEntryListAST ;
  
 } ; // End of GALGAS_lexicalListEntryListAST class
 
@@ -2634,7 +2624,7 @@ class cEnumerator_lexicalListEntryListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mEntrySpelling (LOCATION_ARGS) const ;
@@ -2644,7 +2634,7 @@ class cEnumerator_lexicalListEntryListAST {
   public : class GALGAS_lexicalListEntryListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalListEntryListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -2863,7 +2853,6 @@ class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalListDeclarationListAST ;
-  friend class cEnumerator_new_lexicalListDeclarationListAST ;
  
 } ; // End of GALGAS_lexicalListDeclarationListAST class
 
@@ -2890,7 +2879,7 @@ class cEnumerator_lexicalListDeclarationListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mName (LOCATION_ARGS) const ;
@@ -2902,7 +2891,7 @@ class cEnumerator_lexicalListDeclarationListAST {
   public : class GALGAS_lexicalListDeclarationListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalListDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -3191,7 +3180,6 @@ class GALGAS_lexicalSendSearchListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalSendSearchListAST ;
-  friend class cEnumerator_new_lexicalSendSearchListAST ;
  
 } ; // End of GALGAS_lexicalSendSearchListAST class
 
@@ -3218,7 +3206,7 @@ class cEnumerator_lexicalSendSearchListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mAttributeName (LOCATION_ARGS) const ;
@@ -3227,7 +3215,7 @@ class cEnumerator_lexicalSendSearchListAST {
   public : class GALGAS_lexicalSendSearchListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSendSearchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -3570,7 +3558,6 @@ class GALGAS_lexicalWhileBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalWhileBranchListAST ;
-  friend class cEnumerator_new_lexicalWhileBranchListAST ;
  
 } ; // End of GALGAS_lexicalWhileBranchListAST class
 
@@ -3597,7 +3584,7 @@ class cEnumerator_lexicalWhileBranchListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalExpressionAST current_mWhileExpression (LOCATION_ARGS) const ;
@@ -3606,7 +3593,7 @@ class cEnumerator_lexicalWhileBranchListAST {
   public : class GALGAS_lexicalWhileBranchListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalWhileBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -3880,7 +3867,6 @@ class GALGAS_lexicalSelectBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalSelectBranchListAST ;
-  friend class cEnumerator_new_lexicalSelectBranchListAST ;
  
 } ; // End of GALGAS_lexicalSelectBranchListAST class
 
@@ -3907,7 +3893,7 @@ class cEnumerator_lexicalSelectBranchListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalExpressionAST current_mSelectExpression (LOCATION_ARGS) const ;
@@ -3916,7 +3902,7 @@ class cEnumerator_lexicalSelectBranchListAST {
   public : class GALGAS_lexicalSelectBranchListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSelectBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -4255,7 +4241,6 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalRoutineCallActualArgumentListAST ;
-  friend class cEnumerator_new_lexicalRoutineCallActualArgumentListAST ;
  
 } ; // End of GALGAS_lexicalRoutineCallActualArgumentListAST class
 
@@ -4282,7 +4267,7 @@ class cEnumerator_lexicalRoutineCallActualArgumentListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_abstractLexicalRoutineActualArgumentAST current_mLexicalRoutineActualArgument (LOCATION_ARGS) const ;
@@ -4290,7 +4275,7 @@ class cEnumerator_lexicalRoutineCallActualArgumentListAST {
   public : class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -4612,7 +4597,6 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalFunctionCallActualArgumentListAST ;
-  friend class cEnumerator_new_lexicalFunctionCallActualArgumentListAST ;
  
 } ; // End of GALGAS_lexicalFunctionCallActualArgumentListAST class
 
@@ -4639,7 +4623,7 @@ class cEnumerator_lexicalFunctionCallActualArgumentListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST current_mLexicalActualInputArgument (LOCATION_ARGS) const ;
@@ -4647,7 +4631,7 @@ class cEnumerator_lexicalFunctionCallActualArgumentListAST {
   public : class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -5104,7 +5088,6 @@ class GALGAS_lexicalExternRoutineFormalArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalExternRoutineFormalArgumentListAST ;
-  friend class cEnumerator_new_lexicalExternRoutineFormalArgumentListAST ;
  
 } ; // End of GALGAS_lexicalExternRoutineFormalArgumentListAST class
 
@@ -5131,7 +5114,7 @@ class cEnumerator_lexicalExternRoutineFormalArgumentListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalArgumentModeAST current_mPassingMode (LOCATION_ARGS) const ;
@@ -5141,7 +5124,7 @@ class cEnumerator_lexicalExternRoutineFormalArgumentListAST {
   public : class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -5339,7 +5322,6 @@ class GALGAS_externRoutineListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_externRoutineListAST ;
-  friend class cEnumerator_new_externRoutineListAST ;
  
 } ; // End of GALGAS_externRoutineListAST class
 
@@ -5366,7 +5348,7 @@ class cEnumerator_externRoutineListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mRoutineName (LOCATION_ARGS) const ;
@@ -5376,7 +5358,7 @@ class cEnumerator_externRoutineListAST {
   public : class GALGAS_externRoutineListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_externRoutineListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -5568,7 +5550,6 @@ class GALGAS_lexicalExternFunctionFormalArgumentListAST : public AC_GALGAS_list 
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalExternFunctionFormalArgumentListAST ;
-  friend class cEnumerator_new_lexicalExternFunctionFormalArgumentListAST ;
  
 } ; // End of GALGAS_lexicalExternFunctionFormalArgumentListAST class
 
@@ -5595,7 +5576,7 @@ class cEnumerator_lexicalExternFunctionFormalArgumentListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mLexicalTypeName (LOCATION_ARGS) const ;
@@ -5604,7 +5585,7 @@ class cEnumerator_lexicalExternFunctionFormalArgumentListAST {
   public : class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -5800,7 +5781,6 @@ class GALGAS_externFunctionListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_externFunctionListAST ;
-  friend class cEnumerator_new_externFunctionListAST ;
  
 } ; // End of GALGAS_externFunctionListAST class
 
@@ -5827,7 +5807,7 @@ class cEnumerator_externFunctionListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mFunctionName (LOCATION_ARGS) const ;
@@ -5837,7 +5817,7 @@ class cEnumerator_externFunctionListAST {
   public : class GALGAS_externFunctionListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_externFunctionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -6029,7 +6009,6 @@ class GALGAS_indexingListAST : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_indexingListAST ;
-  friend class cEnumerator_new_indexingListAST ;
  
 } ; // End of GALGAS_indexingListAST class
 
@@ -6056,7 +6035,7 @@ class cEnumerator_indexingListAST {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mIndexName (LOCATION_ARGS) const ;
@@ -6065,7 +6044,7 @@ class cEnumerator_indexingListAST {
   public : class GALGAS_indexingListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_indexingListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -6370,7 +6349,6 @@ class GALGAS_lexicalSentValueList : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalSentValueList ;
-  friend class cEnumerator_new_lexicalSentValueList ;
  
 } ; // End of GALGAS_lexicalSentValueList class
 
@@ -6397,7 +6375,7 @@ class cEnumerator_lexicalSentValueList {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mLexicalFormalSelector (LOCATION_ARGS) const ;
@@ -6407,7 +6385,7 @@ class cEnumerator_lexicalSentValueList {
   public : class GALGAS_lexicalSentValueList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSentValueList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -6571,7 +6549,6 @@ class GALGAS_terminalMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_terminalMap ;
-  friend class cEnumerator_new_terminalMap ;
  
 } ; // End of GALGAS_terminalMap class
 
@@ -6598,7 +6575,7 @@ class cEnumerator_terminalMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -6607,7 +6584,7 @@ class cEnumerator_terminalMap {
   public : class GALGAS_terminalMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -6797,7 +6774,6 @@ class GALGAS_lexicalTypeMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalTypeMap ;
-  friend class cEnumerator_new_lexicalTypeMap ;
  
 } ; // End of GALGAS_lexicalTypeMap class
 
@@ -6824,7 +6800,7 @@ class cEnumerator_lexicalTypeMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -6833,7 +6809,7 @@ class cEnumerator_lexicalTypeMap {
   public : class GALGAS_lexicalTypeMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalTypeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -7020,7 +6996,6 @@ class GALGAS_lexicalAttributeMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalAttributeMap ;
-  friend class cEnumerator_new_lexicalAttributeMap ;
  
 } ; // End of GALGAS_lexicalAttributeMap class
 
@@ -7047,7 +7022,7 @@ class cEnumerator_lexicalAttributeMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -7056,7 +7031,7 @@ class cEnumerator_lexicalAttributeMap {
   public : class GALGAS_lexicalAttributeMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalAttributeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -7328,7 +7303,6 @@ class GALGAS_terminalList : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_terminalList ;
-  friend class cEnumerator_new_terminalList ;
  
 } ; // End of GALGAS_terminalList class
 
@@ -7355,7 +7329,7 @@ class cEnumerator_terminalList {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mTerminalName (LOCATION_ARGS) const ;
@@ -7368,7 +7342,7 @@ class cEnumerator_terminalList {
   public : class GALGAS_terminalList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -7562,7 +7536,6 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalExplicitTokenListMap ;
-  friend class cEnumerator_new_lexicalExplicitTokenListMap ;
  
 } ; // End of GALGAS_lexicalExplicitTokenListMap class
 
@@ -7589,7 +7562,7 @@ class cEnumerator_lexicalExplicitTokenListMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -7599,7 +7572,7 @@ class cEnumerator_lexicalExplicitTokenListMap {
   public : class GALGAS_lexicalExplicitTokenListMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExplicitTokenListMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -7789,7 +7762,6 @@ class GALGAS_tokenSortedlist : public AC_GALGAS_sortedlist {
 //--------------------------------- Friend
 
   friend class cEnumerator_tokenSortedlist ;
-  friend class cEnumerator_new_tokenSortedlist ;
  
 } ; // End of GALGAS_tokenSortedlist class
 
@@ -7816,7 +7788,7 @@ class cEnumerator_tokenSortedlist {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_uint current_mLength (LOCATION_ARGS) const ;
@@ -7826,7 +7798,7 @@ class cEnumerator_tokenSortedlist {
   public : class GALGAS_tokenSortedlist_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_tokenSortedlist_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -8017,7 +7989,6 @@ class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalExplicitTokenListMapMap ;
-  friend class cEnumerator_new_lexicalExplicitTokenListMapMap ;
  
 } ; // End of GALGAS_lexicalExplicitTokenListMapMap class
 
@@ -8044,7 +8015,7 @@ class cEnumerator_lexicalExplicitTokenListMapMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -8055,7 +8026,7 @@ class cEnumerator_lexicalExplicitTokenListMapMap {
   public : class GALGAS_lexicalExplicitTokenListMapMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExplicitTokenListMapMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -8271,7 +8242,6 @@ class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalMessageMap ;
-  friend class cEnumerator_new_lexicalMessageMap ;
  
 } ; // End of GALGAS_lexicalMessageMap class
 
@@ -8298,7 +8268,7 @@ class cEnumerator_lexicalMessageMap {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -8308,7 +8278,7 @@ class cEnumerator_lexicalMessageMap {
   public : class GALGAS_lexicalMessageMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalMessageMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
@@ -8551,7 +8521,6 @@ class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
 //--------------------------------- Friend
 
   friend class cEnumerator_lexicalRoutineFormalArgumentList ;
-  friend class cEnumerator_new_lexicalRoutineFormalArgumentList ;
  
 } ; // End of GALGAS_lexicalRoutineFormalArgumentList class
 
@@ -8578,7 +8547,7 @@ class cEnumerator_lexicalRoutineFormalArgumentList {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lexicalArgumentModeAST current_mLexicalFormalArgumentMode (LOCATION_ARGS) const ;
@@ -8588,7 +8557,7 @@ class cEnumerator_lexicalRoutineFormalArgumentList {
   public : class GALGAS_lexicalRoutineFormalArgumentList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalRoutineFormalArgumentList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;

@@ -364,7 +364,6 @@ end
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Friend\n
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
-  friend class cEnumerator_new_%!TYPE_IDENTIFIER% ;
 %end
 % 
 } ; // End of GALGAS_%!TYPE_IDENTIFIER% class
@@ -393,7 +392,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
   public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access\n%
   for () in ENUMERATION_DESCRIPTOR_LIST do
@@ -405,7 +404,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
   end
 %
 //--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
