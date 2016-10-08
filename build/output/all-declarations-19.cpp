@@ -3899,133 +3899,133 @@ static void extensionMethod_listDeclarationAST_enterInSemanticContext (const cPt
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listDeclarationAST * object = (const cPtr_listDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
-  GALGAS_typedPropertyList var_typedAttributeList_3489 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 70)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_3521 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
-  while (enumerator_3521.hasCurrentObject ()) {
-    GALGAS_unifiedTypeMap_2D_proxy var_attributeTypeIndex_3655 ;
+  GALGAS_typedPropertyList var_typedAttributeList_3318 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 68)) ;
+  cEnumerator_propertyInCollectionListAST enumerator_3350 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
+  while (enumerator_3350.hasCurrentObject ()) {
+    GALGAS_unifiedTypeMap_2D_proxy var_attributeTypeIndex_3484 ;
     {
-    GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, enumerator_3521.current_mPropertyTypeName (HERE), var_attributeTypeIndex_3655 COMMA_SOURCE_FILE ("type-list.galgas", 72)) ;
+    GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, enumerator_3350.current_mPropertyTypeName (HERE), var_attributeTypeIndex_3484 COMMA_SOURCE_FILE ("type-list.galgas", 70)) ;
     }
-    GALGAS_bool var_hasGetter_3676 = GALGAS_bool (true) ;
-    GALGAS_bool var_hasSetter_3703 = GALGAS_bool (false) ;
-    cEnumerator_lstringlist enumerator_3738 (enumerator_3521.current_mFeatureList (HERE), kENUMERATION_UP) ;
-    while (enumerator_3738.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_3738.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
+    GALGAS_bool var_hasGetter_3505 = GALGAS_bool (true) ;
+    GALGAS_bool var_hasSetter_3532 = GALGAS_bool (false) ;
+    cEnumerator_lstringlist enumerator_3567 (enumerator_3350.current_mFeatureList (HERE), kENUMERATION_UP) ;
+    while (enumerator_3567.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_3567.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        var_hasGetter_3676 = GALGAS_bool (false) ;
+        var_hasGetter_3505 = GALGAS_bool (false) ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_3738.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_3567.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
         if (kBoolTrue == test_1) {
-          var_hasSetter_3703 = GALGAS_bool (true) ;
+          var_hasSetter_3532 = GALGAS_bool (true) ;
         }
       }
-      enumerator_3738.gotoNextObject () ;
+      enumerator_3567.gotoNextObject () ;
     }
-    var_typedAttributeList_3489.addAssign_operation (var_attributeTypeIndex_3655, enumerator_3521.current_mPropertyName (HERE), var_hasSetter_3703, var_hasGetter_3676  COMMA_SOURCE_FILE ("type-list.galgas", 82)) ;
-    enumerator_3521.gotoNextObject () ;
+    var_typedAttributeList_3318.addAssign_operation (var_attributeTypeIndex_3484, enumerator_3350.current_mPropertyName (HERE), var_hasSetter_3532, var_hasGetter_3505  COMMA_SOURCE_FILE ("type-list.galgas", 80)) ;
+    enumerator_3350.gotoNextObject () ;
   }
-  GALGAS_unifiedTypeMap_2D_proxy var_uintType_4123 ;
+  GALGAS_unifiedTypeMap_2D_proxy var_uintType_3952 ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("uint"), var_uintType_4123 COMMA_SOURCE_FILE ("type-list.galgas", 85)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxyFromString (ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("uint"), var_uintType_3952 COMMA_SOURCE_FILE ("type-list.galgas", 83)) ;
   }
-  GALGAS_unifiedTypeMap_2D_proxy var_listTypeIndex_4265 ;
+  GALGAS_unifiedTypeMap_2D_proxy var_listTypeIndex_4094 ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, var_listTypeIndex_4265 COMMA_SOURCE_FILE ("type-list.galgas", 87)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, var_listTypeIndex_4094 COMMA_SOURCE_FILE ("type-list.galgas", 85)) ;
   }
-  GALGAS_unifiedTypeMap_2D_proxy var_listElementTypeIndex_4503 ;
+  GALGAS_unifiedTypeMap_2D_proxy var_listElementTypeIndex_4332 ;
   {
-  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 91)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 91)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 91)), var_listElementTypeIndex_4503 COMMA_SOURCE_FILE ("type-list.galgas", 89)) ;
+  GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 89)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 89)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 89)), var_listElementTypeIndex_4332 COMMA_SOURCE_FILE ("type-list.galgas", 87)) ;
   }
-  GALGAS_enumerationDescriptorList var_enumerationDescriptor_4561 = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 95)) ;
-  GALGAS_functionSignature var_constructorAttributeTypeList_4627 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 96)) ;
-  GALGAS_formalParameterSignature var_setterOutputFormalArgumentList_4687 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 97)) ;
-  GALGAS_formalParameterSignature var_setterInputFormalArgumentList_4753 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 98)) ;
-  cEnumerator_typedPropertyList enumerator_4814 (var_typedAttributeList_3489, kENUMERATION_UP) ;
-  while (enumerator_4814.hasCurrentObject ()) {
-    var_enumerationDescriptor_4561.addAssign_operation (enumerator_4814.current_mAttributeTypeProxy (HERE), enumerator_4814.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 100))  COMMA_SOURCE_FILE ("type-list.galgas", 100)) ;
-    var_constructorAttributeTypeList_4627.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 101)), enumerator_4814.current_mAttributeTypeProxy (HERE), enumerator_4814.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 101)) ;
-    var_setterOutputFormalArgumentList_4687.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 102)), enumerator_4814.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("type-list.galgas", 102)), enumerator_4814.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 102)) ;
-    var_setterInputFormalArgumentList_4753.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 103)), enumerator_4814.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 103)), enumerator_4814.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 103)) ;
-    enumerator_4814.gotoNextObject () ;
+  GALGAS_enumerationDescriptorList var_enumerationDescriptor_4390 = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 93)) ;
+  GALGAS_functionSignature var_constructorAttributeTypeList_4456 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 94)) ;
+  GALGAS_formalParameterSignature var_setterOutputFormalArgumentList_4516 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 95)) ;
+  GALGAS_formalParameterSignature var_setterInputFormalArgumentList_4582 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 96)) ;
+  cEnumerator_typedPropertyList enumerator_4643 (var_typedAttributeList_3318, kENUMERATION_UP) ;
+  while (enumerator_4643.hasCurrentObject ()) {
+    var_enumerationDescriptor_4390.addAssign_operation (enumerator_4643.current_mAttributeTypeProxy (HERE), enumerator_4643.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 98))  COMMA_SOURCE_FILE ("type-list.galgas", 98)) ;
+    var_constructorAttributeTypeList_4456.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 99)), enumerator_4643.current_mAttributeTypeProxy (HERE), enumerator_4643.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 99)) ;
+    var_setterOutputFormalArgumentList_4516.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 100)), enumerator_4643.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("type-list.galgas", 100)), enumerator_4643.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 100)) ;
+    var_setterInputFormalArgumentList_4582.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 101)), enumerator_4643.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 101)), enumerator_4643.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 101)) ;
+    enumerator_4643.gotoNextObject () ;
   }
-  GALGAS_constructorMap var_constructorMap_5315 = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 106)) ;
+  GALGAS_constructorMap var_constructorMap_5144 = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 104)) ;
   {
-  routine_enterConstructorWithoutArgument (var_constructorMap_5315, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("emptyList"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 111)), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 107)) ;
-  }
-  {
-  var_constructorMap_5315.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("listWithValue"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 115))  COMMA_SOURCE_FILE ("type-list.galgas", 115)), var_constructorAttributeTypeList_4627, GALGAS_bool (false), var_listTypeIndex_4265, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 114)) ;
-  }
-  GALGAS_getterMap var_getterMap_5790 ;
-  {
-  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap_5790, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 121)) ;
+  routine_enterConstructorWithoutArgument (var_constructorMap_5144, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("emptyList"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 109)), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 105)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument (var_getterMap_5790, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("length"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 122)) ;
+  var_constructorMap_5144.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("listWithValue"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 113))  COMMA_SOURCE_FILE ("type-list.galgas", 113)), var_constructorAttributeTypeList_4456, GALGAS_bool (false), var_listTypeIndex_4094, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 112)) ;
+  }
+  GALGAS_getterMap var_getterMap_5619 ;
+  {
+  routine_commonGetterMapForAllTypes (ioArgument_ioSemanticContext.mAttribute_mTypeMap, var_getterMap_5619, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 119)) ;
   }
   {
-  routine_enterInheritedGetterWithoutArgument (var_getterMap_5790, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("range"), GALGAS_string ("range"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 129)) ;
+  routine_enterInheritedGetterWithoutArgument (var_getterMap_5619, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("length"), GALGAS_string ("uint"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 120)) ;
   }
   {
-  routine_enterBaseGetterWithArgument (var_getterMap_5790, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListFromIndex"), GALGAS_string ("uint"), GALGAS_string ("inIndex"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 140)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 136)) ;
+  routine_enterInheritedGetterWithoutArgument (var_getterMap_5619, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("range"), GALGAS_string ("range"), GALGAS_bool (false), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 127)) ;
   }
   {
-  routine_enterBaseGetterWithArgument (var_getterMap_5790, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListToIndex"), GALGAS_string ("uint"), GALGAS_string ("inIndex"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 147)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 143)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap_5619, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListFromIndex"), GALGAS_string ("uint"), GALGAS_string ("inIndex"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 138)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 134)) ;
   }
   {
-  routine_enterBaseGetterWithArgument (var_getterMap_5790, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListWithRange"), GALGAS_string ("range"), GALGAS_string ("inRange"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 154)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 150)) ;
+  routine_enterBaseGetterWithArgument (var_getterMap_5619, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListToIndex"), GALGAS_string ("uint"), GALGAS_string ("inIndex"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 145)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 141)) ;
   }
-  cEnumerator_typedPropertyList enumerator_6687 (var_typedAttributeList_3489, kENUMERATION_UP) ;
-  while (enumerator_6687.hasCurrentObject ()) {
-    const enumGalgasBool test_2 = enumerator_6687.current_mHasGetter (HERE).boolEnum () ;
+  {
+  routine_enterBaseGetterWithArgument (var_getterMap_5619, ioArgument_ioSemanticContext.mAttribute_mTypeMap, GALGAS_string ("subListWithRange"), GALGAS_string ("range"), GALGAS_string ("inRange"), object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 152)), GALGAS_bool (true), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 148)) ;
+  }
+  cEnumerator_typedPropertyList enumerator_6516 (var_typedAttributeList_3318, kENUMERATION_UP) ;
+  while (enumerator_6516.hasCurrentObject ()) {
+    const enumGalgasBool test_2 = enumerator_6516.current_mHasGetter (HERE).boolEnum () ;
     if (kBoolTrue == test_2) {
       {
-      GALGAS_functionSignature temp_3 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 162)) ;
-      temp_3.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 162)), var_uintType_4123, GALGAS_string ("inIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 162)) ;
-      var_getterMap_5790.setter_insertOrReplace (GALGAS_lstring::constructor_new (enumerator_6687.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 160)).add_operation (GALGAS_string ("AtIndex"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 160)), enumerator_6687.current_mAttributeName (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 160))  COMMA_SOURCE_FILE ("type-list.galgas", 160)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 161)), temp_3, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 163)), GALGAS_bool (true), enumerator_6687.current_mAttributeTypeProxy (HERE), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 166)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 159)) ;
+      GALGAS_functionSignature temp_3 = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 160)) ;
+      temp_3.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 160)), var_uintType_3952, GALGAS_string ("inIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 160)) ;
+      var_getterMap_5619.setter_insertOrReplace (GALGAS_lstring::constructor_new (enumerator_6516.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 158)).add_operation (GALGAS_string ("AtIndex"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 158)), enumerator_6516.current_mAttributeName (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 158))  COMMA_SOURCE_FILE ("type-list.galgas", 158)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 159)), temp_3, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 161)), GALGAS_bool (true), enumerator_6516.current_mAttributeTypeProxy (HERE), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 164)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 157)) ;
       }
     }
-    enumerator_6687.gotoNextObject () ;
+    enumerator_6516.gotoNextObject () ;
   }
-  GALGAS_instanceMethodMap var_instanceMethodMap_7160 = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 172)) ;
+  GALGAS_instanceMethodMap var_instanceMethodMap_6989 = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 170)) ;
   {
-  var_instanceMethodMap_7160.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("first"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 174))  COMMA_SOURCE_FILE ("type-list.galgas", 174)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 175)), var_setterOutputFormalArgumentList_4687, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 177)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 179)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 173)) ;
-  }
-  {
-  var_instanceMethodMap_7160.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("last"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 183))  COMMA_SOURCE_FILE ("type-list.galgas", 183)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 184)), var_setterOutputFormalArgumentList_4687, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 186)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 188)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 182)) ;
-  }
-  GALGAS_setterMap var_setterMap_7697 = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 192)) ;
-  {
-  var_setterMap_7697.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("popFirst"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 194))  COMMA_SOURCE_FILE ("type-list.galgas", 194)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 195)), var_setterOutputFormalArgumentList_4687, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 198)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 193)) ;
+  var_instanceMethodMap_6989.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("first"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 172))  COMMA_SOURCE_FILE ("type-list.galgas", 172)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 173)), var_setterOutputFormalArgumentList_4516, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 175)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 177)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 171)) ;
   }
   {
-  var_setterMap_7697.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("popLast"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 202))  COMMA_SOURCE_FILE ("type-list.galgas", 202)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 203)), var_setterOutputFormalArgumentList_4687, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 206)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 201)) ;
+  var_instanceMethodMap_6989.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("last"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 181))  COMMA_SOURCE_FILE ("type-list.galgas", 181)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 182)), var_setterOutputFormalArgumentList_4516, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 184)), GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 186)), GALGAS_string::makeEmptyString (), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 180)) ;
   }
-  var_setterOutputFormalArgumentList_4687.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 209)), var_uintType_4123, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 209)), GALGAS_string ("inIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 209)) ;
+  GALGAS_setterMap var_setterMap_7526 = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 190)) ;
   {
-  var_setterMap_7697.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("removeAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 211))  COMMA_SOURCE_FILE ("type-list.galgas", 211)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 212)), var_setterOutputFormalArgumentList_4687, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 215)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 210)) ;
+  var_setterMap_7526.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("popFirst"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 192))  COMMA_SOURCE_FILE ("type-list.galgas", 192)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 193)), var_setterOutputFormalArgumentList_4516, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 196)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 191)) ;
   }
-  cEnumerator_typedPropertyList enumerator_8514 (var_typedAttributeList_3489, kENUMERATION_UP) ;
-  while (enumerator_8514.hasCurrentObject ()) {
-    const enumGalgasBool test_4 = enumerator_8514.current_mHasSetter (HERE).boolEnum () ;
+  {
+  var_setterMap_7526.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("popLast"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 200))  COMMA_SOURCE_FILE ("type-list.galgas", 200)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 201)), var_setterOutputFormalArgumentList_4516, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 204)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 199)) ;
+  }
+  var_setterOutputFormalArgumentList_4516.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 207)), var_uintType_3952, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 207)), GALGAS_string ("inIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 207)) ;
+  {
+  var_setterMap_7526.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("removeAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 209))  COMMA_SOURCE_FILE ("type-list.galgas", 209)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 210)), var_setterOutputFormalArgumentList_4516, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 213)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 208)) ;
+  }
+  cEnumerator_typedPropertyList enumerator_8343 (var_typedAttributeList_3318, kENUMERATION_UP) ;
+  while (enumerator_8343.hasCurrentObject ()) {
+    const enumGalgasBool test_4 = enumerator_8343.current_mHasSetter (HERE).boolEnum () ;
     if (kBoolTrue == test_4) {
-      GALGAS_formalParameterSignature var_setterFormalArgumentList_8575 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 221)) ;
-      var_setterFormalArgumentList_8575.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 222)), enumerator_8514.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 222)), enumerator_8514.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 222)) ;
-      var_setterFormalArgumentList_8575.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 223)), var_uintType_4123, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 223)), enumerator_8514.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 223)) ;
+      GALGAS_formalParameterSignature var_setterFormalArgumentList_8404 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 219)) ;
+      var_setterFormalArgumentList_8404.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 220)), enumerator_8343.current_mAttributeTypeProxy (HERE), GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 220)), enumerator_8343.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 220)) ;
+      var_setterFormalArgumentList_8404.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 221)), var_uintType_3952, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 221)), enumerator_8343.current_mAttributeName (HERE).mAttribute_string  COMMA_SOURCE_FILE ("type-list.galgas", 221)) ;
       {
-      var_setterMap_7697.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("set").add_operation (enumerator_8514.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 225)).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-list.galgas", 225)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 225)).add_operation (GALGAS_string ("AtIndex"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 225)), enumerator_8514.current_mAttributeName (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 225))  COMMA_SOURCE_FILE ("type-list.galgas", 225)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 226)), var_setterFormalArgumentList_8575, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 229)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 224)) ;
+      var_setterMap_7526.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("set").add_operation (enumerator_8343.current_mAttributeName (HERE).getter_string (SOURCE_FILE ("type-list.galgas", 223)).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("type-list.galgas", 223)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 223)).add_operation (GALGAS_string ("AtIndex"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 223)), enumerator_8343.current_mAttributeName (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 223))  COMMA_SOURCE_FILE ("type-list.galgas", 223)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 224)), var_setterFormalArgumentList_8404, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 227)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 222)) ;
       }
     }
-    enumerator_8514.gotoNextObject () ;
+    enumerator_8343.gotoNextObject () ;
   }
-  var_setterInputFormalArgumentList_4753.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 235)), var_uintType_4123, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 235)), GALGAS_string ("inInsertionIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 235)) ;
+  var_setterInputFormalArgumentList_4582.addAssign_operation (GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("type-list.galgas", 233)), var_uintType_3952, GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("type-list.galgas", 233)), GALGAS_string ("inInsertionIndex")  COMMA_SOURCE_FILE ("type-list.galgas", 233)) ;
   {
-  var_setterMap_7697.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("insertAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 237))  COMMA_SOURCE_FILE ("type-list.galgas", 237)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 238)), var_setterInputFormalArgumentList_4753, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 241)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 236)) ;
-  }
-  {
-  routine_addExtensions (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mListTypeName, var_getterMap_5790, var_setterMap_7697, var_instanceMethodMap_7160, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 246)) ;
+  var_setterMap_7526.setter_insertOrReplace (GALGAS_lstring::constructor_new (GALGAS_string ("insertAtIndex"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 235))  COMMA_SOURCE_FILE ("type-list.galgas", 235)), GALGAS_methodKind::constructor_definedAsMember (SOURCE_FILE ("type-list.galgas", 236)), var_setterInputFormalArgumentList_4582, GALGAS_bool (true), GALGAS_methodQualifier::constructor_isBasic (SOURCE_FILE ("type-list.galgas", 239)), GALGAS_string::makeEmptyString () COMMA_SOURCE_FILE ("type-list.galgas", 234)) ;
   }
   {
-  ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("type-list.galgas", 261)), GALGAS_typeKindEnum::constructor_listType (SOURCE_FILE ("type-list.galgas", 262)), GALGAS_bool (true), var_typedAttributeList_3489, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 265)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 266)), var_constructorMap_5315, var_getterMap_5790, var_setterMap_7697, var_instanceMethodMap_7160, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 271)), var_enumerationDescriptor_4561, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 273)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 273)) COMMA_SOURCE_FILE ("type-list.galgas", 273)).operator_or (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 273)) COMMA_SOURCE_FILE ("type-list.galgas", 273)), var_constructorAttributeTypeList_4627, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 275)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 276)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 277)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 278)), GALGAS_bool (false), var_listElementTypeIndex_4503, GALGAS_string ("emptyList"), GALGAS_string ("list-").add_operation (object->mAttribute_mListTypeName.mAttribute_string.getter_fileNameRepresentation (SOURCE_FILE ("type-list.galgas", 282)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 282)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-list.galgas", 283)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 257)) ;
+  routine_addExtensions (constinArgument_inExtensionMethodMapForBuildingContext, constinArgument_inExtensionGetterMapForBuildingContext, constinArgument_inExtensionSetterMapForBuildingContext, ioArgument_ioSemanticContext, object->mAttribute_mListTypeName, var_getterMap_5619, var_setterMap_7526, var_instanceMethodMap_6989, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 244)) ;
+  }
+  {
+  ioArgument_ioSemanticContext.mAttribute_mTypeMap.setter_insertKey (object->mAttribute_mListTypeName, object->mAttribute_mIsPredefined, GALGAS_bool (true), GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("type-list.galgas", 259)), GALGAS_typeKindEnum::constructor_listType (SOURCE_FILE ("type-list.galgas", 260)), GALGAS_bool (true), var_typedAttributeList_3318, GALGAS_attributeMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 263)), GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 264)), var_constructorMap_5144, var_getterMap_5619, var_setterMap_7526, var_instanceMethodMap_6989, GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 269)), var_enumerationDescriptor_4390, function_doNotGenererateObjectCompare (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 271)).operator_or (function_plusEqualOperatorWithExpression (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 271)) COMMA_SOURCE_FILE ("type-list.galgas", 271)).operator_or (function_infixAddOperator (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 271)) COMMA_SOURCE_FILE ("type-list.galgas", 271)), var_constructorAttributeTypeList_4456, GALGAS_constantIndexMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 273)), GALGAS_enumConstantList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 274)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 275)), GALGAS_mapSearchMethodListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 276)), GALGAS_bool (false), var_listElementTypeIndex_4332, GALGAS_string ("emptyList"), GALGAS_string ("list-").add_operation (object->mAttribute_mListTypeName.mAttribute_string.getter_fileNameRepresentation (SOURCE_FILE ("type-list.galgas", 280)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 280)), GALGAS_headerKind::constructor_oneHeader (SOURCE_FILE ("type-list.galgas", 281)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 255)) ;
   }
 }
 
@@ -4052,13 +4052,13 @@ static void extensionMethod_listDeclarationAST_addAssociatedElement (const cPtr_
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listDeclarationAST * object = (const cPtr_listDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
-  GALGAS_propertyInCollectionListAST var_structAttributeList_11055 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 292)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_11087 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
-  while (enumerator_11087.hasCurrentObject ()) {
-    var_structAttributeList_11055.addAssign_operation (enumerator_11087.current_mPropertyTypeName (HERE), enumerator_11087.current_mPropertyName (HERE), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 297))  COMMA_SOURCE_FILE ("type-list.galgas", 294)) ;
-    enumerator_11087.gotoNextObject () ;
+  GALGAS_propertyInCollectionListAST var_structAttributeList_10884 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 290)) ;
+  cEnumerator_propertyInCollectionListAST enumerator_10916 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
+  while (enumerator_10916.hasCurrentObject ()) {
+    var_structAttributeList_10884.addAssign_operation (enumerator_10916.current_mPropertyTypeName (HERE), enumerator_10916.current_mPropertyName (HERE), GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 295))  COMMA_SOURCE_FILE ("type-list.galgas", 292)) ;
+    enumerator_10916.gotoNextObject () ;
   }
-  ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 301)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 301)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 301)), var_structAttributeList_11055, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("type-list.galgas", 299))  COMMA_SOURCE_FILE ("type-list.galgas", 299)) ;
+  ioArgument_ioSemanticDeclarationList.addAssign_operation (GALGAS_structDeclarationAST::constructor_new (object->mAttribute_mIsPredefined, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 299)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 299)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 299)), var_structAttributeList_10884, GALGAS_string::makeEmptyString ()  COMMA_SOURCE_FILE ("type-list.galgas", 297))  COMMA_SOURCE_FILE ("type-list.galgas", 297)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4089,65 +4089,65 @@ static void extensionMethod_listDeclarationAST_semanticAnalysis (const cPtr_sema
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listDeclarationAST * object = (const cPtr_listDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_listDeclarationAST) ;
-  GALGAS_lstring var_nameForUsefulness_12164 = function_typeNameForUsefulEntitiesGraph (object->mAttribute_mListTypeName, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 321)) ;
+  GALGAS_lstring var_nameForUsefulness_11993 = function_typeNameForUsefulEntitiesGraph (object->mAttribute_mListTypeName, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 319)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_12164, var_nameForUsefulness_12164, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 322)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_11993, var_nameForUsefulness_11993, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 320)) ;
   }
-  GALGAS_lstring var_elementTypeNameForUsefulness_12323 = function_typeNameForUsefulEntitiesGraph (GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (GALGAS_string ("-element"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 323)), object->mAttribute_mListTypeName.getter_location (SOURCE_FILE ("type-list.galgas", 323))  COMMA_SOURCE_FILE ("type-list.galgas", 323)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 323)) ;
+  GALGAS_lstring var_elementTypeNameForUsefulness_12152 = function_typeNameForUsefulEntitiesGraph (GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (GALGAS_string ("-element"), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 321)), object->mAttribute_mListTypeName.getter_location (SOURCE_FILE ("type-list.galgas", 321))  COMMA_SOURCE_FILE ("type-list.galgas", 321)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 321)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_12164, var_elementTypeNameForUsefulness_12323 COMMA_SOURCE_FILE ("type-list.galgas", 324)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_11993, var_elementTypeNameForUsefulness_12152 COMMA_SOURCE_FILE ("type-list.galgas", 322)) ;
   }
-  GALGAS_typedPropertyList var_typedAttributeList_12545 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 326)) ;
-  GALGAS_attributeIndexMap var_attributeMap_12584 = GALGAS_attributeIndexMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 327)) ;
-  cEnumerator_propertyInCollectionListAST enumerator_12616 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
-  while (enumerator_12616.hasCurrentObject ()) {
-    GALGAS_lstring var_propertyTypeNameForUsefulness_12657 = function_typeNameForUsefulEntitiesGraph (enumerator_12616.current_mPropertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 329)) ;
+  GALGAS_typedPropertyList var_typedAttributeList_12374 = GALGAS_typedPropertyList::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 324)) ;
+  GALGAS_attributeIndexMap var_attributeMap_12413 = GALGAS_attributeIndexMap::constructor_emptyMap (SOURCE_FILE ("type-list.galgas", 325)) ;
+  cEnumerator_propertyInCollectionListAST enumerator_12445 (object->mAttribute_mAttributeList, kENUMERATION_UP) ;
+  while (enumerator_12445.hasCurrentObject ()) {
+    GALGAS_lstring var_propertyTypeNameForUsefulness_12486 = function_typeNameForUsefulEntitiesGraph (enumerator_12445.current_mPropertyTypeName (HERE), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 327)) ;
     {
-    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_12164, var_propertyTypeNameForUsefulness_12657 COMMA_SOURCE_FILE ("type-list.galgas", 330)) ;
+    ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_11993, var_propertyTypeNameForUsefulness_12486 COMMA_SOURCE_FILE ("type-list.galgas", 328)) ;
     }
-    GALGAS_unifiedTypeMap_2D_proxy var_t_12809 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_12616.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 331)) ;
-    GALGAS_bool var_hasGetter_12910 = GALGAS_bool (true) ;
-    GALGAS_bool var_hasSetter_12935 = GALGAS_bool (false) ;
-    cEnumerator_lstringlist enumerator_12970 (enumerator_12616.current_mFeatureList (HERE), kENUMERATION_UP) ;
-    while (enumerator_12970.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_12970.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
+    GALGAS_unifiedTypeMap_2D_proxy var_t_12638 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, enumerator_12445.current_mPropertyTypeName (HERE), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 329)) ;
+    GALGAS_bool var_hasGetter_12739 = GALGAS_bool (true) ;
+    GALGAS_bool var_hasSetter_12764 = GALGAS_bool (false) ;
+    cEnumerator_lstringlist enumerator_12799 (enumerator_12445.current_mFeatureList (HERE), kENUMERATION_UP) ;
+    while (enumerator_12799.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_12799.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("nogetter"))).boolEnum () ;
       if (kBoolTrue == test_0) {
-        const enumGalgasBool test_1 = var_hasGetter_12910.operator_not (SOURCE_FILE ("type-list.galgas", 336)).boolEnum () ;
+        const enumGalgasBool test_1 = var_hasGetter_12739.operator_not (SOURCE_FILE ("type-list.galgas", 334)).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           fixItArray2.addObject (C_FixItDescription (kFixItRemove, "")) ;
-          inCompiler->emitSemanticError (enumerator_12970.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 337)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("type-list.galgas", 337)) ;
+          inCompiler->emitSemanticError (enumerator_12799.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 335)), GALGAS_string ("duplicate attribute"), fixItArray2  COMMA_SOURCE_FILE ("type-list.galgas", 335)) ;
         }
-        var_hasGetter_12910 = GALGAS_bool (false) ;
+        var_hasGetter_12739 = GALGAS_bool (false) ;
       }else if (kBoolFalse == test_0) {
-        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_12970.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_12799.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("setter"))).boolEnum () ;
         if (kBoolTrue == test_3) {
-          const enumGalgasBool test_4 = var_hasSetter_12935.boolEnum () ;
+          const enumGalgasBool test_4 = var_hasSetter_12764.boolEnum () ;
           if (kBoolTrue == test_4) {
             TC_Array <C_FixItDescription> fixItArray5 ;
             fixItArray5.addObject (C_FixItDescription (kFixItRemove, "")) ;
-            inCompiler->emitSemanticError (enumerator_12970.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 342)), GALGAS_string ("duplicate attribute"), fixItArray5  COMMA_SOURCE_FILE ("type-list.galgas", 342)) ;
+            inCompiler->emitSemanticError (enumerator_12799.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 340)), GALGAS_string ("duplicate attribute"), fixItArray5  COMMA_SOURCE_FILE ("type-list.galgas", 340)) ;
           }
-          var_hasSetter_12935 = GALGAS_bool (true) ;
+          var_hasSetter_12764 = GALGAS_bool (true) ;
         }else if (kBoolFalse == test_3) {
           TC_Array <C_FixItDescription> fixItArray6 ;
-          GALGAS_stringlist temp_7 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 346)) ;
-          temp_7.addAssign_operation (GALGAS_string ("nogetter")  COMMA_SOURCE_FILE ("type-list.galgas", 346)) ;
-          temp_7.addAssign_operation (GALGAS_string ("setter")  COMMA_SOURCE_FILE ("type-list.galgas", 346)) ;
+          GALGAS_stringlist temp_7 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("type-list.galgas", 344)) ;
+          temp_7.addAssign_operation (GALGAS_string ("nogetter")  COMMA_SOURCE_FILE ("type-list.galgas", 344)) ;
+          temp_7.addAssign_operation (GALGAS_string ("setter")  COMMA_SOURCE_FILE ("type-list.galgas", 344)) ;
           appendFixItActions (fixItArray6, kFixItReplace, temp_7) ;
-          inCompiler->emitSemanticError (enumerator_12970.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 346)), GALGAS_string ("unknown feature"), fixItArray6  COMMA_SOURCE_FILE ("type-list.galgas", 346)) ;
+          inCompiler->emitSemanticError (enumerator_12799.current_mValue (HERE).getter_location (SOURCE_FILE ("type-list.galgas", 344)), GALGAS_string ("unknown feature"), fixItArray6  COMMA_SOURCE_FILE ("type-list.galgas", 344)) ;
         }
       }
-      enumerator_12970.gotoNextObject () ;
+      enumerator_12799.gotoNextObject () ;
     }
-    var_typedAttributeList_12545.addAssign_operation (var_t_12809, enumerator_12616.current_mPropertyName (HERE), var_hasSetter_12935, var_hasGetter_12910  COMMA_SOURCE_FILE ("type-list.galgas", 349)) ;
+    var_typedAttributeList_12374.addAssign_operation (var_t_12638, enumerator_12445.current_mPropertyName (HERE), var_hasSetter_12764, var_hasGetter_12739  COMMA_SOURCE_FILE ("type-list.galgas", 347)) ;
     {
-    var_attributeMap_12584.setter_insertKey (enumerator_12616.current_mPropertyName (HERE), var_t_12809, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 354)) ;
+    var_attributeMap_12413.setter_insertKey (enumerator_12445.current_mPropertyName (HERE), var_t_12638, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 352)) ;
     }
-    enumerator_12616.gotoNextObject () ;
+    enumerator_12445.gotoNextObject () ;
   }
-  GALGAS_unifiedTypeMap_2D_proxy var_selfType_13589 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 357)) ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("list type ").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 359)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 359)), GALGAS_listTypeForGeneration::constructor_new (var_selfType_13589, GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 362)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 362)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 362)), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 362)), var_typedAttributeList_12545  COMMA_SOURCE_FILE ("type-list.galgas", 360))  COMMA_SOURCE_FILE ("type-list.galgas", 358)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_selfType_13418 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, object->mAttribute_mListTypeName, inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 355)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("list type ").add_operation (object->mAttribute_mListTypeName.getter_string (SOURCE_FILE ("type-list.galgas", 357)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 357)), GALGAS_listTypeForGeneration::constructor_new (var_selfType_13418, GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (object->mAttribute_mListTypeName.mAttribute_string.add_operation (function_elementTypeNameSuffix (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 360)), inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 360)), object->mAttribute_mListTypeName.mAttribute_location  COMMA_SOURCE_FILE ("type-list.galgas", 360)), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 360)), var_typedAttributeList_12374  COMMA_SOURCE_FILE ("type-list.galgas", 358))  COMMA_SOURCE_FILE ("type-list.galgas", 356)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4215,12 +4215,17 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (C_C
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " : public AC_GALGAS_list {\n"
-    " // protected : TC_Array <GALGAS_" ;
+    "  private : TC_Array <class GALGAS_" ;
   result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 8)).stringValue () ;
   result << "> mArray ;\n"
     "\n"
     "//--------------------------------- Default constructor\n"
     "  public : GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor\n"
+    "  public : virtual ~ GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) ;\n"
     "\n"
@@ -4233,18 +4238,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (C_C
     "  public : static void makeAttributesFromObjects (" ;
   columnMarker = result.currentColumn () ;
   result << "capCollectionElement & outAttributes" ;
-  GALGAS_uint index_1152_ (0) ;
+  GALGAS_uint index_1258_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_1152 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1152.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_1258 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1258.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const class GALGAS_" ;
-      result << enumerator_1152.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 19)).stringValue () ;
+      result << enumerator_1258.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 22)).stringValue () ;
       result << " & in_" ;
-      result << enumerator_1152.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 19)).stringValue () ;
-      index_1152_.increment () ;
-      enumerator_1152.gotoNextObject () ;
+      result << enumerator_1258.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.h1.galgasTemplate", 22)).stringValue () ;
+      index_1258_.increment () ;
+      enumerator_1258.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4263,16 +4268,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (C_C
 GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (C_Compiler * inCompiler,
                                                                                          const GALGAS_string & /* in_TYPE_5F_NAME */,
                                                                                          const GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                                         const GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                         const GALGAS_unifiedTypeMap_2D_proxy & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "//                                                                                                                     *\n"
-    "//" ;
-  result << GALGAS_string ("Class for element of '@").add_operation (in_TYPE_5F_IDENTIFIER, inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).add_operation (GALGAS_string ("' list"), inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).getter_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).stringValue () ;
-  result << "*\n"
-    "//                                                                                                                     *\n"
+    "\n"
+    "// class GALGAS_list_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " : public TC_UniqueArray <GALGAS_" ;
+  result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 3)).stringValue () ;
+  result << ">, public C_SharedObject {\n"
+    "//} ;\n"
+    "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "class cCollectionElement_" ;
@@ -4287,20 +4296,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_823_ (0) ;
+  GALGAS_uint index_639_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_823 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_823.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_639 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_639.hasCurrentObject ()) {
       result << "const GALGAS_" ;
-      result << enumerator_823.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 13)).stringValue () ;
+      result << enumerator_639.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 14)).stringValue () ;
       result << " & in_" ;
-      result << enumerator_823.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 13)).stringValue () ;
-      if (enumerator_823.hasNextObject ()) {
+      result << enumerator_639.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 14)).stringValue () ;
+      if (enumerator_639.hasNextObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
       }
-      index_823_.increment () ;
-      enumerator_823.gotoNextObject () ;
+      index_639_.increment () ;
+      enumerator_639.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4328,20 +4337,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_1715_ (0) ;
+  GALGAS_uint index_1531_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_1715 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1715.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_1531 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1531.hasCurrentObject ()) {
       result << "const GALGAS_" ;
-      result << enumerator_1715.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 36)).stringValue () ;
+      result << enumerator_1531.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 37)).stringValue () ;
       result << " & in_" ;
-      result << enumerator_1715.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 36)).stringValue () ;
-      if (enumerator_1715.hasNextObject ()) {
+      result << enumerator_1531.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 37)).stringValue () ;
+      if (enumerator_1531.hasNextObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
       }
-      index_1715_.increment () ;
-      enumerator_1715.gotoNextObject () ;
+      index_1531_.increment () ;
+      enumerator_1531.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4349,17 +4358,17 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << "COMMA_LOCATION_ARGS) :\n"
     "cCollectionElement (THERE),\n"
     "mObject (" ;
-  GALGAS_uint index_1954_ (0) ;
+  GALGAS_uint index_1770_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_1954 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1954.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_1770 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1770.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_1954.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 44)).stringValue () ;
-      if (enumerator_1954.hasNextObject ()) {
+      result << enumerator_1770.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 45)).stringValue () ;
+      if (enumerator_1770.hasNextObject ()) {
         result << ", " ;
       }
-      index_1954_.increment () ;
-      enumerator_1954.gotoNextObject () ;
+      index_1770_.increment () ;
+      enumerator_1770.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -4382,17 +4391,17 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "  macroMyNew (result, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
-  GALGAS_uint index_2587_ (0) ;
+  GALGAS_uint index_2403_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_2587 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2587.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_2403 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2403.hasCurrentObject ()) {
       result << "mObject.mAttribute_" ;
-      result << enumerator_2587.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 62)).stringValue () ;
-      if (enumerator_2587.hasNextObject ()) {
+      result << enumerator_2403.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 63)).stringValue () ;
+      if (enumerator_2403.hasNextObject ()) {
         result << ", " ;
       }
-      index_2587_.increment () ;
-      enumerator_2587.gotoNextObject () ;
+      index_2403_.increment () ;
+      enumerator_2403.gotoNextObject () ;
     }
   }
   result << " COMMA_HERE)) ;\n"
@@ -4404,20 +4413,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "void cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::description (C_String & ioString, const int32_t inIndentation) const {\n" ;
-  GALGAS_uint index_2987_ (0) ;
+  GALGAS_uint index_2803_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_2987 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2987.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_2803 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2803.hasCurrentObject ()) {
       result << "  ioString << \"\\n\" ;\n"
         "  ioString.writeStringMultiple (\"| \", inIndentation) ;\n"
         "  ioString << " ;
-      result << enumerator_2987.current_mAttributeName (HERE).mAttribute_string.getter_utf_38_Representation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 76)).stringValue () ;
+      result << enumerator_2803.current_mAttributeName (HERE).mAttribute_string.getter_utf_38_Representation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 77)).stringValue () ;
       result << " \":\" ;\n"
         "  mObject.mAttribute_" ;
-      result << enumerator_2987.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 77)).stringValue () ;
+      result << enumerator_2803.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 78)).stringValue () ;
       result << ".description (ioString, inIndentation) ;\n" ;
-      index_2987_.increment () ;
-      enumerator_2987.gotoNextObject () ;
+      index_2803_.increment () ;
+      enumerator_2803.gotoNextObject () ;
     }
   }
   result << "}\n"
@@ -4445,9 +4454,8 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) :\n"
-    "AC_GALGAS_list ()\n"
-    "// mArray ()\n"
-    " {\n"
+    "AC_GALGAS_list (),\n"
+    "mArray () {\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -4457,12 +4465,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (cSharedList * inSharedListPtr) :\n"
-    "AC_GALGAS_list (inSharedListPtr)\n"
-    "// mArray ()\n"
-    " {\n"
+    "AC_GALGAS_list (inSharedListPtr),\n"
+    "mArray () {\n"
     "  if (NULL == inSharedListPtr) {\n"
     "    createNewEmptyList (HERE) ;\n"
     "  }\n"
+    "}\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << "::~ GALGAS_" ;
+  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+  result << " (void) {\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -4487,20 +4503,20 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::constructor_listWithValue (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_4855_IDX (0) ;
+  GALGAS_uint index_4854_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_4855 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4855.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_4854 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4854.hasCurrentObject ()) {
       result << "const GALGAS_" ;
-      result << enumerator_4855.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 120)).stringValue () ;
+      result << enumerator_4854.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 124)).stringValue () ;
       result << " & inOperand" ;
-      result << index_4855_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 120)).stringValue () ;
-      if (enumerator_4855.hasNextObject ()) {
+      result << index_4854_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 124)).stringValue () ;
+      if (enumerator_4854.hasNextObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
       }
-      index_4855_IDX.increment () ;
-      enumerator_4855.gotoNextObject () ;
+      index_4854_IDX.increment () ;
+      enumerator_4854.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4510,18 +4526,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " result ;\n"
     "  if (" ;
-  GALGAS_uint index_5088_IDX (0) ;
+  GALGAS_uint index_5087_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_5088 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5088.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_5087 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5087.hasCurrentObject ()) {
       result << "inOperand" ;
-      result << index_5088_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 127)).stringValue () ;
+      result << index_5087_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 131)).stringValue () ;
       result << ".isValid ()" ;
-      if (enumerator_5088.hasNextObject ()) {
+      if (enumerator_5087.hasNextObject ()) {
         result << " && " ;
       }
-      index_5088_IDX.increment () ;
-      enumerator_5088.gotoNextObject () ;
+      index_5087_IDX.increment () ;
+      enumerator_5087.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -4530,14 +4546,14 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "    GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::makeAttributesFromObjects (attributes" ;
-  GALGAS_uint index_5350_IDX (0) ;
+  GALGAS_uint index_5349_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_5350 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5350.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_5349 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5349.hasCurrentObject ()) {
       result << ", inOperand" ;
-      result << index_5350_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 135)).stringValue () ;
-      index_5350_IDX.increment () ;
-      enumerator_5350.gotoNextObject () ;
+      result << index_5349_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 139)).stringValue () ;
+      index_5349_IDX.increment () ;
+      enumerator_5349.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE) ;\n"
@@ -4553,18 +4569,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << "::makeAttributesFromObjects (" ;
   columnMarker = result.currentColumn () ;
   result << "capCollectionElement & outAttributes" ;
-  GALGAS_uint index_5724_ (0) ;
+  GALGAS_uint index_5723_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_5724 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5724.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_5723 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5723.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const GALGAS_" ;
-      result << enumerator_5724.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 147)).stringValue () ;
+      result << enumerator_5723.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 151)).stringValue () ;
       result << " & in_" ;
-      result << enumerator_5724.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 147)).stringValue () ;
-      index_5724_.increment () ;
-      enumerator_5724.gotoNextObject () ;
+      result << enumerator_5723.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 151)).stringValue () ;
+      index_5723_.increment () ;
+      enumerator_5723.gotoNextObject () ;
     }
   }
   result << "\n" ;
@@ -4577,18 +4593,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_6028_ (0) ;
+  GALGAS_uint index_6027_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_6028 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6028.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_6027 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6027.hasCurrentObject ()) {
       result << "in_" ;
-      result << enumerator_6028.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 154)).stringValue () ;
-      if (enumerator_6028.hasNextObject ()) {
+      result << enumerator_6027.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 158)).stringValue () ;
+      if (enumerator_6027.hasNextObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
       }
-      index_6028_.increment () ;
-      enumerator_6028.gotoNextObject () ;
+      index_6027_.increment () ;
+      enumerator_6027.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE)) ;\n"
@@ -4602,35 +4618,35 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::addAssign_operation (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_6411_IDX (0) ;
+  GALGAS_uint index_6410_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_6411 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6411.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_6410 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6410.hasCurrentObject ()) {
       result << "const GALGAS_" ;
-      result << enumerator_6411.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 166)).stringValue () ;
+      result << enumerator_6410.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 170)).stringValue () ;
       result << " & inOperand" ;
-      result << index_6411_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 166)).stringValue () ;
-      if (enumerator_6411.hasNextObject ()) {
+      result << index_6410_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 170)).stringValue () ;
+      if (enumerator_6410.hasNextObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
       }
-      index_6411_IDX.increment () ;
-      enumerator_6411.gotoNextObject () ;
+      index_6410_IDX.increment () ;
+      enumerator_6410.gotoNextObject () ;
     }
   }
   result << "\n" ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid ()" ;
-  GALGAS_uint index_6617_IDX (0) ;
+  GALGAS_uint index_6616_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_6617 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6617.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_6616 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6616.hasCurrentObject ()) {
       result << " && inOperand" ;
-      result << index_6617_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 172)).stringValue () ;
+      result << index_6616_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 176)).stringValue () ;
       result << ".isValid ()" ;
-      index_6617_IDX.increment () ;
-      enumerator_6617.gotoNextObject () ;
+      index_6616_IDX.increment () ;
+      enumerator_6616.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -4638,17 +4654,17 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "    macroMyNew (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
-  GALGAS_uint index_6814_IDX (0) ;
+  GALGAS_uint index_6813_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_6814 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6814.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_6813 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6813.hasCurrentObject ()) {
       result << "inOperand" ;
-      result << index_6814_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 178)).stringValue () ;
-      if (enumerator_6814.hasNextObject ()) {
+      result << index_6813_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 182)).stringValue () ;
+      if (enumerator_6813.hasNextObject ()) {
         result << ", " ;
       }
-      index_6814_IDX.increment () ;
-      enumerator_6814.gotoNextObject () ;
+      index_6813_IDX.increment () ;
+      enumerator_6813.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE)) ;\n"
@@ -4665,18 +4681,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_insertAtIndex (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_7246_IDX (0) ;
+  GALGAS_uint index_7245_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_7246 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7246.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_7245 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_7245.hasCurrentObject ()) {
       result << "const GALGAS_" ;
-      result << enumerator_7246.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 193)).stringValue () ;
+      result << enumerator_7245.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 197)).stringValue () ;
       result << " inOperand" ;
-      result << index_7246_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 193)).stringValue () ;
+      result << index_7245_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 197)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_7246_IDX.increment () ;
-      enumerator_7246.gotoNextObject () ;
+      index_7245_IDX.increment () ;
+      enumerator_7245.gotoNextObject () ;
     }
   }
   result << "const GALGAS_uint inInsertionIndex,\n" ;
@@ -4685,15 +4701,15 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid () && inInsertionIndex.isValid ()" ;
-  GALGAS_uint index_7547_IDX (0) ;
+  GALGAS_uint index_7546_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_7547 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7547.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_7546 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_7546.hasCurrentObject ()) {
       result << " && inOperand" ;
-      result << index_7547_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 200)).stringValue () ;
+      result << index_7546_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 204)).stringValue () ;
       result << ".isValid ()" ;
-      index_7547_IDX.increment () ;
-      enumerator_7547.gotoNextObject () ;
+      index_7546_IDX.increment () ;
+      enumerator_7546.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -4701,17 +4717,17 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "    macroMyNew (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
-  GALGAS_uint index_7744_IDX (0) ;
+  GALGAS_uint index_7743_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_7744 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_7744.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_7743 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_7743.hasCurrentObject ()) {
       result << "inOperand" ;
-      result << index_7744_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 206)).stringValue () ;
-      if (enumerator_7744.hasNextObject ()) {
+      result << index_7743_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 210)).stringValue () ;
+      if (enumerator_7743.hasNextObject ()) {
         result << ", " ;
       }
-      index_7744_IDX.increment () ;
-      enumerator_7744.gotoNextObject () ;
+      index_7743_IDX.increment () ;
+      enumerator_7743.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE)) ;\n"
@@ -4728,18 +4744,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_removeAtIndex (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_8238_IDX (0) ;
+  GALGAS_uint index_8237_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_8238 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8238.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_8237 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8237.hasCurrentObject ()) {
       result << "GALGAS_" ;
-      result << enumerator_8238.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 221)).stringValue () ;
+      result << enumerator_8237.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 225)).stringValue () ;
       result << " & outOperand" ;
-      result << index_8238_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 221)).stringValue () ;
+      result << index_8237_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 225)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_8238_IDX.increment () ;
-      enumerator_8238.gotoNextObject () ;
+      index_8237_IDX.increment () ;
+      enumerator_8237.gotoNextObject () ;
     }
   }
   result << "const GALGAS_uint inRemoveIndex,\n" ;
@@ -4756,32 +4772,32 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " *) attributes.ptr () ;\n"
     "    if (NULL == p) {\n" ;
-  GALGAS_uint index_8791_IDX (0) ;
+  GALGAS_uint index_8790_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_8791 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8791.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_8790 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8790.hasCurrentObject ()) {
       result << "      outOperand" ;
-      result << index_8791_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 233)).stringValue () ;
+      result << index_8790_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 237)).stringValue () ;
       result << ".drop () ;\n" ;
-      index_8791_IDX.increment () ;
-      enumerator_8791.gotoNextObject () ;
+      index_8790_IDX.increment () ;
+      enumerator_8790.gotoNextObject () ;
     }
   }
   result << "    }else{\n"
     "      macroValidSharedObject (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n" ;
-  GALGAS_uint index_8975_IDX (0) ;
+  GALGAS_uint index_8974_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_8975 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8975.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_8974 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8974.hasCurrentObject ()) {
       result << "      outOperand" ;
-      result << index_8975_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 239)).stringValue () ;
+      result << index_8974_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 243)).stringValue () ;
       result << " = p->mObject.mAttribute_" ;
-      result << enumerator_8975.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 239)).stringValue () ;
+      result << enumerator_8974.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 243)).stringValue () ;
       result << " ;\n" ;
-      index_8975_IDX.increment () ;
-      enumerator_8975.gotoNextObject () ;
+      index_8974_IDX.increment () ;
+      enumerator_8974.gotoNextObject () ;
     }
   }
   result << "    }\n"
@@ -4794,18 +4810,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_popFirst (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_9324_IDX (0) ;
+  GALGAS_uint index_9323_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_9324 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9324.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_9323 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9323.hasCurrentObject ()) {
       result << "GALGAS_" ;
-      result << enumerator_9324.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 249)).stringValue () ;
+      result << enumerator_9323.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 253)).stringValue () ;
       result << " & outOperand" ;
-      result << index_9324_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 249)).stringValue () ;
+      result << index_9323_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 253)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_9324_IDX.increment () ;
-      enumerator_9324.gotoNextObject () ;
+      index_9323_IDX.increment () ;
+      enumerator_9323.gotoNextObject () ;
     }
   }
   result << "C_Compiler * inCompiler\n"
@@ -4820,32 +4836,32 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " *) attributes.ptr () ;\n"
     "  if (NULL == p) {\n" ;
-  GALGAS_uint index_9742_IDX (0) ;
+  GALGAS_uint index_9741_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_9742 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9742.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_9741 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9741.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_9742_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 259)).stringValue () ;
+      result << index_9741_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 263)).stringValue () ;
       result << ".drop () ;\n" ;
-      index_9742_IDX.increment () ;
-      enumerator_9742.gotoNextObject () ;
+      index_9741_IDX.increment () ;
+      enumerator_9741.gotoNextObject () ;
     }
   }
   result << "  }else{\n"
     "    macroValidSharedObject (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n" ;
-  GALGAS_uint index_9920_IDX (0) ;
+  GALGAS_uint index_9919_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_9920 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9920.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_9919 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9919.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_9920_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 265)).stringValue () ;
+      result << index_9919_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 269)).stringValue () ;
       result << " = p->mObject.mAttribute_" ;
-      result << enumerator_9920.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 265)).stringValue () ;
+      result << enumerator_9919.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 269)).stringValue () ;
       result << " ;\n" ;
-      index_9920_IDX.increment () ;
-      enumerator_9920.gotoNextObject () ;
+      index_9919_IDX.increment () ;
+      enumerator_9919.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -4857,18 +4873,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_popLast (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_10260_IDX (0) ;
+  GALGAS_uint index_10259_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_10260 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10260.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_10259 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10259.hasCurrentObject ()) {
       result << "GALGAS_" ;
-      result << enumerator_10260.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 274)).stringValue () ;
+      result << enumerator_10259.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 278)).stringValue () ;
       result << " & outOperand" ;
-      result << index_10260_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 274)).stringValue () ;
+      result << index_10259_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 278)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_10260_IDX.increment () ;
-      enumerator_10260.gotoNextObject () ;
+      index_10259_IDX.increment () ;
+      enumerator_10259.gotoNextObject () ;
     }
   }
   result << "C_Compiler * inCompiler\n"
@@ -4883,32 +4899,32 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " *) attributes.ptr () ;\n"
     "  if (NULL == p) {\n" ;
-  GALGAS_uint index_10677_IDX (0) ;
+  GALGAS_uint index_10676_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_10677 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10677.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_10676 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10676.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_10677_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 284)).stringValue () ;
+      result << index_10676_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 288)).stringValue () ;
       result << ".drop () ;\n" ;
-      index_10677_IDX.increment () ;
-      enumerator_10677.gotoNextObject () ;
+      index_10676_IDX.increment () ;
+      enumerator_10676.gotoNextObject () ;
     }
   }
   result << "  }else{\n"
     "    macroValidSharedObject (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n" ;
-  GALGAS_uint index_10855_IDX (0) ;
+  GALGAS_uint index_10854_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_10855 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10855.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_10854 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10854.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_10855_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 290)).stringValue () ;
+      result << index_10854_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 294)).stringValue () ;
       result << " = p->mObject.mAttribute_" ;
-      result << enumerator_10855.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 290)).stringValue () ;
+      result << enumerator_10854.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 294)).stringValue () ;
       result << " ;\n" ;
-      index_10855_IDX.increment () ;
-      enumerator_10855.gotoNextObject () ;
+      index_10854_IDX.increment () ;
+      enumerator_10854.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -4920,18 +4936,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::method_first (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_11193_IDX (0) ;
+  GALGAS_uint index_11192_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_11193 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_11193.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_11192 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11192.hasCurrentObject ()) {
       result << "GALGAS_" ;
-      result << enumerator_11193.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 299)).stringValue () ;
+      result << enumerator_11192.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 303)).stringValue () ;
       result << " & outOperand" ;
-      result << index_11193_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 299)).stringValue () ;
+      result << index_11192_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 303)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_11193_IDX.increment () ;
-      enumerator_11193.gotoNextObject () ;
+      index_11192_IDX.increment () ;
+      enumerator_11192.gotoNextObject () ;
     }
   }
   result << "C_Compiler * inCompiler\n"
@@ -4946,32 +4962,32 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " *) attributes.ptr () ;\n"
     "  if (NULL == p) {\n" ;
-  GALGAS_uint index_11609_IDX (0) ;
+  GALGAS_uint index_11608_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_11609 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_11609.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_11608 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11608.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_11609_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 309)).stringValue () ;
+      result << index_11608_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 313)).stringValue () ;
       result << ".drop () ;\n" ;
-      index_11609_IDX.increment () ;
-      enumerator_11609.gotoNextObject () ;
+      index_11608_IDX.increment () ;
+      enumerator_11608.gotoNextObject () ;
     }
   }
   result << "  }else{\n"
     "    macroValidSharedObject (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n" ;
-  GALGAS_uint index_11787_IDX (0) ;
+  GALGAS_uint index_11786_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_11787 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_11787.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_11786 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11786.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_11787_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 315)).stringValue () ;
+      result << index_11786_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 319)).stringValue () ;
       result << " = p->mObject.mAttribute_" ;
-      result << enumerator_11787.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 315)).stringValue () ;
+      result << enumerator_11786.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 319)).stringValue () ;
       result << " ;\n" ;
-      index_11787_IDX.increment () ;
-      enumerator_11787.gotoNextObject () ;
+      index_11786_IDX.increment () ;
+      enumerator_11786.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -4983,18 +4999,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::method_last (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_12124_IDX (0) ;
+  GALGAS_uint index_12123_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_12124 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_12124.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_12123 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_12123.hasCurrentObject ()) {
       result << "GALGAS_" ;
-      result << enumerator_12124.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 324)).stringValue () ;
+      result << enumerator_12123.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 328)).stringValue () ;
       result << " & outOperand" ;
-      result << index_12124_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 324)).stringValue () ;
+      result << index_12123_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 328)).stringValue () ;
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      index_12124_IDX.increment () ;
-      enumerator_12124.gotoNextObject () ;
+      index_12123_IDX.increment () ;
+      enumerator_12123.gotoNextObject () ;
     }
   }
   result << "C_Compiler * inCompiler\n"
@@ -5009,32 +5025,32 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " *) attributes.ptr () ;\n"
     "  if (NULL == p) {\n" ;
-  GALGAS_uint index_12539_IDX (0) ;
+  GALGAS_uint index_12538_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_12539 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_12539.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_12538 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_12538.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_12539_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 334)).stringValue () ;
+      result << index_12538_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 338)).stringValue () ;
       result << ".drop () ;\n" ;
-      index_12539_IDX.increment () ;
-      enumerator_12539.gotoNextObject () ;
+      index_12538_IDX.increment () ;
+      enumerator_12538.gotoNextObject () ;
     }
   }
   result << "  }else{\n"
     "    macroValidSharedObject (p, cCollectionElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n" ;
-  GALGAS_uint index_12717_IDX (0) ;
+  GALGAS_uint index_12716_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_12717 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_12717.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_12716 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_12716.hasCurrentObject ()) {
       result << "    outOperand" ;
-      result << index_12717_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 340)).stringValue () ;
+      result << index_12716_IDX.getter_string (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 344)).stringValue () ;
       result << " = p->mObject.mAttribute_" ;
-      result << enumerator_12717.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 340)).stringValue () ;
+      result << enumerator_12716.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 344)).stringValue () ;
       result << " ;\n" ;
-      index_12717_IDX.increment () ;
-      enumerator_12717.gotoNextObject () ;
+      index_12716_IDX.increment () ;
+      enumerator_12716.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -5157,22 +5173,22 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "  appendList (inOperand) ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_15519_IDX (0) ;
+  GALGAS_uint index_15518_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_15519 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_15519.hasCurrentObject ()) {
-      const enumGalgasBool test_0 = enumerator_15519.current_mHasSetter (HERE).boolEnum () ;
+    cEnumerator_typedPropertyList enumerator_15518 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_15518.hasCurrentObject ()) {
+      const enumGalgasBool test_0 = enumerator_15518.current_mHasSetter (HERE).boolEnum () ;
       if (kBoolTrue == test_0) {
         result << "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "void GALGAS_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "::setter_set" ;
-        result << enumerator_15519.current_mAttributeName (HERE).mAttribute_string.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 400)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 400)).stringValue () ;
+        result << enumerator_15518.current_mAttributeName (HERE).mAttribute_string.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 404)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 404)).stringValue () ;
         result << "AtIndex (" ;
         columnMarker = result.currentColumn () ;
         result << "GALGAS_" ;
-        result << enumerator_15519.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 400)).stringValue () ;
+        result << enumerator_15518.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 404)).stringValue () ;
         result << " inOperand,\n"
           "                                              " ;
         result.appendSpacesUntilColumn (columnMarker) ;
@@ -5194,23 +5210,23 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
         result << ") ;\n"
           "    macroUniqueSharedObject (p) ;\n"
           "    p->mObject.mAttribute_" ;
-        result << enumerator_15519.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 408)).stringValue () ;
+        result << enumerator_15518.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 412)).stringValue () ;
         result << " = inOperand ;\n"
           "  }\n"
           "}\n"
           "\n" ;
       }else if (kBoolFalse == test_0) {
       }
-      const enumGalgasBool test_1 = enumerator_15519.current_mHasGetter (HERE).boolEnum () ;
+      const enumGalgasBool test_1 = enumerator_15518.current_mHasGetter (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "GALGAS_" ;
-        result << enumerator_15519.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 415)).stringValue () ;
+        result << enumerator_15518.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 419)).stringValue () ;
         result << " GALGAS_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "::getter_" ;
-        result << enumerator_15519.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 415)).stringValue () ;
+        result << enumerator_15518.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 419)).stringValue () ;
         result << "AtIndex (" ;
         columnMarker = result.currentColumn () ;
         result << "const GALGAS_uint & inIndex,\n"
@@ -5227,14 +5243,14 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << " *) attributes.ptr () ;\n"
           "  GALGAS_" ;
-        result << enumerator_15519.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 420)).stringValue () ;
+        result << enumerator_15518.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 424)).stringValue () ;
         result << " result ;\n"
           "  if (NULL != p) {\n"
           "    macroValidSharedObject (p, cCollectionElement_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << ") ;\n"
           "    result = p->mObject.mAttribute_" ;
-        result << enumerator_15519.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 423)).stringValue () ;
+        result << enumerator_15518.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 427)).stringValue () ;
         result << " ;\n"
           "  }\n"
           "  return result ;\n"
@@ -5242,8 +5258,8 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
           "\n" ;
       }else if (kBoolFalse == test_1) {
       }
-      index_15519_IDX.increment () ;
-      enumerator_15519.gotoNextObject () ;
+      index_15518_IDX.increment () ;
+      enumerator_15518.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5321,18 +5337,18 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
     "}\n"
     "\n"
     "\n" ;
-  GALGAS_uint index_19525_IDX (0) ;
+  GALGAS_uint index_19524_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_19525 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_19525.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_19524 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_19524.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
-      result << enumerator_19525.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 476)).stringValue () ;
+      result << enumerator_19524.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 480)).stringValue () ;
       result << " cEnumerator_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::current_" ;
-      result << enumerator_19525.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 476)).stringValue () ;
+      result << enumerator_19524.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 480)).stringValue () ;
       result << " (LOCATION_ARGS) const {\n"
         "  const cCollectionElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5343,12 +5359,12 @@ GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImpleme
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "  return p->mObject.mAttribute_" ;
-      result << enumerator_19525.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 479)).stringValue () ;
+      result << enumerator_19524.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_list.cpp.galgasTemplate", 483)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
-      index_19525_IDX.increment () ;
-      enumerator_19525.gotoNextObject () ;
+      index_19524_IDX.increment () ;
+      enumerator_19524.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5370,8 +5386,8 @@ static void extensionMethod_listTypeForGeneration_appendDeclaration_31_ (const c
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listTypeForGeneration * object = (const cPtr_listTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_listTypeForGeneration) ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 400)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 401)), object->mAttribute_mTypedAttributeList, object->mAttribute_mListElementTypeIndex COMMA_SOURCE_FILE ("type-list.galgas", 399))) ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 406)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 407)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 408)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 409)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 410)), object->mAttribute_mTypeProxy.getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 411)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 412)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 413)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 414)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 415)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 416)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 417)) COMMA_SOURCE_FILE ("type-list.galgas", 405))), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 405)) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 399)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 400)), object->mAttribute_mTypedAttributeList, object->mAttribute_mListElementTypeIndex COMMA_SOURCE_FILE ("type-list.galgas", 398))) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 405)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 406)), object->mAttribute_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 407)), object->mAttribute_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 408)), object->mAttribute_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 409)), object->mAttribute_mTypeProxy.getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 410)), object->mAttribute_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 411)), object->mAttribute_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 412)), object->mAttribute_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 413)), object->mAttribute_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 414)), object->mAttribute_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 415)), object->mAttribute_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 416)) COMMA_SOURCE_FILE ("type-list.galgas", 404))), inCompiler  COMMA_SOURCE_FILE ("type-list.galgas", 404)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5399,14 +5415,14 @@ static void extensionMethod_listTypeForGeneration_appendSpecificImplementation (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_listTypeForGeneration * object = (const cPtr_listTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_listTypeForGeneration) ;
-  cEnumerator_typedPropertyList enumerator_16320 (object->mAttribute_mTypedAttributeList, kENUMERATION_UP) ;
-  while (enumerator_16320.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName (enumerator_16320.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 428)) ;
-    enumerator_16320.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_16199 (object->mAttribute_mTypedAttributeList, kENUMERATION_UP) ;
+  while (enumerator_16199.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName (enumerator_16199.current_mAttributeTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 427)) ;
+    enumerator_16199.gotoNextObject () ;
   }
-  extensionMethod_addHeaderFileName (object->mAttribute_mListElementTypeIndex, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 430)) ;
-  extensionMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 431)) ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 433)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 434)), object->mAttribute_mTypedAttributeList COMMA_SOURCE_FILE ("type-list.galgas", 432))) ;
+  extensionMethod_addHeaderFileName (object->mAttribute_mListElementTypeIndex, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 429)) ;
+  extensionMethod_addHeaderFileName (object->mAttribute_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 430)) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (inCompiler, object->mAttribute_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 432)), object->mAttribute_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-list.galgas", 433)), object->mAttribute_mTypedAttributeList, object->mAttribute_mListElementTypeIndex COMMA_SOURCE_FILE ("type-list.galgas", 431))) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

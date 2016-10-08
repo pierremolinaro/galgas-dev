@@ -1201,10 +1201,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstr
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element> mArray ;
+  private : TC_Array <class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_syntaxInstructionListForGrammarAnalysis (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_syntaxInstructionListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_syntaxInstructionListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
@@ -1412,10 +1415,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_productionRuleListForGrammarAnalysis_2D_element> mArray ;
+  private : TC_Array <class GALGAS_productionRuleListForGrammarAnalysis_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_productionRuleListForGrammarAnalysis (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_productionRuleListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_productionRuleListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
@@ -2097,10 +2103,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_branchListForGrammarAnalysis_2D_element> mArray ;
+  private : TC_Array <class GALGAS_branchListForGrammarAnalysis_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_branchListForGrammarAnalysis (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_branchListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_branchListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
@@ -2433,10 +2442,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_syntaxComponentListForGrammarAnalysis_2D_element> mArray ;
+  private : TC_Array <class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_syntaxComponentListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
@@ -2939,10 +2951,13 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_rowList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_rowList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_rowList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_rowList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_rowList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_rowList (cSharedList * inSharedListPtr) ;
@@ -3209,10 +3224,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_programListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_programListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_programListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_programListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_programListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_programListForGeneration (cSharedList * inSharedListPtr) ;
@@ -4760,10 +4778,13 @@ class cParser_galgas_33_ProjectSyntax {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_galgas_33_QualifiedFeatureList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_galgas_33_QualifiedFeatureList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_galgas_33_QualifiedFeatureList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_galgas_33_QualifiedFeatureList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_galgas_33_QualifiedFeatureList (cSharedList * inSharedListPtr) ;

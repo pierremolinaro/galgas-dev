@@ -16,10 +16,13 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_lexicalRoutineFormalArgumentList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_lexicalRoutineFormalArgumentList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_lexicalRoutineFormalArgumentList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_lexicalRoutineFormalArgumentList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_lexicalRoutineFormalArgumentList (cSharedList * inSharedListPtr) ;
@@ -531,10 +534,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_lexicalFunctionFormalArgumentList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_lexicalFunctionFormalArgumentList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_lexicalFunctionFormalArgumentList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_lexicalFunctionFormalArgumentList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_lexicalFunctionFormalArgumentList (cSharedList * inSharedListPtr) ;
@@ -1044,10 +1050,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateDelimitorList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateDelimitorList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateDelimitorList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateDelimitorList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateDelimitorList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateDelimitorList (cSharedList * inSharedListPtr) ;
@@ -2490,10 +2499,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueE
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_commandLineOptionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_commandLineOptionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_commandLineOptionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_commandLineOptionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_commandLineOptionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_commandLineOptionListAST (cSharedList * inSharedListPtr) ;
@@ -3101,10 +3113,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMa
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_guiSimpleAttributeListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_guiSimpleAttributeListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_guiSimpleAttributeListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_guiSimpleAttributeListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiSimpleAttributeListAST (cSharedList * inSharedListPtr) ;
@@ -3334,10 +3349,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_guiCompoundAttributeListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_guiCompoundAttributeListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_guiCompoundAttributeListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_guiCompoundAttributeListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiCompoundAttributeListAST (cSharedList * inSharedListPtr) ;
@@ -3586,10 +3604,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttribut
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_terminalLabelListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_terminalLabelListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_terminalLabelListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_terminalLabelListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_terminalLabelListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_terminalLabelListAST (cSharedList * inSharedListPtr) ;
@@ -3819,10 +3840,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiLabelListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_guiLabelListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_guiLabelListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_guiLabelListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_guiLabelListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiLabelListAST (cSharedList * inSharedListPtr) ;
@@ -4071,10 +4095,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_withLexiqueListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_withLexiqueListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_withLexiqueListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_withLexiqueListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_withLexiqueListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_withLexiqueListAST (cSharedList * inSharedListPtr) ;
@@ -4342,10 +4369,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiCommandLineOptionList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_guiCommandLineOptionList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_guiCommandLineOptionList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_guiCommandLineOptionList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_guiCommandLineOptionList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiCommandLineOptionList (cSharedList * inSharedListPtr) ;
@@ -4849,10 +4879,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2D_ele
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_textMacroList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_textMacroList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_textMacroList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_textMacroList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_textMacroList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_textMacroList (cSharedList * inSharedListPtr) ;
@@ -5082,10 +5115,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2D_el
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_importedLexiqueList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_importedLexiqueList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_importedLexiqueList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_importedLexiqueList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_importedLexiqueList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_importedLexiqueList (cSharedList * inSharedListPtr) ;
@@ -5372,10 +5408,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_galgas_33_GUIComponentListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_galgas_33_GUIComponentListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_galgas_33_GUIComponentListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_galgas_33_GUIComponentListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_galgas_33_GUIComponentListAST (cSharedList * inSharedListPtr) ;
@@ -5956,10 +5995,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_propertyInCollectionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_propertyInCollectionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_propertyInCollectionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_propertyInCollectionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_propertyInCollectionListAST (cSharedList * inSharedListPtr) ;
@@ -6360,10 +6402,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList_2D
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_enumConstantListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_enumConstantListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_enumConstantListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_enumConstantListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_enumConstantListForGeneration (cSharedList * inSharedListPtr) ;
@@ -6522,10 +6567,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_unifiedTypeMapProxyList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_unifiedTypeMapProxyList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_unifiedTypeMapProxyList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_unifiedTypeMapProxyList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_unifiedTypeMapProxyList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_unifiedTypeMapProxyList (cSharedList * inSharedListPtr) ;
@@ -6807,10 +6855,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeConstructorList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_externTypeConstructorList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_externTypeConstructorList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_externTypeConstructorList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_externTypeConstructorList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeConstructorList (cSharedList * inSharedListPtr) ;
@@ -6983,10 +7034,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_typeNameFormalParameterNameList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_typeNameFormalParameterNameList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_typeNameFormalParameterNameList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_typeNameFormalParameterNameList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_typeNameFormalParameterNameList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_typeNameFormalParameterNameList (cSharedList * inSharedListPtr) ;
@@ -7235,10 +7289,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeGetterList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_externTypeGetterList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_externTypeGetterList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_externTypeGetterList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_externTypeGetterList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeGetterList (cSharedList * inSharedListPtr) ;
@@ -7487,10 +7544,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeSetterList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_externTypeSetterList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_externTypeSetterList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_externTypeSetterList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_externTypeSetterList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeSetterList (cSharedList * inSharedListPtr) ;
@@ -7649,10 +7709,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_formalParameterListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_formalParameterListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_formalParameterListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalParameterListAST (cSharedList * inSharedListPtr) ;

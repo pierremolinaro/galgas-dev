@@ -16,10 +16,13 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeMethodList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_externTypeMethodList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_externTypeMethodList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_externTypeMethodList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_externTypeMethodList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeMethodList (cSharedList * inSharedListPtr) ;
@@ -504,10 +507,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_graphInsertModifierList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_graphInsertModifierList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_graphInsertModifierList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_graphInsertModifierList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_graphInsertModifierList (cSharedList * inSharedListPtr) ;
@@ -729,10 +735,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertMethodListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_insertMethodListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_insertMethodListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_insertMethodListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_insertMethodListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_insertMethodListAST (cSharedList * inSharedListPtr) ;
@@ -1060,10 +1069,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapRemoveMethodListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapRemoveMethodListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapRemoveMethodListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapRemoveMethodListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapRemoveMethodListAST (cSharedList * inSharedListPtr) ;
@@ -1285,10 +1297,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_insertOrReplaceDeclarationListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_insertOrReplaceDeclarationListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_insertOrReplaceDeclarationListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_insertOrReplaceDeclarationListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_insertOrReplaceDeclarationListAST (cSharedList * inSharedListPtr) ;
@@ -1963,10 +1978,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAutomatonMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateTransitionList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapStateTransitionList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapStateTransitionList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapStateTransitionList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapStateTransitionList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapStateTransitionList (cSharedList * inSharedListPtr) ;
@@ -2215,10 +2233,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapStateList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapStateList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapStateList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapStateList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapStateList (cSharedList * inSharedListPtr) ;
@@ -2467,10 +2488,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList_2D_ele
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapOverrideBlockDescriptorAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapOverrideBlockDescriptorAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockDescriptorAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapOverrideBlockDescriptorAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapOverrideBlockDescriptorAST (cSharedList * inSharedListPtr) ;
@@ -2734,10 +2758,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapOverrideBlockListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapOverrideBlockListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapOverrideBlockListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapOverrideBlockListAST (cSharedList * inSharedListPtr) ;
@@ -2974,10 +3001,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_sharedMapAttributeListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_sharedMapAttributeListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_sharedMapAttributeListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_sharedMapAttributeListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_sharedMapAttributeListAST (cSharedList * inSharedListPtr) ;
@@ -4397,10 +4427,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchBehaviourSort
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_mapOverrideList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_mapOverrideList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_mapOverrideList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_mapOverrideList (cSharedList * inSharedListPtr) ;
@@ -4649,10 +4682,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideList_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_sortedListSortDescriptorListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_sortedListSortDescriptorListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_sortedListSortDescriptorListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_sortedListSortDescriptorListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_sortedListSortDescriptorListAST (cSharedList * inSharedListPtr) ;
@@ -4874,10 +4910,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescr
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_sortDescriptorListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_sortDescriptorListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_sortDescriptorListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_sortDescriptorListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_sortDescriptorListForGeneration (cSharedList * inSharedListPtr) ;
@@ -5126,10 +5165,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_formalInputParameterListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_formalInputParameterListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_formalInputParameterListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalInputParameterListAST (cSharedList * inSharedListPtr) ;
@@ -5396,10 +5438,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_formalInputParameterListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_formalInputParameterListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_formalInputParameterListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalInputParameterListForGeneration (cSharedList * inSharedListPtr) ;
@@ -5686,10 +5731,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_formalParameterListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_formalParameterListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_formalParameterListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalParameterListForGeneration (cSharedList * inSharedListPtr) ;
@@ -5973,10 +6021,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_semanticInstructionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_semanticInstructionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_semanticInstructionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_semanticInstructionListAST (cSharedList * inSharedListPtr) ;
@@ -6324,10 +6375,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_semanticInstructionListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_semanticInstructionListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_semanticInstructionListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_semanticInstructionListForGeneration (cSharedList * inSharedListPtr) ;
@@ -6673,10 +6727,13 @@ class cPtr_semanticExpressionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_actualOutputExpressionList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_actualOutputExpressionList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_actualOutputExpressionList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_actualOutputExpressionList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_actualOutputExpressionList (cSharedList * inSharedListPtr) ;
@@ -6910,10 +6967,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticExpressionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_semanticExpressionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_semanticExpressionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_semanticExpressionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_semanticExpressionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_semanticExpressionListAST (cSharedList * inSharedListPtr) ;

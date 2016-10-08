@@ -351,10 +351,13 @@ class cPtr_templateInstructionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionListAST (cSharedList * inSharedListPtr) ;
@@ -631,10 +634,13 @@ class cPtr_templateExpressionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateExpressionListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateExpressionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateExpressionListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateExpressionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateExpressionListAST (cSharedList * inSharedListPtr) ;
@@ -3133,10 +3139,13 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionIfBranchListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionIfBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionIfBranchListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionIfBranchListAST (cSharedList * inSharedListPtr) ;
@@ -3453,10 +3462,13 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionSwitchBranchListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionSwitchBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionSwitchBranchListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionSwitchBranchListAST (cSharedList * inSharedListPtr) ;
@@ -5598,10 +5610,13 @@ class cPtr_templateInstructionForGeneration : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionListForGeneration (cSharedList * inSharedListPtr) ;
@@ -5965,10 +5980,13 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionIfBranchListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionIfBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionIfBranchListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionIfBranchListForGeneration (cSharedList * inSharedListPtr) ;
@@ -6495,10 +6513,13 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateInstructionSwitchBranchListForGeneration (cSharedList * inSharedListPtr) ;

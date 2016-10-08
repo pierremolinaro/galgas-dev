@@ -16,10 +16,13 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_ruleDeclarationList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_ruleDeclarationList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_ruleDeclarationList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_ruleDeclarationList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_ruleDeclarationList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_ruleDeclarationList (cSharedList * inSharedListPtr) ;
@@ -955,10 +958,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocati
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_castInstructionBranchListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_castInstructionBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_castInstructionBranchListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_castInstructionBranchListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_castInstructionBranchListAST (cSharedList * inSharedListPtr) ;
@@ -1343,10 +1349,13 @@ class cPtr_structuredCastInstructionAST : public cPtr_semanticInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_castInstructionBranchListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_castInstructionBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_castInstructionBranchListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_castInstructionBranchListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_castInstructionBranchListForGeneration (cSharedList * inSharedListPtr) ;
@@ -1858,10 +1867,13 @@ class cEnumAssociatedValues_fixitElementAST_fixItInsertBefore : public cEnumAsso
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_fixitListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_fixitListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_fixitListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_fixitListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_fixitListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_fixitListAST (cSharedList * inSharedListPtr) ;
@@ -2181,10 +2193,13 @@ void extensionMethod_enterFixItListInSemanticContext (const class GALGAS_fixitLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_fixitListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_fixitListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_fixitListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_fixitListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_fixitListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_fixitListForGeneration (cSharedList * inSharedListPtr) ;
@@ -2588,10 +2603,13 @@ void callExtensionMethod_generateExpression (const class cPtr_semanticExpression
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectElementListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectElementListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_forInstructionEnumeratedObjectElementListAST (cSharedList * inSharedListPtr) ;
@@ -2981,10 +2999,13 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_forInstructionEnumeratedObjectListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_forInstructionEnumeratedObjectListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_forInstructionEnumeratedObjectListAST (cSharedList * inSharedListPtr) ;
@@ -3269,10 +3290,13 @@ void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumerated
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_forInstructionEnumeratedObjectListForGeneration (cSharedList * inSharedListPtr) ;
@@ -4020,10 +4044,13 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_logListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_logListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_logListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_logListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_logListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_logListAST (cSharedList * inSharedListPtr) ;
@@ -4467,10 +4494,13 @@ class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchEntryListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_matchEntryListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_matchEntryListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_matchEntryListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_matchEntryListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_matchEntryListAST (cSharedList * inSharedListPtr) ;
@@ -4707,10 +4737,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchEntryListAST_2
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchInstructionBranchListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_matchInstructionBranchListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_matchInstructionBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_matchInstructionBranchListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_matchInstructionBranchListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_matchInstructionBranchListAST (cSharedList * inSharedListPtr) ;
@@ -5066,10 +5099,13 @@ class cPtr_matchInstructionAST : public cPtr_semanticInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_matchListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_matchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_matchListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_matchListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_matchListForGeneration (cSharedList * inSharedListPtr) ;
@@ -5318,10 +5354,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchListForGenerat
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchInstructionBranchListForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_matchInstructionBranchListForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_matchInstructionBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_matchInstructionBranchListForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_matchInstructionBranchListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_matchInstructionBranchListForGeneration (cSharedList * inSharedListPtr) ;
@@ -6231,10 +6270,13 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_switchExtractedValuesListAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_switchExtractedValuesListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_switchExtractedValuesListAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_switchExtractedValuesListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_switchExtractedValuesListAST (cSharedList * inSharedListPtr) ;
@@ -6483,10 +6525,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValu
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchBranchesAST : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_switchBranchesAST_2D_element> mArray ;
+  private : TC_Array <class GALGAS_switchBranchesAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_switchBranchesAST (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_switchBranchesAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_switchBranchesAST (cSharedList * inSharedListPtr) ;
@@ -6855,10 +6900,13 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_extractedAssociatedValuesForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_extractedAssociatedValuesForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_extractedAssociatedValuesForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_extractedAssociatedValuesForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_extractedAssociatedValuesForGeneration (cSharedList * inSharedListPtr) ;
@@ -7107,10 +7155,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociated
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_switchBranchesForGeneration_2D_element> mArray ;
+  private : TC_Array <class GALGAS_switchBranchesForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_switchBranchesForGeneration (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_switchBranchesForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_switchBranchesForGeneration (cSharedList * inSharedListPtr) ;

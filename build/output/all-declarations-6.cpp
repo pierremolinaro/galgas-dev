@@ -2874,9 +2874,10 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_addAssociatedElement (defineEx
                                                                         freeExtensionMethod_semanticDeclarationAST_addAssociatedElement) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Class for element of '@semanticExpressionListForGeneration' list                           *
-//                                                                                                                     *
+
+// class GALGAS_list_semanticExpressionListForGeneration : public TC_UniqueArray <GALGAS_semanticExpressionListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_semanticExpressionListForGeneration : public cCollectionElement {
@@ -2941,20 +2942,23 @@ typeComparisonResult cCollectionElement_semanticExpressionListForGeneration::com
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListForGeneration::GALGAS_semanticExpressionListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListForGeneration::GALGAS_semanticExpressionListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionListForGeneration::~ GALGAS_semanticExpressionListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3269,9 +3273,10 @@ GALGAS_semanticExpressionListForGeneration GALGAS_semanticExpressionListForGener
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Class for element of '@actualParameterListForGeneration' list                            *
-//                                                                                                                     *
+
+// class GALGAS_list_actualParameterListForGeneration : public TC_UniqueArray <GALGAS_actualParameterListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_actualParameterListForGeneration : public cCollectionElement {
@@ -3336,20 +3341,23 @@ typeComparisonResult cCollectionElement_actualParameterListForGeneration::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterListForGeneration::GALGAS_actualParameterListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterListForGeneration::GALGAS_actualParameterListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualParameterListForGeneration::~ GALGAS_actualParameterListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3972,9 +3980,10 @@ GALGAS_semanticBlockInstructionForGeneration GALGAS_semanticBlockInstructionForG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Class for element of '@listOfSemanticInstructionListForGeneration' list                       *
-//                                                                                                                     *
+
+// class GALGAS_list_listOfSemanticInstructionListForGeneration : public TC_UniqueArray <GALGAS_listOfSemanticInstructionListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_listOfSemanticInstructionListForGeneration : public cCollectionElement {
@@ -4045,20 +4054,23 @@ typeComparisonResult cCollectionElement_listOfSemanticInstructionListForGenerati
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_listOfSemanticInstructionListForGeneration::GALGAS_listOfSemanticInstructionListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_listOfSemanticInstructionListForGeneration::GALGAS_listOfSemanticInstructionListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSemanticInstructionListForGeneration::~ GALGAS_listOfSemanticInstructionListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4894,9 +4906,10 @@ GALGAS_headerKind callExtensionGetter_headerKind (const cPtr_semanticDeclaration
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Class for element of '@semanticDeclarationListForGeneration' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_semanticDeclarationListForGeneration : public TC_UniqueArray <GALGAS_semanticDeclarationListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_semanticDeclarationListForGeneration : public cCollectionElement {
@@ -4967,20 +4980,23 @@ typeComparisonResult cCollectionElement_semanticDeclarationListForGeneration::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationListForGeneration::GALGAS_semanticDeclarationListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationListForGeneration::GALGAS_semanticDeclarationListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticDeclarationListForGeneration::~ GALGAS_semanticDeclarationListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5338,9 +5354,10 @@ GALGAS_semanticDeclarationListForGeneration GALGAS_semanticDeclarationListForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@signatureForGrammarAnalysis' list                               *
-//                                                                                                                     *
+
+// class GALGAS_list_signatureForGrammarAnalysis : public TC_UniqueArray <GALGAS_signatureForGrammarAnalysis_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement {
@@ -5411,20 +5428,23 @@ typeComparisonResult cCollectionElement_signatureForGrammarAnalysis::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_signatureForGrammarAnalysis::GALGAS_signatureForGrammarAnalysis (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_signatureForGrammarAnalysis::GALGAS_signatureForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_signatureForGrammarAnalysis::~ GALGAS_signatureForGrammarAnalysis (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6401,9 +6421,10 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapForGram
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Class for element of '@nonTerminalToAddList' list                                  *
-//                                                                                                                     *
+
+// class GALGAS_list_nonTerminalToAddList : public TC_UniqueArray <GALGAS_nonTerminalToAddList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
@@ -6474,20 +6495,23 @@ typeComparisonResult cCollectionElement_nonTerminalToAddList::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonTerminalToAddList::GALGAS_nonTerminalToAddList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonTerminalToAddList::GALGAS_nonTerminalToAddList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_nonTerminalToAddList::~ GALGAS_nonTerminalToAddList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6845,9 +6869,10 @@ GALGAS_nonTerminalToAddList GALGAS_nonTerminalToAddList::extractObject (const GA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@terminalCheckAssignementList' list                              *
-//                                                                                                                     *
+
+// class GALGAS_list_terminalCheckAssignementList : public TC_UniqueArray <GALGAS_terminalCheckAssignementList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_terminalCheckAssignementList : public cCollectionElement {
@@ -6924,20 +6949,23 @@ typeComparisonResult cCollectionElement_terminalCheckAssignementList::compare (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalCheckAssignementList::GALGAS_terminalCheckAssignementList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalCheckAssignementList::GALGAS_terminalCheckAssignementList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_terminalCheckAssignementList::~ GALGAS_terminalCheckAssignementList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7445,9 +7473,10 @@ GALGAS_syntaxInstructionForGeneration GALGAS_syntaxInstructionForGeneration::ext
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Class for element of '@filewrapperTemplateListForGeneration' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_filewrapperTemplateListForGeneration : public TC_UniqueArray <GALGAS_filewrapperTemplateListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_filewrapperTemplateListForGeneration : public cCollectionElement {
@@ -7524,20 +7553,23 @@ typeComparisonResult cCollectionElement_filewrapperTemplateListForGeneration::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperTemplateListForGeneration::GALGAS_filewrapperTemplateListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperTemplateListForGeneration::GALGAS_filewrapperTemplateListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration::~ GALGAS_filewrapperTemplateListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9935,9 +9967,10 @@ void callExtensionMethod_analyze (const cPtr_abstractCollectionValueElement * in
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Class for element of '@collectionValueElementListForGeneration' list                         *
-//                                                                                                                     *
+
+// class GALGAS_list_collectionValueElementListForGeneration : public TC_UniqueArray <GALGAS_collectionValueElementListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_collectionValueElementListForGeneration : public cCollectionElement {
@@ -10002,20 +10035,23 @@ typeComparisonResult cCollectionElement_collectionValueElementListForGeneration:
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_collectionValueElementListForGeneration::GALGAS_collectionValueElementListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_collectionValueElementListForGeneration::GALGAS_collectionValueElementListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_collectionValueElementListForGeneration::~ GALGAS_collectionValueElementListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10666,9 +10702,10 @@ void callExtensionMethod_analyzeSemanticInstruction (const cPtr_semanticInstruct
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Class for element of '@localConstantList' list                                    *
-//                                                                                                                     *
+
+// class GALGAS_list_localConstantList : public TC_UniqueArray <GALGAS_localConstantList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_localConstantList : public cCollectionElement {
@@ -10751,20 +10788,23 @@ typeComparisonResult cCollectionElement_localConstantList::compare (const cColle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localConstantList::GALGAS_localConstantList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localConstantList::GALGAS_localConstantList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localConstantList::~ GALGAS_localConstantList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11208,9 +11248,10 @@ GALGAS_localConstantList GALGAS_localConstantList::extractObject (const GALGAS_o
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@localInitializedVariableList' list                              *
-//                                                                                                                     *
+
+// class GALGAS_list_localInitializedVariableList : public TC_UniqueArray <GALGAS_localInitializedVariableList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_localInitializedVariableList : public cCollectionElement {
@@ -11287,20 +11328,23 @@ typeComparisonResult cCollectionElement_localInitializedVariableList::compare (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localInitializedVariableList::GALGAS_localInitializedVariableList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localInitializedVariableList::GALGAS_localInitializedVariableList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_localInitializedVariableList::~ GALGAS_localInitializedVariableList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12978,9 +13022,10 @@ GALGAS_nonterminalMap GALGAS_nonterminalMap::extractObject (const GALGAS_object 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@ruleLabelImplementationList' list                               *
-//                                                                                                                     *
+
+// class GALGAS_list_ruleLabelImplementationList : public TC_UniqueArray <GALGAS_ruleLabelImplementationList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_ruleLabelImplementationList : public cCollectionElement {
@@ -13069,20 +13114,23 @@ typeComparisonResult cCollectionElement_ruleLabelImplementationList::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ruleLabelImplementationList::GALGAS_ruleLabelImplementationList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ruleLabelImplementationList::GALGAS_ruleLabelImplementationList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_ruleLabelImplementationList::~ GALGAS_ruleLabelImplementationList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

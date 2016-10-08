@@ -161,6 +161,124 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//  A C _ G A L G A S _ l i s t                                                                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class AC_GALGAS_list_new : public AC_GALGAS_root {
+//--- Private Data member
+  private : cSharedList * mSharedList ;
+
+//--- Default constructor
+  public : AC_GALGAS_list_new (void) ;
+
+//--- Constructor used by list map
+  public : AC_GALGAS_list_new (cSharedList * inSharedListPtr) ;
+
+//--- Virtual destructor
+  public : virtual ~ AC_GALGAS_list_new (void) ;
+
+//--- count
+  public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
+
+//--- isValid
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedList != NULL ; }
+
+//--- drop
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--- Handle copy
+  public : AC_GALGAS_list_new (const AC_GALGAS_list_new & inSource) ;
+  public : AC_GALGAS_list_new & operator = (const AC_GALGAS_list_new & inSource) ;
+
+//--- Create a new list
+  protected : VIRTUAL_IN_DEBUG void createNewEmptyList (LOCATION_ARGS) ;
+
+//--- Enumeration
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & outEnumerationArray,
+                                                              const typeEnumerationOrder inEnumerationOrder) const ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const AC_GALGAS_list_new & inOperand) const ;
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- introspection
+  public : virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
+
+//--- Internal methods for handling list
+  protected : VIRTUAL_IN_DEBUG void addObject (const capCollectionElement & inElementToAdd) ;
+
+  protected : VIRTUAL_IN_DEBUG void addObjectAtIndex (const capCollectionElement & inElementToAdd,
+                                                      const uint32_t inInsertionIndex,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  private : VIRTUAL_IN_DEBUG void insulateList (LOCATION_ARGS) ;
+
+  protected : VIRTUAL_IN_DEBUG void removeObjectAtIndex (capCollectionElement & outAttributes,
+                                                         const uint32_t inRemoveIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  protected : VIRTUAL_IN_DEBUG void removeFirstObject (capCollectionElement & outAttributes,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  protected : VIRTUAL_IN_DEBUG void removeLastObject (capCollectionElement & outAttributes,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
+
+  protected : VIRTUAL_IN_DEBUG void readFirst (capCollectionElement & outAttributes,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void readLast (capCollectionElement & outAttributes,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void appendList (const AC_GALGAS_list_new & inList) ;
+
+  protected : VIRTUAL_IN_DEBUG void subListWithRange (AC_GALGAS_list_new & outList,
+                                                      const GALGAS_range & inRange,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void subListFromIndex (AC_GALGAS_list_new & outList,
+                                                      const GALGAS_uint & inIndex,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void subListToIndex (AC_GALGAS_list_new & outList,
+                                                    const GALGAS_uint & inIndex,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG capCollectionElement readObjectAtIndex (const GALGAS_uint & inIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const ;
+
+
+  protected : VIRTUAL_IN_DEBUG cCollectionElement * objectPointerAtIndex (const GALGAS_uint & inIndex,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) ;
+
+  public : static void makeNewSharedList (cSharedList * & outSharedList COMMA_LOCATION_ARGS) ;
+
+  public : static void insertInSharedList (cSharedList * inSharedList,
+                                           const capCollectionElement & inAttributes) ;
+
+  public : static void detachSharedList (cSharedList * & ioSharedList) ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cListMapElement : public cCollectionElement {
 //--- Attributes

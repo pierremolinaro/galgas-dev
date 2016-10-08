@@ -3624,9 +3624,10 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Class for element of '@XCodeGroupList' list                                     *
-//                                                                                                                     *
+
+// class GALGAS_list_XCodeGroupList : public TC_UniqueArray <GALGAS_XCodeGroupList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_XCodeGroupList : public cCollectionElement {
@@ -3709,20 +3710,23 @@ typeComparisonResult cCollectionElement_XCodeGroupList::compare (const cCollecti
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList::~ GALGAS_XCodeGroupList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4166,9 +4170,10 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::extractObject (const GALGAS_object 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Class for element of '@XCodeToolTargetList' list                                   *
-//                                                                                                                     *
+
+// class GALGAS_list_XCodeToolTargetList : public TC_UniqueArray <GALGAS_XCodeToolTargetList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_XCodeToolTargetList : public cCollectionElement {
@@ -4293,20 +4298,23 @@ typeComparisonResult cCollectionElement_XCodeToolTargetList::compare (const cCol
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList::~ GALGAS_XCodeToolTargetList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5051,9 +5059,10 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::extractObject (const GALG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Class for element of '@XCodeAppTargetList' list                                   *
-//                                                                                                                     *
+
+// class GALGAS_list_XCodeAppTargetList : public TC_UniqueArray <GALGAS_XCodeAppTargetList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
@@ -5196,20 +5205,23 @@ typeComparisonResult cCollectionElement_XCodeAppTargetList::compare (const cColl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList::~ GALGAS_XCodeAppTargetList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6083,9 +6095,10 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::extractObject (const GALGAS
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Class for element of '@BuildFileList' list                                      *
-//                                                                                                                     *
+
+// class GALGAS_list_BuildFileList : public TC_UniqueArray <GALGAS_BuildFileList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_BuildFileList : public cCollectionElement {
@@ -6162,20 +6175,23 @@ typeComparisonResult cCollectionElement_BuildFileList::compare (const cCollectio
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList::GALGAS_BuildFileList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList::GALGAS_BuildFileList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList::~ GALGAS_BuildFileList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

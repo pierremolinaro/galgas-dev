@@ -105,9 +105,10 @@ GALGAS_stringlist GALGAS_stringlist::extractObject (const GALGAS_object & inObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Class for element of '@stringlist' list                                       *
-//                                                                                                                     *
+
+// class GALGAS_list_stringlist : public TC_UniqueArray <GALGAS_stringlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_stringlist : public cCollectionElement {
@@ -172,20 +173,23 @@ typeComparisonResult cCollectionElement_stringlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist::~ GALGAS_stringlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -600,9 +604,10 @@ GALGAS_lstringlist GALGAS_lstringlist::extractObject (const GALGAS_object & inOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Class for element of '@lstringlist' list                                       *
-//                                                                                                                     *
+
+// class GALGAS_list_lstringlist : public TC_UniqueArray <GALGAS_lstringlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_lstringlist : public cCollectionElement {
@@ -667,20 +672,23 @@ typeComparisonResult cCollectionElement_lstringlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist::~ GALGAS_lstringlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1138,9 +1146,10 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::extractObject (const GALGAS_objec
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Class for element of '@_32_lstringlist' list                                     *
-//                                                                                                                     *
+
+// class GALGAS_list__32_lstringlist : public TC_UniqueArray <GALGAS__32_lstringlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement__32_lstringlist : public cCollectionElement {
@@ -1211,20 +1220,23 @@ typeComparisonResult cCollectionElement__32_lstringlist::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_lstringlist::~ GALGAS__32_lstringlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1962,9 +1974,10 @@ GALGAS__32_stringlist GALGAS__32_stringlist::extractObject (const GALGAS_object 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Class for element of '@_32_stringlist' list                                     *
-//                                                                                                                     *
+
+// class GALGAS_list__32_stringlist : public TC_UniqueArray <GALGAS__32_stringlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement__32_stringlist : public cCollectionElement {
@@ -2035,20 +2048,23 @@ typeComparisonResult cCollectionElement__32_stringlist::compare (const cCollecti
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist::~ GALGAS__32_stringlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2778,9 +2794,10 @@ GALGAS_functionlist GALGAS_functionlist::extractObject (const GALGAS_object & in
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Class for element of '@functionlist' list                                      *
-//                                                                                                                     *
+
+// class GALGAS_list_functionlist : public TC_UniqueArray <GALGAS_functionlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_functionlist : public cCollectionElement {
@@ -2845,20 +2862,23 @@ typeComparisonResult cCollectionElement_functionlist::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_functionlist::~ GALGAS_functionlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3187,9 +3207,10 @@ GALGAS_luintlist GALGAS_luintlist::extractObject (const GALGAS_object & inObject
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Class for element of '@luintlist' list                                        *
-//                                                                                                                     *
+
+// class GALGAS_list_luintlist : public TC_UniqueArray <GALGAS_luintlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_luintlist : public cCollectionElement {
@@ -3254,20 +3275,23 @@ typeComparisonResult cCollectionElement_luintlist::compare (const cCollectionEle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_luintlist::~ GALGAS_luintlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3596,9 +3620,10 @@ GALGAS_objectlist GALGAS_objectlist::extractObject (const GALGAS_object & inObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Class for element of '@objectlist' list                                       *
-//                                                                                                                     *
+
+// class GALGAS_list_objectlist : public TC_UniqueArray <GALGAS_objectlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_objectlist : public cCollectionElement {
@@ -3663,20 +3688,23 @@ typeComparisonResult cCollectionElement_objectlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_objectlist::~ GALGAS_objectlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4005,9 +4033,10 @@ GALGAS_typelist GALGAS_typelist::extractObject (const GALGAS_object & inObject,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Class for element of '@typelist' list                                        *
-//                                                                                                                     *
+
+// class GALGAS_list_typelist : public TC_UniqueArray <GALGAS_typelist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_typelist : public cCollectionElement {
@@ -4072,20 +4101,23 @@ typeComparisonResult cCollectionElement_typelist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typelist::~ GALGAS_typelist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4414,9 +4446,10 @@ GALGAS_uintlist GALGAS_uintlist::extractObject (const GALGAS_object & inObject,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Class for element of '@uintlist' list                                        *
-//                                                                                                                     *
+
+// class GALGAS_list_uintlist : public TC_UniqueArray <GALGAS_uintlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_uintlist : public cCollectionElement {
@@ -4481,20 +4514,23 @@ typeComparisonResult cCollectionElement_uintlist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uintlist::~ GALGAS_uintlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4823,9 +4859,10 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::extractObject (const GALGAS_obj
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Class for element of '@uint_36__34_list' list                                    *
-//                                                                                                                     *
+
+// class GALGAS_list_uint_36__34_list : public TC_UniqueArray <GALGAS_uint_36__34_list_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_uint_36__34_list : public cCollectionElement {
@@ -4890,20 +4927,23 @@ typeComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollec
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint_36__34_list::~ GALGAS_uint_36__34_list (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5232,9 +5272,10 @@ GALGAS_bigintlist GALGAS_bigintlist::extractObject (const GALGAS_object & inObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Class for element of '@bigintlist' list                                       *
-//                                                                                                                     *
+
+// class GALGAS_list_bigintlist : public TC_UniqueArray <GALGAS_bigintlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_bigintlist : public cCollectionElement {
@@ -5299,20 +5340,23 @@ typeComparisonResult cCollectionElement_bigintlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bigintlist::~ GALGAS_bigintlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5641,9 +5685,10 @@ GALGAS_lbigintlist GALGAS_lbigintlist::extractObject (const GALGAS_object & inOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Class for element of '@lbigintlist' list                                       *
-//                                                                                                                     *
+
+// class GALGAS_list_lbigintlist : public TC_UniqueArray <GALGAS_lbigintlist_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_lbigintlist : public cCollectionElement {
@@ -5708,20 +5753,23 @@ typeComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lbigintlist::~ GALGAS_lbigintlist (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

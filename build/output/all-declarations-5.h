@@ -497,10 +497,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2D_elemen
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterSignature : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_formalParameterSignature_2D_element> mArray ;
+  private : TC_Array <class GALGAS_formalParameterSignature_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterSignature (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_formalParameterSignature (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalParameterSignature (cSharedList * inSharedListPtr) ;
