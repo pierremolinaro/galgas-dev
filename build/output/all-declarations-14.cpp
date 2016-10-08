@@ -14526,7 +14526,6 @@ mAttribute_mSetterMap (),
 mAttribute_mInstanceMethodMap (),
 mAttribute_mClassMethodMap (),
 mAttribute_mEnumerationDescriptor (),
-mAttribute_mEnumeratorVariants (),
 mAttribute_mHandledOperatorFlags (),
 mAttribute_mAddAssignOperatorArguments (),
 mAttribute_mEnumConstantMap (),
@@ -14562,18 +14561,17 @@ GALGAS_unifiedTypeMap_2D_element::GALGAS_unifiedTypeMap_2D_element (const GALGAS
                                                                     const GALGAS_instanceMethodMap & inOperand12,
                                                                     const GALGAS_classMethodMap & inOperand13,
                                                                     const GALGAS_enumerationDescriptorList & inOperand14,
-                                                                    const GALGAS_stringlist & inOperand15,
-                                                                    const GALGAS_uint & inOperand16,
-                                                                    const GALGAS_functionSignature & inOperand17,
-                                                                    const GALGAS_constantIndexMap & inOperand18,
-                                                                    const GALGAS_enumConstantList & inOperand19,
+                                                                    const GALGAS_uint & inOperand15,
+                                                                    const GALGAS_functionSignature & inOperand16,
+                                                                    const GALGAS_constantIndexMap & inOperand17,
+                                                                    const GALGAS_enumConstantList & inOperand18,
+                                                                    const GALGAS_mapSearchMethodListAST & inOperand19,
                                                                     const GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                    const GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                    const GALGAS_bool & inOperand22,
-                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand23,
+                                                                    const GALGAS_bool & inOperand21,
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand22,
+                                                                    const GALGAS_string & inOperand23,
                                                                     const GALGAS_string & inOperand24,
-                                                                    const GALGAS_string & inOperand25,
-                                                                    const GALGAS_headerKind & inOperand26) :
+                                                                    const GALGAS_headerKind & inOperand25) :
 mAttribute_lkey (inOperand0),
 mAttribute_mIsPredefined (inOperand1),
 mAttribute_mIsConcrete (inOperand2),
@@ -14589,18 +14587,17 @@ mAttribute_mSetterMap (inOperand11),
 mAttribute_mInstanceMethodMap (inOperand12),
 mAttribute_mClassMethodMap (inOperand13),
 mAttribute_mEnumerationDescriptor (inOperand14),
-mAttribute_mEnumeratorVariants (inOperand15),
-mAttribute_mHandledOperatorFlags (inOperand16),
-mAttribute_mAddAssignOperatorArguments (inOperand17),
-mAttribute_mEnumConstantMap (inOperand18),
-mAttribute_mEnumConstantList (inOperand19),
-mAttribute_mMapSearchMethodList (inOperand20),
-mAttribute_mMapProxySearchConstructorList (inOperand21),
-mAttribute_mGenerateHeaderInSeparateFile (inOperand22),
-mAttribute_mTypeForEnumeratedElement (inOperand23),
-mAttribute_mDefaultConstructorName (inOperand24),
-mAttribute_mHeaderFileName (inOperand25),
-mAttribute_mHeaderKind (inOperand26) {
+mAttribute_mHandledOperatorFlags (inOperand15),
+mAttribute_mAddAssignOperatorArguments (inOperand16),
+mAttribute_mEnumConstantMap (inOperand17),
+mAttribute_mEnumConstantList (inOperand18),
+mAttribute_mMapSearchMethodList (inOperand19),
+mAttribute_mMapProxySearchConstructorList (inOperand20),
+mAttribute_mGenerateHeaderInSeparateFile (inOperand21),
+mAttribute_mTypeForEnumeratedElement (inOperand22),
+mAttribute_mDefaultConstructorName (inOperand23),
+mAttribute_mHeaderFileName (inOperand24),
+mAttribute_mHeaderKind (inOperand25) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14620,22 +14617,21 @@ GALGAS_unifiedTypeMap_2D_element GALGAS_unifiedTypeMap_2D_element::constructor_n
                                                                                     const GALGAS_instanceMethodMap & inOperand12,
                                                                                     const GALGAS_classMethodMap & inOperand13,
                                                                                     const GALGAS_enumerationDescriptorList & inOperand14,
-                                                                                    const GALGAS_stringlist & inOperand15,
-                                                                                    const GALGAS_uint & inOperand16,
-                                                                                    const GALGAS_functionSignature & inOperand17,
-                                                                                    const GALGAS_constantIndexMap & inOperand18,
-                                                                                    const GALGAS_enumConstantList & inOperand19,
+                                                                                    const GALGAS_uint & inOperand15,
+                                                                                    const GALGAS_functionSignature & inOperand16,
+                                                                                    const GALGAS_constantIndexMap & inOperand17,
+                                                                                    const GALGAS_enumConstantList & inOperand18,
+                                                                                    const GALGAS_mapSearchMethodListAST & inOperand19,
                                                                                     const GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                                    const GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                                    const GALGAS_bool & inOperand22,
-                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand23,
+                                                                                    const GALGAS_bool & inOperand21,
+                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand22,
+                                                                                    const GALGAS_string & inOperand23,
                                                                                     const GALGAS_string & inOperand24,
-                                                                                    const GALGAS_string & inOperand25,
-                                                                                    const GALGAS_headerKind & inOperand26 
+                                                                                    const GALGAS_headerKind & inOperand25 
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid () && inOperand22.isValid () && inOperand23.isValid () && inOperand24.isValid () && inOperand25.isValid () && inOperand26.isValid ()) {
-    result = GALGAS_unifiedTypeMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20, inOperand21, inOperand22, inOperand23, inOperand24, inOperand25, inOperand26) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid () && inOperand22.isValid () && inOperand23.isValid () && inOperand24.isValid () && inOperand25.isValid ()) {
+    result = GALGAS_unifiedTypeMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20, inOperand21, inOperand22, inOperand23, inOperand24, inOperand25) ;
   }
   return result ;
 }
@@ -14690,9 +14686,6 @@ typeComparisonResult GALGAS_unifiedTypeMap_2D_element::objectCompare (const GALG
     result = mAttribute_mEnumerationDescriptor.objectCompare (inOperand.mAttribute_mEnumerationDescriptor) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mEnumeratorVariants.objectCompare (inOperand.mAttribute_mEnumeratorVariants) ;
-  }
-  if (result == kOperandEqual) {
     result = mAttribute_mHandledOperatorFlags.objectCompare (inOperand.mAttribute_mHandledOperatorFlags) ;
   }
   if (result == kOperandEqual) {
@@ -14731,7 +14724,7 @@ typeComparisonResult GALGAS_unifiedTypeMap_2D_element::objectCompare (const GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_unifiedTypeMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mGetterMap.isValid () && mAttribute_mSetterMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mEnumeratorVariants.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mGetterMap.isValid () && mAttribute_mSetterMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14752,7 +14745,6 @@ void GALGAS_unifiedTypeMap_2D_element::drop (void) {
   mAttribute_mInstanceMethodMap.drop () ;
   mAttribute_mClassMethodMap.drop () ;
   mAttribute_mEnumerationDescriptor.drop () ;
-  mAttribute_mEnumeratorVariants.drop () ;
   mAttribute_mHandledOperatorFlags.drop () ;
   mAttribute_mAddAssignOperatorArguments.drop () ;
   mAttribute_mEnumConstantMap.drop () ;
@@ -14803,8 +14795,6 @@ void GALGAS_unifiedTypeMap_2D_element::description (C_String & ioString,
     mAttribute_mClassMethodMap.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mEnumerationDescriptor.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mEnumeratorVariants.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mHandledOperatorFlags.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -14919,12 +14909,6 @@ GALGAS_classMethodMap GALGAS_unifiedTypeMap_2D_element::getter_mClassMethodMap (
 
 GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_element::getter_mEnumerationDescriptor (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEnumerationDescriptor ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_stringlist GALGAS_unifiedTypeMap_2D_element::getter_mEnumeratorVariants (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumeratorVariants ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

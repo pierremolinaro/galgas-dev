@@ -3064,7 +3064,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   let usefulnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Get constructor map from type map
-  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
+  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?25*]
 #---
   let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mLiteralTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {

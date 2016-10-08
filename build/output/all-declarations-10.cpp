@@ -388,8 +388,20 @@ GALGAS_string GALGAS_BuildFileList::getter_mBuildReferenceAtIndex (const GALGAS_
 
 cEnumerator_BuildFileList::cEnumerator_BuildFileList (const GALGAS_BuildFileList & inEnumeratedObject,
                                                       const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_BuildFileList::~ cEnumerator_BuildFileList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_BuildFileList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

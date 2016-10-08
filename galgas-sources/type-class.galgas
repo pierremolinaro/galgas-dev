@@ -144,12 +144,12 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedGetterMap
       ?inheritedSetterMap
       ?inheritedMethodMap
-      ?9*
+      ?8*
       ?generateHeaderInSeparateFile
       ?4*
     ]
   #---
-    if typeKindEnum != @typeKindEnum. classType then
+    if typeKindEnum != @typeKindEnum.classType then
       error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
     end
   #--- Mark all setters as inherited
@@ -308,7 +308,7 @@ override method @classDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
-    !@stringlist.emptyList
+#    !@stringlist.emptyList
     !0
     !@functionSignature.emptyList
     !{}

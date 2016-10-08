@@ -410,8 +410,20 @@ GALGAS_lstring GALGAS_formalParameterListAST::getter_mFormalSelectorAtIndex (con
 
 cEnumerator_formalParameterListAST::cEnumerator_formalParameterListAST (const GALGAS_formalParameterListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_formalParameterListAST::~ cEnumerator_formalParameterListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_formalParameterListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -818,8 +830,20 @@ void GALGAS_graphInsertModifierList::plusAssign_operation (const GALGAS_graphIns
 
 cEnumerator_graphInsertModifierList::cEnumerator_graphInsertModifierList (const GALGAS_graphInsertModifierList & inEnumeratedObject,
                                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_graphInsertModifierList::~ cEnumerator_graphInsertModifierList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_graphInsertModifierList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1254,8 +1278,20 @@ void GALGAS_insertMethodListAST::plusAssign_operation (const GALGAS_insertMethod
 
 cEnumerator_insertMethodListAST::cEnumerator_insertMethodListAST (const GALGAS_insertMethodListAST & inEnumeratedObject,
                                                                   const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_insertMethodListAST::~ cEnumerator_insertMethodListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_insertMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1680,8 +1716,20 @@ void GALGAS_mapSearchMethodListAST::plusAssign_operation (const GALGAS_mapSearch
 
 cEnumerator_mapSearchMethodListAST::cEnumerator_mapSearchMethodListAST (const GALGAS_mapSearchMethodListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapSearchMethodListAST::~ cEnumerator_mapSearchMethodListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapSearchMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2072,8 +2120,20 @@ void GALGAS_mapRemoveMethodListAST::plusAssign_operation (const GALGAS_mapRemove
 
 cEnumerator_mapRemoveMethodListAST::cEnumerator_mapRemoveMethodListAST (const GALGAS_mapRemoveMethodListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapRemoveMethodListAST::~ cEnumerator_mapRemoveMethodListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapRemoveMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2430,8 +2490,20 @@ void GALGAS_insertOrReplaceDeclarationListAST::plusAssign_operation (const GALGA
 
 cEnumerator_insertOrReplaceDeclarationListAST::cEnumerator_insertOrReplaceDeclarationListAST (const GALGAS_insertOrReplaceDeclarationListAST & inEnumeratedObject,
                                                                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_insertOrReplaceDeclarationListAST::~ cEnumerator_insertOrReplaceDeclarationListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_insertOrReplaceDeclarationListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2620,8 +2692,20 @@ cMapElement_insertMethodMap * GALGAS_insertMethodMap::readWriteAccessForWithInst
 
 cEnumerator_insertMethodMap::cEnumerator_insertMethodMap (const GALGAS_insertMethodMap & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_insertMethodMap::~ cEnumerator_insertMethodMap (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_insertMethodMap::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2808,8 +2892,20 @@ cMapElement_searchMethodMap * GALGAS_searchMethodMap::readWriteAccessForWithInst
 
 cEnumerator_searchMethodMap::cEnumerator_searchMethodMap (const GALGAS_searchMethodMap & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_searchMethodMap::~ cEnumerator_searchMethodMap (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_searchMethodMap::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3358,8 +3454,20 @@ void GALGAS_mapStateTransitionList::plusAssign_operation (const GALGAS_mapStateT
 
 cEnumerator_mapStateTransitionList::cEnumerator_mapStateTransitionList (const GALGAS_mapStateTransitionList & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapStateTransitionList::~ cEnumerator_mapStateTransitionList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapStateTransitionList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3810,8 +3918,20 @@ void GALGAS_mapStateList::plusAssign_operation (const GALGAS_mapStateList inOper
 
 cEnumerator_mapStateList::cEnumerator_mapStateList (const GALGAS_mapStateList & inEnumeratedObject,
                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapStateList::~ cEnumerator_mapStateList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapStateList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4288,8 +4408,20 @@ void GALGAS_mapOverrideBlockDescriptorAST::plusAssign_operation (const GALGAS_ma
 
 cEnumerator_mapOverrideBlockDescriptorAST::cEnumerator_mapOverrideBlockDescriptorAST (const GALGAS_mapOverrideBlockDescriptorAST & inEnumeratedObject,
                                                                                       const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapOverrideBlockDescriptorAST::~ cEnumerator_mapOverrideBlockDescriptorAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapOverrideBlockDescriptorAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4722,8 +4854,20 @@ void GALGAS_mapOverrideBlockListAST::plusAssign_operation (const GALGAS_mapOverr
 
 cEnumerator_mapOverrideBlockListAST::cEnumerator_mapOverrideBlockListAST (const GALGAS_mapOverrideBlockListAST & inEnumeratedObject,
                                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapOverrideBlockListAST::~ cEnumerator_mapOverrideBlockListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapOverrideBlockListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5185,8 +5329,20 @@ GALGAS_lstring GALGAS_sharedMapAttributeListAST::getter_mMessageAtIndex (const G
 
 cEnumerator_sharedMapAttributeListAST::cEnumerator_sharedMapAttributeListAST (const GALGAS_sharedMapAttributeListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_sharedMapAttributeListAST::~ cEnumerator_sharedMapAttributeListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_sharedMapAttributeListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5568,8 +5724,20 @@ void GALGAS_mapStateTransitionSortedList::method_greatest (GALGAS_uint & outOper
 
 cEnumerator_mapStateTransitionSortedList::cEnumerator_mapStateTransitionSortedList (const GALGAS_mapStateTransitionSortedList & inEnumeratedObject,
                                                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapStateTransitionSortedList::~ cEnumerator_mapStateTransitionSortedList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapStateTransitionSortedList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5953,8 +6121,20 @@ void GALGAS_mapStateSortedList::method_greatest (GALGAS_uint & outOperand0,
 
 cEnumerator_mapStateSortedList::cEnumerator_mapStateSortedList (const GALGAS_mapStateSortedList & inEnumeratedObject,
                                                                 const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapStateSortedList::~ cEnumerator_mapStateSortedList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapStateSortedList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6278,8 +6458,20 @@ cMapElement_mapAutomatonStateMap * GALGAS_mapAutomatonStateMap::readWriteAccessF
 
 cEnumerator_mapAutomatonStateMap::cEnumerator_mapAutomatonStateMap (const GALGAS_mapAutomatonStateMap & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapAutomatonStateMap::~ cEnumerator_mapAutomatonStateMap (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapAutomatonStateMap::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6544,8 +6736,20 @@ cMapElement_mapAutomatonActionMap * GALGAS_mapAutomatonActionMap::readWriteAcces
 
 cEnumerator_mapAutomatonActionMap::cEnumerator_mapAutomatonActionMap (const GALGAS_mapAutomatonActionMap & inEnumeratedObject,
                                                                       const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapAutomatonActionMap::~ cEnumerator_mapAutomatonActionMap (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapAutomatonActionMap::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6960,8 +7164,20 @@ void GALGAS_branchBehaviourSortedListForMapOverride::method_greatest (GALGAS_uin
 
 cEnumerator_branchBehaviourSortedListForMapOverride::cEnumerator_branchBehaviourSortedListForMapOverride (const GALGAS_branchBehaviourSortedListForMapOverride & inEnumeratedObject,
                                                                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_branchBehaviourSortedListForMapOverride::~ cEnumerator_branchBehaviourSortedListForMapOverride (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_branchBehaviourSortedListForMapOverride::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7461,8 +7677,20 @@ GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList::getter_mB
 
 cEnumerator_mapOverrideList::cEnumerator_mapOverrideList (const GALGAS_mapOverrideList & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_mapOverrideList::~ cEnumerator_mapOverrideList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_mapOverrideList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7853,8 +8081,20 @@ void GALGAS_sortedListSortDescriptorListAST::plusAssign_operation (const GALGAS_
 
 cEnumerator_sortedListSortDescriptorListAST::cEnumerator_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST & inEnumeratedObject,
                                                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_sortedListSortDescriptorListAST::~ cEnumerator_sortedListSortDescriptorListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_sortedListSortDescriptorListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8308,8 +8548,20 @@ GALGAS_bool GALGAS_sortDescriptorListForGeneration::getter_mAscendingOrderAtInde
 
 cEnumerator_sortDescriptorListForGeneration::cEnumerator_sortDescriptorListForGeneration (const GALGAS_sortDescriptorListForGeneration & inEnumeratedObject,
                                                                                           const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_sortDescriptorListForGeneration::~ cEnumerator_sortDescriptorListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_sortDescriptorListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8778,8 +9030,20 @@ void GALGAS_formalInputParameterListAST::plusAssign_operation (const GALGAS_form
 
 cEnumerator_formalInputParameterListAST::cEnumerator_formalInputParameterListAST (const GALGAS_formalInputParameterListAST & inEnumeratedObject,
                                                                                   const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_formalInputParameterListAST::~ cEnumerator_formalInputParameterListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_formalInputParameterListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9339,8 +9603,20 @@ GALGAS_bool GALGAS_formalInputParameterListForGeneration::getter_mIsConstantAtIn
 
 cEnumerator_formalInputParameterListForGeneration::cEnumerator_formalInputParameterListForGeneration (const GALGAS_formalInputParameterListForGeneration & inEnumeratedObject,
                                                                                                       const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_formalInputParameterListForGeneration::~ cEnumerator_formalInputParameterListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_formalInputParameterListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9900,8 +10176,20 @@ GALGAS_string GALGAS_formalParameterListForGeneration::getter_mFormalArgumentCpp
 
 cEnumerator_formalParameterListForGeneration::cEnumerator_formalParameterListForGeneration (const GALGAS_formalParameterListForGeneration & inEnumeratedObject,
                                                                                             const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_formalParameterListForGeneration::~ cEnumerator_formalParameterListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_formalParameterListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10282,8 +10570,20 @@ void GALGAS_semanticInstructionListAST::plusAssign_operation (const GALGAS_seman
 
 cEnumerator_semanticInstructionListAST::cEnumerator_semanticInstructionListAST (const GALGAS_semanticInstructionListAST & inEnumeratedObject,
                                                                                 const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_semanticInstructionListAST::~ cEnumerator_semanticInstructionListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_semanticInstructionListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10647,8 +10947,20 @@ GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionListForGenerat
 
 cEnumerator_semanticInstructionListForGeneration::cEnumerator_semanticInstructionListForGeneration (const GALGAS_semanticInstructionListForGeneration & inEnumeratedObject,
                                                                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_semanticInstructionListForGeneration::~ cEnumerator_semanticInstructionListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_semanticInstructionListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11136,8 +11448,20 @@ void GALGAS_actualOutputExpressionList::plusAssign_operation (const GALGAS_actua
 
 cEnumerator_actualOutputExpressionList::cEnumerator_actualOutputExpressionList (const GALGAS_actualOutputExpressionList & inEnumeratedObject,
                                                                                 const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_actualOutputExpressionList::~ cEnumerator_actualOutputExpressionList (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_actualOutputExpressionList::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11528,8 +11852,20 @@ void GALGAS_semanticExpressionListAST::plusAssign_operation (const GALGAS_semant
 
 cEnumerator_semanticExpressionListAST::cEnumerator_semanticExpressionListAST (const GALGAS_semanticExpressionListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_semanticExpressionListAST::~ cEnumerator_semanticExpressionListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_semanticExpressionListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14071,410 +14407,6 @@ GALGAS_notEqualExpressionAST GALGAS_notEqualExpressionAST::extractObject (const 
       result = *p ;
     }else{
       inCompiler->castError ("notEqualExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_lowerOrEqualExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lowerOrEqualExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_lowerOrEqualExpressionAST::objectCompare (const GALGAS_lowerOrEqualExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lowerOrEqualExpressionAST::GALGAS_lowerOrEqualExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lowerOrEqualExpressionAST::GALGAS_lowerOrEqualExpressionAST (const cPtr_lowerOrEqualExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lowerOrEqualExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lowerOrEqualExpressionAST GALGAS_lowerOrEqualExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                    const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                    const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_lowerOrEqualExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lowerOrEqualExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_lowerOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_lowerOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionAST) ;
-    result = p->mAttribute_mLeftExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_lowerOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lowerOrEqualExpressionAST * p = (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionAST) ;
-    result = p->mAttribute_mRightExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_lowerOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                 Pointer class for @lowerOrEqualExpressionAST class                                  *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_lowerOrEqualExpressionAST::cPtr_lowerOrEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                                                const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                const GALGAS_semanticExpressionAST & in_mRightExpression
-                                                                COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_lowerOrEqualExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lowerOrEqualExpressionAST ;
-}
-
-void cPtr_lowerOrEqualExpressionAST::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "[@lowerOrEqualExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_lowerOrEqualExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lowerOrEqualExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @lowerOrEqualExpressionAST type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lowerOrEqualExpressionAST ("lowerOrEqualExpressionAST",
-                                                  & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_lowerOrEqualExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lowerOrEqualExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_lowerOrEqualExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lowerOrEqualExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lowerOrEqualExpressionAST GALGAS_lowerOrEqualExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_lowerOrEqualExpressionAST result ;
-  const GALGAS_lowerOrEqualExpressionAST * p = (const GALGAS_lowerOrEqualExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lowerOrEqualExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lowerOrEqualExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_greaterOrEqualExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_greaterOrEqualExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_greaterOrEqualExpressionAST::objectCompare (const GALGAS_greaterOrEqualExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_greaterOrEqualExpressionAST::GALGAS_greaterOrEqualExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_greaterOrEqualExpressionAST::GALGAS_greaterOrEqualExpressionAST (const cPtr_greaterOrEqualExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_greaterOrEqualExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_greaterOrEqualExpressionAST GALGAS_greaterOrEqualExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_greaterOrEqualExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_greaterOrEqualExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_greaterOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_greaterOrEqualExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionAST) ;
-    result = p->mAttribute_mLeftExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_greaterOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_greaterOrEqualExpressionAST * p = (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionAST) ;
-    result = p->mAttribute_mRightExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_greaterOrEqualExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @greaterOrEqualExpressionAST class                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_greaterOrEqualExpressionAST::cPtr_greaterOrEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                                                    const GALGAS_semanticExpressionAST & in_mRightExpression
-                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_greaterOrEqualExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_greaterOrEqualExpressionAST ;
-}
-
-void cPtr_greaterOrEqualExpressionAST::description (C_String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString << "[@greaterOrEqualExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_greaterOrEqualExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_greaterOrEqualExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          @greaterOrEqualExpressionAST type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_greaterOrEqualExpressionAST ("greaterOrEqualExpressionAST",
-                                                    & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_greaterOrEqualExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_greaterOrEqualExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_greaterOrEqualExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_greaterOrEqualExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_greaterOrEqualExpressionAST GALGAS_greaterOrEqualExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_greaterOrEqualExpressionAST result ;
-  const GALGAS_greaterOrEqualExpressionAST * p = (const GALGAS_greaterOrEqualExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_greaterOrEqualExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("greaterOrEqualExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

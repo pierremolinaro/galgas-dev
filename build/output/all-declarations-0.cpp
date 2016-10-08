@@ -4757,8 +4757,20 @@ GALGAS_templateInstructionAST GALGAS_templateInstructionListAST::getter_mInstruc
 
 cEnumerator_templateInstructionListAST::cEnumerator_templateInstructionListAST (const GALGAS_templateInstructionListAST & inEnumeratedObject,
                                                                                 const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionListAST::~ cEnumerator_templateInstructionListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5291,8 +5303,20 @@ GALGAS_location GALGAS_templateExpressionListAST::getter_mEndOfExpressionLocatio
 
 cEnumerator_templateExpressionListAST::cEnumerator_templateExpressionListAST (const GALGAS_templateExpressionListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateExpressionListAST::~ cEnumerator_templateExpressionListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateExpressionListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10415,8 +10439,20 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionIfBranchListAST::get
 
 cEnumerator_templateInstructionIfBranchListAST::cEnumerator_templateInstructionIfBranchListAST (const GALGAS_templateInstructionIfBranchListAST & inEnumeratedObject,
                                                                                                 const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionIfBranchListAST::~ cEnumerator_templateInstructionIfBranchListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionIfBranchListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11013,8 +11049,20 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionSwitchBranchListAST:
 
 cEnumerator_templateInstructionSwitchBranchListAST::cEnumerator_templateInstructionSwitchBranchListAST (const GALGAS_templateInstructionSwitchBranchListAST & inEnumeratedObject,
                                                                                                         const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionSwitchBranchListAST::~ cEnumerator_templateInstructionSwitchBranchListAST (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionSwitchBranchListAST::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13149,8 +13197,20 @@ GALGAS_templateInstructionForGeneration GALGAS_templateInstructionListForGenerat
 
 cEnumerator_templateInstructionListForGeneration::cEnumerator_templateInstructionListForGeneration (const GALGAS_templateInstructionListForGeneration & inEnumeratedObject,
                                                                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionListForGeneration::~ cEnumerator_templateInstructionListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13805,8 +13865,20 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfBranchLi
 
 cEnumerator_templateInstructionIfBranchListForGeneration::cEnumerator_templateInstructionIfBranchListForGeneration (const GALGAS_templateInstructionIfBranchListForGeneration & inEnumeratedObject,
                                                                                                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionIfBranchListForGeneration::~ cEnumerator_templateInstructionIfBranchListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionIfBranchListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14403,8 +14475,20 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionSwitchBran
 
 cEnumerator_templateInstructionSwitchBranchListForGeneration::cEnumerator_templateInstructionSwitchBranchListForGeneration (const GALGAS_templateInstructionSwitchBranchListForGeneration & inEnumeratedObject,
                                                                                                                             const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateInstructionSwitchBranchListForGeneration::~ cEnumerator_templateInstructionSwitchBranchListForGeneration (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateInstructionSwitchBranchListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14706,8 +14790,20 @@ cMapElement_templateVariableMap * GALGAS_templateVariableMap::readWriteAccessFor
 
 cEnumerator_templateVariableMap::cEnumerator_templateVariableMap (const GALGAS_templateVariableMap & inEnumeratedObject,
                                                                   const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_templateVariableMap::~ cEnumerator_templateVariableMap (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_templateVariableMap::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14847,69 +14943,6 @@ void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressi
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
       f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Abstract extension method '@templateInstructionAST templateInstructionAnalysis'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis> gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis (void) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionAST_templateInstructionAnalysis (NULL,
-                                                                               freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                      GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis f = NULL ;
-    if (classIndex < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-      f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-          f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
     }
   }
 }

@@ -366,9 +366,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstringlist" ?let lstringlistTypeIndex]
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
-  @stringlist enumerationVariants = {}
-  enumerationVariants += !"UP"
-  enumerationVariants += !"DOWN"
 #--- Attributes
   @bool usesSelectorsInInsertAndSearch = false
   for (s) in mAttributeList do
@@ -666,7 +663,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap.emptyMap
     !enumerationDescriptor
-    !enumerationVariants
     !doNotGenererateObjectCompare () | supportWithAccessor ()
     !@functionSignature.emptyList
     !{}

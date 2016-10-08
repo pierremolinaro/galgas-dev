@@ -232,7 +232,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
-    !enumerationVariants
+#    !enumerationVariants
     !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
     !constructorAttributeTypeList
     !{}

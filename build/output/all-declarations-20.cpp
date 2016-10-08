@@ -7784,21 +7784,20 @@ static void extensionMethod_literalTypeInExpressionAST_analyzeSemanticExpression
   {
   ioArgument_ioUsefulEntitiesGraph.setter_addEdge (constinArgument_inUsefulnessCallerEntityName, var_usefulnessName_129958 COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3065)) ;
   }
-  GALGAS_bool joker_130209_26 ; // Joker input parameter
   GALGAS_bool joker_130209_25 ; // Joker input parameter
-  GALGAS_unifiedTypeMap_2D_proxy joker_130209_24 ; // Joker input parameter
-  GALGAS_typeKindEnum joker_130209_23 ; // Joker input parameter
-  GALGAS_bool joker_130209_22 ; // Joker input parameter
-  GALGAS_typedPropertyList joker_130209_21 ; // Joker input parameter
-  GALGAS_attributeMap joker_130209_20 ; // Joker input parameter
-  GALGAS_typedPropertyList joker_130209_19 ; // Joker input parameter
-  GALGAS_constructorMap joker_130209_18 ; // Joker input parameter
-  GALGAS_getterMap joker_130209_17 ; // Joker input parameter
-  GALGAS_setterMap joker_130209_16 ; // Joker input parameter
-  GALGAS_instanceMethodMap joker_130209_15 ; // Joker input parameter
-  GALGAS_classMethodMap joker_130209_14 ; // Joker input parameter
-  GALGAS_enumerationDescriptorList joker_130209_13 ; // Joker input parameter
-  GALGAS_stringlist joker_130209_12 ; // Joker input parameter
+  GALGAS_bool joker_130209_24 ; // Joker input parameter
+  GALGAS_unifiedTypeMap_2D_proxy joker_130209_23 ; // Joker input parameter
+  GALGAS_typeKindEnum joker_130209_22 ; // Joker input parameter
+  GALGAS_bool joker_130209_21 ; // Joker input parameter
+  GALGAS_typedPropertyList joker_130209_20 ; // Joker input parameter
+  GALGAS_attributeMap joker_130209_19 ; // Joker input parameter
+  GALGAS_typedPropertyList joker_130209_18 ; // Joker input parameter
+  GALGAS_constructorMap joker_130209_17 ; // Joker input parameter
+  GALGAS_getterMap joker_130209_16 ; // Joker input parameter
+  GALGAS_setterMap joker_130209_15 ; // Joker input parameter
+  GALGAS_instanceMethodMap joker_130209_14 ; // Joker input parameter
+  GALGAS_classMethodMap joker_130209_13 ; // Joker input parameter
+  GALGAS_enumerationDescriptorList joker_130209_12 ; // Joker input parameter
   GALGAS_uint joker_130209_11 ; // Joker input parameter
   GALGAS_functionSignature joker_130209_10 ; // Joker input parameter
   GALGAS_constantIndexMap joker_130209_9 ; // Joker input parameter
@@ -7810,7 +7809,7 @@ static void extensionMethod_literalTypeInExpressionAST_analyzeSemanticExpression
   GALGAS_string joker_130209_3 ; // Joker input parameter
   GALGAS_string joker_130209_2 ; // Joker input parameter
   GALGAS_headerKind joker_130209_1 ; // Joker input parameter
-  constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mLiteralTypeName, joker_130209_26, joker_130209_25, joker_130209_24, joker_130209_23, joker_130209_22, joker_130209_21, joker_130209_20, joker_130209_19, joker_130209_18, joker_130209_17, joker_130209_16, joker_130209_15, joker_130209_14, joker_130209_13, joker_130209_12, joker_130209_11, joker_130209_10, joker_130209_9, joker_130209_8, joker_130209_7, joker_130209_6, joker_130209_5, joker_130209_4, joker_130209_3, joker_130209_2, joker_130209_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3067)) ;
+  constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap.method_searchKey (object->mAttribute_mLiteralTypeName, joker_130209_25, joker_130209_24, joker_130209_23, joker_130209_22, joker_130209_21, joker_130209_20, joker_130209_19, joker_130209_18, joker_130209_17, joker_130209_16, joker_130209_15, joker_130209_14, joker_130209_13, joker_130209_12, joker_130209_11, joker_130209_10, joker_130209_9, joker_130209_8, joker_130209_7, joker_130209_6, joker_130209_5, joker_130209_4, joker_130209_3, joker_130209_2, joker_130209_1, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3067)) ;
   GALGAS_unifiedTypeMap_2D_proxy var_type_130229 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mLiteralTypeName, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3069)) ;
   outArgument_outExpression = GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, GALGAS_lstring::constructor_new (GALGAS_string ("type"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3071))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3071)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3071)), object->mAttribute_mLiteralTypeName.getter_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3072)), var_type_130229  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 3070)) ;
 }

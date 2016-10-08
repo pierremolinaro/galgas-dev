@@ -10481,19 +10481,19 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 352)).isValid ()) {
-    uint32_t variant_19113 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 352)).uintValue () ;
-    bool loop_19113 = true ;
-    while (loop_19113) {
-      loop_19113 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 352)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 352)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 352)).isValid () ;
-      if (loop_19113) {
-        loop_19113 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 352)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 352)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 352)).boolValue () ;
+    uint32_t variant_19114 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 352)).uintValue () ;
+    bool loop_19114 = true ;
+    while (loop_19114) {
+      loop_19114 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 352)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 352)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 352)).isValid () ;
+      if (loop_19114) {
+        loop_19114 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 352)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 352)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 352)).boolValue () ;
       }
-      if (loop_19113 && (0 == variant_19113)) {
-        loop_19113 = false ;
+      if (loop_19114 && (0 == variant_19114)) {
+        loop_19114 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 352)) ;
       }
-      if (loop_19113) {
-        variant_19113 -- ;
+      if (loop_19114) {
+        variant_19114 -- ;
         result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 353)) ;
       }
     }

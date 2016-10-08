@@ -220,9 +220,6 @@ override method @mapDeclarationAST enterInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
-  var enumerationVariants =@stringlist {}
-  enumerationVariants += !"UP"
-  enumerationVariants += !"DOWN"
 #--- Attributes
   @bool usesSelectorsInInsertAndSearch = false
   for (s) in mAttributeList do
@@ -480,7 +477,6 @@ override method @mapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
-    !enumerationVariants
     !doNotGenererateObjectCompare () | plusEqualOperatorWithFieldListNeedsCompilerArg () | supportWithAccessor ()
     !argumentTypeListForAddAssignWithFieldExpressionList
     !{}

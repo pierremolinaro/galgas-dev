@@ -381,19 +381,6 @@ GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_unifiedTypeMap_2D_proxy::getter_mEnumeratorVariants (C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_stringlist result ;
-  const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumeratorVariants" COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mEnumeratorVariants;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_uint GALGAS_unifiedTypeMap_2D_proxy::getter_mHandledOperatorFlags (C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;

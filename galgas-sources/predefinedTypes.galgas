@@ -249,7 +249,6 @@ override method @predefinedTypeAST enterInSemanticContext
   [self getEnumerationList
     !?ioSemanticContext.mTypeMap
     ?var @enumerationDescriptorList enumerationList
-    ?var @stringlist enumerationVariants
     ?var @string enumeratedTypeName
   ]
   [@unifiedTypeMap-proxy makeProxyFromString
@@ -292,7 +291,6 @@ override method @predefinedTypeAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     !enumerationList
-    !enumerationVariants
     ![self getSupportedOperatorFlags]
     !addAssignArgumentList
     !{}
