@@ -579,8 +579,8 @@ class cEnumerator_formalParameterSignature {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -594,7 +594,7 @@ class cEnumerator_formalParameterSignature {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_formalParameterSignature_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3566,8 +3566,8 @@ class cEnumerator_grammarLabelMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3579,7 +3579,7 @@ class cEnumerator_grammarLabelMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_grammarLabelMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4160,8 +4160,8 @@ class cEnumerator_wrapperFileMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4176,7 +4176,7 @@ class cEnumerator_wrapperFileMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_wrapperFileMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4434,8 +4434,8 @@ class cEnumerator_wrapperDirectoryMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4449,7 +4449,7 @@ class cEnumerator_wrapperDirectoryMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_wrapperDirectoryMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4688,8 +4688,8 @@ class cEnumerator_filewrapperTemplateMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4702,7 +4702,7 @@ class cEnumerator_filewrapperTemplateMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_filewrapperTemplateMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 

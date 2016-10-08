@@ -1439,7 +1439,7 @@ typeComparisonResult cSharedMapRoot::mapCompare (const cSharedMapRoot * inOperan
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
-    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
+    for (int32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
       r = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
     if (kOperandEqual == r) {
@@ -1525,7 +1525,7 @@ static void enterDescendingEnumeration (cMapNode * inNode,
 void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
                                                const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
-  ioEnumerationArray.setCapacity (mCount) ;
+  ioEnumerationArray.setCapacity ((int32_t) mCount) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
@@ -1534,7 +1534,9 @@ void cSharedMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnu
     enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
   }
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
+  MF_Assert (mCount == (uint32_t) ioEnumerationArray.count (),
+             "mCount (%lld) != ioEnumerationArray.count () (%lld)",
+             mCount, ioEnumerationArray.count ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -470,8 +470,8 @@ class cEnumerator_templateInstructionListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -482,7 +482,7 @@ class cEnumerator_templateInstructionListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -774,8 +774,8 @@ class cEnumerator_templateExpressionListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -788,7 +788,7 @@ class cEnumerator_templateExpressionListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateExpressionListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3261,8 +3261,8 @@ class cEnumerator_templateInstructionIfBranchListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3274,7 +3274,7 @@ class cEnumerator_templateInstructionIfBranchListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionIfBranchListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3579,8 +3579,8 @@ class cEnumerator_templateInstructionSwitchBranchListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3592,7 +3592,7 @@ class cEnumerator_templateInstructionSwitchBranchListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionSwitchBranchListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -5709,8 +5709,8 @@ class cEnumerator_templateInstructionListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -5721,7 +5721,7 @@ class cEnumerator_templateInstructionListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6087,8 +6087,8 @@ class cEnumerator_templateInstructionIfBranchListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6100,7 +6100,7 @@ class cEnumerator_templateInstructionIfBranchListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionIfBranchListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6615,8 +6615,8 @@ class cEnumerator_templateInstructionSwitchBranchListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6628,7 +6628,7 @@ class cEnumerator_templateInstructionSwitchBranchListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6825,8 +6825,8 @@ class cEnumerator_templateVariableMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6839,7 +6839,7 @@ class cEnumerator_templateVariableMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateVariableMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 

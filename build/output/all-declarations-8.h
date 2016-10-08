@@ -1320,8 +1320,8 @@ class cEnumerator_syntaxInstructionListForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1332,7 +1332,7 @@ class cEnumerator_syntaxInstructionListForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1568,8 +1568,8 @@ class cEnumerator_productionRuleListForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1583,7 +1583,7 @@ class cEnumerator_productionRuleListForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_productionRuleListForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1769,8 +1769,8 @@ class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1782,7 +1782,7 @@ class cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1988,8 +1988,8 @@ class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2002,7 +2002,7 @@ class cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -2212,8 +2212,8 @@ class cEnumerator_branchListForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2224,7 +2224,7 @@ class cEnumerator_branchListForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_branchListForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -2559,8 +2559,8 @@ class cEnumerator_syntaxComponentListForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2572,7 +2572,7 @@ class cEnumerator_syntaxComponentListForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_syntaxComponentListForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -2757,8 +2757,8 @@ class cEnumerator_terminalSymbolsMapForGrammarAnalysis {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2770,7 +2770,7 @@ class cEnumerator_terminalSymbolsMapForGrammarAnalysis {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3055,8 +3055,8 @@ class cEnumerator_rowList {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3067,7 +3067,7 @@ class cEnumerator_rowList {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_rowList_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3318,8 +3318,8 @@ class cEnumerator_programListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3330,7 +3330,7 @@ class cEnumerator_programListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_programListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3468,8 +3468,8 @@ class cEnumerator_genericExtensionMethodListMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3481,7 +3481,7 @@ class cEnumerator_genericExtensionMethodListMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_genericExtensionMethodListMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3672,8 +3672,8 @@ class cEnumerator_descendantClassListMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3685,7 +3685,7 @@ class cEnumerator_descendantClassListMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_descendantClassListMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3850,8 +3850,8 @@ class cEnumerator_extensionMethodMapForGlobalCheckings {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3862,7 +3862,7 @@ class cEnumerator_extensionMethodMapForGlobalCheckings {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_extensionMethodMapForGlobalCheckings_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4048,8 +4048,8 @@ class cEnumerator_extensionSetterMapForGlobalCheckings {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4060,7 +4060,7 @@ class cEnumerator_extensionSetterMapForGlobalCheckings {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_extensionSetterMapForGlobalCheckings_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4246,8 +4246,8 @@ class cEnumerator_extensionGetterMapForGlobalCheckings {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4258,7 +4258,7 @@ class cEnumerator_extensionGetterMapForGlobalCheckings {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_extensionGetterMapForGlobalCheckings_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4880,8 +4880,8 @@ class cEnumerator_galgas_33_QualifiedFeatureList {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4893,7 +4893,7 @@ class cEnumerator_galgas_33_QualifiedFeatureList {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_galgas_33_QualifiedFeatureList_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 

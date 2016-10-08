@@ -161,8 +161,8 @@ class cEnumerator_ruleDeclarationList {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -175,7 +175,7 @@ class cEnumerator_ruleDeclarationList {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_ruleDeclarationList_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -637,8 +637,8 @@ class cEnumerator_keySortedList {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -650,7 +650,7 @@ class cEnumerator_keySortedList {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_keySortedList_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -826,8 +826,8 @@ class cEnumerator_uselessEntityLocationMap {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -839,7 +839,7 @@ class cEnumerator_uselessEntityLocationMap {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_uselessEntityLocationMap_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1124,8 +1124,8 @@ class cEnumerator_castInstructionBranchListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1140,7 +1140,7 @@ class cEnumerator_castInstructionBranchListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_castInstructionBranchListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1497,8 +1497,8 @@ class cEnumerator_castInstructionBranchListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1512,7 +1512,7 @@ class cEnumerator_castInstructionBranchListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_castInstructionBranchListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -1971,8 +1971,8 @@ class cEnumerator_fixitListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -1983,7 +1983,7 @@ class cEnumerator_fixitListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_fixitListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -2292,8 +2292,8 @@ class cEnumerator_fixitListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2304,7 +2304,7 @@ class cEnumerator_fixitListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_fixitListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -2702,8 +2702,8 @@ class cEnumerator_forInstructionEnumeratedObjectElementListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -2715,7 +2715,7 @@ class cEnumerator_forInstructionEnumeratedObjectElementListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3101,8 +3101,8 @@ class cEnumerator_forInstructionEnumeratedObjectListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3114,7 +3114,7 @@ class cEnumerator_forInstructionEnumeratedObjectListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -3400,8 +3400,8 @@ class cEnumerator_forInstructionEnumeratedObjectListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -3414,7 +3414,7 @@ class cEnumerator_forInstructionEnumeratedObjectListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4136,8 +4136,8 @@ class cEnumerator_logListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4149,7 +4149,7 @@ class cEnumerator_logListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_logListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4582,8 +4582,8 @@ class cEnumerator_matchEntryListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4596,7 +4596,7 @@ class cEnumerator_matchEntryListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchEntryListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -4829,8 +4829,8 @@ class cEnumerator_matchInstructionBranchListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -4844,7 +4844,7 @@ class cEnumerator_matchInstructionBranchListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchInstructionBranchListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -5189,8 +5189,8 @@ class cEnumerator_matchListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -5203,7 +5203,7 @@ class cEnumerator_matchListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -5426,8 +5426,8 @@ class cEnumerator_matchInstructionBranchListForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -5439,7 +5439,7 @@ class cEnumerator_matchInstructionBranchListForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchInstructionBranchListForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6350,8 +6350,8 @@ class cEnumerator_switchExtractedValuesListAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6364,7 +6364,7 @@ class cEnumerator_switchExtractedValuesListAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchExtractedValuesListAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6613,8 +6613,8 @@ class cEnumerator_switchBranchesAST {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6628,7 +6628,7 @@ class cEnumerator_switchBranchesAST {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchBranchesAST_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -6970,8 +6970,8 @@ class cEnumerator_extractedAssociatedValuesForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -6984,7 +6984,7 @@ class cEnumerator_extractedAssociatedValuesForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_extractedAssociatedValuesForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 
@@ -7233,8 +7233,8 @@ class cEnumerator_switchBranchesForGeneration {
   public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline uint32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  public : inline int32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
   protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
@@ -7248,7 +7248,7 @@ class cEnumerator_switchBranchesForGeneration {
 //--- Private data members
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchBranchesForGeneration_2D_element> mEnumerationArray ;
-  private : uint32_t mIndex ;
+  private : int32_t mIndex ;
   private : const typeEnumerationOrder mOrder ;
 } ;
 

@@ -31,7 +31,7 @@ class cSharedList : public C_SharedObject {
   private : capCollectionElementArray mObjectArray ;
 
 //--- Count
-  public : inline uint32_t count (void) const { return mObjectArray.count () ; }
+  public : inline int32_t count (void) const { return mObjectArray.count () ; }
 
 //--- Constructor
   public : cSharedList (LOCATION_ARGS) ;
@@ -71,7 +71,7 @@ class cSharedList : public C_SharedObject {
   protected : void appendList (const cSharedList * inListToAppend) ;
 
 //--- Object handling
-  private : void setCapacity (const uint32_t inNewCapacity) ;
+  private : void setCapacity (const int32_t inNewCapacity) ;
 
   protected : void addObject (const capCollectionElement & inObjectArray) ;
 
@@ -121,7 +121,7 @@ mObjectArray () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedList::setCapacity (const uint32_t inNewCapacity) {
+void cSharedList::setCapacity (const int32_t inNewCapacity) {
   mObjectArray.setCapacity (inNewCapacity) ;
 }
 
@@ -141,7 +141,7 @@ void cSharedList::addObjectAtIndex (const capCollectionElement & inObject,
                                     COMMA_LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mObjectArray.setCapacity (mObjectArray.count () + 1) ;
-  mObjectArray.addObjectAtIndex (inObject, (uint32_t) inInsertionIndex, inCompiler COMMA_THERE) ;
+  mObjectArray.addObjectAtIndex (inObject, inInsertionIndex, inCompiler COMMA_THERE) ;
 }
 
 
@@ -149,9 +149,9 @@ void cSharedList::addObjectAtIndex (const capCollectionElement & inObject,
 
 void cSharedList::copyFrom (const cSharedList * inSource) {
   macroUniqueSharedObject (this) ;
-  const uint32_t n = inSource->mObjectArray.count () ;
+  const int32_t n = inSource->mObjectArray.count () ;
   mObjectArray.setCapacity (n) ;
-  for (uint32_t i=0 ; i<n ; i++) {
+  for (int32_t i=0 ; i<n ; i++) {
     mObjectArray.addObject (inSource->mObjectArray.objectAtIndex (i COMMA_HERE)) ;
   }
 }
@@ -163,13 +163,13 @@ capCollectionElement cSharedList::readObjectAtIndex (const GALGAS_uint & inIndex
                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement result ;
   if (inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
     if (idx >= mObjectArray.count ()) {
       C_String s ;
       s << "Access with index " ;
-      s << cStringWithUnsigned (idx) ;
+      s << cStringWithSigned (idx) ;
       s << " >= count " ;
-      s << cStringWithUnsigned (mObjectArray.count ()) ;
+      s << cStringWithSigned (mObjectArray.count ()) ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = mObjectArray.objectAtIndex (idx COMMA_HERE) ;
@@ -186,13 +186,13 @@ cCollectionElement * cSharedList::objectPointerAtIndex (const GALGAS_uint & inIn
   macroUniqueSharedObject (this) ;
   cCollectionElement * result = NULL ;
   if (inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
     if (idx >= mObjectArray.count ()) {
       C_String s ;
       s << "Access with index " ;
-      s << cStringWithUnsigned (idx) ;
+      s << cStringWithSigned (idx) ;
       s << " >= count " ;
-      s << cStringWithUnsigned (mObjectArray.count ()) ;
+      s << cStringWithSigned (mObjectArray.count ()) ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       result = mObjectArray.pointerAtIndex (idx COMMA_HERE) ;
@@ -214,13 +214,13 @@ void cSharedList::removeObjectAtIndex (capCollectionElement & outObjectAttribute
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
-  if (mObjectArray.count () <= inRemoveIndex) {
+  if (mObjectArray.count () <= (int32_t) inRemoveIndex) {
     C_String message ;
     message << "'removeAtIndex' with index " << cStringWithUnsigned (inRemoveIndex) << " >= list length (" << cStringWithSigned (mObjectArray.count ()) << ")" ;
     inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
   }else{
-    outObjectAttributeArray = mObjectArray.objectAtIndex (inRemoveIndex COMMA_HERE) ;
-    mObjectArray.removeObjectAtIndex (inRemoveIndex) ;
+    outObjectAttributeArray = mObjectArray.objectAtIndex ((int32_t)inRemoveIndex COMMA_HERE) ;
+    mObjectArray.removeObjectAtIndex ((int32_t) inRemoveIndex) ;
   }
 }
 
@@ -330,21 +330,21 @@ void cSharedList::subListWithRange (cSharedList * & ioSharedList,
                                     COMMA_LOCATION_ARGS) const {
   bool ok = true ;
   if (inRange.isValid ()) {
-    const uint32_t idx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    const int32_t idx = (int32_t) inRange.mAttribute_start.uintValue () ;
+    const int32_t length = (int32_t) inRange.mAttribute_length.uintValue () ;
     if ((idx + length) > mObjectArray.count ()) {
       C_String s ;
       s << "Cannot get a sub list of range ["
-        << cStringWithUnsigned (idx)
+        << cStringWithSigned (idx)
         << ":"
-        << cStringWithUnsigned (length)
+        << cStringWithSigned (length)
         << "] from a list of length "
-        << cStringWithUnsigned (mObjectArray.count ()) ;
+        << cStringWithSigned (mObjectArray.count ()) ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       ok = false ;
     }else{
       ioSharedList->mObjectArray.setCapacity (length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
+      for (int32_t i=0 ; i<length ; i++) {
         ioSharedList->mObjectArray.addObject (mObjectArray.objectAtIndex (idx + i COMMA_HERE)) ;
       }
     }
@@ -362,19 +362,19 @@ void cSharedList::subListFromIndex (cSharedList * & ioSharedList,
                                     COMMA_LOCATION_ARGS) const {
   bool ok = true ;
   if (inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
     if (idx > mObjectArray.count ()) {
       C_String s ;
       s << "Cannot get a sub list from index "
-        << cStringWithUnsigned (idx)
+        << cStringWithSigned (idx)
         << " with a list of length "
-        << cStringWithUnsigned (mObjectArray.count ()) ;
+        << cStringWithSigned (mObjectArray.count ()) ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       ok = false ;
     }else{
-      const uint32_t length = mObjectArray.count () - idx ;
+      const int32_t length = mObjectArray.count () - idx ;
       ioSharedList->mObjectArray.setCapacity (length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
+      for (int32_t i=0 ; i<length ; i++) {
         ioSharedList->mObjectArray.addObject (mObjectArray.objectAtIndex (idx + i COMMA_HERE)) ;
       }
     }
@@ -392,19 +392,19 @@ void cSharedList::subListToIndex (cSharedList * & ioSharedList,
                                   COMMA_LOCATION_ARGS) const {
   bool ok = true ;
   if (inIndex.isValid ()) {
-    const uint32_t idx = inIndex.uintValue () ;
+    const int32_t idx = (int32_t) inIndex.uintValue () ;
     if (idx >= mObjectArray.count ()) {
       C_String s ;
       s << "Cannot get a sub list from index "
-        << cStringWithUnsigned (idx)
+        << cStringWithSigned (idx)
         << " with a list of length "
-        << cStringWithUnsigned (mObjectArray.count ()) ;
+        << cStringWithSigned (mObjectArray.count ()) ;
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       ok = false ;
     }else{
-      const uint32_t length = idx + 1;
+      const int32_t length = idx + 1;
       ioSharedList->mObjectArray.setCapacity (length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
+      for (int32_t i=0 ; i<length ; i++) {
         ioSharedList->mObjectArray.addObject (mObjectArray.objectAtIndex (i COMMA_HERE)) ;
       }
     }
@@ -419,12 +419,10 @@ void cSharedList::subListToIndex (cSharedList * & ioSharedList,
 void cSharedList::appendList (const cSharedList * inListToAppend) {
   macroUniqueSharedObject (this) ;
   macroValidPointer (inListToAppend) ;
-//  if (NULL != inListToAppend) {
-    setCapacity (mObjectArray.count () + inListToAppend->count ()) ;
-    for (uint32_t i=0 ; i<inListToAppend->count () ; i++) {
-      mObjectArray.addObject (inListToAppend->mObjectArray.objectAtIndex (i COMMA_HERE)) ;
-    }
-//  }
+  setCapacity (mObjectArray.count () + inListToAppend->count ()) ;
+  for (int32_t i=0 ; i<inListToAppend->count () ; i++) {
+    mObjectArray.addObject (inListToAppend->mObjectArray.objectAtIndex (i COMMA_HERE)) ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -434,12 +432,12 @@ void cSharedList::populateEnumerationArray (capCollectionElementArray & inEnumer
   inEnumerationArray.setCapacity (mObjectArray.count ()) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP  :
-    for (uint32_t i=0 ; i<mObjectArray.count () ; i++) {
+    for (int32_t i=0 ; i<mObjectArray.count () ; i++) {
       inEnumerationArray.addObject (mObjectArray.objectAtIndex (i COMMA_HERE)) ;
     }
     break ;
   case kENUMERATION_DOWN :
-    for (uint32_t i=mObjectArray.count () ; i>0 ; i--) {
+    for (int32_t i=mObjectArray.count () ; i>0 ; i--) {
       inEnumerationArray.addObject (mObjectArray.objectAtIndex (i - 1 COMMA_HERE)) ;
     }
     break ;
@@ -516,13 +514,13 @@ void AC_GALGAS_list::createNewEmptyList (LOCATION_ARGS) {
 void cSharedList::description (C_String & ioString,
                                const int32_t inIndentation) const {
   ioString << " ("
-           << cStringWithUnsigned (mObjectArray.count ())
+           << cStringWithSigned (mObjectArray.count ())
            << " object" << ((mObjectArray.count () > 1) ? "s" : "")
            << "): " ;
-  for (uint32_t i=0 ; i<mObjectArray.count () ; i++) {
+  for (int32_t i=0 ; i<mObjectArray.count () ; i++) {
     ioString << "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
-    ioString << "|-at " << cStringWithUnsigned (i) ;
+    ioString << "|-at " << cStringWithSigned (i) ;
     mObjectArray.objectAtIndex (i COMMA_HERE).description (ioString, inIndentation + 2) ;
   }
 }
@@ -553,11 +551,11 @@ void AC_GALGAS_list::populateEnumerationArray (capCollectionElementArray & inEnu
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t AC_GALGAS_list::count () const {
-  uint32_t result = 0 ;
+  int32_t result = 0 ;
   if (isValid ()) {
     result = mSharedList->count () ;
   }
-  return result ;
+  return (uint32_t) result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -565,7 +563,7 @@ uint32_t AC_GALGAS_list::count () const {
 GALGAS_uint AC_GALGAS_list::getter_length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint (mSharedList->count ()) ;
+    result = GALGAS_uint ((uint32_t) mSharedList->count ()) ;
   }
   return result ;
 }
@@ -575,7 +573,7 @@ GALGAS_uint AC_GALGAS_list::getter_length (UNUSED_LOCATION_ARGS) const {
 GALGAS_range AC_GALGAS_list::getter_range (UNUSED_LOCATION_ARGS) const {
   GALGAS_range result ;
   if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedList->count ())) ;
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mSharedList->count ())) ;
   }
   return result ;
 }
@@ -733,7 +731,7 @@ typeComparisonResult cSharedList::listCompare (const cSharedList * inOperand) co
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
-    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
+    for (int32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
       const capCollectionElement leftObject = array.objectAtIndex (i COMMA_HERE) ;
       const capCollectionElement rightObject = operandArray.objectAtIndex (i COMMA_HERE) ;
       r = leftObject.compare (rightObject) ;
@@ -986,7 +984,7 @@ typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoo
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
-    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
+    for (int32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
       result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
   }
@@ -1377,7 +1375,7 @@ static void enterDescendingEnumeration (const cListMapNode * inNode,
 void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
                                                    const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
-  ioEnumerationArray.setCapacity (mCount) ;
+  ioEnumerationArray.setCapacity ((int32_t) mCount) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
@@ -1386,7 +1384,9 @@ void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & i
     enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
   }
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
+  MF_Assert (mCount == (uint32_t) ioEnumerationArray.count (),
+             "mCount (%lld) != ioEnumerationArray.count () (%lld)",
+              mCount, ioEnumerationArray.count ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
