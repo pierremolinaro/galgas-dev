@@ -52,8 +52,6 @@ override method @listDeclarationAST enterDeclarationInGraph
   for () in mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
-#  let elementKey = @lstring.new {!"@" + mListTypeName + elementTypeNameSuffix () ![mListTypeName location]}
-#  [!?ioSemanticTypePrecedenceGraph addEdge !key !elementKey]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -388,6 +386,7 @@ filewrapper listGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
+    ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
 }
 
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
@@ -433,6 +432,7 @@ override method @listTypeForGeneration appendSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    !mListElementTypeIndex
   ]
  }
 

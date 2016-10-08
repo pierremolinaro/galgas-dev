@@ -1731,10 +1731,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFea
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeGroupList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_XCodeGroupList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_XCodeGroupList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_XCodeGroupList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_XCodeGroupList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_XCodeGroupList (cSharedList * inSharedListPtr) ;
@@ -2002,10 +2005,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList_2D_e
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_XCodeToolTargetList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_XCodeToolTargetList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_XCodeToolTargetList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_XCodeToolTargetList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_XCodeToolTargetList (cSharedList * inSharedListPtr) ;
@@ -2406,10 +2412,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_XCodeAppTargetList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_XCodeAppTargetList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_XCodeAppTargetList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_XCodeAppTargetList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_XCodeAppTargetList (cSharedList * inSharedListPtr) ;
@@ -2867,10 +2876,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_BuildFileList : public AC_GALGAS_list {
- // protected : TC_Array <GALGAS_BuildFileList_2D_element> mArray ;
+  private : TC_Array <class GALGAS_BuildFileList_2D_element> mArray ;
 
 //--------------------------------- Default constructor
   public : GALGAS_BuildFileList (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_BuildFileList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_BuildFileList (cSharedList * inSharedListPtr) ;

@@ -2733,9 +2733,10 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_abstractSyntaxInstruct
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                        Class for element of '@syntaxInstructionListForGrammarAnalysis' list                         *
-//                                                                                                                     *
+
+// class GALGAS_list_syntaxInstructionListForGrammarAnalysis : public TC_UniqueArray <GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cCollectionElement {
@@ -2800,20 +2801,23 @@ typeComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis:
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis::~ GALGAS_syntaxInstructionListForGrammarAnalysis (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3128,9 +3132,10 @@ GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGr
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Class for element of '@productionRuleListForGrammarAnalysis' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_productionRuleListForGrammarAnalysis : public TC_UniqueArray <GALGAS_productionRuleListForGrammarAnalysis_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_productionRuleListForGrammarAnalysis : public cCollectionElement {
@@ -3213,20 +3218,23 @@ typeComparisonResult cCollectionElement_productionRuleListForGrammarAnalysis::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_productionRuleListForGrammarAnalysis::~ GALGAS_productionRuleListForGrammarAnalysis (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4279,9 +4287,10 @@ GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis GALGAS_nonTerminalSymbolSor
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@branchListForGrammarAnalysis' list                              *
-//                                                                                                                     *
+
+// class GALGAS_list_branchListForGrammarAnalysis : public TC_UniqueArray <GALGAS_branchListForGrammarAnalysis_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_branchListForGrammarAnalysis : public cCollectionElement {
@@ -4346,20 +4355,23 @@ typeComparisonResult cCollectionElement_branchListForGrammarAnalysis::compare (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_branchListForGrammarAnalysis::~ GALGAS_branchListForGrammarAnalysis (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5058,9 +5070,10 @@ GALGAS_repeatInstructionForGrammarAnalysis GALGAS_repeatInstructionForGrammarAna
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Class for element of '@syntaxComponentListForGrammarAnalysis' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_syntaxComponentListForGrammarAnalysis : public TC_UniqueArray <GALGAS_syntaxComponentListForGrammarAnalysis_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_syntaxComponentListForGrammarAnalysis : public cCollectionElement {
@@ -5131,20 +5144,23 @@ typeComparisonResult cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxComponentListForGrammarAnalysis::~ GALGAS_syntaxComponentListForGrammarAnalysis (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5888,9 +5904,10 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const GALGAS_syntaxInstructio
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Class for element of '@rowList' list                                         *
-//                                                                                                                     *
+
+// class GALGAS_list_rowList : public TC_UniqueArray <GALGAS_rowList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_rowList : public cCollectionElement {
@@ -5955,20 +5972,23 @@ typeComparisonResult cCollectionElement_rowList::compare (const cCollectionEleme
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_rowList::~ GALGAS_rowList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6406,9 +6426,10 @@ void callExtensionMethod_tikzNodeForSyntaxInstruction (const cPtr_abstractSyntax
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Class for element of '@programListForGeneration' list                                *
-//                                                                                                                     *
+
+// class GALGAS_list_programListForGeneration : public TC_UniqueArray <GALGAS_programListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_programListForGeneration : public cCollectionElement {
@@ -6473,20 +6494,23 @@ typeComparisonResult cCollectionElement_programListForGeneration::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_programListForGeneration::~ GALGAS_programListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12261,9 +12285,10 @@ void cParser_galgas_33_ProjectSyntax::rule_galgas_33_ProjectSyntax_project_5F_co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Class for element of '@galgas_33_QualifiedFeatureList' list                             *
-//                                                                                                                     *
+
+// class GALGAS_list_galgas_33_QualifiedFeatureList : public TC_UniqueArray <GALGAS_galgas_33_QualifiedFeatureList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_galgas_33_QualifiedFeatureList : public cCollectionElement {
@@ -12334,20 +12359,23 @@ typeComparisonResult cCollectionElement_galgas_33_QualifiedFeatureList::compare 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_galgas_33_QualifiedFeatureList::~ GALGAS_galgas_33_QualifiedFeatureList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

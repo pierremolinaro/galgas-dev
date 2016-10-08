@@ -9,9 +9,10 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Class for element of '@externTypeMethodList' list                                  *
-//                                                                                                                     *
+
+// class GALGAS_list_externTypeMethodList : public TC_UniqueArray <GALGAS_externTypeMethodList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_externTypeMethodList : public cCollectionElement {
@@ -88,20 +89,23 @@ typeComparisonResult cCollectionElement_externTypeMethodList::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_externTypeMethodList::~ GALGAS_externTypeMethodList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -502,9 +506,10 @@ GALGAS_externTypeMethodList GALGAS_externTypeMethodList::extractObject (const GA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Class for element of '@typeNameFormalParameterNameList' list                             *
-//                                                                                                                     *
+
+// class GALGAS_list_typeNameFormalParameterNameList : public TC_UniqueArray <GALGAS_typeNameFormalParameterNameList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_typeNameFormalParameterNameList : public cCollectionElement {
@@ -581,20 +586,23 @@ typeComparisonResult cCollectionElement_typeNameFormalParameterNameList::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_typeNameFormalParameterNameList::~ GALGAS_typeNameFormalParameterNameList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -995,9 +1003,10 @@ GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Class for element of '@formalParameterListAST' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_formalParameterListAST : public TC_UniqueArray <GALGAS_formalParameterListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_formalParameterListAST : public cCollectionElement {
@@ -1086,20 +1095,23 @@ typeComparisonResult cCollectionElement_formalParameterListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListAST::~ GALGAS_formalParameterListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1526,9 +1538,10 @@ GALGAS_formalParameterListAST GALGAS_formalParameterListAST::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Class for element of '@graphInsertModifierList' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_graphInsertModifierList : public TC_UniqueArray <GALGAS_graphInsertModifierList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_graphInsertModifierList : public cCollectionElement {
@@ -1599,20 +1612,23 @@ typeComparisonResult cCollectionElement_graphInsertModifierList::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_graphInsertModifierList::~ GALGAS_graphInsertModifierList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1940,9 +1956,10 @@ GALGAS_graphInsertModifierList GALGAS_graphInsertModifierList::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Class for element of '@insertMethodListAST' list                                   *
-//                                                                                                                     *
+
+// class GALGAS_list_insertMethodListAST : public TC_UniqueArray <GALGAS_insertMethodListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_insertMethodListAST : public cCollectionElement {
@@ -2025,20 +2042,23 @@ typeComparisonResult cCollectionElement_insertMethodListAST::compare (const cCol
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertMethodListAST::~ GALGAS_insertMethodListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2422,9 +2442,10 @@ GALGAS_insertMethodListAST GALGAS_insertMethodListAST::extractObject (const GALG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Class for element of '@mapSearchMethodListAST' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_mapSearchMethodListAST : public TC_UniqueArray <GALGAS_mapSearchMethodListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapSearchMethodListAST : public cCollectionElement {
@@ -2501,20 +2522,23 @@ typeComparisonResult cCollectionElement_mapSearchMethodListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapSearchMethodListAST::~ GALGAS_mapSearchMethodListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2870,9 +2894,10 @@ GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Class for element of '@mapRemoveMethodListAST' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_mapRemoveMethodListAST : public TC_UniqueArray <GALGAS_mapRemoveMethodListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapRemoveMethodListAST : public cCollectionElement {
@@ -2943,20 +2968,23 @@ typeComparisonResult cCollectionElement_mapRemoveMethodListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapRemoveMethodListAST::~ GALGAS_mapRemoveMethodListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3284,9 +3312,10 @@ GALGAS_mapRemoveMethodListAST GALGAS_mapRemoveMethodListAST::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                           Class for element of '@insertOrReplaceDeclarationListAST' list                            *
-//                                                                                                                     *
+
+// class GALGAS_list_insertOrReplaceDeclarationListAST : public TC_UniqueArray <GALGAS_insertOrReplaceDeclarationListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_insertOrReplaceDeclarationListAST : public cCollectionElement {
@@ -3351,20 +3380,23 @@ typeComparisonResult cCollectionElement_insertOrReplaceDeclarationListAST::compa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_insertOrReplaceDeclarationListAST::~ GALGAS_insertOrReplaceDeclarationListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4216,9 +4248,10 @@ GALGAS_mapAutomatonMessageKind GALGAS_mapAutomatonMessageKind::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Class for element of '@mapStateTransitionList' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_mapStateTransitionList : public TC_UniqueArray <GALGAS_mapStateTransitionList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapStateTransitionList : public cCollectionElement {
@@ -4301,20 +4334,23 @@ typeComparisonResult cCollectionElement_mapStateTransitionList::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateTransitionList::~ GALGAS_mapStateTransitionList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4698,9 +4734,10 @@ GALGAS_mapStateTransitionList GALGAS_mapStateTransitionList::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Class for element of '@mapStateList' list                                      *
-//                                                                                                                     *
+
+// class GALGAS_list_mapStateList : public TC_UniqueArray <GALGAS_mapStateList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapStateList : public cCollectionElement {
@@ -4783,20 +4820,23 @@ typeComparisonResult cCollectionElement_mapStateList::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateList::GALGAS_mapStateList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateList::GALGAS_mapStateList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapStateList::~ GALGAS_mapStateList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5180,9 +5220,10 @@ GALGAS_mapStateList GALGAS_mapStateList::extractObject (const GALGAS_object & in
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                             Class for element of '@mapOverrideBlockDescriptorAST' list                              *
-//                                                                                                                     *
+
+// class GALGAS_list_mapOverrideBlockDescriptorAST : public TC_UniqueArray <GALGAS_mapOverrideBlockDescriptorAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapOverrideBlockDescriptorAST : public cCollectionElement {
@@ -5271,20 +5312,23 @@ typeComparisonResult cCollectionElement_mapOverrideBlockDescriptorAST::compare (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideBlockDescriptorAST::~ GALGAS_mapOverrideBlockDescriptorAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5696,9 +5740,10 @@ GALGAS_mapOverrideBlockDescriptorAST GALGAS_mapOverrideBlockDescriptorAST::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Class for element of '@mapOverrideBlockListAST' list                                 *
-//                                                                                                                     *
+
+// class GALGAS_list_mapOverrideBlockListAST : public TC_UniqueArray <GALGAS_mapOverrideBlockListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapOverrideBlockListAST : public cCollectionElement {
@@ -5775,20 +5820,23 @@ typeComparisonResult cCollectionElement_mapOverrideBlockListAST::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideBlockListAST::~ GALGAS_mapOverrideBlockListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6144,9 +6192,10 @@ GALGAS_mapOverrideBlockListAST GALGAS_mapOverrideBlockListAST::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Class for element of '@sharedMapAttributeListAST' list                                *
-//                                                                                                                     *
+
+// class GALGAS_list_sharedMapAttributeListAST : public TC_UniqueArray <GALGAS_sharedMapAttributeListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_sharedMapAttributeListAST : public cCollectionElement {
@@ -6223,20 +6272,23 @@ typeComparisonResult cCollectionElement_sharedMapAttributeListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sharedMapAttributeListAST::~ GALGAS_sharedMapAttributeListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8580,9 +8632,10 @@ GALGAS_branchBehaviourSortedListForMapOverride GALGAS_branchBehaviourSortedListF
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Class for element of '@mapOverrideList' list                                     *
-//                                                                                                                     *
+
+// class GALGAS_list_mapOverrideList : public TC_UniqueArray <GALGAS_mapOverrideList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_mapOverrideList : public cCollectionElement {
@@ -8659,20 +8712,23 @@ typeComparisonResult cCollectionElement_mapOverrideList::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideList::GALGAS_mapOverrideList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideList::GALGAS_mapOverrideList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList::~ GALGAS_mapOverrideList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9073,9 +9129,10 @@ GALGAS_mapOverrideList GALGAS_mapOverrideList::extractObject (const GALGAS_objec
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Class for element of '@sortedListSortDescriptorListAST' list                             *
-//                                                                                                                     *
+
+// class GALGAS_list_sortedListSortDescriptorListAST : public TC_UniqueArray <GALGAS_sortedListSortDescriptorListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_sortedListSortDescriptorListAST : public cCollectionElement {
@@ -9146,20 +9203,23 @@ typeComparisonResult cCollectionElement_sortedListSortDescriptorListAST::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sortedListSortDescriptorListAST::~ GALGAS_sortedListSortDescriptorListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9487,9 +9547,10 @@ GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Class for element of '@sortDescriptorListForGeneration' list                             *
-//                                                                                                                     *
+
+// class GALGAS_list_sortDescriptorListForGeneration : public TC_UniqueArray <GALGAS_sortDescriptorListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_sortDescriptorListForGeneration : public cCollectionElement {
@@ -9566,20 +9627,23 @@ typeComparisonResult cCollectionElement_sortDescriptorListForGeneration::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sortDescriptorListForGeneration::~ GALGAS_sortDescriptorListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9980,9 +10044,10 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                              Class for element of '@formalInputParameterListAST' list                               *
-//                                                                                                                     *
+
+// class GALGAS_list_formalInputParameterListAST : public TC_UniqueArray <GALGAS_formalInputParameterListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_formalInputParameterListAST : public cCollectionElement {
@@ -10071,20 +10136,23 @@ typeComparisonResult cCollectionElement_formalInputParameterListAST::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListAST::~ GALGAS_formalInputParameterListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10496,9 +10564,10 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::extractOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Class for element of '@formalInputParameterListForGeneration' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_formalInputParameterListForGeneration : public TC_UniqueArray <GALGAS_formalInputParameterListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_formalInputParameterListForGeneration : public cCollectionElement {
@@ -10587,20 +10656,23 @@ typeComparisonResult cCollectionElement_formalInputParameterListForGeneration::c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListForGeneration::~ GALGAS_formalInputParameterListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11087,9 +11159,10 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                            Class for element of '@formalParameterListForGeneration' list                            *
-//                                                                                                                     *
+
+// class GALGAS_list_formalParameterListForGeneration : public TC_UniqueArray <GALGAS_formalParameterListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_formalParameterListForGeneration : public cCollectionElement {
@@ -11178,20 +11251,23 @@ typeComparisonResult cCollectionElement_formalParameterListForGeneration::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterListForGeneration::~ GALGAS_formalParameterListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11678,9 +11754,10 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Class for element of '@semanticInstructionListAST' list                               *
-//                                                                                                                     *
+
+// class GALGAS_list_semanticInstructionListAST : public TC_UniqueArray <GALGAS_semanticInstructionListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_semanticInstructionListAST : public cCollectionElement {
@@ -11745,20 +11822,23 @@ typeComparisonResult cCollectionElement_semanticInstructionListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListAST::~ GALGAS_semanticInstructionListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12058,9 +12138,10 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Class for element of '@semanticInstructionListForGeneration' list                          *
-//                                                                                                                     *
+
+// class GALGAS_list_semanticInstructionListForGeneration : public TC_UniqueArray <GALGAS_semanticInstructionListForGeneration_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_semanticInstructionListForGeneration : public cCollectionElement {
@@ -12125,20 +12206,23 @@ typeComparisonResult cCollectionElement_semanticInstructionListForGeneration::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticInstructionListForGeneration::~ GALGAS_semanticInstructionListForGeneration (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12540,9 +12624,10 @@ GALGAS_semanticExpressionAST GALGAS_semanticExpressionAST::extractObject (const 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Class for element of '@actualOutputExpressionList' list                               *
-//                                                                                                                     *
+
+// class GALGAS_list_actualOutputExpressionList : public TC_UniqueArray <GALGAS_actualOutputExpressionList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_actualOutputExpressionList : public cCollectionElement {
@@ -12619,20 +12704,23 @@ typeComparisonResult cCollectionElement_actualOutputExpressionList::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_actualOutputExpressionList::~ GALGAS_actualOutputExpressionList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12988,9 +13076,10 @@ GALGAS_actualOutputExpressionList GALGAS_actualOutputExpressionList::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Class for element of '@semanticExpressionListAST' list                                *
-//                                                                                                                     *
+
+// class GALGAS_list_semanticExpressionListAST : public TC_UniqueArray <GALGAS_semanticExpressionListAST_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_semanticExpressionListAST : public cCollectionElement {
@@ -13061,20 +13150,23 @@ typeComparisonResult cCollectionElement_semanticExpressionListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionListAST::~ GALGAS_semanticExpressionListAST (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

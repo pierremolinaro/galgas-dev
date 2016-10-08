@@ -9,9 +9,10 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                   Class for element of '@functionSignature' list                                    *
-//                                                                                                                     *
+
+// class GALGAS_list_functionSignature : public TC_UniqueArray <GALGAS_functionSignature_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_functionSignature : public cCollectionElement {
@@ -88,20 +89,23 @@ typeComparisonResult cCollectionElement_functionSignature::compare (const cColle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature::GALGAS_functionSignature (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature::GALGAS_functionSignature (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_functionSignature::~ GALGAS_functionSignature (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1790,9 +1794,10 @@ GALGAS_getterMap GALGAS_getterMap::extractObject (const GALGAS_object & inObject
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                Class for element of '@formalParameterSignature' list                                *
-//                                                                                                                     *
+
+// class GALGAS_list_formalParameterSignature : public TC_UniqueArray <GALGAS_formalParameterSignature_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_formalParameterSignature : public cCollectionElement {
@@ -1875,20 +1880,23 @@ typeComparisonResult cCollectionElement_formalParameterSignature::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature::GALGAS_formalParameterSignature (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature::GALGAS_formalParameterSignature (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalParameterSignature::~ GALGAS_formalParameterSignature (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3762,9 +3770,10 @@ GALGAS_classMethodMap GALGAS_classMethodMap::extractObject (const GALGAS_object 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Class for element of '@enumerationDescriptorList' list                                *
-//                                                                                                                     *
+
+// class GALGAS_list_enumerationDescriptorList : public TC_UniqueArray <GALGAS_enumerationDescriptorList_2D_element>, public C_SharedObject {
+//} ;
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 class cCollectionElement_enumerationDescriptorList : public cCollectionElement {
@@ -3835,20 +3844,23 @@ typeComparisonResult cCollectionElement_enumerationDescriptorList::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (void) :
-AC_GALGAS_list ()
-// mArray ()
- {
+AC_GALGAS_list (),
+mArray () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr)
-// mArray ()
- {
+AC_GALGAS_list (inSharedListPtr),
+mArray () {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumerationDescriptorList::~ GALGAS_enumerationDescriptorList (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
