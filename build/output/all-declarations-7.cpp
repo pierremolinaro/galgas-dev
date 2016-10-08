@@ -390,7 +390,8 @@ cEnumerator_ruleDeclarationList::cEnumerator_ruleDeclarationList (const GALGAS_r
                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1362,7 +1363,8 @@ cEnumerator_keySortedList::cEnumerator_keySortedList (const GALGAS_keySortedList
                                                       const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1803,7 +1805,8 @@ cEnumerator_uselessEntityLocationMap::cEnumerator_uselessEntityLocationMap (cons
                                                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -2363,7 +2366,8 @@ cEnumerator_castInstructionBranchListAST::cEnumerator_castInstructionBranchListA
                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3143,7 +3147,8 @@ cEnumerator_castInstructionBranchListForGeneration::cEnumerator_castInstructionB
                                                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -4049,7 +4054,8 @@ cEnumerator_fixitListAST::cEnumerator_fixitListAST (const GALGAS_fixitListAST & 
                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -4721,7 +4727,8 @@ cEnumerator_fixitListForGeneration::cEnumerator_fixitListForGeneration (const GA
                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5185,7 +5192,8 @@ cEnumerator_forInstructionEnumeratedObjectElementListAST::cEnumerator_forInstruc
                                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5939,7 +5947,8 @@ cEnumerator_forInstructionEnumeratedObjectListAST::cEnumerator_forInstructionEnu
                                                                                                       const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -6547,7 +6556,8 @@ cEnumerator_forInstructionEnumeratedObjectListForGeneration::cEnumerator_forInst
                                                                                                                           const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -7960,7 +7970,8 @@ cEnumerator_logListAST::cEnumerator_logListAST (const GALGAS_logListAST & inEnum
                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -8925,7 +8936,8 @@ cEnumerator_matchEntryListAST::cEnumerator_matchEntryListAST (const GALGAS_match
                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -9394,7 +9406,8 @@ cEnumerator_matchInstructionBranchListAST::cEnumerator_matchInstructionBranchLis
                                                                                       const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -10136,7 +10149,8 @@ cEnumerator_matchListForGeneration::cEnumerator_matchListForGeneration (const GA
                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -10583,7 +10597,8 @@ cEnumerator_matchInstructionBranchListForGeneration::cEnumerator_matchInstructio
                                                                                                           const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -12381,7 +12396,8 @@ cEnumerator_switchExtractedValuesListAST::cEnumerator_switchExtractedValuesListA
                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -12910,7 +12926,8 @@ cEnumerator_switchBranchesAST::cEnumerator_switchBranchesAST (const GALGAS_switc
                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -13641,7 +13658,8 @@ cEnumerator_extractedAssociatedValuesForGeneration::cEnumerator_extractedAssocia
                                                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -14170,7 +14188,8 @@ cEnumerator_switchBranchesForGeneration::cEnumerator_switchBranchesForGeneration
                                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 

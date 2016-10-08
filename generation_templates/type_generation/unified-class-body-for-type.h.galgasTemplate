@@ -349,9 +349,9 @@ end
 %
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods ()) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                              const typeEnumerationOrder inOrder) const ;
-  protected :  TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (const typeEnumerationOrder inOrder) const ;
+  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
+                                             const typeEnumerationOrder inOrder) const ; // À supprimer
+  protected : /* VIRTUAL_IN_DEBUG */ TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (const typeEnumerationOrder inOrder) const ;
 
 %end
 
@@ -407,6 +407,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 %end%
 //---------------------------------------------------------------------------------------------------------------------*
