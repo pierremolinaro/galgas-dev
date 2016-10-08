@@ -1071,8 +1071,14 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
+mEnumerationArray (),
+mIndex (0) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_stringset::~ cEnumerator_stringset (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1081,6 +1087,12 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const cCollectionElement * cEnumerator_stringset::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

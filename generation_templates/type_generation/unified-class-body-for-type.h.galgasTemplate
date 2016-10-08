@@ -375,10 +375,26 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
+class cEnumerator_%!TYPE_IDENTIFIER% {
+//--- Constructor
   public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const typeEnumerationOrder inOrder) ;
 
+//--- Virtual destructor
+  public : virtual ~ cEnumerator_%!TYPE_IDENTIFIER% (void) ;
+
+//--- No copy
+  private : cEnumerator_%!TYPE_IDENTIFIER% (const cEnumerator_%!TYPE_IDENTIFIER% &) ;
+  private : cEnumerator_%!TYPE_IDENTIFIER% & operator = (const cEnumerator_%!TYPE_IDENTIFIER% &) ;
+
+//--- 
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline uint32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
 
 //--- Current element access\n%
   for () in ENUMERATION_DESCRIPTOR_LIST do
@@ -388,7 +404,11 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
 %//--- Current element access\n%
 %  public : class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
-%} ;
+%
+//--- Private data members
+  protected : capCollectionElementArray mEnumerationArray ;
+  private : uint32_t mIndex ;
+} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

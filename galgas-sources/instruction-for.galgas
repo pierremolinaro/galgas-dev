@@ -347,7 +347,8 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   outEnumeratorCppName = "enumerator_" + [mEndOfEnumerationExpression locationIndex]
   let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
   if [enumerationDescriptorList length] == 0 then
-    error mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+    error mEndOfEnumerationExpression
+    : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
   for () in enumerationDescriptorList do

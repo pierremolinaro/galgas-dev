@@ -85,7 +85,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?var @typeKindEnum typeKindEnum
     ?*
     ?var @typedPropertyList listTypedAttributeList
-    ?20*
+    ?19*
   ]
   if typeKindEnum != @typeKindEnum. listType then
     error mAssociatedListTypeName : "the '@" + mAssociatedListTypeName + "' type should be a list type"
@@ -187,7 +187,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumeratorDescriptor
-    !enumerationVariants
+#    !enumerationVariants
     !doNotGenererateObjectCompare ()
     !addAssignOperatorDescription
     !{}
@@ -228,7 +228,7 @@ override method @listmapDeclarationAST semanticAnalysis
     ?let @typeKindEnum typeKindEnum
     ?*
     ?let @typedPropertyList listTypeAttributeList
-    ?20*
+    ?19*
   ]
 #---
   if typeKindEnum != .listType then

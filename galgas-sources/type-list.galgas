@@ -239,10 +239,6 @@ override method @listDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   drop setterInputFormalArgumentList
-#--- Enumeration variants
-  var enumerationVariants =@stringlist {}
-  enumerationVariants += !"UP"
-  enumerationVariants += !"DOWN"
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -271,7 +267,6 @@ override method @listDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !{}
     !enumerationDescriptor
-    !enumerationVariants
     !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | infixAddOperator ()
     !constructorAttributeTypeList
     !{}

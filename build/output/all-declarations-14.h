@@ -493,7 +493,6 @@ class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_instanceMethodMap mAttribute_mInstanceMethodMap ;
   public : GALGAS_classMethodMap mAttribute_mClassMethodMap ;
   public : GALGAS_enumerationDescriptorList mAttribute_mEnumerationDescriptor ;
-  public : GALGAS_stringlist mAttribute_mEnumeratorVariants ;
   public : GALGAS_uint mAttribute_mHandledOperatorFlags ;
   public : GALGAS_functionSignature mAttribute_mAddAssignOperatorArguments ;
   public : GALGAS_constantIndexMap mAttribute_mEnumConstantMap ;
@@ -533,7 +532,6 @@ class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
                                              const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                              const GALGAS_classMethodMap & in_mClassMethodMap,
                                              const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
-                                             const GALGAS_stringlist & in_mEnumeratorVariants,
                                              const GALGAS_uint & in_mHandledOperatorFlags,
                                              const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
                                              const GALGAS_constantIndexMap & in_mEnumConstantMap,
@@ -572,18 +570,17 @@ class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
                                                                           const class GALGAS_instanceMethodMap & inOperand12,
                                                                           const class GALGAS_classMethodMap & inOperand13,
                                                                           const class GALGAS_enumerationDescriptorList & inOperand14,
-                                                                          const class GALGAS_stringlist & inOperand15,
-                                                                          const class GALGAS_uint & inOperand16,
-                                                                          const class GALGAS_functionSignature & inOperand17,
-                                                                          const class GALGAS_constantIndexMap & inOperand18,
-                                                                          const class GALGAS_enumConstantList & inOperand19,
+                                                                          const class GALGAS_uint & inOperand15,
+                                                                          const class GALGAS_functionSignature & inOperand16,
+                                                                          const class GALGAS_constantIndexMap & inOperand17,
+                                                                          const class GALGAS_enumConstantList & inOperand18,
+                                                                          const class GALGAS_mapSearchMethodListAST & inOperand19,
                                                                           const class GALGAS_mapSearchMethodListAST & inOperand20,
-                                                                          const class GALGAS_mapSearchMethodListAST & inOperand21,
-                                                                          const class GALGAS_bool & inOperand22,
-                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand23,
+                                                                          const class GALGAS_bool & inOperand21,
+                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand22,
+                                                                          const class GALGAS_string & inOperand23,
                                                                           const class GALGAS_string & inOperand24,
-                                                                          const class GALGAS_string & inOperand25,
-                                                                          const class GALGAS_headerKind & inOperand26
+                                                                          const class GALGAS_headerKind & inOperand25
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -619,8 +616,6 @@ class GALGAS_unifiedTypeMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap getter_mEnumConstantMap (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_enumerationDescriptorList getter_mEnumerationDescriptor (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist getter_mEnumeratorVariants (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mGenerateHeaderInSeparateFile (LOCATION_ARGS) const ;
 

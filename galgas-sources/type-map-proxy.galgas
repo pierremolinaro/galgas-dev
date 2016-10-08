@@ -38,7 +38,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?var @typeKindEnum typeKindEnum
     ?3*
     ?var @typedPropertyList mapTypedAttributeList
-    ?11*
+    ?10*
     ?var @mapSearchMethodListAST searchMethodList
     ?6*
   ]
@@ -198,7 +198,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     !@enumerationDescriptorList.emptyList
-    !@stringlist.emptyList
+#    !@stringlist.emptyList
     !doNotGenererateObjectCompare ()
     !@functionSignature.emptyList
     !{}
@@ -233,7 +233,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     !mAssociatedMapTypeName
     ?7*
     ?let @typedPropertyList listTypeAttributeList
-    ?11*
+    ?10*
     ?let @mapSearchMethodListAST searchMethodList
     ?6*
   ]
