@@ -991,8 +991,8 @@ class cEnumerator_stringset {
   private : cEnumerator_stringset & operator = (const cEnumerator_stringset &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -2607,8 +2607,8 @@ class cEnumerator_data {
   private : cEnumerator_data & operator = (const cEnumerator_data &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3197,8 +3197,8 @@ class cEnumerator_stringlist {
   private : cEnumerator_stringlist & operator = (const cEnumerator_stringlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3347,8 +3347,8 @@ class cEnumerator_lstringlist {
   private : cEnumerator_lstringlist & operator = (const cEnumerator_lstringlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3515,8 +3515,8 @@ class cEnumerator__32_lstringlist {
   private : cEnumerator__32_lstringlist & operator = (const cEnumerator__32_lstringlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3755,8 +3755,8 @@ class cEnumerator__32_stringlist {
   private : cEnumerator__32_stringlist & operator = (const cEnumerator__32_stringlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3906,8 +3906,8 @@ class cEnumerator_functionlist {
   private : cEnumerator_functionlist & operator = (const cEnumerator_functionlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4056,8 +4056,8 @@ class cEnumerator_luintlist {
   private : cEnumerator_luintlist & operator = (const cEnumerator_luintlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4206,8 +4206,8 @@ class cEnumerator_objectlist {
   private : cEnumerator_objectlist & operator = (const cEnumerator_objectlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4356,8 +4356,8 @@ class cEnumerator_typelist {
   private : cEnumerator_typelist & operator = (const cEnumerator_typelist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4506,8 +4506,8 @@ class cEnumerator_uintlist {
   private : cEnumerator_uintlist & operator = (const cEnumerator_uintlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4656,8 +4656,8 @@ class cEnumerator_uint_36__34_list {
   private : cEnumerator_uint_36__34_list & operator = (const cEnumerator_uint_36__34_list &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4806,8 +4806,8 @@ class cEnumerator_bigintlist {
   private : cEnumerator_bigintlist & operator = (const cEnumerator_bigintlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4956,8 +4956,8 @@ class cEnumerator_lbigintlist {
   private : cEnumerator_lbigintlist & operator = (const cEnumerator_lbigintlist &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
+  public : bool hasCurrentObject (void) const ;
+  public : bool hasNextObject (void) const ;
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }

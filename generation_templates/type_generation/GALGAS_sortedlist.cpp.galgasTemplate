@@ -297,6 +297,18 @@ cEnumerator_%!TYPE_IDENTIFIER%::~ cEnumerator_%!TYPE_IDENTIFIER% (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_%!TYPE_IDENTIFIER%::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_%!TYPE_IDENTIFIER%::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_%!TYPE_IDENTIFIER%::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
