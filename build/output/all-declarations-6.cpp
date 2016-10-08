@@ -173,7 +173,8 @@ cEnumerator_extensionMethodMapForType::cEnumerator_extensionMethodMapForType (co
                                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -456,7 +457,8 @@ cEnumerator_extensionMethodMapForBuildingContext::cEnumerator_extensionMethodMap
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -717,7 +719,8 @@ cEnumerator_extensionSetterMapForType::cEnumerator_extensionSetterMapForType (co
                                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1000,7 +1003,8 @@ cEnumerator_extensionSetterMapForBuildingContext::cEnumerator_extensionSetterMap
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1301,7 +1305,8 @@ cEnumerator_extensionGetterMapForType::cEnumerator_extensionGetterMapForType (co
                                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1592,7 +1597,8 @@ cEnumerator_extensionGetterMapForBuildingContext::cEnumerator_extensionGetterMap
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -2025,7 +2031,8 @@ cEnumerator_wrapperExtensionMap::cEnumerator_wrapperExtensionMap (const GALGAS_w
                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -2729,7 +2736,8 @@ cEnumerator_semanticExpressionListForGeneration::cEnumerator_semanticExpressionL
                                                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3119,7 +3127,8 @@ cEnumerator_actualParameterListForGeneration::cEnumerator_actualParameterListFor
                                                                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3858,7 +3867,8 @@ cEnumerator_listOfSemanticInstructionListForGeneration::cEnumerator_listOfSemant
                                                                                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -4775,7 +4785,8 @@ cEnumerator_semanticDeclarationListForGeneration::cEnumerator_semanticDeclaratio
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5214,7 +5225,8 @@ cEnumerator_signatureForGrammarAnalysis::cEnumerator_signatureForGrammarAnalysis
                                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5499,7 +5511,8 @@ cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator_nonterminal
                                                                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5825,7 +5838,8 @@ cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator_nonTerminalSymbo
                                                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -6270,7 +6284,8 @@ cEnumerator_nonTerminalToAddList::cEnumerator_nonTerminalToAddList (const GALGAS
                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -6750,7 +6765,8 @@ cEnumerator_terminalCheckAssignementList::cEnumerator_terminalCheckAssignementLi
                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -7345,7 +7361,8 @@ cEnumerator_filewrapperTemplateListForGeneration::cEnumerator_filewrapperTemplat
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -8982,7 +8999,8 @@ cEnumerator_variableMap::cEnumerator_variableMap (const GALGAS_variableMap & inE
                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -9747,7 +9765,8 @@ cEnumerator_collectionValueElementListForGeneration::cEnumerator_collectionValue
                                                                                                           const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -10596,7 +10615,8 @@ cEnumerator_localConstantList::cEnumerator_localConstantList (const GALGAS_local
                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -11092,7 +11112,8 @@ cEnumerator_localInitializedVariableList::cEnumerator_localInitializedVariableLi
                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -11708,7 +11729,8 @@ cEnumerator_attributeIndexMap::cEnumerator_attributeIndexMap (const GALGAS_attri
                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -12077,7 +12099,8 @@ cEnumerator_nonterminalLabelMap::cEnumerator_nonterminalLabelMap (const GALGAS_n
                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -12376,7 +12399,8 @@ cEnumerator_nonterminalMap::cEnumerator_nonterminalMap (const GALGAS_nonterminal
                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -12936,7 +12960,8 @@ cEnumerator_ruleLabelImplementationList::cEnumerator_ruleLabelImplementationList
                                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 

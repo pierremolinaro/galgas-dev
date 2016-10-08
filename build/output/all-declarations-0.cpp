@@ -4759,7 +4759,8 @@ cEnumerator_templateInstructionListAST::cEnumerator_templateInstructionListAST (
                                                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5318,7 +5319,8 @@ cEnumerator_templateExpressionListAST::cEnumerator_templateExpressionListAST (co
                                                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -10467,7 +10469,8 @@ cEnumerator_templateInstructionIfBranchListAST::cEnumerator_templateInstructionI
                                                                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -11090,7 +11093,8 @@ cEnumerator_templateInstructionSwitchBranchListAST::cEnumerator_templateInstruct
                                                                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -13251,7 +13255,8 @@ cEnumerator_templateInstructionListForGeneration::cEnumerator_templateInstructio
                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -13932,7 +13937,8 @@ cEnumerator_templateInstructionIfBranchListForGeneration::cEnumerator_templateIn
                                                                                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -14555,7 +14561,8 @@ cEnumerator_templateInstructionSwitchBranchListForGeneration::cEnumerator_templa
                                                                                                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -14883,7 +14890,8 @@ cEnumerator_templateVariableMap::cEnumerator_templateVariableMap (const GALGAS_t
                                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 

@@ -176,6 +176,7 @@ class cEnumerator_ruleDeclarationList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_ruleDeclarationList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -650,6 +651,7 @@ class cEnumerator_keySortedList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_keySortedList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -838,6 +840,7 @@ class cEnumerator_uselessEntityLocationMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_uselessEntityLocationMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1138,6 +1141,7 @@ class cEnumerator_castInstructionBranchListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_castInstructionBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1509,6 +1513,7 @@ class cEnumerator_castInstructionBranchListForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_castInstructionBranchListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1979,6 +1984,7 @@ class cEnumerator_fixitListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_fixitListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2299,6 +2305,7 @@ class cEnumerator_fixitListForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_fixitListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2709,6 +2716,7 @@ class cEnumerator_forInstructionEnumeratedObjectElementListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3107,6 +3115,7 @@ class cEnumerator_forInstructionEnumeratedObjectListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3406,6 +3415,7 @@ class cEnumerator_forInstructionEnumeratedObjectListForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4140,6 +4150,7 @@ class cEnumerator_logListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_logListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4586,6 +4597,7 @@ class cEnumerator_matchEntryListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchEntryListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4833,6 +4845,7 @@ class cEnumerator_matchInstructionBranchListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchInstructionBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5191,6 +5204,7 @@ class cEnumerator_matchListForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5426,6 +5440,7 @@ class cEnumerator_matchInstructionBranchListForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_matchInstructionBranchListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6350,6 +6365,7 @@ class cEnumerator_switchExtractedValuesListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchExtractedValuesListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6613,6 +6629,7 @@ class cEnumerator_switchBranchesAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchBranchesAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6968,6 +6985,7 @@ class cEnumerator_extractedAssociatedValuesForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_extractedAssociatedValuesForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7231,6 +7249,7 @@ class cEnumerator_switchBranchesForGeneration {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_switchBranchesForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

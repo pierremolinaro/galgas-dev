@@ -1017,8 +1017,9 @@ cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumera
                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (), // Inutilisé
 mEnumerationArray (),
-mIndex (0) {
-  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
+mIndex (0),
+mOrder (inOrder) {
+  mEnumerationArray = inEnumeratedObject.enumerationArray (kENUMERATION_UP) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1041,36 +1042,27 @@ bool cEnumerator_stringset::hasNextObject (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
-  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? ((int32_t) mIndex)
+    : mEnumerationArray.count () - 1 - (int32_t) mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
-  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? ((int32_t) mIndex)
+    : mEnumerationArray.count () - 1 - (int32_t) mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                 'GALGAS_stringset::cEnumerator' class                                                               *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void enterAscendingEnumeration (const cStringsetNode * inNode,
-                                       capCollectionElementArray & ioResult) {
-  if (inNode != NULL) {
-    enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
-    cCollectionElement_stringset * p = NULL ;
-    GALGAS_string str (GALGAS_string (inNode->mKey)) ;
-    macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
-    capCollectionElement object ;
-    object.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    ioResult.addObject (object) ;
-    enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
-  }
-}
-
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void enterAscendingEnumeration (const cStringsetNode * inNode,
@@ -1084,68 +1076,11 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterDescendingEnumeration (const cStringsetNode * inNode,
-                                        capCollectionElementArray & ioResult) {
-  if (inNode != NULL) {
-    enterDescendingEnumeration (inNode->mSupPtr, ioResult) ;
-    cCollectionElement_stringset * p = NULL ;
-    GALGAS_string str (GALGAS_string (inNode->mKey)) ;
-    macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
-    capCollectionElement object ;
-    object.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    ioResult.addObject (object) ;
-    enterDescendingEnumeration (inNode->mInfPtr, ioResult) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void enterDescendingEnumeration (const cStringsetNode * inNode,
-                                        TC_Array <GALGAS_string> & ioResult) {
-  if (inNode != NULL) {
-    enterDescendingEnumeration (inNode->mSupPtr, ioResult) ;
-    ioResult.addObject (GALGAS_string (inNode->mKey)) ;
-    enterDescendingEnumeration (inNode->mInfPtr, ioResult) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                 const typeEnumerationOrder inEnumerationOrder) const {
-  if (isValid ()) {
-    ioEnumerationArray.setCapacity ((uint32_t) mSharedRoot->count ()) ;
-    switch (inEnumerationOrder) {
-    case kENUMERATION_UP:
-      enterAscendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
-      break ;
-    case kENUMERATION_DOWN:
-      enterDescendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
-      break ;
-    }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      MF_Assert (mSharedRoot->count () == (int32_t) ioEnumerationArray.count (),
-                 "mSharedRoot->count () %lld != ioEnumerationArray.count () %lld",
-                 mSharedRoot->count (), ioEnumerationArray.count ()) ;
-    #endif
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (const typeEnumerationOrder inEnumerationOrder) const {
+TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (const typeEnumerationOrder /* inEnumerationOrder */) const {
   TC_Array <GALGAS_string> result ;
   if (isValid ()) {
     result.setCapacity (mSharedRoot->count ()) ;
-    switch (inEnumerationOrder) {
-    case kENUMERATION_UP:
-      enterAscendingEnumeration (mSharedRoot->root (), result) ;
-      break ;
-    case kENUMERATION_DOWN:
-      enterDescendingEnumeration (mSharedRoot->root (), result) ;
-      break ;
-    }
+    enterAscendingEnumeration (mSharedRoot->root (), result) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       MF_Assert (mSharedRoot->count () == (int32_t) result.count (),
                  "mSharedRoot->count () %lld != result.count () %lld",

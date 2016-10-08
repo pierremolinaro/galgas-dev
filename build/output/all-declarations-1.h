@@ -478,6 +478,7 @@ class cEnumerator_filewrapperMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_filewrapperMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -630,6 +631,7 @@ class cEnumerator_functionMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_functionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -782,6 +784,7 @@ class cEnumerator_grammarMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_grammarMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -934,6 +937,7 @@ class cEnumerator_lexiqueComponentMapForSemanticAnalysis {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1112,6 +1116,7 @@ class cEnumerator_optionComponentMapForSemanticAnalysis {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_optionComponentMapForSemanticAnalysis_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1251,6 +1256,7 @@ class cEnumerator_routineMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_routineMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1416,6 +1422,7 @@ class cEnumerator_syntaxComponentMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_syntaxComponentMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1769,6 +1776,7 @@ class cEnumerator_enumConstantList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_enumConstantList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1928,6 +1936,7 @@ class cEnumerator_enumerationDescriptorList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_enumerationDescriptorList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2101,6 +2110,7 @@ class cEnumerator_functionSignature {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_functionSignature_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2262,6 +2272,7 @@ class cEnumerator_mapSearchMethodListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_mapSearchMethodListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2449,6 +2460,7 @@ class cEnumerator_typedPropertyList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_typedPropertyList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2575,6 +2587,7 @@ class cEnumerator_attributeMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_attributeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2719,6 +2732,7 @@ class cEnumerator_classMethodMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_classMethodMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2858,6 +2872,7 @@ class cEnumerator_constantIndexMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_constantIndexMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3016,6 +3031,7 @@ class cEnumerator_constructorMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_constructorMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3230,6 +3246,7 @@ class cEnumerator_getterMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_getterMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3435,6 +3452,7 @@ class cEnumerator_instanceMethodMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_instanceMethodMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3621,6 +3639,7 @@ class cEnumerator_setterMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_setterMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4024,6 +4043,7 @@ class cEnumerator_unifiedTypeMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_unifiedTypeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4614,6 +4634,7 @@ class cEnumerator_lexicalInstructionListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalInstructionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4838,6 +4859,7 @@ class cEnumerator_metamodelTemplateDelimitorListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_metamodelTemplateDelimitorListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5075,6 +5097,7 @@ class cEnumerator_templateReplacementListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_templateReplacementListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5361,6 +5384,7 @@ class cEnumerator_lexicalRuleListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalRuleListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5662,6 +5686,7 @@ class cEnumerator_lexicalMessageDeclarationListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalMessageDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5884,6 +5909,7 @@ class cEnumerator_lexicalAttributeListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6106,6 +6132,7 @@ class cEnumerator_lexicalStyleListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalStyleListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6358,6 +6385,7 @@ class cEnumerator_terminalDeclarationListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6517,6 +6545,7 @@ class cEnumerator_sentLexicalAttributeListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_sentLexicalAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6835,6 +6864,7 @@ class cEnumerator_lexicalListEntryListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalListEntryListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7092,6 +7122,7 @@ class cEnumerator_lexicalListDeclarationListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalListDeclarationListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7416,6 +7447,7 @@ class cEnumerator_lexicalSendSearchListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSendSearchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7794,6 +7826,7 @@ class cEnumerator_lexicalWhileBranchListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalWhileBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8103,6 +8136,7 @@ class cEnumerator_lexicalSelectBranchListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSelectBranchListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8476,6 +8510,7 @@ class cEnumerator_lexicalRoutineCallActualArgumentListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8832,6 +8867,7 @@ class cEnumerator_lexicalFunctionCallActualArgumentListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9325,6 +9361,7 @@ class cEnumerator_lexicalExternRoutineFormalArgumentListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9559,6 +9596,7 @@ class cEnumerator_externRoutineListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_externRoutineListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9786,6 +9824,7 @@ class cEnumerator_lexicalExternFunctionFormalArgumentListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10018,6 +10057,7 @@ class cEnumerator_externFunctionListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_externFunctionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10245,6 +10285,7 @@ class cEnumerator_indexingListAST {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_indexingListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10586,6 +10627,7 @@ class cEnumerator_lexicalSentValueList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalSentValueList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10785,6 +10827,7 @@ class cEnumerator_terminalMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11010,6 +11053,7 @@ class cEnumerator_lexicalTypeMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalTypeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11232,6 +11276,7 @@ class cEnumerator_lexicalAttributeMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalAttributeMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11543,6 +11588,7 @@ class cEnumerator_terminalList {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_terminalList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11773,6 +11819,7 @@ class cEnumerator_lexicalExplicitTokenListMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExplicitTokenListMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11999,6 +12046,7 @@ class cEnumerator_tokenSortedlist {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_tokenSortedlist_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12227,6 +12275,7 @@ class cEnumerator_lexicalExplicitTokenListMapMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalExplicitTokenListMapMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12479,6 +12528,7 @@ class cEnumerator_lexicalMessageMap {
   private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
   private : TC_Array <GALGAS_lexicalMessageMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
+  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

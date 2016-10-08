@@ -418,7 +418,8 @@ cEnumerator_stringlist::cEnumerator_stringlist (const GALGAS_stringlist & inEnum
                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -908,7 +909,8 @@ cEnumerator_lstringlist::cEnumerator_lstringlist (const GALGAS_lstringlist & inE
                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -1496,7 +1498,8 @@ cEnumerator__32_lstringlist::cEnumerator__32_lstringlist (const GALGAS__32_lstri
                                                           const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -2315,7 +2318,8 @@ cEnumerator__32_stringlist::cEnumerator__32_stringlist (const GALGAS__32_stringl
                                                         const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3071,7 +3075,8 @@ cEnumerator_functionlist::cEnumerator_functionlist (const GALGAS_functionlist & 
                                                     const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3475,7 +3480,8 @@ cEnumerator_luintlist::cEnumerator_luintlist (const GALGAS_luintlist & inEnumera
                                               const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -3879,7 +3885,8 @@ cEnumerator_objectlist::cEnumerator_objectlist (const GALGAS_objectlist & inEnum
                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -4283,7 +4290,8 @@ cEnumerator_typelist::cEnumerator_typelist (const GALGAS_typelist & inEnumerated
                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -4687,7 +4695,8 @@ cEnumerator_uintlist::cEnumerator_uintlist (const GALGAS_uintlist & inEnumerated
                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5091,7 +5100,8 @@ cEnumerator_uint_36__34_list::cEnumerator_uint_36__34_list (const GALGAS_uint_36
                                                             const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5495,7 +5505,8 @@ cEnumerator_bigintlist::cEnumerator_bigintlist (const GALGAS_bigintlist & inEnum
                                                 const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
@@ -5899,7 +5910,8 @@ cEnumerator_lbigintlist::cEnumerator_lbigintlist (const GALGAS_lbigintlist & inE
                                                   const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
-mIndex (0) {
+mIndex (0),
+mOrder (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
