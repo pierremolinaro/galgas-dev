@@ -21,76 +21,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "all-predefined-types.h"
-#include "utilities/MF_MemoryControl.h"
-#include "galgas2/cCollectionElement.h"
 #include "galgas2/C_Compiler.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   cCollectionElement_stringset                                                                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_stringset : public cCollectionElement {
-//--- Private member
-  protected : GALGAS_string mAttribute_key ;
-  public : inline GALGAS_string attribute_key (void) const { return mAttribute_key ; }
-
-//--- Default constructor
-  public : cCollectionElement_stringset (const GALGAS_string & inString
-                                         COMMA_LOCATION_ARGS) ;
-
-//--- No copy
-  private : cCollectionElement_stringset (const cCollectionElement_stringset &) ;
-  private : cCollectionElement_stringset & operator = (const cCollectionElement_stringset &) ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_stringset::cCollectionElement_stringset (const GALGAS_string & inKey
-                                                            COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mAttribute_key (inKey) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_stringset::isValid (void) const {
-  return mAttribute_key.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
-  const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_stringset) ;
-  return mAttribute_key.objectCompare (operand->mAttribute_key) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_stringset::copy (void) {
-  cCollectionElement_stringset * p = NULL ;
-  macroMyNew (p, cCollectionElement_stringset (mAttribute_key COMMA_HERE)) ;
-  return p ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_stringset::description (C_String & ioString, const int32_t inIndentation) const {
-  mAttribute_key.description (ioString, inIndentation) ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
