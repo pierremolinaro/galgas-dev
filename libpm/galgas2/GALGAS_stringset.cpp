@@ -1071,9 +1071,10 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1092,7 +1093,7 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_stringset::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

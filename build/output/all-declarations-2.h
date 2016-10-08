@@ -136,8 +136,8 @@ class cEnumerator_lexicalRoutineMap {
   private : cEnumerator_lexicalRoutineMap & operator = (const cEnumerator_lexicalRoutineMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -153,7 +153,8 @@ class cEnumerator_lexicalRoutineMap {
   public : class GALGAS_lexicalRoutineMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_lexicalRoutineMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -448,8 +449,8 @@ class cEnumerator_lexicalFunctionFormalArgumentList {
   private : cEnumerator_lexicalFunctionFormalArgumentList & operator = (const cEnumerator_lexicalFunctionFormalArgumentList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -463,7 +464,8 @@ class cEnumerator_lexicalFunctionFormalArgumentList {
   public : class GALGAS_lexicalFunctionFormalArgumentList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_lexicalFunctionFormalArgumentList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -714,8 +716,8 @@ class cEnumerator_lexicalFunctionMap {
   private : cEnumerator_lexicalFunctionMap & operator = (const cEnumerator_lexicalFunctionMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -732,7 +734,8 @@ class cEnumerator_lexicalFunctionMap {
   public : class GALGAS_lexicalFunctionMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_lexicalFunctionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -1045,8 +1048,8 @@ class cEnumerator_templateDelimitorList {
   private : cEnumerator_templateDelimitorList & operator = (const cEnumerator_templateDelimitorList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -1061,7 +1064,8 @@ class cEnumerator_templateDelimitorList {
   public : class GALGAS_templateDelimitorList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_templateDelimitorList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -1297,8 +1301,8 @@ class cEnumerator_styleMap {
   private : cEnumerator_styleMap & operator = (const cEnumerator_styleMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -1313,7 +1317,8 @@ class cEnumerator_styleMap {
   public : class GALGAS_styleMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_styleMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -1555,8 +1560,8 @@ class cEnumerator_lexicalTagMap {
   private : cEnumerator_lexicalTagMap & operator = (const cEnumerator_lexicalTagMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -1569,7 +1574,8 @@ class cEnumerator_lexicalTagMap {
   public : class GALGAS_lexicalTagMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_lexicalTagMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -2647,8 +2653,8 @@ class cEnumerator_commandLineOptionListAST {
   private : cEnumerator_commandLineOptionListAST & operator = (const cEnumerator_commandLineOptionListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -2667,7 +2673,8 @@ class cEnumerator_commandLineOptionListAST {
   public : class GALGAS_commandLineOptionListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_commandLineOptionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -2948,8 +2955,8 @@ class cEnumerator_commandLineOptionMap {
   private : cEnumerator_commandLineOptionMap & operator = (const cEnumerator_commandLineOptionMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -2966,7 +2973,8 @@ class cEnumerator_commandLineOptionMap {
   public : class GALGAS_commandLineOptionMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_commandLineOptionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -3269,8 +3277,8 @@ class cEnumerator_guiSimpleAttributeListAST {
   private : cEnumerator_guiSimpleAttributeListAST & operator = (const cEnumerator_guiSimpleAttributeListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3284,7 +3292,8 @@ class cEnumerator_guiSimpleAttributeListAST {
   public : class GALGAS_guiSimpleAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_guiSimpleAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -3548,8 +3557,8 @@ class cEnumerator_guiCompoundAttributeListAST {
   private : cEnumerator_guiCompoundAttributeListAST & operator = (const cEnumerator_guiCompoundAttributeListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3564,7 +3573,8 @@ class cEnumerator_guiCompoundAttributeListAST {
   public : class GALGAS_guiCompoundAttributeListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_guiCompoundAttributeListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -3821,8 +3831,8 @@ class cEnumerator_terminalLabelListAST {
   private : cEnumerator_terminalLabelListAST & operator = (const cEnumerator_terminalLabelListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -3836,7 +3846,8 @@ class cEnumerator_terminalLabelListAST {
   public : class GALGAS_terminalLabelListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_terminalLabelListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -4100,8 +4111,8 @@ class cEnumerator_guiLabelListAST {
   private : cEnumerator_guiLabelListAST & operator = (const cEnumerator_guiLabelListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4116,7 +4127,8 @@ class cEnumerator_guiLabelListAST {
   public : class GALGAS_guiLabelListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_guiLabelListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -4399,8 +4411,8 @@ class cEnumerator_withLexiqueListAST {
   private : cEnumerator_withLexiqueListAST & operator = (const cEnumerator_withLexiqueListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4416,7 +4428,8 @@ class cEnumerator_withLexiqueListAST {
   public : class GALGAS_withLexiqueListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_withLexiqueListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -4718,8 +4731,8 @@ class cEnumerator_guiCommandLineOptionList {
   private : cEnumerator_guiCommandLineOptionList & operator = (const cEnumerator_guiCommandLineOptionList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4736,7 +4749,8 @@ class cEnumerator_guiCommandLineOptionList {
   public : class GALGAS_guiCommandLineOptionList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_guiCommandLineOptionList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -4963,8 +4977,8 @@ class cEnumerator_extensionMap {
   private : cEnumerator_extensionMap & operator = (const cEnumerator_extensionMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -4978,7 +4992,8 @@ class cEnumerator_extensionMap {
   public : class GALGAS_extensionMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_extensionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -5257,8 +5272,8 @@ class cEnumerator_textMacroList {
   private : cEnumerator_textMacroList & operator = (const cEnumerator_textMacroList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -5272,7 +5287,8 @@ class cEnumerator_textMacroList {
   public : class GALGAS_textMacroList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_textMacroList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -5562,8 +5578,8 @@ class cEnumerator_importedLexiqueList {
   private : cEnumerator_importedLexiqueList & operator = (const cEnumerator_importedLexiqueList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -5580,7 +5596,8 @@ class cEnumerator_importedLexiqueList {
   public : class GALGAS_importedLexiqueList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_importedLexiqueList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -5875,8 +5892,8 @@ class cEnumerator_galgas_33_GUIComponentListAST {
   private : cEnumerator_galgas_33_GUIComponentListAST & operator = (const cEnumerator_galgas_33_GUIComponentListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -5892,7 +5909,8 @@ class cEnumerator_galgas_33_GUIComponentListAST {
   public : class GALGAS_galgas_33_GUIComponentListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_galgas_33_GUIComponentListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -6209,8 +6227,8 @@ class cEnumerator_optionComponentMapForGeneration {
   private : cEnumerator_optionComponentMapForGeneration & operator = (const cEnumerator_optionComponentMapForGeneration &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -6224,7 +6242,8 @@ class cEnumerator_optionComponentMapForGeneration {
   public : class GALGAS_optionComponentMapForGeneration_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_optionComponentMapForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -6516,8 +6535,8 @@ class cEnumerator_propertyInCollectionListAST {
   private : cEnumerator_propertyInCollectionListAST & operator = (const cEnumerator_propertyInCollectionListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -6532,7 +6551,8 @@ class cEnumerator_propertyInCollectionListAST {
   public : class GALGAS_propertyInCollectionListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_propertyInCollectionListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -6941,8 +6961,8 @@ class cEnumerator_enumConstantListForGeneration {
   private : cEnumerator_enumConstantListForGeneration & operator = (const cEnumerator_enumConstantListForGeneration &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -6956,7 +6976,8 @@ class cEnumerator_enumConstantListForGeneration {
   public : class GALGAS_enumConstantListForGeneration_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_enumConstantListForGeneration_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7123,8 +7144,8 @@ class cEnumerator_unifiedTypeMapProxyList {
   private : cEnumerator_unifiedTypeMapProxyList & operator = (const cEnumerator_unifiedTypeMapProxyList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7137,7 +7158,8 @@ class cEnumerator_unifiedTypeMapProxyList {
   public : class GALGAS_unifiedTypeMapProxyList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_unifiedTypeMapProxyList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7466,8 +7488,8 @@ class cEnumerator_externTypeConstructorList {
   private : cEnumerator_externTypeConstructorList & operator = (const cEnumerator_externTypeConstructorList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7482,7 +7504,8 @@ class cEnumerator_externTypeConstructorList {
   public : class GALGAS_externTypeConstructorList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_externTypeConstructorList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7676,8 +7699,8 @@ class cEnumerator_typeNameFormalParameterNameList {
   private : cEnumerator_typeNameFormalParameterNameList & operator = (const cEnumerator_typeNameFormalParameterNameList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7692,7 +7715,8 @@ class cEnumerator_typeNameFormalParameterNameList {
   public : class GALGAS_typeNameFormalParameterNameList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_typeNameFormalParameterNameList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7962,8 +7986,8 @@ class cEnumerator_externTypeGetterList {
   private : cEnumerator_externTypeGetterList & operator = (const cEnumerator_externTypeGetterList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7978,7 +8002,8 @@ class cEnumerator_externTypeGetterList {
   public : class GALGAS_externTypeGetterList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_externTypeGetterList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -8235,8 +8260,8 @@ class cEnumerator_externTypeSetterList {
   private : cEnumerator_externTypeSetterList & operator = (const cEnumerator_externTypeSetterList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -8250,7 +8275,8 @@ class cEnumerator_externTypeSetterList {
   public : class GALGAS_externTypeSetterList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_externTypeSetterList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -8453,8 +8479,8 @@ class cEnumerator_formalParameterListAST {
   private : cEnumerator_formalParameterListAST & operator = (const cEnumerator_formalParameterListAST &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -8471,7 +8497,8 @@ class cEnumerator_formalParameterListAST {
   public : class GALGAS_formalParameterListAST_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_formalParameterListAST_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -8738,8 +8765,8 @@ class cEnumerator_externTypeMethodList {
   private : cEnumerator_externTypeMethodList & operator = (const cEnumerator_externTypeMethodList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -8754,7 +8781,8 @@ class cEnumerator_externTypeMethodList {
   public : class GALGAS_externTypeMethodList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_externTypeMethodList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
