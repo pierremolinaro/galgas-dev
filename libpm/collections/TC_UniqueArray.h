@@ -523,7 +523,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::free (void) {
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::addObject (const TYPE & inValue) {
   if (mCount >= mCapacity) {
-    setCapacity (mCount + 1) ;
+    setCapacity (mCount + 1 + mCount / 2) ;
   }
   mArray [mCount] = inValue ;
   mCount ++ ;
@@ -541,7 +541,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectIfUnique (const TY
     found = mArray [i] == inValue ;
   }
   if (! found) {
-    setCapacity (mCount + 1) ;
+    setCapacity (mCount + 1 + mCount / 2) ;
     mArray [mCount] = inValue ;
     mCount ++ ;
   }
