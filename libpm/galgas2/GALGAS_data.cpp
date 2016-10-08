@@ -479,6 +479,18 @@ cEnumerator_data::~ cEnumerator_data (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_data::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArray.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_data::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArray.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_data::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
