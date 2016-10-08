@@ -172,13 +172,17 @@ typeComparisonResult cCollectionElement_stringlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -663,13 +667,17 @@ typeComparisonResult cCollectionElement_lstringlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -1203,13 +1211,17 @@ typeComparisonResult cCollectionElement__32_lstringlist::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2023,13 +2035,17 @@ typeComparisonResult cCollectionElement__32_stringlist::compare (const cCollecti
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2829,13 +2845,17 @@ typeComparisonResult cCollectionElement_functionlist::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3234,13 +3254,17 @@ typeComparisonResult cCollectionElement_luintlist::compare (const cCollectionEle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3639,13 +3663,17 @@ typeComparisonResult cCollectionElement_objectlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4044,13 +4072,17 @@ typeComparisonResult cCollectionElement_typelist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4449,13 +4481,17 @@ typeComparisonResult cCollectionElement_uintlist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4854,13 +4890,17 @@ typeComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollec
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5259,13 +5299,17 @@ typeComparisonResult cCollectionElement_bigintlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5664,13 +5708,17 @@ typeComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }

@@ -351,6 +351,8 @@ class cPtr_templateInstructionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListAST (void) ;
 
@@ -629,6 +631,8 @@ class cPtr_templateExpressionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateExpressionListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateExpressionListAST (void) ;
 
@@ -3129,6 +3133,8 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionIfBranchListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListAST (void) ;
 
@@ -3447,6 +3453,8 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionSwitchBranchListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListAST (void) ;
 
@@ -5590,6 +5598,8 @@ class cPtr_templateInstructionForGeneration : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListForGeneration (void) ;
 
@@ -5955,6 +5965,8 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionIfBranchListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListForGeneration (void) ;
 
@@ -6483,6 +6495,8 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
 

@@ -548,13 +548,17 @@ typeComparisonResult cCollectionElement_lexicalInstructionListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalInstructionListAST::GALGAS_lexicalInstructionListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalInstructionListAST::GALGAS_lexicalInstructionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -936,13 +940,17 @@ typeComparisonResult cCollectionElement_metamodelTemplateDelimitorListAST::compa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_metamodelTemplateDelimitorListAST::GALGAS_metamodelTemplateDelimitorListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_metamodelTemplateDelimitorListAST::GALGAS_metamodelTemplateDelimitorListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -1380,13 +1388,17 @@ typeComparisonResult cCollectionElement_templateReplacementListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateReplacementListAST::GALGAS_templateReplacementListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateReplacementListAST::GALGAS_templateReplacementListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -1899,13 +1911,17 @@ typeComparisonResult cCollectionElement_lexicalRuleListAST::compare (const cColl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRuleListAST::GALGAS_lexicalRuleListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRuleListAST::GALGAS_lexicalRuleListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2457,13 +2473,17 @@ typeComparisonResult cCollectionElement_lexicalMessageDeclarationListAST::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalMessageDeclarationListAST::GALGAS_lexicalMessageDeclarationListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalMessageDeclarationListAST::GALGAS_lexicalMessageDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2867,13 +2887,17 @@ typeComparisonResult cCollectionElement_lexicalAttributeListAST::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalAttributeListAST::GALGAS_lexicalAttributeListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalAttributeListAST::GALGAS_lexicalAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3277,13 +3301,17 @@ typeComparisonResult cCollectionElement_lexicalStyleListAST::compare (const cCol
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalStyleListAST::GALGAS_lexicalStyleListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalStyleListAST::GALGAS_lexicalStyleListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3705,13 +3733,17 @@ typeComparisonResult cCollectionElement_terminalDeclarationListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalDeclarationListAST::GALGAS_terminalDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4199,13 +4231,17 @@ typeComparisonResult cCollectionElement_sentLexicalAttributeListAST::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sentLexicalAttributeListAST::GALGAS_sentLexicalAttributeListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sentLexicalAttributeListAST::GALGAS_sentLexicalAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4645,13 +4681,17 @@ typeComparisonResult cCollectionElement_lexicalListEntryListAST::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalListEntryListAST::GALGAS_lexicalListEntryListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalListEntryListAST::GALGAS_lexicalListEntryListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5101,13 +5141,17 @@ typeComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5771,13 +5815,17 @@ typeComparisonResult cCollectionElement_lexicalSendSearchListAST::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSendSearchListAST::GALGAS_lexicalSendSearchListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSendSearchListAST::GALGAS_lexicalSendSearchListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -6444,13 +6492,17 @@ typeComparisonResult cCollectionElement_lexicalWhileBranchListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalWhileBranchListAST::GALGAS_lexicalWhileBranchListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalWhileBranchListAST::GALGAS_lexicalWhileBranchListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -7038,13 +7090,17 @@ typeComparisonResult cCollectionElement_lexicalSelectBranchListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSelectBranchListAST::GALGAS_lexicalSelectBranchListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSelectBranchListAST::GALGAS_lexicalSelectBranchListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -7733,13 +7789,17 @@ typeComparisonResult cCollectionElement_lexicalRoutineCallActualArgumentListAST:
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRoutineCallActualArgumentListAST::GALGAS_lexicalRoutineCallActualArgumentListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRoutineCallActualArgumentListAST::GALGAS_lexicalRoutineCallActualArgumentListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -8353,13 +8413,17 @@ typeComparisonResult cCollectionElement_lexicalFunctionCallActualArgumentListAST
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalFunctionCallActualArgumentListAST::GALGAS_lexicalFunctionCallActualArgumentListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalFunctionCallActualArgumentListAST::GALGAS_lexicalFunctionCallActualArgumentListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -9260,13 +9324,17 @@ typeComparisonResult cCollectionElement_lexicalExternRoutineFormalArgumentListAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExternRoutineFormalArgumentListAST::GALGAS_lexicalExternRoutineFormalArgumentListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExternRoutineFormalArgumentListAST::GALGAS_lexicalExternRoutineFormalArgumentListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -9704,13 +9772,17 @@ typeComparisonResult cCollectionElement_externRoutineListAST::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externRoutineListAST::GALGAS_externRoutineListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externRoutineListAST::GALGAS_externRoutineListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -10142,13 +10214,17 @@ typeComparisonResult cCollectionElement_lexicalExternFunctionFormalArgumentListA
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExternFunctionFormalArgumentListAST::GALGAS_lexicalExternFunctionFormalArgumentListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExternFunctionFormalArgumentListAST::GALGAS_lexicalExternFunctionFormalArgumentListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -10558,13 +10634,17 @@ typeComparisonResult cCollectionElement_externFunctionListAST::compare (const cC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externFunctionListAST::GALGAS_externFunctionListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externFunctionListAST::GALGAS_externFunctionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -10996,13 +11076,17 @@ typeComparisonResult cCollectionElement_indexingListAST::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_indexingListAST::GALGAS_indexingListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_indexingListAST::GALGAS_indexingListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -11611,13 +11695,17 @@ typeComparisonResult cCollectionElement_lexicalSentValueList::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSentValueList::GALGAS_lexicalSentValueList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSentValueList::GALGAS_lexicalSentValueList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -12970,13 +13058,17 @@ typeComparisonResult cCollectionElement_terminalList::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalList::GALGAS_terminalList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_terminalList::GALGAS_terminalList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }

@@ -88,13 +88,17 @@ typeComparisonResult cCollectionElement_externTypeMethodList::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -577,13 +581,17 @@ typeComparisonResult cCollectionElement_typeNameFormalParameterNameList::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -1078,13 +1086,17 @@ typeComparisonResult cCollectionElement_formalParameterListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -1587,13 +1599,17 @@ typeComparisonResult cCollectionElement_graphInsertModifierList::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2009,13 +2025,17 @@ typeComparisonResult cCollectionElement_insertMethodListAST::compare (const cCol
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2481,13 +2501,17 @@ typeComparisonResult cCollectionElement_mapSearchMethodListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -2919,13 +2943,17 @@ typeComparisonResult cCollectionElement_mapRemoveMethodListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3323,13 +3351,17 @@ typeComparisonResult cCollectionElement_insertOrReplaceDeclarationListAST::compa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4269,13 +4301,17 @@ typeComparisonResult cCollectionElement_mapStateTransitionList::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4747,13 +4783,17 @@ typeComparisonResult cCollectionElement_mapStateList::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateList::GALGAS_mapStateList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateList::GALGAS_mapStateList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5231,13 +5271,17 @@ typeComparisonResult cCollectionElement_mapOverrideBlockDescriptorAST::compare (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5731,13 +5775,17 @@ typeComparisonResult cCollectionElement_mapOverrideBlockListAST::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -6175,13 +6223,17 @@ typeComparisonResult cCollectionElement_sharedMapAttributeListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -8607,13 +8659,17 @@ typeComparisonResult cCollectionElement_mapOverrideList::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideList::GALGAS_mapOverrideList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideList::GALGAS_mapOverrideList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -9090,13 +9146,17 @@ typeComparisonResult cCollectionElement_sortedListSortDescriptorListAST::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -9506,13 +9566,17 @@ typeComparisonResult cCollectionElement_sortDescriptorListForGeneration::compare
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -10007,13 +10071,17 @@ typeComparisonResult cCollectionElement_formalInputParameterListAST::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -10519,13 +10587,17 @@ typeComparisonResult cCollectionElement_formalInputParameterListForGeneration::c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -11106,13 +11178,17 @@ typeComparisonResult cCollectionElement_formalParameterListForGeneration::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -11669,13 +11745,17 @@ typeComparisonResult cCollectionElement_semanticInstructionListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -12045,13 +12125,17 @@ typeComparisonResult cCollectionElement_semanticInstructionListForGeneration::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -12535,13 +12619,17 @@ typeComparisonResult cCollectionElement_actualOutputExpressionList::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -12973,13 +13061,17 @@ typeComparisonResult cCollectionElement_semanticExpressionListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -14363,208 +14455,6 @@ GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::extractObject (const GA
       result = *p ;
     }else{
       inCompiler->castError ("orShortExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_xorExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_xorExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_xorExpressionAST::objectCompare (const GALGAS_xorExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_xorExpressionAST::GALGAS_xorExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_xorExpressionAST::GALGAS_xorExpressionAST (const cPtr_xorExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_xorExpressionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_xorExpressionAST GALGAS_xorExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
-                                                                  const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_xorExpressionAST result ;
-  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_xorExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_xorExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_xorExpressionAST) ;
-    result = p->mAttribute_mOperatorLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_xorExpressionAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_xorExpressionAST) ;
-    result = p->mAttribute_mLeftExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_xorExpressionAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_xorExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_xorExpressionAST * p = (const cPtr_xorExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_xorExpressionAST) ;
-    result = p->mAttribute_mRightExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_xorExpressionAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                      Pointer class for @xorExpressionAST class                                      *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_xorExpressionAST::cPtr_xorExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                              const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                              const GALGAS_semanticExpressionAST & in_mRightExpression
-                                              COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_xorExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_xorExpressionAST ;
-}
-
-void cPtr_xorExpressionAST::description (C_String & ioString,
-                                         const int32_t inIndentation) const {
-  ioString << "[@xorExpressionAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_xorExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_xorExpressionAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @xorExpressionAST type                                                *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_xorExpressionAST ("xorExpressionAST",
-                                         & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_xorExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_xorExpressionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_xorExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_xorExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_xorExpressionAST GALGAS_xorExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_xorExpressionAST result ;
-  const GALGAS_xorExpressionAST * p = (const GALGAS_xorExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_xorExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("xorExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

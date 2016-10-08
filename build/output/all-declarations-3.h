@@ -16,6 +16,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeMethodList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_externTypeMethodList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_externTypeMethodList (void) ;
 
@@ -502,6 +504,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_graphInsertModifierList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_graphInsertModifierList (void) ;
 
@@ -725,6 +729,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertMethodListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_insertMethodListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_insertMethodListAST (void) ;
 
@@ -1054,6 +1060,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapRemoveMethodListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapRemoveMethodListAST (void) ;
 
@@ -1277,6 +1285,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_insertOrReplaceDeclarationListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_insertOrReplaceDeclarationListAST (void) ;
 
@@ -1953,6 +1963,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAutomatonMessage
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateTransitionList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapStateTransitionList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapStateTransitionList (void) ;
 
@@ -2203,6 +2215,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapStateList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapStateList (void) ;
 
@@ -2453,6 +2467,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList_2D_ele
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapOverrideBlockDescriptorAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockDescriptorAST (void) ;
 
@@ -2718,6 +2734,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapOverrideBlockListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockListAST (void) ;
 
@@ -2956,6 +2974,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_sharedMapAttributeListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_sharedMapAttributeListAST (void) ;
 
@@ -4377,6 +4397,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchBehaviourSort
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_mapOverrideList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideList (void) ;
 
@@ -4627,6 +4649,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideList_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_sortedListSortDescriptorListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_sortedListSortDescriptorListAST (void) ;
 
@@ -4850,6 +4874,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescr
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_sortDescriptorListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_sortDescriptorListForGeneration (void) ;
 
@@ -5100,6 +5126,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_formalInputParameterListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListAST (void) ;
 
@@ -5368,6 +5396,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_formalInputParameterListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListForGeneration (void) ;
 
@@ -5656,6 +5686,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_formalParameterListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterListForGeneration (void) ;
 
@@ -5941,6 +5973,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_semanticInstructionListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListAST (void) ;
 
@@ -6290,6 +6324,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_semanticInstructionListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListForGeneration (void) ;
 
@@ -6637,6 +6673,8 @@ class cPtr_semanticExpressionAST : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_actualOutputExpressionList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_actualOutputExpressionList (void) ;
 
@@ -6872,6 +6910,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticExpressionListAST : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_semanticExpressionListAST_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_semanticExpressionListAST (void) ;
 
@@ -7595,99 +7635,6 @@ class cPtr_orShortExpressionAST : public cPtr_semanticExpressionAST {
                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
                                       const GALGAS_semanticExpressionAST & in_mRightExpression
                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @xorExpressionAST class                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_xorExpressionAST : public GALGAS_semanticExpressionAST {
-//--- Constructor
-  public : GALGAS_xorExpressionAST (void) ;
-
-//---
-  public : inline const class cPtr_xorExpressionAST * ptr (void) const { return (const cPtr_xorExpressionAST *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_xorExpressionAST (const cPtr_xorExpressionAST * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_xorExpressionAST extractObject (const GALGAS_object & inObject,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_xorExpressionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand1,
-                                                                 const class GALGAS_semanticExpressionAST & inOperand2
-                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_xorExpressionAST & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_xorExpressionAST class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Pointer class for @xorExpressionAST class                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
-//--- Attributes
-  public : GALGAS_location mAttribute_mOperatorLocation ;
-  public : GALGAS_semanticExpressionAST mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionAST mAttribute_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_xorExpressionAST (const GALGAS_location & in_mOperatorLocation,
-                                  const GALGAS_semanticExpressionAST & in_mLeftExpression,
-                                  const GALGAS_semanticExpressionAST & in_mRightExpression
-                                  COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;

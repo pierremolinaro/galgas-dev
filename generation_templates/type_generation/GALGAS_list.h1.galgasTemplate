@@ -5,6 +5,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

@@ -1201,6 +1201,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstr
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_syntaxInstructionListForGrammarAnalysis (void) ;
 
@@ -1410,6 +1412,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_productionRuleListForGrammarAnalysis_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_productionRuleListForGrammarAnalysis (void) ;
 
@@ -2093,6 +2097,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_branchListForGrammarAnalysis_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_branchListForGrammarAnalysis (void) ;
 
@@ -2427,6 +2433,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_syntaxComponentListForGrammarAnalysis_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
 
@@ -2931,6 +2939,8 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_rowList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_rowList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_rowList (void) ;
 
@@ -3199,6 +3209,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_programListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_programListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_programListForGeneration (void) ;
 
@@ -4748,6 +4760,8 @@ class cParser_galgas_33_ProjectSyntax {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_galgas_33_QualifiedFeatureList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_galgas_33_QualifiedFeatureList (void) ;
 
