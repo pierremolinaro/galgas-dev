@@ -2800,13 +2800,17 @@ typeComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis:
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -3209,13 +3213,17 @@ typeComparisonResult cCollectionElement_productionRuleListForGrammarAnalysis::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -4338,13 +4346,17 @@ typeComparisonResult cCollectionElement_branchListForGrammarAnalysis::compare (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5119,13 +5131,17 @@ typeComparisonResult cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -5939,13 +5955,17 @@ typeComparisonResult cCollectionElement_rowList::compare (const cCollectionEleme
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -6453,13 +6473,17 @@ typeComparisonResult cCollectionElement_programListForGeneration::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }
@@ -12310,13 +12334,17 @@ typeComparisonResult cCollectionElement_galgas_33_QualifiedFeatureList::compare 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (void) :
-AC_GALGAS_list () {
+AC_GALGAS_list ()
+// mArray ()
+ {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
+AC_GALGAS_list (inSharedListPtr)
+// mArray ()
+ {
   if (NULL == inSharedListPtr) {
     createNewEmptyList (HERE) ;
   }

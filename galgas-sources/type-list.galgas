@@ -45,12 +45,15 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
   let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
+#  let elementKey = @lstring.new {!"@" + mListTypeName + elementTypeNameSuffix () ![mListTypeName location]}
+#  [!?ioSemanticTypePrecedenceGraph addEdge !key !elementKey]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -379,6 +382,7 @@ filewrapper listGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
+    ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
     ?@string TYPE_NAME
@@ -396,6 +400,7 @@ override method @listTypeForGeneration appendDeclaration1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    !mListElementTypeIndex
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]

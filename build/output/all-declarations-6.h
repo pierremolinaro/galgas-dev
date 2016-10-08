@@ -11,6 +11,126 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                   Class for element of '@syntaxComponentMap' map                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cMapElement_syntaxComponentMap : public cMapElement {
+//--- Map attributes
+  public : GALGAS_lstring mAttribute_mLexiqueName ;
+  public : GALGAS_nonterminalDeclarationListAST mAttribute_mNonterminalDeclarationList ;
+  public : GALGAS_syntaxRuleListAST mAttribute_mRuleList ;
+  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+
+//--- Constructor
+  public : cMapElement_syntaxComponentMap (const GALGAS_lstring & inKey,
+                                           const GALGAS_lstring & in_mLexiqueName,
+                                           const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                           const GALGAS_syntaxRuleListAST & in_mRuleList,
+                                           const GALGAS_bool & in_mHasTranslateFeature
+                                           COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cMapElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @syntaxComponentMap_2D_element struct                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mAttribute_mLexiqueName ;
+  public : GALGAS_nonterminalDeclarationListAST mAttribute_mNonterminalDeclarationList ;
+  public : GALGAS_syntaxRuleListAST mAttribute_mRuleList ;
+  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_syntaxComponentMap_2D_element constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_syntaxComponentMap_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_syntaxComponentMap_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_syntaxComponentMap_2D_element (const GALGAS_lstring & in_lkey,
+                                                 const GALGAS_lstring & in_mLexiqueName,
+                                                 const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
+                                                 const GALGAS_syntaxRuleListAST & in_mRuleList,
+                                                 const GALGAS_bool & in_mHasTranslateFeature) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_syntaxComponentMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_syntaxComponentMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                              const class GALGAS_lstring & inOperand1,
+                                                                              const class GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                              const class GALGAS_syntaxRuleListAST & inOperand3,
+                                                                              const class GALGAS_bool & inOperand4
+                                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_syntaxComponentMap_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasTranslateFeature (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLexiqueName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_mNonterminalDeclarationList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_mRuleList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_syntaxComponentMap_2D_element class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap_2D_element ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                           @extensionMethodMapForType map                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1760,6 +1880,8 @@ void callExtensionMethod_addAssociatedElement (const class cPtr_semanticDeclarat
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_semanticExpressionListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_semanticExpressionListForGeneration (void) ;
 
@@ -1969,6 +2091,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualParameterListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_actualParameterListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_actualParameterListForGeneration (void) ;
 
@@ -2367,6 +2491,8 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_listOfSemanticInstructionListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_listOfSemanticInstructionListForGeneration (void) ;
 
@@ -2795,6 +2921,8 @@ class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanti
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_semanticDeclarationListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_semanticDeclarationListForGeneration (void) ;
 
@@ -3023,6 +3151,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_signatureForGrammarAnalysis : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_signatureForGrammarAnalysis_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_signatureForGrammarAnalysis (void) ;
 
@@ -3723,6 +3853,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMa
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_nonTerminalToAddList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_nonTerminalToAddList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_nonTerminalToAddList (void) ;
 
@@ -3954,6 +4086,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_terminalCheckAssignementList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_terminalCheckAssignementList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_terminalCheckAssignementList (void) ;
 
@@ -4278,6 +4412,8 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_filewrapperTemplateListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_filewrapperTemplateListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_filewrapperTemplateListForGeneration (void) ;
 
@@ -5234,6 +5370,8 @@ void callExtensionMethod_analyze (const class cPtr_abstractCollectionValueElemen
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_collectionValueElementListForGeneration_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_collectionValueElementListForGeneration (void) ;
 
@@ -5634,6 +5772,8 @@ void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticIn
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_localConstantList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_localConstantList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_localConstantList (void) ;
 
@@ -5903,6 +6043,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList_2
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_localInitializedVariableList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_localInitializedVariableList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_localInitializedVariableList (void) ;
 
@@ -7047,6 +7189,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2D_e
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list {
+ // protected : TC_Array <GALGAS_ruleLabelImplementationList_2D_element> mArray ;
+
 //--------------------------------- Default constructor
   public : GALGAS_ruleLabelImplementationList (void) ;
 
