@@ -173,7 +173,6 @@
 		CF2C85671CC3B0890008D960 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
 		CF2C85681CC3B0890008D960 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
 		CF2C85691CC3B0890008D960 /* mpz-abs.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9233FD1BADBEB2001032DA /* mpz-abs.c */; };
-		CF2C856A1CC3B0890008D960 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */; };
 		CF2C856B1CC3B0890008D960 /* all-declarations-10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF23744219967C4F0061D2D8 /* all-declarations-10.cpp */; };
 		CF2C856C1CC3B0890008D960 /* mpn-mul_fft.c in Sources */ = {isa = PBXBuildFile; fileRef = CF9E75691BADDCB600DBEFEE /* mpn-mul_fft.c */; };
 		CF2C856D1CC3B0890008D960 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
@@ -360,11 +359,9 @@
 		CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
 		CF3D9FD71257733E0037D473 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
-		CF3D9FD81257733E0037D473 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */; };
 		CF3D9FD91257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3D9FDB1257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
 		CF3D9FDC1257733E0037D473 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
-		CF3D9FDD1257733E0037D473 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */; };
 		CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
@@ -947,8 +944,6 @@
 		CF3D9FC21257733E0037D473 /* capCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = capCollectionElement.h; sourceTree = "<group>"; };
 		CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = capSortedListElement.cpp; sourceTree = "<group>"; };
 		CF3D9FC41257733E0037D473 /* capSortedListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = capSortedListElement.h; sourceTree = "<group>"; };
-		CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cGenericAbstractEnumerator.cpp; sourceTree = "<group>"; };
-		CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cGenericAbstractEnumerator.h; sourceTree = "<group>"; };
 		CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cSortedListElement.cpp; sourceTree = "<group>"; };
 		CF3D9FC81257733E0037D473 /* cSortedListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cSortedListElement.h; sourceTree = "<group>"; };
 		CF3D9FC91257733E0037D473 /* typeComparisonResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = typeComparisonResult.h; sourceTree = "<group>"; };
@@ -1745,8 +1740,6 @@
 				CF337CB211C3FAAF007E7736 /* cCollectionElement.h */,
 				CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */,
 				CFE71EC8150112BF00EAD989 /* cEnumerator_range.h */,
-				CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */,
-				CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */,
 				CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */,
 				CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */,
 				CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */,
@@ -2323,7 +2316,6 @@
 				CF2C85671CC3B0890008D960 /* capCollectionElement.cpp in Sources */,
 				CF2C85681CC3B0890008D960 /* capSortedListElement.cpp in Sources */,
 				CF2C85691CC3B0890008D960 /* mpz-abs.c in Sources */,
-				CF2C856A1CC3B0890008D960 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF2C856B1CC3B0890008D960 /* all-declarations-10.cpp in Sources */,
 				CF2C856C1CC3B0890008D960 /* mpn-mul_fft.c in Sources */,
 				CF2C856D1CC3B0890008D960 /* cSortedListElement.cpp in Sources */,
@@ -2569,7 +2561,6 @@
 				CF3D9FD71257733E0037D473 /* capSortedListElement.cpp in Sources */,
 				CF9234011BADBEB2001032DA /* mpz-abs.c in Sources */,
 				CF9E756D1BADDCB600DBEFEE /* mpn-mul_fft.c in Sources */,
-				CF3D9FD81257733E0037D473 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF23746019967C4F0061D2D8 /* all-declarations-10.cpp in Sources */,
 				CF3D9FD91257733E0037D473 /* cSortedListElement.cpp in Sources */,
 				CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */,
@@ -2845,7 +2836,6 @@
 				CF3D9FDB1257733E0037D473 /* capCollectionElement.cpp in Sources */,
 				CF3D9FDC1257733E0037D473 /* capSortedListElement.cpp in Sources */,
 				CF9234021BADBEB2001032DA /* mpz-abs.c in Sources */,
-				CF3D9FDD1257733E0037D473 /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF23746119967C4F0061D2D8 /* all-declarations-10.cpp in Sources */,
 				CF9E756E1BADDCB600DBEFEE /* mpn-mul_fft.c in Sources */,
 				CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */,
