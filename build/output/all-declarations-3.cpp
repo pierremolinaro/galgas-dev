@@ -410,9 +410,10 @@ GALGAS_lstring GALGAS_formalParameterListAST::getter_mFormalSelectorAtIndex (con
 
 cEnumerator_formalParameterListAST::cEnumerator_formalParameterListAST (const GALGAS_formalParameterListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -423,7 +424,7 @@ cEnumerator_formalParameterListAST::~ cEnumerator_formalParameterListAST (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_formalParameterListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -830,9 +831,10 @@ void GALGAS_graphInsertModifierList::plusAssign_operation (const GALGAS_graphIns
 
 cEnumerator_graphInsertModifierList::cEnumerator_graphInsertModifierList (const GALGAS_graphInsertModifierList & inEnumeratedObject,
                                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -843,7 +845,7 @@ cEnumerator_graphInsertModifierList::~ cEnumerator_graphInsertModifierList (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_graphInsertModifierList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1278,9 +1280,10 @@ void GALGAS_insertMethodListAST::plusAssign_operation (const GALGAS_insertMethod
 
 cEnumerator_insertMethodListAST::cEnumerator_insertMethodListAST (const GALGAS_insertMethodListAST & inEnumeratedObject,
                                                                   const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1291,7 +1294,7 @@ cEnumerator_insertMethodListAST::~ cEnumerator_insertMethodListAST (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_insertMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1716,9 +1719,10 @@ void GALGAS_mapSearchMethodListAST::plusAssign_operation (const GALGAS_mapSearch
 
 cEnumerator_mapSearchMethodListAST::cEnumerator_mapSearchMethodListAST (const GALGAS_mapSearchMethodListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1729,7 +1733,7 @@ cEnumerator_mapSearchMethodListAST::~ cEnumerator_mapSearchMethodListAST (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapSearchMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2120,9 +2124,10 @@ void GALGAS_mapRemoveMethodListAST::plusAssign_operation (const GALGAS_mapRemove
 
 cEnumerator_mapRemoveMethodListAST::cEnumerator_mapRemoveMethodListAST (const GALGAS_mapRemoveMethodListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2133,7 +2138,7 @@ cEnumerator_mapRemoveMethodListAST::~ cEnumerator_mapRemoveMethodListAST (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapRemoveMethodListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2490,9 +2495,10 @@ void GALGAS_insertOrReplaceDeclarationListAST::plusAssign_operation (const GALGA
 
 cEnumerator_insertOrReplaceDeclarationListAST::cEnumerator_insertOrReplaceDeclarationListAST (const GALGAS_insertOrReplaceDeclarationListAST & inEnumeratedObject,
                                                                                               const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2503,7 +2509,7 @@ cEnumerator_insertOrReplaceDeclarationListAST::~ cEnumerator_insertOrReplaceDecl
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_insertOrReplaceDeclarationListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2692,9 +2698,10 @@ cMapElement_insertMethodMap * GALGAS_insertMethodMap::readWriteAccessForWithInst
 
 cEnumerator_insertMethodMap::cEnumerator_insertMethodMap (const GALGAS_insertMethodMap & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2705,7 +2712,7 @@ cEnumerator_insertMethodMap::~ cEnumerator_insertMethodMap (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_insertMethodMap::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2892,9 +2899,10 @@ cMapElement_searchMethodMap * GALGAS_searchMethodMap::readWriteAccessForWithInst
 
 cEnumerator_searchMethodMap::cEnumerator_searchMethodMap (const GALGAS_searchMethodMap & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2905,7 +2913,7 @@ cEnumerator_searchMethodMap::~ cEnumerator_searchMethodMap (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_searchMethodMap::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3454,9 +3462,10 @@ void GALGAS_mapStateTransitionList::plusAssign_operation (const GALGAS_mapStateT
 
 cEnumerator_mapStateTransitionList::cEnumerator_mapStateTransitionList (const GALGAS_mapStateTransitionList & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3467,7 +3476,7 @@ cEnumerator_mapStateTransitionList::~ cEnumerator_mapStateTransitionList (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapStateTransitionList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3918,9 +3927,10 @@ void GALGAS_mapStateList::plusAssign_operation (const GALGAS_mapStateList inOper
 
 cEnumerator_mapStateList::cEnumerator_mapStateList (const GALGAS_mapStateList & inEnumeratedObject,
                                                     const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3931,7 +3941,7 @@ cEnumerator_mapStateList::~ cEnumerator_mapStateList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapStateList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4408,9 +4418,10 @@ void GALGAS_mapOverrideBlockDescriptorAST::plusAssign_operation (const GALGAS_ma
 
 cEnumerator_mapOverrideBlockDescriptorAST::cEnumerator_mapOverrideBlockDescriptorAST (const GALGAS_mapOverrideBlockDescriptorAST & inEnumeratedObject,
                                                                                       const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4421,7 +4432,7 @@ cEnumerator_mapOverrideBlockDescriptorAST::~ cEnumerator_mapOverrideBlockDescrip
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapOverrideBlockDescriptorAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4854,9 +4865,10 @@ void GALGAS_mapOverrideBlockListAST::plusAssign_operation (const GALGAS_mapOverr
 
 cEnumerator_mapOverrideBlockListAST::cEnumerator_mapOverrideBlockListAST (const GALGAS_mapOverrideBlockListAST & inEnumeratedObject,
                                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4867,7 +4879,7 @@ cEnumerator_mapOverrideBlockListAST::~ cEnumerator_mapOverrideBlockListAST (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapOverrideBlockListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5329,9 +5341,10 @@ GALGAS_lstring GALGAS_sharedMapAttributeListAST::getter_mMessageAtIndex (const G
 
 cEnumerator_sharedMapAttributeListAST::cEnumerator_sharedMapAttributeListAST (const GALGAS_sharedMapAttributeListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5342,7 +5355,7 @@ cEnumerator_sharedMapAttributeListAST::~ cEnumerator_sharedMapAttributeListAST (
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_sharedMapAttributeListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5724,9 +5737,10 @@ void GALGAS_mapStateTransitionSortedList::method_greatest (GALGAS_uint & outOper
 
 cEnumerator_mapStateTransitionSortedList::cEnumerator_mapStateTransitionSortedList (const GALGAS_mapStateTransitionSortedList & inEnumeratedObject,
                                                                                     const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5737,7 +5751,7 @@ cEnumerator_mapStateTransitionSortedList::~ cEnumerator_mapStateTransitionSorted
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapStateTransitionSortedList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6121,9 +6135,10 @@ void GALGAS_mapStateSortedList::method_greatest (GALGAS_uint & outOperand0,
 
 cEnumerator_mapStateSortedList::cEnumerator_mapStateSortedList (const GALGAS_mapStateSortedList & inEnumeratedObject,
                                                                 const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6134,7 +6149,7 @@ cEnumerator_mapStateSortedList::~ cEnumerator_mapStateSortedList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapStateSortedList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6458,9 +6473,10 @@ cMapElement_mapAutomatonStateMap * GALGAS_mapAutomatonStateMap::readWriteAccessF
 
 cEnumerator_mapAutomatonStateMap::cEnumerator_mapAutomatonStateMap (const GALGAS_mapAutomatonStateMap & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6471,7 +6487,7 @@ cEnumerator_mapAutomatonStateMap::~ cEnumerator_mapAutomatonStateMap (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapAutomatonStateMap::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6736,9 +6752,10 @@ cMapElement_mapAutomatonActionMap * GALGAS_mapAutomatonActionMap::readWriteAcces
 
 cEnumerator_mapAutomatonActionMap::cEnumerator_mapAutomatonActionMap (const GALGAS_mapAutomatonActionMap & inEnumeratedObject,
                                                                       const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6749,7 +6766,7 @@ cEnumerator_mapAutomatonActionMap::~ cEnumerator_mapAutomatonActionMap (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapAutomatonActionMap::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7164,9 +7181,10 @@ void GALGAS_branchBehaviourSortedListForMapOverride::method_greatest (GALGAS_uin
 
 cEnumerator_branchBehaviourSortedListForMapOverride::cEnumerator_branchBehaviourSortedListForMapOverride (const GALGAS_branchBehaviourSortedListForMapOverride & inEnumeratedObject,
                                                                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7177,7 +7195,7 @@ cEnumerator_branchBehaviourSortedListForMapOverride::~ cEnumerator_branchBehavio
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_branchBehaviourSortedListForMapOverride::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7677,9 +7695,10 @@ GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList::getter_mB
 
 cEnumerator_mapOverrideList::cEnumerator_mapOverrideList (const GALGAS_mapOverrideList & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7690,7 +7709,7 @@ cEnumerator_mapOverrideList::~ cEnumerator_mapOverrideList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_mapOverrideList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8081,9 +8100,10 @@ void GALGAS_sortedListSortDescriptorListAST::plusAssign_operation (const GALGAS_
 
 cEnumerator_sortedListSortDescriptorListAST::cEnumerator_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST & inEnumeratedObject,
                                                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8094,7 +8114,7 @@ cEnumerator_sortedListSortDescriptorListAST::~ cEnumerator_sortedListSortDescrip
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_sortedListSortDescriptorListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8548,9 +8568,10 @@ GALGAS_bool GALGAS_sortDescriptorListForGeneration::getter_mAscendingOrderAtInde
 
 cEnumerator_sortDescriptorListForGeneration::cEnumerator_sortDescriptorListForGeneration (const GALGAS_sortDescriptorListForGeneration & inEnumeratedObject,
                                                                                           const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8561,7 +8582,7 @@ cEnumerator_sortDescriptorListForGeneration::~ cEnumerator_sortDescriptorListFor
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_sortDescriptorListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9030,9 +9051,10 @@ void GALGAS_formalInputParameterListAST::plusAssign_operation (const GALGAS_form
 
 cEnumerator_formalInputParameterListAST::cEnumerator_formalInputParameterListAST (const GALGAS_formalInputParameterListAST & inEnumeratedObject,
                                                                                   const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9043,7 +9065,7 @@ cEnumerator_formalInputParameterListAST::~ cEnumerator_formalInputParameterListA
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_formalInputParameterListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9603,9 +9625,10 @@ GALGAS_bool GALGAS_formalInputParameterListForGeneration::getter_mIsConstantAtIn
 
 cEnumerator_formalInputParameterListForGeneration::cEnumerator_formalInputParameterListForGeneration (const GALGAS_formalInputParameterListForGeneration & inEnumeratedObject,
                                                                                                       const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9616,7 +9639,7 @@ cEnumerator_formalInputParameterListForGeneration::~ cEnumerator_formalInputPara
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_formalInputParameterListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10176,9 +10199,10 @@ GALGAS_string GALGAS_formalParameterListForGeneration::getter_mFormalArgumentCpp
 
 cEnumerator_formalParameterListForGeneration::cEnumerator_formalParameterListForGeneration (const GALGAS_formalParameterListForGeneration & inEnumeratedObject,
                                                                                             const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10189,7 +10213,7 @@ cEnumerator_formalParameterListForGeneration::~ cEnumerator_formalParameterListF
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_formalParameterListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10570,9 +10594,10 @@ void GALGAS_semanticInstructionListAST::plusAssign_operation (const GALGAS_seman
 
 cEnumerator_semanticInstructionListAST::cEnumerator_semanticInstructionListAST (const GALGAS_semanticInstructionListAST & inEnumeratedObject,
                                                                                 const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10583,7 +10608,7 @@ cEnumerator_semanticInstructionListAST::~ cEnumerator_semanticInstructionListAST
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_semanticInstructionListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10947,9 +10972,10 @@ GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionListForGenerat
 
 cEnumerator_semanticInstructionListForGeneration::cEnumerator_semanticInstructionListForGeneration (const GALGAS_semanticInstructionListForGeneration & inEnumeratedObject,
                                                                                                     const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10960,7 +10986,7 @@ cEnumerator_semanticInstructionListForGeneration::~ cEnumerator_semanticInstruct
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_semanticInstructionListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11448,9 +11474,10 @@ void GALGAS_actualOutputExpressionList::plusAssign_operation (const GALGAS_actua
 
 cEnumerator_actualOutputExpressionList::cEnumerator_actualOutputExpressionList (const GALGAS_actualOutputExpressionList & inEnumeratedObject,
                                                                                 const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11461,7 +11488,7 @@ cEnumerator_actualOutputExpressionList::~ cEnumerator_actualOutputExpressionList
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_actualOutputExpressionList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11852,9 +11879,10 @@ void GALGAS_semanticExpressionListAST::plusAssign_operation (const GALGAS_semant
 
 cEnumerator_semanticExpressionListAST::cEnumerator_semanticExpressionListAST (const GALGAS_semanticExpressionListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11865,7 +11893,7 @@ cEnumerator_semanticExpressionListAST::~ cEnumerator_semanticExpressionListAST (
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_semanticExpressionListAST::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

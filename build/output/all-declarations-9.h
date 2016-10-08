@@ -6876,8 +6876,8 @@ class cEnumerator_headerCompositionMap {
   private : cEnumerator_headerCompositionMap & operator = (const cEnumerator_headerCompositionMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -6892,7 +6892,8 @@ class cEnumerator_headerCompositionMap {
   public : class GALGAS_headerCompositionMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_headerCompositionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7146,8 +7147,8 @@ class cEnumerator_headerRepartitionMap {
   private : cEnumerator_headerRepartitionMap & operator = (const cEnumerator_headerRepartitionMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7161,7 +7162,8 @@ class cEnumerator_headerRepartitionMap {
   public : class GALGAS_headerRepartitionMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_headerRepartitionMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7407,8 +7409,8 @@ class cEnumerator_projectQualifiedFeatureMap {
   private : cEnumerator_projectQualifiedFeatureMap & operator = (const cEnumerator_projectQualifiedFeatureMap &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7422,7 +7424,8 @@ class cEnumerator_projectQualifiedFeatureMap {
   public : class GALGAS_projectQualifiedFeatureMap_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_projectQualifiedFeatureMap_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -7727,8 +7730,8 @@ class cEnumerator_XCodeGroupList {
   private : cEnumerator_XCodeGroupList & operator = (const cEnumerator_XCodeGroupList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -7744,7 +7747,8 @@ class cEnumerator_XCodeGroupList {
   public : class GALGAS_XCodeGroupList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_XCodeGroupList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -8124,8 +8128,8 @@ class cEnumerator_XCodeToolTargetList {
   private : cEnumerator_XCodeToolTargetList & operator = (const cEnumerator_XCodeToolTargetList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -8148,7 +8152,8 @@ class cEnumerator_XCodeToolTargetList {
   public : class GALGAS_XCodeToolTargetList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_XCodeToolTargetList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
@@ -8609,8 +8614,8 @@ class cEnumerator_XCodeAppTargetList {
   private : cEnumerator_XCodeAppTargetList & operator = (const cEnumerator_XCodeAppTargetList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -8636,7 +8641,8 @@ class cEnumerator_XCodeAppTargetList {
   public : class GALGAS_XCodeAppTargetList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_XCodeAppTargetList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 

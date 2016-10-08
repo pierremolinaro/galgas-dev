@@ -465,9 +465,10 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
 
 cEnumerator_data::cEnumerator_data (const GALGAS_data & inEnumeratedObject,
                                     const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -478,7 +479,7 @@ cEnumerator_data::~ cEnumerator_data (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 const cCollectionElement * cEnumerator_data::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

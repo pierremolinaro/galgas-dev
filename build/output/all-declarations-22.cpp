@@ -1893,8 +1893,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     result << " &) ;\n"
       "\n"
       "//--- \n"
-      "  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }\n"
-      "  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }\n"
+      "  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }\n"
+      "  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }\n"
       "  public : inline void gotoNextObject (void) { mIndex ++ ; }\n"
       "  public : inline void rewind (void) { mIndex = 0 ; }\n"
       "  public : inline uint32_t index (void) const { return mIndex ; }\n"
@@ -1902,17 +1902,17 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       "  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;\n"
       "\n"
       "//--- Current element access\n" ;
-    GALGAS_uint index_18405_ (0) ;
+    GALGAS_uint index_18409_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_18405 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_18405.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_18409 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_18409.hasCurrentObject ()) {
         result << "  public : class GALGAS_" ;
-        result << enumerator_18405.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue () ;
+        result << enumerator_18409.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue () ;
         result << " current_" ;
-        result << enumerator_18405.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue () ;
+        result << enumerator_18409.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 401)).stringValue () ;
         result << " (LOCATION_ARGS) const ;\n" ;
-        index_18405_.increment () ;
-        enumerator_18405.gotoNextObject () ;
+        index_18409_.increment () ;
+        enumerator_18409.gotoNextObject () ;
       }
     }
     const enumGalgasBool test_63 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 403)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 403)).boolEnum () ;
@@ -1925,7 +1925,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
     }
     result << "\n"
       "//--- Private data members\n"
-      "  protected : capCollectionElementArray mEnumerationArray ;\n"
+      "  private : capCollectionElementArray mEnumerationArrayEx ;\n"
+      "  private : TC_Array <GALGAS_" ;
+    result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 410)).stringValue () ;
+    result << "> mEnumerationArray ;\n"
       "  private : uint32_t mIndex ;\n"
       "} ;\n"
       "\n"
@@ -1973,31 +1976,31 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
       "  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }\n"
       "\n"
       "//--- Current element access\n" ;
-    GALGAS_uint index_20120_ (0) ;
+    GALGAS_uint index_20227_ (0) ;
     if (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST.isValid ()) {
-      cEnumerator_enumerationDescriptorList enumerator_20120 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_20120.hasCurrentObject ()) {
+      cEnumerator_enumerationDescriptorList enumerator_20227 (in_ENUMERATION_5F_DESCRIPTOR_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_20227.hasCurrentObject ()) {
         result << "  public : class GALGAS_" ;
-        result << enumerator_20120.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 438)).stringValue () ;
+        result << enumerator_20227.current_mEnumeratedType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 439)).stringValue () ;
         result << " current_" ;
-        result << enumerator_20120.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 438)).stringValue () ;
+        result << enumerator_20227.current_mEnumerationName (HERE).getter_identifierRepresentation (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 439)).stringValue () ;
         result << " (LOCATION_ARGS) const ;\n" ;
-        index_20120_.increment () ;
-        enumerator_20120.gotoNextObject () ;
+        index_20227_.increment () ;
+        enumerator_20227.gotoNextObject () ;
       }
     }
-    const enumGalgasBool test_64 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 440)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 440)).boolEnum () ;
+    const enumGalgasBool test_64 = in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_isNull (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 441)).operator_not (SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 441)).boolEnum () ;
     if (kBoolTrue == test_64) {
       result << "//--- Current element access\n"
         "  public : class GALGAS_" ;
-      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 442)).stringValue () ;
+      result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 443)).stringValue () ;
       result << " current (LOCATION_ARGS) const ;\n" ;
     }else if (kBoolFalse == test_64) {
     }
     result << "\n"
       "//--- Private data members\n"
       "  private : TC_UniqueArray <GALGAS_" ;
-    result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 447)).stringValue () ;
+    result << in_ENUMERATED_5F_OBJECT_5F_TYPE.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("unified-class-body-for-type.h.galgasTemplate", 448)).stringValue () ;
     result << "> mEnumerationArray ;\n"
       "  private : int32_t mIndex ;\n"
       "} ;\n"
@@ -4273,9 +4276,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "                       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "const typeEnumerationOrder inOrder) :\n"
+    "mEnumerationArrayEx (),\n"
     "mEnumerationArray (),\n"
     "mIndex (0) {\n"
-    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
+    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -4292,7 +4296,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "const cCollectionElement * cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::currentObjectPtr (LOCATION_ARGS) const {\n"
-    "  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;\n"
+    "  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5221,9 +5225,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "                       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "const typeEnumerationOrder inOrder) :\n"
+    "mEnumerationArrayEx (),\n"
     "mEnumerationArray (),\n"
     "mIndex (0) {\n"
-    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
+    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5240,7 +5245,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "const cCollectionElement * cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::currentObjectPtr (LOCATION_ARGS) const {\n"
-    "  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;\n"
+    "  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -5261,14 +5266,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "_2D_element (p->mAttribute_lkey" ;
-  GALGAS_uint index_14271_ (0) ;
+  GALGAS_uint index_14299_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_14271 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14271.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_14299 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14299.hasCurrentObject ()) {
       result << ", p->mAttribute_" ;
-      result << enumerator_14271.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 304)).stringValue () ;
-      index_14271_.increment () ;
-      enumerator_14271.gotoNextObject () ;
+      result << enumerator_14299.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 305)).stringValue () ;
+      index_14299_.increment () ;
+      enumerator_14299.gotoNextObject () ;
     }
   }
   result << ") ;\n"
@@ -5284,18 +5289,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return p->mAttribute_lkey ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_14743_IDX (0) ;
+  GALGAS_uint index_14771_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_14743 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14743.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_14771 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14771.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
-      result << enumerator_14743.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 319)).stringValue () ;
+      result << enumerator_14771.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 320)).stringValue () ;
       result << " cEnumerator_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::current_" ;
-      result << enumerator_14743.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 319)).stringValue () ;
+      result << enumerator_14771.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 320)).stringValue () ;
       result << " (LOCATION_ARGS) const {\n"
         "  const cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5306,12 +5311,12 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "  return p->mAttribute_" ;
-      result << enumerator_14743.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 322)).stringValue () ;
+      result << enumerator_14771.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 323)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
-      index_14743_IDX.increment () ;
-      enumerator_14743.gotoNextObject () ;
+      index_14771_IDX.increment () ;
+      enumerator_14771.gotoNextObject () ;
     }
   }
   result << "\n"

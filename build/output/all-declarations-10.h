@@ -158,8 +158,8 @@ class cEnumerator_BuildFileList {
   private : cEnumerator_BuildFileList & operator = (const cEnumerator_BuildFileList &) ;
 
 //--- 
-  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
-  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArrayEx.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArrayEx.count () ; }
   public : inline void gotoNextObject (void) { mIndex ++ ; }
   public : inline void rewind (void) { mIndex = 0 ; }
   public : inline uint32_t index (void) const { return mIndex ; }
@@ -174,7 +174,8 @@ class cEnumerator_BuildFileList {
   public : class GALGAS_BuildFileList_2D_element current (LOCATION_ARGS) const ;
 
 //--- Private data members
-  protected : capCollectionElementArray mEnumerationArray ;
+  private : capCollectionElementArray mEnumerationArrayEx ;
+  private : TC_Array <GALGAS_BuildFileList_2D_element> mEnumerationArray ;
   private : uint32_t mIndex ;
 } ;
 
