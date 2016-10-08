@@ -429,6 +429,18 @@ cEnumerator_stringlist::~ cEnumerator_stringlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_stringlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_stringlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_stringlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -903,6 +915,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_lstringlist::~ cEnumerator_lstringlist (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_lstringlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_lstringlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1479,6 +1503,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator__32_lstringlist::~ cEnumerator__32_lstringlist (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator__32_lstringlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator__32_lstringlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2290,6 +2326,18 @@ cEnumerator__32_stringlist::~ cEnumerator__32_stringlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator__32_stringlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator__32_stringlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator__32_stringlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -3034,6 +3082,18 @@ cEnumerator_functionlist::~ cEnumerator_functionlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_functionlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_functionlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_functionlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -3422,6 +3482,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_luintlist::~ cEnumerator_luintlist (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_luintlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_luintlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3818,6 +3890,18 @@ cEnumerator_objectlist::~ cEnumerator_objectlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_objectlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_objectlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_objectlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -4206,6 +4290,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_typelist::~ cEnumerator_typelist (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_typelist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_typelist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4602,6 +4698,18 @@ cEnumerator_uintlist::~ cEnumerator_uintlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_uintlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_uintlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_uintlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -4990,6 +5098,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_uint_36__34_list::~ cEnumerator_uint_36__34_list (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_uint_36__34_list::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_uint_36__34_list::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5386,6 +5506,18 @@ cEnumerator_bigintlist::~ cEnumerator_bigintlist (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+bool cEnumerator_bigintlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_bigintlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 const cCollectionElement * cEnumerator_bigintlist::currentObjectPtr (LOCATION_ARGS) const {
   return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
 }
@@ -5774,6 +5906,18 @@ mIndex (0) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_lbigintlist::~ cEnumerator_lbigintlist (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_lbigintlist::hasCurrentObject (void) const {
+  return mIndex < mEnumerationArrayEx.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_lbigintlist::hasNextObject (void) const {
+  return (mIndex + 1) < mEnumerationArrayEx.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

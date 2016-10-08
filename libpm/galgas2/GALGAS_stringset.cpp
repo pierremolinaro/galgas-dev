@@ -1012,6 +1012,45 @@ typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & i
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
+                                              const typeEnumerationOrder inOrder) :
+mEnumerationArrayEx (), // Inutilisé
+mEnumerationArray (),
+mIndex (0) {
+  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_stringset::~ cEnumerator_stringset (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_stringset::hasCurrentObject (void) const {
+  return mIndex < (uint32_t) mEnumerationArray.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cEnumerator_stringset::hasNextObject (void) const {
+  return (mIndex + 1) < (uint32_t)  mEnumerationArray.count () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
+  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
+  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                 'GALGAS_stringset::cEnumerator' class                                                               *
 //                                                                                                                     *
@@ -1028,6 +1067,17 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
     object.setPointer (p) ;
     macroDetachSharedObject (p) ;
     ioResult.addObject (object) ;
+    enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void enterAscendingEnumeration (const cStringsetNode * inNode,
+                                       TC_Array <GALGAS_string> & ioResult) {
+  if (inNode != NULL) {
+    enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
+    ioResult.addObject (GALGAS_string (inNode->mKey)) ;
     enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
   }
 }
@@ -1051,89 +1101,34 @@ static void enterDescendingEnumeration (const cStringsetNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                 const typeEnumerationOrder inEnumerationOrder) const {
-  if (isValid ()) {
-    inEnumerationArray.setCapacity ((uint32_t) mSharedRoot->count ()) ;
-    switch (inEnumerationOrder) {
-    case kENUMERATION_UP: enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    case kENUMERATION_DOWN: enterDescendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    }
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      MF_Assert (mSharedRoot->count () == (int32_t) inEnumerationArray.count (),
-                 "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
-                 mSharedRoot->count (), inEnumerationArray.count ()) ;
-    #endif
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
-                                              const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0) {
-  mEnumerationArray = inEnumeratedObject.enumerationArray (inOrder) ;
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_stringset::~ cEnumerator_stringset (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
-//  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-//  macroValidSharedObject (p, cCollectionElement_stringset) ;
-//  const GALGAS_string s = p->attribute_key () ;
-//  const GALGAS_string newS = mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
-//  if (s.objectCompare (newS) != kOperandEqual) {
-//    co << "ERROR '" << s << "' != new '" << newS << "'\n" ;
-//  }
-  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_stringset::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
-//  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-//  macroValidSharedObject (p, cCollectionElement_stringset) ;
-//  const GALGAS_string s = p->attribute_key () ;
-//  const GALGAS_string newS = mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
-//  if (s.objectCompare (newS) != kOperandEqual) {
-//    co << "ERROR '" << s << "' != new '" << newS << "'\n" ;
-//  }
-  return mEnumerationArray ((int32_t) mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void enterAscendingEnumeration (const cStringsetNode * inNode,
-                                       TC_Array <GALGAS_string> & ioResult) {
-  if (inNode != NULL) {
-    enterAscendingEnumeration (inNode->mInfPtr, ioResult) ;
-    ioResult.addObject (GALGAS_string (inNode->mKey)) ;
-    enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 static void enterDescendingEnumeration (const cStringsetNode * inNode,
                                         TC_Array <GALGAS_string> & ioResult) {
   if (inNode != NULL) {
     enterDescendingEnumeration (inNode->mSupPtr, ioResult) ;
     ioResult.addObject (GALGAS_string (inNode->mKey)) ;
     enterDescendingEnumeration (inNode->mInfPtr, ioResult) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
+                                                 const typeEnumerationOrder inEnumerationOrder) const {
+  if (isValid ()) {
+    ioEnumerationArray.setCapacity ((uint32_t) mSharedRoot->count ()) ;
+    switch (inEnumerationOrder) {
+    case kENUMERATION_UP:
+      enterAscendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
+      break ;
+    case kENUMERATION_DOWN:
+      enterDescendingEnumeration (mSharedRoot->root (), ioEnumerationArray) ;
+      break ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      MF_Assert (mSharedRoot->count () == (int32_t) ioEnumerationArray.count (),
+                 "mSharedRoot->count () %lld != ioEnumerationArray.count () %lld",
+                 mSharedRoot->count (), ioEnumerationArray.count ()) ;
+    #endif
   }
 }
 
@@ -1153,7 +1148,7 @@ TC_Array <GALGAS_string> GALGAS_stringset::enumerationArray (const typeEnumerati
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       MF_Assert (mSharedRoot->count () == (int32_t) result.count (),
-                 "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
+                 "mSharedRoot->count () %lld != result.count () %lld",
                  mSharedRoot->count (), (int32_t) result.count ()) ;
     #endif
   }
