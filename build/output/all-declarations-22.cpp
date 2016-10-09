@@ -3313,7 +3313,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::insulate (LOCATION_ARGS) {\n"
-    "  if (isValid () && (mSharedObject->retainCount () > 1)) {\n"
+    "  if (isValid () && !mSharedObject->isUniquelyReferenced ()) {\n"
     "    cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " * p = NULL ;\n"
@@ -3322,7 +3322,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << " (mSharedObject COMMA_THERE)) ;\n"
     "    macroAssignSharedObject (mSharedObject, p) ;\n"
     "    macroDetachSharedObject (p) ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "  }\n"
     "}\n"
     "\n"
@@ -3335,16 +3335,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << "GALGAS_" ;
   result << in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " inValue,\n" ;
-  GALGAS_uint index_14458_ (0) ;
+  GALGAS_uint index_14442_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_14458 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14458.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_14442 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14442.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "GALGAS_uint inIndex" ;
-      result << enumerator_14458.current_mValue (HERE).stringValue () ;
+      result << enumerator_14442.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_14458_.increment () ;
-      enumerator_14458.gotoNextObject () ;
+      index_14442_.increment () ;
+      enumerator_14442.gotoNextObject () ;
     }
   }
   result << "       " ;
@@ -3354,15 +3354,15 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid () && inValue.isValid ()" ;
-  GALGAS_uint index_14637_ (0) ;
+  GALGAS_uint index_14621_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_14637 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14637.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_14621 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14621.hasCurrentObject ()) {
       result << " && inIndex" ;
-      result << enumerator_14637.current_mValue (HERE).stringValue () ;
+      result << enumerator_14621.current_mValue (HERE).stringValue () ;
       result << ".isValid ()" ;
-      index_14637_.increment () ;
-      enumerator_14637.gotoNextObject () ;
+      index_14621_.increment () ;
+      enumerator_14621.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -3370,19 +3370,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "    macroValidSharedObject (mSharedObject, cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "    const int32_t idx = mSharedObject->indexForIndexes (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_14979_ (0) ;
+  GALGAS_uint index_14943_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_14979 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14979.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_14943 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14943.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "inIndex" ;
-      result << enumerator_14979.current_mValue (HERE).stringValue () ;
+      result << enumerator_14943.current_mValue (HERE).stringValue () ;
       result << ".uintValue (),\n" ;
-      index_14979_.increment () ;
-      enumerator_14979.gotoNextObject () ;
+      index_14943_.increment () ;
+      enumerator_14943.gotoNextObject () ;
     }
   }
   result << "                                                         inCompiler\n"
@@ -3402,16 +3402,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << "GALGAS_" ;
   result << in_ELEMENT_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " inValue,\n" ;
-  GALGAS_uint index_15514_ (0) ;
+  GALGAS_uint index_15478_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_15514 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_15514.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_15478 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_15478.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const GALGAS_uint inIndex" ;
-      result << enumerator_15514.current_mValue (HERE).stringValue () ;
+      result << enumerator_15478.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_15514_.increment () ;
-      enumerator_15514.gotoNextObject () ;
+      index_15478_.increment () ;
+      enumerator_15478.gotoNextObject () ;
     }
   }
   result << " " ;
@@ -3421,15 +3421,15 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid () && inValue.isValid ()" ;
-  GALGAS_uint index_15688_ (0) ;
+  GALGAS_uint index_15652_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_15688 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_15688.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_15652 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_15652.hasCurrentObject ()) {
       result << " && inIndex" ;
-      result << enumerator_15688.current_mValue (HERE).stringValue () ;
+      result << enumerator_15652.current_mValue (HERE).stringValue () ;
       result << ".isValid ()" ;
-      index_15688_.increment () ;
-      enumerator_15688.gotoNextObject () ;
+      index_15652_.increment () ;
+      enumerator_15652.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -3437,54 +3437,54 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "    macroValidSharedObject (mSharedObject, cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "  //--- Resize \?\n"
     "    const bool resize = " ;
-  GALGAS_uint index_16012_ (0) ;
+  GALGAS_uint index_15956_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_16012 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_16012.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_15956 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_15956.hasCurrentObject ()) {
       result << "(inIndex" ;
-      result << enumerator_16012.current_mValue (HERE).stringValue () ;
+      result << enumerator_15956.current_mValue (HERE).stringValue () ;
       result << ".uintValue () >= mSharedObject->size" ;
-      result << enumerator_16012.current_mValue (HERE).stringValue () ;
+      result << enumerator_15956.current_mValue (HERE).stringValue () ;
       result << " ())" ;
-      if (enumerator_16012.hasNextObject ()) {
+      if (enumerator_15956.hasNextObject ()) {
         result << " || " ;
       }
-      index_16012_.increment () ;
-      enumerator_16012.gotoNextObject () ;
+      index_15956_.increment () ;
+      enumerator_15956.gotoNextObject () ;
     }
   }
   result << " ;\n"
     "    if (resize) {\n" ;
-  GALGAS_uint index_16151_ (0) ;
+  GALGAS_uint index_16095_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_16151 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_16151.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_16095 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_16095.hasCurrentObject ()) {
       result << "      const uint32_t newSize" ;
-      result << enumerator_16151.current_mValue (HERE).stringValue () ;
+      result << enumerator_16095.current_mValue (HERE).stringValue () ;
       result << " = uimax32 (mSharedObject->size" ;
-      result << enumerator_16151.current_mValue (HERE).stringValue () ;
+      result << enumerator_16095.current_mValue (HERE).stringValue () ;
       result << " (), inIndex" ;
-      result << enumerator_16151.current_mValue (HERE).stringValue () ;
+      result << enumerator_16095.current_mValue (HERE).stringValue () ;
       result << ".uintValue () + 1) ;\n" ;
-      index_16151_.increment () ;
-      enumerator_16151.gotoNextObject () ;
+      index_16095_.increment () ;
+      enumerator_16095.gotoNextObject () ;
     }
   }
   result << "      mSharedObject->setSize (" ;
-  GALGAS_uint index_16338_ (0) ;
+  GALGAS_uint index_16282_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_16338 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_16338.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_16282 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_16282.hasCurrentObject ()) {
       result << "newSize" ;
-      result << enumerator_16338.current_mValue (HERE).stringValue () ;
-      if (enumerator_16338.hasNextObject ()) {
+      result << enumerator_16282.current_mValue (HERE).stringValue () ;
+      if (enumerator_16282.hasNextObject ()) {
         result << ", " ;
       }
-      index_16338_.increment () ;
-      enumerator_16338.gotoNextObject () ;
+      index_16282_.increment () ;
+      enumerator_16282.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE) ;\n"
@@ -3492,16 +3492,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "  //---\n"
     "    const int32_t idx = mSharedObject->indexForIndexes (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_16490_ (0) ;
+  GALGAS_uint index_16434_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_16490 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_16490.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_16434 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_16434.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "inIndex" ;
-      result << enumerator_16490.current_mValue (HERE).stringValue () ;
+      result << enumerator_16434.current_mValue (HERE).stringValue () ;
       result << ".uintValue (),\n" ;
-      index_16490_.increment () ;
-      enumerator_16490.gotoNextObject () ;
+      index_16434_.increment () ;
+      enumerator_16434.gotoNextObject () ;
     }
   }
   result << "                                                         inCompiler\n"
@@ -3533,7 +3533,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "    macroValidSharedObject (mSharedObject, cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "  //--- \n"
     "    const uint32_t axisIndex = inAxisIndex.uintValue () ;\n"
     "    if (axisIndex >= " ;
@@ -3546,33 +3546,33 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << ")\" ;\n"
     "      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n"
     "    }else{\n" ;
-  GALGAS_uint index_17738_ (0) ;
+  GALGAS_uint index_17662_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_17738 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_17738.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_17662 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_17662.hasCurrentObject ()) {
       result << "      const uint32_t newSize" ;
-      result << enumerator_17738.current_mValue (HERE).stringValue () ;
+      result << enumerator_17662.current_mValue (HERE).stringValue () ;
       result << " = (" ;
-      result << enumerator_17738.current_mValue (HERE).stringValue () ;
+      result << enumerator_17662.current_mValue (HERE).stringValue () ;
       result << " == axisIndex) \? inNewSize.uintValue () : mSharedObject->size" ;
-      result << enumerator_17738.current_mValue (HERE).stringValue () ;
+      result << enumerator_17662.current_mValue (HERE).stringValue () ;
       result << " () ;\n" ;
-      index_17738_.increment () ;
-      enumerator_17738.gotoNextObject () ;
+      index_17662_.increment () ;
+      enumerator_17662.gotoNextObject () ;
     }
   }
   result << "      mSharedObject->setSize (" ;
-  GALGAS_uint index_17933_ (0) ;
+  GALGAS_uint index_17857_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_17933 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_17933.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_17857 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_17857.hasCurrentObject ()) {
       result << "newSize" ;
-      result << enumerator_17933.current_mValue (HERE).stringValue () ;
-      if (enumerator_17933.hasNextObject ()) {
+      result << enumerator_17857.current_mValue (HERE).stringValue () ;
+      if (enumerator_17857.hasNextObject ()) {
         result << ", " ;
       }
-      index_17933_.increment () ;
-      enumerator_17933.gotoNextObject () ;
+      index_17857_.increment () ;
+      enumerator_17857.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE) ;\n"
@@ -3585,20 +3585,20 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "void GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_invalidateValueAtIndex (" ;
-  GALGAS_uint index_18224_ (0) ;
+  GALGAS_uint index_18148_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_18224 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    const bool nonEmpty_enumerator_18224 = enumerator_18224.hasCurrentObject () ;
-    if (nonEmpty_enumerator_18224) {
+    cEnumerator_stringlist enumerator_18148 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    const bool nonEmpty_enumerator_18148 = enumerator_18148.hasCurrentObject () ;
+    if (nonEmpty_enumerator_18148) {
       columnMarker = result.currentColumn () ;
     }
-    while (enumerator_18224.hasCurrentObject ()) {
+    while (enumerator_18148.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "GALGAS_uint inIndex" ;
-      result << enumerator_18224.current_mValue (HERE).stringValue () ;
+      result << enumerator_18148.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_18224_.increment () ;
-      enumerator_18224.gotoNextObject () ;
+      index_18148_.increment () ;
+      enumerator_18148.gotoNextObject () ;
     }
   }
   result << "        " ;
@@ -3608,15 +3608,15 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid ()" ;
-  GALGAS_uint index_18383_ (0) ;
+  GALGAS_uint index_18307_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_18383 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_18383.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_18307 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_18307.hasCurrentObject ()) {
       result << " && inIndex" ;
-      result << enumerator_18383.current_mValue (HERE).stringValue () ;
+      result << enumerator_18307.current_mValue (HERE).stringValue () ;
       result << ".isValid ()" ;
-      index_18383_.increment () ;
-      enumerator_18383.gotoNextObject () ;
+      index_18307_.increment () ;
+      enumerator_18307.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -3624,19 +3624,19 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "    macroValidSharedObject (mSharedObject, cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "    const int32_t idx = mSharedObject->indexForIndexes (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_18725_ (0) ;
+  GALGAS_uint index_18629_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_18725 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_18725.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_18629 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_18629.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "inIndex" ;
-      result << enumerator_18725.current_mValue (HERE).stringValue () ;
+      result << enumerator_18629.current_mValue (HERE).stringValue () ;
       result << ".uintValue (),\n" ;
-      index_18725_.increment () ;
-      enumerator_18725.gotoNextObject () ;
+      index_18629_.increment () ;
+      enumerator_18629.gotoNextObject () ;
     }
   }
   result << "                                                         inCompiler\n"
@@ -3655,16 +3655,16 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::setter_setSize (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_19234_ (0) ;
+  GALGAS_uint index_19138_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_19234 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_19234.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_19138 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_19138.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const GALGAS_uint inNewSize" ;
-      result << enumerator_19234.current_mValue (HERE).stringValue () ;
+      result << enumerator_19138.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_19234_.increment () ;
-      enumerator_19234.gotoNextObject () ;
+      index_19138_.increment () ;
+      enumerator_19138.gotoNextObject () ;
     }
   }
   result << "  " ;
@@ -3674,15 +3674,15 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid ()" ;
-  GALGAS_uint index_19395_ (0) ;
+  GALGAS_uint index_19299_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_19395 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_19395.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_19299 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_19299.hasCurrentObject ()) {
       result << " && inNewSize" ;
-      result << enumerator_19395.current_mValue (HERE).stringValue () ;
+      result << enumerator_19299.current_mValue (HERE).stringValue () ;
       result << ".isValid ()" ;
-      index_19395_.increment () ;
-      enumerator_19395.gotoNextObject () ;
+      index_19299_.increment () ;
+      enumerator_19299.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -3690,22 +3690,22 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
     "    macroValidSharedObject (mSharedObject, cPtr_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << ") ;\n"
-    "    MF_Assert (mSharedObject->retainCount () == 1, \"retainCount () == %lld != 1\", mSharedObject->retainCount (), 0) ;\n"
+    "    MF_Assert (mSharedObject->isUniquelyReferenced (), \"isUniquelyReferenced () is false\", 0, 0) ;\n"
     "    mSharedObject->setSize (" ;
   columnMarker = result.currentColumn () ;
-  GALGAS_uint index_19711_ (0) ;
+  GALGAS_uint index_19595_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_19711 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_19711.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_19595 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_19595.hasCurrentObject ()) {
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "inNewSize" ;
-      result << enumerator_19711.current_mValue (HERE).stringValue () ;
+      result << enumerator_19595.current_mValue (HERE).stringValue () ;
       result << ".uintValue ()" ;
-      if (enumerator_19711.hasNextObject ()) {
+      if (enumerator_19595.hasNextObject ()) {
         result << ",\n" ;
       }
-      index_19711_.increment () ;
-      enumerator_19711.gotoNextObject () ;
+      index_19595_.increment () ;
+      enumerator_19595.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -3721,41 +3721,41 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplem
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " * inOperand) const {\n"
     "  typeComparisonResult result =  kOperandEqual ;\n" ;
-  GALGAS_uint index_20130_ (0) ;
+  GALGAS_uint index_20014_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_20130 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_20130.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_20014 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_20014.hasCurrentObject ()) {
       result << "  if (kOperandEqual == result) {\n"
         "    if (mSize" ;
-      result << enumerator_20130.current_mValue (HERE).stringValue () ;
+      result << enumerator_20014.current_mValue (HERE).stringValue () ;
       result << " < inOperand->mSize" ;
-      result << enumerator_20130.current_mValue (HERE).stringValue () ;
+      result << enumerator_20014.current_mValue (HERE).stringValue () ;
       result << ") {\n"
         "      result = kFirstOperandLowerThanSecond ;\n"
         "    }else if (mSize" ;
-      result << enumerator_20130.current_mValue (HERE).stringValue () ;
+      result << enumerator_20014.current_mValue (HERE).stringValue () ;
       result << " > inOperand->mSize" ;
-      result << enumerator_20130.current_mValue (HERE).stringValue () ;
+      result << enumerator_20014.current_mValue (HERE).stringValue () ;
       result << ") {\n"
         "      result = kFirstOperandGreaterThanSecond ;\n"
         "    }\n"
         "  }\n" ;
-      index_20130_.increment () ;
-      enumerator_20130.gotoNextObject () ;
+      index_20014_.increment () ;
+      enumerator_20014.gotoNextObject () ;
     }
   }
   result << "  for (uint32_t i=0 ; (i<(" ;
-  GALGAS_uint index_20445_ (0) ;
+  GALGAS_uint index_20329_ (0) ;
   if (in_DIMENSION_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_20445 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_20445.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_20329 (in_DIMENSION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_20329.hasCurrentObject ()) {
       result << "mSize" ;
-      result << enumerator_20445.current_mValue (HERE).stringValue () ;
-      if (enumerator_20445.hasNextObject ()) {
+      result << enumerator_20329.current_mValue (HERE).stringValue () ;
+      if (enumerator_20329.hasNextObject ()) {
         result << "*" ;
       }
-      index_20445_.increment () ;
-      enumerator_20445.gotoNextObject () ;
+      index_20329_.increment () ;
+      enumerator_20329.gotoNextObject () ;
     }
   }
   result << ")) && (result == kOperandEqual) ; i++) {\n"

@@ -301,7 +301,7 @@ template <typename TYPE> const TYPE * TC_Array <TYPE>::unsafeArrayPointer (void)
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE> void TC_Array <TYPE>::insulate (void) {
-  if ((NULL != mSharedArray) && (mSharedArray->retainCount () > 1)) {
+  if ((NULL != mSharedArray) && !mSharedArray->isUniquelyReferenced ()) {
     cSharedArray <TYPE> * p = NULL ;
     macroMyNew (p, cSharedArray <TYPE> ()) ;
     mSharedArray->copyTo (*p) ;

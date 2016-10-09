@@ -67,13 +67,7 @@ class capCollectionElementArray {
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Get object
-  #ifndef DO_NOT_GENERATE_CHECKINGS 
-    public : capCollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
-  #else
-    public : inline capCollectionElement objectAtIndex (const uint32_t inIndex) const {
-      return mArray [inIndex] ;
-    }
-  #endif
+  public : capCollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Get object pointer for writing (perform implicitly an "insulate" action)
   public : cCollectionElement * pointerAtIndex (const uint32_t inIndex
@@ -84,7 +78,10 @@ class capCollectionElementArray {
                                                                    COMMA_LOCATION_ARGS) const ;
 
 //--- Get count
-  public : inline uint32_t count (void) const { return mCount ; }
+  public : uint32_t count (void) const ;
+
+//--- Get count
+  public : uint32_t capacity (void) const ;
 
 //--- Remove an object
   public : void removeObjectAtIndex (const uint32_t inIndex) ;
@@ -98,10 +95,11 @@ class capCollectionElementArray {
 //--- Compare
   public : typeComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
 
-//--- Attributes
-  private : capCollectionElement * mArray ;
-  private : uint32_t mCapacity ;
-  private : uint32_t mCount ;
+//--- Internal
+  private : void insulateOrCreate (void) ;
+
+//--- Property
+  private : class capCollectionRoot * mSharedRoot ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

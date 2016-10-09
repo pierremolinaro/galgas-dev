@@ -663,7 +663,7 @@ void GALGAS_stringset::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_stringset::insulate (LOCATION_ARGS) {
-  if ((NULL != mSharedRoot) && (mSharedRoot->retainCount () > 1)) {
+  if ((NULL != mSharedRoot) && !mSharedRoot->isUniquelyReferenced ()) {
     cSharedStringsetRoot * p = NULL ;
     macroMyNew (p, cSharedStringsetRoot (THERE)) ;
     p->copyFrom (mSharedRoot) ;

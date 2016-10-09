@@ -149,7 +149,6 @@ cEmbeddedString::~cEmbeddedString (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
-    MF_Assert (retainCount () >= 1, "retainCount () == %lld < 1", retainCount (), 0) ;
     if (mCapacity == 0) {
       MF_AssertThere (UNICODE_VALUE (mString [0]) == '\0', "mString [0] (%lld) != '\\0'",
                       (int32_t) UNICODE_VALUE (mString [0]), '\0') ;
@@ -453,7 +452,7 @@ void C_String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
     macroMyNew (mEmbeddedString, cEmbeddedString (inNewCapacity COMMA_HERE)) ;
   }else{
     macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
-    if (mEmbeddedString->retainCount () == 1) {
+    if (mEmbeddedString->isUniquelyReferenced ()) {
       macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
       mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
     }else{
@@ -478,7 +477,7 @@ void C_String::setLengthToZero (void) {
     checkString (HERE) ;
   #endif
   if (mEmbeddedString != NULL) {
-    if (mEmbeddedString->retainCount () == 1) {
+    if (mEmbeddedString->isUniquelyReferenced ()) {
       macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
       mEmbeddedString->mLength = 0 ;
       mEmbeddedString->mString [0] = TO_UNICODE ('\0') ;
@@ -523,7 +522,7 @@ void C_String::setCapacity (const uint32_t inNewCapacity) {
   if (mEmbeddedString != NULL) {
     macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
     if ((mEmbeddedString->mLength < inNewCapacity) && (mEmbeddedString->mCapacity < inNewCapacity)) {
-      if (mEmbeddedString->retainCount () == 1) {
+      if (mEmbeddedString->isUniquelyReferenced ()) {
         macroMyDeletePODArray (mEmbeddedString->mEncodedCString) ;
         mEmbeddedString->reallocEmbeddedString (inNewCapacity) ;
       }else{
@@ -559,7 +558,7 @@ void C_String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
   if (inArrayCount > 0) {
     const int32_t kNewLength = length () + inArrayCount ;
     insulateEmbeddedString ((uint32_t) (kNewLength + 1)) ;
-    MF_Assert (mEmbeddedString->retainCount () == 1, "mEmbeddedString->retainCount () == (%lld) != 1", mEmbeddedString->retainCount () == 1, 0) ;
+    MF_Assert (mEmbeddedString->isUniquelyReferenced (), "mEmbeddedString->isUniquelyReferenced () is false", 0, 0) ;
     for (int32_t i=0 ; i<inArrayCount ; i++) {
       mEmbeddedString->mString [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
     }

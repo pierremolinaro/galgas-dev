@@ -345,7 +345,7 @@ void C_RelationConfiguration::insulate (LOCATION_ARGS) {
     macroMyNew (mVariablesPtr, cVariablesInRelationConfiguration (THERE)) ;
   }else{
     macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
-    if (mVariablesPtr->retainCount () > 1) {
+    if (!mVariablesPtr->isUniquelyReferenced ()) {
       cVariablesInRelationConfiguration * ptr = NULL ;
       macroMyNew (ptr, cVariablesInRelationConfiguration (mVariablesPtr COMMA_THERE)) ;
       macroAssignSharedObject (mVariablesPtr, ptr) ;

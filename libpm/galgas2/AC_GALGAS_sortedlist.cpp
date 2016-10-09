@@ -254,7 +254,7 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_sortedlist::insulate (LOCATION_ARGS) {
-  if ((mSharedRoot != NULL) && (mSharedRoot->retainCount () > 1)) {
+  if ((mSharedRoot != NULL) && !mSharedRoot->isUniquelyReferenced ()) {
     cSharedSortedListRoot * p = NULL ;
     macroMyNew (p, cSharedSortedListRoot (THERE)) ;
     p->copyFrom (mSharedRoot) ;

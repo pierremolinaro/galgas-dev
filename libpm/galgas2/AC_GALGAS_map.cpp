@@ -662,7 +662,7 @@ void cSharedMapRoot::copyFrom (const cSharedMapRoot * inSource) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_map::insulate (LOCATION_ARGS) {
-  if ((NULL != mSharedMap) && (mSharedMap->retainCount () > 1)) {
+  if ((NULL != mSharedMap) && !mSharedMap->isUniquelyReferenced ()) {
     cSharedMapRoot * p = NULL ;
     macroMyNew (p, cSharedMapRoot (THERE)) ;
     p->copyFrom (mSharedMap) ;
