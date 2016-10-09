@@ -465,8 +465,8 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
 
 cEnumerator_data::cEnumerator_data (const GALGAS_data & inEnumeratedObject,
                                     const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

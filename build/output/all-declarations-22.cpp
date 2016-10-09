@@ -3947,8 +3947,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "                       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "const typeEnumerationOrder inOrder) :\n"
-    "cGenericAbstractEnumerator () {\n"
-    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
+    "cGenericAbstractEnumerator (inOrder) {\n"
+    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -4877,8 +4877,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "                       " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "const typeEnumerationOrder inOrder) :\n"
-    "cGenericAbstractEnumerator () {\n"
-    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;\n"
+    "cGenericAbstractEnumerator (inOrder) {\n"
+    "  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -4899,14 +4899,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "_2D_element (p->mAttribute_lkey" ;
-  GALGAS_uint index_13766_ (0) ;
+  GALGAS_uint index_13781_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_13766 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_13766.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_13781 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_13781.hasCurrentObject ()) {
       result << ", p->mAttribute_" ;
-      result << enumerator_13766.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 292)).stringValue () ;
-      index_13766_.increment () ;
-      enumerator_13766.gotoNextObject () ;
+      result << enumerator_13781.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 292)).stringValue () ;
+      index_13781_.increment () ;
+      enumerator_13781.gotoNextObject () ;
     }
   }
   result << ") ;\n"
@@ -4922,18 +4922,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return p->mAttribute_lkey ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_14238_IDX (0) ;
+  GALGAS_uint index_14253_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_14238 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14238.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_14253 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14253.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
-      result << enumerator_14238.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 307)).stringValue () ;
+      result << enumerator_14253.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 307)).stringValue () ;
       result << " cEnumerator_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::current_" ;
-      result << enumerator_14238.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 307)).stringValue () ;
+      result << enumerator_14253.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 307)).stringValue () ;
       result << " (LOCATION_ARGS) const {\n"
         "  const cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -4944,12 +4944,12 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "  return p->mAttribute_" ;
-      result << enumerator_14238.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 310)).stringValue () ;
+      result << enumerator_14253.current_mAttributeName (HERE).mAttribute_string.getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 310)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
-      index_14238_IDX.increment () ;
-      enumerator_14238.gotoNextObject () ;
+      index_14253_IDX.increment () ;
+      enumerator_14253.gotoNextObject () ;
     }
   }
   result << "\n"
