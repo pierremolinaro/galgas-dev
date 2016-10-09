@@ -977,8 +977,8 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
