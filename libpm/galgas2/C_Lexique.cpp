@@ -1171,7 +1171,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
     }
   //--- Perform first pass
     TC_UniqueArray <TC_LinkedList <int16_t> > executionList (100 COMMA_HERE) ;
-    executionList.addDefaultObjectUsingSwap () ;
+    executionList.appendDefaultObjectUsingSwap () ;
 
     TC_Array <int16_t> stack (10000 COMMA_HERE) ;
     stack.appendObject (0) ; // Enter initial state
@@ -1228,7 +1228,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         #endif
         poppedErrors.setCountToZero () ;
         errorSignalingUselessEntryOnTopOfStack = 0 ;
-        executionList.addDefaultObjectUsingSwap () ;
+        executionList.appendDefaultObjectUsingSwap () ;
       //---
         if (produceSyntaxTree) {
           C_String terminalUniqueName ;
@@ -1260,7 +1260,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         }
         executionList (executionListLength - reduceSize - 1 COMMA_HERE).insertAtTop (actionCode) ;
         executionList.removeLastObjects (reduceSize COMMA_HERE) ; 
-        executionList.addDefaultObjectUsingSwap () ;
+        executionList.appendDefaultObjectUsingSwap () ;
         const int32_t stackReduceSize = 2 * reduceSize ;
         for (int32_t i=0 ; i<stackReduceSize ; i++) {
           if (errorSignalingUselessEntryOnTopOfStack > 0) {

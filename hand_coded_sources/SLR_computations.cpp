@@ -413,7 +413,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
   if (ioRootPointer == NULL) {
     result = io_LR0_items_sets_array.count () ;
     macroMyNew (ioRootPointer, cLR0_items_sets_AVL_tree (result)) ;
-    io_LR0_items_sets_array.addObjectUsingSwap (io_LR0_items_set) ;
+    io_LR0_items_sets_array.appendObjectUsingSwap (io_LR0_items_set) ;
     outExtension = true ;
   }else{
     macroValidPointer (ioRootPointer) ;

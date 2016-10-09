@@ -744,7 +744,7 @@ void AC_GALGAS_uniqueMap::insertInSharedMap (capCollectionElement & inAttributes
 void cSharedUniqueMapRoot::enterEdge (cUniqueMapNode * inSource,
                                       cUniqueMapNode * inTarget) {
   const structDependanceEdge e = {inSource, inTarget} ;
-  mDependenceEdges.addObjectIfUnique (e) ;
+  mDependenceEdges.appendObjectIfUnique (e) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

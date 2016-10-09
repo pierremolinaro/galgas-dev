@@ -348,7 +348,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                 << " : "
                 << title 
                 << "\n" ;
-      ioProductionRulesTitle.addObjectUsingSwap (title) ;
+      ioProductionRulesTitle.appendObjectUsingSwap (title) ;
       const int32_t derivationLength = p.derivationLength () ;
       for (int32_t item=0 ; item<=derivationLength ; item++) {
         if (ioFirst) {

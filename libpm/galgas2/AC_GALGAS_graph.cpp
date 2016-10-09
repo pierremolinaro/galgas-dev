@@ -224,7 +224,7 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
   macroUniqueSharedObject (this) ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cGraphNode (inSource->mRoot)) ;
-    mNodeArray.addObjects (inSource->mNodeArray.count (), NULL) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), NULL) ;
     buildNodeArray (mRoot, mNodeArray) ;
     mDirectedGraph = inSource->mDirectedGraph ;
   }
@@ -249,7 +249,7 @@ void cSharedGraph::description (C_String & ioString,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cSharedGraph::checkGraph (LOCATION_ARGS) const {
     TC_UniqueArray <cGraphNode *> nodeArray (mNodeArray.count () COMMA_HERE) ;
-    nodeArray.addObjects (mNodeArray.count (), NULL) ;
+    nodeArray.appendObjects (mNodeArray.count (), NULL) ;
     buildNodeArray (mRoot, nodeArray) ;
     MF_AssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
     for (int32_t i=0 ; i<nodeArray.count() ; i++) {
@@ -621,7 +621,7 @@ void cSharedGraph::copyReversedGraphFrom (const cSharedGraph * inSource) {
   macroUniqueSharedObject (this) ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cGraphNode (inSource->mRoot)) ;
-    mNodeArray.addObjects (inSource->mNodeArray.count (), NULL) ;
+    mNodeArray.appendObjects (inSource->mNodeArray.count (), NULL) ;
     buildNodeArray (mRoot, mNodeArray) ;
     mDirectedGraph = inSource->mDirectedGraph.reversedGraph () ;
   }

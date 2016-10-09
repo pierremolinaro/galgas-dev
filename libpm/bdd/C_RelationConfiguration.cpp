@@ -99,9 +99,9 @@ mBDDStartIndexArray (),
 mVariableNameArray (),
 mVariableTypeArray () {
   macroValidSharedObjectThere (inPtr, cVariablesInRelationConfiguration) ;
-  mBDDStartIndexArray.addObjectsFromArray (inPtr->mBDDStartIndexArray) ;
-  mVariableNameArray.addObjectsFromArray (inPtr->mVariableNameArray) ;
-  mVariableTypeArray.addObjectsFromArray (inPtr->mVariableTypeArray) ;
+  mBDDStartIndexArray.appendObjectsFromArray (inPtr->mBDDStartIndexArray) ;
+  mVariableNameArray.appendObjectsFromArray (inPtr->mVariableNameArray) ;
+  mVariableTypeArray.appendObjectsFromArray (inPtr->mVariableTypeArray) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkConfiguration (HERE) ;
   #endif
