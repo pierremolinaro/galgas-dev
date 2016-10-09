@@ -198,7 +198,6 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     !@enumerationDescriptorList.emptyList
-#    !@stringlist.emptyList
     !doNotGenererateObjectCompare ()
     !@functionSignature.emptyList
     !{}

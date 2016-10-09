@@ -11,82 +11,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 @typeNameFormalParameterNameList_2D_element struct                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_typeNameFormalParameterNameList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mFormalSelector ;
-  public : GALGAS_lstring mAttribute_mFormalParameterTypeName ;
-  public : GALGAS_lstring mAttribute_mFormalParameterName ;
-
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typeNameFormalParameterNameList_2D_element constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public : GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_typeNameFormalParameterNameList_2D_element (const GALGAS_lstring & in_mFormalSelector,
-                                                              const GALGAS_lstring & in_mFormalParameterTypeName,
-                                                              const GALGAS_lstring & in_mFormalParameterName) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_typeNameFormalParameterNameList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_typeNameFormalParameterNameList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                           const class GALGAS_lstring & inOperand1,
-                                                                                           const class GALGAS_lstring & inOperand2
-                                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typeNameFormalParameterNameList_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalParameterName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalParameterTypeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFormalSelector (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_typeNameFormalParameterNameList_2D_element class
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParameterNameList_2D_element ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                         @formalArgumentPassingModeAST enum                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -251,28 +175,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_graphInsertModifierList : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_graphInsertModifierList_2D_element> mArray ;
-
+class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_graphInsertModifierList (const bool inIsValid = false) ;
+  public : GALGAS_graphInsertModifierList (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_graphInsertModifierList (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_graphInsertModifierList & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_graphInsertModifierList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -375,38 +283,15 @@ class GALGAS_graphInsertModifierList : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_graphInsertModifierList {
-//--- Constructor
+class cEnumerator_graphInsertModifierList : public cGenericAbstractEnumerator {
   public : cEnumerator_graphInsertModifierList (const GALGAS_graphInsertModifierList & inEnumeratedObject,
                                                 const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_graphInsertModifierList (void) ;
-
-//--- No copy
-  private : cEnumerator_graphInsertModifierList (const cEnumerator_graphInsertModifierList &) ;
-  private : cEnumerator_graphInsertModifierList & operator = (const cEnumerator_graphInsertModifierList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mInsertModifierName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mInsertErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_graphInsertModifierList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_graphInsertModifierList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -490,28 +375,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_insertMethodListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_insertMethodListAST_2D_element> mArray ;
-
+class GALGAS_insertMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_insertMethodListAST (const bool inIsValid = false) ;
+  public : GALGAS_insertMethodListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_insertMethodListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_insertMethodListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_insertMethodListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -632,26 +501,9 @@ class GALGAS_insertMethodListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_insertMethodListAST {
-//--- Constructor
+class cEnumerator_insertMethodListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_insertMethodListAST (const GALGAS_insertMethodListAST & inEnumeratedObject,
                                             const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_insertMethodListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_insertMethodListAST (const cEnumerator_insertMethodListAST &) ;
-  private : cEnumerator_insertMethodListAST & operator = (const cEnumerator_insertMethodListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mInsertMethodName (LOCATION_ARGS) const ;
@@ -660,12 +512,6 @@ class cEnumerator_insertMethodListAST {
   public : class GALGAS_lstring current_mInitialStateName (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_insertMethodListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_insertMethodListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -835,28 +681,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapRemoveMethodListAST_2D_element> mArray ;
-
+class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapRemoveMethodListAST (const bool inIsValid = false) ;
+  public : GALGAS_mapRemoveMethodListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapRemoveMethodListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapRemoveMethodListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapRemoveMethodListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -959,38 +789,15 @@ class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapRemoveMethodListAST {
-//--- Constructor
+class cEnumerator_mapRemoveMethodListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_mapRemoveMethodListAST (const GALGAS_mapRemoveMethodListAST & inEnumeratedObject,
                                                const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapRemoveMethodListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_mapRemoveMethodListAST (const cEnumerator_mapRemoveMethodListAST &) ;
-  private : cEnumerator_mapRemoveMethodListAST & operator = (const cEnumerator_mapRemoveMethodListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mMethodName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapRemoveMethodListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapRemoveMethodListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1074,28 +881,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_insertOrReplaceDeclarationListAST_2D_element> mArray ;
-
+class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_insertOrReplaceDeclarationListAST (const bool inIsValid = false) ;
+  public : GALGAS_insertOrReplaceDeclarationListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_insertOrReplaceDeclarationListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_insertOrReplaceDeclarationListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_insertOrReplaceDeclarationListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -1189,37 +980,14 @@ class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_insertOrReplaceDeclarationListAST {
-//--- Constructor
+class cEnumerator_insertOrReplaceDeclarationListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_insertOrReplaceDeclarationListAST (const GALGAS_insertOrReplaceDeclarationListAST & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_insertOrReplaceDeclarationListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_insertOrReplaceDeclarationListAST (const cEnumerator_insertOrReplaceDeclarationListAST &) ;
-  private : cEnumerator_insertOrReplaceDeclarationListAST & operator = (const cEnumerator_insertOrReplaceDeclarationListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_location current_mInsertOrReplaceDeclarationLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_insertOrReplaceDeclarationListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_insertOrReplaceDeclarationListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1361,37 +1129,14 @@ class GALGAS_insertMethodMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_insertMethodMap {
-//--- Constructor
+class cEnumerator_insertMethodMap : public cGenericAbstractEnumerator {
   public : cEnumerator_insertMethodMap (const GALGAS_insertMethodMap & inEnumeratedObject,
                                         const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_insertMethodMap (void) ;
-
-//--- No copy
-  private : cEnumerator_insertMethodMap (const cEnumerator_insertMethodMap &) ;
-  private : cEnumerator_insertMethodMap & operator = (const cEnumerator_insertMethodMap &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_insertMethodMap_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_insertMethodMap_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1559,37 +1304,14 @@ class GALGAS_searchMethodMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_searchMethodMap {
-//--- Constructor
+class cEnumerator_searchMethodMap : public cGenericAbstractEnumerator {
   public : cEnumerator_searchMethodMap (const GALGAS_searchMethodMap & inEnumeratedObject,
                                         const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_searchMethodMap (void) ;
-
-//--- No copy
-  private : cEnumerator_searchMethodMap (const cEnumerator_searchMethodMap &) ;
-  private : cEnumerator_searchMethodMap & operator = (const cEnumerator_searchMethodMap &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_searchMethodMap_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_searchMethodMap_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1766,28 +1488,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAutomatonMessage
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapStateTransitionList : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapStateTransitionList_2D_element> mArray ;
-
+class GALGAS_mapStateTransitionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapStateTransitionList (const bool inIsValid = false) ;
+  public : GALGAS_mapStateTransitionList (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapStateTransitionList (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapStateTransitionList & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapStateTransitionList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -1908,26 +1614,9 @@ class GALGAS_mapStateTransitionList : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapStateTransitionList {
-//--- Constructor
+class cEnumerator_mapStateTransitionList : public cGenericAbstractEnumerator {
   public : cEnumerator_mapStateTransitionList (const GALGAS_mapStateTransitionList & inEnumeratedObject,
                                                const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapStateTransitionList (void) ;
-
-//--- No copy
-  private : cEnumerator_mapStateTransitionList (const cEnumerator_mapStateTransitionList &) ;
-  private : cEnumerator_mapStateTransitionList & operator = (const cEnumerator_mapStateTransitionList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mActionName (LOCATION_ARGS) const ;
@@ -1936,12 +1625,6 @@ class cEnumerator_mapStateTransitionList {
   public : class GALGAS_lstring current_mTransitionMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapStateTransitionList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapStateTransitionList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2032,28 +1715,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapStateList : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapStateList_2D_element> mArray ;
-
+class GALGAS_mapStateList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapStateList (const bool inIsValid = false) ;
+  public : GALGAS_mapStateList (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapStateList (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapStateList & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapStateList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -2174,26 +1841,9 @@ class GALGAS_mapStateList : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapStateList {
-//--- Constructor
+class cEnumerator_mapStateList : public cGenericAbstractEnumerator {
   public : cEnumerator_mapStateList (const GALGAS_mapStateList & inEnumeratedObject,
                                      const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapStateList (void) ;
-
-//--- No copy
-  private : cEnumerator_mapStateList (const cEnumerator_mapStateList &) ;
-  private : cEnumerator_mapStateList & operator = (const cEnumerator_mapStateList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mStateName (LOCATION_ARGS) const ;
@@ -2202,12 +1852,6 @@ class cEnumerator_mapStateList {
   public : class GALGAS_mapStateTransitionList current_mTransitionList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapStateList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapStateList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2298,28 +1942,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList_2D_ele
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapOverrideBlockDescriptorAST_2D_element> mArray ;
-
+class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapOverrideBlockDescriptorAST (const bool inIsValid = false) ;
+  public : GALGAS_mapOverrideBlockDescriptorAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapOverrideBlockDescriptorAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapOverrideBlockDescriptorAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapOverrideBlockDescriptorAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -2449,26 +2077,9 @@ class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapOverrideBlockDescriptorAST {
-//--- Constructor
+class cEnumerator_mapOverrideBlockDescriptorAST : public cGenericAbstractEnumerator {
   public : cEnumerator_mapOverrideBlockDescriptorAST (const GALGAS_mapOverrideBlockDescriptorAST & inEnumeratedObject,
                                                       const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapOverrideBlockDescriptorAST (void) ;
-
-//--- No copy
-  private : cEnumerator_mapOverrideBlockDescriptorAST (const cEnumerator_mapOverrideBlockDescriptorAST &) ;
-  private : cEnumerator_mapOverrideBlockDescriptorAST & operator = (const cEnumerator_mapOverrideBlockDescriptorAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mLeftState (LOCATION_ARGS) const ;
@@ -2478,12 +2089,6 @@ class cEnumerator_mapOverrideBlockDescriptorAST {
   public : class GALGAS_lstring current_mTransitionMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapOverrideBlockDescriptorAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapOverrideBlockDescriptorAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2579,28 +2184,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapOverrideBlockListAST_2D_element> mArray ;
-
+class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapOverrideBlockListAST (const bool inIsValid = false) ;
+  public : GALGAS_mapOverrideBlockListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapOverrideBlockListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapOverrideBlockListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapOverrideBlockListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -2712,26 +2301,9 @@ class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapOverrideBlockListAST {
-//--- Constructor
+class cEnumerator_mapOverrideBlockListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_mapOverrideBlockListAST (const GALGAS_mapOverrideBlockListAST & inEnumeratedObject,
                                                 const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapOverrideBlockListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_mapOverrideBlockListAST (const cEnumerator_mapOverrideBlockListAST &) ;
-  private : cEnumerator_mapOverrideBlockListAST & operator = (const cEnumerator_mapOverrideBlockListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mOverrideBlockName (LOCATION_ARGS) const ;
@@ -2739,12 +2311,6 @@ class cEnumerator_mapOverrideBlockListAST {
   public : class GALGAS_mapOverrideBlockDescriptorAST current_mMapOverrideBlockDescriptor_32_AST (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapOverrideBlockListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapOverrideBlockListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2833,28 +2399,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_sharedMapAttributeListAST_2D_element> mArray ;
-
+class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_sharedMapAttributeListAST (const bool inIsValid = false) ;
+  public : GALGAS_sharedMapAttributeListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_sharedMapAttributeListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_sharedMapAttributeListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_sharedMapAttributeListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -2978,26 +2528,9 @@ class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_sharedMapAttributeListAST {
-//--- Constructor
+class cEnumerator_sharedMapAttributeListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_sharedMapAttributeListAST (const GALGAS_sharedMapAttributeListAST & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_sharedMapAttributeListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_sharedMapAttributeListAST (const cEnumerator_sharedMapAttributeListAST &) ;
-  private : cEnumerator_sharedMapAttributeListAST & operator = (const cEnumerator_sharedMapAttributeListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mAttributeName (LOCATION_ARGS) const ;
@@ -3005,12 +2538,6 @@ class cEnumerator_sharedMapAttributeListAST {
   public : class GALGAS_lstring current_mMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_sharedMapAttributeListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_sharedMapAttributeListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3193,26 +2720,9 @@ class GALGAS_mapStateTransitionSortedList : public AC_GALGAS_sortedlist {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapStateTransitionSortedList {
-//--- Constructor
+class cEnumerator_mapStateTransitionSortedList : public cGenericAbstractEnumerator {
   public : cEnumerator_mapStateTransitionSortedList (const GALGAS_mapStateTransitionSortedList & inEnumeratedObject,
                                                      const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapStateTransitionSortedList (void) ;
-
-//--- No copy
-  private : cEnumerator_mapStateTransitionSortedList (const cEnumerator_mapStateTransitionSortedList &) ;
-  private : cEnumerator_mapStateTransitionSortedList & operator = (const cEnumerator_mapStateTransitionSortedList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_uint current_mActionIndex (LOCATION_ARGS) const ;
@@ -3223,12 +2733,6 @@ class cEnumerator_mapStateTransitionSortedList {
   public : class GALGAS_string current_mTransitionMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapStateTransitionSortedList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapStateTransitionSortedList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3417,26 +2921,9 @@ class GALGAS_mapStateSortedList : public AC_GALGAS_sortedlist {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapStateSortedList {
-//--- Constructor
+class cEnumerator_mapStateSortedList : public cGenericAbstractEnumerator {
   public : cEnumerator_mapStateSortedList (const GALGAS_mapStateSortedList & inEnumeratedObject,
                                            const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapStateSortedList (void) ;
-
-//--- No copy
-  private : cEnumerator_mapStateSortedList (const cEnumerator_mapStateSortedList &) ;
-  private : cEnumerator_mapStateSortedList & operator = (const cEnumerator_mapStateSortedList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_uint current_mStateIndex (LOCATION_ARGS) const ;
@@ -3446,12 +2933,6 @@ class cEnumerator_mapStateSortedList {
   public : class GALGAS_mapStateTransitionSortedList current_mTransitionList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapStateSortedList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapStateSortedList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3642,26 +3123,9 @@ class GALGAS_mapAutomatonStateMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapAutomatonStateMap {
-//--- Constructor
+class cEnumerator_mapAutomatonStateMap : public cGenericAbstractEnumerator {
   public : cEnumerator_mapAutomatonStateMap (const GALGAS_mapAutomatonStateMap & inEnumeratedObject,
                                              const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapAutomatonStateMap (void) ;
-
-//--- No copy
-  private : cEnumerator_mapAutomatonStateMap (const cEnumerator_mapAutomatonStateMap &) ;
-  private : cEnumerator_mapAutomatonStateMap & operator = (const cEnumerator_mapAutomatonStateMap &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
@@ -3669,12 +3133,6 @@ class cEnumerator_mapAutomatonStateMap {
   public : class GALGAS_mapAutomatonMessageKind current_mStateMessageKind (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapAutomatonStateMap_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapAutomatonStateMap_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3873,38 +3331,15 @@ class GALGAS_mapAutomatonActionMap : public AC_GALGAS_map {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapAutomatonActionMap {
-//--- Constructor
+class cEnumerator_mapAutomatonActionMap : public cGenericAbstractEnumerator {
   public : cEnumerator_mapAutomatonActionMap (const GALGAS_mapAutomatonActionMap & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapAutomatonActionMap (void) ;
-
-//--- No copy
-  private : cEnumerator_mapAutomatonActionMap (const cEnumerator_mapAutomatonActionMap &) ;
-  private : cEnumerator_mapAutomatonActionMap & operator = (const cEnumerator_mapAutomatonActionMap &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_uint current_mActionIndex (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapAutomatonActionMap_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapAutomatonActionMap_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4122,26 +3557,9 @@ class GALGAS_branchBehaviourSortedListForMapOverride : public AC_GALGAS_sortedli
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_branchBehaviourSortedListForMapOverride {
-//--- Constructor
+class cEnumerator_branchBehaviourSortedListForMapOverride : public cGenericAbstractEnumerator {
   public : cEnumerator_branchBehaviourSortedListForMapOverride (const GALGAS_branchBehaviourSortedListForMapOverride & inEnumeratedObject,
                                                                 const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_branchBehaviourSortedListForMapOverride (void) ;
-
-//--- No copy
-  private : cEnumerator_branchBehaviourSortedListForMapOverride (const cEnumerator_branchBehaviourSortedListForMapOverride &) ;
-  private : cEnumerator_branchBehaviourSortedListForMapOverride & operator = (const cEnumerator_branchBehaviourSortedListForMapOverride &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_uint current_mStartStateIndex (LOCATION_ARGS) const ;
@@ -4154,12 +3572,6 @@ class cEnumerator_branchBehaviourSortedListForMapOverride {
   public : class GALGAS_string current_mBehaviourMessage (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_branchBehaviourSortedListForMapOverride_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_branchBehaviourSortedListForMapOverride_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4270,28 +3682,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchBehaviourSort
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideList : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_mapOverrideList_2D_element> mArray ;
-
+class GALGAS_mapOverrideList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_mapOverrideList (const bool inIsValid = false) ;
+  public : GALGAS_mapOverrideList (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_mapOverrideList (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_mapOverrideList & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_mapOverrideList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4415,26 +3811,9 @@ class GALGAS_mapOverrideList : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_mapOverrideList {
-//--- Constructor
+class cEnumerator_mapOverrideList : public cGenericAbstractEnumerator {
   public : cEnumerator_mapOverrideList (const GALGAS_mapOverrideList & inEnumeratedObject,
                                         const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_mapOverrideList (void) ;
-
-//--- No copy
-  private : cEnumerator_mapOverrideList (const cEnumerator_mapOverrideList &) ;
-  private : cEnumerator_mapOverrideList & operator = (const cEnumerator_mapOverrideList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_string current_mOverrideName (LOCATION_ARGS) const ;
@@ -4442,12 +3821,6 @@ class cEnumerator_mapOverrideList {
   public : class GALGAS_branchBehaviourSortedListForMapOverride current_mBranchCombinationSortedListForMapOverride (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapOverrideList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_mapOverrideList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4536,28 +3909,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideList_2D_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_sortedListSortDescriptorListAST_2D_element> mArray ;
-
+class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_sortedListSortDescriptorListAST (const bool inIsValid = false) ;
+  public : GALGAS_sortedListSortDescriptorListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_sortedListSortDescriptorListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_sortedListSortDescriptorListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_sortedListSortDescriptorListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4660,38 +4017,15 @@ class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_sortedListSortDescriptorListAST {
-//--- Constructor
+class cEnumerator_sortedListSortDescriptorListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_sortedListSortDescriptorListAST (const GALGAS_sortedListSortDescriptorListAST & inEnumeratedObject,
                                                         const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_sortedListSortDescriptorListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_sortedListSortDescriptorListAST (const cEnumerator_sortedListSortDescriptorListAST &) ;
-  private : cEnumerator_sortedListSortDescriptorListAST & operator = (const cEnumerator_sortedListSortDescriptorListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mSortedAttributeName (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mAscending (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_sortedListSortDescriptorListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_sortedListSortDescriptorListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4775,28 +4109,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescr
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_sortDescriptorListForGeneration_2D_element> mArray ;
-
+class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_sortDescriptorListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_sortDescriptorListForGeneration (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_sortDescriptorListForGeneration (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_sortDescriptorListForGeneration & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_sortDescriptorListForGeneration (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4920,26 +4238,9 @@ class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_sortDescriptorListForGeneration {
-//--- Constructor
+class cEnumerator_sortDescriptorListForGeneration : public cGenericAbstractEnumerator {
   public : cEnumerator_sortDescriptorListForGeneration (const GALGAS_sortDescriptorListForGeneration & inEnumeratedObject,
                                                         const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_sortDescriptorListForGeneration (void) ;
-
-//--- No copy
-  private : cEnumerator_sortDescriptorListForGeneration (const cEnumerator_sortDescriptorListForGeneration &) ;
-  private : cEnumerator_sortDescriptorListForGeneration & operator = (const cEnumerator_sortDescriptorListForGeneration &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_unifiedTypeMap_2D_proxy current_mAttributeTypeIndex (LOCATION_ARGS) const ;
@@ -4947,12 +4248,6 @@ class cEnumerator_sortDescriptorListForGeneration {
   public : class GALGAS_bool current_mAscendingOrder (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_sortDescriptorListForGeneration_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_sortDescriptorListForGeneration_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5041,28 +4336,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalInputParameterListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_formalInputParameterListAST_2D_element> mArray ;
-
+class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_formalInputParameterListAST (const bool inIsValid = false) ;
+  public : GALGAS_formalInputParameterListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_formalInputParameterListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_formalInputParameterListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_formalInputParameterListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5192,26 +4471,9 @@ class GALGAS_formalInputParameterListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_formalInputParameterListAST {
-//--- Constructor
+class cEnumerator_formalInputParameterListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_formalInputParameterListAST (const GALGAS_formalInputParameterListAST & inEnumeratedObject,
                                                     const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_formalInputParameterListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_formalInputParameterListAST (const cEnumerator_formalInputParameterListAST &) ;
-  private : cEnumerator_formalInputParameterListAST & operator = (const cEnumerator_formalInputParameterListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
@@ -5221,12 +4483,6 @@ class cEnumerator_formalInputParameterListAST {
   public : class GALGAS_bool current_mIsConstant (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_formalInputParameterListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_formalInputParameterListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5325,28 +4581,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_formalInputParameterListForGeneration_2D_element> mArray ;
-
+class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_formalInputParameterListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_formalInputParameterListForGeneration (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_formalInputParameterListForGeneration (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_formalInputParameterListForGeneration & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_formalInputParameterListForGeneration (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5496,26 +4736,9 @@ class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_formalInputParameterListForGeneration {
-//--- Constructor
+class cEnumerator_formalInputParameterListForGeneration : public cGenericAbstractEnumerator {
   public : cEnumerator_formalInputParameterListForGeneration (const GALGAS_formalInputParameterListForGeneration & inEnumeratedObject,
                                                               const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_formalInputParameterListForGeneration (void) ;
-
-//--- No copy
-  private : cEnumerator_formalInputParameterListForGeneration (const cEnumerator_formalInputParameterListForGeneration &) ;
-  private : cEnumerator_formalInputParameterListForGeneration & operator = (const cEnumerator_formalInputParameterListForGeneration &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
@@ -5525,12 +4748,6 @@ class cEnumerator_formalInputParameterListForGeneration {
   public : class GALGAS_bool current_mIsConstant (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_formalInputParameterListForGeneration_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_formalInputParameterListForGeneration_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5629,28 +4846,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_formalParameterListForGeneration_2D_element> mArray ;
-
+class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_formalParameterListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_formalParameterListForGeneration (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_formalParameterListForGeneration (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_formalParameterListForGeneration & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_formalParameterListForGeneration (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5800,26 +5001,9 @@ class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_formalParameterListForGeneration {
-//--- Constructor
+class cEnumerator_formalParameterListForGeneration : public cGenericAbstractEnumerator {
   public : cEnumerator_formalParameterListForGeneration (const GALGAS_formalParameterListForGeneration & inEnumeratedObject,
                                                          const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_formalParameterListForGeneration (void) ;
-
-//--- No copy
-  private : cEnumerator_formalParameterListForGeneration (const cEnumerator_formalParameterListForGeneration &) ;
-  private : cEnumerator_formalParameterListForGeneration & operator = (const cEnumerator_formalParameterListForGeneration &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mFormalSelector (LOCATION_ARGS) const ;
@@ -5829,12 +5013,6 @@ class cEnumerator_formalParameterListForGeneration {
   public : class GALGAS_string current_mFormalArgumentCppName (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_formalParameterListForGeneration_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_formalParameterListForGeneration_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5930,28 +5108,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticInstructionListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_semanticInstructionListAST_2D_element> mArray ;
-
+class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_semanticInstructionListAST (const bool inIsValid = false) ;
+  public : GALGAS_semanticInstructionListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_semanticInstructionListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_semanticInstructionListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_semanticInstructionListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -6045,37 +5207,14 @@ class GALGAS_semanticInstructionListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_semanticInstructionListAST {
-//--- Constructor
+class cEnumerator_semanticInstructionListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_semanticInstructionListAST (const GALGAS_semanticInstructionListAST & inEnumeratedObject,
                                                    const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_semanticInstructionListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_semanticInstructionListAST (const cEnumerator_semanticInstructionListAST &) ;
-  private : cEnumerator_semanticInstructionListAST & operator = (const cEnumerator_semanticInstructionListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_semanticInstructionAST current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_semanticInstructionListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_semanticInstructionListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6295,28 +5434,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_semanticInstructionListForGeneration_2D_element> mArray ;
-
+class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_semanticInstructionListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_semanticInstructionListForGeneration (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_semanticInstructionListForGeneration (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_semanticInstructionListForGeneration & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_semanticInstructionListForGeneration (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -6414,37 +5537,14 @@ class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_semanticInstructionListForGeneration {
-//--- Constructor
+class cEnumerator_semanticInstructionListForGeneration : public cGenericAbstractEnumerator {
   public : cEnumerator_semanticInstructionListForGeneration (const GALGAS_semanticInstructionListForGeneration & inEnumeratedObject,
                                                              const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_semanticInstructionListForGeneration (void) ;
-
-//--- No copy
-  private : cEnumerator_semanticInstructionListForGeneration (const cEnumerator_semanticInstructionListForGeneration &) ;
-  private : cEnumerator_semanticInstructionListForGeneration & operator = (const cEnumerator_semanticInstructionListForGeneration &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_semanticInstructionForGeneration current_mInstruction (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_semanticInstructionListForGeneration_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_semanticInstructionListForGeneration_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6658,28 +5758,12 @@ class cPtr_semanticExpressionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_actualOutputExpressionList : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_actualOutputExpressionList_2D_element> mArray ;
-
+class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_actualOutputExpressionList (const bool inIsValid = false) ;
+  public : GALGAS_actualOutputExpressionList (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_actualOutputExpressionList (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_actualOutputExpressionList & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_actualOutputExpressionList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -6791,26 +5875,9 @@ class GALGAS_actualOutputExpressionList : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_actualOutputExpressionList {
-//--- Constructor
+class cEnumerator_actualOutputExpressionList : public cGenericAbstractEnumerator {
   public : cEnumerator_actualOutputExpressionList (const GALGAS_actualOutputExpressionList & inEnumeratedObject,
                                                    const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_actualOutputExpressionList (void) ;
-
-//--- No copy
-  private : cEnumerator_actualOutputExpressionList (const cEnumerator_actualOutputExpressionList &) ;
-  private : cEnumerator_actualOutputExpressionList & operator = (const cEnumerator_actualOutputExpressionList &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_lstring current_mActualSelector (LOCATION_ARGS) const ;
@@ -6818,12 +5885,6 @@ class cEnumerator_actualOutputExpressionList {
   public : class GALGAS_location current_mEndOfExpressionLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_actualOutputExpressionList_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_actualOutputExpressionList_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6909,28 +5970,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpress
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticExpressionListAST : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_semanticExpressionListAST_2D_element> mArray ;
-
+class GALGAS_semanticExpressionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_semanticExpressionListAST (const bool inIsValid = false) ;
+  public : GALGAS_semanticExpressionListAST (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_semanticExpressionListAST (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_semanticExpressionListAST & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_semanticExpressionListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -7033,38 +6078,15 @@ class GALGAS_semanticExpressionListAST : public AC_GALGAS_list_new {
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_semanticExpressionListAST {
-//--- Constructor
+class cEnumerator_semanticExpressionListAST : public cGenericAbstractEnumerator {
   public : cEnumerator_semanticExpressionListAST (const GALGAS_semanticExpressionListAST & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_semanticExpressionListAST (void) ;
-
-//--- No copy
-  private : cEnumerator_semanticExpressionListAST (const cEnumerator_semanticExpressionListAST &) ;
-  private : cEnumerator_semanticExpressionListAST & operator = (const cEnumerator_semanticExpressionListAST &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access
   public : class GALGAS_semanticExpressionAST current_mExpression (LOCATION_ARGS) const ;
   public : class GALGAS_location current_mEndOfExpressionLocation (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_semanticExpressionListAST_2D_element current (LOCATION_ARGS) const ;
-
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_semanticExpressionListAST_2D_element> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8114,6 +7136,378 @@ class cPtr_andExpressionAST : public cPtr_semanticExpressionAST {
                                   const GALGAS_semanticExpressionAST & in_mLeftExpression,
                                   const GALGAS_semanticExpressionAST & in_mRightExpression
                                   COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              @equalExpressionAST class                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_equalExpressionAST : public GALGAS_semanticExpressionAST {
+//--- Constructor
+  public : GALGAS_equalExpressionAST (void) ;
+
+//---
+  public : inline const class cPtr_equalExpressionAST * ptr (void) const { return (const cPtr_equalExpressionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_equalExpressionAST (const cPtr_equalExpressionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_equalExpressionAST extractObject (const GALGAS_object & inObject,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_equalExpressionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand2
+                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_equalExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_equalExpressionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpressionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Pointer class for @equalExpressionAST class                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_equalExpressionAST : public cPtr_semanticExpressionAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mAttribute_mLeftExpression ;
+  public : GALGAS_semanticExpressionAST mAttribute_mRightExpression ;
+
+//--- Constructor
+  public : cPtr_equalExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                    const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                    const GALGAS_semanticExpressionAST & in_mRightExpression
+                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @notEqualExpressionAST class                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_notEqualExpressionAST : public GALGAS_semanticExpressionAST {
+//--- Constructor
+  public : GALGAS_notEqualExpressionAST (void) ;
+
+//---
+  public : inline const class cPtr_notEqualExpressionAST * ptr (void) const { return (const cPtr_notEqualExpressionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_notEqualExpressionAST (const cPtr_notEqualExpressionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_notEqualExpressionAST extractObject (const GALGAS_object & inObject,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_notEqualExpressionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                      const class GALGAS_semanticExpressionAST & inOperand2
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_notEqualExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_notEqualExpressionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpressionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Pointer class for @notEqualExpressionAST class                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_notEqualExpressionAST : public cPtr_semanticExpressionAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mAttribute_mLeftExpression ;
+  public : GALGAS_semanticExpressionAST mAttribute_mRightExpression ;
+
+//--- Constructor
+  public : cPtr_notEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                       const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                       const GALGAS_semanticExpressionAST & in_mRightExpression
+                                       COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @lowerOrEqualExpressionAST class                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lowerOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
+//--- Constructor
+  public : GALGAS_lowerOrEqualExpressionAST (void) ;
+
+//---
+  public : inline const class cPtr_lowerOrEqualExpressionAST * ptr (void) const { return (const cPtr_lowerOrEqualExpressionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_lowerOrEqualExpressionAST (const cPtr_lowerOrEqualExpressionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_lowerOrEqualExpressionAST extractObject (const GALGAS_object & inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_lowerOrEqualExpressionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                          const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                          const class GALGAS_semanticExpressionAST & inOperand2
+                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_lowerOrEqualExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_lowerOrEqualExpressionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lowerOrEqualExpressionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Pointer class for @lowerOrEqualExpressionAST class                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_lowerOrEqualExpressionAST : public cPtr_semanticExpressionAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mAttribute_mLeftExpression ;
+  public : GALGAS_semanticExpressionAST mAttribute_mRightExpression ;
+
+//--- Constructor
+  public : cPtr_lowerOrEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                           const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                           const GALGAS_semanticExpressionAST & in_mRightExpression
+                                           COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @greaterOrEqualExpressionAST class                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_greaterOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
+//--- Constructor
+  public : GALGAS_greaterOrEqualExpressionAST (void) ;
+
+//---
+  public : inline const class cPtr_greaterOrEqualExpressionAST * ptr (void) const { return (const cPtr_greaterOrEqualExpressionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_greaterOrEqualExpressionAST (const cPtr_greaterOrEqualExpressionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_greaterOrEqualExpressionAST extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_greaterOrEqualExpressionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                            const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                            const class GALGAS_semanticExpressionAST & inOperand2
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_greaterOrEqualExpressionAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mLeftExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mOperatorLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mRightExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_greaterOrEqualExpressionAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_greaterOrEqualExpressionAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Pointer class for @greaterOrEqualExpressionAST class                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_greaterOrEqualExpressionAST : public cPtr_semanticExpressionAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mAttribute_mLeftExpression ;
+  public : GALGAS_semanticExpressionAST mAttribute_mRightExpression ;
+
+//--- Constructor
+  public : cPtr_greaterOrEqualExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                             const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                             const GALGAS_semanticExpressionAST & in_mRightExpression
+                                             COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;

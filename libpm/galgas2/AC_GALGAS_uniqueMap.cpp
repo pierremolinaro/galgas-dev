@@ -1495,7 +1495,7 @@ typeComparisonResult cSharedUniqueMapRoot::mapCompare (const cSharedUniqueMapRoo
   }else{
     capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
     capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
-    for (int32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
+    for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
       result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
     if (kOperandEqual == result) {
@@ -2017,7 +2017,7 @@ static void enterDescendingEnumeration (cUniqueMapNode * inNode,
 void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
                                                      const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
-  ioEnumerationArray.setCapacity ((int32_t) mNodeCount) ;
+  ioEnumerationArray.setCapacity (mNodeCount) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;

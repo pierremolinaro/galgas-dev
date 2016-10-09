@@ -307,24 +307,6 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   ASSOCIATED ELEMENT                                                                                                 *
-#----------------------------------------------------------------------------------------------------------------------*
-
-override method @sharedMapDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !["lstring" nowhere] !["lkey" nowhere] !@lstringlist {}
-  for () in mPropertyList do
-    structAttributeList += !mPropertyTypeName !mPropertyName !{}
-  end
-  ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
-    !structAttributeList
-    !""
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
 #   ENTER IN GRAPH                                                                                                     *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -640,12 +622,6 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !?setterMap
     !?instanceMethodMap
   )
-#--- Element type index
-  [@unifiedTypeMap-proxy makeProxy
-    !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
-    ?let @unifiedTypeMap-proxy mapElementTypeIndex
-  ]
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mMapTypeName
@@ -670,7 +646,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !mSearchMethodList
     !{}
     !false # Do not generate header in separate file
-    !mapElementTypeIndex # Type for enumerated element for "for" instruction
+    !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"sharedmap-" + [mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
@@ -757,9 +733,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Useful entities graph
   let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let proxyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
-  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !proxyTypeNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-element" !mMapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
@@ -1233,8 +1207,7 @@ override method @sharedMapTypeForGeneration appendDeclaration2
 override method @sharedMapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation
-{
+  !@string outImplementation {
   [mTypeProxy addHeaderFileName !?ioInclusionSet]
   var keySortedList =@keySortedList.emptySortedList{}
   for () in mMapAutomatonStateMap do

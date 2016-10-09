@@ -37,7 +37,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
- {
+{
   @unifiedTypeMap-proxy uintTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex]
   outEnumerationList = {}

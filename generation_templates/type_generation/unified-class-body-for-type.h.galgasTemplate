@@ -349,9 +349,8 @@ end
 %
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods ()) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                             const typeEnumerationOrder inOrder) const ; // À supprimer
-  protected : /* VIRTUAL_IN_DEBUG */ TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> enumerationArray (void) const ;
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
+                                                              const typeEnumerationOrder inOrder) const ;
 
 %end
 
@@ -373,26 +372,9 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 //   Enumerator declaration                                                                                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_%!TYPE_IDENTIFIER% {
-//--- Constructor
+class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
   public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_%!TYPE_IDENTIFIER% (void) ;
-
-//--- No copy
-  private : cEnumerator_%!TYPE_IDENTIFIER% (const cEnumerator_%!TYPE_IDENTIFIER% &) ;
-  private : cEnumerator_%!TYPE_IDENTIFIER% & operator = (const cEnumerator_%!TYPE_IDENTIFIER% &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : inline void gotoNextObject (void) { mIndex ++ ; }
-  public : inline void rewind (void) { mIndex = 0 ; }
-  public : inline int32_t index (void) const { return mIndex ; }
-  public : inline void gotoIndex (const int32_t inIndex) { mIndex = inIndex ; }
-  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ; // § à supprimer
 
 //--- Current element access\n%
   for () in ENUMERATION_DESCRIPTOR_LIST do
@@ -402,14 +384,9 @@ class cEnumerator_%!TYPE_IDENTIFIER% {
 %//--- Current element access\n%
 %  public : class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
+%} ;\n%
+end
 %
-//--- Private data members
-  private : capCollectionElementArray mEnumerationArrayEx ; // § à supprimer
-  private : TC_Array <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mEnumerationArray ;
-  private : int32_t mIndex ;
-  private : const typeEnumerationOrder mOrder ;
-} ;
-%end%
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;

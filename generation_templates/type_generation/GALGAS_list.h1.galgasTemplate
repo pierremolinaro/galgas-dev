@@ -4,28 +4,12 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list_new {
-  private : TC_Array <class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%> mArray ;
-
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid = false) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- Destructor
-  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
-
-//--- count
-  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
-
-//--- Readers
-  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
-
-//--- Description
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-
-//--- Object compare
-  public : typeComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%

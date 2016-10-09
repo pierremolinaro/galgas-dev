@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'cEnumerator_range' : galgas range enumerator                                                                      *
+//  cGenericAbstractEnumerator: base class for enumerating GALGAS enumerable objects                                   *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -20,46 +20,38 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef RANGE_ENUMERATOR_CLASS_DEFINED
-#define RANGE_ENUMERATOR_CLASS_DEFINED
+#ifndef AC_GALGAS_ENUMERATOR_CLASS_DEFINED
+#define AC_GALGAS_ENUMERATOR_CLASS_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "galgas2/cGenericAbstractEnumerator.h"
+#include "galgas2/capCollectionElementArray.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_range ;
-class GALGAS_uint ;
+class cGenericAbstractEnumerator {
+//--- Private data members
+  protected : capCollectionElementArray mEnumerationArray ;
+  private : uint32_t mIndex ;
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cEnumerator_range {
 //--- Constructor
-  public : cEnumerator_range (const GALGAS_range & inEnumeratedRange,
-                              const typeEnumerationOrder inOrder) ;
+  protected : cGenericAbstractEnumerator (void) ;
 
 //--- Virtual destructor
-  public : virtual ~ cEnumerator_range (void) ;
+  protected : virtual ~ cGenericAbstractEnumerator (void) ;
 
 //--- No copy
-  private : cEnumerator_range (const cEnumerator_range &) ;
-  private : cEnumerator_range & operator = (const cEnumerator_range &) ;
+  private : cGenericAbstractEnumerator (const cGenericAbstractEnumerator &) ;
+  private : cGenericAbstractEnumerator & operator = (const cGenericAbstractEnumerator &) ;
 
 //--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : void gotoNextObject (void) ;
-
-//--- Current element access
-  public : GALGAS_uint current (LOCATION_ARGS) const ;
-
-//---- Attributes
-  private : const bool mIsValid ;
-  private : const bool mAscending ;
-  private : const int64_t mStart ;
-  private : const int64_t mLength ;
-  private : int64_t mCurrent ;
+  public : inline bool hasCurrentObject (void) const { return mIndex < mEnumerationArray.count () ; }
+  public : inline bool hasNextObject (void) const { return (mIndex + 1) < mEnumerationArray.count () ; }
+  public : inline void gotoNextObject (void) { mIndex ++ ; }
+  public : inline void rewind (void) { mIndex = 0 ; }
+  public : inline uint32_t index (void) const { return mIndex ; }
+  public : inline void gotoIndex (const uint32_t inIndex) { mIndex = inIndex ; }
+  protected : const cCollectionElement * currentObjectPtr (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

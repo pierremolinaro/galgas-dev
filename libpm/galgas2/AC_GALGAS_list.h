@@ -161,29 +161,6 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//  A C _ G A L G A S _ l i s t                                                                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class AC_GALGAS_list_new : public AC_GALGAS_root {
-//--- Private Data member
-  private : bool mIsValid ;
-
-//--- Constructor
-  public : AC_GALGAS_list_new (const bool inIsValid) ;
-
-//--- Virtual destructor
-  public : virtual ~ AC_GALGAS_list_new (void) ;
-
-//--- isValid
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-
-//--- drop
-  public : virtual void drop (void) ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
 
 class cListMapElement : public cCollectionElement {
 //--- Attributes

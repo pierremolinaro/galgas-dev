@@ -15,19 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-#before {
-#  @timer t = .start
-#  @stringset s = {}
-#  @stringset s2 = {}
-#  for i in 0 ..< 10000 do
-#    s2 = s
-#    s += ![i string]
-#  end
-#  message "Durée : " + [t string] + "\n" 
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )

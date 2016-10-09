@@ -10,1949 +10,108 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                      Abstract extension method '@abstractInputParameter analyzeInputParameter'                      *
+//                         Class for element of '@castInstructionBranchListForGeneration' list                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static TC_UniqueArray <extensionMethodSignature_abstractInputParameter_analyzeInputParameter> gExtensionMethodTable_abstractInputParameter_analyzeInputParameter ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_analyzeInputParameter (const int32_t inClassIndex,
-                                                 extensionMethodSignature_abstractInputParameter_analyzeInputParameter inMethod) {
-  gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_abstractInputParameter_analyzeInputParameter (void) {
-  gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_abstractInputParameter_analyzeInputParameter (NULL,
-                                                                         freeExtensionMethod_abstractInputParameter_analyzeInputParameter) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_analyzeInputParameter (const cPtr_abstractInputParameter * inObject,
-                                                const GALGAS_analysisContext constin_inAnalysisContext,
-                                                const GALGAS_lexicalTypeEnum constin_inRequiredLexicalType,
-                                                const GALGAS_string constin_inLexicalAttributeName,
-                                                GALGAS_terminalCheckAssignementList & io_ioTerminalCheckAssignementList,
-                                                GALGAS_variableMap & io_ioVariableMap,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractInputParameter) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractInputParameter_analyzeInputParameter f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
-      f = gExtensionMethodTable_abstractInputParameter_analyzeInputParameter (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.count ()) {
-          f = gExtensionMethodTable_abstractInputParameter_analyzeInputParameter (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractInputParameter_analyzeInputParameter.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inAnalysisContext, constin_inRequiredLexicalType, constin_inLexicalAttributeName, io_ioTerminalCheckAssignementList, io_ioVariableMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//          Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT> gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_analyzeSDT (const int32_t inClassIndex,
-                                      extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT inMethod) {
-  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (void) {
-  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (NULL,
-                                                                                                 freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_analyzeSDT (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                     const GALGAS_analysisContext constin_inAnalysisContext,
-                                     const GALGAS_bool constin_inHasTranslateFeature,
-                                     GALGAS_variableMap & io_ioVariableMap,
-                                     C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
-      f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.count ()) {
-          f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inAnalysisContext, constin_inHasTranslateFeature, io_ioVariableMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//         Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode> gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_generateCode (const int32_t inClassIndex,
-                                        extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode inMethod) {
-  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (void) {
-  gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (NULL,
-                                                                                                   freeExtensionMethod_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_generateCode (const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
-                                       const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
-                                       const GALGAS_string constin_inAccessMethodName,
-                                       GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                       GALGAS_string & io_ioGeneratedCode,
-                                       C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
-      f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.count ()) {
-          f = gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inGenerateSyntaxDirectedTranslationString, constin_inAccessMethodName, io_ioUnusedVariableCppNameSet, io_ioGeneratedCode, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//       Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode> gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_generateCollectionElementCode (const int32_t inClassIndex,
-                                                         extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode inMethod) {
-  gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode (void) {
-  gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode (NULL,
-                                                                                                      freeExtensionMethod_abstractCollectionValueElementForGeneration_generateCollectionElementCode) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                        const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
-                                                        GALGAS_string & io_ioGeneratedCode,
-                                                        GALGAS_stringset & io_ioInclusionSet,
-                                                        GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                        GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                        const GALGAS_string constin_inCppTargetVar,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_abstractCollectionValueElementForGeneration) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode f = NULL ;
-    if (classIndex < gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
-      f = gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.count ()) {
-          f = gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_abstractCollectionValueElementForGeneration_generateCollectionElementCode.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inTargetType, io_ioGeneratedCode, io_ioInclusionSet, io_ioTemporaryVariableIndex, io_ioUnusedVariableCppNameSet, constin_inCppTargetVar, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Class for element of '@keySortedList' sorted list                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cSortedListElement_keySortedList : public cSortedListElement {
-  public : GALGAS_keySortedList_2D_element mObject ;
+class cCollectionElement_castInstructionBranchListForGeneration : public cCollectionElement {
+  public : GALGAS_castInstructionBranchListForGeneration_2D_element mObject ;
 
 //--- Constructor
-  public : cSortedListElement_keySortedList (const GALGAS_string & in_mKey,
-                                             const GALGAS_uint & in_mOrder
-                                             COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_castInstructionBranchListForGeneration (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                      const GALGAS_string & in_mCastedVarCppName,
+                                                                      const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cSortedListElement * copy (void) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-
-//--- Virtual method that comparing element for sorting
-  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cSortedListElement_keySortedList::cSortedListElement_keySortedList (const GALGAS_string & in_mKey,
-                                                                    const GALGAS_uint & in_mOrder
-                                                                    COMMA_LOCATION_ARGS) :
-cSortedListElement (THERE),
-mObject (in_mKey, in_mOrder) {
+cCollectionElement_castInstructionBranchListForGeneration::cCollectionElement_castInstructionBranchListForGeneration (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                                                                      const GALGAS_string & in_mCastedVarCppName,
+                                                                                                                      const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
+                                                                                                                      COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mTypeComparisonKind, in_mType, in_mCastedVarCppName, in_mInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cSortedListElement_keySortedList::isValid (void) const {
+bool cCollectionElement_castInstructionBranchListForGeneration::isValid (void) const {
   return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cSortedListElement * cSortedListElement_keySortedList::copy (void) {
-  cSortedListElement * result = NULL ;
-  macroMyNew (result, cSortedListElement_keySortedList (mObject.mAttribute_mKey, mObject.mAttribute_mOrder COMMA_HERE)) ;
+cCollectionElement * cCollectionElement_castInstructionBranchListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_castInstructionBranchListForGeneration (mObject.mAttribute_mTypeComparisonKind, mObject.mAttribute_mType, mObject.mAttribute_mCastedVarCppName, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSortedListElement_keySortedList::description (C_String & ioString, const int32_t inIndentation) const {
+void cCollectionElement_castInstructionBranchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mKey" ":" ;
-  mObject.mAttribute_mKey.description (ioString, inIndentation) ;
+  ioString << "mTypeComparisonKind" ":" ;
+  mObject.mAttribute_mTypeComparisonKind.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mOrder" ":" ;
-  mObject.mAttribute_mOrder.description (ioString, inIndentation) ;
+  ioString << "mType" ":" ;
+  mObject.mAttribute_mType.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mCastedVarCppName" ":" ;
+  mObject.mAttribute_mCastedVarCppName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructionList" ":" ;
+  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cSortedListElement_keySortedList::compare (const cCollectionElement * inOperand) const {
-  cSortedListElement_keySortedList * operand = (cSortedListElement_keySortedList *) inOperand ;
-  macroValidSharedObject (operand, cSortedListElement_keySortedList) ;
+typeComparisonResult cCollectionElement_castInstructionBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_castInstructionBranchListForGeneration * operand = (cCollectionElement_castInstructionBranchListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_castInstructionBranchListForGeneration) ;
   return mObject.objectCompare (operand->mObject) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_keySortedList::GALGAS_keySortedList (void) :
-AC_GALGAS_sortedlist () {
+GALGAS_castInstructionBranchListForGeneration::GALGAS_castInstructionBranchListForGeneration (void) :
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cSortedListElement_keySortedList::compareForSorting (const cSortedListElement * inOperand) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cSortedListElement_keySortedList * operand = (const cSortedListElement_keySortedList *) inOperand ;
-  macroValidSharedObject (operand, cSortedListElement_keySortedList) ;
-  if (result == kOperandEqual) {
-    result = mObject.mAttribute_mOrder.objectCompare (operand->mObject.mAttribute_mOrder) ;
+GALGAS_castInstructionBranchListForGeneration::GALGAS_castInstructionBranchListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_castInstructionBranchListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_keySortedList GALGAS_keySortedList::constructor_emptySortedList (LOCATION_ARGS) {
-  GALGAS_keySortedList result ;
-  result.createNewEmptySortedList (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_keySortedList GALGAS_keySortedList::constructor_sortedListWithValue (const GALGAS_string & inOperand0,
-                                                                            const GALGAS_uint & inOperand1
-                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_keySortedList result = constructor_emptySortedList (THERE) ;
-  cSortedListElement * p = NULL ;
-  macroMyNew (p, cSortedListElement_keySortedList (inOperand0, inOperand1 COMMA_THERE)) ;
-  capSortedListElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  result.addObject (attributes) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::addAssign_operation (const GALGAS_string & inOperand0,
-                                                const GALGAS_uint & inOperand1
-                                                COMMA_LOCATION_ARGS) {
-  if (isValid ()) {
-    cSortedListElement * p = NULL ;
-    macroMyNew (p, cSortedListElement_keySortedList (inOperand0, inOperand1 COMMA_THERE)) ;
-    capSortedListElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::plusAssign_operation (const GALGAS_keySortedList inOperand,
-                                                 C_Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid ()) {
-    appendSortedList (inOperand) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::setter_popSmallest (GALGAS_string & outOperand0,
-                                               GALGAS_uint & outOperand1,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_keySortedList * p = (cSortedListElement_keySortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::setter_popGreatest (GALGAS_string & outOperand0,
-                                               GALGAS_uint & outOperand1,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  capSortedListElement attributes ;
-  removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_keySortedList * p = (cSortedListElement_keySortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::method_smallest (GALGAS_string & outOperand0,
-                                            GALGAS_uint & outOperand1,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_keySortedList * p = (cSortedListElement_keySortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_keySortedList::method_greatest (GALGAS_string & outOperand0,
-                                            GALGAS_uint & outOperand1,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  capSortedListElement attributes ;
-  greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_keySortedList * p = (cSortedListElement_keySortedList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_keySortedList::cEnumerator_keySortedList (const GALGAS_keySortedList & inEnumeratedObject,
-                                                      const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_keySortedList::~ cEnumerator_keySortedList (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_keySortedList::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_keySortedList::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const cCollectionElement * cEnumerator_keySortedList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_keySortedList_2D_element cEnumerator_keySortedList::current (LOCATION_ARGS) const {
-  const cSortedListElement_keySortedList * p = (const cSortedListElement_keySortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-  return p->mObject ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string cEnumerator_keySortedList::current_mKey (LOCATION_ARGS) const {
-  const cSortedListElement_keySortedList * p = (const cSortedListElement_keySortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-  return p->mObject.mAttribute_mKey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint cEnumerator_keySortedList::current_mOrder (LOCATION_ARGS) const {
-  const cSortedListElement_keySortedList * p = (const cSortedListElement_keySortedList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-  return p->mObject.mAttribute_mOrder ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                                 @keySortedList type                                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_keySortedList ("keySortedList",
-                                      NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_keySortedList::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_keySortedList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_keySortedList::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_keySortedList (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_keySortedList GALGAS_keySortedList::extractObject (const GALGAS_object & inObject,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_keySortedList result ;
-  const GALGAS_keySortedList * p = (const GALGAS_keySortedList *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_keySortedList *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("keySortedList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            '@usefulEntitiesGraph' graph                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph::GALGAS_usefulEntitiesGraph (void) :
-AC_GALGAS_graph () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::constructor_emptyGraph (LOCATION_ARGS) {
-  GALGAS_usefulEntitiesGraph result ;
-  result.makeNewEmptyGraph (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::setter_addNode (GALGAS_lstring inKey,
-                                                 GALGAS_lstring inArgument_0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  GALGAS_lstringlist::makeAttributesFromObjects (attributes, inArgument_0 COMMA_THERE) ;
-  const char * kErrorMessage = "the '%K' entity is already declared at %L" ;
-  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_topologicalSort (GALGAS_lstringlist & outSortedList,
-                                                         GALGAS_lstringlist & outSortedKeyList,
-                                                         GALGAS_lstringlist & outUnsortedList,
-                                                         GALGAS_lstringlist & outUnsortedKeyList,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
-  internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_lstringlist (sortedList) ;
-  outUnsortedList = GALGAS_lstringlist (unsortedList) ;
-  GALGAS_lstringlist::detachSharedList (sortedList) ;
-  GALGAS_lstringlist::detachSharedList (unsortedList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_depthFirstTopologicalSort (GALGAS_lstringlist & outSortedList,
-                                                                   GALGAS_lstringlist & outSortedKeyList,
-                                                                   GALGAS_lstringlist & outUnsortedList,
-                                                                   GALGAS_lstringlist & outUnsortedKeyList,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
-  internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_lstringlist (sortedList) ;
-  outUnsortedList = GALGAS_lstringlist (unsortedList) ;
-  GALGAS_lstringlist::detachSharedList (sortedList) ;
-  GALGAS_lstringlist::detachSharedList (unsortedList) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::getter_reversedGraph (LOCATION_ARGS) const {
-  GALGAS_usefulEntitiesGraph result ;
-  result.reversedGraphFromGraph (*this COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_circularities (GALGAS_lstringlist & outInfoList,
-                                                       GALGAS_lstringlist & outKeyList
-                                                       COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
-  internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-  GALGAS_lstringlist::detachSharedList (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_nodesWithNoSuccessor (GALGAS_lstringlist & outInfoList,
-                                                              GALGAS_lstringlist & outKeyList
-                                                              COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
-  internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-  GALGAS_lstringlist::detachSharedList (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_nodesWithNoPredecessor (GALGAS_lstringlist & outInfoList,
-                                                                GALGAS_lstringlist & outKeyList
-                                                                COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
-  internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-  GALGAS_lstringlist::detachSharedList (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::getter_subgraphFromNodes (const GALGAS_lstringlist & inStartKeyList,
-                                                                                 const GALGAS_stringset & inKeysToExclude,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_usefulEntitiesGraph result ;
-  subGraph (result, inStartKeyList, inKeysToExclude, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_usefulEntitiesGraph::getter_accessibleNodesFrom (const GALGAS_lstringlist & inStartKeyList,
-                                                                           const GALGAS_stringset & inNodesToExclude,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  GALGAS_usefulEntitiesGraph resultingGraph ;
-  subGraph (resultingGraph,
-            inStartKeyList,
-            inNodesToExclude,
-            inCompiler
-            COMMA_THERE) ;
-  if (resultingGraph.isValid ()) {
-    result = resultingGraph.getter_lkeyList (THERE) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              @usefulEntitiesGraph type                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_usefulEntitiesGraph ("usefulEntitiesGraph",
-                                            NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_usefulEntitiesGraph::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_usefulEntitiesGraph ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_usefulEntitiesGraph::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_usefulEntitiesGraph (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_usefulEntitiesGraph result ;
-  const GALGAS_usefulEntitiesGraph * p = (const GALGAS_usefulEntitiesGraph *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_usefulEntitiesGraph *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("usefulEntitiesGraph", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (const GALGAS_lstring & inKey,
-                                                                            const GALGAS_location & in_mLocation
-                                                                            COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mAttribute_mLocation (in_mLocation) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cMapElement_uselessEntityLocationMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLocation.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement * cMapElement_uselessEntityLocationMap::copy (void) {
-  cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_uselessEntityLocationMap (mAttribute_lkey, mAttribute_mLocation COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cMapElement_uselessEntityLocationMap::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mLocation" ":" ;
-  mAttribute_mLocation.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cMapElement_uselessEntityLocationMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_uselessEntityLocationMap * operand = (cMapElement_uselessEntityLocationMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (operand->mAttribute_mLocation) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap::GALGAS_uselessEntityLocationMap (void) :
-AC_GALGAS_map () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap::GALGAS_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap & GALGAS_uselessEntityLocationMap::operator = (const GALGAS_uselessEntityLocationMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_uselessEntityLocationMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::constructor_mapWithMapToOverride (const GALGAS_uselessEntityLocationMap & inMapToOverride
-                                                                                                   COMMA_LOCATION_ARGS) {
-  GALGAS_uselessEntityLocationMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::getter_overriddenMap (C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_uselessEntityLocationMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uselessEntityLocationMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                           const GALGAS_location & inArgument0,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_uselessEntityLocationMap * p = NULL ;
-  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@uselessEntityLocationMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uselessEntityLocationMap::setter_insertKey (GALGAS_lstring inKey,
-                                                        GALGAS_location inArgument0,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  cMapElement_uselessEntityLocationMap * p = NULL ;
-  macroMyNew (p, cMapElement_uselessEntityLocationMap (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "--- %K INTERNAL ERROR ---" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_uselessEntityLocationMap::getter_mLocationForKey (const GALGAS_string & inKey,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) attributes ;
-  GALGAS_location result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-    result = p->mAttribute_mLocation ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uselessEntityLocationMap::setter_setMLocationForKey (GALGAS_location inAttributeValue,
-                                                                 GALGAS_string inKey,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-    p->mAttribute_mLocation = inAttributeValue ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_uselessEntityLocationMap * GALGAS_uselessEntityLocationMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                           const GALGAS_string & inKey
-                                                                                                           COMMA_LOCATION_ARGS) {
-  cMapElement_uselessEntityLocationMap * result = (cMapElement_uselessEntityLocationMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_uselessEntityLocationMap) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_uselessEntityLocationMap::cEnumerator_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap & inEnumeratedObject,
-                                                                            const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_uselessEntityLocationMap::~ cEnumerator_uselessEntityLocationMap (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_uselessEntityLocationMap::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_uselessEntityLocationMap::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const cCollectionElement * cEnumerator_uselessEntityLocationMap::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap_2D_element cEnumerator_uselessEntityLocationMap::current (LOCATION_ARGS) const {
-  const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return GALGAS_uselessEntityLocationMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLocation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_uselessEntityLocationMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cEnumerator_uselessEntityLocationMap::current_mLocation (LOCATION_ARGS) const {
-  const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return p->mAttribute_mLocation ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @uselessEntityLocationMap type                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_uselessEntityLocationMap ("uselessEntityLocationMap",
-                                                 NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_uselessEntityLocationMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_uselessEntityLocationMap ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_uselessEntityLocationMap::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_uselessEntityLocationMap (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uselessEntityLocationMap GALGAS_uselessEntityLocationMap::extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_uselessEntityLocationMap result ;
-  const GALGAS_uselessEntityLocationMap * p = (const GALGAS_uselessEntityLocationMap *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_uselessEntityLocationMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("uselessEntityLocationMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST::GALGAS_castInstructionBranchListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST::~ GALGAS_castInstructionBranchListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_castInstructionBranchListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_castInstructionBranchListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_range GALGAS_castInstructionBranchListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::description (C_String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString << "<list @castInstructionBranchListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                    const GALGAS_lstring & inOperand1,
-                                                                                                    const GALGAS_semanticInstructionListAST & inOperand2,
-                                                                                                    const GALGAS_dynamicTypeComparisonKind & inOperand3,
-                                                                                                    const GALGAS_location & inOperand4
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_castInstructionBranchListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_castInstructionBranchListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-/*
-void GALGAS_castInstructionBranchListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                     const GALGAS_lstring & in_mTypeName,
-                                                                     const GALGAS_lstring & in_mConstantVarName,
-                                                                     const GALGAS_semanticInstructionListAST & in_mInstructionList,
-                                                                     const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                     const GALGAS_location & in_mEndOfInstructions
-                                                                     COMMA_LOCATION_ARGS) {
-  cCollectionElement_castInstructionBranchListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_castInstructionBranchListAST (in_mTypeName,
-                                                                  in_mConstantVarName,
-                                                                  in_mInstructionList,
-                                                                  in_mTypeComparisonKind,
-                                                                  in_mEndOfInstructions COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-*/
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                               const GALGAS_lstring & inOperand1,
-                                                               const GALGAS_semanticInstructionListAST & inOperand2,
-                                                               const GALGAS_dynamicTypeComparisonKind & inOperand3,
-                                                               const GALGAS_location & inOperand4
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    const GALGAS_castInstructionBranchListAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-    mArray.addObject (element) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                const GALGAS_lstring inOperand1,
-                                                                const GALGAS_semanticInstructionListAST inOperand2,
-                                                                const GALGAS_dynamicTypeComparisonKind inOperand3,
-                                                                const GALGAS_location inOperand4,
-                                                                const GALGAS_uint inInsertionIndex,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    const GALGAS_castInstructionBranchListAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                GALGAS_lstring & outOperand1,
-                                                                GALGAS_semanticInstructionListAST & outOperand2,
-                                                                GALGAS_dynamicTypeComparisonKind & outOperand3,
-                                                                GALGAS_location & outOperand4,
-                                                                const GALGAS_uint inRemoveIndex,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-  outOperand4.drop () ;
-
-  if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_castInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeName ;
-      outOperand1 = element.mAttribute_mConstantVarName ;
-      outOperand2 = element.mAttribute_mInstructionList ;
-      outOperand3 = element.mAttribute_mTypeComparisonKind ;
-      outOperand4 = element.mAttribute_mEndOfInstructions ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                           GALGAS_lstring & outOperand1,
-                                                           GALGAS_semanticInstructionListAST & outOperand2,
-                                                           GALGAS_dynamicTypeComparisonKind & outOperand3,
-                                                           GALGAS_location & outOperand4,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-  outOperand4.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_castInstructionBranchListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeName ;
-      outOperand1 = element.mAttribute_mConstantVarName ;
-      outOperand2 = element.mAttribute_mInstructionList ;
-      outOperand3 = element.mAttribute_mTypeComparisonKind ;
-      outOperand4 = element.mAttribute_mEndOfInstructions ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::setter_popLast (GALGAS_lstring & outOperand0,
-                                                          GALGAS_lstring & outOperand1,
-                                                          GALGAS_semanticInstructionListAST & outOperand2,
-                                                          GALGAS_dynamicTypeComparisonKind & outOperand3,
-                                                          GALGAS_location & outOperand4,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-  outOperand4.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_castInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeName ;
-      outOperand1 = element.mAttribute_mConstantVarName ;
-      outOperand2 = element.mAttribute_mInstructionList ;
-      outOperand3 = element.mAttribute_mTypeComparisonKind ;
-      outOperand4 = element.mAttribute_mEndOfInstructions ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::method_first (GALGAS_lstring & outOperand0,
-                                                        GALGAS_lstring & outOperand1,
-                                                        GALGAS_semanticInstructionListAST & outOperand2,
-                                                        GALGAS_dynamicTypeComparisonKind & outOperand3,
-                                                        GALGAS_location & outOperand4,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-  outOperand4.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_castInstructionBranchListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeName ;
-      outOperand1 = element.mAttribute_mConstantVarName ;
-      outOperand2 = element.mAttribute_mInstructionList ;
-      outOperand3 = element.mAttribute_mTypeComparisonKind ;
-      outOperand4 = element.mAttribute_mEndOfInstructions ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::method_last (GALGAS_lstring & outOperand0,
-                                                       GALGAS_lstring & outOperand1,
-                                                       GALGAS_semanticInstructionListAST & outOperand2,
-                                                       GALGAS_dynamicTypeComparisonKind & outOperand3,
-                                                       GALGAS_location & outOperand4,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-  outOperand4.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_castInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeName ;
-      outOperand1 = element.mAttribute_mConstantVarName ;
-      outOperand2 = element.mAttribute_mInstructionList ;
-      outOperand3 = element.mAttribute_mTypeComparisonKind ;
-      outOperand4 = element.mAttribute_mEndOfInstructions ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::add_operation (const GALGAS_castInstructionBranchListAST & inOperand,
-                                                                                        C_Compiler * /* inCompiler */
-                                                                                        COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_castInstructionBranchListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_castInstructionBranchListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_castInstructionBranchListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListAST::plusAssign_operation (const GALGAS_castInstructionBranchListAST inOperand,
-                                                                C_Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_castInstructionBranchListAST::getter_mTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mTypeName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_castInstructionBranchListAST::getter_mConstantVarNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mConstantVarName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_castInstructionBranchListAST::getter_mInstructionListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                       C_Compiler * inCompiler
-                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mInstructionList ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dynamicTypeComparisonKind GALGAS_castInstructionBranchListAST::getter_mTypeComparisonKindAtIndex (const GALGAS_uint & inIndex,
-                                                                                                         C_Compiler * inCompiler
-                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_dynamicTypeComparisonKind result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mTypeComparisonKind ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_castInstructionBranchListAST::getter_mEndOfInstructionsAtIndex (const GALGAS_uint & inIndex,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEndOfInstructions ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_castInstructionBranchListAST::objectCompare (const GALGAS_castInstructionBranchListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_castInstructionBranchListAST::cEnumerator_castInstructionBranchListAST (const GALGAS_castInstructionBranchListAST & inEnumeratedObject,
-                                                                                    const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_castInstructionBranchListAST::~ cEnumerator_castInstructionBranchListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_castInstructionBranchListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_castInstructionBranchListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_castInstructionBranchListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST_2D_element cEnumerator_castInstructionBranchListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mTypeName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mConstantVarName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mConstantVarName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST cEnumerator_castInstructionBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_dynamicTypeComparisonKind cEnumerator_castInstructionBranchListAST::current_mTypeComparisonKind (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTypeComparisonKind ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cEnumerator_castInstructionBranchListAST::current_mEndOfInstructions (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEndOfInstructions ;
-}
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @castInstructionBranchListAST type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_castInstructionBranchListAST ("castInstructionBranchListAST",
-                                                     NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_castInstructionBranchListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_castInstructionBranchListAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_castInstructionBranchListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_castInstructionBranchListAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_castInstructionBranchListAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_castInstructionBranchListAST result ;
-  const GALGAS_castInstructionBranchListAST * p = (const GALGAS_castInstructionBranchListAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_castInstructionBranchListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("castInstructionBranchListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                                                                 *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_structuredCastInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCastExpression.objectCompare (p->mAttribute_mCastExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mCastInstructionBranchList.objectCompare (p->mAttribute_mCastInstructionBranchList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mElseInstructionList.objectCompare (p->mAttribute_mElseInstructionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfCastInstruction.objectCompare (p->mAttribute_mEndOfCastInstruction) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_structuredCastInstructionAST::objectCompare (const GALGAS_structuredCastInstructionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_structuredCastInstructionAST::GALGAS_structuredCastInstructionAST (void) :
-GALGAS_semanticInstructionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_structuredCastInstructionAST::GALGAS_structuredCastInstructionAST (const cPtr_structuredCastInstructionAST * inSourcePtr) :
-GALGAS_semanticInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_structuredCastInstructionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                          const GALGAS_semanticExpressionAST & inAttribute_mCastExpression,
-                                                                                          const GALGAS_castInstructionBranchListAST & inAttribute_mCastInstructionBranchList,
-                                                                                          const GALGAS_semanticInstructionListAST & inAttribute_mElseInstructionList,
-                                                                                          const GALGAS_location & inAttribute_mEndOfCastInstruction
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_structuredCastInstructionAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mCastExpression.isValid () && inAttribute_mCastInstructionBranchList.isValid () && inAttribute_mElseInstructionList.isValid () && inAttribute_mEndOfCastInstruction.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_structuredCastInstructionAST (inAttribute_mInstructionLocation, inAttribute_mCastExpression, inAttribute_mCastInstructionBranchList, inAttribute_mElseInstructionList, inAttribute_mEndOfCastInstruction COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::getter_mCastExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mCastExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_structuredCastInstructionAST::getter_mCastExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCastExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::getter_mCastInstructionBranchList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mCastInstructionBranchList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListAST cPtr_structuredCastInstructionAST::getter_mCastInstructionBranchList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCastInstructionBranchList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticInstructionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mElseInstructionList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST cPtr_structuredCastInstructionAST::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mElseInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_structuredCastInstructionAST::getter_mEndOfCastInstruction (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mEndOfCastInstruction ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_structuredCastInstructionAST::getter_mEndOfCastInstruction (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfCastInstruction ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                Pointer class for @structuredCastInstructionAST class                                *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_structuredCastInstructionAST::cPtr_structuredCastInstructionAST (const GALGAS_location & in_mInstructionLocation,
-                                                                      const GALGAS_semanticExpressionAST & in_mCastExpression,
-                                                                      const GALGAS_castInstructionBranchListAST & in_mCastInstructionBranchList,
-                                                                      const GALGAS_semanticInstructionListAST & in_mElseInstructionList,
-                                                                      const GALGAS_location & in_mEndOfCastInstruction
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mAttribute_mCastExpression (in_mCastExpression),
-mAttribute_mCastInstructionBranchList (in_mCastInstructionBranchList),
-mAttribute_mElseInstructionList (in_mElseInstructionList),
-mAttribute_mEndOfCastInstruction (in_mEndOfCastInstruction) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_structuredCastInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_structuredCastInstructionAST ;
-}
-
-void cPtr_structuredCastInstructionAST::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "[@structuredCastInstructionAST:" ;
-  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCastExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mCastInstructionBranchList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mElseInstructionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfCastInstruction.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_structuredCastInstructionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_structuredCastInstructionAST (mAttribute_mInstructionLocation, mAttribute_mCastExpression, mAttribute_mCastInstructionBranchList, mAttribute_mElseInstructionList, mAttribute_mEndOfCastInstruction COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         @structuredCastInstructionAST type                                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_structuredCastInstructionAST ("structuredCastInstructionAST",
-                                                     & kTypeDescriptor_GALGAS_semanticInstructionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_structuredCastInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_structuredCastInstructionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_structuredCastInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_structuredCastInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_structuredCastInstructionAST GALGAS_structuredCastInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_structuredCastInstructionAST result ;
-  const GALGAS_structuredCastInstructionAST * p = (const GALGAS_structuredCastInstructionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_structuredCastInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("structuredCastInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListForGeneration::GALGAS_castInstructionBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListForGeneration::~ GALGAS_castInstructionBranchListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_castInstructionBranchListForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_castInstructionBranchListForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_range GALGAS_castInstructionBranchListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_castInstructionBranchListForGeneration::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<list @castInstructionBranchListForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
-  }
-  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1964,14 +123,16 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_castInstructionBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_castInstructionBranchListForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
@@ -1986,17 +147,21 @@ void GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (c
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_castInstructionBranchListForGeneration::addAssign_operation (const GALGAS_dynamicTypeComparisonKind & inOperand0,
                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                          const GALGAS_string & inOperand2,
                                                                          const GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_castInstructionBranchListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_castInstructionBranchListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -2010,15 +175,12 @@ void GALGAS_castInstructionBranchListForGeneration::setter_insertAtIndex (const 
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_castInstructionBranchListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_castInstructionBranchListForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -2030,24 +192,22 @@ void GALGAS_castInstructionBranchListForGeneration::setter_removeAtIndex (GALGAS
                                                                           GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                           const GALGAS_uint inRemoveIndex,
                                                                           C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
+                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_castInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeComparisonKind ;
-      outOperand1 = element.mAttribute_mType ;
-      outOperand2 = element.mAttribute_mCastedVarCppName ;
-      outOperand3 = element.mAttribute_mInstructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mTypeComparisonKind ;
+      outOperand1 = p->mObject.mAttribute_mType ;
+      outOperand2 = p->mObject.mAttribute_mCastedVarCppName ;
+      outOperand3 = p->mObject.mAttribute_mInstructionList ;
     }
   }
 }
@@ -2059,23 +219,21 @@ void GALGAS_castInstructionBranchListForGeneration::setter_popFirst (GALGAS_dyna
                                                                      GALGAS_string & outOperand2,
                                                                      GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                      C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_castInstructionBranchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeComparisonKind ;
-      outOperand1 = element.mAttribute_mType ;
-      outOperand2 = element.mAttribute_mCastedVarCppName ;
-      outOperand3 = element.mAttribute_mInstructionList ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mTypeComparisonKind ;
+    outOperand1 = p->mObject.mAttribute_mType ;
+    outOperand2 = p->mObject.mAttribute_mCastedVarCppName ;
+    outOperand3 = p->mObject.mAttribute_mInstructionList ;
   }
 }
 
@@ -2086,24 +244,21 @@ void GALGAS_castInstructionBranchListForGeneration::setter_popLast (GALGAS_dynam
                                                                     GALGAS_string & outOperand2,
                                                                     GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                     C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_castInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeComparisonKind ;
-      outOperand1 = element.mAttribute_mType ;
-      outOperand2 = element.mAttribute_mCastedVarCppName ;
-      outOperand3 = element.mAttribute_mInstructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mTypeComparisonKind ;
+    outOperand1 = p->mObject.mAttribute_mType ;
+    outOperand2 = p->mObject.mAttribute_mCastedVarCppName ;
+    outOperand3 = p->mObject.mAttribute_mInstructionList ;
   }
 }
 
@@ -2115,22 +270,20 @@ void GALGAS_castInstructionBranchListForGeneration::method_first (GALGAS_dynamic
                                                                   GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_castInstructionBranchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeComparisonKind ;
-      outOperand1 = element.mAttribute_mType ;
-      outOperand2 = element.mAttribute_mCastedVarCppName ;
-      outOperand3 = element.mAttribute_mInstructionList ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mTypeComparisonKind ;
+    outOperand1 = p->mObject.mAttribute_mType ;
+    outOperand2 = p->mObject.mAttribute_mCastedVarCppName ;
+    outOperand3 = p->mObject.mAttribute_mInstructionList ;
   }
 }
 
@@ -2142,23 +295,20 @@ void GALGAS_castInstructionBranchListForGeneration::method_last (GALGAS_dynamicT
                                                                  GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_castInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mTypeComparisonKind ;
-      outOperand1 = element.mAttribute_mType ;
-      outOperand2 = element.mAttribute_mCastedVarCppName ;
-      outOperand3 = element.mAttribute_mInstructionList ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mTypeComparisonKind ;
+    outOperand1 = p->mObject.mAttribute_mType ;
+    outOperand2 = p->mObject.mAttribute_mCastedVarCppName ;
+    outOperand3 = p->mObject.mAttribute_mInstructionList ;
   }
 }
 
@@ -2166,14 +316,11 @@ void GALGAS_castInstructionBranchListForGeneration::method_last (GALGAS_dynamicT
 
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::add_operation (const GALGAS_castInstructionBranchListForGeneration & inOperand,
                                                                                                             C_Compiler * /* inCompiler */
-                                                                                                            COMMA_LOCATION_ARGS) const {
+                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_castInstructionBranchListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -2183,22 +330,8 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_castInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_castInstructionBranchListForGeneration result = GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -2207,21 +340,8 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_castInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_castInstructionBranchListForGeneration result = GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -2230,21 +350,8 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_castInstructionBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_castInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_castInstructionBranchListForGeneration result = GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -2252,13 +359,8 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
 
 void GALGAS_castInstructionBranchListForGeneration::plusAssign_operation (const GALGAS_castInstructionBranchListForGeneration inOperand,
                                                                           C_Compiler * /* inCompiler */
-                                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2266,16 +368,12 @@ void GALGAS_castInstructionBranchListForGeneration::plusAssign_operation (const 
 GALGAS_dynamicTypeComparisonKind GALGAS_castInstructionBranchListForGeneration::getter_mTypeComparisonKindAtIndex (const GALGAS_uint & inIndex,
                                                                                                                    C_Compiler * inCompiler
                                                                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_dynamicTypeComparisonKind result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mTypeComparisonKind ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mTypeComparisonKind ;
   }
   return result ;
 }
@@ -2285,16 +383,12 @@ GALGAS_dynamicTypeComparisonKind GALGAS_castInstructionBranchListForGeneration::
 GALGAS_unifiedTypeMap_2D_proxy GALGAS_castInstructionBranchListForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                                    C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_unifiedTypeMap_2D_proxy result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mType ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mType ;
   }
   return result ;
 }
@@ -2304,16 +398,12 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_castInstructionBranchListForGeneration::ge
 GALGAS_string GALGAS_castInstructionBranchListForGeneration::getter_mCastedVarCppNameAtIndex (const GALGAS_uint & inIndex,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mCastedVarCppName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mCastedVarCppName ;
   }
   return result ;
 }
@@ -2323,124 +413,65 @@ GALGAS_string GALGAS_castInstructionBranchListForGeneration::getter_mCastedVarCp
 GALGAS_semanticInstructionListForGeneration GALGAS_castInstructionBranchListForGeneration::getter_mInstructionListAtIndex (const GALGAS_uint & inIndex,
                                                                                                                            C_Compiler * inCompiler
                                                                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_castInstructionBranchListForGeneration * p = (cCollectionElement_castInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_semanticInstructionListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mInstructionList ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mInstructionList ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_castInstructionBranchListForGeneration::objectCompare (const GALGAS_castInstructionBranchListForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_castInstructionBranchListForGeneration::cEnumerator_castInstructionBranchListForGeneration (const GALGAS_castInstructionBranchListForGeneration & inEnumeratedObject,
                                                                                                         const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_castInstructionBranchListForGeneration::~ cEnumerator_castInstructionBranchListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_castInstructionBranchListForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_castInstructionBranchListForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_castInstructionBranchListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_castInstructionBranchListForGeneration_2D_element cEnumerator_castInstructionBranchListForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_dynamicTypeComparisonKind cEnumerator_castInstructionBranchListForGeneration::current_mTypeComparisonKind (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTypeComparisonKind ;
+  const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mTypeComparisonKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_castInstructionBranchListForGeneration::current_mType (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mType ;
+  const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_castInstructionBranchListForGeneration::current_mCastedVarCppName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mCastedVarCppName ;
+  const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mCastedVarCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration cEnumerator_castInstructionBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mInstructionList ;
+  const cCollectionElement_castInstructionBranchListForGeneration * p = (const cCollectionElement_castInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_castInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mInstructionList ;
 }
 
 
@@ -2982,60 +1013,91 @@ GALGAS_fixitElementAST GALGAS_fixitElementAST::extractObject (const GALGAS_objec
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Class for element of '@fixitListAST' list                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListAST::GALGAS_fixitListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_fixitListAST : public cCollectionElement {
+  public : GALGAS_fixitListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_fixitListAST (const GALGAS_fixitElementAST & in_mElement
+                                            COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_fixitListAST::cCollectionElement_fixitListAST (const GALGAS_fixitElementAST & in_mElement
+                                                                  COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mElement) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListAST::~ GALGAS_fixitListAST (void) {
+bool cCollectionElement_fixitListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListAST GALGAS_fixitListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_fixitListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_fixitListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_fixitListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_fixitListAST (mObject.mAttribute_mElement COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_fixitListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_fixitListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mElement" ":" ;
+  mObject.mAttribute_mElement.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_fixitListAST::description (C_String & ioString,
-                                       const int32_t inIndentation) const {
-  ioString << "<list @fixitListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_fixitListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_fixitListAST * operand = (cCollectionElement_fixitListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_fixitListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST::GALGAS_fixitListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST::GALGAS_fixitListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListAST GALGAS_fixitListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_fixitListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3044,14 +1106,16 @@ GALGAS_fixitListAST GALGAS_fixitListAST::constructor_listWithValue (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_fixitListAST result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_fixitListAST (true) ;
-    result.addAssign_operation (inOperand0 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_fixitListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_fixitListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                      const GALGAS_fixitElementAST & in_mElement
                                                      COMMA_LOCATION_ARGS) {
@@ -3060,14 +1124,18 @@ void GALGAS_fixitListAST::makeAttributesFromObjects (capCollectionElement & outA
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_fixitListAST::addAssign_operation (const GALGAS_fixitElementAST & inOperand0
-                                               COMMA_UNUSED_LOCATION_ARGS) {
+                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid ()) {
-    const GALGAS_fixitListAST_2D_element element (inOperand0) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_fixitListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -3078,15 +1146,12 @@ void GALGAS_fixitListAST::setter_insertAtIndex (const GALGAS_fixitElementAST inO
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
-    const GALGAS_fixitListAST_2D_element element (inOperand0) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_fixitListAST (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -3095,18 +1160,16 @@ void GALGAS_fixitListAST::setter_insertAtIndex (const GALGAS_fixitElementAST inO
 void GALGAS_fixitListAST::setter_removeAtIndex (GALGAS_fixitElementAST & outOperand0,
                                                 const GALGAS_uint inRemoveIndex,
                                                 C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
+                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_fixitListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+      outOperand0 = p->mObject.mAttribute_mElement ;
     }
   }
 }
@@ -3115,17 +1178,15 @@ void GALGAS_fixitListAST::setter_removeAtIndex (GALGAS_fixitElementAST & outOper
 
 void GALGAS_fixitListAST::setter_popFirst (GALGAS_fixitElementAST & outOperand0,
                                            C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_fixitListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3133,18 +1194,15 @@ void GALGAS_fixitListAST::setter_popFirst (GALGAS_fixitElementAST & outOperand0,
 
 void GALGAS_fixitListAST::setter_popLast (GALGAS_fixitElementAST & outOperand0,
                                           C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_fixitListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3153,16 +1211,14 @@ void GALGAS_fixitListAST::setter_popLast (GALGAS_fixitElementAST & outOperand0,
 void GALGAS_fixitListAST::method_first (GALGAS_fixitElementAST & outOperand0,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_fixitListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3171,17 +1227,14 @@ void GALGAS_fixitListAST::method_first (GALGAS_fixitElementAST & outOperand0,
 void GALGAS_fixitListAST::method_last (GALGAS_fixitElementAST & outOperand0,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_fixitListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3189,14 +1242,11 @@ void GALGAS_fixitListAST::method_last (GALGAS_fixitElementAST & outOperand0,
 
 GALGAS_fixitListAST GALGAS_fixitListAST::add_operation (const GALGAS_fixitListAST & inOperand,
                                                         C_Compiler * /* inCompiler */
-                                                        COMMA_LOCATION_ARGS) const {
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -3206,22 +1256,8 @@ GALGAS_fixitListAST GALGAS_fixitListAST::add_operation (const GALGAS_fixitListAS
 GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_fixitListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListAST result = GALGAS_fixitListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -3230,21 +1266,8 @@ GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListWithRange (const GALGAS_r
 GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_fixitListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListAST result = GALGAS_fixitListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -3253,21 +1276,8 @@ GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListFromIndex (const GALGAS_u
 GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_fixitListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListAST result = GALGAS_fixitListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -3275,13 +1285,8 @@ GALGAS_fixitListAST GALGAS_fixitListAST::getter_subListToIndex (const GALGAS_uin
 
 void GALGAS_fixitListAST::plusAssign_operation (const GALGAS_fixitListAST inOperand,
                                                 C_Compiler * /* inCompiler */
-                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3289,94 +1294,41 @@ void GALGAS_fixitListAST::plusAssign_operation (const GALGAS_fixitListAST inOper
 GALGAS_fixitElementAST GALGAS_fixitListAST::getter_mElementAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListAST * p = (cCollectionElement_fixitListAST *) attributes.ptr () ;
   GALGAS_fixitElementAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mElement ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+    result = p->mObject.mAttribute_mElement ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_fixitListAST::objectCompare (const GALGAS_fixitListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_fixitListAST::cEnumerator_fixitListAST (const GALGAS_fixitListAST & inEnumeratedObject,
                                                     const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_fixitListAST::~ cEnumerator_fixitListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_fixitListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_fixitListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_fixitListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitListAST_2D_element cEnumerator_fixitListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_fixitListAST * p = (const cCollectionElement_fixitListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitElementAST cEnumerator_fixitListAST::current_mElement (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mElement ;
+  const cCollectionElement_fixitListAST * p = (const cCollectionElement_fixitListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_fixitListAST) ;
+  return p->mObject.mAttribute_mElement ;
 }
 
 
@@ -3708,60 +1660,91 @@ void extensionMethod_enterFixItListInSemanticContext (const GALGAS_fixitListAST 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Class for element of '@fixitListForGeneration' list                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListForGeneration::GALGAS_fixitListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_fixitListForGeneration : public cCollectionElement {
+  public : GALGAS_fixitListForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_fixitListForGeneration (const GALGAS_fixitElementForGeneration & in_mElement
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_fixitListForGeneration::cCollectionElement_fixitListForGeneration (const GALGAS_fixitElementForGeneration & in_mElement
+                                                                                      COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mElement) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListForGeneration::~ GALGAS_fixitListForGeneration (void) {
+bool cCollectionElement_fixitListForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_fixitListForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_fixitListForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_fixitListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_fixitListForGeneration (mObject.mAttribute_mElement COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_fixitListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_fixitListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mElement" ":" ;
+  mObject.mAttribute_mElement.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_fixitListForGeneration::description (C_String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString << "<list @fixitListForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_fixitListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_fixitListForGeneration * operand = (cCollectionElement_fixitListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_fixitListForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration::GALGAS_fixitListForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration::GALGAS_fixitListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_fixitListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3770,14 +1753,16 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_fixitListForGeneration result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_fixitListForGeneration (true) ;
-    result.addAssign_operation (inOperand0 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_fixitListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_fixitListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                const GALGAS_fixitElementForGeneration & in_mElement
                                                                COMMA_LOCATION_ARGS) {
@@ -3786,14 +1771,18 @@ void GALGAS_fixitListForGeneration::makeAttributesFromObjects (capCollectionElem
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_fixitListForGeneration::addAssign_operation (const GALGAS_fixitElementForGeneration & inOperand0
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid ()) {
-    const GALGAS_fixitListForGeneration_2D_element element (inOperand0) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_fixitListForGeneration (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -3804,15 +1793,12 @@ void GALGAS_fixitListForGeneration::setter_insertAtIndex (const GALGAS_fixitElem
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
-    const GALGAS_fixitListForGeneration_2D_element element (inOperand0) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_fixitListForGeneration (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -3821,18 +1807,16 @@ void GALGAS_fixitListForGeneration::setter_insertAtIndex (const GALGAS_fixitElem
 void GALGAS_fixitListForGeneration::setter_removeAtIndex (GALGAS_fixitElementForGeneration & outOperand0,
                                                           const GALGAS_uint inRemoveIndex,
                                                           C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_fixitListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mElement ;
     }
   }
 }
@@ -3841,17 +1825,15 @@ void GALGAS_fixitListForGeneration::setter_removeAtIndex (GALGAS_fixitElementFor
 
 void GALGAS_fixitListForGeneration::setter_popFirst (GALGAS_fixitElementForGeneration & outOperand0,
                                                      C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_fixitListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3859,18 +1841,15 @@ void GALGAS_fixitListForGeneration::setter_popFirst (GALGAS_fixitElementForGener
 
 void GALGAS_fixitListForGeneration::setter_popLast (GALGAS_fixitElementForGeneration & outOperand0,
                                                     C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_fixitListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3879,16 +1858,14 @@ void GALGAS_fixitListForGeneration::setter_popLast (GALGAS_fixitElementForGenera
 void GALGAS_fixitListForGeneration::method_first (GALGAS_fixitElementForGeneration & outOperand0,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_fixitListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3897,17 +1874,14 @@ void GALGAS_fixitListForGeneration::method_first (GALGAS_fixitElementForGenerati
 void GALGAS_fixitListForGeneration::method_last (GALGAS_fixitElementForGeneration & outOperand0,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_fixitListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mElement ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mElement ;
   }
 }
 
@@ -3915,14 +1889,11 @@ void GALGAS_fixitListForGeneration::method_last (GALGAS_fixitElementForGeneratio
 
 GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::add_operation (const GALGAS_fixitListForGeneration & inOperand,
                                                                             C_Compiler * /* inCompiler */
-                                                                            COMMA_LOCATION_ARGS) const {
+                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_fixitListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -3932,22 +1903,8 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::add_operation (cons
 GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_fixitListForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListForGeneration result = GALGAS_fixitListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -3956,21 +1913,8 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListWithR
 GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_fixitListForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListForGeneration result = GALGAS_fixitListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -3979,21 +1923,8 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListFromI
 GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_fixitListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_fixitListForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_fixitListForGeneration result = GALGAS_fixitListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -4001,13 +1932,8 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::getter_subListToInd
 
 void GALGAS_fixitListForGeneration::plusAssign_operation (const GALGAS_fixitListForGeneration inOperand,
                                                           C_Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4015,94 +1941,41 @@ void GALGAS_fixitListForGeneration::plusAssign_operation (const GALGAS_fixitList
 GALGAS_fixitElementForGeneration GALGAS_fixitListForGeneration::getter_mElementAtIndex (const GALGAS_uint & inIndex,
                                                                                         C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_fixitListForGeneration * p = (cCollectionElement_fixitListForGeneration *) attributes.ptr () ;
   GALGAS_fixitElementForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mElement ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+    result = p->mObject.mAttribute_mElement ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_fixitListForGeneration::objectCompare (const GALGAS_fixitListForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_fixitListForGeneration::cEnumerator_fixitListForGeneration (const GALGAS_fixitListForGeneration & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_fixitListForGeneration::~ cEnumerator_fixitListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_fixitListForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_fixitListForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_fixitListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitListForGeneration_2D_element cEnumerator_fixitListForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_fixitListForGeneration * p = (const cCollectionElement_fixitListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitElementForGeneration cEnumerator_fixitListForGeneration::current_mElement (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mElement ;
+  const cCollectionElement_fixitListForGeneration * p = (const cCollectionElement_fixitListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_fixitListForGeneration) ;
+  return p->mObject.mAttribute_mElement ;
 }
 
 
@@ -4215,60 +2088,97 @@ void extensionMethod_generateFixIt (const GALGAS_fixitListForGeneration inObject
 
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Class for element of '@forInstructionEnumeratedObjectElementListAST' list                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectElementListAST::GALGAS_forInstructionEnumeratedObjectElementListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_forInstructionEnumeratedObjectElementListAST : public cCollectionElement {
+  public : GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                            const GALGAS_lstring & in_mOptionalConstantName
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_forInstructionEnumeratedObjectElementListAST::cCollectionElement_forInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                                                                  const GALGAS_lstring & in_mOptionalConstantName
+                                                                                                                                  COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mOptionalTypeName, in_mOptionalConstantName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectElementListAST::~ GALGAS_forInstructionEnumeratedObjectElementListAST (void) {
+bool cCollectionElement_forInstructionEnumeratedObjectElementListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_forInstructionEnumeratedObjectElementListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_forInstructionEnumeratedObjectElementListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_forInstructionEnumeratedObjectElementListAST (mObject.mAttribute_mOptionalTypeName, mObject.mAttribute_mOptionalConstantName COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_forInstructionEnumeratedObjectElementListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_forInstructionEnumeratedObjectElementListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionalTypeName" ":" ;
+  mObject.mAttribute_mOptionalTypeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionalConstantName" ":" ;
+  mObject.mAttribute_mOptionalConstantName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_forInstructionEnumeratedObjectElementListAST::description (C_String & ioString,
-                                                                       const int32_t inIndentation) const {
-  ioString << "<list @forInstructionEnumeratedObjectElementListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectElementListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * operand = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectElementListAST::GALGAS_forInstructionEnumeratedObjectElementListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectElementListAST::GALGAS_forInstructionEnumeratedObjectElementListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_forInstructionEnumeratedObjectElementListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4278,14 +2188,16 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectElementListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                      const GALGAS_lstring & in_mOptionalTypeName,
                                                                                      const GALGAS_lstring & in_mOptionalConstantName
@@ -4296,15 +2208,19 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObje
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                                                const GALGAS_lstring & inOperand1
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+                                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element (inOperand0, inOperand1) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -4316,15 +2232,12 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_insertAtIndex (
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element (inOperand0, inOperand1) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -4334,20 +2247,18 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_removeAtIndex (
                                                                                 GALGAS_lstring & outOperand1,
                                                                                 const GALGAS_uint inRemoveIndex,
                                                                                 C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
+                                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mOptionalTypeName ;
-      outOperand1 = element.mAttribute_mOptionalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+      outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+      outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
     }
   }
 }
@@ -4357,19 +2268,17 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_removeAtIndex (
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                                            GALGAS_lstring & outOperand1,
                                                                            C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mOptionalTypeName ;
-      outOperand1 = element.mAttribute_mOptionalConstantName ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -4378,20 +2287,17 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popFirst (GALGA
 void GALGAS_forInstructionEnumeratedObjectElementListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                                           GALGAS_lstring & outOperand1,
                                                                           C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mOptionalTypeName ;
-      outOperand1 = element.mAttribute_mOptionalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -4401,18 +2307,16 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::method_first (GALGAS_l
                                                                         GALGAS_lstring & outOperand1,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mOptionalTypeName ;
-      outOperand1 = element.mAttribute_mOptionalConstantName ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -4422,19 +2326,16 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::method_last (GALGAS_ls
                                                                        GALGAS_lstring & outOperand1,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mOptionalTypeName ;
-      outOperand1 = element.mAttribute_mOptionalConstantName ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (cCollectionElement_forInstructionEnumeratedObjectElementListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -4442,14 +2343,11 @@ void GALGAS_forInstructionEnumeratedObjectElementListAST::method_last (GALGAS_ls
 
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::add_operation (const GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand,
                                                                                                                         C_Compiler * /* inCompiler */
-                                                                                                                        COMMA_LOCATION_ARGS) const {
+                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_forInstructionEnumeratedObjectElementListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -4459,22 +2357,8 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                                   C_Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectElementListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectElementListAST result = GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -4483,21 +2367,8 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                                   C_Compiler * inCompiler
                                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectElementListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectElementListAST result = GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -4506,21 +2377,8 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                                 C_Compiler * inCompiler
                                                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectElementListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectElementListAST result = GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -4528,99 +2386,43 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
 
 void GALGAS_forInstructionEnumeratedObjectElementListAST::plusAssign_operation (const GALGAS_forInstructionEnumeratedObjectElementListAST inOperand,
                                                                                 C_Compiler * /* inCompiler */
-                                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_forInstructionEnumeratedObjectElementListAST::objectCompare (const GALGAS_forInstructionEnumeratedObjectElementListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_forInstructionEnumeratedObjectElementListAST::cEnumerator_forInstructionEnumeratedObjectElementListAST (const GALGAS_forInstructionEnumeratedObjectElementListAST & inEnumeratedObject,
                                                                                                                     const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_forInstructionEnumeratedObjectElementListAST::~ cEnumerator_forInstructionEnumeratedObjectElementListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectElementListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectElementListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_forInstructionEnumeratedObjectElementListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element cEnumerator_forInstructionEnumeratedObjectElementListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_forInstructionEnumeratedObjectElementListAST::current_mOptionalTypeName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mOptionalTypeName ;
+  const cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+  return p->mObject.mAttribute_mOptionalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_forInstructionEnumeratedObjectElementListAST::current_mOptionalConstantName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mOptionalConstantName ;
+  const cCollectionElement_forInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectElementListAST) ;
+  return p->mObject.mAttribute_mOptionalConstantName ;
 }
 
 
@@ -4985,60 +2787,97 @@ GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInE
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Class for element of '@forInstructionEnumeratedObjectListAST' list                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListAST::GALGAS_forInstructionEnumeratedObjectListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_forInstructionEnumeratedObjectListAST : public cCollectionElement {
+  public : GALGAS_forInstructionEnumeratedObjectListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_forInstructionEnumeratedObjectListAST (const GALGAS_bool & in_mAscending,
+                                                                     const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_forInstructionEnumeratedObjectListAST::cCollectionElement_forInstructionEnumeratedObjectListAST (const GALGAS_bool & in_mAscending,
+                                                                                                                    const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
+                                                                                                                    COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mAscending, in_mEnumeratedCollection) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListAST::~ GALGAS_forInstructionEnumeratedObjectListAST (void) {
+bool cCollectionElement_forInstructionEnumeratedObjectListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_forInstructionEnumeratedObjectListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_forInstructionEnumeratedObjectListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_forInstructionEnumeratedObjectListAST (mObject.mAttribute_mAscending, mObject.mAttribute_mEnumeratedCollection COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_forInstructionEnumeratedObjectListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_forInstructionEnumeratedObjectListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAscending" ":" ;
+  mObject.mAttribute_mAscending.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEnumeratedCollection" ":" ;
+  mObject.mAttribute_mEnumeratedCollection.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_forInstructionEnumeratedObjectListAST::description (C_String & ioString,
-                                                                const int32_t inIndentation) const {
-  ioString << "<list @forInstructionEnumeratedObjectListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_forInstructionEnumeratedObjectListAST * operand = (cCollectionElement_forInstructionEnumeratedObjectListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListAST::GALGAS_forInstructionEnumeratedObjectListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListAST::GALGAS_forInstructionEnumeratedObjectListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_forInstructionEnumeratedObjectListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5048,14 +2887,16 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                               const GALGAS_bool & in_mAscending,
                                                                               const GALGAS_abstractEnumeratedCollectionAST & in_mEnumeratedCollection
@@ -5066,15 +2907,19 @@ void GALGAS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (ca
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_forInstructionEnumeratedObjectListAST::addAssign_operation (const GALGAS_bool & inOperand0,
                                                                         const GALGAS_abstractEnumeratedCollectionAST & inOperand1
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+                                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element (inOperand0, inOperand1) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -5086,15 +2931,12 @@ void GALGAS_forInstructionEnumeratedObjectListAST::setter_insertAtIndex (const G
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element (inOperand0, inOperand1) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -5104,20 +2946,18 @@ void GALGAS_forInstructionEnumeratedObjectListAST::setter_removeAtIndex (GALGAS_
                                                                          GALGAS_abstractEnumeratedCollectionAST & outOperand1,
                                                                          const GALGAS_uint inRemoveIndex,
                                                                          C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
+                                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mAscending ;
-      outOperand1 = element.mAttribute_mEnumeratedCollection ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+      outOperand0 = p->mObject.mAttribute_mAscending ;
+      outOperand1 = p->mObject.mAttribute_mEnumeratedCollection ;
     }
   }
 }
@@ -5127,19 +2967,17 @@ void GALGAS_forInstructionEnumeratedObjectListAST::setter_removeAtIndex (GALGAS_
 void GALGAS_forInstructionEnumeratedObjectListAST::setter_popFirst (GALGAS_bool & outOperand0,
                                                                     GALGAS_abstractEnumeratedCollectionAST & outOperand1,
                                                                     C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mAscending ;
-      outOperand1 = element.mAttribute_mEnumeratedCollection ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAscending ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedCollection ;
   }
 }
 
@@ -5148,20 +2986,17 @@ void GALGAS_forInstructionEnumeratedObjectListAST::setter_popFirst (GALGAS_bool 
 void GALGAS_forInstructionEnumeratedObjectListAST::setter_popLast (GALGAS_bool & outOperand0,
                                                                    GALGAS_abstractEnumeratedCollectionAST & outOperand1,
                                                                    C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mAscending ;
-      outOperand1 = element.mAttribute_mEnumeratedCollection ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                   COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAscending ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedCollection ;
   }
 }
 
@@ -5171,18 +3006,16 @@ void GALGAS_forInstructionEnumeratedObjectListAST::method_first (GALGAS_bool & o
                                                                  GALGAS_abstractEnumeratedCollectionAST & outOperand1,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mAscending ;
-      outOperand1 = element.mAttribute_mEnumeratedCollection ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAscending ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedCollection ;
   }
 }
 
@@ -5192,19 +3025,16 @@ void GALGAS_forInstructionEnumeratedObjectListAST::method_last (GALGAS_bool & ou
                                                                 GALGAS_abstractEnumeratedCollectionAST & outOperand1,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mAscending ;
-      outOperand1 = element.mAttribute_mEnumeratedCollection ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAscending ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedCollection ;
   }
 }
 
@@ -5212,14 +3042,11 @@ void GALGAS_forInstructionEnumeratedObjectListAST::method_last (GALGAS_bool & ou
 
 GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::add_operation (const GALGAS_forInstructionEnumeratedObjectListAST & inOperand,
                                                                                                           C_Compiler * /* inCompiler */
-                                                                                                          COMMA_LOCATION_ARGS) const {
+                                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_forInstructionEnumeratedObjectListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -5229,22 +3056,8 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
 GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListAST result = GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5253,21 +3066,8 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
 GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListAST result = GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5276,21 +3076,8 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
 GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                   C_Compiler * inCompiler
                                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListAST result = GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5298,13 +3085,8 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
 
 void GALGAS_forInstructionEnumeratedObjectListAST::plusAssign_operation (const GALGAS_forInstructionEnumeratedObjectListAST inOperand,
                                                                          C_Compiler * /* inCompiler */
-                                                                         COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5312,16 +3094,12 @@ void GALGAS_forInstructionEnumeratedObjectListAST::plusAssign_operation (const G
 GALGAS_bool GALGAS_forInstructionEnumeratedObjectListAST::getter_mAscendingAtIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
   GALGAS_bool result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mAscending ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    result = p->mObject.mAttribute_mAscending ;
   }
   return result ;
 }
@@ -5331,104 +3109,49 @@ GALGAS_bool GALGAS_forInstructionEnumeratedObjectListAST::getter_mAscendingAtInd
 GALGAS_abstractEnumeratedCollectionAST GALGAS_forInstructionEnumeratedObjectListAST::getter_mEnumeratedCollectionAtIndex (const GALGAS_uint & inIndex,
                                                                                                                           C_Compiler * inCompiler
                                                                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListAST * p = (cCollectionElement_forInstructionEnumeratedObjectListAST *) attributes.ptr () ;
   GALGAS_abstractEnumeratedCollectionAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEnumeratedCollection ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+    result = p->mObject.mAttribute_mEnumeratedCollection ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_forInstructionEnumeratedObjectListAST::objectCompare (const GALGAS_forInstructionEnumeratedObjectListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_forInstructionEnumeratedObjectListAST::cEnumerator_forInstructionEnumeratedObjectListAST (const GALGAS_forInstructionEnumeratedObjectListAST & inEnumeratedObject,
                                                                                                       const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_forInstructionEnumeratedObjectListAST::~ cEnumerator_forInstructionEnumeratedObjectListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_forInstructionEnumeratedObjectListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectListAST_2D_element cEnumerator_forInstructionEnumeratedObjectListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_forInstructionEnumeratedObjectListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cEnumerator_forInstructionEnumeratedObjectListAST::current_mAscending (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mAscending ;
+  const cCollectionElement_forInstructionEnumeratedObjectListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+  return p->mObject.mAttribute_mAscending ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractEnumeratedCollectionAST cEnumerator_forInstructionEnumeratedObjectListAST::current_mEnumeratedCollection (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEnumeratedCollection ;
+  const cCollectionElement_forInstructionEnumeratedObjectListAST * p = (const cCollectionElement_forInstructionEnumeratedObjectListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListAST) ;
+  return p->mObject.mAttribute_mEnumeratedCollection ;
 }
 
 
@@ -5606,60 +3329,103 @@ void callExtensionMethod_analyzeEnumeration (const cPtr_abstractEnumeratedCollec
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Class for element of '@forInstructionEnumeratedObjectListForGeneration' list                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListForGeneration::GALGAS_forInstructionEnumeratedObjectListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_forInstructionEnumeratedObjectListForGeneration : public cCollectionElement {
+  public : GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_forInstructionEnumeratedObjectListForGeneration (const GALGAS_string & in_mEnumerationOrder,
+                                                                               const GALGAS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                                               const GALGAS_string & in_mEnumeratorCppName
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_forInstructionEnumeratedObjectListForGeneration::cCollectionElement_forInstructionEnumeratedObjectListForGeneration (const GALGAS_string & in_mEnumerationOrder,
+                                                                                                                                        const GALGAS_semanticExpressionForGeneration & in_mEnumeratedExpression,
+                                                                                                                                        const GALGAS_string & in_mEnumeratorCppName
+                                                                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mEnumerationOrder, in_mEnumeratedExpression, in_mEnumeratorCppName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListForGeneration::~ GALGAS_forInstructionEnumeratedObjectListForGeneration (void) {
+bool cCollectionElement_forInstructionEnumeratedObjectListForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_forInstructionEnumeratedObjectListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_forInstructionEnumeratedObjectListForGeneration (mObject.mAttribute_mEnumerationOrder, mObject.mAttribute_mEnumeratedExpression, mObject.mAttribute_mEnumeratorCppName COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_forInstructionEnumeratedObjectListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEnumerationOrder" ":" ;
+  mObject.mAttribute_mEnumerationOrder.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEnumeratedExpression" ":" ;
+  mObject.mAttribute_mEnumeratedExpression.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEnumeratorCppName" ":" ;
+  mObject.mAttribute_mEnumeratorCppName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_forInstructionEnumeratedObjectListForGeneration::description (C_String & ioString,
-                                                                          const int32_t inIndentation) const {
-  ioString << "<list @forInstructionEnumeratedObjectListForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * operand = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListForGeneration::GALGAS_forInstructionEnumeratedObjectListForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListForGeneration::GALGAS_forInstructionEnumeratedObjectListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5670,14 +3436,16 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
                                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                         const GALGAS_string & in_mEnumerationOrder,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mEnumeratedExpression,
@@ -5690,16 +3458,20 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromO
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_forInstructionEnumeratedObjectListForGeneration::addAssign_operation (const GALGAS_string & inOperand0,
                                                                                   const GALGAS_semanticExpressionForGeneration & inOperand1,
                                                                                   const GALGAS_string & inOperand2
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+                                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -5712,15 +3484,12 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::setter_insertAtInde
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -5731,22 +3500,20 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::setter_removeAtInde
                                                                                    GALGAS_string & outOperand2,
                                                                                    const GALGAS_uint inRemoveIndex,
                                                                                    C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
+                                                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mEnumerationOrder ;
-      outOperand1 = element.mAttribute_mEnumeratedExpression ;
-      outOperand2 = element.mAttribute_mEnumeratorCppName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mEnumerationOrder ;
+      outOperand1 = p->mObject.mAttribute_mEnumeratedExpression ;
+      outOperand2 = p->mObject.mAttribute_mEnumeratorCppName ;
     }
   }
 }
@@ -5757,21 +3524,19 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::setter_popFirst (GA
                                                                               GALGAS_semanticExpressionForGeneration & outOperand1,
                                                                               GALGAS_string & outOperand2,
                                                                               C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mEnumerationOrder ;
-      outOperand1 = element.mAttribute_mEnumeratedExpression ;
-      outOperand2 = element.mAttribute_mEnumeratorCppName ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                              COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mEnumerationOrder ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedExpression ;
+    outOperand2 = p->mObject.mAttribute_mEnumeratorCppName ;
   }
 }
 
@@ -5781,22 +3546,19 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::setter_popLast (GAL
                                                                              GALGAS_semanticExpressionForGeneration & outOperand1,
                                                                              GALGAS_string & outOperand2,
                                                                              C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mEnumerationOrder ;
-      outOperand1 = element.mAttribute_mEnumeratedExpression ;
-      outOperand2 = element.mAttribute_mEnumeratorCppName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mEnumerationOrder ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedExpression ;
+    outOperand2 = p->mObject.mAttribute_mEnumeratorCppName ;
   }
 }
 
@@ -5807,20 +3569,18 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::method_first (GALGA
                                                                            GALGAS_string & outOperand2,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mEnumerationOrder ;
-      outOperand1 = element.mAttribute_mEnumeratedExpression ;
-      outOperand2 = element.mAttribute_mEnumeratorCppName ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mEnumerationOrder ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedExpression ;
+    outOperand2 = p->mObject.mAttribute_mEnumeratorCppName ;
   }
 }
 
@@ -5831,21 +3591,18 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::method_last (GALGAS
                                                                           GALGAS_string & outOperand2,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mEnumerationOrder ;
-      outOperand1 = element.mAttribute_mEnumeratedExpression ;
-      outOperand2 = element.mAttribute_mEnumeratorCppName ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mEnumerationOrder ;
+    outOperand1 = p->mObject.mAttribute_mEnumeratedExpression ;
+    outOperand2 = p->mObject.mAttribute_mEnumeratorCppName ;
   }
 }
 
@@ -5853,14 +3610,11 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::method_last (GALGAS
 
 GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::add_operation (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inOperand,
                                                                                                                               C_Compiler * /* inCompiler */
-                                                                                                                              COMMA_LOCATION_ARGS) const {
+                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -5870,22 +3624,8 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
 GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                                         C_Compiler * inCompiler
                                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListForGeneration result = GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5894,21 +3634,8 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
 GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                                         C_Compiler * inCompiler
                                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListForGeneration result = GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5917,21 +3644,8 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
 GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                                       C_Compiler * inCompiler
                                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_forInstructionEnumeratedObjectListForGeneration result = GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -5939,13 +3653,8 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
 
 void GALGAS_forInstructionEnumeratedObjectListForGeneration::plusAssign_operation (const GALGAS_forInstructionEnumeratedObjectListForGeneration inOperand,
                                                                                    C_Compiler * /* inCompiler */
-                                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5953,16 +3662,12 @@ void GALGAS_forInstructionEnumeratedObjectListForGeneration::plusAssign_operatio
 GALGAS_string GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_mEnumerationOrderAtIndex (const GALGAS_uint & inIndex,
                                                                                                        C_Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEnumerationOrder ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    result = p->mObject.mAttribute_mEnumerationOrder ;
   }
   return result ;
 }
@@ -5972,16 +3677,12 @@ GALGAS_string GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_mEn
 GALGAS_semanticExpressionForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_mEnumeratedExpressionAtIndex (const GALGAS_uint & inIndex,
                                                                                                                                     C_Compiler * inCompiler
                                                                                                                                     COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
   GALGAS_semanticExpressionForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEnumeratedExpression ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    result = p->mObject.mAttribute_mEnumeratedExpression ;
   }
   return result ;
 }
@@ -5991,114 +3692,57 @@ GALGAS_semanticExpressionForGeneration GALGAS_forInstructionEnumeratedObjectList
 GALGAS_string GALGAS_forInstructionEnumeratedObjectListForGeneration::getter_mEnumeratorCppNameAtIndex (const GALGAS_uint & inIndex,
                                                                                                         C_Compiler * inCompiler
                                                                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEnumeratorCppName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+    result = p->mObject.mAttribute_mEnumeratorCppName ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_forInstructionEnumeratedObjectListForGeneration::objectCompare (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_forInstructionEnumeratedObjectListForGeneration::cEnumerator_forInstructionEnumeratedObjectListForGeneration (const GALGAS_forInstructionEnumeratedObjectListForGeneration & inEnumeratedObject,
                                                                                                                           const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_forInstructionEnumeratedObjectListForGeneration::~ cEnumerator_forInstructionEnumeratedObjectListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectListForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_forInstructionEnumeratedObjectListForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_forInstructionEnumeratedObjectListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element cEnumerator_forInstructionEnumeratedObjectListForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (const cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_forInstructionEnumeratedObjectListForGeneration::current_mEnumerationOrder (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEnumerationOrder ;
+  const cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (const cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+  return p->mObject.mAttribute_mEnumerationOrder ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionForGeneration cEnumerator_forInstructionEnumeratedObjectListForGeneration::current_mEnumeratedExpression (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEnumeratedExpression ;
+  const cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (const cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+  return p->mObject.mAttribute_mEnumeratedExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_forInstructionEnumeratedObjectListForGeneration::current_mEnumeratorCppName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEnumeratorCppName ;
+  const cCollectionElement_forInstructionEnumeratedObjectListForGeneration * p = (const cCollectionElement_forInstructionEnumeratedObjectListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_forInstructionEnumeratedObjectListForGeneration) ;
+  return p->mObject.mAttribute_mEnumeratorCppName ;
 }
 
 
@@ -7114,60 +4758,97 @@ GALGAS_ifInstructionAST GALGAS_ifInstructionAST::extractObject (const GALGAS_obj
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       Class for element of '@logListAST' list                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_logListAST::GALGAS_logListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_logListAST : public cCollectionElement {
+  public : GALGAS_logListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_logListAST (const GALGAS_lstring & in_mLogMessage,
+                                          const GALGAS_semanticExpressionAST & in_mLogExpression
+                                          COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_logListAST::cCollectionElement_logListAST (const GALGAS_lstring & in_mLogMessage,
+                                                              const GALGAS_semanticExpressionAST & in_mLogExpression
+                                                              COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mLogMessage, in_mLogExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_logListAST::~ GALGAS_logListAST (void) {
+bool cCollectionElement_logListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_logListAST GALGAS_logListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_logListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_logListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_logListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_logListAST (mObject.mAttribute_mLogMessage, mObject.mAttribute_mLogExpression COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_logListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_logListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLogMessage" ":" ;
+  mObject.mAttribute_mLogMessage.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLogExpression" ":" ;
+  mObject.mAttribute_mLogExpression.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_logListAST::description (C_String & ioString,
-                                     const int32_t inIndentation) const {
-  ioString << "<list @logListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_logListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_logListAST * operand = (cCollectionElement_logListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_logListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_logListAST::GALGAS_logListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_logListAST::GALGAS_logListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_logListAST GALGAS_logListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_logListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7177,14 +4858,16 @@ GALGAS_logListAST GALGAS_logListAST::constructor_listWithValue (const GALGAS_lst
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_logListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_logListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_logListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_logListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                    const GALGAS_lstring & in_mLogMessage,
                                                    const GALGAS_semanticExpressionAST & in_mLogExpression
@@ -7195,15 +4878,19 @@ void GALGAS_logListAST::makeAttributesFromObjects (capCollectionElement & outAtt
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_logListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                              const GALGAS_semanticExpressionAST & inOperand1
-                                             COMMA_UNUSED_LOCATION_ARGS) {
+                                             COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_logListAST_2D_element element (inOperand0, inOperand1) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_logListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -7215,15 +4902,12 @@ void GALGAS_logListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_logListAST_2D_element element (inOperand0, inOperand1) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_logListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -7233,20 +4917,18 @@ void GALGAS_logListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                               GALGAS_semanticExpressionAST & outOperand1,
                                               const GALGAS_uint inRemoveIndex,
                                               C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
+                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_logListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mLogMessage ;
-      outOperand1 = element.mAttribute_mLogExpression ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_logListAST) ;
+      outOperand0 = p->mObject.mAttribute_mLogMessage ;
+      outOperand1 = p->mObject.mAttribute_mLogExpression ;
     }
   }
 }
@@ -7256,19 +4938,17 @@ void GALGAS_logListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
 void GALGAS_logListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                          GALGAS_semanticExpressionAST & outOperand1,
                                          C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_logListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mLogMessage ;
-      outOperand1 = element.mAttribute_mLogExpression ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                         COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLogMessage ;
+    outOperand1 = p->mObject.mAttribute_mLogExpression ;
   }
 }
 
@@ -7277,20 +4957,17 @@ void GALGAS_logListAST::setter_popFirst (GALGAS_lstring & outOperand0,
 void GALGAS_logListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                         GALGAS_semanticExpressionAST & outOperand1,
                                         C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_logListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mLogMessage ;
-      outOperand1 = element.mAttribute_mLogExpression ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                        COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLogMessage ;
+    outOperand1 = p->mObject.mAttribute_mLogExpression ;
   }
 }
 
@@ -7300,18 +4977,16 @@ void GALGAS_logListAST::method_first (GALGAS_lstring & outOperand0,
                                       GALGAS_semanticExpressionAST & outOperand1,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_logListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mLogMessage ;
-      outOperand1 = element.mAttribute_mLogExpression ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLogMessage ;
+    outOperand1 = p->mObject.mAttribute_mLogExpression ;
   }
 }
 
@@ -7321,19 +4996,16 @@ void GALGAS_logListAST::method_last (GALGAS_lstring & outOperand0,
                                      GALGAS_semanticExpressionAST & outOperand1,
                                      C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_logListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mLogMessage ;
-      outOperand1 = element.mAttribute_mLogExpression ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    outOperand0 = p->mObject.mAttribute_mLogMessage ;
+    outOperand1 = p->mObject.mAttribute_mLogExpression ;
   }
 }
 
@@ -7341,14 +5013,11 @@ void GALGAS_logListAST::method_last (GALGAS_lstring & outOperand0,
 
 GALGAS_logListAST GALGAS_logListAST::add_operation (const GALGAS_logListAST & inOperand,
                                                     C_Compiler * /* inCompiler */
-                                                    COMMA_LOCATION_ARGS) const {
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_logListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -7358,22 +5027,8 @@ GALGAS_logListAST GALGAS_logListAST::add_operation (const GALGAS_logListAST & in
 GALGAS_logListAST GALGAS_logListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_logListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_logListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_logListAST result = GALGAS_logListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -7382,21 +5037,8 @@ GALGAS_logListAST GALGAS_logListAST::getter_subListWithRange (const GALGAS_range
 GALGAS_logListAST GALGAS_logListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_logListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_logListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_logListAST result = GALGAS_logListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -7405,21 +5047,8 @@ GALGAS_logListAST GALGAS_logListAST::getter_subListFromIndex (const GALGAS_uint 
 GALGAS_logListAST GALGAS_logListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_logListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_logListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_logListAST result = GALGAS_logListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -7427,13 +5056,8 @@ GALGAS_logListAST GALGAS_logListAST::getter_subListToIndex (const GALGAS_uint & 
 
 void GALGAS_logListAST::plusAssign_operation (const GALGAS_logListAST inOperand,
                                               C_Compiler * /* inCompiler */
-                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7441,16 +5065,12 @@ void GALGAS_logListAST::plusAssign_operation (const GALGAS_logListAST inOperand,
 GALGAS_lstring GALGAS_logListAST::getter_mLogMessageAtIndex (const GALGAS_uint & inIndex,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
   GALGAS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mLogMessage ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    result = p->mObject.mAttribute_mLogMessage ;
   }
   return result ;
 }
@@ -7460,104 +5080,49 @@ GALGAS_lstring GALGAS_logListAST::getter_mLogMessageAtIndex (const GALGAS_uint &
 GALGAS_semanticExpressionAST GALGAS_logListAST::getter_mLogExpressionAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_logListAST * p = (cCollectionElement_logListAST *) attributes.ptr () ;
   GALGAS_semanticExpressionAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mLogExpression ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_logListAST) ;
+    result = p->mObject.mAttribute_mLogExpression ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_logListAST::objectCompare (const GALGAS_logListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_logListAST::cEnumerator_logListAST (const GALGAS_logListAST & inEnumeratedObject,
                                                 const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_logListAST::~ cEnumerator_logListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_logListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_logListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_logListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_logListAST_2D_element cEnumerator_logListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_logListAST * p = (const cCollectionElement_logListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_logListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_logListAST::current_mLogMessage (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mLogMessage ;
+  const cCollectionElement_logListAST * p = (const cCollectionElement_logListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_logListAST) ;
+  return p->mObject.mAttribute_mLogMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionAST cEnumerator_logListAST::current_mLogExpression (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mLogExpression ;
+  const cCollectionElement_logListAST * p = (const cCollectionElement_logListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_logListAST) ;
+  return p->mObject.mAttribute_mLogExpression ;
 }
 
 
@@ -8137,60 +5702,103 @@ GALGAS_loopInstructionAST GALGAS_loopInstructionAST::extractObject (const GALGAS
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Class for element of '@matchEntryListAST' list                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchEntryListAST::GALGAS_matchEntryListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_matchEntryListAST : public cCollectionElement {
+  public : GALGAS_matchEntryListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_matchEntryListAST (const GALGAS_bool & in_mIsType,
+                                                 const GALGAS_lstring & in_mTypeNameOrEnumerationConstantName,
+                                                 const GALGAS_lstring & in_mLocalConstantName
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_matchEntryListAST::cCollectionElement_matchEntryListAST (const GALGAS_bool & in_mIsType,
+                                                                            const GALGAS_lstring & in_mTypeNameOrEnumerationConstantName,
+                                                                            const GALGAS_lstring & in_mLocalConstantName
+                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mIsType, in_mTypeNameOrEnumerationConstantName, in_mLocalConstantName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchEntryListAST::~ GALGAS_matchEntryListAST (void) {
+bool cCollectionElement_matchEntryListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchEntryListAST GALGAS_matchEntryListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchEntryListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_matchEntryListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_matchEntryListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_matchEntryListAST (mObject.mAttribute_mIsType, mObject.mAttribute_mTypeNameOrEnumerationConstantName, mObject.mAttribute_mLocalConstantName COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_matchEntryListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_matchEntryListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIsType" ":" ;
+  mObject.mAttribute_mIsType.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mTypeNameOrEnumerationConstantName" ":" ;
+  mObject.mAttribute_mTypeNameOrEnumerationConstantName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLocalConstantName" ":" ;
+  mObject.mAttribute_mLocalConstantName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_matchEntryListAST::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "<list @matchEntryListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_matchEntryListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_matchEntryListAST * operand = (cCollectionElement_matchEntryListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_matchEntryListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchEntryListAST::GALGAS_matchEntryListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchEntryListAST::GALGAS_matchEntryListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchEntryListAST GALGAS_matchEntryListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_matchEntryListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8201,14 +5809,16 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::constructor_listWithValue (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_matchEntryListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_matchEntryListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_matchEntryListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_matchEntryListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_bool & in_mIsType,
                                                           const GALGAS_lstring & in_mTypeNameOrEnumerationConstantName,
@@ -8221,16 +5831,20 @@ void GALGAS_matchEntryListAST::makeAttributesFromObjects (capCollectionElement &
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_matchEntryListAST::addAssign_operation (const GALGAS_bool & inOperand0,
                                                     const GALGAS_lstring & inOperand1,
                                                     const GALGAS_lstring & inOperand2
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_matchEntryListAST_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchEntryListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -8243,15 +5857,12 @@ void GALGAS_matchEntryListAST::setter_insertAtIndex (const GALGAS_bool inOperand
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_matchEntryListAST_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchEntryListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -8262,22 +5873,20 @@ void GALGAS_matchEntryListAST::setter_removeAtIndex (GALGAS_bool & outOperand0,
                                                      GALGAS_lstring & outOperand2,
                                                      const GALGAS_uint inRemoveIndex,
                                                      C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_matchEntryListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_matchEntryListAST * p = (cCollectionElement_matchEntryListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+      outOperand0 = p->mObject.mAttribute_mIsType ;
+      outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+      outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
     }
   }
 }
@@ -8288,21 +5897,19 @@ void GALGAS_matchEntryListAST::setter_popFirst (GALGAS_bool & outOperand0,
                                                 GALGAS_lstring & outOperand1,
                                                 GALGAS_lstring & outOperand2,
                                                 C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchEntryListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchEntryListAST * p = (cCollectionElement_matchEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -8312,22 +5919,19 @@ void GALGAS_matchEntryListAST::setter_popLast (GALGAS_bool & outOperand0,
                                                GALGAS_lstring & outOperand1,
                                                GALGAS_lstring & outOperand2,
                                                C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchEntryListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                               COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchEntryListAST * p = (cCollectionElement_matchEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -8338,20 +5942,18 @@ void GALGAS_matchEntryListAST::method_first (GALGAS_bool & outOperand0,
                                              GALGAS_lstring & outOperand2,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchEntryListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchEntryListAST * p = (cCollectionElement_matchEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -8362,21 +5964,18 @@ void GALGAS_matchEntryListAST::method_last (GALGAS_bool & outOperand0,
                                             GALGAS_lstring & outOperand2,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchEntryListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchEntryListAST * p = (cCollectionElement_matchEntryListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -8384,14 +5983,11 @@ void GALGAS_matchEntryListAST::method_last (GALGAS_bool & outOperand0,
 
 GALGAS_matchEntryListAST GALGAS_matchEntryListAST::add_operation (const GALGAS_matchEntryListAST & inOperand,
                                                                   C_Compiler * /* inCompiler */
-                                                                  COMMA_LOCATION_ARGS) const {
+                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_matchEntryListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -8401,22 +5997,8 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::add_operation (const GALGAS_m
 GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_matchEntryListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_matchEntryListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchEntryListAST result = GALGAS_matchEntryListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8425,21 +6007,8 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListWithRange (cons
 GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_matchEntryListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_matchEntryListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchEntryListAST result = GALGAS_matchEntryListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8448,21 +6017,8 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListFromIndex (cons
 GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_matchEntryListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_matchEntryListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchEntryListAST result = GALGAS_matchEntryListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8470,109 +6026,51 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::getter_subListToIndex (const 
 
 void GALGAS_matchEntryListAST::plusAssign_operation (const GALGAS_matchEntryListAST inOperand,
                                                      C_Compiler * /* inCompiler */
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_matchEntryListAST::objectCompare (const GALGAS_matchEntryListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_matchEntryListAST::cEnumerator_matchEntryListAST (const GALGAS_matchEntryListAST & inEnumeratedObject,
                                                               const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_matchEntryListAST::~ cEnumerator_matchEntryListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchEntryListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchEntryListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_matchEntryListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchEntryListAST_2D_element cEnumerator_matchEntryListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_matchEntryListAST * p = (const cCollectionElement_matchEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cEnumerator_matchEntryListAST::current_mIsType (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mIsType ;
+  const cCollectionElement_matchEntryListAST * p = (const cCollectionElement_matchEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+  return p->mObject.mAttribute_mIsType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_matchEntryListAST::current_mTypeNameOrEnumerationConstantName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTypeNameOrEnumerationConstantName ;
+  const cCollectionElement_matchEntryListAST * p = (const cCollectionElement_matchEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+  return p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_matchEntryListAST::current_mLocalConstantName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mLocalConstantName ;
+  const cCollectionElement_matchEntryListAST * p = (const cCollectionElement_matchEntryListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchEntryListAST) ;
+  return p->mObject.mAttribute_mLocalConstantName ;
 }
 
 
@@ -8622,60 +6120,109 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::extractObject (const GALGAS_o
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Class for element of '@matchInstructionBranchListAST' list                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListAST::GALGAS_matchInstructionBranchListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_matchInstructionBranchListAST : public cCollectionElement {
+  public : GALGAS_matchInstructionBranchListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_matchInstructionBranchListAST (const GALGAS_matchEntryListAST & in_mMatchEntryList,
+                                                             const GALGAS_location & in_mEndOfMatchEntryList,
+                                                             const GALGAS_semanticInstructionListAST & in_mMatchBranchInstructionList,
+                                                             const GALGAS_location & in_mEndOf_5F_instructionList
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_matchInstructionBranchListAST::cCollectionElement_matchInstructionBranchListAST (const GALGAS_matchEntryListAST & in_mMatchEntryList,
+                                                                                                    const GALGAS_location & in_mEndOfMatchEntryList,
+                                                                                                    const GALGAS_semanticInstructionListAST & in_mMatchBranchInstructionList,
+                                                                                                    const GALGAS_location & in_mEndOf_5F_instructionList
+                                                                                                    COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mMatchEntryList, in_mEndOfMatchEntryList, in_mMatchBranchInstructionList, in_mEndOf_5F_instructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListAST::~ GALGAS_matchInstructionBranchListAST (void) {
+bool cCollectionElement_matchInstructionBranchListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchInstructionBranchListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_matchInstructionBranchListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_matchInstructionBranchListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_matchInstructionBranchListAST (mObject.mAttribute_mMatchEntryList, mObject.mAttribute_mEndOfMatchEntryList, mObject.mAttribute_mMatchBranchInstructionList, mObject.mAttribute_mEndOf_5F_instructionList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_matchInstructionBranchListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_matchInstructionBranchListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMatchEntryList" ":" ;
+  mObject.mAttribute_mMatchEntryList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEndOfMatchEntryList" ":" ;
+  mObject.mAttribute_mEndOfMatchEntryList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMatchBranchInstructionList" ":" ;
+  mObject.mAttribute_mMatchBranchInstructionList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEndOf_instructionList" ":" ;
+  mObject.mAttribute_mEndOf_5F_instructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_matchInstructionBranchListAST::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "<list @matchInstructionBranchListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_matchInstructionBranchListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_matchInstructionBranchListAST * operand = (cCollectionElement_matchInstructionBranchListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_matchInstructionBranchListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListAST::GALGAS_matchInstructionBranchListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListAST::GALGAS_matchInstructionBranchListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_matchInstructionBranchListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8687,14 +6234,16 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::const
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_matchInstructionBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_matchInstructionBranchListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_matchInstructionBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_matchInstructionBranchListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                       const GALGAS_matchEntryListAST & in_mMatchEntryList,
                                                                       const GALGAS_location & in_mEndOfMatchEntryList,
@@ -8709,17 +6258,21 @@ void GALGAS_matchInstructionBranchListAST::makeAttributesFromObjects (capCollect
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_matchInstructionBranchListAST::addAssign_operation (const GALGAS_matchEntryListAST & inOperand0,
                                                                 const GALGAS_location & inOperand1,
                                                                 const GALGAS_semanticInstructionListAST & inOperand2,
                                                                 const GALGAS_location & inOperand3
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_matchInstructionBranchListAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchInstructionBranchListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -8733,15 +6286,12 @@ void GALGAS_matchInstructionBranchListAST::setter_insertAtIndex (const GALGAS_ma
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_matchInstructionBranchListAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchInstructionBranchListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -8753,24 +6303,22 @@ void GALGAS_matchInstructionBranchListAST::setter_removeAtIndex (GALGAS_matchEnt
                                                                  GALGAS_location & outOperand3,
                                                                  const GALGAS_uint inRemoveIndex,
                                                                  C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
+                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_matchInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchEntryList ;
-      outOperand1 = element.mAttribute_mEndOfMatchEntryList ;
-      outOperand2 = element.mAttribute_mMatchBranchInstructionList ;
-      outOperand3 = element.mAttribute_mEndOf_5F_instructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_matchInstructionBranchListAST * p = (cCollectionElement_matchInstructionBranchListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+      outOperand0 = p->mObject.mAttribute_mMatchEntryList ;
+      outOperand1 = p->mObject.mAttribute_mEndOfMatchEntryList ;
+      outOperand2 = p->mObject.mAttribute_mMatchBranchInstructionList ;
+      outOperand3 = p->mObject.mAttribute_mEndOf_5F_instructionList ;
     }
   }
 }
@@ -8782,23 +6330,21 @@ void GALGAS_matchInstructionBranchListAST::setter_popFirst (GALGAS_matchEntryLis
                                                             GALGAS_semanticInstructionListAST & outOperand2,
                                                             GALGAS_location & outOperand3,
                                                             C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchInstructionBranchListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchEntryList ;
-      outOperand1 = element.mAttribute_mEndOfMatchEntryList ;
-      outOperand2 = element.mAttribute_mMatchBranchInstructionList ;
-      outOperand3 = element.mAttribute_mEndOf_5F_instructionList ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                            COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListAST * p = (cCollectionElement_matchInstructionBranchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchEntryList ;
+    outOperand1 = p->mObject.mAttribute_mEndOfMatchEntryList ;
+    outOperand2 = p->mObject.mAttribute_mMatchBranchInstructionList ;
+    outOperand3 = p->mObject.mAttribute_mEndOf_5F_instructionList ;
   }
 }
 
@@ -8809,24 +6355,21 @@ void GALGAS_matchInstructionBranchListAST::setter_popLast (GALGAS_matchEntryList
                                                            GALGAS_semanticInstructionListAST & outOperand2,
                                                            GALGAS_location & outOperand3,
                                                            C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchEntryList ;
-      outOperand1 = element.mAttribute_mEndOfMatchEntryList ;
-      outOperand2 = element.mAttribute_mMatchBranchInstructionList ;
-      outOperand3 = element.mAttribute_mEndOf_5F_instructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListAST * p = (cCollectionElement_matchInstructionBranchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchEntryList ;
+    outOperand1 = p->mObject.mAttribute_mEndOfMatchEntryList ;
+    outOperand2 = p->mObject.mAttribute_mMatchBranchInstructionList ;
+    outOperand3 = p->mObject.mAttribute_mEndOf_5F_instructionList ;
   }
 }
 
@@ -8838,22 +6381,20 @@ void GALGAS_matchInstructionBranchListAST::method_first (GALGAS_matchEntryListAS
                                                          GALGAS_location & outOperand3,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchInstructionBranchListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchEntryList ;
-      outOperand1 = element.mAttribute_mEndOfMatchEntryList ;
-      outOperand2 = element.mAttribute_mMatchBranchInstructionList ;
-      outOperand3 = element.mAttribute_mEndOf_5F_instructionList ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListAST * p = (cCollectionElement_matchInstructionBranchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchEntryList ;
+    outOperand1 = p->mObject.mAttribute_mEndOfMatchEntryList ;
+    outOperand2 = p->mObject.mAttribute_mMatchBranchInstructionList ;
+    outOperand3 = p->mObject.mAttribute_mEndOf_5F_instructionList ;
   }
 }
 
@@ -8865,23 +6406,20 @@ void GALGAS_matchInstructionBranchListAST::method_last (GALGAS_matchEntryListAST
                                                         GALGAS_location & outOperand3,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchInstructionBranchListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchEntryList ;
-      outOperand1 = element.mAttribute_mEndOfMatchEntryList ;
-      outOperand2 = element.mAttribute_mMatchBranchInstructionList ;
-      outOperand3 = element.mAttribute_mEndOf_5F_instructionList ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListAST * p = (cCollectionElement_matchInstructionBranchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mMatchEntryList ;
+    outOperand1 = p->mObject.mAttribute_mEndOfMatchEntryList ;
+    outOperand2 = p->mObject.mAttribute_mMatchBranchInstructionList ;
+    outOperand3 = p->mObject.mAttribute_mEndOf_5F_instructionList ;
   }
 }
 
@@ -8889,14 +6427,11 @@ void GALGAS_matchInstructionBranchListAST::method_last (GALGAS_matchEntryListAST
 
 GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::add_operation (const GALGAS_matchInstructionBranchListAST & inOperand,
                                                                                           C_Compiler * /* inCompiler */
-                                                                                          COMMA_LOCATION_ARGS) const {
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_matchInstructionBranchListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -8906,22 +6441,8 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::add_o
 GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListAST result = GALGAS_matchInstructionBranchListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8930,21 +6451,8 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::gette
 GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListAST result = GALGAS_matchInstructionBranchListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8953,21 +6461,8 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::gette
 GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                   C_Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListAST result = GALGAS_matchInstructionBranchListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -8975,119 +6470,59 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::gette
 
 void GALGAS_matchInstructionBranchListAST::plusAssign_operation (const GALGAS_matchInstructionBranchListAST inOperand,
                                                                  C_Compiler * /* inCompiler */
-                                                                 COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_matchInstructionBranchListAST::objectCompare (const GALGAS_matchInstructionBranchListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_matchInstructionBranchListAST::cEnumerator_matchInstructionBranchListAST (const GALGAS_matchInstructionBranchListAST & inEnumeratedObject,
                                                                                       const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_matchInstructionBranchListAST::~ cEnumerator_matchInstructionBranchListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchInstructionBranchListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchInstructionBranchListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_matchInstructionBranchListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchInstructionBranchListAST_2D_element cEnumerator_matchInstructionBranchListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_matchInstructionBranchListAST * p = (const cCollectionElement_matchInstructionBranchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchEntryListAST cEnumerator_matchInstructionBranchListAST::current_mMatchEntryList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mMatchEntryList ;
+  const cCollectionElement_matchInstructionBranchListAST * p = (const cCollectionElement_matchInstructionBranchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+  return p->mObject.mAttribute_mMatchEntryList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cEnumerator_matchInstructionBranchListAST::current_mEndOfMatchEntryList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEndOfMatchEntryList ;
+  const cCollectionElement_matchInstructionBranchListAST * p = (const cCollectionElement_matchInstructionBranchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+  return p->mObject.mAttribute_mEndOfMatchEntryList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST cEnumerator_matchInstructionBranchListAST::current_mMatchBranchInstructionList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mMatchBranchInstructionList ;
+  const cCollectionElement_matchInstructionBranchListAST * p = (const cCollectionElement_matchInstructionBranchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+  return p->mObject.mAttribute_mMatchBranchInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cEnumerator_matchInstructionBranchListAST::current_mEndOf_5F_instructionList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEndOf_5F_instructionList ;
+  const cCollectionElement_matchInstructionBranchListAST * p = (const cCollectionElement_matchInstructionBranchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListAST) ;
+  return p->mObject.mAttribute_mEndOf_5F_instructionList ;
 }
 
 
@@ -9383,60 +6818,103 @@ GALGAS_matchInstructionAST GALGAS_matchInstructionAST::extractObject (const GALG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Class for element of '@matchListForGeneration' list                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchListForGeneration::GALGAS_matchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_matchListForGeneration : public cCollectionElement {
+  public : GALGAS_matchListForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_matchListForGeneration (const GALGAS_bool & in_mIsType,
+                                                      const GALGAS_string & in_mTypeNameOrEnumerationConstantName,
+                                                      const GALGAS_string & in_mLocalConstantName
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_matchListForGeneration::cCollectionElement_matchListForGeneration (const GALGAS_bool & in_mIsType,
+                                                                                      const GALGAS_string & in_mTypeNameOrEnumerationConstantName,
+                                                                                      const GALGAS_string & in_mLocalConstantName
+                                                                                      COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mIsType, in_mTypeNameOrEnumerationConstantName, in_mLocalConstantName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchListForGeneration::~ GALGAS_matchListForGeneration (void) {
+bool cCollectionElement_matchListForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchListForGeneration GALGAS_matchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchListForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_matchListForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_matchListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_matchListForGeneration (mObject.mAttribute_mIsType, mObject.mAttribute_mTypeNameOrEnumerationConstantName, mObject.mAttribute_mLocalConstantName COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_matchListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_matchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIsType" ":" ;
+  mObject.mAttribute_mIsType.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mTypeNameOrEnumerationConstantName" ":" ;
+  mObject.mAttribute_mTypeNameOrEnumerationConstantName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLocalConstantName" ":" ;
+  mObject.mAttribute_mLocalConstantName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_matchListForGeneration::description (C_String & ioString,
-                                                 const int32_t inIndentation) const {
-  ioString << "<list @matchListForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_matchListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_matchListForGeneration * operand = (cCollectionElement_matchListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_matchListForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration::GALGAS_matchListForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration::GALGAS_matchListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration GALGAS_matchListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_matchListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9447,14 +6925,16 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_matchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_matchListForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_matchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_matchListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                const GALGAS_bool & in_mIsType,
                                                                const GALGAS_string & in_mTypeNameOrEnumerationConstantName,
@@ -9467,16 +6947,20 @@ void GALGAS_matchListForGeneration::makeAttributesFromObjects (capCollectionElem
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_matchListForGeneration::addAssign_operation (const GALGAS_bool & inOperand0,
                                                          const GALGAS_string & inOperand1,
                                                          const GALGAS_string & inOperand2
-                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_matchListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -9489,15 +6973,12 @@ void GALGAS_matchListForGeneration::setter_insertAtIndex (const GALGAS_bool inOp
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_matchListForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchListForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -9508,22 +6989,20 @@ void GALGAS_matchListForGeneration::setter_removeAtIndex (GALGAS_bool & outOpera
                                                           GALGAS_string & outOperand2,
                                                           const GALGAS_uint inRemoveIndex,
                                                           C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
+                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_matchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mIsType ;
+      outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+      outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
     }
   }
 }
@@ -9534,21 +7013,19 @@ void GALGAS_matchListForGeneration::setter_popFirst (GALGAS_bool & outOperand0,
                                                      GALGAS_string & outOperand1,
                                                      GALGAS_string & outOperand2,
                                                      C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -9558,22 +7035,19 @@ void GALGAS_matchListForGeneration::setter_popLast (GALGAS_bool & outOperand0,
                                                     GALGAS_string & outOperand1,
                                                     GALGAS_string & outOperand2,
                                                     C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -9584,20 +7058,18 @@ void GALGAS_matchListForGeneration::method_first (GALGAS_bool & outOperand0,
                                                   GALGAS_string & outOperand2,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -9608,21 +7080,18 @@ void GALGAS_matchListForGeneration::method_last (GALGAS_bool & outOperand0,
                                                  GALGAS_string & outOperand2,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mIsType ;
-      outOperand1 = element.mAttribute_mTypeNameOrEnumerationConstantName ;
-      outOperand2 = element.mAttribute_mLocalConstantName ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mIsType ;
+    outOperand1 = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
+    outOperand2 = p->mObject.mAttribute_mLocalConstantName ;
   }
 }
 
@@ -9630,14 +7099,11 @@ void GALGAS_matchListForGeneration::method_last (GALGAS_bool & outOperand0,
 
 GALGAS_matchListForGeneration GALGAS_matchListForGeneration::add_operation (const GALGAS_matchListForGeneration & inOperand,
                                                                             C_Compiler * /* inCompiler */
-                                                                            COMMA_LOCATION_ARGS) const {
+                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_matchListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -9647,22 +7113,8 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::add_operation (cons
 GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_matchListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_matchListForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchListForGeneration result = GALGAS_matchListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -9671,21 +7123,8 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListWithR
 GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_matchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_matchListForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchListForGeneration result = GALGAS_matchListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -9694,21 +7133,8 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListFromI
 GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_matchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_matchListForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchListForGeneration result = GALGAS_matchListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -9716,13 +7142,8 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::getter_subListToInd
 
 void GALGAS_matchListForGeneration::plusAssign_operation (const GALGAS_matchListForGeneration inOperand,
                                                           C_Compiler * /* inCompiler */
-                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9730,16 +7151,12 @@ void GALGAS_matchListForGeneration::plusAssign_operation (const GALGAS_matchList
 GALGAS_bool GALGAS_matchListForGeneration::getter_mIsTypeAtIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
   GALGAS_bool result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mIsType ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    result = p->mObject.mAttribute_mIsType ;
   }
   return result ;
 }
@@ -9749,16 +7166,12 @@ GALGAS_bool GALGAS_matchListForGeneration::getter_mIsTypeAtIndex (const GALGAS_u
 GALGAS_string GALGAS_matchListForGeneration::getter_mTypeNameOrEnumerationConstantNameAtIndex (const GALGAS_uint & inIndex,
                                                                                                C_Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mTypeNameOrEnumerationConstantName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    result = p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
   }
   return result ;
 }
@@ -9768,114 +7181,57 @@ GALGAS_string GALGAS_matchListForGeneration::getter_mTypeNameOrEnumerationConsta
 GALGAS_string GALGAS_matchListForGeneration::getter_mLocalConstantNameAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchListForGeneration * p = (cCollectionElement_matchListForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mLocalConstantName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+    result = p->mObject.mAttribute_mLocalConstantName ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_matchListForGeneration::objectCompare (const GALGAS_matchListForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_matchListForGeneration::cEnumerator_matchListForGeneration (const GALGAS_matchListForGeneration & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_matchListForGeneration::~ cEnumerator_matchListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchListForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchListForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_matchListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchListForGeneration_2D_element cEnumerator_matchListForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_matchListForGeneration * p = (const cCollectionElement_matchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cEnumerator_matchListForGeneration::current_mIsType (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mIsType ;
+  const cCollectionElement_matchListForGeneration * p = (const cCollectionElement_matchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+  return p->mObject.mAttribute_mIsType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_matchListForGeneration::current_mTypeNameOrEnumerationConstantName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTypeNameOrEnumerationConstantName ;
+  const cCollectionElement_matchListForGeneration * p = (const cCollectionElement_matchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+  return p->mObject.mAttribute_mTypeNameOrEnumerationConstantName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_matchListForGeneration::current_mLocalConstantName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mLocalConstantName ;
+  const cCollectionElement_matchListForGeneration * p = (const cCollectionElement_matchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchListForGeneration) ;
+  return p->mObject.mAttribute_mLocalConstantName ;
 }
 
 
@@ -9925,60 +7281,97 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::extractObject (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Class for element of '@matchInstructionBranchListForGeneration' list                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListForGeneration::GALGAS_matchInstructionBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_matchInstructionBranchListForGeneration : public cCollectionElement {
+  public : GALGAS_matchInstructionBranchListForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_matchInstructionBranchListForGeneration (const GALGAS_matchListForGeneration & in_mMatchListForGeneration,
+                                                                       const GALGAS_semanticInstructionListForGeneration & in_mMatchBranchInstructionList
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_matchInstructionBranchListForGeneration::cCollectionElement_matchInstructionBranchListForGeneration (const GALGAS_matchListForGeneration & in_mMatchListForGeneration,
+                                                                                                                        const GALGAS_semanticInstructionListForGeneration & in_mMatchBranchInstructionList
+                                                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mMatchListForGeneration, in_mMatchBranchInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListForGeneration::~ GALGAS_matchInstructionBranchListForGeneration (void) {
+bool cCollectionElement_matchInstructionBranchListForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchInstructionBranchListForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_matchInstructionBranchListForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_matchInstructionBranchListForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_matchInstructionBranchListForGeneration (mObject.mAttribute_mMatchListForGeneration, mObject.mAttribute_mMatchBranchInstructionList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_matchInstructionBranchListForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_matchInstructionBranchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMatchListForGeneration" ":" ;
+  mObject.mAttribute_mMatchListForGeneration.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMatchBranchInstructionList" ":" ;
+  mObject.mAttribute_mMatchBranchInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_matchInstructionBranchListForGeneration::description (C_String & ioString,
-                                                                  const int32_t inIndentation) const {
-  ioString << "<list @matchInstructionBranchListForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_matchInstructionBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_matchInstructionBranchListForGeneration * operand = (cCollectionElement_matchInstructionBranchListForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_matchInstructionBranchListForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListForGeneration::GALGAS_matchInstructionBranchListForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListForGeneration::GALGAS_matchInstructionBranchListForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_matchInstructionBranchListForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9988,14 +7381,16 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_matchInstructionBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_matchInstructionBranchListForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_matchInstructionBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_matchInstructionBranchListForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                 const GALGAS_matchListForGeneration & in_mMatchListForGeneration,
                                                                                 const GALGAS_semanticInstructionListForGeneration & in_mMatchBranchInstructionList
@@ -10006,15 +7401,19 @@ void GALGAS_matchInstructionBranchListForGeneration::makeAttributesFromObjects (
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_matchInstructionBranchListForGeneration::addAssign_operation (const GALGAS_matchListForGeneration & inOperand0,
                                                                           const GALGAS_semanticInstructionListForGeneration & inOperand1
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_matchInstructionBranchListForGeneration_2D_element element (inOperand0, inOperand1) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchInstructionBranchListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -10026,15 +7425,12 @@ void GALGAS_matchInstructionBranchListForGeneration::setter_insertAtIndex (const
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    const GALGAS_matchInstructionBranchListForGeneration_2D_element element (inOperand0, inOperand1) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_matchInstructionBranchListForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -10044,20 +7440,18 @@ void GALGAS_matchInstructionBranchListForGeneration::setter_removeAtIndex (GALGA
                                                                            GALGAS_semanticInstructionListForGeneration & outOperand1,
                                                                            const GALGAS_uint inRemoveIndex,
                                                                            C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
+                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_matchInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchListForGeneration ;
-      outOperand1 = element.mAttribute_mMatchBranchInstructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mMatchListForGeneration ;
+      outOperand1 = p->mObject.mAttribute_mMatchBranchInstructionList ;
     }
   }
 }
@@ -10067,19 +7461,17 @@ void GALGAS_matchInstructionBranchListForGeneration::setter_removeAtIndex (GALGA
 void GALGAS_matchInstructionBranchListForGeneration::setter_popFirst (GALGAS_matchListForGeneration & outOperand0,
                                                                       GALGAS_semanticInstructionListForGeneration & outOperand1,
                                                                       C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchInstructionBranchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchListForGeneration ;
-      outOperand1 = element.mAttribute_mMatchBranchInstructionList ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                      COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mMatchListForGeneration ;
+    outOperand1 = p->mObject.mAttribute_mMatchBranchInstructionList ;
   }
 }
 
@@ -10088,20 +7480,17 @@ void GALGAS_matchInstructionBranchListForGeneration::setter_popFirst (GALGAS_mat
 void GALGAS_matchInstructionBranchListForGeneration::setter_popLast (GALGAS_matchListForGeneration & outOperand0,
                                                                      GALGAS_semanticInstructionListForGeneration & outOperand1,
                                                                      C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchListForGeneration ;
-      outOperand1 = element.mAttribute_mMatchBranchInstructionList ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mMatchListForGeneration ;
+    outOperand1 = p->mObject.mAttribute_mMatchBranchInstructionList ;
   }
 }
 
@@ -10111,18 +7500,16 @@ void GALGAS_matchInstructionBranchListForGeneration::method_first (GALGAS_matchL
                                                                    GALGAS_semanticInstructionListForGeneration & outOperand1,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_matchInstructionBranchListForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchListForGeneration ;
-      outOperand1 = element.mAttribute_mMatchBranchInstructionList ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mMatchListForGeneration ;
+    outOperand1 = p->mObject.mAttribute_mMatchBranchInstructionList ;
   }
 }
 
@@ -10132,19 +7519,16 @@ void GALGAS_matchInstructionBranchListForGeneration::method_last (GALGAS_matchLi
                                                                   GALGAS_semanticInstructionListForGeneration & outOperand1,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_matchInstructionBranchListForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mMatchListForGeneration ;
-      outOperand1 = element.mAttribute_mMatchBranchInstructionList ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mMatchListForGeneration ;
+    outOperand1 = p->mObject.mAttribute_mMatchBranchInstructionList ;
   }
 }
 
@@ -10152,14 +7536,11 @@ void GALGAS_matchInstructionBranchListForGeneration::method_last (GALGAS_matchLi
 
 GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::add_operation (const GALGAS_matchInstructionBranchListForGeneration & inOperand,
                                                                                                               C_Compiler * /* inCompiler */
-                                                                                                              COMMA_LOCATION_ARGS) const {
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_matchInstructionBranchListForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -10169,22 +7550,8 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
 GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                         C_Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListForGeneration result = GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -10193,21 +7560,8 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
 GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                         C_Compiler * inCompiler
                                                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListForGeneration result = GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -10216,21 +7570,8 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
 GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_matchInstructionBranchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_matchInstructionBranchListForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_matchInstructionBranchListForGeneration result = GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -10238,13 +7579,8 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
 
 void GALGAS_matchInstructionBranchListForGeneration::plusAssign_operation (const GALGAS_matchInstructionBranchListForGeneration inOperand,
                                                                            C_Compiler * /* inCompiler */
-                                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10252,16 +7588,12 @@ void GALGAS_matchInstructionBranchListForGeneration::plusAssign_operation (const
 GALGAS_matchListForGeneration GALGAS_matchInstructionBranchListForGeneration::getter_mMatchListForGenerationAtIndex (const GALGAS_uint & inIndex,
                                                                                                                      C_Compiler * inCompiler
                                                                                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_matchListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mMatchListForGeneration ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mMatchListForGeneration ;
   }
   return result ;
 }
@@ -10271,104 +7603,49 @@ GALGAS_matchListForGeneration GALGAS_matchInstructionBranchListForGeneration::ge
 GALGAS_semanticInstructionListForGeneration GALGAS_matchInstructionBranchListForGeneration::getter_mMatchBranchInstructionListAtIndex (const GALGAS_uint & inIndex,
                                                                                                                                        C_Compiler * inCompiler
                                                                                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_matchInstructionBranchListForGeneration * p = (cCollectionElement_matchInstructionBranchListForGeneration *) attributes.ptr () ;
   GALGAS_semanticInstructionListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mMatchBranchInstructionList ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+    result = p->mObject.mAttribute_mMatchBranchInstructionList ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_matchInstructionBranchListForGeneration::objectCompare (const GALGAS_matchInstructionBranchListForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_matchInstructionBranchListForGeneration::cEnumerator_matchInstructionBranchListForGeneration (const GALGAS_matchInstructionBranchListForGeneration & inEnumeratedObject,
                                                                                                           const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_matchInstructionBranchListForGeneration::~ cEnumerator_matchInstructionBranchListForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchInstructionBranchListForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_matchInstructionBranchListForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_matchInstructionBranchListForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchInstructionBranchListForGeneration_2D_element cEnumerator_matchInstructionBranchListForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_matchInstructionBranchListForGeneration * p = (const cCollectionElement_matchInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchListForGeneration cEnumerator_matchInstructionBranchListForGeneration::current_mMatchListForGeneration (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mMatchListForGeneration ;
+  const cCollectionElement_matchInstructionBranchListForGeneration * p = (const cCollectionElement_matchInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mMatchListForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration cEnumerator_matchInstructionBranchListForGeneration::current_mMatchBranchInstructionList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mMatchBranchInstructionList ;
+  const cCollectionElement_matchInstructionBranchListForGeneration * p = (const cCollectionElement_matchInstructionBranchListForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_matchInstructionBranchListForGeneration) ;
+  return p->mObject.mAttribute_mMatchBranchInstructionList ;
 }
 
 
@@ -11736,60 +9013,103 @@ GALGAS_selfDivEqualExpressionInstructionAST GALGAS_selfDivEqualExpressionInstruc
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Class for element of '@switchExtractedValuesListAST' list                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchExtractedValuesListAST::GALGAS_switchExtractedValuesListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_switchExtractedValuesListAST : public cCollectionElement {
+  public : GALGAS_switchExtractedValuesListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_switchExtractedValuesListAST (const GALGAS_lstring & in_mExtractedValueTypeName,
+                                                            const GALGAS_lstring & in_mExtractedValueName,
+                                                            const GALGAS_bool & in_mMarkedAsUnused
+                                                            COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_switchExtractedValuesListAST::cCollectionElement_switchExtractedValuesListAST (const GALGAS_lstring & in_mExtractedValueTypeName,
+                                                                                                  const GALGAS_lstring & in_mExtractedValueName,
+                                                                                                  const GALGAS_bool & in_mMarkedAsUnused
+                                                                                                  COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mExtractedValueTypeName, in_mExtractedValueName, in_mMarkedAsUnused) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchExtractedValuesListAST::~ GALGAS_switchExtractedValuesListAST (void) {
+bool cCollectionElement_switchExtractedValuesListAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchExtractedValuesListAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_switchExtractedValuesListAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_switchExtractedValuesListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_switchExtractedValuesListAST (mObject.mAttribute_mExtractedValueTypeName, mObject.mAttribute_mExtractedValueName, mObject.mAttribute_mMarkedAsUnused COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_switchExtractedValuesListAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_switchExtractedValuesListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mExtractedValueTypeName" ":" ;
+  mObject.mAttribute_mExtractedValueTypeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mExtractedValueName" ":" ;
+  mObject.mAttribute_mExtractedValueName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mMarkedAsUnused" ":" ;
+  mObject.mAttribute_mMarkedAsUnused.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_switchExtractedValuesListAST::description (C_String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString << "<list @switchExtractedValuesListAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_switchExtractedValuesListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_switchExtractedValuesListAST * operand = (cCollectionElement_switchExtractedValuesListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_switchExtractedValuesListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchExtractedValuesListAST::GALGAS_switchExtractedValuesListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchExtractedValuesListAST::GALGAS_switchExtractedValuesListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_switchExtractedValuesListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11800,14 +9120,16 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::constru
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_switchExtractedValuesListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_switchExtractedValuesListAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_switchExtractedValuesListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_switchExtractedValuesListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                      const GALGAS_lstring & in_mExtractedValueTypeName,
                                                                      const GALGAS_lstring & in_mExtractedValueName,
@@ -11820,16 +9142,20 @@ void GALGAS_switchExtractedValuesListAST::makeAttributesFromObjects (capCollecti
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchExtractedValuesListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                                const GALGAS_lstring & inOperand1,
                                                                const GALGAS_bool & inOperand2
-                                                               COMMA_UNUSED_LOCATION_ARGS) {
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_switchExtractedValuesListAST_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchExtractedValuesListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -11842,15 +9168,12 @@ void GALGAS_switchExtractedValuesListAST::setter_insertAtIndex (const GALGAS_lst
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_switchExtractedValuesListAST_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchExtractedValuesListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -11861,22 +9184,20 @@ void GALGAS_switchExtractedValuesListAST::setter_removeAtIndex (GALGAS_lstring &
                                                                 GALGAS_bool & outOperand2,
                                                                 const GALGAS_uint inRemoveIndex,
                                                                 C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
+                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_switchExtractedValuesListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mExtractedValueTypeName ;
-      outOperand1 = element.mAttribute_mExtractedValueName ;
-      outOperand2 = element.mAttribute_mMarkedAsUnused ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+      outOperand0 = p->mObject.mAttribute_mExtractedValueTypeName ;
+      outOperand1 = p->mObject.mAttribute_mExtractedValueName ;
+      outOperand2 = p->mObject.mAttribute_mMarkedAsUnused ;
     }
   }
 }
@@ -11887,21 +9208,19 @@ void GALGAS_switchExtractedValuesListAST::setter_popFirst (GALGAS_lstring & outO
                                                            GALGAS_lstring & outOperand1,
                                                            GALGAS_bool & outOperand2,
                                                            C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchExtractedValuesListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mExtractedValueTypeName ;
-      outOperand1 = element.mAttribute_mExtractedValueName ;
-      outOperand2 = element.mAttribute_mMarkedAsUnused ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                           COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    outOperand0 = p->mObject.mAttribute_mExtractedValueTypeName ;
+    outOperand1 = p->mObject.mAttribute_mExtractedValueName ;
+    outOperand2 = p->mObject.mAttribute_mMarkedAsUnused ;
   }
 }
 
@@ -11911,22 +9230,19 @@ void GALGAS_switchExtractedValuesListAST::setter_popLast (GALGAS_lstring & outOp
                                                           GALGAS_lstring & outOperand1,
                                                           GALGAS_bool & outOperand2,
                                                           C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchExtractedValuesListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mExtractedValueTypeName ;
-      outOperand1 = element.mAttribute_mExtractedValueName ;
-      outOperand2 = element.mAttribute_mMarkedAsUnused ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    outOperand0 = p->mObject.mAttribute_mExtractedValueTypeName ;
+    outOperand1 = p->mObject.mAttribute_mExtractedValueName ;
+    outOperand2 = p->mObject.mAttribute_mMarkedAsUnused ;
   }
 }
 
@@ -11937,20 +9253,18 @@ void GALGAS_switchExtractedValuesListAST::method_first (GALGAS_lstring & outOper
                                                         GALGAS_bool & outOperand2,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchExtractedValuesListAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mExtractedValueTypeName ;
-      outOperand1 = element.mAttribute_mExtractedValueName ;
-      outOperand2 = element.mAttribute_mMarkedAsUnused ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    outOperand0 = p->mObject.mAttribute_mExtractedValueTypeName ;
+    outOperand1 = p->mObject.mAttribute_mExtractedValueName ;
+    outOperand2 = p->mObject.mAttribute_mMarkedAsUnused ;
   }
 }
 
@@ -11961,21 +9275,18 @@ void GALGAS_switchExtractedValuesListAST::method_last (GALGAS_lstring & outOpera
                                                        GALGAS_bool & outOperand2,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchExtractedValuesListAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mExtractedValueTypeName ;
-      outOperand1 = element.mAttribute_mExtractedValueName ;
-      outOperand2 = element.mAttribute_mMarkedAsUnused ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    outOperand0 = p->mObject.mAttribute_mExtractedValueTypeName ;
+    outOperand1 = p->mObject.mAttribute_mExtractedValueName ;
+    outOperand2 = p->mObject.mAttribute_mMarkedAsUnused ;
   }
 }
 
@@ -11983,14 +9294,11 @@ void GALGAS_switchExtractedValuesListAST::method_last (GALGAS_lstring & outOpera
 
 GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::add_operation (const GALGAS_switchExtractedValuesListAST & inOperand,
                                                                                         C_Compiler * /* inCompiler */
-                                                                                        COMMA_LOCATION_ARGS) const {
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_switchExtractedValuesListAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -12000,22 +9308,8 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::add_ope
 GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                   C_Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_switchExtractedValuesListAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_switchExtractedValuesListAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchExtractedValuesListAST result = GALGAS_switchExtractedValuesListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12024,21 +9318,8 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_
 GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                   C_Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_switchExtractedValuesListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_switchExtractedValuesListAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchExtractedValuesListAST result = GALGAS_switchExtractedValuesListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12047,21 +9328,8 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_
 GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                 C_Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_switchExtractedValuesListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_switchExtractedValuesListAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchExtractedValuesListAST result = GALGAS_switchExtractedValuesListAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12069,13 +9337,8 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::getter_
 
 void GALGAS_switchExtractedValuesListAST::plusAssign_operation (const GALGAS_switchExtractedValuesListAST inOperand,
                                                                 C_Compiler * /* inCompiler */
-                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12083,16 +9346,12 @@ void GALGAS_switchExtractedValuesListAST::plusAssign_operation (const GALGAS_swi
 GALGAS_lstring GALGAS_switchExtractedValuesListAST::getter_mExtractedValueTypeNameAtIndex (const GALGAS_uint & inIndex,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
   GALGAS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mExtractedValueTypeName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    result = p->mObject.mAttribute_mExtractedValueTypeName ;
   }
   return result ;
 }
@@ -12102,16 +9361,12 @@ GALGAS_lstring GALGAS_switchExtractedValuesListAST::getter_mExtractedValueTypeNa
 GALGAS_lstring GALGAS_switchExtractedValuesListAST::getter_mExtractedValueNameAtIndex (const GALGAS_uint & inIndex,
                                                                                        C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
   GALGAS_lstring result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mExtractedValueName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    result = p->mObject.mAttribute_mExtractedValueName ;
   }
   return result ;
 }
@@ -12121,114 +9376,57 @@ GALGAS_lstring GALGAS_switchExtractedValuesListAST::getter_mExtractedValueNameAt
 GALGAS_bool GALGAS_switchExtractedValuesListAST::getter_mMarkedAsUnusedAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchExtractedValuesListAST * p = (cCollectionElement_switchExtractedValuesListAST *) attributes.ptr () ;
   GALGAS_bool result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mMarkedAsUnused ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+    result = p->mObject.mAttribute_mMarkedAsUnused ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_switchExtractedValuesListAST::objectCompare (const GALGAS_switchExtractedValuesListAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_switchExtractedValuesListAST::cEnumerator_switchExtractedValuesListAST (const GALGAS_switchExtractedValuesListAST & inEnumeratedObject,
                                                                                     const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_switchExtractedValuesListAST::~ cEnumerator_switchExtractedValuesListAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchExtractedValuesListAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchExtractedValuesListAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_switchExtractedValuesListAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchExtractedValuesListAST_2D_element cEnumerator_switchExtractedValuesListAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_switchExtractedValuesListAST * p = (const cCollectionElement_switchExtractedValuesListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_switchExtractedValuesListAST::current_mExtractedValueTypeName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mExtractedValueTypeName ;
+  const cCollectionElement_switchExtractedValuesListAST * p = (const cCollectionElement_switchExtractedValuesListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+  return p->mObject.mAttribute_mExtractedValueTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_switchExtractedValuesListAST::current_mExtractedValueName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mExtractedValueName ;
+  const cCollectionElement_switchExtractedValuesListAST * p = (const cCollectionElement_switchExtractedValuesListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+  return p->mObject.mAttribute_mExtractedValueName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cEnumerator_switchExtractedValuesListAST::current_mMarkedAsUnused (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mMarkedAsUnused ;
+  const cCollectionElement_switchExtractedValuesListAST * p = (const cCollectionElement_switchExtractedValuesListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchExtractedValuesListAST) ;
+  return p->mObject.mAttribute_mMarkedAsUnused ;
 }
 
 
@@ -12278,60 +9476,109 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Class for element of '@switchBranchesAST' list                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesAST::GALGAS_switchBranchesAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_switchBranchesAST : public cCollectionElement {
+  public : GALGAS_switchBranchesAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                 const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
+                                                 const GALGAS_semanticInstructionListAST & in_mInstructions,
+                                                 const GALGAS_location & in_mEndOfBranch
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_switchBranchesAST::cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                                            const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
+                                                                            const GALGAS_semanticInstructionListAST & in_mInstructions,
+                                                                            const GALGAS_location & in_mEndOfBranch
+                                                                            COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mSwitchConstantList, in_mAssociatedValuesExtraction, in_mInstructions, in_mEndOfBranch) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesAST::~ GALGAS_switchBranchesAST (void) {
+bool cCollectionElement_switchBranchesAST::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchBranchesAST (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_switchBranchesAST::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_switchBranchesAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_switchBranchesAST (mObject.mAttribute_mSwitchConstantList, mObject.mAttribute_mAssociatedValuesExtraction, mObject.mAttribute_mInstructions, mObject.mAttribute_mEndOfBranch COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_switchBranchesAST::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_switchBranchesAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSwitchConstantList" ":" ;
+  mObject.mAttribute_mSwitchConstantList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAssociatedValuesExtraction" ":" ;
+  mObject.mAttribute_mAssociatedValuesExtraction.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructions" ":" ;
+  mObject.mAttribute_mInstructions.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEndOfBranch" ":" ;
+  mObject.mAttribute_mEndOfBranch.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_switchBranchesAST::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "<list @switchBranchesAST:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_switchBranchesAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_switchBranchesAST * operand = (cCollectionElement_switchBranchesAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_switchBranchesAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesAST::GALGAS_switchBranchesAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesAST::GALGAS_switchBranchesAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_switchBranchesAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12343,14 +9590,16 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_switchBranchesAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_switchBranchesAST (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_switchBranchesAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_lstringlist & in_mSwitchConstantList,
                                                           const GALGAS_switchExtractedValuesListAST & in_mAssociatedValuesExtraction,
@@ -12365,17 +9614,21 @@ void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement &
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::addAssign_operation (const GALGAS_lstringlist & inOperand0,
                                                     const GALGAS_switchExtractedValuesListAST & inOperand1,
                                                     const GALGAS_semanticInstructionListAST & inOperand2,
                                                     const GALGAS_location & inOperand3
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
+                                                    COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_switchBranchesAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -12389,15 +9642,12 @@ void GALGAS_switchBranchesAST::setter_insertAtIndex (const GALGAS_lstringlist in
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_switchBranchesAST_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -12409,24 +9659,22 @@ void GALGAS_switchBranchesAST::setter_removeAtIndex (GALGAS_lstringlist & outOpe
                                                      GALGAS_location & outOperand3,
                                                      const GALGAS_uint inRemoveIndex,
                                                      C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
+                                                     COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_switchBranchesAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mAssociatedValuesExtraction ;
-      outOperand2 = element.mAttribute_mInstructions ;
-      outOperand3 = element.mAttribute_mEndOfBranch ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+      outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+      outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+      outOperand2 = p->mObject.mAttribute_mInstructions ;
+      outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
     }
   }
 }
@@ -12438,23 +9686,21 @@ void GALGAS_switchBranchesAST::setter_popFirst (GALGAS_lstringlist & outOperand0
                                                 GALGAS_semanticInstructionListAST & outOperand2,
                                                 GALGAS_location & outOperand3,
                                                 C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchBranchesAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mAssociatedValuesExtraction ;
-      outOperand2 = element.mAttribute_mInstructions ;
-      outOperand3 = element.mAttribute_mEndOfBranch ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
@@ -12465,24 +9711,21 @@ void GALGAS_switchBranchesAST::setter_popLast (GALGAS_lstringlist & outOperand0,
                                                GALGAS_semanticInstructionListAST & outOperand2,
                                                GALGAS_location & outOperand3,
                                                C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchBranchesAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mAssociatedValuesExtraction ;
-      outOperand2 = element.mAttribute_mInstructions ;
-      outOperand3 = element.mAttribute_mEndOfBranch ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                               COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
@@ -12494,22 +9737,20 @@ void GALGAS_switchBranchesAST::method_first (GALGAS_lstringlist & outOperand0,
                                              GALGAS_location & outOperand3,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchBranchesAST_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mAssociatedValuesExtraction ;
-      outOperand2 = element.mAttribute_mInstructions ;
-      outOperand3 = element.mAttribute_mEndOfBranch ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
@@ -12521,23 +9762,20 @@ void GALGAS_switchBranchesAST::method_last (GALGAS_lstringlist & outOperand0,
                                             GALGAS_location & outOperand3,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchBranchesAST_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mAssociatedValuesExtraction ;
-      outOperand2 = element.mAttribute_mInstructions ;
-      outOperand3 = element.mAttribute_mEndOfBranch ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
@@ -12545,14 +9783,11 @@ void GALGAS_switchBranchesAST::method_last (GALGAS_lstringlist & outOperand0,
 
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::add_operation (const GALGAS_switchBranchesAST & inOperand,
                                                                   C_Compiler * /* inCompiler */
-                                                                  COMMA_LOCATION_ARGS) const {
+                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_switchBranchesAST result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -12562,22 +9797,8 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::add_operation (const GALGAS_s
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesAST result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_switchBranchesAST (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesAST result = GALGAS_switchBranchesAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12586,21 +9807,8 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListWithRange (cons
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_switchBranchesAST (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesAST result = GALGAS_switchBranchesAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12609,21 +9817,8 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListFromIndex (cons
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_switchBranchesAST (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesAST result = GALGAS_switchBranchesAST::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -12631,13 +9826,8 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::getter_subListToIndex (const 
 
 void GALGAS_switchBranchesAST::plusAssign_operation (const GALGAS_switchBranchesAST inOperand,
                                                      C_Compiler * /* inCompiler */
-                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12645,16 +9835,12 @@ void GALGAS_switchBranchesAST::plusAssign_operation (const GALGAS_switchBranches
 GALGAS_lstringlist GALGAS_switchBranchesAST::getter_mSwitchConstantListAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
   GALGAS_lstringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mSwitchConstantList ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    result = p->mObject.mAttribute_mSwitchConstantList ;
   }
   return result ;
 }
@@ -12664,16 +9850,12 @@ GALGAS_lstringlist GALGAS_switchBranchesAST::getter_mSwitchConstantListAtIndex (
 GALGAS_switchExtractedValuesListAST GALGAS_switchBranchesAST::getter_mAssociatedValuesExtractionAtIndex (const GALGAS_uint & inIndex,
                                                                                                          C_Compiler * inCompiler
                                                                                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
   GALGAS_switchExtractedValuesListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mAssociatedValuesExtraction ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    result = p->mObject.mAttribute_mAssociatedValuesExtraction ;
   }
   return result ;
 }
@@ -12683,16 +9865,12 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchBranchesAST::getter_mAssociated
 GALGAS_semanticInstructionListAST GALGAS_switchBranchesAST::getter_mInstructionsAtIndex (const GALGAS_uint & inIndex,
                                                                                          C_Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
   GALGAS_semanticInstructionListAST result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mInstructions ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    result = p->mObject.mAttribute_mInstructions ;
   }
   return result ;
 }
@@ -12702,124 +9880,65 @@ GALGAS_semanticInstructionListAST GALGAS_switchBranchesAST::getter_mInstructions
 GALGAS_location GALGAS_switchBranchesAST::getter_mEndOfBranchAtIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
   GALGAS_location result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mEndOfBranch ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    result = p->mObject.mAttribute_mEndOfBranch ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_switchBranchesAST::objectCompare (const GALGAS_switchBranchesAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_switchBranchesAST::cEnumerator_switchBranchesAST (const GALGAS_switchBranchesAST & inEnumeratedObject,
                                                               const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_switchBranchesAST::~ cEnumerator_switchBranchesAST (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchBranchesAST::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchBranchesAST::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_switchBranchesAST::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element cEnumerator_switchBranchesAST::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist cEnumerator_switchBranchesAST::current_mSwitchConstantList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mSwitchConstantList ;
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject.mAttribute_mSwitchConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchExtractedValuesListAST cEnumerator_switchBranchesAST::current_mAssociatedValuesExtraction (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mAssociatedValuesExtraction ;
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject.mAttribute_mAssociatedValuesExtraction ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST cEnumerator_switchBranchesAST::current_mInstructions (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mInstructions ;
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject.mAttribute_mInstructions ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cEnumerator_switchBranchesAST::current_mEndOfBranch (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mEndOfBranch ;
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject.mAttribute_mEndOfBranch ;
 }
 
 
@@ -13104,60 +10223,103 @@ GALGAS_switchInstructionAST GALGAS_switchInstructionAST::extractObject (const GA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Class for element of '@extractedAssociatedValuesForGeneration' list                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractedAssociatedValuesForGeneration::GALGAS_extractedAssociatedValuesForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollectionElement {
+  public : GALGAS_extractedAssociatedValuesForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                      const GALGAS_string & in_mCppName,
+                                                                      const GALGAS_uint & in_mIndex
+                                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                                                                      const GALGAS_string & in_mCppName,
+                                                                                                                      const GALGAS_uint & in_mIndex
+                                                                                                                      COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mType, in_mCppName, in_mIndex) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractedAssociatedValuesForGeneration::~ GALGAS_extractedAssociatedValuesForGeneration (void) {
+bool cCollectionElement_extractedAssociatedValuesForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extractedAssociatedValuesForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_extractedAssociatedValuesForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_extractedAssociatedValuesForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_extractedAssociatedValuesForGeneration (mObject.mAttribute_mType, mObject.mAttribute_mCppName, mObject.mAttribute_mIndex COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_extractedAssociatedValuesForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_extractedAssociatedValuesForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mType" ":" ;
+  mObject.mAttribute_mType.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mCppName" ":" ;
+  mObject.mAttribute_mCppName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIndex" ":" ;
+  mObject.mAttribute_mIndex.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_extractedAssociatedValuesForGeneration::description (C_String & ioString,
-                                                                 const int32_t inIndentation) const {
-  ioString << "<list @extractedAssociatedValuesForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_extractedAssociatedValuesForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_extractedAssociatedValuesForGeneration * operand = (cCollectionElement_extractedAssociatedValuesForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extractedAssociatedValuesForGeneration::GALGAS_extractedAssociatedValuesForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extractedAssociatedValuesForGeneration::GALGAS_extractedAssociatedValuesForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_extractedAssociatedValuesForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13168,14 +10330,16 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extractedAssociatedValuesForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_extractedAssociatedValuesForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
                                                                                const GALGAS_string & in_mCppName,
@@ -13188,16 +10352,20 @@ void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (c
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                          const GALGAS_string & inOperand1,
                                                                          const GALGAS_uint & inOperand2
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+                                                                         COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_extractedAssociatedValuesForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -13210,15 +10378,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_insertAtIndex (const 
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    const GALGAS_extractedAssociatedValuesForGeneration_2D_element element (inOperand0, inOperand1, inOperand2) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -13229,22 +10394,20 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_removeAtIndex (GALGAS
                                                                           GALGAS_uint & outOperand2,
                                                                           const GALGAS_uint inRemoveIndex,
                                                                           C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
+                                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_extractedAssociatedValuesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mType ;
-      outOperand1 = element.mAttribute_mCppName ;
-      outOperand2 = element.mAttribute_mIndex ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mType ;
+      outOperand1 = p->mObject.mAttribute_mCppName ;
+      outOperand2 = p->mObject.mAttribute_mIndex ;
     }
   }
 }
@@ -13255,21 +10418,19 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popFirst (GALGAS_unif
                                                                      GALGAS_string & outOperand1,
                                                                      GALGAS_uint & outOperand2,
                                                                      C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_extractedAssociatedValuesForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mType ;
-      outOperand1 = element.mAttribute_mCppName ;
-      outOperand2 = element.mAttribute_mIndex ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mType ;
+    outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -13279,22 +10440,19 @@ void GALGAS_extractedAssociatedValuesForGeneration::setter_popLast (GALGAS_unifi
                                                                     GALGAS_string & outOperand1,
                                                                     GALGAS_uint & outOperand2,
                                                                     C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_extractedAssociatedValuesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mType ;
-      outOperand1 = element.mAttribute_mCppName ;
-      outOperand2 = element.mAttribute_mIndex ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                                    COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mType ;
+    outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -13305,20 +10463,18 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unified
                                                                   GALGAS_uint & outOperand2,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_extractedAssociatedValuesForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mType ;
-      outOperand1 = element.mAttribute_mCppName ;
-      outOperand2 = element.mAttribute_mIndex ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mType ;
+    outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -13329,21 +10485,18 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedT
                                                                  GALGAS_uint & outOperand2,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_extractedAssociatedValuesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mType ;
-      outOperand1 = element.mAttribute_mCppName ;
-      outOperand2 = element.mAttribute_mIndex ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mType ;
+    outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -13351,14 +10504,11 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedT
 
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::add_operation (const GALGAS_extractedAssociatedValuesForGeneration & inOperand,
                                                                                                             C_Compiler * /* inCompiler */
-                                                                                                            COMMA_LOCATION_ARGS) const {
+                                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_extractedAssociatedValuesForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -13368,22 +10518,8 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_extractedAssociatedValuesForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_extractedAssociatedValuesForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_extractedAssociatedValuesForGeneration result = GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13392,21 +10528,8 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_extractedAssociatedValuesForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_extractedAssociatedValuesForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_extractedAssociatedValuesForGeneration result = GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13415,21 +10538,8 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                                     C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_extractedAssociatedValuesForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_extractedAssociatedValuesForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_extractedAssociatedValuesForGeneration result = GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13437,13 +10547,8 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 
 void GALGAS_extractedAssociatedValuesForGeneration::plusAssign_operation (const GALGAS_extractedAssociatedValuesForGeneration inOperand,
                                                                           C_Compiler * /* inCompiler */
-                                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13451,16 +10556,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::plusAssign_operation (const 
 GALGAS_unifiedTypeMap_2D_proxy GALGAS_extractedAssociatedValuesForGeneration::getter_mTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                                    C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
   GALGAS_unifiedTypeMap_2D_proxy result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mType ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    result = p->mObject.mAttribute_mType ;
   }
   return result ;
 }
@@ -13470,16 +10571,12 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_extractedAssociatedValuesForGeneration::ge
 GALGAS_string GALGAS_extractedAssociatedValuesForGeneration::getter_mCppNameAtIndex (const GALGAS_uint & inIndex,
                                                                                      C_Compiler * inCompiler
                                                                                      COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
   GALGAS_string result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mCppName ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    result = p->mObject.mAttribute_mCppName ;
   }
   return result ;
 }
@@ -13489,114 +10586,57 @@ GALGAS_string GALGAS_extractedAssociatedValuesForGeneration::getter_mCppNameAtIn
 GALGAS_uint GALGAS_extractedAssociatedValuesForGeneration::getter_mIndexAtIndex (const GALGAS_uint & inIndex,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
   GALGAS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mIndex ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    result = p->mObject.mAttribute_mIndex ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_extractedAssociatedValuesForGeneration::objectCompare (const GALGAS_extractedAssociatedValuesForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_extractedAssociatedValuesForGeneration::cEnumerator_extractedAssociatedValuesForGeneration (const GALGAS_extractedAssociatedValuesForGeneration & inEnumeratedObject,
                                                                                                         const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_extractedAssociatedValuesForGeneration::~ cEnumerator_extractedAssociatedValuesForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_extractedAssociatedValuesForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_extractedAssociatedValuesForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_extractedAssociatedValuesForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_extractedAssociatedValuesForGeneration_2D_element cEnumerator_extractedAssociatedValuesForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_extractedAssociatedValuesForGeneration::current_mType (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mType ;
+  const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return p->mObject.mAttribute_mType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_extractedAssociatedValuesForGeneration::current_mCppName (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mCppName ;
+  const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return p->mObject.mAttribute_mCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint cEnumerator_extractedAssociatedValuesForGeneration::current_mIndex (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mIndex ;
+  const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return p->mObject.mAttribute_mIndex ;
 }
 
 
@@ -13646,60 +10686,109 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Class for element of '@switchBranchesForGeneration' list                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesForGeneration::GALGAS_switchBranchesForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid),
-mArray () {
+class cCollectionElement_switchBranchesForGeneration : public cCollectionElement {
+  public : GALGAS_switchBranchesForGeneration_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_switchBranchesForGeneration (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                           const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                           const GALGAS_uint & in_mLocationIndex,
+                                                           const GALGAS_semanticInstructionListForGeneration & in_mInstructions
+                                                           COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_switchBranchesForGeneration::cCollectionElement_switchBranchesForGeneration (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                                                                const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                                                                const GALGAS_uint & in_mLocationIndex,
+                                                                                                const GALGAS_semanticInstructionListForGeneration & in_mInstructions
+                                                                                                COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mSwitchConstantList, in_mExtractedAssociatedValuesForGeneration, in_mLocationIndex, in_mInstructions) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesForGeneration::~ GALGAS_switchBranchesForGeneration (void) {
+bool cCollectionElement_switchBranchesForGeneration::isValid (void) const {
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchBranchesForGeneration (true) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_switchBranchesForGeneration::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
-  }
+cCollectionElement * cCollectionElement_switchBranchesForGeneration::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_switchBranchesForGeneration (mObject.mAttribute_mSwitchConstantList, mObject.mAttribute_mExtractedAssociatedValuesForGeneration, mObject.mAttribute_mLocationIndex, mObject.mAttribute_mInstructions COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range GALGAS_switchBranchesForGeneration::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
-  }
-  return result ;
+void cCollectionElement_switchBranchesForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSwitchConstantList" ":" ;
+  mObject.mAttribute_mSwitchConstantList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mExtractedAssociatedValuesForGeneration" ":" ;
+  mObject.mAttribute_mExtractedAssociatedValuesForGeneration.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLocationIndex" ":" ;
+  mObject.mAttribute_mLocationIndex.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstructions" ":" ;
+  mObject.mAttribute_mInstructions.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_switchBranchesForGeneration::description (C_String & ioString,
-                                                      const int32_t inIndentation) const {
-  ioString << "<list @switchBranchesForGeneration:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    ioString << " ("
-             << cStringWithSigned (mArray.count ())
-             << " object" << ((mArray.count () > 1) ? "s" : "")
-             << "): " ;
-    for (int32_t i=0 ; i<mArray.count () ; i++) {
-      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
-    }
+typeComparisonResult cCollectionElement_switchBranchesForGeneration::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_switchBranchesForGeneration * operand = (cCollectionElement_switchBranchesForGeneration *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_switchBranchesForGeneration) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesForGeneration::GALGAS_switchBranchesForGeneration (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesForGeneration::GALGAS_switchBranchesForGeneration (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
   }
-  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_switchBranchesForGeneration result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13711,14 +10800,16 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::construct
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_switchBranchesForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_switchBranchesForGeneration (true) ;
-    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_switchBranchesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-/*
+
 void GALGAS_switchBranchesForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                     const GALGAS_lstringlist & in_mSwitchConstantList,
                                                                     const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
@@ -13733,17 +10824,21 @@ void GALGAS_switchBranchesForGeneration::makeAttributesFromObjects (capCollectio
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-*/
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesForGeneration::addAssign_operation (const GALGAS_lstringlist & inOperand0,
                                                               const GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
                                                               const GALGAS_uint & inOperand2,
                                                               const GALGAS_semanticInstructionListForGeneration & inOperand3
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
+                                                              COMMA_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_switchBranchesForGeneration_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    mArray.addObject (element) ;
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchBranchesForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
   }
 }
 
@@ -13757,15 +10852,12 @@ void GALGAS_switchBranchesForGeneration::setter_insertAtIndex (const GALGAS_lstr
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    const GALGAS_switchBranchesForGeneration_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
-    }else{
-      C_String s = "insertAtIndex: insertion index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_switchBranchesForGeneration (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
   }
 }
 
@@ -13777,24 +10869,22 @@ void GALGAS_switchBranchesForGeneration::setter_removeAtIndex (GALGAS_lstringlis
                                                                GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                                const GALGAS_uint inRemoveIndex,
                                                                C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
+                                                               COMMA_LOCATION_ARGS) {
   if (isValid () && inRemoveIndex.isValid ()) {
-    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      const GALGAS_switchBranchesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = element.mAttribute_mLocationIndex ;
-      outOperand3 = element.mAttribute_mInstructions ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
-      C_String s = "removeAtIndex: remove index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+      outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+      outOperand1 = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
+      outOperand2 = p->mObject.mAttribute_mLocationIndex ;
+      outOperand3 = p->mObject.mAttribute_mInstructions ;
     }
   }
 }
@@ -13806,23 +10896,21 @@ void GALGAS_switchBranchesForGeneration::setter_popFirst (GALGAS_lstringlist & o
                                                           GALGAS_uint & outOperand2,
                                                           GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                           C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchBranchesForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = element.mAttribute_mLocationIndex ;
-      outOperand3 = element.mAttribute_mInstructions ;
-      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                          COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
+    outOperand2 = p->mObject.mAttribute_mLocationIndex ;
+    outOperand3 = p->mObject.mAttribute_mInstructions ;
   }
 }
 
@@ -13833,24 +10921,21 @@ void GALGAS_switchBranchesForGeneration::setter_popLast (GALGAS_lstringlist & ou
                                                          GALGAS_uint & outOperand2,
                                                          GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                          C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchBranchesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = element.mAttribute_mLocationIndex ;
-      outOperand3 = element.mAttribute_mInstructions ;
-      mArray.removeObjectAtIndex (index COMMA_THERE) ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+                                                         COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
+    outOperand2 = p->mObject.mAttribute_mLocationIndex ;
+    outOperand3 = p->mObject.mAttribute_mInstructions ;
   }
 }
 
@@ -13862,22 +10947,20 @@ void GALGAS_switchBranchesForGeneration::method_first (GALGAS_lstringlist & outO
                                                        GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const GALGAS_switchBranchesForGeneration_2D_element element = mArray (0 COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = element.mAttribute_mLocationIndex ;
-      outOperand3 = element.mAttribute_mInstructions ;
-    }else{
-      C_String s = "popFirst: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
+    outOperand2 = p->mObject.mAttribute_mLocationIndex ;
+    outOperand3 = p->mObject.mAttribute_mInstructions ;
   }
 }
 
@@ -13889,23 +10972,20 @@ void GALGAS_switchBranchesForGeneration::method_last (GALGAS_lstringlist & outOp
                                                       GALGAS_semanticInstructionListForGeneration & outOperand3,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
-  outOperand0.drop () ;
-  outOperand1.drop () ;
-  outOperand2.drop () ;
-  outOperand3.drop () ;
-
-  if (isValid ()) {
-    if (mArray.count () > 0) {
-      const int32_t index = mArray.count () - 1 ;
-      const GALGAS_switchBranchesForGeneration_2D_element element = mArray (index COMMA_THERE) ;
-      outOperand0 = element.mAttribute_mSwitchConstantList ;
-      outOperand1 = element.mAttribute_mExtractedAssociatedValuesForGeneration ;
-      outOperand2 = element.mAttribute_mLocationIndex ;
-      outOperand3 = element.mAttribute_mInstructions ;
-    }else{
-      C_String s = "popLast: list is empty" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
+    outOperand1 = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
+    outOperand2 = p->mObject.mAttribute_mLocationIndex ;
+    outOperand3 = p->mObject.mAttribute_mInstructions ;
   }
 }
 
@@ -13913,14 +10993,11 @@ void GALGAS_switchBranchesForGeneration::method_last (GALGAS_lstringlist & outOp
 
 GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::add_operation (const GALGAS_switchBranchesForGeneration & inOperand,
                                                                                       C_Compiler * /* inCompiler */
-                                                                                      COMMA_LOCATION_ARGS) const {
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_switchBranchesForGeneration result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
+    result.appendList (inOperand) ;
   }
   return result ;
 }
@@ -13930,22 +11007,8 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::add_opera
 GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                 C_Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesForGeneration result ;
-  if (isValid () && inRange.isValid ()) {
-    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
-    const uint32_t length = inRange.mAttribute_length.uintValue () ;
-    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
-      result = GALGAS_switchBranchesForGeneration (true) ;
-      result.mArray.setCapacity ((int32_t) length) ;
-      for (uint32_t i=0 ; i<length ; i++) {
-        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListWithRange: max index (" ;
-      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesForGeneration result = GALGAS_switchBranchesForGeneration::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13954,21 +11017,8 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_su
 GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                 C_Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index <= mArray.count ()) {
-      result = GALGAS_switchBranchesForGeneration (true) ;
-      result.mArray.setCapacity (mArray.count () + 1 - index) ;
-      for (int32_t i=index ; i<mArray.count () ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesForGeneration result = GALGAS_switchBranchesForGeneration::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13977,21 +11027,8 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_su
 GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_switchBranchesForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = GALGAS_switchBranchesForGeneration (true) ;
-      result.mArray.setCapacity (index + 1) ;
-      for (int32_t i=0 ; i<=index ; i++) {
-        result.mArray.addObject (mArray (i COMMA_THERE)) ;
-      }
-    }else{
-      C_String s = "subListFromIndex: index (" ;
-      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
-  }
+  GALGAS_switchBranchesForGeneration result = GALGAS_switchBranchesForGeneration::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -13999,13 +11036,8 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::getter_su
 
 void GALGAS_switchBranchesForGeneration::plusAssign_operation (const GALGAS_switchBranchesForGeneration inOperand,
                                                                C_Compiler * /* inCompiler */
-                                                               COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand.isValid ()) {
-    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
-    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
-      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
-    }
-  }
+                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14013,16 +11045,12 @@ void GALGAS_switchBranchesForGeneration::plusAssign_operation (const GALGAS_swit
 GALGAS_lstringlist GALGAS_switchBranchesForGeneration::getter_mSwitchConstantListAtIndex (const GALGAS_uint & inIndex,
                                                                                           C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
   GALGAS_lstringlist result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mSwitchConstantList ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    result = p->mObject.mAttribute_mSwitchConstantList ;
   }
   return result ;
 }
@@ -14032,16 +11060,12 @@ GALGAS_lstringlist GALGAS_switchBranchesForGeneration::getter_mSwitchConstantLis
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_switchBranchesForGeneration::getter_mExtractedAssociatedValuesForGenerationAtIndex (const GALGAS_uint & inIndex,
                                                                                                                                          C_Compiler * inCompiler
                                                                                                                                          COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
   GALGAS_extractedAssociatedValuesForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mExtractedAssociatedValuesForGeneration ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    result = p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
   }
   return result ;
 }
@@ -14051,16 +11075,12 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_switchBranchesForGeneration
 GALGAS_uint GALGAS_switchBranchesForGeneration::getter_mLocationIndexAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
   GALGAS_uint result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mLocationIndex ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    result = p->mObject.mAttribute_mLocationIndex ;
   }
   return result ;
 }
@@ -14070,124 +11090,65 @@ GALGAS_uint GALGAS_switchBranchesForGeneration::getter_mLocationIndexAtIndex (co
 GALGAS_semanticInstructionListForGeneration GALGAS_switchBranchesForGeneration::getter_mInstructionsAtIndex (const GALGAS_uint & inIndex,
                                                                                                              C_Compiler * inCompiler
                                                                                                              COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesForGeneration * p = (cCollectionElement_switchBranchesForGeneration *) attributes.ptr () ;
   GALGAS_semanticInstructionListForGeneration result ;
-  if (isValid () && inIndex.isValid ()) {
-    const int32_t index = (int32_t) inIndex.uintValue () ;
-    if (index < mArray.count ()) {
-      result = mArray (index COMMA_THERE).mAttribute_mInstructions ;
-    }else{
-      C_String s = "getter mValueAtIndex: index (" ;
-      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+    result = p->mObject.mAttribute_mInstructions ;
   }
   return result ;
 }
 
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_switchBranchesForGeneration::objectCompare (const GALGAS_switchBranchesForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    int32_t r = mArray.count () - inOperand.mArray.count () ;
-    if (r < 0) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (r > 0) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
-        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
-      }
-    }
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_switchBranchesForGeneration::cEnumerator_switchBranchesForGeneration (const GALGAS_switchBranchesForGeneration & inEnumeratedObject,
                                                                                   const typeEnumerationOrder inOrder) :
-mEnumerationArrayEx (),
-mEnumerationArray (),
-mIndex (0),
-mOrder (inOrder) {
-  mEnumerationArray = inEnumeratedObject.mArray ;
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_switchBranchesForGeneration::~ cEnumerator_switchBranchesForGeneration (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchBranchesForGeneration::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cEnumerator_switchBranchesForGeneration::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArray.count () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//const cCollectionElement * cEnumerator_switchBranchesForGeneration::currentObjectPtr (LOCATION_ARGS) const {
-//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesForGeneration_2D_element cEnumerator_switchBranchesForGeneration::current (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE) ;
+  const cCollectionElement_switchBranchesForGeneration * p = (const cCollectionElement_switchBranchesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+  return p->mObject ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist cEnumerator_switchBranchesForGeneration::current_mSwitchConstantList (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mSwitchConstantList ;
+  const cCollectionElement_switchBranchesForGeneration * p = (const cCollectionElement_switchBranchesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+  return p->mObject.mAttribute_mSwitchConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_extractedAssociatedValuesForGeneration cEnumerator_switchBranchesForGeneration::current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mExtractedAssociatedValuesForGeneration ;
+  const cCollectionElement_switchBranchesForGeneration * p = (const cCollectionElement_switchBranchesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+  return p->mObject.mAttribute_mExtractedAssociatedValuesForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint cEnumerator_switchBranchesForGeneration::current_mLocationIndex (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mLocationIndex ;
+  const cCollectionElement_switchBranchesForGeneration * p = (const cCollectionElement_switchBranchesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+  return p->mObject.mAttribute_mLocationIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration cEnumerator_switchBranchesForGeneration::current_mInstructions (LOCATION_ARGS) const {
-  const int32_t idx = (mOrder == kENUMERATION_UP)
-    ? mIndex
-    : mEnumerationArray.count () - 1 - mIndex
-  ;
-  return mEnumerationArray (idx COMMA_THERE).mAttribute_mInstructions ;
+  const cCollectionElement_switchBranchesForGeneration * p = (const cCollectionElement_switchBranchesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesForGeneration) ;
+  return p->mObject.mAttribute_mInstructions ;
 }
 
 
@@ -15194,6 +12155,2132 @@ GALGAS_repeatInstructionForGeneration GALGAS_repeatInstructionForGeneration::ext
       result = *p ;
     }else{
       inCompiler->castError ("repeatInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_selectInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_selectInstruction * p = (const cPtr_selectInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_selectInstruction) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSelectBranchList.objectCompare (p->mAttribute_mSelectBranchList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOf_5F_select_5F_instruction.objectCompare (p->mAttribute_mEndOf_5F_select_5F_instruction) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_selectInstruction::objectCompare (const GALGAS_selectInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstruction::GALGAS_selectInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstruction GALGAS_selectInstruction::constructor_default (LOCATION_ARGS) {
+  return GALGAS_selectInstruction::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                    GALGAS_listOfSyntaxInstructionList::constructor_emptyList (HERE),
+                                                    GALGAS_location::constructor_nowhere (HERE)
+                                                    COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstruction::GALGAS_selectInstruction (const cPtr_selectInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_selectInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstruction GALGAS_selectInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                    const GALGAS_listOfSyntaxInstructionList & inAttribute_mSelectBranchList,
+                                                                    const GALGAS_location & inAttribute_mEndOf_5F_select_5F_instruction
+                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_selectInstruction result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mSelectBranchList.isValid () && inAttribute_mEndOf_5F_select_5F_instruction.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_selectInstruction (inAttribute_mInstructionLocation, inAttribute_mSelectBranchList, inAttribute_mEndOf_5F_select_5F_instruction COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSyntaxInstructionList GALGAS_selectInstruction::getter_mSelectBranchList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_listOfSyntaxInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_selectInstruction * p = (const cPtr_selectInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selectInstruction) ;
+    result = p->mAttribute_mSelectBranchList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSyntaxInstructionList cPtr_selectInstruction::getter_mSelectBranchList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSelectBranchList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_selectInstruction::getter_mEndOf_5F_select_5F_instruction (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_selectInstruction * p = (const cPtr_selectInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selectInstruction) ;
+    result = p->mAttribute_mEndOf_5F_select_5F_instruction ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_selectInstruction::getter_mEndOf_5F_select_5F_instruction (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOf_5F_select_5F_instruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                     Pointer class for @selectInstruction class                                      *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_selectInstruction::cPtr_selectInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                const GALGAS_listOfSyntaxInstructionList & in_mSelectBranchList,
+                                                const GALGAS_location & in_mEndOf_5F_select_5F_instruction
+                                                COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mAttribute_mSelectBranchList (in_mSelectBranchList),
+mAttribute_mEndOf_5F_select_5F_instruction (in_mEndOf_5F_select_5F_instruction) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_selectInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selectInstruction ;
+}
+
+void cPtr_selectInstruction::description (C_String & ioString,
+                                          const int32_t inIndentation) const {
+  ioString << "[@selectInstruction:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSelectBranchList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOf_5F_select_5F_instruction.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_selectInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_selectInstruction (mAttribute_mInstructionLocation, mAttribute_mSelectBranchList, mAttribute_mEndOf_5F_select_5F_instruction COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               @selectInstruction type                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_selectInstruction ("selectInstruction",
+                                          & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_selectInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selectInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_selectInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_selectInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstruction GALGAS_selectInstruction::extractObject (const GALGAS_object & inObject,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_selectInstruction result ;
+  const GALGAS_selectInstruction * p = (const GALGAS_selectInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_selectInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("selectInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_selectInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_selectInstructionForGeneration * p = (const cPtr_selectInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_selectInstructionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mSyntaxComponentName.objectCompare (p->mAttribute_mSyntaxComponentName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mChoiceIndex.objectCompare (p->mAttribute_mChoiceIndex) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mListOfSemanticInstructionListForGeneration.objectCompare (p->mAttribute_mListOfSemanticInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_selectInstructionForGeneration::objectCompare (const GALGAS_selectInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstructionForGeneration::GALGAS_selectInstructionForGeneration (void) :
+GALGAS_syntaxInstructionForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstructionForGeneration GALGAS_selectInstructionForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_selectInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                                 GALGAS_string::constructor_default (HERE),
+                                                                 GALGAS_uint::constructor_default (HERE),
+                                                                 GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (HERE)
+                                                                 COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstructionForGeneration::GALGAS_selectInstructionForGeneration (const cPtr_selectInstructionForGeneration * inSourcePtr) :
+GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_selectInstructionForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstructionForGeneration GALGAS_selectInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                              const GALGAS_string & inAttribute_mSyntaxComponentName,
+                                                                                              const GALGAS_uint & inAttribute_mChoiceIndex,
+                                                                                              const GALGAS_listOfSemanticInstructionListForGeneration & inAttribute_mListOfSemanticInstructionListForGeneration
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_selectInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mSyntaxComponentName.isValid () && inAttribute_mChoiceIndex.isValid () && inAttribute_mListOfSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_selectInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mSyntaxComponentName, inAttribute_mChoiceIndex, inAttribute_mListOfSemanticInstructionListForGeneration COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_selectInstructionForGeneration::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_selectInstructionForGeneration * p = (const cPtr_selectInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selectInstructionForGeneration) ;
+    result = p->mAttribute_mSyntaxComponentName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string cPtr_selectInstructionForGeneration::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mSyntaxComponentName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_selectInstructionForGeneration::getter_mChoiceIndex (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_selectInstructionForGeneration * p = (const cPtr_selectInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selectInstructionForGeneration) ;
+    result = p->mAttribute_mChoiceIndex ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cPtr_selectInstructionForGeneration::getter_mChoiceIndex (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mChoiceIndex ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSemanticInstructionListForGeneration GALGAS_selectInstructionForGeneration::getter_mListOfSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  GALGAS_listOfSemanticInstructionListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_selectInstructionForGeneration * p = (const cPtr_selectInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_selectInstructionForGeneration) ;
+    result = p->mAttribute_mListOfSemanticInstructionListForGeneration ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSemanticInstructionListForGeneration cPtr_selectInstructionForGeneration::getter_mListOfSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mListOfSemanticInstructionListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                               Pointer class for @selectInstructionForGeneration class                               *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_selectInstructionForGeneration::cPtr_selectInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                          const GALGAS_string & in_mSyntaxComponentName,
+                                                                          const GALGAS_uint & in_mChoiceIndex,
+                                                                          const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
+                                                                          COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
+mAttribute_mSyntaxComponentName (in_mSyntaxComponentName),
+mAttribute_mChoiceIndex (in_mChoiceIndex),
+mAttribute_mListOfSemanticInstructionListForGeneration (in_mListOfSemanticInstructionListForGeneration) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_selectInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
+}
+
+void cPtr_selectInstructionForGeneration::description (C_String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString << "[@selectInstructionForGeneration:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mChoiceIndex.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mListOfSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_selectInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_selectInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mSyntaxComponentName, mAttribute_mChoiceIndex, mAttribute_mListOfSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @selectInstructionForGeneration type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_selectInstructionForGeneration ("selectInstructionForGeneration",
+                                                       & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_selectInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_selectInstructionForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_selectInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_selectInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_selectInstructionForGeneration GALGAS_selectInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_selectInstructionForGeneration result ;
+  const GALGAS_selectInstructionForGeneration * p = (const GALGAS_selectInstructionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_selectInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("selectInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_parseLoopInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mVariantExpression.objectCompare (p->mAttribute_mVariantExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfVariantExpression.objectCompare (p->mAttribute_mEndOfVariantExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mWhileExpression.objectCompare (p->mAttribute_mWhileExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfWhileExpression.objectCompare (p->mAttribute_mEndOfWhileExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mDoInstructionList.objectCompare (p->mAttribute_mDoInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfInstructionList.objectCompare (p->mAttribute_mEndOfInstructionList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_parseLoopInstruction::objectCompare (const GALGAS_parseLoopInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseLoopInstruction::GALGAS_parseLoopInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseLoopInstruction::GALGAS_parseLoopInstruction (const cPtr_parseLoopInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_parseLoopInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseLoopInstruction GALGAS_parseLoopInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                          const GALGAS_semanticExpressionAST & inAttribute_mVariantExpression,
+                                                                          const GALGAS_location & inAttribute_mEndOfVariantExpression,
+                                                                          const GALGAS_semanticExpressionAST & inAttribute_mWhileExpression,
+                                                                          const GALGAS_location & inAttribute_mEndOfWhileExpression,
+                                                                          const GALGAS_syntaxInstructionList & inAttribute_mDoInstructionList,
+                                                                          const GALGAS_location & inAttribute_mEndOfInstructionList
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_parseLoopInstruction result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mVariantExpression.isValid () && inAttribute_mEndOfVariantExpression.isValid () && inAttribute_mWhileExpression.isValid () && inAttribute_mEndOfWhileExpression.isValid () && inAttribute_mDoInstructionList.isValid () && inAttribute_mEndOfInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_parseLoopInstruction (inAttribute_mInstructionLocation, inAttribute_mVariantExpression, inAttribute_mEndOfVariantExpression, inAttribute_mWhileExpression, inAttribute_mEndOfWhileExpression, inAttribute_mDoInstructionList, inAttribute_mEndOfInstructionList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::getter_mVariantExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mVariantExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_parseLoopInstruction::getter_mVariantExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mVariantExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseLoopInstruction::getter_mEndOfVariantExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mEndOfVariantExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseLoopInstruction::getter_mEndOfVariantExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfVariantExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_parseLoopInstruction::getter_mWhileExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mWhileExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_parseLoopInstruction::getter_mWhileExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mWhileExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseLoopInstruction::getter_mEndOfWhileExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mEndOfWhileExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseLoopInstruction::getter_mEndOfWhileExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfWhileExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList GALGAS_parseLoopInstruction::getter_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mDoInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList cPtr_parseLoopInstruction::getter_mDoInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDoInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseLoopInstruction::getter_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseLoopInstruction) ;
+    result = p->mAttribute_mEndOfInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseLoopInstruction::getter_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                    Pointer class for @parseLoopInstruction class                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_parseLoopInstruction::cPtr_parseLoopInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                      const GALGAS_semanticExpressionAST & in_mVariantExpression,
+                                                      const GALGAS_location & in_mEndOfVariantExpression,
+                                                      const GALGAS_semanticExpressionAST & in_mWhileExpression,
+                                                      const GALGAS_location & in_mEndOfWhileExpression,
+                                                      const GALGAS_syntaxInstructionList & in_mDoInstructionList,
+                                                      const GALGAS_location & in_mEndOfInstructionList
+                                                      COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mAttribute_mVariantExpression (in_mVariantExpression),
+mAttribute_mEndOfVariantExpression (in_mEndOfVariantExpression),
+mAttribute_mWhileExpression (in_mWhileExpression),
+mAttribute_mEndOfWhileExpression (in_mEndOfWhileExpression),
+mAttribute_mDoInstructionList (in_mDoInstructionList),
+mAttribute_mEndOfInstructionList (in_mEndOfInstructionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_parseLoopInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseLoopInstruction ;
+}
+
+void cPtr_parseLoopInstruction::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString << "[@parseLoopInstruction:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mVariantExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfVariantExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mWhileExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfWhileExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mDoInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfInstructionList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_parseLoopInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_parseLoopInstruction (mAttribute_mInstructionLocation, mAttribute_mVariantExpression, mAttribute_mEndOfVariantExpression, mAttribute_mWhileExpression, mAttribute_mEndOfWhileExpression, mAttribute_mDoInstructionList, mAttribute_mEndOfInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @parseLoopInstruction type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_parseLoopInstruction ("parseLoopInstruction",
+                                             & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_parseLoopInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseLoopInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_parseLoopInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_parseLoopInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseLoopInstruction GALGAS_parseLoopInstruction::extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_parseLoopInstruction result ;
+  const GALGAS_parseLoopInstruction * p = (const GALGAS_parseLoopInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_parseLoopInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("parseLoopInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_parseRewindInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_parseRewindInstruction * p = (const cPtr_parseRewindInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_parseRewindInstruction) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mParseRewindBranchList.objectCompare (p->mAttribute_mParseRewindBranchList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfParseDoInstruction.objectCompare (p->mAttribute_mEndOfParseDoInstruction) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_parseRewindInstruction::objectCompare (const GALGAS_parseRewindInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstruction::GALGAS_parseRewindInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstruction GALGAS_parseRewindInstruction::constructor_default (LOCATION_ARGS) {
+  return GALGAS_parseRewindInstruction::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                         GALGAS_listOfSyntaxInstructionList::constructor_emptyList (HERE),
+                                                         GALGAS_location::constructor_nowhere (HERE)
+                                                         COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstruction::GALGAS_parseRewindInstruction (const cPtr_parseRewindInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_parseRewindInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstruction GALGAS_parseRewindInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                              const GALGAS_listOfSyntaxInstructionList & inAttribute_mParseRewindBranchList,
+                                                                              const GALGAS_location & inAttribute_mEndOfParseDoInstruction
+                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_parseRewindInstruction result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mParseRewindBranchList.isValid () && inAttribute_mEndOfParseDoInstruction.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_parseRewindInstruction (inAttribute_mInstructionLocation, inAttribute_mParseRewindBranchList, inAttribute_mEndOfParseDoInstruction COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSyntaxInstructionList GALGAS_parseRewindInstruction::getter_mParseRewindBranchList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_listOfSyntaxInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseRewindInstruction * p = (const cPtr_parseRewindInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseRewindInstruction) ;
+    result = p->mAttribute_mParseRewindBranchList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSyntaxInstructionList cPtr_parseRewindInstruction::getter_mParseRewindBranchList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mParseRewindBranchList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseRewindInstruction::getter_mEndOfParseDoInstruction (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseRewindInstruction * p = (const cPtr_parseRewindInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseRewindInstruction) ;
+    result = p->mAttribute_mEndOfParseDoInstruction ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseRewindInstruction::getter_mEndOfParseDoInstruction (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfParseDoInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                   Pointer class for @parseRewindInstruction class                                   *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_parseRewindInstruction::cPtr_parseRewindInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                          const GALGAS_listOfSyntaxInstructionList & in_mParseRewindBranchList,
+                                                          const GALGAS_location & in_mEndOfParseDoInstruction
+                                                          COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mAttribute_mParseRewindBranchList (in_mParseRewindBranchList),
+mAttribute_mEndOfParseDoInstruction (in_mEndOfParseDoInstruction) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_parseRewindInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseRewindInstruction ;
+}
+
+void cPtr_parseRewindInstruction::description (C_String & ioString,
+                                               const int32_t inIndentation) const {
+  ioString << "[@parseRewindInstruction:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mParseRewindBranchList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfParseDoInstruction.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_parseRewindInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_parseRewindInstruction (mAttribute_mInstructionLocation, mAttribute_mParseRewindBranchList, mAttribute_mEndOfParseDoInstruction COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @parseRewindInstruction type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_parseRewindInstruction ("parseRewindInstruction",
+                                               & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_parseRewindInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseRewindInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_parseRewindInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_parseRewindInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstruction GALGAS_parseRewindInstruction::extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_parseRewindInstruction result ;
+  const GALGAS_parseRewindInstruction * p = (const GALGAS_parseRewindInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_parseRewindInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("parseRewindInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_parseRewindInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_parseRewindInstructionForGeneration * p = (const cPtr_parseRewindInstructionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_parseRewindInstructionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mListOfSemanticInstructionListForGeneration.objectCompare (p->mAttribute_mListOfSemanticInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_parseRewindInstructionForGeneration::objectCompare (const GALGAS_parseRewindInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstructionForGeneration::GALGAS_parseRewindInstructionForGeneration (void) :
+GALGAS_syntaxInstructionForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstructionForGeneration GALGAS_parseRewindInstructionForGeneration::constructor_default (LOCATION_ARGS) {
+  return GALGAS_parseRewindInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
+                                                                      GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (HERE)
+                                                                      COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstructionForGeneration::GALGAS_parseRewindInstructionForGeneration (const cPtr_parseRewindInstructionForGeneration * inSourcePtr) :
+GALGAS_syntaxInstructionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_parseRewindInstructionForGeneration) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstructionForGeneration GALGAS_parseRewindInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                                                        const GALGAS_listOfSemanticInstructionListForGeneration & inAttribute_mListOfSemanticInstructionListForGeneration
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_parseRewindInstructionForGeneration result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mListOfSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_parseRewindInstructionForGeneration (inAttribute_mInstructionLocation, inAttribute_mListOfSemanticInstructionListForGeneration COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSemanticInstructionListForGeneration GALGAS_parseRewindInstructionForGeneration::getter_mListOfSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  GALGAS_listOfSemanticInstructionListForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseRewindInstructionForGeneration * p = (const cPtr_parseRewindInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseRewindInstructionForGeneration) ;
+    result = p->mAttribute_mListOfSemanticInstructionListForGeneration ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_listOfSemanticInstructionListForGeneration cPtr_parseRewindInstructionForGeneration::getter_mListOfSemanticInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mListOfSemanticInstructionListForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                            Pointer class for @parseRewindInstructionForGeneration class                             *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_parseRewindInstructionForGeneration::cPtr_parseRewindInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                                                    const GALGAS_listOfSemanticInstructionListForGeneration & in_mListOfSemanticInstructionListForGeneration
+                                                                                    COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionForGeneration (in_mInstructionLocation COMMA_THERE),
+mAttribute_mListOfSemanticInstructionListForGeneration (in_mListOfSemanticInstructionListForGeneration) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_parseRewindInstructionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
+}
+
+void cPtr_parseRewindInstructionForGeneration::description (C_String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString << "[@parseRewindInstructionForGeneration:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mListOfSemanticInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_parseRewindInstructionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_parseRewindInstructionForGeneration (mAttribute_mInstructionLocation, mAttribute_mListOfSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @parseRewindInstructionForGeneration type                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ("parseRewindInstructionForGeneration",
+                                                            & kTypeDescriptor_GALGAS_syntaxInstructionForGeneration) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_parseRewindInstructionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseRewindInstructionForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_parseRewindInstructionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_parseRewindInstructionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseRewindInstructionForGeneration GALGAS_parseRewindInstructionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_parseRewindInstructionForGeneration result ;
+  const GALGAS_parseRewindInstructionForGeneration * p = (const GALGAS_parseRewindInstructionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_parseRewindInstructionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("parseRewindInstructionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_parseWhenInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mWhenExpression.objectCompare (p->mAttribute_mWhenExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfWhenExpression.objectCompare (p->mAttribute_mEndOfWhenExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mWhenInstructionList.objectCompare (p->mAttribute_mWhenInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfWhenInstructionList.objectCompare (p->mAttribute_mEndOfWhenInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mElseInstructionList.objectCompare (p->mAttribute_mElseInstructionList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mEndOfElseInstructionList.objectCompare (p->mAttribute_mEndOfElseInstructionList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_parseWhenInstruction::objectCompare (const GALGAS_parseWhenInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseWhenInstruction::GALGAS_parseWhenInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseWhenInstruction::GALGAS_parseWhenInstruction (const cPtr_parseWhenInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_parseWhenInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseWhenInstruction GALGAS_parseWhenInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                          const GALGAS_semanticExpressionAST & inAttribute_mWhenExpression,
+                                                                          const GALGAS_location & inAttribute_mEndOfWhenExpression,
+                                                                          const GALGAS_syntaxInstructionList & inAttribute_mWhenInstructionList,
+                                                                          const GALGAS_location & inAttribute_mEndOfWhenInstructionList,
+                                                                          const GALGAS_syntaxInstructionList & inAttribute_mElseInstructionList,
+                                                                          const GALGAS_location & inAttribute_mEndOfElseInstructionList
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_parseWhenInstruction result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mWhenExpression.isValid () && inAttribute_mEndOfWhenExpression.isValid () && inAttribute_mWhenInstructionList.isValid () && inAttribute_mEndOfWhenInstructionList.isValid () && inAttribute_mElseInstructionList.isValid () && inAttribute_mEndOfElseInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_parseWhenInstruction (inAttribute_mInstructionLocation, inAttribute_mWhenExpression, inAttribute_mEndOfWhenExpression, inAttribute_mWhenInstructionList, inAttribute_mEndOfWhenInstructionList, inAttribute_mElseInstructionList, inAttribute_mEndOfElseInstructionList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_parseWhenInstruction::getter_mWhenExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mWhenExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_parseWhenInstruction::getter_mWhenExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mWhenExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseWhenInstruction::getter_mEndOfWhenExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mEndOfWhenExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseWhenInstruction::getter_mEndOfWhenExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfWhenExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::getter_mWhenInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mWhenInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList cPtr_parseWhenInstruction::getter_mWhenInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mWhenInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseWhenInstruction::getter_mEndOfWhenInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mEndOfWhenInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseWhenInstruction::getter_mEndOfWhenInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfWhenInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList GALGAS_parseWhenInstruction::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionList result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mElseInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionList cPtr_parseWhenInstruction::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mElseInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_parseWhenInstruction::getter_mEndOfElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_parseWhenInstruction) ;
+    result = p->mAttribute_mEndOfElseInstructionList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_parseWhenInstruction::getter_mEndOfElseInstructionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mEndOfElseInstructionList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                    Pointer class for @parseWhenInstruction class                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_parseWhenInstruction::cPtr_parseWhenInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                      const GALGAS_semanticExpressionAST & in_mWhenExpression,
+                                                      const GALGAS_location & in_mEndOfWhenExpression,
+                                                      const GALGAS_syntaxInstructionList & in_mWhenInstructionList,
+                                                      const GALGAS_location & in_mEndOfWhenInstructionList,
+                                                      const GALGAS_syntaxInstructionList & in_mElseInstructionList,
+                                                      const GALGAS_location & in_mEndOfElseInstructionList
+                                                      COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mAttribute_mWhenExpression (in_mWhenExpression),
+mAttribute_mEndOfWhenExpression (in_mEndOfWhenExpression),
+mAttribute_mWhenInstructionList (in_mWhenInstructionList),
+mAttribute_mEndOfWhenInstructionList (in_mEndOfWhenInstructionList),
+mAttribute_mElseInstructionList (in_mElseInstructionList),
+mAttribute_mEndOfElseInstructionList (in_mEndOfElseInstructionList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_parseWhenInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseWhenInstruction ;
+}
+
+void cPtr_parseWhenInstruction::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString << "[@parseWhenInstruction:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mWhenExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfWhenExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mWhenInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfWhenInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mElseInstructionList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mEndOfElseInstructionList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_parseWhenInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_parseWhenInstruction (mAttribute_mInstructionLocation, mAttribute_mWhenExpression, mAttribute_mEndOfWhenExpression, mAttribute_mWhenInstructionList, mAttribute_mEndOfWhenInstructionList, mAttribute_mElseInstructionList, mAttribute_mEndOfElseInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @parseWhenInstruction type                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_parseWhenInstruction ("parseWhenInstruction",
+                                             & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_parseWhenInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_parseWhenInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_parseWhenInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_parseWhenInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_parseWhenInstruction GALGAS_parseWhenInstruction::extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_parseWhenInstruction result ;
+  const GALGAS_parseWhenInstruction * p = (const GALGAS_parseWhenInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_parseWhenInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("parseWhenInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_syntaxSendInstruction::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_syntaxSendInstruction * p = (const cPtr_syntaxSendInstruction *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_syntaxSendInstruction) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_syntaxSendInstruction::objectCompare (const GALGAS_syntaxSendInstruction & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxSendInstruction::GALGAS_syntaxSendInstruction (void) :
+GALGAS_syntaxInstructionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxSendInstruction::GALGAS_syntaxSendInstruction (const cPtr_syntaxSendInstruction * inSourcePtr) :
+GALGAS_syntaxInstructionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_syntaxSendInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxSendInstruction GALGAS_syntaxSendInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
+                                                                            const GALGAS_semanticExpressionAST & inAttribute_mExpression
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxSendInstruction result ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_syntaxSendInstruction (inAttribute_mInstructionLocation, inAttribute_mExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_syntaxSendInstruction::getter_mExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_syntaxSendInstruction * p = (const cPtr_syntaxSendInstruction *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_syntaxSendInstruction) ;
+    result = p->mAttribute_mExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_syntaxSendInstruction::getter_mExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                   Pointer class for @syntaxSendInstruction class                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_syntaxSendInstruction::cPtr_syntaxSendInstruction (const GALGAS_location & in_mInstructionLocation,
+                                                        const GALGAS_semanticExpressionAST & in_mExpression
+                                                        COMMA_LOCATION_ARGS) :
+cPtr_syntaxInstructionAST (in_mInstructionLocation COMMA_THERE),
+mAttribute_mExpression (in_mExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_syntaxSendInstruction::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxSendInstruction ;
+}
+
+void cPtr_syntaxSendInstruction::description (C_String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString << "[@syntaxSendInstruction:" ;
+  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_syntaxSendInstruction::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_syntaxSendInstruction (mAttribute_mInstructionLocation, mAttribute_mExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @syntaxSendInstruction type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_syntaxSendInstruction ("syntaxSendInstruction",
+                                              & kTypeDescriptor_GALGAS_syntaxInstructionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_syntaxSendInstruction::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxSendInstruction ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_syntaxSendInstruction::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_syntaxSendInstruction (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxSendInstruction GALGAS_syntaxSendInstruction::extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxSendInstruction result ;
+  const GALGAS_syntaxSendInstruction * p = (const GALGAS_syntaxSendInstruction *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_syntaxSendInstruction *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxSendInstruction", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Extension method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature> gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionMethod_appendSyntaxSignature (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callExtensionMethod_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                const GALGAS_string constin_inPosfix,
+                                                GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+      f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+           f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      f (inObject, constin_inPosfix, io_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                    const GALGAS_string /* constinArgument_inPosfix */,
+                                                                                    GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  enterExtensionMethod_appendSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                              extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignature (defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature,
+                                                                                   freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Extension getter '@semanticInstructionForGeneration compareInstructionSyntaxSignature'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature> gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inClassIndex,
+                                                             enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature inGetter) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                   const GALGAS_semanticInstructionForGeneration in_inTestedInstruction,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_bool result ;
+//--- Find Reader
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.count ()) {
+      f = gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.count ()) {
+           f = gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      result = f (inObject, in_inTestedInstruction, inCompiler COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                                       const GALGAS_semanticInstructionForGeneration /* constinArgument_inTestedInstruction */,
+                                                                                                       C_Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bool result_outOk ; // Returned variable
+  result_outOk = GALGAS_bool (true) ;
+//---
+  return result_outOk ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (void) {
+  enterExtensionGetter_compareInstructionSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                                          extensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (void) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (defineExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature,
+                                                                                               freeExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                                                                 *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+
+typeComparisonResult GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis::GALGAS_abstractSyntaxInstructionForGrammarAnalysis (void) :
+AC_GALGAS_class () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis::GALGAS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) :
+AC_GALGAS_class (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_abstractSyntaxInstructionForGrammarAnalysis::getter_mStartLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
+    result = p->mAttribute_mStartLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_abstractSyntaxInstructionForGrammarAnalysis::getter_mStartLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mStartLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                        Pointer class for @abstractSyntaxInstructionForGrammarAnalysis class                         *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_abstractSyntaxInstructionForGrammarAnalysis::cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation
+                                                                                                    COMMA_LOCATION_ARGS) :
+acPtr_class (THERE),
+mAttribute_mStartLocation (in_mStartLocation) {
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  @abstractSyntaxInstructionForGrammarAnalysis type                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ("abstractSyntaxInstructionForGrammarAnalysis",
+                                                                    NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_abstractSyntaxInstructionForGrammarAnalysis::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_abstractSyntaxInstructionForGrammarAnalysis ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_abstractSyntaxInstructionForGrammarAnalysis::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_abstractSyntaxInstructionForGrammarAnalysis (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_abstractSyntaxInstructionForGrammarAnalysis::extractObject (const GALGAS_object & inObject,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_abstractSyntaxInstructionForGrammarAnalysis result ;
+  const GALGAS_abstractSyntaxInstructionForGrammarAnalysis * p = (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_abstractSyntaxInstructionForGrammarAnalysis *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("abstractSyntaxInstructionForGrammarAnalysis", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Class for element of '@syntaxInstructionListForGrammarAnalysis' list                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cCollectionElement {
+  public : GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_syntaxInstructionListForGrammarAnalysis (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_syntaxInstructionListForGrammarAnalysis::cCollectionElement_syntaxInstructionListForGrammarAnalysis (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction
+                                                                                                                        COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mInstruction) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_syntaxInstructionListForGrammarAnalysis::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_syntaxInstructionListForGrammarAnalysis::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_syntaxInstructionListForGrammarAnalysis (mObject.mAttribute_mInstruction COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mInstruction" ":" ;
+  mObject.mAttribute_mInstruction.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * operand = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_listWithValue (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand0
+                                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result ;
+  if (inOperand0.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                                const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction
+                                                                                COMMA_LOCATION_ARGS) {
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = NULL ;
+  macroMyNew (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis (in_mInstruction COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::addAssign_operation (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand0
+                                                                          COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::setter_insertAtIndex (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis inOperand0,
+                                                                           const GALGAS_uint inInsertionIndex,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::setter_removeAtIndex (GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outOperand0,
+                                                                           const GALGAS_uint inRemoveIndex,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+      outOperand0 = p->mObject.mAttribute_mInstruction ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::setter_popFirst (GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outOperand0,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::setter_popLast (GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outOperand0,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::method_first (GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outOperand0,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::method_last (GALGAS_abstractSyntaxInstructionForGrammarAnalysis & outOperand0,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+    outOperand0 = p->mObject.mAttribute_mInstruction ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::add_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis & inOperand,
+                                                                                                              C_Compiler * /* inCompiler */
+                                                                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result = GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                                        C_Compiler * inCompiler
+                                                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result = GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) const {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result = GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_syntaxInstructionListForGrammarAnalysis::plusAssign_operation (const GALGAS_syntaxInstructionListForGrammarAnalysis inOperand,
+                                                                           C_Compiler * /* inCompiler */
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::getter_mInstructionAtIndex (const GALGAS_uint & inIndex,
+                                                                                                                               C_Compiler * inCompiler
+                                                                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) attributes.ptr () ;
+  GALGAS_abstractSyntaxInstructionForGrammarAnalysis result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+    result = p->mObject.mAttribute_mInstruction ;
+  }
+  return result ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_syntaxInstructionListForGrammarAnalysis::cEnumerator_syntaxInstructionListForGrammarAnalysis (const GALGAS_syntaxInstructionListForGrammarAnalysis & inEnumeratedObject,
+                                                                                                          const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element cEnumerator_syntaxInstructionListForGrammarAnalysis::current (LOCATION_ARGS) const {
+  const cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (const cCollectionElement_syntaxInstructionListForGrammarAnalysis *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_abstractSyntaxInstructionForGrammarAnalysis cEnumerator_syntaxInstructionListForGrammarAnalysis::current_mInstruction (LOCATION_ARGS) const {
+  const cCollectionElement_syntaxInstructionListForGrammarAnalysis * p = (const cCollectionElement_syntaxInstructionListForGrammarAnalysis *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_syntaxInstructionListForGrammarAnalysis) ;
+  return p->mObject.mAttribute_mInstruction ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    @syntaxInstructionListForGrammarAnalysis type                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis ("syntaxInstructionListForGrammarAnalysis",
+                                                                NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_syntaxInstructionListForGrammarAnalysis::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_syntaxInstructionListForGrammarAnalysis ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_syntaxInstructionListForGrammarAnalysis::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_syntaxInstructionListForGrammarAnalysis (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::extractObject (const GALGAS_object & inObject,
+                                                                                                              C_Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_syntaxInstructionListForGrammarAnalysis result ;
+  const GALGAS_syntaxInstructionListForGrammarAnalysis * p = (const GALGAS_syntaxInstructionListForGrammarAnalysis *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_syntaxInstructionListForGrammarAnalysis *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("syntaxInstructionListForGrammarAnalysis", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
