@@ -130,6 +130,11 @@ template <typename TYPE> class TC_Array {
                                   const int32_t inIndex
                                   COMMA_LOCATION_ARGS) ;
 
+//--- Insert object at index (0 <= index <= count)
+  public : void insertObjectAtIndex (const TYPE & inValue,
+                                     const int32_t inIndex
+                                     COMMA_LOCATION_ARGS) ; // inValue is copied
+
 //------------------------------------ Sorted array operations
 //--- Remove an object, suppose the array is ordered
   public : void removeObjectFromOrderedArray (const TYPE & inKey) ;
@@ -508,6 +513,24 @@ template <typename TYPE> void TC_Array <TYPE>::setObjectAtIndex (const TYPE & in
                                                                  const int32_t inIndex
                                                                  COMMA_LOCATION_ARGS) {
   insulate () ;
+  macroUniqueSharedObject (mSharedArray) ;
+  mSharedArray->setObjectAtIndex (inObject, inIndex COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//   insertObjectAtIndex                                                                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+template <typename TYPE> void TC_Array <TYPE>::insertObjectAtIndex (const TYPE & inObject,
+                                                                    const int32_t inIndex  // inValue is copied
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL == mSharedArray) {
+    macroMyNew (mSharedArray, cSharedArray <TYPE>) ;
+  }else{
+    insulate () ;
+  }
   macroUniqueSharedObject (mSharedArray) ;
   mSharedArray->setObjectAtIndex (inObject, inIndex COMMA_THERE) ;
 }
