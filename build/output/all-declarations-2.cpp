@@ -472,7 +472,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_lexicalFunctionFormalArgumentList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -501,7 +501,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::addAssign_operation (const GALGAS
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -1304,7 +1304,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_listWithV
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateDelimitorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -1336,7 +1336,7 @@ void GALGAS_templateDelimitorList::addAssign_operation (const GALGAS_lstring & i
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -4213,7 +4213,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_lis
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_commandLineOptionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -4257,7 +4257,7 @@ void GALGAS_commandLineOptionListAST::addAssign_operation (const GALGAS_lstring 
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -5248,7 +5248,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_l
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_guiSimpleAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -5277,7 +5277,7 @@ void GALGAS_guiSimpleAttributeListAST::addAssign_operation (const GALGAS_lstring
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -5669,7 +5669,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::construct
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_guiCompoundAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -5701,7 +5701,7 @@ void GALGAS_guiCompoundAttributeListAST::addAssign_operation (const GALGAS_lstri
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -6125,7 +6125,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithVal
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_terminalLabelListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -6154,7 +6154,7 @@ void GALGAS_terminalLabelListAST::addAssign_operation (const GALGAS_lstring & in
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -6546,7 +6546,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_listWithValue (const 
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_guiLabelListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -6578,7 +6578,7 @@ void GALGAS_guiLabelListAST::addAssign_operation (const GALGAS_uint & inOperand0
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -7016,7 +7016,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_listWithValue (
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_withLexiqueListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -7051,7 +7051,7 @@ void GALGAS_withLexiqueListAST::addAssign_operation (const GALGAS_lstring & inOp
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -7535,7 +7535,7 @@ GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_lis
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_guiCommandLineOptionList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -7573,7 +7573,7 @@ void GALGAS_guiCommandLineOptionList::addAssign_operation (const GALGAS_string &
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -8311,7 +8311,7 @@ GALGAS_textMacroList GALGAS_textMacroList::constructor_listWithValue (const GALG
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_textMacroList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -8340,7 +8340,7 @@ void GALGAS_textMacroList::addAssign_operation (const GALGAS_string & inOperand0
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -8746,7 +8746,7 @@ GALGAS_importedLexiqueList GALGAS_importedLexiqueList::constructor_listWithValue
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_importedLexiqueList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -8784,7 +8784,7 @@ void GALGAS_importedLexiqueList::addAssign_operation (const GALGAS_string & inOp
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -9300,7 +9300,7 @@ GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::const
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -9335,7 +9335,7 @@ void GALGAS_galgas_33_GUIComponentListAST::addAssign_operation (const GALGAS_lst
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -10263,7 +10263,7 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::construct
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -10295,7 +10295,7 @@ void GALGAS_propertyInCollectionListAST::addAssign_operation (const GALGAS_lstri
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -10733,7 +10733,7 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (co
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_typedPropertyList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -10768,7 +10768,7 @@ void GALGAS_typedPropertyList::addAssign_operation (const GALGAS_unifiedTypeMap_
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -11231,7 +11231,7 @@ GALGAS_enumConstantList GALGAS_enumConstantList::constructor_listWithValue (cons
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_enumConstantList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -11260,7 +11260,7 @@ void GALGAS_enumConstantList::addAssign_operation (const GALGAS_lstring & inOper
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -11645,7 +11645,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::const
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_enumConstantListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -11674,7 +11674,7 @@ void GALGAS_enumConstantListForGeneration::addAssign_operation (const GALGAS_str
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -12052,7 +12052,7 @@ GALGAS_unifiedTypeMapProxyList GALGAS_unifiedTypeMapProxyList::constructor_listW
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_unifiedTypeMapProxyList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -12078,7 +12078,7 @@ void GALGAS_unifiedTypeMapProxyList::addAssign_operation (const GALGAS_unifiedTy
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -12431,7 +12431,7 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::constructor_l
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_externTypeConstructorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -12463,7 +12463,7 @@ void GALGAS_externTypeConstructorList::addAssign_operation (const GALGAS_lstring
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -12894,7 +12894,7 @@ GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_listWithVal
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_externTypeGetterList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -12926,7 +12926,7 @@ void GALGAS_externTypeGetterList::addAssign_operation (const GALGAS_lstring & in
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -13350,7 +13350,7 @@ GALGAS_externTypeSetterList GALGAS_externTypeSetterList::constructor_listWithVal
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_externTypeSetterList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -13379,7 +13379,7 @@ void GALGAS_externTypeSetterList::addAssign_operation (const GALGAS_lstring & in
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -13771,7 +13771,7 @@ GALGAS_externTypeMethodList GALGAS_externTypeMethodList::constructor_listWithVal
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_externTypeMethodList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -13803,7 +13803,7 @@ void GALGAS_externTypeMethodList::addAssign_operation (const GALGAS_lstring & in
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -14234,7 +14234,7 @@ GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::c
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_typeNameFormalParameterNameList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -14266,7 +14266,7 @@ void GALGAS_typeNameFormalParameterNameList::addAssign_operation (const GALGAS_l
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 

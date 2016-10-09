@@ -118,7 +118,7 @@ void cPtr_terminalInstructionForGrammarAnalysis::
 buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t /* inOriginalGrammarSymbolCount */,
                       TC_UniqueArray <int16_t> & ioInstructionsList) {
-  ioInstructionsList.addObject ((int16_t) mAttribute_mTerminalSymbolIndex.uintValue ()) ;
+  ioInstructionsList.appendObject ((int16_t) mAttribute_mTerminalSymbolIndex.uintValue ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -128,7 +128,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
                       const int32_t /* inOriginalGrammarSymbolCount */,
                       TC_UniqueArray <int16_t> & ioInstructionsList) {
 
-  ioInstructionsList.addObject ((int16_t) (mAttribute_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
+  ioInstructionsList.appendObject ((int16_t) (mAttribute_mNonterminalSymbolIndex.uintValue () + (uint32_t) inTerminalSymbolsCount)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -138,7 +138,7 @@ buildRightDerivation (const int32_t /* inTerminalSymbolsCount */,
                       const int32_t inOriginalGrammarSymbolCount,
                       TC_UniqueArray <int16_t> & ioInstructionsList) {
   const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-  ioInstructionsList.addObject ((int16_t) idx) ;
+  ioInstructionsList.appendObject ((int16_t) idx) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -156,7 +156,7 @@ buildRightDerivation (const int32_t inTerminalSymbolsCount,
     instruction.gotoNextObject () ;
   }
   const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-  ioInstructionsList.addObject ((int16_t) idx) ;
+  ioInstructionsList.appendObject ((int16_t) idx) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -270,7 +270,7 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
     }
   //--- insert <T> production call
     const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-    derivation.addObject ((int16_t) idx) ;
+    derivation.appendObject ((int16_t) idx) ;
     cProduction p (inSyntaxComponentName,
                    mAttribute_mStartLocation.startLocation ().lineNumber (),
                    mAttribute_mStartLocation.startLocation ().columnNumber (),
@@ -395,7 +395,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
   ioVocabulary.addAugmentedSymbol () ;
 //--- ... add the production <> -> <start_symbol>
   { TC_UniqueArray <int16_t> derivation ;
-    derivation.addObject ((int16_t) ioVocabulary.getStartSymbol ()) ;
+    derivation.appendObject ((int16_t) ioVocabulary.getStartSymbol ()) ;
     cProduction p ("",
                    0,
                    0,

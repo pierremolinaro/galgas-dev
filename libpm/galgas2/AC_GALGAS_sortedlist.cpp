@@ -135,7 +135,7 @@ class cSharedSortedListRoot : public C_SharedObject {
   protected : typeComparisonResult objectCompare (const cSharedSortedListRoot * inOperand) const ;
 
 //--- Adding an object
-  protected : void addObject (capSortedListElement & inAttributes) ;
+  protected : void appendObject (capSortedListElement & inAttributes) ;
 
   private : void addEntry (cSortedListNode * & ioRootPtr,
                            cSortedListNode * inCurrentNode,
@@ -475,7 +475,7 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedSortedListRoot::addObject (capSortedListElement & inAttributes) {
+void cSharedSortedListRoot::appendObject (capSortedListElement & inAttributes) {
   if (inAttributes.isValid ()) {
     bool extension = false ; // Unused here
     addEntry (mRoot, NULL, inAttributes, extension) ;
@@ -490,11 +490,11 @@ void cSharedSortedListRoot::addObject (capSortedListElement & inAttributes) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_sortedlist::addObject (capSortedListElement & inAttributes) {
+void AC_GALGAS_sortedlist::appendObject (capSortedListElement & inAttributes) {
   if (isValid ()) {
     insulate (HERE) ;
     if (NULL != mSharedRoot) {
-      mSharedRoot->addObject (inAttributes) ;
+      mSharedRoot->appendObject (inAttributes) ;
     }
   }
 }
@@ -897,7 +897,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
   while (p != NULL) {
     capCollectionElement object ;
     object.setPointer (p->mAttributes.ptr ()) ;
-    inEnumerationArray.addObject (object) ;
+    inEnumerationArray.appendObject (object) ;
     p = p->mNextPtr ;
   }
   MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;

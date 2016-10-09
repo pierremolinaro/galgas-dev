@@ -442,7 +442,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
     capCollectionElement object ;
     object.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    inEnumerationArray.addObject (object) ;
+    inEnumerationArray.appendObject (object) ;
   }
 }
 

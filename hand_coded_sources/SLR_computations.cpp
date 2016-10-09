@@ -162,7 +162,7 @@ add_LR0_item (const int32_t inProductionRuleIndex,
   }
 //--- If not found, add it
   if (! found) {
-    mItemsSet.addObject (item) ;
+    mItemsSet.appendObject (item) ;
     mItemsSet.sortArrayUsingFunction (c_LR0_item::compare_LR0_items) ;
   }
   return ! found ;
@@ -265,7 +265,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.derivationLength ()) {
-      outProductionsSet.addObject (productionRuleIndex) ;
+      outProductionsSet.appendObject (productionRuleIndex) ;
     }
     if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
@@ -700,7 +700,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
-    startIndexArray.addObject (startIndex) ;
+    startIndexArray.appendObject (startIndex) ;
     ioCppFileContents <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;

@@ -53,7 +53,7 @@ class capCollectionElementArray {
 //--- Add Object (at index mCount, the end of array)
 //    Array should be allocated (with setCapacity)
 //    Added object should not be NULL
-  public : void addObject (const capCollectionElement & inObject) ;
+  public : void appendObject (const capCollectionElement & inObject) ;
 
   public : void addObjectAtIndex (const capCollectionElement & inObject,
                                   const uint32_t inInsertionIndex,

@@ -347,7 +347,7 @@ method @fixitListForGeneration generateFixIt
   for (element) in self do
     switch (element)
     case fixItRemove :
-      ioGeneratedCode += outFixItArrayCppName + ".addObject (C_FixItDescription (kFixItRemove, \"\")) ;\n"
+      ioGeneratedCode += outFixItArrayCppName + ".appendObject (C_FixItDescription (kFixItRemove, \"\")) ;\n"
     case fixItReplace (@semanticExpressionForGeneration exp) :
       [exp generateExpression
         !?ioGeneratedCode

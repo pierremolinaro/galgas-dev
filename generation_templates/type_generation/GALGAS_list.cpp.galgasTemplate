@@ -131,7 +131,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
     do index IDX %, inOperand%![IDX string]
     end
     % COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -178,7 +178,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 

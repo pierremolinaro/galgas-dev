@@ -4045,8 +4045,8 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void getKeywordLists_galgasTemplateScanner (TC_UniqueArray <C_String> & ioList) {
-  ioList.addObject ("galgasTemplateScanner:galgasDelimitorsList") ;
-  ioList.addObject ("galgasTemplateScanner:galgasKeyWordList") ;
+  ioList.appendObject ("galgasTemplateScanner:galgasDelimitorsList") ;
+  ioList.appendObject ("galgasTemplateScanner:galgasKeyWordList") ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4056,132 +4056,132 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
                                                             TC_UniqueArray <C_String> & ioList) {
   if (inIdentifier == "galgasTemplateScanner:galgasDelimitorsList") {
     ioFound = true ;
-    ioList.addObject ("&") ;
-    ioList.addObject ("(") ;
-    ioList.addObject (")") ;
-    ioList.addObject ("*") ;
-    ioList.addObject ("+") ;
-    ioList.addObject (",") ;
-    ioList.addObject ("-") ;
-    ioList.addObject ("/") ;
-    ioList.addObject (":") ;
-    ioList.addObject (";") ;
-    ioList.addObject (">") ;
-    ioList.addObject ("[") ;
-    ioList.addObject ("]") ;
-    ioList.addObject ("^") ;
-    ioList.addObject ("{") ;
-    ioList.addObject ("|") ;
-    ioList.addObject ("}") ;
-    ioList.addObject ("~") ;
-    ioList.addObject ("!=") ;
-    ioList.addObject ("!^") ;
-    ioList.addObject ("&+") ;
-    ioList.addObject ("&/") ;
-    ioList.addObject ("++") ;
-    ioList.addObject ("+=") ;
-    ioList.addObject ("--") ;
-    ioList.addObject ("->") ;
-    ioList.addObject (":=") ;
-    ioList.addObject (":>") ;
-    ioList.addObject ("==") ;
-    ioList.addObject (">=") ;
-    ioList.addObject (">>") ;
-    ioList.addObject ("\?\?") ;
-    ioList.addObject ("\?^") ;
-    ioList.addObject ("&++") ;
-    ioList.addObject ("&--") ;
+    ioList.appendObject ("&") ;
+    ioList.appendObject ("(") ;
+    ioList.appendObject (")") ;
+    ioList.appendObject ("*") ;
+    ioList.appendObject ("+") ;
+    ioList.appendObject (",") ;
+    ioList.appendObject ("-") ;
+    ioList.appendObject ("/") ;
+    ioList.appendObject (":") ;
+    ioList.appendObject (";") ;
+    ioList.appendObject (">") ;
+    ioList.appendObject ("[") ;
+    ioList.appendObject ("]") ;
+    ioList.appendObject ("^") ;
+    ioList.appendObject ("{") ;
+    ioList.appendObject ("|") ;
+    ioList.appendObject ("}") ;
+    ioList.appendObject ("~") ;
+    ioList.appendObject ("!=") ;
+    ioList.appendObject ("!^") ;
+    ioList.appendObject ("&+") ;
+    ioList.appendObject ("&/") ;
+    ioList.appendObject ("++") ;
+    ioList.appendObject ("+=") ;
+    ioList.appendObject ("--") ;
+    ioList.appendObject ("->") ;
+    ioList.appendObject (":=") ;
+    ioList.appendObject (":>") ;
+    ioList.appendObject ("==") ;
+    ioList.appendObject (">=") ;
+    ioList.appendObject (">>") ;
+    ioList.appendObject ("\?\?") ;
+    ioList.appendObject ("\?^") ;
+    ioList.appendObject ("&++") ;
+    ioList.appendObject ("&--") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
   if (inIdentifier == "galgasTemplateScanner:galgasKeyWordList") {
     ioFound = true ;
-    ioList.addObject ("do") ;
-    ioList.addObject ("if") ;
-    ioList.addObject ("in") ;
-    ioList.addObject ("is") ;
-    ioList.addObject ("on") ;
-    ioList.addObject ("or") ;
-    ioList.addObject ("end") ;
-    ioList.addObject ("for") ;
-    ioList.addObject ("gui") ;
-    ioList.addObject ("let") ;
-    ioList.addObject ("log") ;
-    ioList.addObject ("map") ;
-    ioList.addObject ("mod") ;
-    ioList.addObject ("not") ;
-    ioList.addObject ("tag") ;
-    ioList.addObject ("var") ;
-    ioList.addObject ("case") ;
-    ioList.addObject ("cast") ;
-    ioList.addObject ("drop") ;
-    ioList.addObject ("else") ;
-    ioList.addObject ("enum") ;
-    ioList.addObject ("func") ;
-    ioList.addObject ("here") ;
-    ioList.addObject ("list") ;
-    ioList.addObject ("loop") ;
-    ioList.addObject ("once") ;
-    ioList.addObject ("proc") ;
-    ioList.addObject ("rule") ;
-    ioList.addObject ("self") ;
-    ioList.addObject ("send") ;
-    ioList.addObject ("then") ;
-    ioList.addObject ("true") ;
-    ioList.addObject ("when") ;
-    ioList.addObject ("with") ;
-    ioList.addObject ("after") ;
-    ioList.addObject ("array") ;
-    ioList.addObject ("block") ;
-    ioList.addObject ("class") ;
-    ioList.addObject ("const") ;
-    ioList.addObject ("elsif") ;
-    ioList.addObject ("error") ;
-    ioList.addObject ("false") ;
-    ioList.addObject ("fixit") ;
-    ioList.addObject ("graph") ;
-    ioList.addObject ("index") ;
-    ioList.addObject ("label") ;
-    ioList.addObject ("match") ;
-    ioList.addObject ("parse") ;
-    ioList.addObject ("state") ;
-    ioList.addObject ("style") ;
-    ioList.addObject ("while") ;
-    ioList.addObject ("before") ;
-    ioList.addObject ("extern") ;
-    ioList.addObject ("getter") ;
-    ioList.addObject ("insert") ;
-    ioList.addObject ("method") ;
-    ioList.addObject ("option") ;
-    ioList.addObject ("remove") ;
-    ioList.addObject ("repeat") ;
-    ioList.addObject ("search") ;
-    ioList.addObject ("select") ;
-    ioList.addObject ("setter") ;
-    ioList.addObject ("struct") ;
-    ioList.addObject ("switch") ;
-    ioList.addObject ("syntax") ;
-    ioList.addObject ("unused") ;
-    ioList.addObject ("between") ;
-    ioList.addObject ("default") ;
-    ioList.addObject ("foreach") ;
-    ioList.addObject ("grammar") ;
-    ioList.addObject ("lexique") ;
-    ioList.addObject ("listmap") ;
-    ioList.addObject ("message") ;
-    ioList.addObject ("private") ;
-    ioList.addObject ("project") ;
-    ioList.addObject ("replace") ;
-    ioList.addObject ("warning") ;
-    ioList.addObject ("abstract") ;
-    ioList.addObject ("indexing") ;
-    ioList.addObject ("operator") ;
-    ioList.addObject ("override") ;
-    ioList.addObject ("template") ;
-    ioList.addObject ("extension") ;
-    ioList.addObject ("sharedmap") ;
-    ioList.addObject ("sortedlist") ;
-    ioList.addObject ("constructor") ;
-    ioList.addObject ("filewrapper") ;
+    ioList.appendObject ("do") ;
+    ioList.appendObject ("if") ;
+    ioList.appendObject ("in") ;
+    ioList.appendObject ("is") ;
+    ioList.appendObject ("on") ;
+    ioList.appendObject ("or") ;
+    ioList.appendObject ("end") ;
+    ioList.appendObject ("for") ;
+    ioList.appendObject ("gui") ;
+    ioList.appendObject ("let") ;
+    ioList.appendObject ("log") ;
+    ioList.appendObject ("map") ;
+    ioList.appendObject ("mod") ;
+    ioList.appendObject ("not") ;
+    ioList.appendObject ("tag") ;
+    ioList.appendObject ("var") ;
+    ioList.appendObject ("case") ;
+    ioList.appendObject ("cast") ;
+    ioList.appendObject ("drop") ;
+    ioList.appendObject ("else") ;
+    ioList.appendObject ("enum") ;
+    ioList.appendObject ("func") ;
+    ioList.appendObject ("here") ;
+    ioList.appendObject ("list") ;
+    ioList.appendObject ("loop") ;
+    ioList.appendObject ("once") ;
+    ioList.appendObject ("proc") ;
+    ioList.appendObject ("rule") ;
+    ioList.appendObject ("self") ;
+    ioList.appendObject ("send") ;
+    ioList.appendObject ("then") ;
+    ioList.appendObject ("true") ;
+    ioList.appendObject ("when") ;
+    ioList.appendObject ("with") ;
+    ioList.appendObject ("after") ;
+    ioList.appendObject ("array") ;
+    ioList.appendObject ("block") ;
+    ioList.appendObject ("class") ;
+    ioList.appendObject ("const") ;
+    ioList.appendObject ("elsif") ;
+    ioList.appendObject ("error") ;
+    ioList.appendObject ("false") ;
+    ioList.appendObject ("fixit") ;
+    ioList.appendObject ("graph") ;
+    ioList.appendObject ("index") ;
+    ioList.appendObject ("label") ;
+    ioList.appendObject ("match") ;
+    ioList.appendObject ("parse") ;
+    ioList.appendObject ("state") ;
+    ioList.appendObject ("style") ;
+    ioList.appendObject ("while") ;
+    ioList.appendObject ("before") ;
+    ioList.appendObject ("extern") ;
+    ioList.appendObject ("getter") ;
+    ioList.appendObject ("insert") ;
+    ioList.appendObject ("method") ;
+    ioList.appendObject ("option") ;
+    ioList.appendObject ("remove") ;
+    ioList.appendObject ("repeat") ;
+    ioList.appendObject ("search") ;
+    ioList.appendObject ("select") ;
+    ioList.appendObject ("setter") ;
+    ioList.appendObject ("struct") ;
+    ioList.appendObject ("switch") ;
+    ioList.appendObject ("syntax") ;
+    ioList.appendObject ("unused") ;
+    ioList.appendObject ("between") ;
+    ioList.appendObject ("default") ;
+    ioList.appendObject ("foreach") ;
+    ioList.appendObject ("grammar") ;
+    ioList.appendObject ("lexique") ;
+    ioList.appendObject ("listmap") ;
+    ioList.appendObject ("message") ;
+    ioList.appendObject ("private") ;
+    ioList.appendObject ("project") ;
+    ioList.appendObject ("replace") ;
+    ioList.appendObject ("warning") ;
+    ioList.appendObject ("abstract") ;
+    ioList.appendObject ("indexing") ;
+    ioList.appendObject ("operator") ;
+    ioList.appendObject ("override") ;
+    ioList.appendObject ("template") ;
+    ioList.appendObject ("extension") ;
+    ioList.appendObject ("sharedmap") ;
+    ioList.appendObject ("sortedlist") ;
+    ioList.appendObject ("constructor") ;
+    ioList.appendObject ("filewrapper") ;
     ioList.sortArrayUsingCompareMethod() ;
   }
 }
@@ -4556,7 +4556,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::constructor
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -4582,7 +4582,7 @@ void GALGAS_templateInstructionListAST::addAssign_operation (const GALGAS_templa
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -5022,7 +5022,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::constructor_l
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateExpressionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -5054,7 +5054,7 @@ void GALGAS_templateExpressionListAST::addAssign_operation (const GALGAS_lstring
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -10180,7 +10180,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionIfBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -10209,7 +10209,7 @@ void GALGAS_templateInstructionIfBranchListAST::addAssign_operation (const GALGA
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -10778,7 +10778,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionSwitchBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -10807,7 +10807,7 @@ void GALGAS_templateInstructionSwitchBranchListAST::addAssign_operation (const G
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -12948,7 +12948,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -12974,7 +12974,7 @@ void GALGAS_templateInstructionListForGeneration::addAssign_operation (const GAL
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -13570,7 +13570,7 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionIfBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -13599,7 +13599,7 @@ void GALGAS_templateInstructionIfBranchListForGeneration::addAssign_operation (c
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
@@ -14168,7 +14168,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionSwitchBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -14197,7 +14197,7 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::addAssign_operatio
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 

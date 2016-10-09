@@ -75,7 +75,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
   protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--- Adding an object
-  protected : void addObject (capSortedListElement & inAttributeList) ;
+  protected : void appendObject (capSortedListElement & inAttributeList) ;
 
 //--------------------------------- Append a list
   protected : void appendSortedList (const AC_GALGAS_sortedlist & inList) ;

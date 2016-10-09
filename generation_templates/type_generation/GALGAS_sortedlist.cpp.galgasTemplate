@@ -142,7 +142,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   capSortedListElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  result.addObject (attributes) ;
+  result.appendObject (attributes) ;
   return result ;
 }
 
@@ -166,7 +166,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     capSortedListElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 

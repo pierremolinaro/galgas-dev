@@ -39,7 +39,6 @@ class capCollectionElementArray ;
 class C_galgas_type_descriptor ;
 class capCollectionElement ;
 class cCollectionElement ;
-class cSharedList ;
 class GALGAS_range ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -50,7 +49,7 @@ class GALGAS_range ;
 
 class AC_GALGAS_list : public AC_GALGAS_root {
 //--- Private Data member
-  private : cSharedList * mSharedList ;
+  private : class cSharedList * mSharedList ;
 
 //--- Default constructor
   public : AC_GALGAS_list (void) ;
@@ -95,7 +94,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   public : virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
 
 //--- Internal methods for handling list
-  protected : VIRTUAL_IN_DEBUG void addObject (const capCollectionElement & inElementToAdd) ;
+  protected : VIRTUAL_IN_DEBUG void appendObject (const capCollectionElement & inElementToAdd) ;
 
   protected : VIRTUAL_IN_DEBUG void addObjectAtIndex (const capCollectionElement & inElementToAdd,
                                                       const uint32_t inInsertionIndex,

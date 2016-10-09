@@ -119,7 +119,7 @@ GALGAS_BuildFileList GALGAS_BuildFileList::constructor_listWithValue (const GALG
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
     GALGAS_BuildFileList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result.appendObject (attributes) ;
   }
   return result ;
 }
@@ -151,7 +151,7 @@ void GALGAS_BuildFileList::addAssign_operation (const GALGAS_string & inOperand0
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    appendObject (attributes) ;
   }
 }
 
