@@ -398,9 +398,6 @@ GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compati
 
 extern const char * gWrapperFileContent_0_targetGalgas_33_GenerationFileWrapper ;
 extern const char * gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_2_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_3_targetGalgas_33_GenerationFileWrapper ;
-extern const char * gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -409,9 +406,6 @@ extern const char * gWrapperFileContent_4_targetGalgas_33_GenerationFileWrapper 
 
 extern const cRegularFileWrapper gWrapperFile_0_targetGalgas_33_GenerationFileWrapper ;
 extern const cRegularFileWrapper gWrapperFile_1_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_2_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_3_targetGalgas_33_GenerationFileWrapper ;
-extern const cRegularFileWrapper gWrapperFile_4_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -423,7 +417,6 @@ extern const cDirectoryWrapper gWrapperDirectory_4_targetGalgas_33_GenerationFil
 extern const cDirectoryWrapper gWrapperDirectory_5_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_6_targetGalgas_33_GenerationFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_7_targetGalgas_33_GenerationFileWrapper ;
-extern const cDirectoryWrapper gWrapperDirectory_8_targetGalgas_33_GenerationFileWrapper ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -461,6 +454,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (class C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_macosx'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (class C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -530,6 +532,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                      Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_unix'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (class C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                       Filewrapper template 'targetGalgas3GenerationFileWrapper install_unix'                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -586,6 +597,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux32_on_mac'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                  Filewrapper template 'targetGalgas3GenerationFileWrapper clean_x86linux64_on_mac'                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -633,6 +653,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_x86linux64_on_mac'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                    Filewrapper template 'targetGalgas3GenerationFileWrapper clean_win32_on_mac'                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -677,6 +706,15 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
 
 GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'targetGalgas3GenerationFileWrapper build_lto_win32_on_mac'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (class C_Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
